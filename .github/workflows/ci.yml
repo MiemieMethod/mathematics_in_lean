@@ -1,0 +1,66 @@
+name: build and deploy Chinese documentation to gh-pages
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup elan
+        run: |
+          curl -O --location https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh
+          chmod u+x elan-init.sh
+          ./elan-init.sh -y --default-toolchain none
+
+      - name: Set elan paths
+        run: |
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+
+      - name: Install Lean toolchain
+        run: |
+          lean --version
+
+      - name: Cache Lake build directory
+        uses: actions/cache@v4
+        with:
+          path: .lake
+          key: ${{ runner.os }}-lake-${{ hashFiles('lake-manifest.json', 'lean-toolchain') }}-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-lake-${{ hashFiles('lake-manifest.json', 'lean-toolchain') }}-
+
+      - name: Build Lean project
+        run: |
+          lake exe cache get
+          lake build --no-ansi
+
+      - name: Prepare static documentation
+        run: |
+          python3 scripts/normalize_chinese_html.py
+          touch html/.nojekyll
+          if [ -f mathematics_in_lean.pdf ]; then
+            cp mathematics_in_lean.pdf html/mathematics_in_lean.pdf
+          fi
+
+      - name: Deploy Chinese documentation to gh-pages
+        uses: JamesIves/github-pages-deploy-action@4.1.5
+        if: github.event_name == 'push' && github.ref_name == 'master'
+        with:
+          branch: gh-pages
+          folder: html

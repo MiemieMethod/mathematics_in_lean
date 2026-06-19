@@ -98,29 +98,29 @@ if (themeFlyoutDisplay === "attached") {
                 <a href="${config.projects.current.urls.home}">Project Home</a>
               </dd>
               <dd>
-                <a href="${config.projects.current.urls.builds}">Builds</a>
+                <a href="${config.projects.current.urls.builds}">构建</a>
               </dd>
               <dd>
-                <a href="${config.projects.current.urls.downloads}">Downloads</a>
+                <a href="${config.projects.current.urls.downloads}">下载</a>
               </dd>
             </dl>
             <dl>
-              <dt>Search</dt>
+              <dt>搜索</dt>
               <dd>
                 <form id="flyout-search-form">
                   <input
                     class="wy-form"
                     type="text"
                     name="q"
-                    aria-label="Search docs"
-                    placeholder="Search docs"
+                    aria-label="搜索文档"
+                    placeholder="搜索文档"
                     />
                 </form>
               </dd>
             </dl>
             <hr />
             <small>
-              <span>Hosted by <a href="https://about.readthedocs.org/?utm_source=&utm_content=flyout">Read the Docs</a></span>
+              <span>托管于 <a href="https://about.readthedocs.org/?utm_source=&utm_content=flyout">Read the Docs</a></span>
             </small>
           </div>
         </div>
@@ -129,7 +129,7 @@ if (themeFlyoutDisplay === "attached") {
     // Inject the generated flyout into the body HTML element.
     document.body.insertAdjacentHTML("beforeend", flyout);
 
-    // Trigger the Read the Docs Addons Search modal when clicking on the "Search docs" input from inside the flyout.
+    // Trigger the Read the Docs Addons Search modal when clicking on the "搜索文档" input from inside the flyout.
     document
       .querySelector("#flyout-search-form")
       .addEventListener("focusin", () => {
@@ -218,7 +218,7 @@ if (themeLanguageSelector || themeVersionSelector) {
 }
 
 document.addEventListener("readthedocs-addons-data-ready", function (event) {
-  // Trigger the Read the Docs Addons Search modal when clicking on "Search docs" input from the topnav.
+  // Trigger the Read the Docs Addons Search modal when clicking on "搜索文档" input from the topnav.
   document
     .querySelector("[role='search'] input")
     .addEventListener("focusin", () => {

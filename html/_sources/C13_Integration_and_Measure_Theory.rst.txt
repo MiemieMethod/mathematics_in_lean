@@ -2,7 +2,7 @@
 
 .. index:: integration
 
-Integration and Measure Theory
+积分和测度论
 ==============================
 
 .. include:: C13_Integration_and_Measure_Theory/S01_Elementary_Integration.inc

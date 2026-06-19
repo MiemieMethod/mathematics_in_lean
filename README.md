@@ -1,80 +1,45 @@
-# Mathematics in Lean
+# Lean 形式化数学
 
-This tutorial depends on Lean 4, VS Code, and Mathlib.
-You can find the textbook both online and in this repository
-in
-[html format](https://leanprover-community.github.io/mathematics_in_lean/)
-or as a
-[pdf document](https://leanprover-community.github.io/mathematics_in_lean/mathematics_in_lean.pdf).
-The book is designed to be read as you
-work through examples and exercises,
-using a copy of this repository on your computer.
-Alternatively, you can use Github Codespaces or Gitpod to run Lean and VS Code in the cloud.
+这是 *Mathematics in Lean* 的中文版本。本教程基于 Lean 4、VS Code 和 Mathlib，目标是帮助读者在 Lean 中形式化现代数学。
 
-This version of *Mathematics in Lean* is designed for [Lean 4](https://leanprover.github.io/) and
-[Mathlib](https://github.com/leanprover-community/mathlib4).
-For the Lean 3 version, see [https://github.com/leanprover-community/mathematics_in_lean3](https://github.com/leanprover-community/mathematics_in_lean3).
+你可以在本仓库的 `html` 目录中阅读已生成的中文网页，也可以打开根目录下的 `mathematics_in_lean.pdf` 阅读 PDF 版本。Lean 练习文件位于 `MIL` 目录，并按章节组织。
 
+本版本基于 [Mathematics in Lean](https://leanprover-community.github.io/mathematics_in_lean/) 与 [Lean-zh/math-in-lean-zh](https://github.com/Lean-zh/math-in-lean-zh) 的中文翻译工作整理。Lean 3 版本见 <https://github.com/leanprover-community/mathematics_in_lean3>。
 
-## To use this repository on your computer
+## 在本地使用
 
-Do the following:
+1. 按照 [Lean 安装说明](https://lean-lang.org/install/) 安装 Lean 4 和 VS Code。
 
-1. Install Lean 4 and VS Code following
-   these [instructions](https://lean-lang.org/install/).
+2. 在 VS Code 右上角点击 forall 符号，选择 `Open Project`、`Download Project`，再选择 `Mathematics in Lean`。
 
-2. Fetch the repository by clicking on the forall symbol in the upper right corner of VS Code,
-   and choose `Open Project`, `Download Project`, and `Mathematics in Lean`.
+3. 教材的每一节都有对应的 Lean 文件，包含例题和练习。建议复制 `MIL` 目录，在副本中实验和完成练习。这样可以保留原文件，也便于之后更新仓库。
 
-3. Each section in the textbook has an associated Lean file with examples and exercises.
-   You can find them in the folder `MIL`, organized by chapter.
-   We strongly recommend making a copy of that folder and experimenting and doing the
-   exercises in that copy.
-   This leaves the originals intact, and it also makes it easier to update the repository as it changes (see below).
-   You can call the copy `my_files` or whatever you want and use it to create
-   your own Lean files as well.
+之后，你可以在浏览器中打开 `html/index.html` 阅读中文教材，并在 VS Code 中完成练习。
 
-At that point, you can open the textbook in a web browser
-at [https://leanprover-community.github.io/mathematics_in_lean/](https://leanprover-community.github.io/mathematics_in_lean/)
-and start reading and doing the exercises in VS Code.
+如果要更新依赖缓存，请在仓库根目录运行：
 
-The textbook and this repository are still a work in progress.
-You can update the repository by typing `git pull`
-followed by `lake exe cache get` inside the `mathematics_in_lean` folder.
-(This assumes that you have not changed the contents of the `MIL` folder,
-which is why we suggested making a copy.)
+```bash
+lake exe cache get
+```
 
+然后可用如下命令检查 Lean 文件是否能通过构建：
 
-## To use this repository with Github Codespaces
+```bash
+lake build
+```
 
-If you have trouble installing Lean, you can use Lean directly in your browser using Github
-Codespaces.
-This requires a Github account. If you are signed in to Github, click here:
+## 使用 GitHub Codespaces
+
+如果本地安装 Lean 不方便，可以使用 GitHub Codespaces。登录 GitHub 后点击：
 
 <a href='https://codespaces.new/leanprover-community/mathematics_in_lean' target="_blank" rel="noreferrer noopener"><img src='https://github.com/codespaces/badge.svg' alt='Open in GitHub Codespaces' style='max-width: 100%;'></a>
 
-Make sure the Machine type is `4-core`, and then press `Create codespace`
-(this might take a few minutes).
-This creates a virtual machine in the cloud,
-and installs Lean and Mathlib.
+请将机器类型设为 `4-core`，然后点击 `Create codespace`。打开 `MIL` 目录中的任意 `.lean` 文件即可启动 Lean。建议仍然复制 `MIL` 目录，在副本中练习。
 
-Opening any `.lean` file in the MIL folder will start Lean,
-though this may also take a little while.
-We suggest making a copy of the `MIL` directory, as described
-in the instructions above for using MIL on your computer.
-You can update the repository by opening a terminal in the browser
-and typing `git pull` followed by `lake exe cache get` as above.
+## GitHub Pages
 
-Codespaces offers a certain number of free hours per month. When you are done working,
-press `Ctrl/Cmd+Shift+P` on your keyboard, start typing `stop current codespace`, and then
-select `Codespaces: Stop Current Codespace` from the list of options.
-If you forget, don't worry: the virtual machine will stop itself after a certain
-amount of time of inactivity.
+本仓库包含 GitHub Actions 工作流。推送到 `master` 后，工作流会先运行 `lake build`，再将 `html` 目录部署到 `gh-pages` 分支，供 GitHub Pages 使用。若根目录存在 `mathematics_in_lean.pdf`，工作流也会把它复制到部署产物中。
 
-To restart a previous workspace, visit <https://github.com/codespaces>.
+## 贡献
 
-
-## Contributing
-
-PRs and issues should be opened at the upstream
-[source repository](https://github.com/avigad/mathematics_in_lean_source).
+原英文项目的问题和 PR 请提交到上游 [source repository](https://github.com/avigad/mathematics_in_lean_source)。中文翻译相关修正可直接在本仓库提交。
