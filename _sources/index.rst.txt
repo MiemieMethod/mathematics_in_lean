@@ -1,6 +1,6 @@
 
-Mathematics in Lean
-===================
+Lean 形式化数学
+================
 
 .. toctree::
    :numbered:

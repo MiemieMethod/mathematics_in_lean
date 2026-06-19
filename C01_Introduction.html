@@ -1,212 +1,153 @@
-
-
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" data-content_root="./">
+<html class="writer-html5" data-content_root="./" lang="zh-CN">
 <head>
-  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
-
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>1. Introduction &mdash; Mathematics in Lean v4.19.0 documentation</title>
-      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
-      <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=0731ccc3" />
-
-  
-    <link rel="shortcut icon" href="_static/favicon.ico"/>
-      <script src="_static/jquery.js?v=5d32c60e"></script>
-      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=7048e04d"></script>
-      <script src="_static/doctools.js?v=fd6eb6e6"></script>
-      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
-    <script src="_static/js/theme.js"></script>
-    <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="2. Basics" href="C02_Basics.html" />
-    <link rel="prev" title="Mathematics in Lean" href="index.html" /> 
+<meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>1. 引言 — Lean 形式化数学 v4.30.0 中文文档</title>
+<link href="_static/pygments.css?v=b86133f3" rel="stylesheet" type="text/css"/>
+<link href="_static/css/theme.css?v=e59714d7" rel="stylesheet" type="text/css"/>
+<link href="_static/css/custom.css?v=0731ccc3" rel="stylesheet" type="text/css"/>
+<link href="_static/favicon.ico" rel="shortcut icon"/>
+<script src="_static/jquery.js?v=5d32c60e"></script>
+<script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+<script src="_static/documentation_options.js?v=2709fde1"></script>
+<script src="_static/doctools.js?v=9a2dae69"></script>
+<script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+<script src="_static/js/theme.js"></script>
+<link href="genindex.html" rel="index" title="索引"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="C02_Basics.html" rel="next" title="2. 基础"/>
+<link href="index.html" rel="prev" title="Lean 形式化数学"/>
 </head>
-
-<body class="wy-body-for-nav"> 
-  <div class="wy-grid-for-nav">
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
-
-          
-          
-          <a href="index.html" class="icon icon-home">
-            Mathematics in Lean
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+<nav class="wy-nav-side" data-toggle="wy-nav-shift">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a class="icon icon-home" href="index.html">
+            Lean 形式化数学
           </a>
 <div role="search">
-  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
-    <input type="hidden" name="check_keywords" value="yes" />
-    <input type="hidden" name="area" value="default" />
-  </form>
+<form action="search.html" class="wy-form" id="rtd-search-form" method="get">
+<input aria-label="搜索文档" name="q" placeholder="搜索文档" type="text"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
 </div>
-        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">1. Introduction</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#getting-started">1.1. Getting Started</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#overview">1.2. Overview</a></li>
+</div><div aria-label="Navigation menu" class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation">
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">1. 引言</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">1.1. 入门指南</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id9">1.2. 概述</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="C02_Basics.html">2. Basics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="C03_Logic.html">3. Logic</a></li>
-<li class="toctree-l1"><a class="reference internal" href="C04_Sets_and_Functions.html">4. Sets and Functions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="C05_Elementary_Number_Theory.html">5. Elementary Number Theory</a></li>
-<li class="toctree-l1"><a class="reference internal" href="C06_Discrete_Mathematics.html">6. Discrete Mathematics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="C07_Structures.html">7. Structures</a></li>
-<li class="toctree-l1"><a class="reference internal" href="C08_Hierarchies.html">8. Hierarchies</a></li>
-<li class="toctree-l1"><a class="reference internal" href="C09_Groups_and_Rings.html">9. Groups and Rings</a></li>
-<li class="toctree-l1"><a class="reference internal" href="C10_Linear_Algebra.html">10. Linear algebra</a></li>
-<li class="toctree-l1"><a class="reference internal" href="C11_Topology.html">11. Topology</a></li>
-<li class="toctree-l1"><a class="reference internal" href="C12_Differential_Calculus.html">12. Differential Calculus</a></li>
-<li class="toctree-l1"><a class="reference internal" href="C13_Integration_and_Measure_Theory.html">13. Integration and Measure Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="C02_Basics.html">2. 基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="C03_Logic.html">3. 逻辑</a></li>
+<li class="toctree-l1"><a class="reference internal" href="C04_Sets_and_Functions.html">4. 集合和函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="C05_Elementary_Number_Theory.html">5. 初等数论</a></li>
+<li class="toctree-l1"><a class="reference internal" href="C06_Discrete_Mathematics.html">6. 离散数学</a></li>
+<li class="toctree-l1"><a class="reference internal" href="C07_Structures.html">7. 结构体（Structures）</a></li>
+<li class="toctree-l1"><a class="reference internal" href="C08_Hierarchies.html">8. 层次结构</a></li>
+<li class="toctree-l1"><a class="reference internal" href="C09_Groups_and_Rings.html">9. 群与环</a></li>
+<li class="toctree-l1"><a class="reference internal" href="C10_Linear_Algebra.html">10. 线性代数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="C11_Topology.html">11. 拓扑学</a></li>
+<li class="toctree-l1"><a class="reference internal" href="C12_Differential_Calculus.html">12. 微分学</a></li>
+<li class="toctree-l1"><a class="reference internal" href="C13_Integration_and_Measure_Theory.html">13. 积分和测度论</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="genindex.html">Index</a></li>
+<li class="toctree-l1"><a class="reference internal" href="genindex.html">索引</a></li>
 </ul>
-
-        </div>
-      </div>
-    </nav>
-
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">Mathematics in Lean</a>
-      </nav>
-
-      <div class="wy-nav-content">
-        <div class="rst-content">
-          <div role="navigation" aria-label="Page navigation">
-  <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active"><span class="section-number">1. </span>Introduction</li>
-      <li class="wy-breadcrumbs-aside">
-            <a href="_sources/C01_Introduction.rst.txt" rel="nofollow"> View page source</a>
-      </li>
-  </ul>
-  <hr/>
 </div>
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-           <div itemprop="articleBody">
-             
-  <section id="introduction">
-<span id="id1"></span><h1><span class="section-number">1. </span>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">&#61633;</a></h1>
-<section id="getting-started">
-<h2><span class="section-number">1.1. </span>Getting Started<a class="headerlink" href="#getting-started" title="Link to this heading">&#61633;</a></h2>
-<p>The goal of this book is to teach you to formalize mathematics using the
-Lean 4 interactive proof assistant.
-It assumes that you know some mathematics, but it does not require much.
-Although we will cover examples ranging from number theory
-to measure theory and analysis,
-we will focus on elementary aspects of those fields,
-in the hopes that if they are not familiar to you,
-you can pick them up as you go.
-We also don&#8217;t presuppose any background with formal methods.
-Formalization can be seen as a kind of computer programming:
-we will write mathematical definitions, theorems, and proofs in
-a regimented language, like a programming language,
-that Lean can understand.
-In return, Lean provides feedback and information,
-interprets expressions and guarantees that they are well-formed,
-and ultimately certifies the correctness of our proofs.</p>
-<p>You can learn more about Lean from the
-<a class="reference external" href="https://leanprover.github.io">Lean project page</a>
-and the
-<a class="reference external" href="https://leanprover-community.github.io/">Lean community web pages</a>.
-This tutorial is based on Lean&#8217;s large and ever-growing library, <em>Mathlib</em>.
-We also strongly recommend joining the
-<a class="reference external" href="https://leanprover.zulipchat.com/">Lean Zulip online chat group</a>
-if you haven&#8217;t already.
-You&#8217;ll find a lively and welcoming community of Lean enthusiasts there,
-happy to answer questions and offer moral support.</p>
-<p>Although you can read a pdf or html version of this book online,
-it is designed to be read interactively,
-running Lean from inside the VS Code editor.
-To get started:</p>
+</div>
+</nav>
+<section class="wy-nav-content-wrap" data-toggle="wy-nav-shift"><nav aria-label="Mobile navigation menu" class="wy-nav-top">
+<i class="fa fa-bars" data-toggle="wy-nav-top"></i>
+<a href="index.html">Lean 形式化数学</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content">
+<div aria-label="Page navigation" role="navigation">
+<ul class="wy-breadcrumbs">
+<li><a aria-label="Home" class="icon icon-home" href="index.html"></a></li>
+<li class="breadcrumb-item active"><span class="section-number">1. </span>引言</li>
+<li class="wy-breadcrumbs-aside">
+<a href="_sources/C01_Introduction.rst.txt" rel="nofollow"> 查看页面源码</a>
+</li>
+</ul>
+<hr/>
+</div>
+<div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<div itemprop="articleBody">
+<section id="introduction">
+<span id="id1"></span><h1><span class="section-number">1. </span>引言<a class="headerlink" href="#introduction" title="链接到此标题"></a></h1>
+<section id="id2">
+<h2><span class="section-number">1.1. </span>入门指南<a class="headerlink" href="#id2" title="链接到此标题"></a></h2>
+<p>本书教你使用 Lean 4 交互式证明助手来形式化数学。你需要一点儿数学知识，但并不需要太多。
+我们将涵盖从数论到测度论和分析的基础方面，如果你对它们不熟悉，你可以在学习的过程中逐渐掌握。
+我们也不预设任何对形式化方法的背景知识。
+形式化可以被视为一种计算机编程：我们将用一种 Lean 可以理解的规范化的语言，类似于编程语言，来编写数学定义、定理和证明。
+作为回报，Lean 提供反馈和信息，解析表达式并保证它们是形式良好的，并最终验证我们的证明的正确性。</p>
+<p>你可以从 <a class="reference external" href="https://leanprover.github.io">Lean 项目页面</a>
+和 <a class="reference external" href="https://leanprover-community.github.io/">Lean 社区网页</a>
+了解更多关于 Lean 的信息。本教程基于 Lean 庞大且不断增长的库 <em>Mathlib</em>。
+我们也强烈建议加入 <a class="reference external" href="https://leanprover.zulipchat.com/">Lean Zulip 在线聊天群</a>，如果你还没有加入的话。
+在那里你会发现一个活跃而友好的 Lean 爱好者社区，愿意回答问题并提供精神支持。</p>
+<ul class="simple">
+<li><p>项目在Mathlib版本 15a391f3007c5c377ba21af3e0a1d53502310685 上测试通过（2024.10.16）。Mathlib 更新迅速，可能会遇到旧版代码在新版 Mathlib 下无法通过的问题。如果读者遇到了版本不兼容问题，请提交PR以使本项目跟进最新 Mathlib，或者提交issue或联系译者协助解决。</p></li>
+</ul>
+<p>虽然你可以在线阅读本书的 pdf （注：中文版暂不支持 pdf） 或 html 版本，但它设计为可以交互式阅读，在 VS Code 编辑器中运行 Lean 代码。开始学习吧：</p>
+<p>（中文用户可以参考 <a class="reference external" href="https://www.leanprover.cn/tutorial/install/">中文安装教程</a> ）</p>
 <ol class="arabic simple">
-<li><p>Install Lean 4 and VS Code following
-these <a class="reference external" href="https://lean-lang.org/install/">installation instructions</a>.</p></li>
-<li><p>Fetch the repository by clicking on the forall symbol in the upper right corner of VS Code,
-and choose <cite>Open Project</cite>, <cite>Download Project</cite>, and <cite>Mathematics in Lean</cite>.</p></li>
-<li><p>Each section in this book has an associated Lean file with examples and exercises.
-You can find them in the folder <code class="docutils literal notranslate"><span class="pre">MIL</span></code>, organized by chapter.
-We strongly recommend making a copy of that folder and experimenting and doing the
-exercises in that copy.
-This leaves the originals intact, and it also makes it easier to update the repository as it changes (see below).
-You can call the copy <code class="docutils literal notranslate"><span class="pre">my_files</span></code> or whatever you want and use it to create
-your own Lean files as well.</p></li>
+<li><p>按照这些 <a class="reference external" href="https://leanprover-community.github.io/get_started.html">安装说明</a> 安装 Lean 4 和 VS Code.</p></li>
+<li><p>确保你已安装了 <a class="reference external" href="https://git-scm.com/">git</a>.</p></li>
+<li><p>按照这些 <a class="reference external" href="https://leanprover-community.github.io/install/project.html#working-on-an-existing-project">说明</a> 来获取 <code class="docutils literal notranslate"><span class="pre">mathematics_in_lean</span></code> 存储库并在 VS Code 中打开它。</p></li>
 </ol>
-<p>At that point, you can open the textbook in a side panel in VS Code as follows:</p>
+<p>4. 本书的每个部分都有一个与之相关联的 Lean 文件，其中包含示例和练习。你可以在名为 <code class="docutils literal notranslate"><span class="pre">MIL</span></code> 的文件夹中按章节组织的地方找到它们。
+我们强烈建议复制该文件夹，并在复制的文件夹中进行实验和练习。这样可以保持原始文件的完整性，并且在存储库改动时更容易同步（见下文）。
+你可以将复制的文件夹命名为 <code class="docutils literal notranslate"><span class="pre">my_files</span></code> 或其他任何你喜欢的名字，并在其中创建自己的 Lean 文件。</p>
+<p>在这之后，你可以按照以下步骤在 VS Code 的侧边栏中打开教科书：</p>
 <ol class="arabic simple">
-<li><p>Type <code class="docutils literal notranslate"><span class="pre">ctrl-shift-P</span></code> (<code class="docutils literal notranslate"><span class="pre">command-shift-P</span></code> in macOS).</p></li>
-<li><p>Type <code class="docutils literal notranslate"><span class="pre">Lean</span> <span class="pre">4:</span> <span class="pre">Docs:</span> <span class="pre">Show</span> <span class="pre">Documentation</span> <span class="pre">Resources</span></code> in the bar that appears, and then
-press return. (You can press return to select it as soon as it is highlighted
-in the menu.)</p></li>
-<li><p>In the window that opens, click on <code class="docutils literal notranslate"><span class="pre">Mathematics</span> <span class="pre">in</span> <span class="pre">Lean</span></code>.</p></li>
+<li><p>输入 <code class="docutils literal notranslate"><span class="pre">ctrl-shift-P</span></code> （在 macOS 中为 <code class="docutils literal notranslate"><span class="pre">command-shift-P</span></code> ）。</p></li>
+<li><p>在出现的栏中输入 <code class="docutils literal notranslate"><span class="pre">Lean</span> <span class="pre">4:</span> <span class="pre">Docs:</span> <span class="pre">Show</span> <span class="pre">Documentation</span> <span class="pre">Resources</span></code>，然后按回车键。（一旦该选项在菜单中被高亮显示，你就可以按回车键选择它。）</p></li>
+<li><p>在打开的窗口中，点击 <code class="docutils literal notranslate"><span class="pre">Mathematics</span> <span class="pre">in</span> <span class="pre">Lean</span></code>.</p></li>
 </ol>
-<p>Alternatively, you can run Lean and VS Code in the cloud,
-using <a class="reference external" href="https://github.com/codespaces">Codespaces</a>.
-You can find instructions as to how to do that on the Mathematics in Lean
-<a class="reference external" href="https://github.com/leanprover-community/mathematics_in_lean">project page</a>
-on Github. We still recommend working in a copy of the <cite>MIL</cite> folder,
-as described above.</p>
-<p>This textbook and the associated repository are still a work in progress.
-You can update the repository by typing <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span></code>
-followed by <code class="docutils literal notranslate"><span class="pre">lake</span> <span class="pre">exe</span> <span class="pre">cache</span> <span class="pre">get</span></code> inside the <code class="docutils literal notranslate"><span class="pre">mathematics_in_lean</span></code> folder.
-(This assumes that you have not changed the contents of the <code class="docutils literal notranslate"><span class="pre">MIL</span></code> folder,
-which is why we suggested making a copy.)</p>
-<p>We intend for you to work on the exercises in the <code class="docutils literal notranslate"><span class="pre">MIL</span></code> folder while reading the
-textbook, which contains explanations, instructions, and hints.
-The text will often include examples, like this one:</p>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="k">#eval</span><span class="w"> </span><span class="s2">&quot;Hello, World!&quot;</span>
+<p>或者，你还可以在云中运行 Lean 和 VS Code，使用 <a class="reference external" href="https://gitpod.io/">Gitpod</a>。
+你可以在 Github 上的 Lean 形式化数学 <a class="reference external" href="https://github.com/leanprover-community/mathematics_in_lean">项目官方页面</a> 或 <a class="reference external" href="https://github.com/Lean-zh/math-in-lean-zh">中文页面</a> 找到如何操作的说明。
+尽管如此，我们仍然建议按照上述方式在 <code class="docutils literal notranslate"><span class="pre">MIL</span></code> 文件夹的副本中进行操作。</p>
+<p>这本教科书及其相关存储库仍在不断完善中。你可以通过在 <code class="docutils literal notranslate"><span class="pre">mathematics_in_lean</span></code> 文件夹内输入 <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span></code>,
+接着输入 <code class="docutils literal notranslate"><span class="pre">lake</span> <span class="pre">exe</span> <span class="pre">cache</span> <span class="pre">get</span></code> 来更新存储库。（这假设你没有改变 <code class="docutils literal notranslate"><span class="pre">MIL</span></code> 文件夹的内容，这也是我们建议你制作副本的原因。）</p>
+<p>我们希望你在阅读教科书的同时，在 <code class="docutils literal notranslate"><span class="pre">MIL</span></code> 文件夹中完成练习，该文件夹包含了解释、说明和提示。文本通常会包含示例，就像这个例子一样：</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="k">#eval</span><span class="w"> </span><span class="s2">"Hello, World!"</span>
 </pre></div>
 </div>
-<p>You should be able to find the corresponding example in the associated
-Lean file.
-If you click on the line, VS Code will show you Lean&#8217;s feedback in
-the <code class="docutils literal notranslate"><span class="pre">Lean</span> <span class="pre">InfoView</span></code> window, and if you hover
-your cursor over the <code class="docutils literal notranslate"><span class="pre">#eval</span></code> command VS Code will show you Lean&#8217;s response
-to this command in a pop-up window.
-You are encouraged to edit the file and try examples of your own.</p>
-<p>This book moreover provides lots of challenging exercises for you to try.
-Don&#8217;t rush past these!
-Lean is about <em>doing</em> mathematics interactively, not just reading about it.
-Working through the exercises is central to the experience.
-You don&#8217;t have to do all of them; when you feel comfortable that you have mastered
-the relevant skills, feel free to move on.
-You can always compare your solutions to the ones in the <code class="docutils literal notranslate"><span class="pre">solutions</span></code>
-folder associated with each section.</p>
+<p>你应该能够在相关的 Lean 文件中找到相应的示例。如果你点击该行，VS Code 将在 <code class="docutils literal notranslate"><span class="pre">Lean</span> <span class="pre">Goal</span></code> 窗口中显示 Lean 的反馈，
+如果你将光标悬停在 <code class="docutils literal notranslate"><span class="pre">#eval</span></code> 命令上，VS Code 将在弹出窗口中显示 Lean 对此命令的响应。我们鼓励你编辑文件并尝试自己的示例。</p>
+<p>此外，本书还提供了许多具有挑战性的练习供你尝试。不要匆忙跳过这些练习！Lean 需要*交互式地做*数学，而不仅仅是阅读。
+完成练习是学习的核心内容。你不必完成所有练习；当你觉得已经掌握了相关技能时，可以自由地继续前进。
+你始终可以将你的解决方案与与每个部分相关的 <code class="docutils literal notranslate"><span class="pre">solutions</span></code> 文件夹中的解决方案进行比较。</p>
 </section>
-<section id="overview">
-<h2><span class="section-number">1.2. </span>Overview<a class="headerlink" href="#overview" title="Link to this heading">&#61633;</a></h2>
-<p>Put simply, Lean is a tool for building complex expressions in a formal language
-known as <em>dependent type theory</em>.</p>
-<p id="index-0">Every expression has a <em>type</em>, and you can use the <cite>#check</cite> command to
-print it.
-Some expressions have types like <cite>&#8469;</cite> or <cite>&#8469; &#8594; &#8469;</cite>.
-These are mathematical objects.</p>
+<section id="id9">
+<h2><span class="section-number">1.2. </span>概述<a class="headerlink" href="#id9" title="链接到此标题"></a></h2>
+<p>简言之，Lean 是用于构建复杂表达式的工具，它基于一种称为 <strong>依值类型论（Dependent type theory）</strong> 的形式语言。</p>
+<p id="index-0">每个表达式都有一个 <strong>类型（Type）</strong>，你可以使用 <cite>#check</cite> 命令来打印它。一些数学对象表达式的类型可能是像 <cite>ℕ</cite> 或 <cite>ℕ → ℕ</cite> 这样的。</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="k">#check</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="bp">+</span><span class="w"> </span><span class="mi">2</span>
 
-<span class="kd">def</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="o">(</span><span class="n">x</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">&#8469;</span><span class="o">)</span><span class="w"> </span><span class="o">:=</span>
+<span class="kd">def</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="o">(</span><span class="n">x</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">ℕ</span><span class="o">)</span><span class="w"> </span><span class="o">:=</span>
 <span class="w">  </span><span class="n">x</span><span class="w"> </span><span class="bp">+</span><span class="w"> </span><span class="mi">3</span>
 
 <span class="k">#check</span><span class="w"> </span><span class="n">f</span>
 </pre></div>
 </div>
-<p>Some expressions have type <cite>Prop</cite>.
-These are mathematical statements.</p>
+<p>数学命题的类型是 <cite>Prop</cite>。</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="k">#check</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="bp">+</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="bp">=</span><span class="w"> </span><span class="mi">4</span>
 
 <span class="kd">def</span><span class="w"> </span><span class="n">FermatLastTheorem</span><span class="w"> </span><span class="o">:=</span>
-<span class="w">  </span><span class="bp">&#8704;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="n">z</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">&#8469;</span><span class="o">,</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="bp">&gt;</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="bp">&#8743;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="bp">*</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="bp">*</span><span class="w"> </span><span class="n">z</span><span class="w"> </span><span class="bp">&#8800;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="bp">&#8594;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="bp">^</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="bp">+</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="bp">^</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="bp">&#8800;</span><span class="w"> </span><span class="n">z</span><span class="w"> </span><span class="bp">^</span><span class="w"> </span><span class="n">n</span>
+<span class="w">  </span><span class="bp">∀</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="n">z</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">ℕ</span><span class="o">,</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="bp">&gt;</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="bp">∧</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="bp">*</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="bp">*</span><span class="w"> </span><span class="n">z</span><span class="w"> </span><span class="bp">≠</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="bp">→</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="bp">^</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="bp">+</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="bp">^</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="bp">≠</span><span class="w"> </span><span class="n">z</span><span class="w"> </span><span class="bp">^</span><span class="w"> </span><span class="n">n</span>
 
 <span class="k">#check</span><span class="w"> </span><span class="n">FermatLastTheorem</span>
 </pre></div>
 </div>
-<p>Some expressions have a type, <cite>P</cite>, where <cite>P</cite> itself has type <cite>Prop</cite>.
-Such an expression is a proof of the proposition <cite>P</cite>.</p>
+<p>设命题 <cite>P</cite> 类型为 <cite>Prop</cite>，你可以构造类型为 <cite>P</cite> 的表达式，它们是命题 <cite>P</cite> 的证明。</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">theorem</span><span class="w"> </span><span class="n">easy</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="bp">+</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="bp">=</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="o">:=</span>
 <span class="w">  </span><span class="n">rfl</span>
 
@@ -218,170 +159,106 @@ Such an expression is a proof of the proposition <cite>P</cite>.</p>
 <span class="k">#check</span><span class="w"> </span><span class="n">hard</span>
 </pre></div>
 </div>
-<p>If you manage to construct an expression of type <code class="docutils literal notranslate"><span class="pre">FermatLastTheorem</span></code> and
-Lean accepts it as a term of that type,
-you have done something very impressive.
-(Using <code class="docutils literal notranslate"><span class="pre">sorry</span></code> is cheating, and Lean knows it.)
-So now you know the game.
-All that is left to learn is the rules.</p>
-<p>This book is complementary to a companion tutorial,
-<a class="reference external" href="https://leanprover.github.io/theorem_proving_in_lean4/">Theorem Proving in Lean</a>,
-which provides a more thorough introduction to the underlying logical framework
-and core syntax of Lean.
-<em>Theorem Proving in Lean</em> is for people who prefer to read a user manual cover to cover before
-using a new dishwasher.
-If you are the kind of person who prefers to hit the <em>start</em> button and
-figure out how to activate the potscrubber feature later,
-it makes more sense to start here and refer back to
-<em>Theorem Proving in Lean</em> as necessary.</p>
-<p>Another thing that distinguishes <em>Mathematics in Lean</em> from
-<em>Theorem Proving in Lean</em> is that here we place a much greater
-emphasis on the use of <em>tactics</em>.
-Given that we are trying to build complex expressions,
-Lean offers two ways of going about it:
-we can write down the expressions themselves
-(that is, suitable text descriptions thereof),
-or we can provide Lean with <em>instructions</em> as to how to construct them.
-For example, the following expression represents a proof of the fact that
-if <code class="docutils literal notranslate"><span class="pre">n</span></code> is even then so is <code class="docutils literal notranslate"><span class="pre">m</span> <span class="pre">*</span> <span class="pre">n</span></code>:</p>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="bp">&#8704;</span><span class="w"> </span><span class="n">m</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Nat</span><span class="o">,</span><span class="w"> </span><span class="n">Even</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="bp">&#8594;</span><span class="w"> </span><span class="n">Even</span><span class="w"> </span><span class="o">(</span><span class="n">m</span><span class="w"> </span><span class="bp">*</span><span class="w"> </span><span class="n">n</span><span class="o">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">fun</span><span class="w"> </span><span class="n">m</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">&#10216;</span><span class="n">k</span><span class="o">,</span><span class="w"> </span><span class="o">(</span><span class="n">hk</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="bp">=</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="bp">+</span><span class="w"> </span><span class="n">k</span><span class="o">)&#10217;</span><span class="w"> </span><span class="bp">&#8614;</span>
+<p>如果你设法构建了一个类型为 <code class="docutils literal notranslate"><span class="pre">FermatLastTheorem</span></code> 的表达式，并且 Lean 接受它作为该类型的项，那么你已经干了一件伟大的事。
+（使用 <code class="docutils literal notranslate"><span class="pre">sorry</span></code> 是作弊，Lean 知道这一点。）所以现在你知道了游戏目标。剩下要学习的只有规则了。</p>
+<ul class="simple">
+<li><p>Kevin Buzzard 正在领导这件伟大的事，详见：<a class="reference external" href="https://leanprover-community.github.io/blog/posts/FLT-announcement/">The Fermat’s Last Theorem Project</a></p></li>
+</ul>
+<p>本书配套教程 <a class="reference external" href="https://leanprover.github.io/theorem_proving_in_lean4/">Theorem Proving in Lean</a>，中文版 <a class="reference external" href="https://www.leanprover.cn/tp-lean-zh/">Lean 中的定理证明</a>，提供了对Lean的基础逻辑框架和核心语法更全面的介绍。 Lean 中的定理证明适用于那些在使用新洗碗机之前更喜欢从头到尾阅读用户手册的人。
+如果你是那种更喜欢先动手尝试，以后再弄清细节的人，那么从本书开始更合适，需要时随时可以回去参考 Lean 中的定理证明。</p>
+<p>Lean 形式化数学与 Lean 中的定理证明的另一个区别在于，本书更加强调 <strong>证明策略(Tactics)</strong> 的使用。
+考虑到我们试图构建复杂表达式，Lean 提供了两种方法：直接构造表达式本身，或者向 Lean 提供 <em>指令</em>，告诉它如何构建这些表达式。
+例如，下面构造的证明表达式在说明，如果 <code class="docutils literal notranslate"><span class="pre">n</span></code> 是偶数，则 <code class="docutils literal notranslate"><span class="pre">m</span> <span class="pre">*</span> <span class="pre">n</span></code> 也是偶数：</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="bp">∀</span><span class="w"> </span><span class="n">m</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Nat</span><span class="o">,</span><span class="w"> </span><span class="n">Even</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="bp">→</span><span class="w"> </span><span class="n">Even</span><span class="w"> </span><span class="o">(</span><span class="n">m</span><span class="w"> </span><span class="bp">*</span><span class="w"> </span><span class="n">n</span><span class="o">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">fun</span><span class="w"> </span><span class="n">m</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">⟨</span><span class="n">k</span><span class="o">,</span><span class="w"> </span><span class="o">(</span><span class="n">hk</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="bp">=</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="bp">+</span><span class="w"> </span><span class="n">k</span><span class="o">)⟩</span><span class="w"> </span><span class="bp">↦</span>
 <span class="w">  </span><span class="k">have</span><span class="w"> </span><span class="n">hmn</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">m</span><span class="w"> </span><span class="bp">*</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="bp">=</span><span class="w"> </span><span class="n">m</span><span class="w"> </span><span class="bp">*</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="bp">+</span><span class="w"> </span><span class="n">m</span><span class="w"> </span><span class="bp">*</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="kd">by</span><span class="w"> </span><span class="n">rw</span><span class="w"> </span><span class="o">[</span><span class="n">hk</span><span class="o">,</span><span class="w"> </span><span class="n">mul_add</span><span class="o">]</span>
-<span class="w">  </span><span class="k">show</span><span class="w"> </span><span class="bp">&#8707;</span><span class="w"> </span><span class="n">l</span><span class="o">,</span><span class="w"> </span><span class="n">m</span><span class="w"> </span><span class="bp">*</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="bp">=</span><span class="w"> </span><span class="n">l</span><span class="w"> </span><span class="bp">+</span><span class="w"> </span><span class="n">l</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="o">&#10216;</span><span class="n">_</span><span class="o">,</span><span class="w"> </span><span class="n">hmn</span><span class="o">&#10217;</span>
+<span class="w">  </span><span class="k">show</span><span class="w"> </span><span class="bp">∃</span><span class="w"> </span><span class="n">l</span><span class="o">,</span><span class="w"> </span><span class="n">m</span><span class="w"> </span><span class="bp">*</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="bp">=</span><span class="w"> </span><span class="n">l</span><span class="w"> </span><span class="bp">+</span><span class="w"> </span><span class="n">l</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="o">⟨</span><span class="n">_</span><span class="o">,</span><span class="w"> </span><span class="n">hmn</span><span class="o">⟩</span>
 </pre></div>
 </div>
-<p>The <em>proof term</em> can be compressed to a single line:</p>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="bp">&#8704;</span><span class="w"> </span><span class="n">m</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Nat</span><span class="o">,</span><span class="w"> </span><span class="n">Even</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="bp">&#8594;</span><span class="w"> </span><span class="n">Even</span><span class="w"> </span><span class="o">(</span><span class="n">m</span><span class="w"> </span><span class="bp">*</span><span class="w"> </span><span class="n">n</span><span class="o">)</span><span class="w"> </span><span class="o">:=</span>
-<span class="k">fun</span><span class="w"> </span><span class="n">m</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">&#10216;</span><span class="n">k</span><span class="o">,</span><span class="w"> </span><span class="n">hk</span><span class="o">&#10217;</span><span class="w"> </span><span class="bp">&#8614;</span><span class="w"> </span><span class="o">&#10216;</span><span class="n">m</span><span class="w"> </span><span class="bp">*</span><span class="w"> </span><span class="n">k</span><span class="o">,</span><span class="w"> </span><span class="kd">by</span><span class="w"> </span><span class="n">rw</span><span class="w"> </span><span class="o">[</span><span class="n">hk</span><span class="o">,</span><span class="w"> </span><span class="n">mul_add</span><span class="o">]&#10217;</span>
+<p>这个 <strong>证明项</strong> 可以压缩成一行：</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="bp">∀</span><span class="w"> </span><span class="n">m</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Nat</span><span class="o">,</span><span class="w"> </span><span class="n">Even</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="bp">→</span><span class="w"> </span><span class="n">Even</span><span class="w"> </span><span class="o">(</span><span class="n">m</span><span class="w"> </span><span class="bp">*</span><span class="w"> </span><span class="n">n</span><span class="o">)</span><span class="w"> </span><span class="o">:=</span>
+<span class="k">fun</span><span class="w"> </span><span class="n">m</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">⟨</span><span class="n">k</span><span class="o">,</span><span class="w"> </span><span class="n">hk</span><span class="o">⟩</span><span class="w"> </span><span class="bp">↦</span><span class="w"> </span><span class="o">⟨</span><span class="n">m</span><span class="w"> </span><span class="bp">*</span><span class="w"> </span><span class="n">k</span><span class="o">,</span><span class="w"> </span><span class="kd">by</span><span class="w"> </span><span class="n">rw</span><span class="w"> </span><span class="o">[</span><span class="n">hk</span><span class="o">,</span><span class="w"> </span><span class="n">mul_add</span><span class="o">]⟩</span>
 </pre></div>
 </div>
-<p>The following is, instead, a <em>tactic-style</em> proof of the same theorem, where lines
-starting with <code class="docutils literal notranslate"><span class="pre">--</span></code> are comments, hence ignored by Lean:</p>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="bp">&#8704;</span><span class="w"> </span><span class="n">m</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Nat</span><span class="o">,</span><span class="w"> </span><span class="n">Even</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="bp">&#8594;</span><span class="w"> </span><span class="n">Even</span><span class="w"> </span><span class="o">(</span><span class="n">m</span><span class="w"> </span><span class="bp">*</span><span class="w"> </span><span class="n">n</span><span class="o">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="kd">by</span>
-<span class="w">  </span><span class="c1">-- Say `m` and `n` are natural numbers, and assume `n = 2 * k`.</span>
-<span class="w">  </span><span class="n">rintro</span><span class="w"> </span><span class="n">m</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">&#10216;</span><span class="n">k</span><span class="o">,</span><span class="w"> </span><span class="n">hk</span><span class="o">&#10217;</span>
-<span class="w">  </span><span class="c1">-- We need to prove `m * n` is twice a natural number. Let&#39;s show it&#39;s twice `m * k`.</span>
+<p>以下是同一定理的策略式证明，其中以 <code class="docutils literal notranslate"><span class="pre">--</span></code> 开头的行是注释，因此被 Lean 忽略：</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="bp">∀</span><span class="w"> </span><span class="n">m</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Nat</span><span class="o">,</span><span class="w"> </span><span class="n">Even</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="bp">→</span><span class="w"> </span><span class="n">Even</span><span class="w"> </span><span class="o">(</span><span class="n">m</span><span class="w"> </span><span class="bp">*</span><span class="w"> </span><span class="n">n</span><span class="o">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="kd">by</span>
+<span class="w">  </span><span class="c1">-- 设 `m` 和 `n` 是自然数，设 `n = 2 * k`</span>
+<span class="w">  </span><span class="n">rintro</span><span class="w"> </span><span class="n">m</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">⟨</span><span class="n">k</span><span class="o">,</span><span class="w"> </span><span class="n">hk</span><span class="o">⟩</span>
+<span class="w">  </span><span class="c1">-- 需证 `m * n` 是某自然数的两倍。那就设它是 `m * k` 的两倍吧</span>
 <span class="w">  </span><span class="n">use</span><span class="w"> </span><span class="n">m</span><span class="w"> </span><span class="bp">*</span><span class="w"> </span><span class="n">k</span>
-<span class="w">  </span><span class="c1">-- Substitute for `n`,</span>
+<span class="w">  </span><span class="c1">-- 代入 `n`</span>
 <span class="w">  </span><span class="n">rw</span><span class="w"> </span><span class="o">[</span><span class="n">hk</span><span class="o">]</span>
-<span class="w">  </span><span class="c1">-- and now it&#39;s obvious.</span>
+<span class="w">  </span><span class="c1">-- 剩下的就很显然了</span>
 <span class="w">  </span><span class="n">ring</span>
 </pre></div>
 </div>
-<p>As you enter each line of such a proof in VS Code,
-Lean displays the <em>proof state</em> in a separate window,
-telling you what facts you have already established and what
-tasks remain to prove your theorem.
-You can replay the proof by stepping through the lines,
-since Lean will continue to show you the state of the proof
-at the point where the cursor is.
-In this example, you will then see that
-the first line of the proof introduces <code class="docutils literal notranslate"><span class="pre">m</span></code> and <code class="docutils literal notranslate"><span class="pre">n</span></code>
-(we could have renamed them at that point, if we wanted to),
-and also decomposes the hypothesis <code class="docutils literal notranslate"><span class="pre">Even</span> <span class="pre">n</span></code> to
-a <code class="docutils literal notranslate"><span class="pre">k</span></code> and the assumption that <code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">=</span> <span class="pre">2</span> <span class="pre">*</span> <span class="pre">k</span></code>.
-The second line, <code class="docutils literal notranslate"><span class="pre">use</span> <span class="pre">m</span> <span class="pre">*</span> <span class="pre">k</span></code>,
-declares that we are going to show that <code class="docutils literal notranslate"><span class="pre">m</span> <span class="pre">*</span> <span class="pre">n</span></code> is even by
-showing <code class="docutils literal notranslate"><span class="pre">m</span> <span class="pre">*</span> <span class="pre">n</span> <span class="pre">=</span> <span class="pre">2</span> <span class="pre">*</span> <span class="pre">(m</span> <span class="pre">*</span> <span class="pre">k)</span></code>.
-The next line uses the <code class="docutils literal notranslate"><span class="pre">rw</span></code> tactic
-to replace <code class="docutils literal notranslate"><span class="pre">n</span></code> by <code class="docutils literal notranslate"><span class="pre">2</span> <span class="pre">*</span> <span class="pre">k</span></code> in the goal (<code class="docutils literal notranslate"><span class="pre">rw</span></code> stands for &#8220;rewrite&#8221;),
-and the <code class="docutils literal notranslate"><span class="pre">ring</span></code> tactic solves the resulting goal <code class="docutils literal notranslate"><span class="pre">m</span> <span class="pre">*</span> <span class="pre">(2</span> <span class="pre">*</span> <span class="pre">k)</span> <span class="pre">=</span> <span class="pre">2</span> <span class="pre">*</span> <span class="pre">(m</span> <span class="pre">*</span> <span class="pre">k)</span></code>.</p>
-<p>The ability to build a proof in small steps with incremental feedback
-is extremely powerful. For that reason,
-tactic proofs are often easier and quicker to write than
-proof terms.
-There isn&#8217;t a sharp distinction between the two:
-tactic proofs can be inserted in proof terms,
-as we did with the phrase <code class="docutils literal notranslate"><span class="pre">by</span> <span class="pre">rw</span> <span class="pre">[hk,</span> <span class="pre">mul_add]</span></code> in the example above.
-We will also see that, conversely,
-it is often useful to insert a short proof term in the middle of a tactic proof.
-That said, in this book, our emphasis will be on the use of tactics.</p>
-<p>In our example, the tactic proof can also be reduced to a one-liner:</p>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="bp">&#8704;</span><span class="w"> </span><span class="n">m</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Nat</span><span class="o">,</span><span class="w"> </span><span class="n">Even</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="bp">&#8594;</span><span class="w"> </span><span class="n">Even</span><span class="w"> </span><span class="o">(</span><span class="n">m</span><span class="w"> </span><span class="bp">*</span><span class="w"> </span><span class="n">n</span><span class="o">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="kd">by</span>
-<span class="w">  </span><span class="n">rintro</span><span class="w"> </span><span class="n">m</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">&#10216;</span><span class="n">k</span><span class="o">,</span><span class="w"> </span><span class="n">hk</span><span class="o">&#10217;</span><span class="bp">;</span><span class="w"> </span><span class="n">use</span><span class="w"> </span><span class="n">m</span><span class="w"> </span><span class="bp">*</span><span class="w"> </span><span class="n">k</span><span class="bp">;</span><span class="w"> </span><span class="n">rw</span><span class="w"> </span><span class="o">[</span><span class="n">hk</span><span class="o">]</span><span class="bp">;</span><span class="w"> </span><span class="n">ring</span>
+<p>当你在 VS Code 中输入上述证明的每一行时，Lean 会在一个单独的窗口中显示 <strong>证明状态</strong>，告诉你已经建立了哪些事实，以及要证明你的定理还需要完成什么任务。
+你可以通过逐行逐步骤回顾证明，因为 Lean 将继续显示光标所在点的证明状态。
+本例中，证明的第一行引入了 <code class="docutils literal notranslate"><span class="pre">m</span></code> 和 <code class="docutils literal notranslate"><span class="pre">n</span></code> （此时可以重命名它们，如果我们想的话），并且将假设 <code class="docutils literal notranslate"><span class="pre">Even</span> <span class="pre">n</span></code> 分解为 <code class="docutils literal notranslate"><span class="pre">k</span></code> 和假设 <code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">=</span> <span class="pre">2</span> <span class="pre">*</span> <span class="pre">k</span></code>.
+第二行， <code class="docutils literal notranslate"><span class="pre">use</span> <span class="pre">m</span> <span class="pre">*</span> <span class="pre">k</span></code>, 声明我们将通过证明 <code class="docutils literal notranslate"><span class="pre">m</span> <span class="pre">*</span> <span class="pre">n</span> <span class="pre">=</span> <span class="pre">2</span> <span class="pre">*</span> <span class="pre">(m</span> <span class="pre">*</span> <span class="pre">k)</span></code> 来证明 <code class="docutils literal notranslate"><span class="pre">m</span> <span class="pre">*</span> <span class="pre">n</span></code> 是偶数。
+下一行使用了 <code class="docutils literal notranslate"><span class="pre">rw</span></code> 策略（rewrite的缩写）在目标中将 <code class="docutils literal notranslate"><span class="pre">n</span></code> 替换为 <code class="docutils literal notranslate"><span class="pre">2</span> <span class="pre">*</span> <span class="pre">k</span></code>，得到的新目标 <code class="docutils literal notranslate"><span class="pre">m</span> <span class="pre">*</span> <span class="pre">(2</span> <span class="pre">*</span> <span class="pre">k)</span> <span class="pre">=</span> <span class="pre">2</span> <span class="pre">*</span> <span class="pre">(m</span> <span class="pre">*</span> <span class="pre">k)</span></code> 最终被 <code class="docutils literal notranslate"><span class="pre">ring</span></code> 策略解决。</p>
+<p>逐步构建证明并获得增量反馈的能力非常强大。因此，策略证明通常比编写证明项更容易也更快。两者之间没有明显的区别：策略证明可以插入到证明项中，
+就像我们在上面的例子中使用短语 <code class="docutils literal notranslate"><span class="pre">by</span> <span class="pre">rw</span> <span class="pre">[hk,</span> <span class="pre">mul_left_comm]</span></code> 一样。我们还将看到，反之，将一个简短的证明项插入到策略证明中通常也很有用。
+虽然如此，但在这本书中，我们会把重点放在策略的使用上。</p>
+<p>在我们的例子中，策略证明也可以简化为一行：</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="bp">∀</span><span class="w"> </span><span class="n">m</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Nat</span><span class="o">,</span><span class="w"> </span><span class="n">Even</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="bp">→</span><span class="w"> </span><span class="n">Even</span><span class="w"> </span><span class="o">(</span><span class="n">m</span><span class="w"> </span><span class="bp">*</span><span class="w"> </span><span class="n">n</span><span class="o">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="kd">by</span>
+<span class="w">  </span><span class="n">rintro</span><span class="w"> </span><span class="n">m</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">⟨</span><span class="n">k</span><span class="o">,</span><span class="w"> </span><span class="n">hk</span><span class="o">⟩</span><span class="bp">;</span><span class="w"> </span><span class="n">use</span><span class="w"> </span><span class="n">m</span><span class="w"> </span><span class="bp">*</span><span class="w"> </span><span class="n">k</span><span class="bp">;</span><span class="w"> </span><span class="n">rw</span><span class="w"> </span><span class="o">[</span><span class="n">hk</span><span class="o">]</span><span class="bp">;</span><span class="w"> </span><span class="n">ring</span>
 </pre></div>
 </div>
-<p>Here we have used tactics to carry out small proof steps.
-But they can also provide substantial automation,
-and justify longer calculations and bigger inferential steps.
-For example, we can invoke Lean&#8217;s simplifier with
-specific rules for simplifying statements about parity to
-prove our theorem automatically.</p>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="bp">&#8704;</span><span class="w"> </span><span class="n">m</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Nat</span><span class="o">,</span><span class="w"> </span><span class="n">Even</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="bp">&#8594;</span><span class="w"> </span><span class="n">Even</span><span class="w"> </span><span class="o">(</span><span class="n">m</span><span class="w"> </span><span class="bp">*</span><span class="w"> </span><span class="n">n</span><span class="o">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="kd">by</span>
+<p>在这里，我们使用策略来执行每个细节证明步骤。但是 Lean 提供实质性的自动化，并且可以证明更长的计算和更大的推理步骤。
+例如，我们可以使用特定的规则调用 Lean 的化简器，用于化简关于奇偶性的语句，以自动证明我们的定理。</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="bp">∀</span><span class="w"> </span><span class="n">m</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Nat</span><span class="o">,</span><span class="w"> </span><span class="n">Even</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="bp">→</span><span class="w"> </span><span class="n">Even</span><span class="w"> </span><span class="o">(</span><span class="n">m</span><span class="w"> </span><span class="bp">*</span><span class="w"> </span><span class="n">n</span><span class="o">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="kd">by</span>
 <span class="w">  </span><span class="n">intros</span><span class="bp">;</span><span class="w"> </span><span class="n">simp</span><span class="w"> </span><span class="o">[</span><span class="bp">*</span><span class="o">,</span><span class="w"> </span><span class="n">parity_simps</span><span class="o">]</span>
 </pre></div>
 </div>
-<p>Another big difference between the two introductions is that
-<em>Theorem Proving in Lean</em> depends only on core Lean and its built-in
-tactics, whereas <em>Mathematics in Lean</em> is built on top of Lean&#8217;s
-powerful and ever-growing library, <em>Mathlib</em>.
-As a result, we can show you how to use some of the mathematical
-objects and theorems in the library,
-and some of the very useful tactics.
-This book is not meant to be used as an complete overview of the library;
-the <a class="reference external" href="https://leanprover-community.github.io/">community</a>
-web pages contain extensive documentation.
-Rather, our goal is to introduce you to the style of thinking that
-underlies that formalization, and point out basic entry points
-so that you are comfortable browsing the library and
-finding things on your own.</p>
-<p>Interactive theorem proving can be frustrating,
-and the learning curve is steep.
-But the Lean community is very welcoming to newcomers,
-and people are available on the
-<a class="reference external" href="https://leanprover.zulipchat.com/">Lean Zulip chat group</a> round the clock
-to answer questions.
-We hope to see you there, and have no doubt that
-soon enough you, too, will be able to answer such questions
-and contribute to the development of <em>Mathlib</em>.</p>
-<p>So here is your mission, should you choose to accept it:
-dive in, try the exercises, come to Zulip with questions, and have fun.
-But be forewarned:
-interactive theorem proving will challenge you to think about
-mathematics and mathematical reasoning in fundamentally new ways.
-Your life may never be the same.</p>
-<p><em>Acknowledgments.</em> We are grateful to Gabriel Ebner for setting up the
+<p>两本入门教程之间的另一个重大区别是，Lean 中的定理证明仅依赖于 Lean 内核以及其内置的策略，而 Lean 形式化数学建立在 Lean 强大且不断增长的库 <em>Mathlib</em> 的基础上。
+因此，我们会向您展示如何使用库中的一些数学对象和定理，以及一些非常有用的策略。
+这本书无意用于对库进行完整描述； <a class="reference external" href="https://leanprover-community.github.io/">社区</a> 网页包含了详尽的文档。
+不如说，本入门教程是向您介绍形式化背后的思维风格，让您可以轻松浏览库并自行查找内容。</p>
+<p>交互式定理证明可能会令人沮丧，学习曲线很陡峭。但是 Lean 社区非常欢迎新人，而且任何时间都有人在 <a class="reference external" href="https://leanprover.zulipchat.com/">Lean Zulip 聊天群</a> 上在线回答问题。
+我们希望能在那里见到你，并且毫无疑问，很快你也将能够回答这类问题并为 <em>Mathlib</em> 的发展做出贡献。</p>
+<p>因此，如果你选择接受这个任务，你的使命如下：投入其中，尝试练习，有问题就来 Zulip 提问，并享受乐趣。
+但要注意：交互式定理证明将挑战你以全新的方式思考数学和进行数学推理。这可能改变你的生活。</p>
+<p><em>致谢.</em> Acknowledgments. We are grateful to Gabriel Ebner for setting up the
 infrastructure for running this tutorial in VS Code,
 and to Kim Morrison and Mario Carneiro for help porting it from Lean 4.
 We are also grateful for help and corrections from
 Takeshi Abe,
-Julian Berman, Alex Best, Axel Boldt, Thomas Browning,
+Julian Berman, Alex Best, Thomas Browning,
 Bulwi Cha, Hanson Char, Bryan Gin-ge Chen, Steven Clontz, Mauricio Collaris, Johan Commelin,
 Mark Czubin,
 Alexandru Duca,
 Pierpaolo Frasa,
-Denis Gorbachev, Winston de Greef, Darij Grinberg, Mathieu Guay-Paquet,
-Rik Heurter, Marc Huisinga,
+Denis Gorbachev, Winston de Greef, Mathieu Guay-Paquet,
+Marc Huisinga,
 Benjamin Jones,
-Julian K&#252;lshammer,
+Julian Külshammer,
 Victor Liu, Jimmy Lu,
-Martin C. Martin, Giovanni Mascellani, John McDowell, Joseph McKinsey, Bhavik Mehta, Sebastian Miele, Isaiah Mindich,
-Kabelo Moiloa, Hunter Monroe, Pietro Monticone,
-Oliver Nash, Emanuelle Natale, Filippo A. E. Nuccio,
+Martin C. Martin, Giovanni Mascellani, John McDowell, Isaiah Mindich, Hunter Monroe,
+Pietro Monticone,
+Oliver Nash, Emanuelle Natale,
 Pim Otte,
+Bartosz Piotrowski,
 Nicolas Rolland, Keith Rush,
-Yannick Seurin, Guilherme Silva, Bernardo Subercaseaux,
-Pedro S&#225;nchez Terraf, Matthew Toohey, Alistair Tucker,
-Floris van Doorn, Veniamin Viflyantsev,
+Yannick Seurin, Guilherme Silva,
+Pedro Sánchez Terraf, Matthew Toohey, Alistair Tucker,
+Floris van Doorn,
 Eric Wieser,
 and others.
 Our work has been partially supported by the Hoskinson Center for
 Formal Mathematics.</p>
+<p>感谢 <a href="#id13"><span class="problematic" id="id14">`Lean-zh 中文社区&lt;https://www.leanprover.cn/&gt;`_</span></a> 的伙伴们参与译本的创作和校对。</p>
 </section>
 </section>
-
-
-           </div>
-          </div>
-          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="index.html" class="btn btn-neutral float-left" title="Mathematics in Lean" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="C02_Basics.html" class="btn btn-neutral float-right" title="2. Basics" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-    </div>
-
-  <hr/>
-
-  <div role="contentinfo">
-    <p>&#169; Copyright 2020-2025, Jeremy Avigad, Patrick Massot. Text licensed under CC BY 4.0.</p>
-  </div>
+</div>
+</div>
+<footer><div aria-label="Footer" class="rst-footer-buttons" role="navigation">
+<a accesskey="p" class="btn btn-neutral float-left" href="index.html" rel="prev" title="Lean 形式化数学"><span aria-hidden="true" class="fa fa-arrow-circle-left"></span> 上一页</a>
+<a accesskey="n" class="btn btn-neutral float-right" href="C02_Basics.html" rel="next" title="2. 基础">下一页 <span aria-hidden="true" class="fa fa-arrow-circle-right"></span></a>
+</div>
+<hr/>
+<div role="contentinfo">
+<p>© Copyright 2020, Jeremy Avigad, Patrick Massot.</p>
+</div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
@@ -389,15 +266,14 @@ Formal Mathematics.</p>
    
 
 </footer>
-        </div>
-      </div>
-    </section>
-  </div>
-  <script>
+</div>
+</div>
+</section>
+</div>
+<script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
-
+  </script>
 </body>
 </html>

@@ -1,6 +1,6 @@
 .. _introduction:
 
-Introduction
+引言
 ============
 
 .. include:: C01_Introduction/S01_Getting_Started.inc

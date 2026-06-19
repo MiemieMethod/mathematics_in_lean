@@ -1,42 +1,15 @@
 .. _sets_and_functions:
 
-Sets and Functions
+集合和函数
 ==================
 
-The vocabulary of sets, relations, and functions provides a uniform
-language for carrying out constructions in all the branches of
-mathematics.
-Since functions and relations can be defined in terms of sets,
-axiomatic set theory can be used as a foundation for mathematics.
+集合、关系和函数为所有数学分支的构造提供了统一的语言。由于函数和关系可以用集合来定义，因此公理集合论可以作为数学的基础。
 
-Lean's foundation is based instead on the primitive notion of a *type*,
-and it includes ways of defining functions between types.
-Every expression in Lean has a type:
-there are natural numbers, real numbers, functions from reals to reals,
-groups, vector spaces, and so on.
-Some expressions *are* types,
-which is to say,
-their type is ``Type``.
-Lean and Mathlib provide ways of defining new types,
-and ways of defining objects of those types.
+作为 Lean 基础的原始概念则是 **类型**，包括在类型间定义函数的方法。Lean 中的每个表达式都有一个类型：自然数、实数、从实数到实数的函数、群、向量空间等等。也有的表达式是类型，也就是说，它们的类型是 ``Type`` 。Lean 和 Mathlib 提供定义新类型的方式，以及定义这些类型的对象的方式。
 
-Conceptually, you can think of a type as just a set of objects.
-Requiring every object to have a type has some advantages.
-For example, it makes it possible to overload notation like ``+``,
-and it sometimes makes input less verbose
-because Lean can infer a lot of information from
-an object's type.
-The type system also enables Lean to flag errors when you
-apply a function to the wrong number of arguments,
-or apply a function to arguments of the wrong type.
+从概念上讲，你可以把类型看作是一组对象的集合。要求每个对象都有一个类型有一些好处。例如，它使得重载像 ``+`` 这样的符号成为可能，有时它还能缩减冗长的输入，因为 Lean 可以从对象的类型中推断出大量信息。当你将函数应用于错误的参数个数，或将函数应用于错误类型的参数时，类型系统让 Lean 可以标记错误。
 
-Lean's library does define elementary set-theoretic notions.
-In contrast to set theory,
-in Lean a set is always a set of objects of some type,
-such as a set of natural numbers or a set of functions
-from real numbers to real numbers.
-The distinction between types and sets takes some getting used to,
-but this chapter will take you through the essentials.
+Lean 的库确实定义了初等集合论概念。与集合论不同的是，在 Lean 中，集合总是某种类型的对象和集合，例如自然数集合或从实数到实数的函数的集合。类型和集合之间的区别需要一些时间来适应，本章将带你了解其中的要点。
 
 .. include:: C04_Sets_and_Functions/S01_Sets.inc
 .. include:: C04_Sets_and_Functions/S02_Functions.inc
