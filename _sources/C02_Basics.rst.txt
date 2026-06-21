@@ -1,9 +1,9 @@
 .. _basics:
 
 基础
-======
+====
 
-介绍 Lean 中数学推理的基本要素：计算、应用引理和定理，以及对通用结构进行推理。
+本章旨在介绍在 Lean 中进行数学推理的基本环节：计算、应用引理和定理，以及对一般结构进行推理。
 
 .. include:: C02_Basics/S01_Calculating.inc
 .. include:: C02_Basics/S02_Proving_Identities_in_Algebraic_Structures.inc
