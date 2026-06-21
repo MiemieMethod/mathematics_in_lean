@@ -1,0 +1,1186 @@
+[
+  {
+    "id": "C03_Logic:0001",
+    "file": "C03_Logic.html",
+    "tag": "h1",
+    "text": "3. Logic",
+    "html": "<h1><span class=\"section-number\">3. </span>Logic</h1>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0002",
+    "file": "C03_Logic.html",
+    "tag": "h2",
+    "text": "3.1. Implication and the Universal Quantifier",
+    "html": "<h2><span class=\"section-number\">3.1. </span>Implication and the Universal Quantifier</h2>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0003",
+    "file": "C03_Logic.html",
+    "tag": "h2",
+    "text": "3.2. The Existential Quantifier",
+    "html": "<h2><span class=\"section-number\">3.2. </span>The Existential Quantifier</h2>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0004",
+    "file": "C03_Logic.html",
+    "tag": "h2",
+    "text": "3.3. Negation",
+    "html": "<h2><span class=\"section-number\">3.3. </span>Negation</h2>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0005",
+    "file": "C03_Logic.html",
+    "tag": "h2",
+    "text": "3.4. Conjunction and Iff",
+    "html": "<h2><span class=\"section-number\">3.4. </span>Conjunction and Iff</h2>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0006",
+    "file": "C03_Logic.html",
+    "tag": "h2",
+    "text": "3.5. Disjunction",
+    "html": "<h2><span class=\"section-number\">3.5. </span>Disjunction</h2>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0007",
+    "file": "C03_Logic.html",
+    "tag": "h2",
+    "text": "3.6. Sequences and Convergence",
+    "html": "<h2><span class=\"section-number\">3.6. </span>Sequences and Convergence</h2>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0008",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "In the last chapter, we dealt with equations, inequalities, and basic mathematical statements like “ \\(x\\) divides \\(y\\) .” Complex mathematical statements are built up from simple ones like these using logical terms like “and,” “or,” “not,” and “if … then,” “every,” and “some.” In this chapter, we show you how to work with statements that are built up in this way.",
+    "html": "<p>In the last chapter, we dealt with equations, inequalities,\nand basic mathematical statements like\n“<span class=\"math notranslate nohighlight\">\\(x\\)</span> divides <span class=\"math notranslate nohighlight\">\\(y\\)</span>.”\nComplex mathematical statements are built up from\nsimple ones like these\nusing logical terms like “and,” “or,” “not,” and\n“if … then,” “every,” and “some.”\nIn this chapter, we show you how to work with statements\nthat are built up in this way.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0009",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "Consider the statement after the #check :",
+    "html": "<p>Consider the statement after the <code class=\"docutils literal notranslate\"><span class=\"pre\">#check</span></code>:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0010",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "In words, we would say “for every real number x , if 0 ≤ x then the absolute value of x equals x ”. We can also have more complicated statements like:",
+    "html": "<p>In words, we would say “for every real number <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span></code>, if <code class=\"docutils literal notranslate\"><span class=\"pre\">0</span> <span class=\"pre\">≤</span> <span class=\"pre\">x</span></code> then\nthe absolute value of <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span></code> equals <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span></code>”.\nWe can also have more complicated statements like:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0011",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "In words, we would say “for every x , y , and ε , if 0 < ε ≤ 1 , the absolute value of x is less than ε , and the absolute value of y is less than ε , then the absolute value of x * y is less than ε .” In Lean, in a sequence of implications there are implicit parentheses grouped to the right. So the expression above means “if 0 < ε then if ε ≤ 1 then if |x| < ε …” As a result, the expression says that all the assumptions together imply the conclusion.",
+    "html": "<p>In words, we would say “for every <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span></code>, <code class=\"docutils literal notranslate\"><span class=\"pre\">y</span></code>, and <code class=\"docutils literal notranslate\"><span class=\"pre\">ε</span></code>,\nif <code class=\"docutils literal notranslate\"><span class=\"pre\">0</span> <span class=\"pre\">&lt;</span> <span class=\"pre\">ε</span> <span class=\"pre\">≤</span> <span class=\"pre\">1</span></code>, the absolute value of <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span></code> is less than <code class=\"docutils literal notranslate\"><span class=\"pre\">ε</span></code>,\nand the absolute value of <code class=\"docutils literal notranslate\"><span class=\"pre\">y</span></code> is less than <code class=\"docutils literal notranslate\"><span class=\"pre\">ε</span></code>,\nthen the absolute value of <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span> <span class=\"pre\">*</span> <span class=\"pre\">y</span></code> is less than <code class=\"docutils literal notranslate\"><span class=\"pre\">ε</span></code>.”\nIn Lean, in a sequence of implications there are\nimplicit parentheses grouped to the right.\nSo the expression above means\n“if <code class=\"docutils literal notranslate\"><span class=\"pre\">0</span> <span class=\"pre\">&lt;</span> <span class=\"pre\">ε</span></code> then if <code class=\"docutils literal notranslate\"><span class=\"pre\">ε</span> <span class=\"pre\">≤</span> <span class=\"pre\">1</span></code> then if <code class=\"docutils literal notranslate\"><span class=\"pre\">|x|</span> <span class=\"pre\">&lt;</span> <span class=\"pre\">ε</span></code> …”\nAs a result, the expression says that all the\nassumptions together imply the conclusion.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0012",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "You have already seen that even though the universal quantifier in this statement ranges over objects and the implication arrows introduce hypotheses, Lean treats the two in very similar ways. In particular, if you have proved a theorem of that form, you can apply it to objects and hypotheses in the same way. We will use as an example the following statement that we will help you to prove a bit later:",
+    "html": "<p>You have already seen that even though the universal quantifier\nin this statement\nranges over objects and the implication arrows introduce hypotheses,\nLean treats the two in very similar ways.\nIn particular, if you have proved a theorem of that form,\nyou can apply it to objects and hypotheses in the same way.\nWe will use as an example the following statement that we will help you to prove a\nbit later:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0013",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "You have also already seen that it is common in Lean to use curly brackets to make quantified variables implicit when they can be inferred from subsequent hypotheses. When we do that, we can just apply a lemma to the hypotheses without mentioning the objects.",
+    "html": "<p>You have also already seen that it is common in Lean\nto use curly brackets to make quantified variables implicit\nwhen they can be inferred from subsequent hypotheses.\nWhen we do that, we can just apply a lemma to the hypotheses without\nmentioning the objects.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0014",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "At this stage, you also know that if you use the apply tactic to apply my_lemma to a goal of the form |a * b| < δ , you are left with new goals that require you to prove each of the hypotheses.",
+    "html": "<p>At this stage, you also know that if you use\nthe <code class=\"docutils literal notranslate\"><span class=\"pre\">apply</span></code> tactic to apply <code class=\"docutils literal notranslate\"><span class=\"pre\">my_lemma</span></code>\nto a goal of the form <code class=\"docutils literal notranslate\"><span class=\"pre\">|a</span> <span class=\"pre\">*</span> <span class=\"pre\">b|</span> <span class=\"pre\">&lt;</span> <span class=\"pre\">δ</span></code>,\nyou are left with new goals that require you to prove\neach of the hypotheses.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0015",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "To prove a statement like this, use the intro tactic. Take a look at what it does in this example:",
+    "html": "<p id=\"index-0\">To prove a statement like this, use the <code class=\"docutils literal notranslate\"><span class=\"pre\">intro</span></code> tactic.\nTake a look at what it does in this example:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0016",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "We can use any names we want for the universally quantified variables; they do not have to be x , y , and ε . Notice that we have to introduce the variables even though they are marked implicit: making them implicit means that we leave them out when we write an expression using my_lemma , but they are still an essential part of the statement that we are proving. After the intro command, the goal is what it would have been at the start if we listed all the variables and hypotheses before the colon, as we did in the last section. In a moment, we will see why it is sometimes necessary to introduce variables and hypotheses after the proof begins.",
+    "html": "<p>We can use any names we want for the universally quantified variables;\nthey do not have to be <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span></code>, <code class=\"docutils literal notranslate\"><span class=\"pre\">y</span></code>, and <code class=\"docutils literal notranslate\"><span class=\"pre\">ε</span></code>.\nNotice that we have to introduce the variables\neven though they are marked implicit:\nmaking them implicit means that we leave them out when\nwe write an expression <em>using</em> <code class=\"docutils literal notranslate\"><span class=\"pre\">my_lemma</span></code>,\nbut they are still an essential part of the statement\nthat we are proving.\nAfter the <code class=\"docutils literal notranslate\"><span class=\"pre\">intro</span></code> command,\nthe goal is what it would have been at the start if we\nlisted all the variables and hypotheses <em>before</em> the colon,\nas we did in the last section.\nIn a moment, we will see why it is sometimes necessary to\nintroduce variables and hypotheses after the proof begins.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0017",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "To help you prove the lemma, we will start you off:",
+    "html": "<p>To help you prove the lemma, we will start you off:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0018",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "Finish the proof using the theorems abs_mul , mul_le_mul , abs_nonneg , mul_lt_mul_of_pos_right ``, and ``one_mul . Remember that you can find theorems like these using Ctrl-space completion (or Cmd-space completion on a Mac). Remember also that you can use .mp and .mpr or .1 and .2 to extract the two directions of an if-and-only-if statement.",
+    "html": "<p>Finish the proof using the theorems\n<code class=\"docutils literal notranslate\"><span class=\"pre\">abs_mul</span></code>, <code class=\"docutils literal notranslate\"><span class=\"pre\">mul_le_mul</span></code>, <code class=\"docutils literal notranslate\"><span class=\"pre\">abs_nonneg</span></code>,\n<code class=\"docutils literal notranslate\"><span class=\"pre\">mul_lt_mul_of_pos_right</span> <span class=\"pre\">``,</span> <span class=\"pre\">and</span> <span class=\"pre\">``one_mul</span></code>.\nRemember that you can find theorems like these using\nCtrl-space completion (or Cmd-space completion on a Mac).\nRemember also that you can use <code class=\"docutils literal notranslate\"><span class=\"pre\">.mp</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">.mpr</span></code>\nor <code class=\"docutils literal notranslate\"><span class=\"pre\">.1</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">.2</span></code> to extract the two directions\nof an if-and-only-if statement.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0019",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "Universal quantifiers are often hidden in definitions, and Lean will unfold definitions to expose them when necessary. For example, let’s define two predicates, FnUb f a and FnLb f a , where f is a function from the real numbers to the real numbers and a is a real number. The first says that a is an upper bound on the values of f , and the second says that a is a lower bound on the values of f .",
+    "html": "<p>Universal quantifiers are often hidden in definitions,\nand Lean will unfold definitions to expose them when necessary.\nFor example, let’s define two predicates,\n<code class=\"docutils literal notranslate\"><span class=\"pre\">FnUb</span> <span class=\"pre\">f</span> <span class=\"pre\">a</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">FnLb</span> <span class=\"pre\">f</span> <span class=\"pre\">a</span></code>,\nwhere <code class=\"docutils literal notranslate\"><span class=\"pre\">f</span></code> is a function from the real numbers to the real\nnumbers and <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span></code> is a real number.\nThe first says that <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span></code> is an upper bound on the\nvalues of <code class=\"docutils literal notranslate\"><span class=\"pre\">f</span></code>,\nand the second says that <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span></code> is a lower bound\non the values of <code class=\"docutils literal notranslate\"><span class=\"pre\">f</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0020",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "In the next example, fun x ↦ f x + g x is the function that maps x to f x + g x . Going from the expression f x + g x to this function is called a lambda abstraction in type theory.",
+    "html": "<p id=\"index-1\">In the next example, <code class=\"docutils literal notranslate\"><span class=\"pre\">fun</span> <span class=\"pre\">x</span> <span class=\"pre\">↦</span> <span class=\"pre\">f</span> <span class=\"pre\">x</span> <span class=\"pre\">+</span> <span class=\"pre\">g</span> <span class=\"pre\">x</span></code> is the\nfunction that maps <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span></code> to <code class=\"docutils literal notranslate\"><span class=\"pre\">f</span> <span class=\"pre\">x</span> <span class=\"pre\">+</span> <span class=\"pre\">g</span> <span class=\"pre\">x</span></code>. Going from the expression <code class=\"docutils literal notranslate\"><span class=\"pre\">f</span> <span class=\"pre\">x</span> <span class=\"pre\">+</span> <span class=\"pre\">g</span> <span class=\"pre\">x</span></code>\nto this function is called a lambda abstraction in type theory.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0021",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "Applying intro to the goal FnUb (fun x ↦ f x + g x) (a + b) forces Lean to unfold the definition of FnUb and introduce x for the universal quantifier. The goal is then (fun (x : ℝ) ↦ f x + g x) x ≤ a + b . But applying (fun x ↦ f x + g x) to x should result in f x + g x , and the dsimp command performs that simplification. (The “d” stands for “definitional.”) You can delete that command and the proof still works; Lean would have to perform that contraction anyhow to make sense of the next apply . The dsimp command simply makes the goal more readable and helps us figure out what to do next. Another option is to use the change tactic by writing change f x + g x ≤ a + b . This helps make the proof more readable, and gives you more control over how the goal is transformed.",
+    "html": "<p id=\"index-2\">Applying <code class=\"docutils literal notranslate\"><span class=\"pre\">intro</span></code> to the goal <code class=\"docutils literal notranslate\"><span class=\"pre\">FnUb</span> <span class=\"pre\">(fun</span> <span class=\"pre\">x</span> <span class=\"pre\">↦</span> <span class=\"pre\">f</span> <span class=\"pre\">x</span> <span class=\"pre\">+</span> <span class=\"pre\">g</span> <span class=\"pre\">x)</span> <span class=\"pre\">(a</span> <span class=\"pre\">+</span> <span class=\"pre\">b)</span></code>\nforces Lean to unfold the definition of <code class=\"docutils literal notranslate\"><span class=\"pre\">FnUb</span></code>\nand introduce <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span></code> for the universal quantifier.\nThe goal is then <code class=\"docutils literal notranslate\"><span class=\"pre\">(fun</span> <span class=\"pre\">(x</span> <span class=\"pre\">:</span> <span class=\"pre\">ℝ)</span> <span class=\"pre\">↦</span> <span class=\"pre\">f</span> <span class=\"pre\">x</span> <span class=\"pre\">+</span> <span class=\"pre\">g</span> <span class=\"pre\">x)</span> <span class=\"pre\">x</span> <span class=\"pre\">≤</span> <span class=\"pre\">a</span> <span class=\"pre\">+</span> <span class=\"pre\">b</span></code>.\nBut applying <code class=\"docutils literal notranslate\"><span class=\"pre\">(fun</span> <span class=\"pre\">x</span> <span class=\"pre\">↦</span> <span class=\"pre\">f</span> <span class=\"pre\">x</span> <span class=\"pre\">+</span> <span class=\"pre\">g</span> <span class=\"pre\">x)</span></code> to <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span></code> should result in <code class=\"docutils literal notranslate\"><span class=\"pre\">f</span> <span class=\"pre\">x</span> <span class=\"pre\">+</span> <span class=\"pre\">g</span> <span class=\"pre\">x</span></code>,\nand the <code class=\"docutils literal notranslate\"><span class=\"pre\">dsimp</span></code> command performs that simplification.\n(The “d” stands for “definitional.”)\nYou can delete that command and the proof still works;\nLean would have to perform that contraction anyhow to make\nsense of the next <code class=\"docutils literal notranslate\"><span class=\"pre\">apply</span></code>.\nThe <code class=\"docutils literal notranslate\"><span class=\"pre\">dsimp</span></code> command simply makes the goal more readable\nand helps us figure out what to do next.\nAnother option is to use the <code class=\"docutils literal notranslate\"><span class=\"pre\">change</span></code> tactic\nby writing <code class=\"docutils literal notranslate\"><span class=\"pre\">change</span> <span class=\"pre\">f</span> <span class=\"pre\">x</span> <span class=\"pre\">+</span> <span class=\"pre\">g</span> <span class=\"pre\">x</span> <span class=\"pre\">≤</span> <span class=\"pre\">a</span> <span class=\"pre\">+</span> <span class=\"pre\">b</span></code>.\nThis helps make the proof more readable,\nand gives you more control over how the goal is transformed.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0022",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "The rest of the proof is routine. The last two apply commands force Lean to unfold the definitions of FnUb in the hypotheses. Try carrying out similar proofs of these:",
+    "html": "<p>The rest of the proof is routine.\nThe last two <code class=\"docutils literal notranslate\"><span class=\"pre\">apply</span></code> commands force Lean to unfold the definitions\nof <code class=\"docutils literal notranslate\"><span class=\"pre\">FnUb</span></code> in the hypotheses.\nTry carrying out similar proofs of these:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0023",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "Even though we have defined FnUb and FnLb for functions from the reals to the reals, you should recognize that the definitions and proofs are much more general. The definitions make sense for functions between any two types for which there is a notion of order on the codomain. Checking the type of the theorem add_le_add shows that it holds of any monoid structure that respects the relevant order; the details of what that means don’t matter now, but it is worth knowing that the natural numbers, integers, rationals, and real numbers are all instances. So if we prove the theorem fnUb_add at that level of generality, it will apply in all these instances.",
+    "html": "<p>Even though we have defined <code class=\"docutils literal notranslate\"><span class=\"pre\">FnUb</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">FnLb</span></code> for functions\nfrom the reals to the reals,\nyou should recognize that the definitions and proofs are much\nmore general.\nThe definitions make sense for functions between any two types\nfor which there is a notion of order on the codomain.\nChecking the type of the theorem <code class=\"docutils literal notranslate\"><span class=\"pre\">add_le_add</span></code> shows that it holds\nof any monoid structure that respects the relevant order;\nthe details of what that means don’t matter now,\nbut it is worth knowing that the natural numbers, integers, rationals,\nand real numbers are all instances.\nSo if we prove the theorem <code class=\"docutils literal notranslate\"><span class=\"pre\">fnUb_add</span></code> at that level of generality,\nit will apply in all these instances.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0024",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "You have already seen square brackets like these in Section Section 2.2 , though we still haven’t explained what they mean. For concreteness, we will stick to the real numbers for most of our examples, but it is worth knowing that Mathlib contains definitions and theorems that work at a high level of generality.",
+    "html": "<p>You have already seen square brackets like these in\nSection <a class=\"reference internal\" href=\"C02_Basics.html#proving-identities-in-algebraic-structures\"><span class=\"std std-numref\">Section 2.2</span></a>,\nthough we still haven’t explained what they mean.\nFor concreteness, we will stick to the real numbers\nfor most of our examples,\nbut it is worth knowing that Mathlib contains definitions and theorems\nthat work at a high level of generality.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0025",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "For another example of a hidden universal quantifier, Mathlib defines a predicate Monotone , which says that a function is nondecreasing in its arguments:",
+    "html": "<p id=\"index-3\">For another example of a hidden universal quantifier,\nMathlib defines a predicate <code class=\"docutils literal notranslate\"><span class=\"pre\">Monotone</span></code>,\nwhich says that a function is nondecreasing in its arguments:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0026",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "The property Monotone f is defined to be exactly the expression after the colon. We need to put the @ symbol before h because if we don’t, Lean expands the implicit arguments to h and inserts placeholders.",
+    "html": "<p>The property <code class=\"docutils literal notranslate\"><span class=\"pre\">Monotone</span> <span class=\"pre\">f</span></code> is defined to be exactly the expression\nafter the colon. We need to put the <code class=\"docutils literal notranslate\"><span class=\"pre\">@</span></code> symbol before <code class=\"docutils literal notranslate\"><span class=\"pre\">h</span></code> because\nif we don’t,\nLean expands the implicit arguments to <code class=\"docutils literal notranslate\"><span class=\"pre\">h</span></code> and inserts placeholders.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0027",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "Proving statements about monotonicity involves using intro to introduce two variables, say, a and b , and the hypothesis a ≤ b . To use a monotonicity hypothesis, you can apply it to suitable arguments and hypotheses, and then apply the resulting expression to the goal. Or you can apply it to the goal and let Lean help you work backwards by displaying the remaining hypotheses as new subgoals.",
+    "html": "<p>Proving statements about monotonicity\ninvolves using <code class=\"docutils literal notranslate\"><span class=\"pre\">intro</span></code> to introduce two variables,\nsay, <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">b</span></code>, and the hypothesis <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span> <span class=\"pre\">≤</span> <span class=\"pre\">b</span></code>.\nTo <em>use</em> a monotonicity hypothesis,\nyou can apply it to suitable arguments and hypotheses,\nand then apply the resulting expression to the goal.\nOr you can apply it to the goal and let Lean help you\nwork backwards by displaying the remaining hypotheses\nas new subgoals.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0028",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "When a proof is this short, it is often convenient to give a proof term instead. To describe a proof that temporarily introduces objects a and b and a hypothesis aleb , Lean uses the notation fun a b aleb ↦ ... . This is analogous to the way that an expression like fun x ↦ x^2 describes a function by temporarily naming an object, x , and then using it to describe a value. So the intro command in the previous proof corresponds to the lambda abstraction in the next proof term. The apply commands then correspond to building the application of the theorem to its arguments.",
+    "html": "<p>When a proof is this short, it is often convenient\nto give a proof term instead.\nTo describe a proof that temporarily introduces objects\n<code class=\"docutils literal notranslate\"><span class=\"pre\">a</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">b</span></code> and a hypothesis <code class=\"docutils literal notranslate\"><span class=\"pre\">aleb</span></code>,\nLean uses the notation <code class=\"docutils literal notranslate\"><span class=\"pre\">fun</span> <span class=\"pre\">a</span> <span class=\"pre\">b</span> <span class=\"pre\">aleb</span> <span class=\"pre\">↦</span> <span class=\"pre\">...</span></code>.\nThis is analogous to the way that an expression\nlike <code class=\"docutils literal notranslate\"><span class=\"pre\">fun</span> <span class=\"pre\">x</span> <span class=\"pre\">↦</span> <span class=\"pre\">x^2</span></code> describes a function\nby temporarily naming an object, <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span></code>,\nand then using it to describe a value.\nSo the <code class=\"docutils literal notranslate\"><span class=\"pre\">intro</span></code> command in the previous proof\ncorresponds to the lambda abstraction in the next proof term.\nThe <code class=\"docutils literal notranslate\"><span class=\"pre\">apply</span></code> commands then correspond to building\nthe application of the theorem to its arguments.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0029",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "Here is a useful trick: if you start writing the proof term fun a b aleb ↦ _ using an underscore where the rest of the expression should go, Lean will flag an error, indicating that it can’t guess the value of that expression. If you check the Lean InfoView window in VS Code or hover over the squiggly error marker, Lean will show you the goal that the remaining expression has to solve.",
+    "html": "<p>Here is a useful trick: if you start writing\nthe proof term <code class=\"docutils literal notranslate\"><span class=\"pre\">fun</span> <span class=\"pre\">a</span> <span class=\"pre\">b</span> <span class=\"pre\">aleb</span> <span class=\"pre\">↦</span> <span class=\"pre\">_</span></code> using\nan underscore where the rest of the\nexpression should go,\nLean will flag an error,\nindicating that it can’t guess the value of that expression.\nIf you check the Lean InfoView window in VS Code or\nhover over the squiggly error marker,\nLean will show you the goal that the remaining\nexpression has to solve.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0030",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "You’ll notice Lean prints warnings about the above proof, saying that a and b are not used in the body of the function. This is a general mechanism that is useful for instance to avoid having unnecessary assumptions in a theorem. Here it is not really telling us anything useful. We can either disable this warning until the end of the current section by writing set_option linter.unusedVariables false or only in the example by writing set_option linter.unusedVariables false in above the example.",
+    "html": "<p>You’ll notice Lean prints warnings about the above proof, saying\nthat <cite>a</cite> and <cite>b</cite> are not used in the body of the function.\nThis is a general mechanism that is useful for instance to avoid having\nunnecessary assumptions in a theorem. Here it is not really telling us\nanything useful. We can either disable this warning until the end of the\ncurrent section by writing\n<cite>set_option linter.unusedVariables false</cite>\nor only in the example by writing\n<cite>set_option linter.unusedVariables false in</cite>\nabove the example.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0031",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "We can also replace a and b by underscores to tell Lean we don’t want to name them. Lean will then use auto-generated inaccessible names such as x✝ . Alternatively we can prefix our names with underscores to tell Lean we do not intend to use them.",
+    "html": "<p>We can also replace <cite>a</cite> and <cite>b</cite> by underscores to tell Lean we don’t\nwant to name them. Lean will then use auto-generated inaccessible names\nsuch as <cite>x✝</cite>. Alternatively we can prefix our names with underscores to\ntell Lean we do not intend to use them.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0032",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "Try proving the following examples, with either tactics or proof terms:",
+    "html": "<p>Try proving the following examples, with either tactics or proof terms:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0033",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "Here are some more examples. A function \\(f\\) from \\(\\Bbb R\\) to \\(\\Bbb R\\) is said to be even if \\(f(-x) = f(x)\\) for every \\(x\\) , and odd if \\(f(-x) = -f(x)\\) for every \\(x\\) . The following example defines these two notions formally and establishes one fact about them. You can complete the proofs of the others.",
+    "html": "<p>Here are some more examples.\nA function <span class=\"math notranslate nohighlight\">\\(f\\)</span> from <span class=\"math notranslate nohighlight\">\\(\\Bbb R\\)</span> to\n<span class=\"math notranslate nohighlight\">\\(\\Bbb R\\)</span> is said to be <em>even</em> if\n<span class=\"math notranslate nohighlight\">\\(f(-x) = f(x)\\)</span> for every <span class=\"math notranslate nohighlight\">\\(x\\)</span>,\nand <em>odd</em> if <span class=\"math notranslate nohighlight\">\\(f(-x) = -f(x)\\)</span> for every <span class=\"math notranslate nohighlight\">\\(x\\)</span>.\nThe following example defines these two notions formally\nand establishes one fact about them.\nYou can complete the proofs of the others.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0034",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "The first proof can be shortened using dsimp or change to get rid of the lambda abstraction. But you can check that the subsequent rw won’t work unless we get rid of the lambda abstraction explicitly, because otherwise it cannot find the patterns f x and g x in the expression. Contrary to some other tactics, rw operates on the syntactic level, it won’t unfold definitions or apply reductions for you (it has a variant called erw that tries a little harder in this direction, but not much harder).",
+    "html": "<p id=\"index-4\">The first proof can be shortened using <code class=\"docutils literal notranslate\"><span class=\"pre\">dsimp</span></code> or <code class=\"docutils literal notranslate\"><span class=\"pre\">change</span></code>\nto get rid of the lambda abstraction.\nBut you can check that the subsequent <code class=\"docutils literal notranslate\"><span class=\"pre\">rw</span></code> won’t work\nunless we get rid of the lambda abstraction explicitly,\nbecause otherwise it cannot find the patterns <code class=\"docutils literal notranslate\"><span class=\"pre\">f</span> <span class=\"pre\">x</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">g</span> <span class=\"pre\">x</span></code>\nin the expression.\nContrary to some other tactics, <code class=\"docutils literal notranslate\"><span class=\"pre\">rw</span></code> operates on the syntactic level,\nit won’t unfold definitions or apply reductions for you\n(it has a variant called <code class=\"docutils literal notranslate\"><span class=\"pre\">erw</span></code> that tries a little harder in this\ndirection, but not much harder).</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0035",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "You can find implicit universal quantifiers all over the place, once you know how to spot them.",
+    "html": "<p>You can find implicit universal quantifiers all over the place,\nonce you know how to spot them.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0036",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "Mathlib includes a good library for manipulating sets. Recall that Lean does not use foundations based on set theory, so here the word set has its mundane meaning of a collection of mathematical objects of some given type α . If x has type α and s has type Set α , then x ∈ s is a proposition that asserts that x is an element of s . If y has some different type β then the expression y ∈ s makes no sense. Here “makes no sense” means “has no type hence Lean does not accept it as a well-formed statement”. This contrasts with Zermelo-Fraenkel set theory for instance where a ∈ b is a well-formed statement for both mathematical objects a and b . For instance sin ∈ cos is a well-formed statement in ZF. This defect of set theoretic foundations is an important motivation for not using it in a proof assistant which is meant to assist us by detecting meaningless expressions. In Lean sin has type ℝ → ℝ and cos has type ℝ → ℝ which is not equal to Set (ℝ → ℝ) , even after unfolding definitions, so the statement sin ∈ cos makes no sense. One can also use Lean to work on set theory itself. For instance the independence of the continuum hypothesis from the axioms of Zermelo-Fraenkel has been formalized in Lean. But such a meta-theory of set theory is completely beyond the scope of this book.",
+    "html": "<p>Mathlib includes a good library for manipulating sets. Recall that Lean does not\nuse foundations based on set theory, so here the word set has its mundane meaning\nof a collection of mathematical objects of some given type <code class=\"docutils literal notranslate\"><span class=\"pre\">α</span></code>.\nIf <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span></code> has type <code class=\"docutils literal notranslate\"><span class=\"pre\">α</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">s</span></code> has type <code class=\"docutils literal notranslate\"><span class=\"pre\">Set</span> <span class=\"pre\">α</span></code>, then <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span> <span class=\"pre\">∈</span> <span class=\"pre\">s</span></code> is a proposition\nthat asserts that <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span></code> is an element of <code class=\"docutils literal notranslate\"><span class=\"pre\">s</span></code>. If <code class=\"docutils literal notranslate\"><span class=\"pre\">y</span></code> has some different type <code class=\"docutils literal notranslate\"><span class=\"pre\">β</span></code> then the\nexpression <code class=\"docutils literal notranslate\"><span class=\"pre\">y</span> <span class=\"pre\">∈</span> <span class=\"pre\">s</span></code> makes no sense. Here “makes no sense” means “has no type hence Lean does not\naccept it as a well-formed statement”. This contrasts with Zermelo-Fraenkel set theory for instance\nwhere <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span> <span class=\"pre\">∈</span> <span class=\"pre\">b</span></code> is a well-formed statement for both mathematical objects <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">b</span></code>.\nFor instance <code class=\"docutils literal notranslate\"><span class=\"pre\">sin</span> <span class=\"pre\">∈</span> <span class=\"pre\">cos</span></code> is a well-formed statement in ZF. This defect of set theoretic\nfoundations is an important motivation for not using it in a proof assistant which is meant to assist\nus by detecting meaningless expressions. In Lean <code class=\"docutils literal notranslate\"><span class=\"pre\">sin</span></code> has type <code class=\"docutils literal notranslate\"><span class=\"pre\">ℝ</span> <span class=\"pre\">→</span> <span class=\"pre\">ℝ</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">cos</span></code> has type\n<code class=\"docutils literal notranslate\"><span class=\"pre\">ℝ</span> <span class=\"pre\">→</span> <span class=\"pre\">ℝ</span></code> which is not equal to <code class=\"docutils literal notranslate\"><span class=\"pre\">Set</span> <span class=\"pre\">(ℝ</span> <span class=\"pre\">→</span> <span class=\"pre\">ℝ)</span></code>, even after unfolding definitions, so the statement\n<code class=\"docutils literal notranslate\"><span class=\"pre\">sin</span> <span class=\"pre\">∈</span> <span class=\"pre\">cos</span></code> makes no sense.\nOne can also use Lean to work on set theory itself. For instance the independence of the continuum\nhypothesis from the axioms of Zermelo-Fraenkel has been formalized in Lean. But such a meta-theory\nof set theory is completely beyond the scope of this book.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0037",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "If s and t are of type Set α , then the subset relation s ⊆ t is defined to mean ∀ {x : α}, x ∈ s → x ∈ t . The variable in the quantifier is marked implicit so that given h : s ⊆ t and h' : x ∈ s , we can write h h' as justification for x ∈ t . The following example provides a tactic proof and a proof term justifying the reflexivity of the subset relation, and asks you to do the same for transitivity.",
+    "html": "<p>If <code class=\"docutils literal notranslate\"><span class=\"pre\">s</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">t</span></code> are of type <code class=\"docutils literal notranslate\"><span class=\"pre\">Set</span> <span class=\"pre\">α</span></code>,\nthen the subset relation <code class=\"docutils literal notranslate\"><span class=\"pre\">s</span> <span class=\"pre\">⊆</span> <span class=\"pre\">t</span></code> is defined to mean\n<code class=\"docutils literal notranslate\"><span class=\"pre\">∀</span> <span class=\"pre\">{x</span> <span class=\"pre\">:</span> <span class=\"pre\">α},</span> <span class=\"pre\">x</span> <span class=\"pre\">∈</span> <span class=\"pre\">s</span> <span class=\"pre\">→</span> <span class=\"pre\">x</span> <span class=\"pre\">∈</span> <span class=\"pre\">t</span></code>.\nThe variable in the quantifier is marked implicit so that\ngiven <code class=\"docutils literal notranslate\"><span class=\"pre\">h</span> <span class=\"pre\">:</span> <span class=\"pre\">s</span> <span class=\"pre\">⊆</span> <span class=\"pre\">t</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">h'</span> <span class=\"pre\">:</span> <span class=\"pre\">x</span> <span class=\"pre\">∈</span> <span class=\"pre\">s</span></code>,\nwe can write <code class=\"docutils literal notranslate\"><span class=\"pre\">h</span> <span class=\"pre\">h'</span></code> as justification for <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span> <span class=\"pre\">∈</span> <span class=\"pre\">t</span></code>.\nThe following example provides a tactic proof and a proof term\njustifying the reflexivity of the subset relation,\nand asks you to do the same for transitivity.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0038",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "Just as we defined FnUb for functions, we can define SetUb s a to mean that a is an upper bound on the set s , assuming s is a set of elements of some type that has an order associated with it. In the next example, we ask you to prove that if a is a bound on s and a ≤ b , then b is a bound on s as well.",
+    "html": "<p>Just as we defined <code class=\"docutils literal notranslate\"><span class=\"pre\">FnUb</span></code> for functions,\nwe can define <code class=\"docutils literal notranslate\"><span class=\"pre\">SetUb</span> <span class=\"pre\">s</span> <span class=\"pre\">a</span></code> to mean that <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span></code>\nis an upper bound on the set <code class=\"docutils literal notranslate\"><span class=\"pre\">s</span></code>,\nassuming <code class=\"docutils literal notranslate\"><span class=\"pre\">s</span></code> is a set of elements of some type that\nhas an order associated with it.\nIn the next example, we ask you to prove that\nif <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span></code> is a bound on <code class=\"docutils literal notranslate\"><span class=\"pre\">s</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span> <span class=\"pre\">≤</span> <span class=\"pre\">b</span></code>,\nthen <code class=\"docutils literal notranslate\"><span class=\"pre\">b</span></code> is a bound on <code class=\"docutils literal notranslate\"><span class=\"pre\">s</span></code> as well.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0039",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "We close this section with one last important example. A function \\(f\\) is said to be injective if for every \\(x_1\\) and \\(x_2\\) , if \\(f(x_1) = f(x_2)\\) then \\(x_1 = x_2\\) . Mathlib defines Function.Injective f with x₁ and x₂ implicit. The next example shows that, on the real numbers, any function that adds a constant is injective. We then ask you to show that multiplication by a nonzero constant is also injective, using the lemma name in the example as a source of inspiration. Recall you should use Ctrl-space completion after guessing the beginning of a lemma name.",
+    "html": "<p id=\"index-5\">We close this section with one last important example.\nA function <span class=\"math notranslate nohighlight\">\\(f\\)</span> is said to be <em>injective</em> if for\nevery <span class=\"math notranslate nohighlight\">\\(x_1\\)</span> and <span class=\"math notranslate nohighlight\">\\(x_2\\)</span>,\nif <span class=\"math notranslate nohighlight\">\\(f(x_1) = f(x_2)\\)</span> then <span class=\"math notranslate nohighlight\">\\(x_1 = x_2\\)</span>.\nMathlib defines <code class=\"docutils literal notranslate\"><span class=\"pre\">Function.Injective</span> <span class=\"pre\">f</span></code> with\n<code class=\"docutils literal notranslate\"><span class=\"pre\">x₁</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">x₂</span></code> implicit.\nThe next example shows that, on the real numbers,\nany function that adds a constant is injective.\nWe then ask you to show that multiplication by a nonzero\nconstant is also injective, using the lemma name in the example as a source\nof inspiration. Recall you should use Ctrl-space completion after guessing the beginning of\na lemma name.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0040",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "Finally, show that the composition of two injective functions is injective:",
+    "html": "<p>Finally, show that the composition of two injective functions is injective:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0041",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "The existential quantifier, which can be entered as \\ex in VS Code, is used to represent the phrase “there exists.” The formal expression ∃ x : ℝ, 2 < x ∧ x < 3 in Lean says that there is a real number between 2 and 3. (We will discuss the conjunction symbol, ∧ , in Section 3.4 .) The canonical way to prove such a statement is to exhibit a real number and show that it has the stated property. The number 2.5, which we can enter as 5 / 2 or (5 : ℝ) / 2 when Lean cannot infer from context that we have the real numbers in mind, has the required property, and the norm_num tactic can prove that it meets the description.",
+    "html": "<p>The existential quantifier, which can be entered as <code class=\"docutils literal notranslate\"><span class=\"pre\">\\ex</span></code> in VS Code,\nis used to represent the phrase “there exists.”\nThe formal expression <code class=\"docutils literal notranslate\"><span class=\"pre\">∃</span> <span class=\"pre\">x</span> <span class=\"pre\">:</span> <span class=\"pre\">ℝ,</span> <span class=\"pre\">2</span> <span class=\"pre\">&lt;</span> <span class=\"pre\">x</span> <span class=\"pre\">∧</span> <span class=\"pre\">x</span> <span class=\"pre\">&lt;</span> <span class=\"pre\">3</span></code> in Lean says\nthat there is a real number between 2 and 3.\n(We will discuss the conjunction symbol, <code class=\"docutils literal notranslate\"><span class=\"pre\">∧</span></code>, in <a class=\"reference internal\" href=\"#conjunction-and-biimplication\"><span class=\"std std-numref\">Section 3.4</span></a>.)\nThe canonical way to prove such a statement is to exhibit a real number\nand show that it has the stated property.\nThe number 2.5, which we can enter as <code class=\"docutils literal notranslate\"><span class=\"pre\">5</span> <span class=\"pre\">/</span> <span class=\"pre\">2</span></code>\nor <code class=\"docutils literal notranslate\"><span class=\"pre\">(5</span> <span class=\"pre\">:</span> <span class=\"pre\">ℝ)</span> <span class=\"pre\">/</span> <span class=\"pre\">2</span></code> when Lean cannot infer from context that we have\nthe real numbers in mind, has the required property,\nand the <code class=\"docutils literal notranslate\"><span class=\"pre\">norm_num</span></code> tactic can prove that it meets the description.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0042",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "There are a few ways we can put the information together. Given a goal that begins with an existential quantifier, the use tactic is used to provide the object, leaving the goal of proving the property.",
+    "html": "<p id=\"index-6\">There are a few ways we can put the information together.\nGiven a goal that begins with an existential quantifier,\nthe <code class=\"docutils literal notranslate\"><span class=\"pre\">use</span></code> tactic is used to provide the object,\nleaving the goal of proving the property.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0043",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "You can give the use tactic proofs as well as data:",
+    "html": "<p>You can give the <code class=\"docutils literal notranslate\"><span class=\"pre\">use</span></code> tactic proofs as well as data:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0044",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "In fact, the use tactic automatically tries to use available assumptions as well.",
+    "html": "<p>In fact, the <code class=\"docutils literal notranslate\"><span class=\"pre\">use</span></code> tactic automatically tries to use available assumptions as well.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0045",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "Alternatively, we can use Lean’s anonymous constructor notation to construct a proof of an existential quantifier.",
+    "html": "<p id=\"index-7\">Alternatively, we can use Lean’s <em>anonymous constructor</em> notation\nto construct a proof of an existential quantifier.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0046",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "Notice that there is no by ; here we are giving an explicit proof term. The left and right angle brackets, which can be entered as \\< and \\> respectively, tell Lean to put together the given data using whatever construction is appropriate for the current goal. We can use the notation without going first into tactic mode:",
+    "html": "<p>Notice that there is no <code class=\"docutils literal notranslate\"><span class=\"pre\">by</span></code>; here we are giving an explicit proof term.\nThe left and right angle brackets,\nwhich can be entered as <code class=\"docutils literal notranslate\"><span class=\"pre\">\\&lt;</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">\\&gt;</span></code> respectively,\ntell Lean to put together the given data using\nwhatever construction is appropriate\nfor the current goal.\nWe can use the notation without going first into tactic mode:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0047",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "So now we know how to prove an exists statement. But how do we use one? If we know that there exists an object with a certain property, we should be able to give a name to an arbitrary one and reason about it. For example, remember the predicates FnUb f a and FnLb f a from the last section, which say that a is an upper bound or lower bound on f , respectively. We can use the existential quantifier to say that “ f is bounded” without specifying the bound:",
+    "html": "<p>So now we know how to <em>prove</em> an exists statement.\nBut how do we <em>use</em> one?\nIf we know that there exists an object with a certain property,\nwe should be able to give a name to an arbitrary one\nand reason about it.\nFor example, remember the predicates <code class=\"docutils literal notranslate\"><span class=\"pre\">FnUb</span> <span class=\"pre\">f</span> <span class=\"pre\">a</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">FnLb</span> <span class=\"pre\">f</span> <span class=\"pre\">a</span></code>\nfrom the last section,\nwhich say that <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span></code> is an upper bound or lower bound on <code class=\"docutils literal notranslate\"><span class=\"pre\">f</span></code>,\nrespectively.\nWe can use the existential quantifier to say that “<code class=\"docutils literal notranslate\"><span class=\"pre\">f</span></code> is bounded”\nwithout specifying the bound:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0048",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "We can use the theorem FnUb_add from the last section to prove that if f and g have upper bounds, then so does fun x ↦ f x + g x .",
+    "html": "<p>We can use the theorem <code class=\"docutils literal notranslate\"><span class=\"pre\">FnUb_add</span></code> from the last section\nto prove that if <code class=\"docutils literal notranslate\"><span class=\"pre\">f</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">g</span></code> have upper bounds,\nthen so does <code class=\"docutils literal notranslate\"><span class=\"pre\">fun</span> <span class=\"pre\">x</span> <span class=\"pre\">↦</span> <span class=\"pre\">f</span> <span class=\"pre\">x</span> <span class=\"pre\">+</span> <span class=\"pre\">g</span> <span class=\"pre\">x</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0049",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "The rcases tactic unpacks the information in the existential quantifier. The annotations like ⟨a, ubfa⟩ , written with the same angle brackets as the anonymous constructors, are known as patterns , and they describe the information that we expect to find when we unpack the main argument. Given the hypothesis ubf that there is an upper bound for f , rcases ubf with ⟨a, ubfa⟩ adds a new variable a for an upper bound to the context, together with the hypothesis ubfa that it has the given property. The goal is left unchanged; what has changed is that we can now use the new object and the new hypothesis to prove the goal. This is a common method of reasoning in mathematics: we unpack objects whose existence is asserted or implied by some hypothesis, and then use it to establish the existence of something else.",
+    "html": "<p id=\"index-8\">The <code class=\"docutils literal notranslate\"><span class=\"pre\">rcases</span></code> tactic unpacks the information\nin the existential quantifier.\nThe annotations like <code class=\"docutils literal notranslate\"><span class=\"pre\">⟨a,</span> <span class=\"pre\">ubfa⟩</span></code>, written with the\nsame angle brackets as the anonymous constructors,\nare known as <em>patterns</em>, and they describe the information\nthat we expect to find when we unpack the main argument.\nGiven the hypothesis <code class=\"docutils literal notranslate\"><span class=\"pre\">ubf</span></code> that there is an upper bound\nfor <code class=\"docutils literal notranslate\"><span class=\"pre\">f</span></code>,\n<code class=\"docutils literal notranslate\"><span class=\"pre\">rcases</span> <span class=\"pre\">ubf</span> <span class=\"pre\">with</span> <span class=\"pre\">⟨a,</span> <span class=\"pre\">ubfa⟩</span></code> adds a new variable <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span></code>\nfor an upper bound to the context,\ntogether with the hypothesis <code class=\"docutils literal notranslate\"><span class=\"pre\">ubfa</span></code> that it has the given property.\nThe goal is left unchanged;\nwhat <em>has</em> changed is that we can now use\nthe new object and the new hypothesis\nto prove the goal.\nThis is a common method of reasoning in mathematics:\nwe unpack objects whose existence is asserted or implied\nby some hypothesis, and then use it to establish the existence\nof something else.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0050",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "Try using this method to establish the following. You might find it useful to turn some of the examples from the last section into named theorems, as we did with fn_ub_add , or you can insert the arguments directly into the proofs.",
+    "html": "<p>Try using this method to establish the following.\nYou might find it useful to turn some of the examples\nfrom the last section into named theorems,\nas we did with <code class=\"docutils literal notranslate\"><span class=\"pre\">fn_ub_add</span></code>,\nor you can insert the arguments directly\ninto the proofs.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0051",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "The “r” in rcases stands for “recursive,” because it allows us to use arbitrarily complex patterns to unpack nested data. The rintro tactic is a combination of intro and rcases :",
+    "html": "<p id=\"index-9\">The “r” in <code class=\"docutils literal notranslate\"><span class=\"pre\">rcases</span></code> stands for “recursive,” because it allows\nus to use arbitrarily complex patterns to unpack nested data.\nThe <code class=\"docutils literal notranslate\"><span class=\"pre\">rintro</span></code> tactic\nis a combination of <code class=\"docutils literal notranslate\"><span class=\"pre\">intro</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">rcases</span></code>:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0052",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "In fact, Lean also supports a pattern-matching fun in expressions and proof terms:",
+    "html": "<p>In fact, Lean also supports a pattern-matching fun\nin expressions and proof terms:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0053",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "The task of unpacking information in a hypothesis is so important that Lean and Mathlib provide a number of ways to do it. For example, the obtain tactic provides suggestive syntax:",
+    "html": "<p>The task of unpacking information in a hypothesis is\nso important that Lean and Mathlib provide a number of\nways to do it. For example, the <code class=\"docutils literal notranslate\"><span class=\"pre\">obtain</span></code> tactic provides suggestive syntax:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0054",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "Think of the first obtain instruction as matching the “contents” of ubf with the given pattern and assigning the components to the named variables. rcases and obtain are said to destruct their arguments.",
+    "html": "<p>Think of the first <code class=\"docutils literal notranslate\"><span class=\"pre\">obtain</span></code> instruction as matching the “contents” of <code class=\"docutils literal notranslate\"><span class=\"pre\">ubf</span></code>\nwith the given pattern and assigning the components to the named variables.\n<code class=\"docutils literal notranslate\"><span class=\"pre\">rcases</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">obtain</span></code> are said to <code class=\"docutils literal notranslate\"><span class=\"pre\">destruct</span></code> their arguments.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0055",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "Lean also supports syntax that is similar to that used in other functional programming languages:",
+    "html": "<p>Lean also supports syntax that is similar to that used in other functional programming\nlanguages:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0056",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "In the first example, if you put your cursor after cases ubf , you will see that the tactic produces a single goal, which Lean has tagged intro . (The particular name chosen comes from the internal name for the axiomatic primitive that builds a proof of an existential statement.) The case tactic then names the components. The second example is similar, except using next instead of case means that you can avoid mentioning intro . The word match in the last two examples highlights that what we are doing here is what computer scientists call “pattern matching.” Notice that the third proof begins by by , after which the tactic version of match expects a tactic proof on the right side of the arrow. The last example is a proof term: there are no tactics in sight.",
+    "html": "<p>In the first example, if you put your cursor after <code class=\"docutils literal notranslate\"><span class=\"pre\">cases</span> <span class=\"pre\">ubf</span></code>,\nyou will see that the tactic produces a single goal, which Lean has tagged\n<code class=\"docutils literal notranslate\"><span class=\"pre\">intro</span></code>. (The particular name chosen comes from the internal name for\nthe axiomatic primitive that builds a proof of an existential statement.)\nThe <code class=\"docutils literal notranslate\"><span class=\"pre\">case</span></code> tactic then names the components. The second example is similar,\nexcept using <code class=\"docutils literal notranslate\"><span class=\"pre\">next</span></code> instead of <code class=\"docutils literal notranslate\"><span class=\"pre\">case</span></code> means that you can avoid mentioning\n<code class=\"docutils literal notranslate\"><span class=\"pre\">intro</span></code>. The word <code class=\"docutils literal notranslate\"><span class=\"pre\">match</span></code> in the last two examples highlights that\nwhat we are doing here is what computer scientists call “pattern matching.”\nNotice that the third proof begins by <code class=\"docutils literal notranslate\"><span class=\"pre\">by</span></code>, after which the tactic version\nof <code class=\"docutils literal notranslate\"><span class=\"pre\">match</span></code> expects a tactic proof on the right side of the arrow.\nThe last example is a proof term: there are no tactics in sight.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0057",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "For the rest of this book, we will stick to rcases , rintro , and obtain , as the preferred ways of using an existential quantifier. But it can’t hurt to see the alternative syntax, especially if there is a chance you will find yourself in the company of computer scientists.",
+    "html": "<p>For the rest of this book, we will stick to <code class=\"docutils literal notranslate\"><span class=\"pre\">rcases</span></code>, <code class=\"docutils literal notranslate\"><span class=\"pre\">rintro</span></code>, and <code class=\"docutils literal notranslate\"><span class=\"pre\">obtain</span></code>,\nas the preferred ways of using an existential quantifier.\nBut it can’t hurt to see the alternative syntax, especially if there is\na chance you will find yourself in the company of computer scientists.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0058",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "To illustrate one way that rcases can be used, we prove an old mathematical chestnut: if two integers x and y can each be written as a sum of two squares, then so can their product, x * y . In fact, the statement is true for any commutative ring, not just the integers. In the next example, rcases unpacks two existential quantifiers at once. We then provide the magic values needed to express x * y as a sum of squares as a list to the use statement, and we use ring to verify that they work.",
+    "html": "<p>To illustrate one way that <code class=\"docutils literal notranslate\"><span class=\"pre\">rcases</span></code> can be used,\nwe prove an old mathematical chestnut:\nif two integers <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">y</span></code> can each be written as\na sum of two squares,\nthen so can their product, <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span> <span class=\"pre\">*</span> <span class=\"pre\">y</span></code>.\nIn fact, the statement is true for any commutative\nring, not just the integers.\nIn the next example, <code class=\"docutils literal notranslate\"><span class=\"pre\">rcases</span></code> unpacks two existential\nquantifiers at once.\nWe then provide the magic values needed to express <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span> <span class=\"pre\">*</span> <span class=\"pre\">y</span></code>\nas a sum of squares as a list to the <code class=\"docutils literal notranslate\"><span class=\"pre\">use</span></code> statement,\nand we use <code class=\"docutils literal notranslate\"><span class=\"pre\">ring</span></code> to verify that they work.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0059",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "This proof doesn’t provide much insight, but here is one way to motivate it. A Gaussian integer is a number of the form \\(a + bi\\) where \\(a\\) and \\(b\\) are integers and \\(i = \\sqrt{-1}\\) . The norm of the Gaussian integer \\(a + bi\\) is, by definition, \\(a^2 + b^2\\) . So the norm of a Gaussian integer is a sum of squares, and any sum of squares can be expressed in this way. The theorem above reflects the fact that norm of a product of Gaussian integers is the product of their norms: if \\(x\\) is the norm of \\(a + bi\\) and \\(y\\) in the norm of \\(c + di\\) , then \\(xy\\) is the norm of \\((a + bi) (c + di)\\) . Our cryptic proof illustrates the fact that the proof that is easiest to formalize isn’t always the most perspicuous one. In Section 7.3 , we will provide you with the means to define the Gaussian integers and use them to provide an alternative proof.",
+    "html": "<p>This proof doesn’t provide much insight,\nbut here is one way to motivate it.\nA <em>Gaussian integer</em> is a number of the form <span class=\"math notranslate nohighlight\">\\(a + bi\\)</span>\nwhere <span class=\"math notranslate nohighlight\">\\(a\\)</span> and <span class=\"math notranslate nohighlight\">\\(b\\)</span> are integers and <span class=\"math notranslate nohighlight\">\\(i = \\sqrt{-1}\\)</span>.\nThe <em>norm</em> of the Gaussian integer <span class=\"math notranslate nohighlight\">\\(a + bi\\)</span> is, by definition,\n<span class=\"math notranslate nohighlight\">\\(a^2 + b^2\\)</span>.\nSo the norm of a Gaussian integer is a sum of squares,\nand any sum of squares can be expressed in this way.\nThe theorem above reflects the fact that norm of a product of\nGaussian integers is the product of their norms:\nif <span class=\"math notranslate nohighlight\">\\(x\\)</span> is the norm of <span class=\"math notranslate nohighlight\">\\(a + bi\\)</span> and\n<span class=\"math notranslate nohighlight\">\\(y\\)</span> in the norm of <span class=\"math notranslate nohighlight\">\\(c + di\\)</span>,\nthen <span class=\"math notranslate nohighlight\">\\(xy\\)</span> is the norm of <span class=\"math notranslate nohighlight\">\\((a + bi) (c + di)\\)</span>.\nOur cryptic proof illustrates the fact that\nthe proof that is easiest to formalize isn’t always\nthe most perspicuous one.\nIn <a class=\"reference internal\" href=\"C07_Structures.html#section-building-the-gaussian-integers\"><span class=\"std std-numref\">Section 7.3</span></a>,\nwe will provide you with the means to define the Gaussian\nintegers and use them to provide an alternative proof.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0060",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "The pattern of unpacking an equation inside an existential quantifier and then using it to rewrite an expression in the goal comes up often, so much so that the rcases tactic provides an abbreviation: if you use the keyword rfl in place of a new identifier, rcases does the rewriting automatically (this trick doesn’t work with pattern-matching lambdas).",
+    "html": "<p>The pattern of unpacking an equation inside an existential quantifier\nand then using it to rewrite an expression in the goal\ncomes up often,\nso much so that the <code class=\"docutils literal notranslate\"><span class=\"pre\">rcases</span></code> tactic provides\nan abbreviation:\nif you use the keyword <code class=\"docutils literal notranslate\"><span class=\"pre\">rfl</span></code> in place of a new identifier,\n<code class=\"docutils literal notranslate\"><span class=\"pre\">rcases</span></code> does the rewriting automatically (this trick doesn’t work\nwith pattern-matching lambdas).</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0061",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "As with the universal quantifier, you can find existential quantifiers hidden all over if you know how to spot them. For example, divisibility is implicitly an “exists” statement.",
+    "html": "<p>As with the universal quantifier,\nyou can find existential quantifiers hidden all over\nif you know how to spot them.\nFor example, divisibility is implicitly an “exists” statement.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0062",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "And once again, this provides a nice setting for using rcases with rfl . Try it out in the proof above. It feels pretty good!",
+    "html": "<p>And once again, this provides a nice setting for using\n<code class=\"docutils literal notranslate\"><span class=\"pre\">rcases</span></code> with <code class=\"docutils literal notranslate\"><span class=\"pre\">rfl</span></code>.\nTry it out in the proof above.\nIt feels pretty good!</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0063",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "Then try proving the following:",
+    "html": "<p>Then try proving the following:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0064",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "For another important example, a function \\(f : \\alpha \\to \\beta\\) is said to be surjective if for every \\(y\\) in the codomain, \\(\\beta\\) , there is an \\(x\\) in the domain, \\(\\alpha\\) , such that \\(f(x) = y\\) . Notice that this statement includes both a universal and an existential quantifier, which explains why the next example makes use of both intro and use .",
+    "html": "<p id=\"index-10\">For another important example, a function <span class=\"math notranslate nohighlight\">\\(f : \\alpha \\to \\beta\\)</span>\nis said to be <em>surjective</em> if for every <span class=\"math notranslate nohighlight\">\\(y\\)</span> in the\ncodomain, <span class=\"math notranslate nohighlight\">\\(\\beta\\)</span>,\nthere is an <span class=\"math notranslate nohighlight\">\\(x\\)</span> in the domain, <span class=\"math notranslate nohighlight\">\\(\\alpha\\)</span>,\nsuch that <span class=\"math notranslate nohighlight\">\\(f(x) = y\\)</span>.\nNotice that this statement includes both a universal\nand an existential quantifier, which explains\nwhy the next example makes use of both <code class=\"docutils literal notranslate\"><span class=\"pre\">intro</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">use</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0065",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "Try this example yourself using the theorem mul_div_cancel₀ .:",
+    "html": "<p>Try this example yourself using the theorem <code class=\"docutils literal notranslate\"><span class=\"pre\">mul_div_cancel₀</span></code>.:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0066",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "At this point, it is worth mentioning that there is a tactic, field_simp , that will often clear denominators in a useful way. It can be used in conjunction with the ring tactic.",
+    "html": "<p id=\"index-11\">At this point, it is worth mentioning that there is a tactic, <code class=\"docutils literal notranslate\"><span class=\"pre\">field_simp</span></code>,\nthat will often clear denominators in a useful way.\nIt can be used in conjunction with the <code class=\"docutils literal notranslate\"><span class=\"pre\">ring</span></code> tactic.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0067",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "The next example uses a surjectivity hypothesis by applying it to a suitable value. Note that you can use rcases with any expression, not just a hypothesis.",
+    "html": "<p>The next example uses a surjectivity hypothesis\nby applying it to a suitable value.\nNote that you can use <code class=\"docutils literal notranslate\"><span class=\"pre\">rcases</span></code> with any expression,\nnot just a hypothesis.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0068",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "See if you can use these methods to show that the composition of surjective functions is surjective.",
+    "html": "<p>See if you can use these methods to show that\nthe composition of surjective functions is surjective.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0069",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "The symbol ¬ is meant to express negation, so ¬ x < y says that x is not less than y , ¬ x = y (or, equivalently, x ≠ y ) says that x is not equal to y , and ¬ ∃ z, x < z ∧ z < y says that there does not exist a z strictly between x and y . In Lean, the notation ¬ A abbreviates A → False , which you can think of as saying that A implies a contradiction. Practically speaking, this means that you already know something about how to work with negations: you can prove ¬ A by introducing a hypothesis h : A and proving False , and if you have h : ¬ A and h' : A , then applying h to h' yields False .",
+    "html": "<p>The symbol <code class=\"docutils literal notranslate\"><span class=\"pre\">¬</span></code> is meant to express negation,\nso <code class=\"docutils literal notranslate\"><span class=\"pre\">¬</span> <span class=\"pre\">x</span> <span class=\"pre\">&lt;</span> <span class=\"pre\">y</span></code> says that <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span></code> is not less than <code class=\"docutils literal notranslate\"><span class=\"pre\">y</span></code>,\n<code class=\"docutils literal notranslate\"><span class=\"pre\">¬</span> <span class=\"pre\">x</span> <span class=\"pre\">=</span> <span class=\"pre\">y</span></code> (or, equivalently, <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span> <span class=\"pre\">≠</span> <span class=\"pre\">y</span></code>) says that\n<code class=\"docutils literal notranslate\"><span class=\"pre\">x</span></code> is not equal to <code class=\"docutils literal notranslate\"><span class=\"pre\">y</span></code>,\nand <code class=\"docutils literal notranslate\"><span class=\"pre\">¬</span> <span class=\"pre\">∃</span> <span class=\"pre\">z,</span> <span class=\"pre\">x</span> <span class=\"pre\">&lt;</span> <span class=\"pre\">z</span> <span class=\"pre\">∧</span> <span class=\"pre\">z</span> <span class=\"pre\">&lt;</span> <span class=\"pre\">y</span></code> says that there does not exist a <code class=\"docutils literal notranslate\"><span class=\"pre\">z</span></code>\nstrictly between <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">y</span></code>.\nIn Lean, the notation <code class=\"docutils literal notranslate\"><span class=\"pre\">¬</span> <span class=\"pre\">A</span></code> abbreviates <code class=\"docutils literal notranslate\"><span class=\"pre\">A</span> <span class=\"pre\">→</span> <span class=\"pre\">False</span></code>,\nwhich you can think of as saying that <code class=\"docutils literal notranslate\"><span class=\"pre\">A</span></code> implies a contradiction.\nPractically speaking, this means that you already know something\nabout how to work with negations:\nyou can prove <code class=\"docutils literal notranslate\"><span class=\"pre\">¬</span> <span class=\"pre\">A</span></code> by introducing a hypothesis <code class=\"docutils literal notranslate\"><span class=\"pre\">h</span> <span class=\"pre\">:</span> <span class=\"pre\">A</span></code>\nand proving <code class=\"docutils literal notranslate\"><span class=\"pre\">False</span></code>,\nand if you have <code class=\"docutils literal notranslate\"><span class=\"pre\">h</span> <span class=\"pre\">:</span> <span class=\"pre\">¬</span> <span class=\"pre\">A</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">h'</span> <span class=\"pre\">:</span> <span class=\"pre\">A</span></code>,\nthen applying <code class=\"docutils literal notranslate\"><span class=\"pre\">h</span></code> to <code class=\"docutils literal notranslate\"><span class=\"pre\">h'</span></code> yields <code class=\"docutils literal notranslate\"><span class=\"pre\">False</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0070",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "To illustrate, consider the irreflexivity principle lt_irrefl for a strict order, which says that we have ¬ a < a for every a . The asymmetry principle lt_asymm says that we have a < b → ¬ b < a . Let’s show that lt_asymm follows from lt_irrefl .",
+    "html": "<p>To illustrate, consider the irreflexivity principle <code class=\"docutils literal notranslate\"><span class=\"pre\">lt_irrefl</span></code>\nfor a strict order,\nwhich says that we have <code class=\"docutils literal notranslate\"><span class=\"pre\">¬</span> <span class=\"pre\">a</span> <span class=\"pre\">&lt;</span> <span class=\"pre\">a</span></code> for every <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span></code>.\nThe asymmetry principle <code class=\"docutils literal notranslate\"><span class=\"pre\">lt_asymm</span></code> says that we have\n<code class=\"docutils literal notranslate\"><span class=\"pre\">a</span> <span class=\"pre\">&lt;</span> <span class=\"pre\">b</span> <span class=\"pre\">→</span> <span class=\"pre\">¬</span> <span class=\"pre\">b</span> <span class=\"pre\">&lt;</span> <span class=\"pre\">a</span></code>. Let’s show that <code class=\"docutils literal notranslate\"><span class=\"pre\">lt_asymm</span></code> follows\nfrom <code class=\"docutils literal notranslate\"><span class=\"pre\">lt_irrefl</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0071",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "This example introduces a couple of new tricks. First, when you use have without providing a label, Lean uses the name this , providing a convenient way to refer back to it. Because the proof is so short, we provide an explicit proof term. But what you should really be paying attention to in this proof is the result of the intro tactic, which leaves a goal of False , and the fact that we eventually prove False by applying lt_irrefl to a proof of a < a .",
+    "html": "<p id=\"index-12\">This example introduces a couple of new tricks.\nFirst, when you use <code class=\"docutils literal notranslate\"><span class=\"pre\">have</span></code> without providing\na label,\nLean uses the name <code class=\"docutils literal notranslate\"><span class=\"pre\">this</span></code>,\nproviding a convenient way to refer back to it.\nBecause the proof is so short, we provide an explicit proof term.\nBut what you should really be paying attention to in this\nproof is the result of the <code class=\"docutils literal notranslate\"><span class=\"pre\">intro</span></code> tactic,\nwhich leaves a goal of <code class=\"docutils literal notranslate\"><span class=\"pre\">False</span></code>,\nand the fact that we eventually prove <code class=\"docutils literal notranslate\"><span class=\"pre\">False</span></code>\nby applying <code class=\"docutils literal notranslate\"><span class=\"pre\">lt_irrefl</span></code> to a proof of <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span> <span class=\"pre\">&lt;</span> <span class=\"pre\">a</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0072",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "Here is another example, which uses the predicate FnHasUb defined in the last section, which says that a function has an upper bound.",
+    "html": "<p>Here is another example, which uses the\npredicate <code class=\"docutils literal notranslate\"><span class=\"pre\">FnHasUb</span></code> defined in the last section,\nwhich says that a function has an upper bound.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0073",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "Remember that it is often convenient to use linarith when a goal follows from linear equations and inequalities that are in the context.",
+    "html": "<p>Remember that it is often convenient to use <code class=\"docutils literal notranslate\"><span class=\"pre\">linarith</span></code>\nwhen a goal follows from linear equations and\ninequalities that are in the context.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0074",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "See if you can prove these in a similar way:",
+    "html": "<p>See if you can prove these in a similar way:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0075",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "Mathlib offers a number of useful theorems for relating orders and negations:",
+    "html": "<p>Mathlib offers a number of useful theorems for relating orders\nand negations:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0076",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "Recall the predicate Monotone f , which says that f is nondecreasing. Use some of the theorems just enumerated to prove the following:",
+    "html": "<p>Recall the predicate <code class=\"docutils literal notranslate\"><span class=\"pre\">Monotone</span> <span class=\"pre\">f</span></code>,\nwhich says that <code class=\"docutils literal notranslate\"><span class=\"pre\">f</span></code> is nondecreasing.\nUse some of the theorems just enumerated to prove the following:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0077",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "We can show that the first example in the last snippet cannot be proved if we replace < by ≤ . Notice that we can prove the negation of a universally quantified statement by giving a counterexample. Complete the proof.",
+    "html": "<p>We can show that the first example in the last snippet\ncannot be proved if we replace <code class=\"docutils literal notranslate\"><span class=\"pre\">&lt;</span></code> by <code class=\"docutils literal notranslate\"><span class=\"pre\">≤</span></code>.\nNotice that we can prove the negation of a universally\nquantified statement by giving a counterexample.\nComplete the proof.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0078",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "This example introduces the let tactic, which adds a local definition to the context. If you put the cursor after the let command, in the goal window you will see that the definition f : ℝ → ℝ := fun x ↦ 0 has been added to the context. Lean will unfold the definition of f when it has to. In particular, when we prove f 1 ≤ f 0 with le_refl , Lean reduces f 1 and f 0 to 0 .",
+    "html": "<p id=\"index-13\">This example introduces the <code class=\"docutils literal notranslate\"><span class=\"pre\">let</span></code> tactic,\nwhich adds a <em>local definition</em> to the context.\nIf you put the cursor after the <code class=\"docutils literal notranslate\"><span class=\"pre\">let</span></code> command,\nin the goal window you will see that the definition\n<code class=\"docutils literal notranslate\"><span class=\"pre\">f</span> <span class=\"pre\">:</span> <span class=\"pre\">ℝ</span> <span class=\"pre\">→</span> <span class=\"pre\">ℝ</span> <span class=\"pre\">:=</span> <span class=\"pre\">fun</span> <span class=\"pre\">x</span> <span class=\"pre\">↦</span> <span class=\"pre\">0</span></code> has been added to the context.\nLean will unfold the definition of <code class=\"docutils literal notranslate\"><span class=\"pre\">f</span></code> when it has to.\nIn particular, when we prove <code class=\"docutils literal notranslate\"><span class=\"pre\">f</span> <span class=\"pre\">1</span> <span class=\"pre\">≤</span> <span class=\"pre\">f</span> <span class=\"pre\">0</span></code> with <code class=\"docutils literal notranslate\"><span class=\"pre\">le_refl</span></code>,\nLean reduces <code class=\"docutils literal notranslate\"><span class=\"pre\">f</span> <span class=\"pre\">1</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">f</span> <span class=\"pre\">0</span></code> to <code class=\"docutils literal notranslate\"><span class=\"pre\">0</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0079",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "Use le_of_not_gt to prove the following:",
+    "html": "<p>Use <code class=\"docutils literal notranslate\"><span class=\"pre\">le_of_not_gt</span></code> to prove the following:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0080",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "Implicit in many of the proofs we have just done is the fact that if P is any property, saying that there is nothing with property P is the same as saying that everything fails to have property P , and saying that not everything has property P is equivalent to saying that something fails to have property P . In other words, all four of the following implications are valid (but one of them cannot be proved with what we explained so far):",
+    "html": "<p>Implicit in many of the proofs we have just done\nis the fact that if <code class=\"docutils literal notranslate\"><span class=\"pre\">P</span></code> is any property,\nsaying that there is nothing with property <code class=\"docutils literal notranslate\"><span class=\"pre\">P</span></code>\nis the same as saying that everything fails to have\nproperty <code class=\"docutils literal notranslate\"><span class=\"pre\">P</span></code>,\nand saying that not everything has property <code class=\"docutils literal notranslate\"><span class=\"pre\">P</span></code>\nis equivalent to saying that something fails to have property <code class=\"docutils literal notranslate\"><span class=\"pre\">P</span></code>.\nIn other words, all four of the following implications\nare valid (but one of them cannot be proved with what we explained so\nfar):</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0081",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "The first, second, and fourth are straightforward to prove using the methods you have already seen. We encourage you to try it. The third is more difficult, however, because it concludes that an object exists from the fact that its nonexistence is contradictory. This is an instance of classical mathematical reasoning. We can use proof by contradiction to prove the third implication as follows.",
+    "html": "<p>The first, second, and fourth are straightforward to\nprove using the methods you have already seen.\nWe encourage you to try it.\nThe third is more difficult, however,\nbecause it concludes that an object exists\nfrom the fact that its nonexistence is contradictory.\nThis is an instance of <em>classical</em> mathematical reasoning.\nWe can use proof by contradiction\nto prove the third implication as follows.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0082",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "Make sure you understand how this works. The by_contra tactic allows us to prove a goal Q by assuming ¬ Q and deriving a contradiction. In fact, it is equivalent to using the equivalence not_not : ¬ ¬ Q ↔ Q . Confirm that you can prove the forward direction of this equivalence using by_contra , while the reverse direction follows from the ordinary rules for negation.",
+    "html": "<p id=\"index-14\">Make sure you understand how this works.\nThe <code class=\"docutils literal notranslate\"><span class=\"pre\">by_contra</span></code> tactic\nallows us to prove a goal <code class=\"docutils literal notranslate\"><span class=\"pre\">Q</span></code> by assuming <code class=\"docutils literal notranslate\"><span class=\"pre\">¬</span> <span class=\"pre\">Q</span></code>\nand deriving a contradiction.\nIn fact, it is equivalent to using the\nequivalence <code class=\"docutils literal notranslate\"><span class=\"pre\">not_not</span> <span class=\"pre\">:</span> <span class=\"pre\">¬</span> <span class=\"pre\">¬</span> <span class=\"pre\">Q</span> <span class=\"pre\">↔</span> <span class=\"pre\">Q</span></code>.\nConfirm that you can prove the forward direction\nof this equivalence using <code class=\"docutils literal notranslate\"><span class=\"pre\">by_contra</span></code>,\nwhile the reverse direction follows from the\nordinary rules for negation.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0083",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "Use proof by contradiction to establish the following, which is the converse of one of the implications we proved above. (Hint: use intro first.)",
+    "html": "<p>Use proof by contradiction to establish the following,\nwhich is the converse of one of the implications we proved above.\n(Hint: use <code class=\"docutils literal notranslate\"><span class=\"pre\">intro</span></code> first.)</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0084",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "It is often tedious to work with compound statements with a negation in front, and it is a common mathematical pattern to replace such statements with equivalent forms in which the negation has been pushed inward. To facilitate this, Mathlib offers a push_neg tactic, which restates the goal in this way (this includes simplifying ¬ ¬A to A ). The command push_neg at h restates the hypothesis h .",
+    "html": "<p id=\"index-15\">It is often tedious to work with compound statements with\na negation in front,\nand it is a common mathematical pattern to replace such\nstatements with equivalent forms in which the negation\nhas been pushed inward.\nTo facilitate this, Mathlib offers a <code class=\"docutils literal notranslate\"><span class=\"pre\">push_neg</span></code> tactic,\nwhich restates the goal in this way (this includes\nsimplifying <code class=\"docutils literal notranslate\"><span class=\"pre\">¬</span> <span class=\"pre\">¬A</span></code> to <code class=\"docutils literal notranslate\"><span class=\"pre\">A</span></code>).\nThe command <code class=\"docutils literal notranslate\"><span class=\"pre\">push_neg</span> <span class=\"pre\">at</span> <span class=\"pre\">h</span></code> restates the hypothesis <code class=\"docutils literal notranslate\"><span class=\"pre\">h</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0085",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "In the second example, we use dsimp to expand the definitions of FnHasUb and FnUb . (We need to use dsimp rather than rw to expand FnUb , because it appears in the scope of a quantifier.) You can verify that in the examples above with ¬∃ x, P x and ¬∀ x, P x , the push_neg tactic does the expected thing. Without even knowing how to use the conjunction symbol, you should be able to use push_neg to prove the following:",
+    "html": "<p>In the second example, we use dsimp to\nexpand the definitions of <code class=\"docutils literal notranslate\"><span class=\"pre\">FnHasUb</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">FnUb</span></code>.\n(We need to use <code class=\"docutils literal notranslate\"><span class=\"pre\">dsimp</span></code> rather than <code class=\"docutils literal notranslate\"><span class=\"pre\">rw</span></code>\nto expand <code class=\"docutils literal notranslate\"><span class=\"pre\">FnUb</span></code>,\nbecause it appears in the scope of a quantifier.)\nYou can verify that in the examples above\nwith <code class=\"docutils literal notranslate\"><span class=\"pre\">¬∃</span> <span class=\"pre\">x,</span> <span class=\"pre\">P</span> <span class=\"pre\">x</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">¬∀</span> <span class=\"pre\">x,</span> <span class=\"pre\">P</span> <span class=\"pre\">x</span></code>,\nthe <code class=\"docutils literal notranslate\"><span class=\"pre\">push_neg</span></code> tactic does the expected thing.\nWithout even knowing how to use the conjunction\nsymbol,\nyou should be able to use <code class=\"docutils literal notranslate\"><span class=\"pre\">push_neg</span></code>\nto prove the following:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0086",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "Mathlib also has a tactic, contrapose , which transforms a goal A → B to ¬B → ¬A . Similarly, given a goal of proving B from hypothesis h : A , contrapose h leaves you with a goal of proving ¬A from hypothesis ¬B . Using contrapose! instead of contrapose applies push_neg to the goal and the relevant hypothesis as well.",
+    "html": "<p id=\"index-16\">Mathlib also has a tactic, <code class=\"docutils literal notranslate\"><span class=\"pre\">contrapose</span></code>,\nwhich transforms a goal <code class=\"docutils literal notranslate\"><span class=\"pre\">A</span> <span class=\"pre\">→</span> <span class=\"pre\">B</span></code> to <code class=\"docutils literal notranslate\"><span class=\"pre\">¬B</span> <span class=\"pre\">→</span> <span class=\"pre\">¬A</span></code>.\nSimilarly, given a goal of proving <code class=\"docutils literal notranslate\"><span class=\"pre\">B</span></code> from\nhypothesis <code class=\"docutils literal notranslate\"><span class=\"pre\">h</span> <span class=\"pre\">:</span> <span class=\"pre\">A</span></code>,\n<code class=\"docutils literal notranslate\"><span class=\"pre\">contrapose</span> <span class=\"pre\">h</span></code> leaves you with a goal of proving\n<code class=\"docutils literal notranslate\"><span class=\"pre\">¬A</span></code> from hypothesis <code class=\"docutils literal notranslate\"><span class=\"pre\">¬B</span></code>.\nUsing <code class=\"docutils literal notranslate\"><span class=\"pre\">contrapose!</span></code> instead of <code class=\"docutils literal notranslate\"><span class=\"pre\">contrapose</span></code>\napplies <code class=\"docutils literal notranslate\"><span class=\"pre\">push_neg</span></code> to the goal and the relevant\nhypothesis as well.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0087",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "We have not yet explained the constructor command or the use of the semicolon after it, but we will do that in the next section.",
+    "html": "<p>We have not yet explained the <code class=\"docutils literal notranslate\"><span class=\"pre\">constructor</span></code> command\nor the use of the semicolon after it,\nbut we will do that in the next section.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0088",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "We close this section with the principle of ex falso , which says that anything follows from a contradiction. In Lean, this is represented by False.elim , which establishes False → P for any proposition P . This may seem like a strange principle, but it comes up fairly often. We often prove a theorem by splitting on cases, and sometimes we can show that one of the cases is contradictory. In that case, we need to assert that the contradiction establishes the goal so we can move on to the next one. (We will see instances of reasoning by cases in Section 3.5 .)",
+    "html": "<p>We close this section with\nthe principle of <em>ex falso</em>,\nwhich says that anything follows from a contradiction.\nIn Lean, this is represented by <code class=\"docutils literal notranslate\"><span class=\"pre\">False.elim</span></code>,\nwhich establishes <code class=\"docutils literal notranslate\"><span class=\"pre\">False</span> <span class=\"pre\">→</span> <span class=\"pre\">P</span></code> for any proposition <code class=\"docutils literal notranslate\"><span class=\"pre\">P</span></code>.\nThis may seem like a strange principle,\nbut it comes up fairly often.\nWe often prove a theorem by splitting on cases,\nand sometimes we can show that one of\nthe cases is contradictory.\nIn that case, we need to assert that the contradiction\nestablishes the goal so we can move on to the next one.\n(We will see instances of reasoning by cases in\n<a class=\"reference internal\" href=\"#disjunction\"><span class=\"std std-numref\">Section 3.5</span></a>.)</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0089",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "Lean provides a number of ways of closing a goal once a contradiction has been reached.",
+    "html": "<p id=\"index-17\">Lean provides a number of ways of closing\na goal once a contradiction has been reached.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0090",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "The exfalso tactic replaces the current goal with the goal of proving False . Given h : P and h' : ¬ P , the term absurd h h' establishes any proposition. Finally, the contradiction tactic tries to close a goal by finding a contradiction in the hypotheses, such as a pair of the form h : P and h' : ¬ P . Of course, in this example, linarith also works.",
+    "html": "<p>The <code class=\"docutils literal notranslate\"><span class=\"pre\">exfalso</span></code> tactic replaces the current goal with\nthe goal of proving <code class=\"docutils literal notranslate\"><span class=\"pre\">False</span></code>.\nGiven <code class=\"docutils literal notranslate\"><span class=\"pre\">h</span> <span class=\"pre\">:</span> <span class=\"pre\">P</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">h'</span> <span class=\"pre\">:</span> <span class=\"pre\">¬</span> <span class=\"pre\">P</span></code>,\nthe term <code class=\"docutils literal notranslate\"><span class=\"pre\">absurd</span> <span class=\"pre\">h</span> <span class=\"pre\">h'</span></code> establishes any proposition.\nFinally, the <code class=\"docutils literal notranslate\"><span class=\"pre\">contradiction</span></code> tactic tries to close a goal\nby finding a contradiction in the hypotheses,\nsuch as a pair of the form <code class=\"docutils literal notranslate\"><span class=\"pre\">h</span> <span class=\"pre\">:</span> <span class=\"pre\">P</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">h'</span> <span class=\"pre\">:</span> <span class=\"pre\">¬</span> <span class=\"pre\">P</span></code>.\nOf course, in this example, <code class=\"docutils literal notranslate\"><span class=\"pre\">linarith</span></code> also works.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0091",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "You have already seen that the conjunction symbol, ∧ , is used to express “and.” The constructor tactic allows you to prove a statement of the form A ∧ B by proving A and then proving B .",
+    "html": "<p id=\"index-18\">You have already seen that the conjunction symbol, <code class=\"docutils literal notranslate\"><span class=\"pre\">∧</span></code>,\nis used to express “and.”\nThe <code class=\"docutils literal notranslate\"><span class=\"pre\">constructor</span></code> tactic allows you to prove a statement of\nthe form <code class=\"docutils literal notranslate\"><span class=\"pre\">A</span> <span class=\"pre\">∧</span> <span class=\"pre\">B</span></code>\nby proving <code class=\"docutils literal notranslate\"><span class=\"pre\">A</span></code> and then proving <code class=\"docutils literal notranslate\"><span class=\"pre\">B</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0092",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "In this example, the assumption tactic tells Lean to find an assumption that will solve the goal. Notice that the final rw finishes the goal by applying the reflexivity of ≤ . The following are alternative ways of carrying out the previous examples using the anonymous constructor angle brackets. The first is a slick proof-term version of the previous proof, which drops into tactic mode at the keyword by .",
+    "html": "<p id=\"index-19\">In this example, the <code class=\"docutils literal notranslate\"><span class=\"pre\">assumption</span></code> tactic\ntells Lean to find an assumption that will solve the goal.\nNotice that the final <code class=\"docutils literal notranslate\"><span class=\"pre\">rw</span></code> finishes the goal by\napplying the reflexivity of <code class=\"docutils literal notranslate\"><span class=\"pre\">≤</span></code>.\nThe following are alternative ways of carrying out\nthe previous examples using the anonymous constructor\nangle brackets.\nThe first is a slick proof-term version of the\nprevious proof,\nwhich drops into tactic mode at the keyword <code class=\"docutils literal notranslate\"><span class=\"pre\">by</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0093",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "Using a conjunction instead of proving one involves unpacking the proofs of the two parts. You can use the rcases tactic for that, as well as rintro or a pattern-matching fun , all in a manner similar to the way they are used with the existential quantifier.",
+    "html": "<p><em>Using</em> a conjunction instead of proving one involves unpacking the proofs of the\ntwo parts.\nYou can use the <code class=\"docutils literal notranslate\"><span class=\"pre\">rcases</span></code> tactic for that,\nas well as <code class=\"docutils literal notranslate\"><span class=\"pre\">rintro</span></code> or a pattern-matching <code class=\"docutils literal notranslate\"><span class=\"pre\">fun</span></code>,\nall in a manner similar to the way they are used with\nthe existential quantifier.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0094",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "In analogy to the obtain tactic, there is also a pattern-matching have :",
+    "html": "<p>In analogy to the <code class=\"docutils literal notranslate\"><span class=\"pre\">obtain</span></code> tactic, there is also a pattern-matching <code class=\"docutils literal notranslate\"><span class=\"pre\">have</span></code>:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0095",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "In contrast to rcases , here the have tactic leaves h in the context. And even though we won’t use them, once again we have the computer scientists’ pattern-matching syntax:",
+    "html": "<p>In contrast to <code class=\"docutils literal notranslate\"><span class=\"pre\">rcases</span></code>, here the <code class=\"docutils literal notranslate\"><span class=\"pre\">have</span></code> tactic leaves <code class=\"docutils literal notranslate\"><span class=\"pre\">h</span></code> in the context.\nAnd even though we won’t use them, once again we have the computer scientists’\npattern-matching syntax:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0096",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "In contrast to using an existential quantifier, you can also extract proofs of the two components of a hypothesis h : A ∧ B by writing h.left and h.right , or, equivalently, h.1 and h.2 .",
+    "html": "<p>In contrast to using an existential quantifier,\nyou can also extract proofs of the two components\nof a hypothesis <code class=\"docutils literal notranslate\"><span class=\"pre\">h</span> <span class=\"pre\">:</span> <span class=\"pre\">A</span> <span class=\"pre\">∧</span> <span class=\"pre\">B</span></code>\nby writing <code class=\"docutils literal notranslate\"><span class=\"pre\">h.left</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">h.right</span></code>,\nor, equivalently, <code class=\"docutils literal notranslate\"><span class=\"pre\">h.1</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">h.2</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0097",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "Try using these techniques to come up with various ways of proving of the following:",
+    "html": "<p>Try using these techniques to come up with various ways of proving of the following:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0098",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "You can nest uses of ∃ and ∧ with anonymous constructors, rintro , and rcases .",
+    "html": "<p>You can nest uses of <code class=\"docutils literal notranslate\"><span class=\"pre\">∃</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">∧</span></code>\nwith anonymous constructors, <code class=\"docutils literal notranslate\"><span class=\"pre\">rintro</span></code>, and <code class=\"docutils literal notranslate\"><span class=\"pre\">rcases</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0099",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "Recall that prefixing z with underscore tells Lean we don’t intend to use z . Otherwise Lean would output a warning saying z is unused.",
+    "html": "<p>Recall that prefixing <cite>z</cite> with underscore tells Lean we don’t intend to use <cite>z</cite>.\nOtherwise Lean would output a warning saying <cite>z</cite> is unused.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0100",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "You can also use the use tactic:",
+    "html": "<p>You can also use the <code class=\"docutils literal notranslate\"><span class=\"pre\">use</span></code> tactic:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0101",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "In the first example, the <;> after the constructor command tells Lean to use the norm_num tactic on both of the goals that result.",
+    "html": "<p>In the first example, the <code class=\"docutils literal notranslate\"><span class=\"pre\">&lt;;&gt;</span></code> after the <code class=\"docutils literal notranslate\"><span class=\"pre\">constructor</span></code> command tells Lean to use\nthe <code class=\"docutils literal notranslate\"><span class=\"pre\">norm_num</span></code> tactic on both of the goals that result.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0102",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "In Lean, A ↔ B is not defined to be (A → B) ∧ (B → A) , but it could have been, and it behaves roughly the same way. You have already seen that you can write h.mp and h.mpr or h.1 and h.2 for the two directions of h : A ↔ B . You can also use cases and friends. To prove an if-and-only-if statement, you can use constructor or angle brackets, just as you would if you were proving a conjunction.",
+    "html": "<p>In Lean, <code class=\"docutils literal notranslate\"><span class=\"pre\">A</span> <span class=\"pre\">↔</span> <span class=\"pre\">B</span></code> is <em>not</em> defined to be <code class=\"docutils literal notranslate\"><span class=\"pre\">(A</span> <span class=\"pre\">→</span> <span class=\"pre\">B)</span> <span class=\"pre\">∧</span> <span class=\"pre\">(B</span> <span class=\"pre\">→</span> <span class=\"pre\">A)</span></code>,\nbut it could have been,\nand it behaves roughly the same way.\nYou have already seen that you can write <code class=\"docutils literal notranslate\"><span class=\"pre\">h.mp</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">h.mpr</span></code>\nor <code class=\"docutils literal notranslate\"><span class=\"pre\">h.1</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">h.2</span></code> for the two directions of <code class=\"docutils literal notranslate\"><span class=\"pre\">h</span> <span class=\"pre\">:</span> <span class=\"pre\">A</span> <span class=\"pre\">↔</span> <span class=\"pre\">B</span></code>.\nYou can also use <code class=\"docutils literal notranslate\"><span class=\"pre\">cases</span></code> and friends.\nTo prove an if-and-only-if statement,\nyou can use <code class=\"docutils literal notranslate\"><span class=\"pre\">constructor</span></code> or angle brackets,\njust as you would if you were proving a conjunction.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0103",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "The last proof term is inscrutable. Remember that you can use underscores while writing an expression like that to see what Lean expects.",
+    "html": "<p>The last proof term is inscrutable. Remember that you can\nuse underscores while writing an expression like that to\nsee what Lean expects.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0104",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "Try out the various techniques and gadgets you have just seen in order to prove the following:",
+    "html": "<p>Try out the various techniques and gadgets you have just seen\nin order to prove the following:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0105",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "For a more interesting exercise, show that for any two real numbers x and y , x^2 + y^2 = 0 if and only if x = 0 and y = 0 . We suggest proving an auxiliary lemma using linarith , pow_two_nonneg , and eq_zero_of_pow_eq_zero .",
+    "html": "<p>For a more interesting exercise, show that for any\ntwo real numbers <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">y</span></code>,\n<code class=\"docutils literal notranslate\"><span class=\"pre\">x^2</span> <span class=\"pre\">+</span> <span class=\"pre\">y^2</span> <span class=\"pre\">=</span> <span class=\"pre\">0</span></code> if and only if <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span> <span class=\"pre\">=</span> <span class=\"pre\">0</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">y</span> <span class=\"pre\">=</span> <span class=\"pre\">0</span></code>.\nWe suggest proving an auxiliary lemma using\n<code class=\"docutils literal notranslate\"><span class=\"pre\">linarith</span></code>, <code class=\"docutils literal notranslate\"><span class=\"pre\">pow_two_nonneg</span></code>, and <code class=\"docutils literal notranslate\"><span class=\"pre\">eq_zero_of_pow_eq_zero</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0106",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "In Lean, bi-implication leads a double-life. You can treat it like a conjunction and use its two parts separately. But Lean also knows that it is a reflexive, symmetric, and transitive relation between propositions, and you can also use it with calc and rw . It is often convenient to rewrite a statement to an equivalent one. In the next example, we use abs_lt to replace an expression of the form |x| < y by the equivalent expression - y < x ∧ x < y , and in the one after that we use Nat.dvd_gcd_iff to replace an expression of the form m ∣ Nat.gcd n k by the equivalent expression m ∣ n ∧ m ∣ k .",
+    "html": "<p>In Lean, bi-implication leads a double-life.\nYou can treat it like a conjunction and use its two\nparts separately.\nBut Lean also knows that it is a reflexive, symmetric,\nand transitive relation between propositions,\nand you can also use it with <code class=\"docutils literal notranslate\"><span class=\"pre\">calc</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">rw</span></code>.\nIt is often convenient to rewrite a statement to\nan equivalent one.\nIn the next example, we use <code class=\"docutils literal notranslate\"><span class=\"pre\">abs_lt</span></code> to\nreplace an expression of the form <code class=\"docutils literal notranslate\"><span class=\"pre\">|x|</span> <span class=\"pre\">&lt;</span> <span class=\"pre\">y</span></code>\nby the equivalent expression <code class=\"docutils literal notranslate\"><span class=\"pre\">-</span> <span class=\"pre\">y</span> <span class=\"pre\">&lt;</span> <span class=\"pre\">x</span> <span class=\"pre\">∧</span> <span class=\"pre\">x</span> <span class=\"pre\">&lt;</span> <span class=\"pre\">y</span></code>,\nand in the one after that we use <code class=\"docutils literal notranslate\"><span class=\"pre\">Nat.dvd_gcd_iff</span></code>\nto replace an expression of the form <code class=\"docutils literal notranslate\"><span class=\"pre\">m</span> <span class=\"pre\">∣</span> <span class=\"pre\">Nat.gcd</span> <span class=\"pre\">n</span> <span class=\"pre\">k</span></code> by the equivalent expression <code class=\"docutils literal notranslate\"><span class=\"pre\">m</span> <span class=\"pre\">∣</span> <span class=\"pre\">n</span> <span class=\"pre\">∧</span> <span class=\"pre\">m</span> <span class=\"pre\">∣</span> <span class=\"pre\">k</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0107",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "See if you can use rw with the theorem below to provide a short proof that negation is not a nondecreasing function. (Note that push_neg won’t unfold definitions for you, so the rw [Monotone] in the proof of the theorem is needed.)",
+    "html": "<p>See if you can use <code class=\"docutils literal notranslate\"><span class=\"pre\">rw</span></code> with the theorem below\nto provide a short proof that negation is not a\nnondecreasing function. (Note that <code class=\"docutils literal notranslate\"><span class=\"pre\">push_neg</span></code> won’t\nunfold definitions for you, so the <code class=\"docutils literal notranslate\"><span class=\"pre\">rw</span> <span class=\"pre\">[Monotone]</span></code> in\nthe proof of the theorem is needed.)</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0108",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "The remaining exercises in this section are designed to give you some more practice with conjunction and bi-implication. Remember that a partial order is a binary relation that is transitive, reflexive, and antisymmetric. An even weaker notion sometimes arises: a preorder is just a reflexive, transitive relation. For any pre-order ≤ , Lean axiomatizes the associated strict pre-order by a < b ↔ a ≤ b ∧ ¬ b ≤ a . Show that if ≤ is a partial order, then a < b is equivalent to a ≤ b ∧ a ≠ b :",
+    "html": "<p>The remaining exercises in this section are designed\nto give you some more practice with conjunction and\nbi-implication. Remember that a <em>partial order</em> is a\nbinary relation that is transitive, reflexive, and\nantisymmetric.\nAn even weaker notion sometimes arises:\na <em>preorder</em> is just a reflexive, transitive relation.\nFor any pre-order <code class=\"docutils literal notranslate\"><span class=\"pre\">≤</span></code>,\nLean axiomatizes the associated strict pre-order by\n<code class=\"docutils literal notranslate\"><span class=\"pre\">a</span> <span class=\"pre\">&lt;</span> <span class=\"pre\">b</span> <span class=\"pre\">↔</span> <span class=\"pre\">a</span> <span class=\"pre\">≤</span> <span class=\"pre\">b</span> <span class=\"pre\">∧</span> <span class=\"pre\">¬</span> <span class=\"pre\">b</span> <span class=\"pre\">≤</span> <span class=\"pre\">a</span></code>.\nShow that if <code class=\"docutils literal notranslate\"><span class=\"pre\">≤</span></code> is a partial order,\nthen <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span> <span class=\"pre\">&lt;</span> <span class=\"pre\">b</span></code> is equivalent to <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span> <span class=\"pre\">≤</span> <span class=\"pre\">b</span> <span class=\"pre\">∧</span> <span class=\"pre\">a</span> <span class=\"pre\">≠</span> <span class=\"pre\">b</span></code>:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0109",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "Beyond logical operations, you do not need anything more than le_refl , le_trans , and le_antisymm . Show that even in the case where ≤ is only assumed to be a preorder, we can prove that the strict order is irreflexive and transitive. In the second example, for convenience, we use the simplifier rather than rw to express < in terms of ≤ and ¬ . We will come back to the simplifier later, but here we are only relying on the fact that it will use the indicated lemma repeatedly, even if it needs to be instantiated to different values.",
+    "html": "<p id=\"index-20\">Beyond logical operations, you do not need\nanything more than <code class=\"docutils literal notranslate\"><span class=\"pre\">le_refl</span></code>, <code class=\"docutils literal notranslate\"><span class=\"pre\">le_trans</span></code>,\nand <code class=\"docutils literal notranslate\"><span class=\"pre\">le_antisymm</span></code>.\nShow that even in the case where <code class=\"docutils literal notranslate\"><span class=\"pre\">≤</span></code>\nis only assumed to be a preorder,\nwe can prove that the strict order is irreflexive\nand transitive.\nIn the second example,\nfor convenience, we use the simplifier rather than <code class=\"docutils literal notranslate\"><span class=\"pre\">rw</span></code>\nto express <code class=\"docutils literal notranslate\"><span class=\"pre\">&lt;</span></code> in terms of <code class=\"docutils literal notranslate\"><span class=\"pre\">≤</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">¬</span></code>.\nWe will come back to the simplifier later,\nbut here we are only relying on the fact that it will\nuse the indicated lemma repeatedly, even if it needs\nto be instantiated to different values.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0110",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "The canonical way to prove a disjunction A ∨ B is to prove A or to prove B . The left tactic chooses A , and the right tactic chooses B .",
+    "html": "<p id=\"index-21\">The canonical way to prove a disjunction <code class=\"docutils literal notranslate\"><span class=\"pre\">A</span> <span class=\"pre\">∨</span> <span class=\"pre\">B</span></code> is to prove\n<code class=\"docutils literal notranslate\"><span class=\"pre\">A</span></code> or to prove <code class=\"docutils literal notranslate\"><span class=\"pre\">B</span></code>.\nThe <code class=\"docutils literal notranslate\"><span class=\"pre\">left</span></code> tactic chooses <code class=\"docutils literal notranslate\"><span class=\"pre\">A</span></code>,\nand the <code class=\"docutils literal notranslate\"><span class=\"pre\">right</span></code> tactic chooses <code class=\"docutils literal notranslate\"><span class=\"pre\">B</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0111",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "We cannot use an anonymous constructor to construct a proof of an “or” because Lean would have to guess which disjunct we are trying to prove. When we write proof terms we can use Or.inl and Or.inr instead to make the choice explicitly. Here, inl is short for “introduction left” and inr is short for “introduction right.”",
+    "html": "<p>We cannot use an anonymous constructor to construct a proof\nof an “or” because Lean would have to guess\nwhich disjunct we are trying to prove.\nWhen we write proof terms we can use\n<code class=\"docutils literal notranslate\"><span class=\"pre\">Or.inl</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">Or.inr</span></code> instead\nto make the choice explicitly.\nHere, <code class=\"docutils literal notranslate\"><span class=\"pre\">inl</span></code> is short for “introduction left” and\n<code class=\"docutils literal notranslate\"><span class=\"pre\">inr</span></code> is short for “introduction right.”</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0112",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "It may seem strange to prove a disjunction by proving one side or the other. In practice, which case holds usually depends on a case distinction that is implicit or explicit in the assumptions and the data. The rcases tactic allows us to make use of a hypothesis of the form A ∨ B . In contrast to the use of rcases with conjunction or an existential quantifier, here the rcases tactic produces two goals. Both have the same conclusion, but in the first case, A is assumed to be true, and in the second case, B is assumed to be true. In other words, as the name suggests, the rcases tactic carries out a proof by cases. As usual, we can tell Lean what names to use for the hypotheses. In the next example, we tell Lean to use the name h on each branch.",
+    "html": "<p>It may seem strange to prove a disjunction by proving one side\nor the other.\nIn practice, which case holds usually depends on a case distinction\nthat is implicit or explicit in the assumptions and the data.\nThe <code class=\"docutils literal notranslate\"><span class=\"pre\">rcases</span></code> tactic allows us to make use of a hypothesis\nof the form <code class=\"docutils literal notranslate\"><span class=\"pre\">A</span> <span class=\"pre\">∨</span> <span class=\"pre\">B</span></code>.\nIn contrast to the use of <code class=\"docutils literal notranslate\"><span class=\"pre\">rcases</span></code> with conjunction or an\nexistential quantifier,\nhere the <code class=\"docutils literal notranslate\"><span class=\"pre\">rcases</span></code> tactic produces <em>two</em> goals.\nBoth have the same conclusion, but in the first case,\n<code class=\"docutils literal notranslate\"><span class=\"pre\">A</span></code> is assumed to be true,\nand in the second case,\n<code class=\"docutils literal notranslate\"><span class=\"pre\">B</span></code> is assumed to be true.\nIn other words, as the name suggests,\nthe <code class=\"docutils literal notranslate\"><span class=\"pre\">rcases</span></code> tactic carries out a proof by cases.\nAs usual, we can tell Lean what names to use for the hypotheses.\nIn the next example, we tell Lean\nto use the name <code class=\"docutils literal notranslate\"><span class=\"pre\">h</span></code> on each branch.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0113",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "Notice that the pattern changes from ⟨h₀, h₁⟩ in the case of a conjunction to h₀ | h₁ in the case of a disjunction. Think of the first pattern as matching against data that contains both an h₀ and a h₁ , whereas the second pattern, with the bar, matches against data that contains either an h₀ or an h₁ . In this case, because the two goals are separate, we have chosen to use the same name, h , in each case.",
+    "html": "<p>Notice that the pattern changes from <code class=\"docutils literal notranslate\"><span class=\"pre\">⟨h₀,</span> <span class=\"pre\">h₁⟩</span></code> in the case of\na conjunction to <code class=\"docutils literal notranslate\"><span class=\"pre\">h₀</span> <span class=\"pre\">|</span> <span class=\"pre\">h₁</span></code> in the case of a disjunction.\nThink of the first pattern as matching against data that contains\n<em>both</em> an <code class=\"docutils literal notranslate\"><span class=\"pre\">h₀</span></code> and a <code class=\"docutils literal notranslate\"><span class=\"pre\">h₁</span></code>, whereas the second pattern, with the bar,\nmatches against data that contains <em>either</em> an <code class=\"docutils literal notranslate\"><span class=\"pre\">h₀</span></code> or an <code class=\"docutils literal notranslate\"><span class=\"pre\">h₁</span></code>.\nIn this case, because the two goals are separate, we have chosen\nto use the same name, <code class=\"docutils literal notranslate\"><span class=\"pre\">h</span></code>, in each case.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0114",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "The absolute value function is defined in such a way that we can immediately prove that x ≥ 0 implies |x| = x (this is the theorem abs_of_nonneg ) and x < 0 implies |x| = -x (this is abs_of_neg ). The expression le_or_gt 0 x establishes 0 ≤ x ∨ x < 0 , allowing us to split on those two cases.",
+    "html": "<p>The absolute value function is defined in such a way\nthat we can immediately prove that\n<code class=\"docutils literal notranslate\"><span class=\"pre\">x</span> <span class=\"pre\">≥</span> <span class=\"pre\">0</span></code> implies <code class=\"docutils literal notranslate\"><span class=\"pre\">|x|</span> <span class=\"pre\">=</span> <span class=\"pre\">x</span></code>\n(this is the theorem <code class=\"docutils literal notranslate\"><span class=\"pre\">abs_of_nonneg</span></code>)\nand <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span> <span class=\"pre\">&lt;</span> <span class=\"pre\">0</span></code> implies <code class=\"docutils literal notranslate\"><span class=\"pre\">|x|</span> <span class=\"pre\">=</span> <span class=\"pre\">-x</span></code> (this is <code class=\"docutils literal notranslate\"><span class=\"pre\">abs_of_neg</span></code>).\nThe expression <code class=\"docutils literal notranslate\"><span class=\"pre\">le_or_gt</span> <span class=\"pre\">0</span> <span class=\"pre\">x</span></code> establishes <code class=\"docutils literal notranslate\"><span class=\"pre\">0</span> <span class=\"pre\">≤</span> <span class=\"pre\">x</span> <span class=\"pre\">∨</span> <span class=\"pre\">x</span> <span class=\"pre\">&lt;</span> <span class=\"pre\">0</span></code>,\nallowing us to split on those two cases.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0115",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "Lean also supports the computer scientists’ pattern-matching syntax for disjunction. Now the cases tactic is more attractive, because it allows us to name each case , and name the hypothesis that is introduced closer to where it is used.",
+    "html": "<p>Lean also supports the computer scientists’ pattern-matching\nsyntax for disjunction. Now the <code class=\"docutils literal notranslate\"><span class=\"pre\">cases</span></code> tactic is more attractive,\nbecause it allows us to name each <code class=\"docutils literal notranslate\"><span class=\"pre\">case</span></code>, and name the hypothesis\nthat is introduced closer to where it is used.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0116",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "The names inl and inr are short for “intro left” and “intro right,” respectively. Using case has the advantage that you can prove the cases in either order; Lean uses the tag to find the relevant goal. If you don’t care about that, you can use next , or match , or even a pattern-matching have .",
+    "html": "<p>The names <code class=\"docutils literal notranslate\"><span class=\"pre\">inl</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">inr</span></code> are short for “intro left” and “intro right,”\nrespectively. Using <code class=\"docutils literal notranslate\"><span class=\"pre\">case</span></code> has the advantage that you can prove the\ncases in either order; Lean uses the tag to find the relevant goal.\nIf you don’t care about that, you can use <code class=\"docutils literal notranslate\"><span class=\"pre\">next</span></code>, or <code class=\"docutils literal notranslate\"><span class=\"pre\">match</span></code>,\nor even a pattern-matching <code class=\"docutils literal notranslate\"><span class=\"pre\">have</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0117",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "In the case of match , we need to use the full names Or.inl and Or.inr of the canonical ways to prove a disjunction. In this textbook, we will generally use rcases to split on the cases of a disjunction.",
+    "html": "<p>In the case of <code class=\"docutils literal notranslate\"><span class=\"pre\">match</span></code>, we need to use the full names\n<code class=\"docutils literal notranslate\"><span class=\"pre\">Or.inl</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">Or.inr</span></code> of the canonical ways to prove a disjunction.\nIn this textbook, we will generally use <code class=\"docutils literal notranslate\"><span class=\"pre\">rcases</span></code> to split on the\ncases of a disjunction.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0118",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "Try proving the triangle inequality using the first two theorems in the next snippet. They are given the same names they have in Mathlib.",
+    "html": "<p>Try proving the triangle inequality using the\nfirst two theorems in the next snippet.\nThey are given the same names they have in Mathlib.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0119",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "In case you enjoyed these (pun intended) and you want more practice with disjunction, try these.",
+    "html": "<p>In case you enjoyed these (pun intended) and\nyou want more practice with disjunction,\ntry these.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0120",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "You can also use rcases and rintro with nested disjunctions. When these result in a genuine case split with multiple goals, the patterns for each new goal are separated by a vertical bar.",
+    "html": "<p>You can also use <code class=\"docutils literal notranslate\"><span class=\"pre\">rcases</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">rintro</span></code> with nested disjunctions.\nWhen these result in a genuine case split with multiple goals,\nthe patterns for each new goal are separated by a vertical bar.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0121",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "You can still nest patterns and use the rfl keyword to substitute equations:",
+    "html": "<p>You can still nest patterns and use the <code class=\"docutils literal notranslate\"><span class=\"pre\">rfl</span></code> keyword\nto substitute equations:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0122",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "See if you can prove the following with a single (long) line. Use rcases to unpack the hypotheses and split on cases, and use <;> linarith to solve each branch.",
+    "html": "<p>See if you can prove the following with a single (long) line.\nUse <code class=\"docutils literal notranslate\"><span class=\"pre\">rcases</span></code> to unpack the hypotheses and split on cases,\nand use <code class=\"docutils literal notranslate\"><span class=\"pre\">&lt;;&gt;</span> <span class=\"pre\">linarith</span></code> to solve each branch.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0123",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "On the real numbers, an equation x * y = 0 tells us that x = 0 or y = 0 . In Mathlib, this fact is known as eq_zero_or_eq_zero_of_mul_eq_zero , and it is another nice example of how a disjunction can arise. See if you can use it to prove the following:",
+    "html": "<p>On the real numbers, an equation <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span> <span class=\"pre\">*</span> <span class=\"pre\">y</span> <span class=\"pre\">=</span> <span class=\"pre\">0</span></code>\ntells us that <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span> <span class=\"pre\">=</span> <span class=\"pre\">0</span></code> or <code class=\"docutils literal notranslate\"><span class=\"pre\">y</span> <span class=\"pre\">=</span> <span class=\"pre\">0</span></code>.\nIn Mathlib, this fact is known as <code class=\"docutils literal notranslate\"><span class=\"pre\">eq_zero_or_eq_zero_of_mul_eq_zero</span></code>,\nand it is another nice example of how a disjunction can arise.\nSee if you can use it to prove the following:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0124",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "Remember that you can use the ring tactic to help with calculations.",
+    "html": "<p>Remember that you can use the <code class=\"docutils literal notranslate\"><span class=\"pre\">ring</span></code> tactic to help\nwith calculations.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0125",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "In an arbitrary ring \\(R\\) , an element \\(x\\) such that \\(x y = 0\\) for some nonzero \\(y\\) is called a left zero divisor , an element \\(x\\) such that \\(y x = 0\\) for some nonzero \\(y\\) is called a right zero divisor , and an element that is either a left or right zero divisor is called simply a zero divisor . The theorem eq_zero_or_eq_zero_of_mul_eq_zero says that the real numbers have no nontrivial zero divisors. A commutative ring with this property is called an integral domain . Your proofs of the two theorems above should work equally well in any integral domain:",
+    "html": "<p>In an arbitrary ring <span class=\"math notranslate nohighlight\">\\(R\\)</span>, an element <span class=\"math notranslate nohighlight\">\\(x\\)</span> such\nthat <span class=\"math notranslate nohighlight\">\\(x y = 0\\)</span> for some nonzero <span class=\"math notranslate nohighlight\">\\(y\\)</span> is called\na <em>left zero divisor</em>,\nan element <span class=\"math notranslate nohighlight\">\\(x\\)</span> such\nthat <span class=\"math notranslate nohighlight\">\\(y x = 0\\)</span> for some nonzero <span class=\"math notranslate nohighlight\">\\(y\\)</span> is called\na <em>right zero divisor</em>,\nand an element that is either a left or right zero divisor\nis called simply a <em>zero divisor</em>.\nThe theorem <code class=\"docutils literal notranslate\"><span class=\"pre\">eq_zero_or_eq_zero_of_mul_eq_zero</span></code>\nsays that the real numbers have no nontrivial zero divisors.\nA commutative ring with this property is called an <em>integral domain</em>.\nYour proofs of the two theorems above should work equally well\nin any integral domain:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0126",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "In fact, if you are careful, you can prove the first theorem without using commutativity of multiplication. In that case, it suffices to assume that R is a Ring instead of an CommRing .",
+    "html": "<p>In fact, if you are careful, you can prove the first\ntheorem without using commutativity of multiplication.\nIn that case, it suffices to assume that <code class=\"docutils literal notranslate\"><span class=\"pre\">R</span></code> is\na <code class=\"docutils literal notranslate\"><span class=\"pre\">Ring</span></code> instead of an <code class=\"docutils literal notranslate\"><span class=\"pre\">CommRing</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0127",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "Sometimes in a proof we want to split on cases depending on whether some statement is true or not. For any proposition P , we can use em P : P ∨ ¬ P . The name em is short for “excluded middle.”",
+    "html": "<p id=\"index-22\">Sometimes in a proof we want to split on cases\ndepending on whether some statement is true or not.\nFor any proposition <code class=\"docutils literal notranslate\"><span class=\"pre\">P</span></code>, we can use\n<code class=\"docutils literal notranslate\"><span class=\"pre\">em</span> <span class=\"pre\">P</span> <span class=\"pre\">:</span> <span class=\"pre\">P</span> <span class=\"pre\">∨</span> <span class=\"pre\">¬</span> <span class=\"pre\">P</span></code>.\nThe name <code class=\"docutils literal notranslate\"><span class=\"pre\">em</span></code> is short for “excluded middle.”</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0128",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "Alternatively, you can use the by_cases tactic.",
+    "html": "<p id=\"index-23\">Alternatively, you can use the <code class=\"docutils literal notranslate\"><span class=\"pre\">by_cases</span></code> tactic.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0129",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "Notice that the by_cases tactic lets you specify a label for the hypothesis that is introduced in each branch, in this case, h' : P in one and h' : ¬ P in the other. If you leave out the label, Lean uses h by default. Try proving the following equivalence, using by_cases to establish one direction.",
+    "html": "<p>Notice that the <code class=\"docutils literal notranslate\"><span class=\"pre\">by_cases</span></code> tactic lets you\nspecify a label for the hypothesis that is\nintroduced in each branch,\nin this case, <code class=\"docutils literal notranslate\"><span class=\"pre\">h'</span> <span class=\"pre\">:</span> <span class=\"pre\">P</span></code> in one and <code class=\"docutils literal notranslate\"><span class=\"pre\">h'</span> <span class=\"pre\">:</span> <span class=\"pre\">¬</span> <span class=\"pre\">P</span></code>\nin the other.\nIf you leave out the label,\nLean uses <code class=\"docutils literal notranslate\"><span class=\"pre\">h</span></code> by default.\nTry proving the following equivalence,\nusing <code class=\"docutils literal notranslate\"><span class=\"pre\">by_cases</span></code> to establish one direction.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0130",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "We now have enough skills at our disposal to do some real mathematics. In Lean, we can represent a sequence \\(s_0, s_1, s_2, \\ldots\\) of real numbers as a function s : ℕ → ℝ . Such a sequence is said to converge to a number \\(a\\) if for every \\(\\varepsilon > 0\\) there is a point beyond which the sequence remains within \\(\\varepsilon\\) of \\(a\\) , that is, there is a number \\(N\\) such that for every \\(n \\ge N\\) , \\(| s_n - a | < \\varepsilon\\) . In Lean, we can render this as follows:",
+    "html": "<p>We now have enough skills at our disposal to do some real mathematics.\nIn Lean, we can represent a sequence <span class=\"math notranslate nohighlight\">\\(s_0, s_1, s_2, \\ldots\\)</span> of\nreal numbers as a function <code class=\"docutils literal notranslate\"><span class=\"pre\">s</span> <span class=\"pre\">:</span> <span class=\"pre\">ℕ</span> <span class=\"pre\">→</span> <span class=\"pre\">ℝ</span></code>.\nSuch a sequence is said to <em>converge</em> to a number <span class=\"math notranslate nohighlight\">\\(a\\)</span> if for every\n<span class=\"math notranslate nohighlight\">\\(\\varepsilon &gt; 0\\)</span> there is a point beyond which the sequence\nremains within <span class=\"math notranslate nohighlight\">\\(\\varepsilon\\)</span> of <span class=\"math notranslate nohighlight\">\\(a\\)</span>,\nthat is, there is a number <span class=\"math notranslate nohighlight\">\\(N\\)</span> such that for every\n<span class=\"math notranslate nohighlight\">\\(n \\ge N\\)</span>, <span class=\"math notranslate nohighlight\">\\(| s_n - a | &lt; \\varepsilon\\)</span>.\nIn Lean, we can render this as follows:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0131",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "The notation ∀ ε > 0, ... is a convenient abbreviation for ∀ ε, ε > 0 → ... , and, similarly, ∀ n ≥ N, ... abbreviates ∀ n, n ≥ N → ... . And remember that ε > 0 , in turn, is defined as 0 < ε , and n ≥ N is defined as N ≤ n .",
+    "html": "<p>The notation <code class=\"docutils literal notranslate\"><span class=\"pre\">∀</span> <span class=\"pre\">ε</span> <span class=\"pre\">&gt;</span> <span class=\"pre\">0,</span> <span class=\"pre\">...</span></code> is a convenient abbreviation\nfor <code class=\"docutils literal notranslate\"><span class=\"pre\">∀</span> <span class=\"pre\">ε,</span> <span class=\"pre\">ε</span> <span class=\"pre\">&gt;</span> <span class=\"pre\">0</span> <span class=\"pre\">→</span> <span class=\"pre\">...</span></code>, and, similarly,\n<code class=\"docutils literal notranslate\"><span class=\"pre\">∀</span> <span class=\"pre\">n</span> <span class=\"pre\">≥</span> <span class=\"pre\">N,</span> <span class=\"pre\">...</span></code> abbreviates <code class=\"docutils literal notranslate\"><span class=\"pre\">∀</span> <span class=\"pre\">n,</span> <span class=\"pre\">n</span> <span class=\"pre\">≥</span> <span class=\"pre\">N</span> <span class=\"pre\">→</span>  <span class=\"pre\">...</span></code>.\nAnd remember that <code class=\"docutils literal notranslate\"><span class=\"pre\">ε</span> <span class=\"pre\">&gt;</span> <span class=\"pre\">0</span></code>, in turn, is defined as <code class=\"docutils literal notranslate\"><span class=\"pre\">0</span> <span class=\"pre\">&lt;</span> <span class=\"pre\">ε</span></code>,\nand <code class=\"docutils literal notranslate\"><span class=\"pre\">n</span> <span class=\"pre\">≥</span> <span class=\"pre\">N</span></code> is defined as <code class=\"docutils literal notranslate\"><span class=\"pre\">N</span> <span class=\"pre\">≤</span> <span class=\"pre\">n</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0132",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "In this section, we’ll establish some properties of convergence. But first, we will discuss three tactics for working with equality that will prove useful. The first, the ext tactic, gives us a way of proving that two functions are equal. Let \\(f(x) = x + 1\\) and \\(g(x) = 1 + x\\) be functions from reals to reals. Then, of course, \\(f = g\\) , because they return the same value for every \\(x\\) . The ext tactic enables us to prove an equation between functions by proving that their values are the same at all the values of their arguments.",
+    "html": "<p id=\"index-24\">In this section, we’ll establish some properties of convergence.\nBut first, we will discuss three tactics for working with equality\nthat will prove useful.\nThe first, the <code class=\"docutils literal notranslate\"><span class=\"pre\">ext</span></code> tactic,\ngives us a way of proving that two functions are equal.\nLet <span class=\"math notranslate nohighlight\">\\(f(x) = x + 1\\)</span> and <span class=\"math notranslate nohighlight\">\\(g(x) = 1 + x\\)</span>\nbe functions from reals to reals.\nThen, of course, <span class=\"math notranslate nohighlight\">\\(f = g\\)</span>, because they return the same\nvalue for every <span class=\"math notranslate nohighlight\">\\(x\\)</span>.\nThe <code class=\"docutils literal notranslate\"><span class=\"pre\">ext</span></code> tactic enables us to prove an equation between functions\nby proving that their values are the same\nat all the values of their arguments.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0133",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "We’ll see later that ext is actually more general, and also one can specify the name of the variables that appear. For instance you can try to replace ext with ext u v in the above proof. The second tactic, the congr tactic, allows us to prove an equation between two expressions by reconciling the parts that are different:",
+    "html": "<p id=\"index-25\">We’ll see later that <code class=\"docutils literal notranslate\"><span class=\"pre\">ext</span></code> is actually more general, and also one can\nspecify the name of the variables that appear.\nFor instance you can try to replace <code class=\"docutils literal notranslate\"><span class=\"pre\">ext</span></code> with <code class=\"docutils literal notranslate\"><span class=\"pre\">ext</span> <span class=\"pre\">u</span> <span class=\"pre\">v</span></code> in the\nabove proof.\nThe second tactic, the <code class=\"docutils literal notranslate\"><span class=\"pre\">congr</span></code> tactic,\nallows us to prove an equation between two expressions\nby reconciling the parts that are different:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0134",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "Here the congr tactic peels off the abs on each side, leaving us to prove a = a - b + b .",
+    "html": "<p>Here the <code class=\"docutils literal notranslate\"><span class=\"pre\">congr</span></code> tactic peels off the <code class=\"docutils literal notranslate\"><span class=\"pre\">abs</span></code> on each side,\nleaving us to prove <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span> <span class=\"pre\">=</span> <span class=\"pre\">a</span> <span class=\"pre\">-</span> <span class=\"pre\">b</span> <span class=\"pre\">+</span> <span class=\"pre\">b</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0135",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "Finally, the convert tactic is used to apply a theorem to a goal when the conclusion of the theorem doesn’t quite match. For example, suppose we want to prove a < a * a from 1 < a . A theorem in the library, mul_lt_mul_iff_left₀ , will let us prove 1 * a < a * a . One possibility is to work backwards and rewrite the goal so that it has that form. Instead, the convert tactic lets us apply the theorem as it is, and leaves us with the task of proving the equations that are needed to make the goal match.",
+    "html": "<p id=\"index-26\">Finally, the <code class=\"docutils literal notranslate\"><span class=\"pre\">convert</span></code> tactic is used to apply a theorem\nto a goal when the conclusion of the theorem doesn’t quite match.\nFor example, suppose we want to prove <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span> <span class=\"pre\">&lt;</span> <span class=\"pre\">a</span> <span class=\"pre\">*</span> <span class=\"pre\">a</span></code> from <code class=\"docutils literal notranslate\"><span class=\"pre\">1</span> <span class=\"pre\">&lt;</span> <span class=\"pre\">a</span></code>.\nA theorem in the library, <code class=\"docutils literal notranslate\"><span class=\"pre\">mul_lt_mul_iff_left₀</span></code>,\nwill let us prove <code class=\"docutils literal notranslate\"><span class=\"pre\">1</span> <span class=\"pre\">*</span> <span class=\"pre\">a</span> <span class=\"pre\">&lt;</span> <span class=\"pre\">a</span> <span class=\"pre\">*</span> <span class=\"pre\">a</span></code>.\nOne possibility is to work backwards and rewrite the goal\nso that it has that form.\nInstead, the <code class=\"docutils literal notranslate\"><span class=\"pre\">convert</span></code> tactic lets us apply the theorem\nas it is,\nand leaves us with the task of proving the equations that\nare needed to make the goal match.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0136",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "This example illustrates another useful trick: when we apply an expression with an underscore and Lean can’t fill it in for us automatically, it simply leaves it for us as another goal.",
+    "html": "<p>This example illustrates another useful trick: when we apply an\nexpression with an underscore\nand Lean can’t fill it in for us automatically,\nit simply leaves it for us as another goal.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0137",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "The following shows that any constant sequence \\(a, a, a, \\ldots\\) converges.",
+    "html": "<p>The following shows that any constant sequence <span class=\"math notranslate nohighlight\">\\(a, a, a, \\ldots\\)</span>\nconverges.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0138",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "Lean has a tactic, simp , which can often save you the trouble of carrying out steps like rw [sub_self, abs_zero] by hand. We will tell you more about it soon.",
+    "html": "<p>Lean has a tactic, <code class=\"docutils literal notranslate\"><span class=\"pre\">simp</span></code>, which can often save you the\ntrouble of carrying out steps like <code class=\"docutils literal notranslate\"><span class=\"pre\">rw</span> <span class=\"pre\">[sub_self,</span> <span class=\"pre\">abs_zero]</span></code>\nby hand.\nWe will tell you more about it soon.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0139",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "For a more interesting theorem, let’s show that if s converges to a and t converges to b , then fun n ↦ s n + t n converges to a + b . It is helpful to have a clear pen-and-paper proof in mind before you start writing a formal one. Given ε greater than 0 , the idea is to use the hypotheses to obtain an Ns such that beyond that point, s is within ε / 2 of a , and an Nt such that beyond that point, t is within ε / 2 of b . Then, whenever n is greater than or equal to the maximum of Ns and Nt , the sequence fun n ↦ s n + t n should be within ε of a + b . The following example begins to implement this strategy. See if you can finish it off.",
+    "html": "<p>For a more interesting theorem, let’s show that if <code class=\"docutils literal notranslate\"><span class=\"pre\">s</span></code>\nconverges to <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">t</span></code> converges to <code class=\"docutils literal notranslate\"><span class=\"pre\">b</span></code>, then\n<code class=\"docutils literal notranslate\"><span class=\"pre\">fun</span> <span class=\"pre\">n</span> <span class=\"pre\">↦</span> <span class=\"pre\">s</span> <span class=\"pre\">n</span> <span class=\"pre\">+</span> <span class=\"pre\">t</span> <span class=\"pre\">n</span></code> converges to <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span> <span class=\"pre\">+</span> <span class=\"pre\">b</span></code>.\nIt is helpful to have a clear pen-and-paper\nproof in mind before you start writing a formal one.\nGiven <code class=\"docutils literal notranslate\"><span class=\"pre\">ε</span></code> greater than <code class=\"docutils literal notranslate\"><span class=\"pre\">0</span></code>,\nthe idea is to use the hypotheses to obtain an <code class=\"docutils literal notranslate\"><span class=\"pre\">Ns</span></code>\nsuch that beyond that point, <code class=\"docutils literal notranslate\"><span class=\"pre\">s</span></code> is within <code class=\"docutils literal notranslate\"><span class=\"pre\">ε</span> <span class=\"pre\">/</span> <span class=\"pre\">2</span></code>\nof <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span></code>,\nand an <code class=\"docutils literal notranslate\"><span class=\"pre\">Nt</span></code> such that beyond that point, <code class=\"docutils literal notranslate\"><span class=\"pre\">t</span></code> is within\n<code class=\"docutils literal notranslate\"><span class=\"pre\">ε</span> <span class=\"pre\">/</span> <span class=\"pre\">2</span></code> of <code class=\"docutils literal notranslate\"><span class=\"pre\">b</span></code>.\nThen, whenever <code class=\"docutils literal notranslate\"><span class=\"pre\">n</span></code> is greater than or equal to the\nmaximum of <code class=\"docutils literal notranslate\"><span class=\"pre\">Ns</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">Nt</span></code>,\nthe sequence <code class=\"docutils literal notranslate\"><span class=\"pre\">fun</span> <span class=\"pre\">n</span> <span class=\"pre\">↦</span> <span class=\"pre\">s</span> <span class=\"pre\">n</span> <span class=\"pre\">+</span> <span class=\"pre\">t</span> <span class=\"pre\">n</span></code> should be within <code class=\"docutils literal notranslate\"><span class=\"pre\">ε</span></code>\nof <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span> <span class=\"pre\">+</span> <span class=\"pre\">b</span></code>.\nThe following example begins to implement this strategy.\nSee if you can finish it off.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0140",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "As hints, you can use le_of_max_le_left and le_of_max_le_right , and norm_num can prove ε / 2 + ε / 2 = ε . Also, it is helpful to use the congr tactic to show that |s n + t n - (a + b)| is equal to |(s n - a) + (t n - b)|, since then you can use the triangle inequality. Notice that we marked all the variables s , t , a , and b implicit because they can be inferred from the hypotheses.",
+    "html": "<p>As hints, you can use <code class=\"docutils literal notranslate\"><span class=\"pre\">le_of_max_le_left</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">le_of_max_le_right</span></code>,\nand <code class=\"docutils literal notranslate\"><span class=\"pre\">norm_num</span></code> can prove <code class=\"docutils literal notranslate\"><span class=\"pre\">ε</span> <span class=\"pre\">/</span> <span class=\"pre\">2</span> <span class=\"pre\">+</span> <span class=\"pre\">ε</span> <span class=\"pre\">/</span> <span class=\"pre\">2</span> <span class=\"pre\">=</span> <span class=\"pre\">ε</span></code>.\nAlso, it is helpful to use the <code class=\"docutils literal notranslate\"><span class=\"pre\">congr</span></code> tactic to\nshow that <code class=\"docutils literal notranslate\"><span class=\"pre\">|s</span> <span class=\"pre\">n</span> <span class=\"pre\">+</span> <span class=\"pre\">t</span> <span class=\"pre\">n</span> <span class=\"pre\">-</span> <span class=\"pre\">(a</span> <span class=\"pre\">+</span> <span class=\"pre\">b)|</span></code> is equal to\n<code class=\"docutils literal notranslate\"><span class=\"pre\">|(s</span> <span class=\"pre\">n</span> <span class=\"pre\">-</span> <span class=\"pre\">a)</span> <span class=\"pre\">+</span> <span class=\"pre\">(t</span> <span class=\"pre\">n</span> <span class=\"pre\">-</span> <span class=\"pre\">b)|,</span></code>\nsince then you can use the triangle inequality.\nNotice that we marked all the variables <code class=\"docutils literal notranslate\"><span class=\"pre\">s</span></code>, <code class=\"docutils literal notranslate\"><span class=\"pre\">t</span></code>, <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span></code>, and <code class=\"docutils literal notranslate\"><span class=\"pre\">b</span></code>\nimplicit because they can be inferred from the hypotheses.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0141",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "Proving the same theorem with multiplication in place of addition is tricky. We will get there by proving some auxiliary statements first. See if you can also finish off the next proof, which shows that if s converges to a , then fun n ↦ c * s n converges to c * a . It is helpful to split into cases depending on whether c is equal to zero or not. We have taken care of the zero case, and we have left you to prove the result with the extra assumption that c is nonzero.",
+    "html": "<p>Proving the same theorem with multiplication in place\nof addition is tricky.\nWe will get there by proving some auxiliary statements first.\nSee if you can also finish off the next proof,\nwhich shows that if <code class=\"docutils literal notranslate\"><span class=\"pre\">s</span></code> converges to <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span></code>,\nthen <code class=\"docutils literal notranslate\"><span class=\"pre\">fun</span> <span class=\"pre\">n</span> <span class=\"pre\">↦</span> <span class=\"pre\">c</span> <span class=\"pre\">*</span> <span class=\"pre\">s</span> <span class=\"pre\">n</span></code> converges to <code class=\"docutils literal notranslate\"><span class=\"pre\">c</span> <span class=\"pre\">*</span> <span class=\"pre\">a</span></code>.\nIt is helpful to split into cases depending on whether <code class=\"docutils literal notranslate\"><span class=\"pre\">c</span></code>\nis equal to zero or not.\nWe have taken care of the zero case,\nand we have left you to prove the result with\nthe extra assumption that <code class=\"docutils literal notranslate\"><span class=\"pre\">c</span></code> is nonzero.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0142",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "The next theorem is also independently interesting: it shows that a convergent sequence is eventually bounded in absolute value. We have started you off; see if you can finish it.",
+    "html": "<p>The next theorem is also independently interesting:\nit shows that a convergent sequence is eventually bounded\nin absolute value.\nWe have started you off; see if you can finish it.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0143",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "In fact, the theorem could be strengthened to assert that there is a bound b that holds for all values of n . But this version is strong enough for our purposes, and we will see at the end of this section that it holds more generally.",
+    "html": "<p>In fact, the theorem could be strengthened to assert\nthat there is a bound <code class=\"docutils literal notranslate\"><span class=\"pre\">b</span></code> that holds for all values of <code class=\"docutils literal notranslate\"><span class=\"pre\">n</span></code>.\nBut this version is strong enough for our purposes,\nand we will see at the end of this section that it\nholds more generally.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0144",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "The next lemma is auxiliary: we prove that if s converges to a and t converges to 0 , then fun n ↦ s n * t n converges to 0 . To do so, we use the previous theorem to find a B that bounds s beyond some point N₀ . See if you can understand the strategy we have outlined and finish the proof.",
+    "html": "<p>The next lemma is auxiliary: we prove that if\n<code class=\"docutils literal notranslate\"><span class=\"pre\">s</span></code> converges to <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">t</span></code> converges to <code class=\"docutils literal notranslate\"><span class=\"pre\">0</span></code>,\nthen <code class=\"docutils literal notranslate\"><span class=\"pre\">fun</span> <span class=\"pre\">n</span> <span class=\"pre\">↦</span> <span class=\"pre\">s</span> <span class=\"pre\">n</span> <span class=\"pre\">*</span> <span class=\"pre\">t</span> <span class=\"pre\">n</span></code> converges to <code class=\"docutils literal notranslate\"><span class=\"pre\">0</span></code>.\nTo do so, we use the previous theorem to find a <code class=\"docutils literal notranslate\"><span class=\"pre\">B</span></code>\nthat bounds <code class=\"docutils literal notranslate\"><span class=\"pre\">s</span></code> beyond some point <code class=\"docutils literal notranslate\"><span class=\"pre\">N₀</span></code>.\nSee if you can understand the strategy we have outlined\nand finish the proof.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0145",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "If you have made it this far, congratulations! We are now within striking distance of our theorem. The following proof finishes it off.",
+    "html": "<p>If you have made it this far, congratulations!\nWe are now within striking distance of our theorem.\nThe following proof finishes it off.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0146",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "For another challenging exercise, try filling out the following sketch of a proof that limits are unique. (If you are feeling bold, you can delete the proof sketch and try proving it from scratch.)",
+    "html": "<p>For another challenging exercise,\ntry filling out the following sketch of a proof that limits\nare unique.\n(If you are feeling bold,\nyou can delete the proof sketch and try proving it from scratch.)</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0147",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "We close the section with the observation that our proofs can be generalized. For example, the only properties that we have used of the natural numbers is that their structure carries a partial order with min and max . You can check that everything still works if you replace ℕ everywhere by any linear order α :",
+    "html": "<p>We close the section with the observation that our proofs can be generalized.\nFor example, the only properties that we have used of the\nnatural numbers is that their structure carries a partial order\nwith <code class=\"docutils literal notranslate\"><span class=\"pre\">min</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">max</span></code>.\nYou can check that everything still works if you replace <code class=\"docutils literal notranslate\"><span class=\"pre\">ℕ</span></code>\neverywhere by any linear order <code class=\"docutils literal notranslate\"><span class=\"pre\">α</span></code>:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C03_Logic:0148",
+    "file": "C03_Logic.html",
+    "tag": "p",
+    "text": "In Section 11.1 , we will see that Mathlib has mechanisms for dealing with convergence in vastly more general terms, not only abstracting away particular features of the domain and codomain, but also abstracting over different types of convergence.",
+    "html": "<p>In <a class=\"reference internal\" href=\"C11_Topology.html#filters\"><span class=\"std std-numref\">Section 11.1</span></a>, we will see that Mathlib has mechanisms\nfor dealing with convergence in vastly more general terms,\nnot only abstracting away particular features of the domain\nand codomain,\nbut also abstracting over different types of convergence.</p>",
+    "zh": ""
+  }
+]

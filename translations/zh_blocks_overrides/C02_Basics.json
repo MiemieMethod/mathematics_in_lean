@@ -1,0 +1,266 @@
+[
+  {
+    "id": "C02_Basics:0001",
+    "zh": "<span class=\"section-number\">2. </span>基础"
+  },
+  {
+    "id": "C02_Basics:0002",
+    "zh": "<span class=\"section-number\">2.1. </span>计算"
+  },
+  {
+    "id": "C02_Basics:0003",
+    "zh": "<span class=\"section-number\">2.2. </span>证明代数结构中的恒等式"
+  },
+  {
+    "id": "C02_Basics:0004",
+    "zh": "<span class=\"section-number\">2.3. </span>使用定理和引理"
+  },
+  {
+    "id": "C02_Basics:0005",
+    "zh": "<span class=\"section-number\">2.4. </span>使用 apply 和 rw 的更多例子"
+  },
+  {
+    "id": "C02_Basics:0006",
+    "zh": "<span class=\"section-number\">2.5. </span>证明关于代数结构的事实"
+  },
+  {
+    "id": "C02_Basics:0007",
+    "zh": "本章旨在介绍 Lean 中数学推理的基本环节：计算、应用引理和定理，以及对一般结构进行推理。"
+  },
+  {
+    "id": "C02_Basics:0008",
+    "zh": "我们通常学会进行数学计算时，并不会把这些计算看作证明。但是，当我们像 Lean 要求的那样，为计算中的每一步给出理由时，最终得到的正是一个证明：它证明该计算左端等于右端。"
+  },
+  {
+    "id": "C02_Basics:0009",
+    "zh": "在 Lean 中，陈述一个定理等同于陈述一个目标，也就是证明该定理这一目标。Lean 提供重写策略 <code class=\"docutils literal notranslate\"><span class=\"pre\">rw</span></code>，用于在目标中把某个恒等式的左端替换为右端。若 <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span></code>、<code class=\"docutils literal notranslate\"><span class=\"pre\">b</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">c</span></code> 是实数，则 <code class=\"docutils literal notranslate\"><span class=\"pre\">mul_assoc</span> <span class=\"pre\">a</span> <span class=\"pre\">b</span> <span class=\"pre\">c</span></code> 是恒等式 <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span> <span class=\"pre\">*</span> <span class=\"pre\">b</span> <span class=\"pre\">*</span> <span class=\"pre\">c</span> <span class=\"pre\">=</span> <span class=\"pre\">a</span> <span class=\"pre\">*</span> <span class=\"pre\">(b</span> <span class=\"pre\">*</span> <span class=\"pre\">c)</span></code>，而 <code class=\"docutils literal notranslate\"><span class=\"pre\">mul_comm</span> <span class=\"pre\">a</span> <span class=\"pre\">b</span></code> 是恒等式 <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span> <span class=\"pre\">*</span> <span class=\"pre\">b</span> <span class=\"pre\">=</span> <span class=\"pre\">b</span> <span class=\"pre\">*</span> <span class=\"pre\">a</span></code>。Lean 提供的自动化通常使我们不必显式引用这类事实，但它们作为说明材料很有用。在 Lean 中，乘法向左结合，因此 <code class=\"docutils literal notranslate\"><span class=\"pre\">mul_assoc</span></code> 的左端也可以写作 <code class=\"docutils literal notranslate\"><span class=\"pre\">(a</span> <span class=\"pre\">*</span> <span class=\"pre\">b)</span> <span class=\"pre\">*</span> <span class=\"pre\">c</span></code>。不过，通常更好的风格是注意 Lean 的记号约定：Lean 省略括号时，我们也相应省略。"
+  },
+  {
+    "id": "C02_Basics:0010",
+    "zh": "让我们试用一下 <code class=\"docutils literal notranslate\"><span class=\"pre\">rw</span></code>。"
+  },
+  {
+    "id": "C02_Basics:0011",
+    "zh": "关联例子文件开头的 <code class=\"docutils literal notranslate\"><span class=\"pre\">import</span></code> 行，从 Mathlib 导入了实数理论以及有用的自动化工具。为了简洁，本教材通常省略这类信息。"
+  },
+  {
+    "id": "C02_Basics:0012",
+    "zh": "欢迎你修改代码，观察会发生什么。在 VS Code 中，可以用 <code class=\"docutils literal notranslate\"><span class=\"pre\">\\R</span></code> 或 <code class=\"docutils literal notranslate\"><span class=\"pre\">\\real</span></code> 输入字符 <code class=\"docutils literal notranslate\"><span class=\"pre\">ℝ</span></code>。只有在按下空格键或 Tab 键之后，该符号才会出现。阅读 Lean 文件时，如果把鼠标悬停在某个符号上，VS Code 会显示可用于输入该符号的语法。如果想查看所有可用缩写，可以按 Ctrl-Shift-P，然后输入 abbreviations，以打开 <code class=\"docutils literal notranslate\"><span class=\"pre\">Lean</span> <span class=\"pre\">4:</span> <span class=\"pre\">Show</span> <span class=\"pre\">Unicode</span> <span class=\"pre\">Input</span> <span class=\"pre\">Abbreviations</span></code> 命令。如果键盘上不便输入反斜杠，也可以修改 <code class=\"docutils literal notranslate\"><span class=\"pre\">lean4.input.leader</span></code> 设置来改变前导字符。"
+  },
+  {
+    "id": "C02_Basics:0013",
+    "zh": "当光标位于一个策略证明中间时，Lean 会在 <em>Lean Infoview</em> 窗口中报告当前的<em>证明状态</em>。随着你把光标逐步移过证明中的每一步，可以看到状态发生变化。Lean 中一个典型的证明状态可能如下所示："
+  },
+  {
+    "id": "C02_Basics:0014",
+    "zh": "以 <code class=\"docutils literal notranslate\"><span class=\"pre\">⊢</span></code> 开头的那一行之前的各行表示<em>语境</em>：它们是当前正在讨论的对象和假设。在这个例子中，语境包括两个对象 <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">y</span></code>，它们都是自然数；还包括三个假设，分别标记为 <code class=\"docutils literal notranslate\"><span class=\"pre\">h₁</span></code>、<code class=\"docutils literal notranslate\"><span class=\"pre\">h₂</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">h₃</span></code>。在 Lean 中，语境中的一切都有一个标识符。你可以将这些带下标的标号输入为 <code class=\"docutils literal notranslate\"><span class=\"pre\">h\\1</span></code>、<code class=\"docutils literal notranslate\"><span class=\"pre\">h\\2</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">h\\3</span></code>，但任何合法标识符都可以；例如也可以使用 <code class=\"docutils literal notranslate\"><span class=\"pre\">h1</span></code>、<code class=\"docutils literal notranslate\"><span class=\"pre\">h2</span></code>、<code class=\"docutils literal notranslate\"><span class=\"pre\">h3</span></code>，或者 <code class=\"docutils literal notranslate\"><span class=\"pre\">foo</span></code>、<code class=\"docutils literal notranslate\"><span class=\"pre\">bar</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">baz</span></code>。最后一行表示<em>目标</em>，也就是待证明的事实。有时人们用<em>靶标</em>指待证明的事实，而用<em>目标</em>指语境与靶标的组合。在实践中，具体含义通常由上下文决定。"
+  },
+  {
+    "id": "C02_Basics:0015",
+    "zh": "请尝试证明这些恒等式；每一次都把 <code class=\"docutils literal notranslate\"><span class=\"pre\">sorry</span></code> 替换为一个策略证明。使用 <code class=\"docutils literal notranslate\"><span class=\"pre\">rw</span></code> 策略时，可以用左箭头（<code class=\"docutils literal notranslate\"><span class=\"pre\">\\l</span></code>）反向使用一个恒等式。例如，<code class=\"docutils literal notranslate\"><span class=\"pre\">rw</span> <span class=\"pre\">[←</span> <span class=\"pre\">mul_assoc</span> <span class=\"pre\">a</span> <span class=\"pre\">b</span> <span class=\"pre\">c]</span></code> 会在当前目标中把 <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span> <span class=\"pre\">*</span> <span class=\"pre\">(b</span> <span class=\"pre\">*</span> <span class=\"pre\">c)</span></code> 替换为 <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span> <span class=\"pre\">*</span> <span class=\"pre\">b</span> <span class=\"pre\">*</span> <span class=\"pre\">c</span></code>。注意，左箭头表示按 <code class=\"docutils literal notranslate\"><span class=\"pre\">mul_assoc</span></code> 给出的恒等式从右向左使用；它与目标本身的左端或右端无关。"
+  },
+  {
+    "id": "C02_Basics:0016",
+    "zh": "你也可以不带参数地使用 <code class=\"docutils literal notranslate\"><span class=\"pre\">mul_assoc</span></code>、<code class=\"docutils literal notranslate\"><span class=\"pre\">mul_comm</span></code> 这样的恒等式。在这种情况下，重写策略会试图用恒等式的左端匹配目标中的某个表达式，并采用它找到的第一个匹配模式。"
+  },
+  {
+    "id": "C02_Basics:0017",
+    "zh": "你也可以只提供<em>部分</em>信息。例如，<code class=\"docutils literal notranslate\"><span class=\"pre\">mul_comm</span> <span class=\"pre\">a</span></code> 会匹配任何形如 <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span> <span class=\"pre\">*</span> <span class=\"pre\">?</span></code> 的模式，并将其重写为 <code class=\"docutils literal notranslate\"><span class=\"pre\">?</span> <span class=\"pre\">*</span> <span class=\"pre\">a</span></code>。请尝试在第一个例子中完全不提供参数，在第二个例子中只提供一个参数。"
+  },
+  {
+    "id": "C02_Basics:0018",
+    "zh": "也可以把 <code class=\"docutils literal notranslate\"><span class=\"pre\">rw</span></code> 用于局部语境中的事实。"
+  },
+  {
+    "id": "C02_Basics:0019",
+    "zh": "请尝试下面的例子；第二个例子可使用定理 <code class=\"docutils literal notranslate\"><span class=\"pre\">sub_self</span></code>："
+  },
+  {
+    "id": "C02_Basics:0020",
+    "zh": "多个重写命令可以合并为一个命令：只需在方括号中用逗号列出相关恒等式即可。"
+  },
+  {
+    "id": "C02_Basics:0021",
+    "zh": "把光标放在任意重写列表中的逗号之后，仍然可以看到逐步推进的中间状态。"
+  },
+  {
+    "id": "C02_Basics:0022",
+    "zh": "另一个技巧是，可以在例子或定理之外一次性声明变量。Lean 随后会自动把这些变量纳入相关语境。"
+  },
+  {
+    "id": "C02_Basics:0023",
+    "zh": "检查上述证明开头的策略状态，可以看到 Lean 的确纳入了所有变量。我们可以把声明放进 <code class=\"docutils literal notranslate\"><span class=\"pre\">section</span> <span class=\"pre\">...</span> <span class=\"pre\">end</span></code> 块中，以限定其作用域。最后，回忆引言中提到的内容：Lean 为我们提供了一个命令，用于确定表达式的类型。"
+  },
+  {
+    "id": "C02_Basics:0024",
+    "zh": "<code class=\"docutils literal notranslate\"><span class=\"pre\">#check</span></code> 命令既适用于对象，也适用于事实。对于命令 <code class=\"docutils literal notranslate\"><span class=\"pre\">#check</span> <span class=\"pre\">a</span></code>，Lean 会报告 <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span></code> 的类型是 <code class=\"docutils literal notranslate\"><span class=\"pre\">ℝ</span></code>。对于命令 <code class=\"docutils literal notranslate\"><span class=\"pre\">#check</span> <span class=\"pre\">mul_comm</span> <span class=\"pre\">a</span> <span class=\"pre\">b</span></code>，Lean 会报告 <code class=\"docutils literal notranslate\"><span class=\"pre\">mul_comm</span> <span class=\"pre\">a</span> <span class=\"pre\">b</span></code> 是事实 <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span> <span class=\"pre\">*</span> <span class=\"pre\">b</span> <span class=\"pre\">=</span> <span class=\"pre\">b</span> <span class=\"pre\">*</span> <span class=\"pre\">a</span></code> 的一个证明。命令 <code class=\"docutils literal notranslate\"><span class=\"pre\">#check</span> <span class=\"pre\">(a</span> <span class=\"pre\">:</span> <span class=\"pre\">ℝ)</span></code> 表明我们预期 <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span></code> 的类型是 <code class=\"docutils literal notranslate\"><span class=\"pre\">ℝ</span></code>；若事实并非如此，Lean 会报错。最后三个 <code class=\"docutils literal notranslate\"><span class=\"pre\">#check</span></code> 命令的输出我们稍后会解释；在此之前，你可以先查看它们，并自行尝试一些 <code class=\"docutils literal notranslate\"><span class=\"pre\">#check</span></code> 命令。"
+  },
+  {
+    "id": "C02_Basics:0025",
+    "zh": "再看几个例子。定理 <code class=\"docutils literal notranslate\"><span class=\"pre\">two_mul</span> <span class=\"pre\">a</span></code> 表示 <code class=\"docutils literal notranslate\"><span class=\"pre\">2</span> <span class=\"pre\">*</span> <span class=\"pre\">a</span> <span class=\"pre\">=</span> <span class=\"pre\">a</span> <span class=\"pre\">+</span> <span class=\"pre\">a</span></code>。定理 <code class=\"docutils literal notranslate\"><span class=\"pre\">add_mul</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">mul_add</span></code> 表达乘法对加法的分配律，定理 <code class=\"docutils literal notranslate\"><span class=\"pre\">add_assoc</span></code> 表达加法的结合律。请使用 <code class=\"docutils literal notranslate\"><span class=\"pre\">#check</span></code> 命令查看它们的精确陈述。"
+  },
+  {
+    "id": "C02_Basics:0026",
+    "zh": "虽然可以在编辑器中逐步查看这个证明，从而弄清它究竟在做什么，但单独阅读它并不容易。Lean 提供了一种更结构化的方式，用关键字 <code class=\"docutils literal notranslate\"><span class=\"pre\">calc</span></code> 来书写这类证明。"
+  },
+  {
+    "id": "C02_Basics:0027",
+    "zh": "注意，这个证明并不以 <code class=\"docutils literal notranslate\"><span class=\"pre\">by</span></code> 开头：以 <code class=\"docutils literal notranslate\"><span class=\"pre\">calc</span></code> 开头的表达式是一个<em>证明项</em>。<code class=\"docutils literal notranslate\"><span class=\"pre\">calc</span></code> 表达式也可以用于策略证明内部，但 Lean 会把它解释为一条指令：使用由此得到的证明项来解决当前目标。<code class=\"docutils literal notranslate\"><span class=\"pre\">calc</span></code> 语法比较严格：下划线和论证必须采用上面展示的格式。Lean 还会使用缩进来判断策略块或 <code class=\"docutils literal notranslate\"><span class=\"pre\">calc</span></code> 块从何处开始、到何处结束；可以尝试改变上面证明的缩进，看看会发生什么。"
+  },
+  {
+    "id": "C02_Basics:0028",
+    "zh": "书写 <code class=\"docutils literal notranslate\"><span class=\"pre\">calc</span></code> 证明的一种方法，是先用 <code class=\"docutils literal notranslate\"><span class=\"pre\">sorry</span></code> 策略作为论证占位，勾勒出证明框架，确认 Lean 在这些占位下接受该表达式，然后再用策略逐步证明各个步骤。"
+  },
+  {
+    "id": "C02_Basics:0029",
+    "zh": "请尝试用一个纯粹的 <code class=\"docutils literal notranslate\"><span class=\"pre\">rw</span></code> 证明，以及一个更结构化的 <code class=\"docutils literal notranslate\"><span class=\"pre\">calc</span></code> 证明，来证明下面的恒等式："
+  },
+  {
+    "id": "C02_Basics:0030",
+    "zh": "下面的练习稍有挑战。你可以使用列在其后的定理。"
+  },
+  {
+    "id": "C02_Basics:0031",
+    "zh": "我们也可以在语境中的某个假设里进行重写。例如，<code class=\"docutils literal notranslate\"><span class=\"pre\">rw</span> <span class=\"pre\">[mul_comm</span> <span class=\"pre\">a</span> <span class=\"pre\">b]</span> <span class=\"pre\">at</span> <span class=\"pre\">hyp</span></code> 会在假设 <code class=\"docutils literal notranslate\"><span class=\"pre\">hyp</span></code> 中把 <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span> <span class=\"pre\">*</span> <span class=\"pre\">b</span></code> 替换为 <code class=\"docutils literal notranslate\"><span class=\"pre\">b</span> <span class=\"pre\">*</span> <span class=\"pre\">a</span></code>。"
+  },
+  {
+    "id": "C02_Basics:0032",
+    "zh": "在最后一步，<code class=\"docutils literal notranslate\"><span class=\"pre\">exact</span></code> 策略可以使用 <code class=\"docutils literal notranslate\"><span class=\"pre\">hyp</span></code> 解决目标，因为此时 <code class=\"docutils literal notranslate\"><span class=\"pre\">hyp</span></code> 与目标完全匹配。"
+  },
+  {
+    "id": "C02_Basics:0033",
+    "zh": "本节最后指出，Mathlib 通过 <code class=\"docutils literal notranslate\"><span class=\"pre\">ring</span></code> 策略提供了一项有用的自动化。只要某个恒等式纯粹由环公理推出，而不使用任何局部假设，该策略就被设计用来在任意交换环中证明它。"
+  },
+  {
+    "id": "C02_Basics:0034",
+    "zh": "当我们导入 <code class=\"docutils literal notranslate\"><span class=\"pre\">Mathlib.Data.Real.Basic</span></code> 时，<code class=\"docutils literal notranslate\"><span class=\"pre\">ring</span></code> 策略会被间接导入；不过下一节会看到，它也可用于实数以外的结构上的计算。它也可以通过命令 <code class=\"docutils literal notranslate\"><span class=\"pre\">import</span> <span class=\"pre\">Mathlib.Tactic</span></code> 显式导入。我们还会看到，对于其他常见的代数结构，也存在类似的策略。"
+  },
+  {
+    "id": "C02_Basics:0035",
+    "zh": "<code class=\"docutils literal notranslate\"><span class=\"pre\">rw</span></code> 有一个变体叫 <code class=\"docutils literal notranslate\"><span class=\"pre\">nth_rw</span></code>，允许你只替换目标中某个表达式的特定出现。可能的匹配从 1 开始编号；因此在下面的例子中，<code class=\"docutils literal notranslate\"><span class=\"pre\">nth_rw</span> <span class=\"pre\">2</span> <span class=\"pre\">[h]</span></code> 会把第二次出现的 <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span> <span class=\"pre\">+</span> <span class=\"pre\">b</span></code> 替换为 <code class=\"docutils literal notranslate\"><span class=\"pre\">c</span></code>。"
+  },
+  {
+    "id": "C02_Basics:0036",
+    "zh": "从数学上说，一个环由一族对象 <span class=\"math notranslate nohighlight\">\\(R\\)</span>、运算 <span class=\"math notranslate nohighlight\">\\(+\\)</span> 与 <span class=\"math notranslate nohighlight\">\\(\\times\\)</span>、常元 <span class=\"math notranslate nohighlight\">\\(0\\)</span> 和 <span class=\"math notranslate nohighlight\">\\(1\\)</span>，以及运算 <span class=\"math notranslate nohighlight\">\\(x \\mapsto -x\\)</span> 组成，并满足如下条件："
+  },
+  {
+    "id": "C02_Basics:0037",
+    "zh": "在 Lean 中，这族对象表示为一个<em>类型</em> <code class=\"docutils literal notranslate\"><span class=\"pre\">R</span></code>。环公理如下："
+  },
+  {
+    "id": "C02_Basics:0038",
+    "zh": "第一行中的方括号稍后还会详细解释；目前只需知道，该声明给出了一个类型 <code class=\"docutils literal notranslate\"><span class=\"pre\">R</span></code>，以及 <code class=\"docutils literal notranslate\"><span class=\"pre\">R</span></code> 上的一个环结构。随后，Lean 允许我们对 <code class=\"docutils literal notranslate\"><span class=\"pre\">R</span></code> 的元素使用一般的环记号，并使用关于环的定理库。"
+  },
+  {
+    "id": "C02_Basics:0039",
+    "zh": "有些定理的名称应该看起来很熟悉：它们正是上一节中我们用来对实数进行计算的定理。Lean 不仅适合证明关于自然数、整数等具体数学结构的事实，也适合证明关于由公理刻画的抽象结构（例如环）的事实。此外，Lean 支持对抽象结构和具体结构进行<em>一般性推理</em>，并且可以被训练为识别适当的实例。因此，任何关于环的定理都可以应用于整数 <code class=\"docutils literal notranslate\"><span class=\"pre\">ℤ</span></code>、有理数 <code class=\"docutils literal notranslate\"><span class=\"pre\">ℚ</span></code>、复数 <code class=\"docutils literal notranslate\"><span class=\"pre\">ℂ</span></code> 等具体环。它也可以应用于任何扩展环的抽象结构实例，例如任意有序环或任意域。"
+  },
+  {
+    "id": "C02_Basics:0040",
+    "zh": "不过，并非实数的重要性质都在任意环中成立。例如，实数乘法是交换的，但一般并非如此。如果你学过线性代数，就会知道，对每个 <span class=\"math notranslate nohighlight\">\\(n\\)</span>，实数上的 <span class=\"math notranslate nohighlight\">\\(n\\)</span> 阶方阵构成一个环，而其中乘法通常不交换。若我们声明 <code class=\"docutils literal notranslate\"><span class=\"pre\">R</span></code> 是一个<em>交换</em>环，那么上一节中的所有定理，在把 <code class=\"docutils literal notranslate\"><span class=\"pre\">ℝ</span></code> 替换为 <code class=\"docutils literal notranslate\"><span class=\"pre\">R</span></code> 后事实上仍然成立。"
+  },
+  {
+    "id": "C02_Basics:0041",
+    "zh": "我们把检查其他所有证明是否原样通过留给读者。注意，当证明很短，例如 <code class=\"docutils literal notranslate\"><span class=\"pre\">by</span> <span class=\"pre\">ring</span></code>、<code class=\"docutils literal notranslate\"><span class=\"pre\">by</span> <span class=\"pre\">linarith</span></code> 或 <code class=\"docutils literal notranslate\"><span class=\"pre\">by</span> <span class=\"pre\">sorry</span></code> 时，通常也允许把它和 <code class=\"docutils literal notranslate\"><span class=\"pre\">by</span></code> 写在同一行。良好的证明书写风格应当在简洁性与可读性之间取得平衡。"
+  },
+  {
+    "id": "C02_Basics:0042",
+    "zh": "本节的目标是强化你在上一节形成的技能，并把这些技能应用于关于环的公理化推理。我们将从上面列出的公理出发，用它们推出其他事实。我们证明的大多数事实已经存在于 Mathlib 中。为了帮助你熟悉库的内容以及命名约定，我们会给自己证明的版本使用相同名称。"
+  },
+  {
+    "id": "C02_Basics:0043",
+    "zh": "Lean 提供了一种类似程序语言中的组织机制：当一个定义或定理 <code class=\"docutils literal notranslate\"><span class=\"pre\">foo</span></code> 在<em>命名空间</em> <code class=\"docutils literal notranslate\"><span class=\"pre\">bar</span></code> 中引入时，它的全名是 <code class=\"docutils literal notranslate\"><span class=\"pre\">bar.foo</span></code>。之后命令 <code class=\"docutils literal notranslate\"><span class=\"pre\">open</span> <span class=\"pre\">bar</span></code> 会<em>打开</em>该命名空间，使我们可以使用较短的名称 <code class=\"docutils literal notranslate\"><span class=\"pre\">foo</span></code>。为了避免名称冲突导致错误，在下一个例子中，我们把自己版本的库定理放进一个名为 <code class=\"docutils literal notranslate\"><span class=\"pre\">MyRing.</span></code> 的新命名空间。"
+  },
+  {
+    "id": "C02_Basics:0044",
+    "zh": "下一个例子表明，我们不必把 <code class=\"docutils literal notranslate\"><span class=\"pre\">add_zero</span></code> 或 <code class=\"docutils literal notranslate\"><span class=\"pre\">add_neg_cancel</span></code> 作为环公理，因为它们可以由其他公理推出。"
+  },
+  {
+    "id": "C02_Basics:0045",
+    "zh": "其净效果是：我们可以暂时重新证明库中的一个定理，随后继续使用库中的版本。不过不要作弊！在接下来的练习中，请注意只使用本节前面已经证明的一般环论事实。"
+  },
+  {
+    "id": "C02_Basics:0046",
+    "zh": "（如果你非常仔细，可能已经注意到我们把 <code class=\"docutils literal notranslate\"><span class=\"pre\">(R</span> <span class=\"pre\">:</span> <span class=\"pre\">Type*)</span></code> 中的圆括号改成了 <code class=\"docutils literal notranslate\"><span class=\"pre\">{R</span> <span class=\"pre\">:</span> <span class=\"pre\">Type*}</span></code> 中的花括号。这把 <code class=\"docutils literal notranslate\"><span class=\"pre\">R</span></code> 声明为一个<em>隐式参数</em>。我们马上会解释这意味着什么；暂时不必担心。）"
+  },
+  {
+    "id": "C02_Basics:0047",
+    "zh": "下面是一个有用的定理："
+  },
+  {
+    "id": "C02_Basics:0048",
+    "zh": "请证明对应的伴随版本："
+  },
+  {
+    "id": "C02_Basics:0049",
+    "zh": "用这些定理证明如下命题："
+  },
+  {
+    "id": "C02_Basics:0050",
+    "zh": "只要事先规划得当，每一个命题都可以用三次重写完成。"
+  },
+  {
+    "id": "C02_Basics:0051",
+    "zh": "现在我们解释花括号的用法。设想你处在如下情形：语境中有 <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span></code>、<code class=\"docutils literal notranslate\"><span class=\"pre\">b</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">c</span></code>，还有假设 <code class=\"docutils literal notranslate\"><span class=\"pre\">h</span> <span class=\"pre\">:</span> <span class=\"pre\">a</span> <span class=\"pre\">+</span> <span class=\"pre\">b</span> <span class=\"pre\">=</span> <span class=\"pre\">a</span> <span class=\"pre\">+</span> <span class=\"pre\">c</span></code>，而你想推出结论 <code class=\"docutils literal notranslate\"><span class=\"pre\">b</span> <span class=\"pre\">=</span> <span class=\"pre\">c</span></code>。在 Lean 中，定理可以像应用到对象那样应用到假设和事实上，所以你可能会以为 <code class=\"docutils literal notranslate\"><span class=\"pre\">add_left_cancel</span> <span class=\"pre\">a</span> <span class=\"pre\">b</span> <span class=\"pre\">c</span> <span class=\"pre\">h</span></code> 是事实 <code class=\"docutils literal notranslate\"><span class=\"pre\">b</span> <span class=\"pre\">=</span> <span class=\"pre\">c</span></code> 的一个证明。但请注意，显式写出 <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span></code>、<code class=\"docutils literal notranslate\"><span class=\"pre\">b</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">c</span></code> 是冗余的，因为假设 <code class=\"docutils literal notranslate\"><span class=\"pre\">h</span></code> 已经清楚表明了我们所考虑的对象。在这个例子中，多敲几个字符并不麻烦；但如果要把 <code class=\"docutils literal notranslate\"><span class=\"pre\">add_left_cancel</span></code> 应用于更复杂的表达式，写出这些参数就会很繁琐。在这类情况下，Lean 允许我们把参数标记为<em>隐式</em>，意思是这些参数应当省略，并由其他方式推断出来，例如由后续参数和假设推断。<code class=\"docutils literal notranslate\"><span class=\"pre\">{a</span> <span class=\"pre\">b</span> <span class=\"pre\">c</span> <span class=\"pre\">:</span> <span class=\"pre\">R}</span></code> 中的花括号正是这个作用。因此，在给定上述定理陈述后，正确的表达式只是 <code class=\"docutils literal notranslate\"><span class=\"pre\">add_left_cancel</span> <span class=\"pre\">h</span></code>。"
+  },
+  {
+    "id": "C02_Basics:0052",
+    "zh": "作为说明，我们来证明 <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span> <span class=\"pre\">*</span> <span class=\"pre\">0</span> <span class=\"pre\">=</span> <span class=\"pre\">0</span></code> 可由环公理推出。"
+  },
+  {
+    "id": "C02_Basics:0053",
+    "zh": "我们使用了一个新技巧！如果逐步查看这个证明，就能看出发生了什么。<code class=\"docutils literal notranslate\"><span class=\"pre\">have</span></code> 策略引入一个新目标 <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span> <span class=\"pre\">*</span> <span class=\"pre\">0</span> <span class=\"pre\">+</span> <span class=\"pre\">a</span> <span class=\"pre\">*</span> <span class=\"pre\">0</span> <span class=\"pre\">=</span> <span class=\"pre\">a</span> <span class=\"pre\">*</span> <span class=\"pre\">0</span> <span class=\"pre\">+</span> <span class=\"pre\">0</span></code>，其语境与原目标相同。下一行缩进这一事实表明，Lean 正期待一个用于证明该新目标的策略块。因此，缩进促成了一种模块化的证明风格：被缩进的子证明建立由 <code class=\"docutils literal notranslate\"><span class=\"pre\">have</span></code> 引入的目标。之后，我们回到原目标，只是语境中多了一个新假设 <code class=\"docutils literal notranslate\"><span class=\"pre\">h</span></code>：既然已经证明了它，我们便可以使用它。此时，目标恰好就是 <code class=\"docutils literal notranslate\"><span class=\"pre\">add_left_cancel</span> <span class=\"pre\">h</span></code> 的结果。"
+  },
+  {
+    "id": "C02_Basics:0054",
+    "zh": "我们同样可以用 <code class=\"docutils literal notranslate\"><span class=\"pre\">apply</span> <span class=\"pre\">add_left_cancel</span> <span class=\"pre\">h</span></code> 或 <code class=\"docutils literal notranslate\"><span class=\"pre\">exact</span> <span class=\"pre\">add_left_cancel</span> <span class=\"pre\">h</span></code> 结束证明。<code class=\"docutils literal notranslate\"><span class=\"pre\">exact</span></code> 策略的参数是一个能完全证明当前目标的证明项，并且不会产生任何新目标。<code class=\"docutils literal notranslate\"><span class=\"pre\">apply</span></code> 策略则是一个变体，它的参数不一定是完整证明；缺失的部分要么由 Lean 自动推断，要么成为新的待证明目标。虽然从技术上说 <code class=\"docutils literal notranslate\"><span class=\"pre\">exact</span></code> 是冗余的，因为它严格弱于 <code class=\"docutils literal notranslate\"><span class=\"pre\">apply</span></code>，但它能使证明脚本对人类读者稍微更清晰，也更便于在库演化时维护。"
+  },
+  {
+    "id": "C02_Basics:0055",
+    "zh": "请记住，这里并未假定乘法交换，因此下面的定理同样需要一些工作。"
+  },
+  {
+    "id": "C02_Basics:0056",
+    "zh": "到现在为止，你也应当能够在下一个练习中把每个 <code class=\"docutils literal notranslate\"><span class=\"pre\">sorry</span></code> 替换为一个证明；仍然只使用本节已经建立的关于环的事实，以及公理 <code class=\"docutils literal notranslate\"><span class=\"pre\">eq_symm</span></code>。"
+  },
+  {
+    "id": "C02_Basics:0057",
+    "zh": "在第三个定理中，我们不得不使用注解 <code class=\"docutils literal notranslate\"><span class=\"pre\">(-0</span> <span class=\"pre\">:</span> <span class=\"pre\">R)</span></code> 而不是 <code class=\"docutils literal notranslate\"><span class=\"pre\">0</span></code>，因为如果不指定 <code class=\"docutils literal notranslate\"><span class=\"pre\">R</span></code>，Lean 就无法推断我们指的是哪一个 <code class=\"docutils literal notranslate\"><span class=\"pre\">0</span></code>，并且默认会把它解释为自然数。"
+  },
+  {
+    "id": "C02_Basics:0058",
+    "zh": "在 Lean 中，环中的减法可证明地等于加上加法逆元。"
+  },
+  {
+    "id": "C02_Basics:0059",
+    "zh": "在实数上，减法正是以这种方式<em>定义</em>的："
+  },
+  {
+    "id": "C02_Basics:0060",
+    "zh": "证明项 <code class=\"docutils literal notranslate\"><span class=\"pre\">rfl</span></code> 是 “reflexivity”（自反性）的缩写。把它作为 <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span> <span class=\"pre\">-</span> <span class=\"pre\">b</span> <span class=\"pre\">=</span> <span class=\"pre\">a</span> <span class=\"pre\">+</span> <span class=\"pre\">-b</span></code> 的证明，会迫使 Lean 展开定义，并识别等式两端其实相同。<code class=\"docutils literal notranslate\"><span class=\"pre\">rfl</span></code> 策略做的是同一件事。这是 Lean 底层逻辑中所谓<em>定义相等</em>的一个例子。这意味着，不仅可以用 <code class=\"docutils literal notranslate\"><span class=\"pre\">sub_eq_add_neg</span></code> 进行重写，把 <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span> <span class=\"pre\">-</span> <span class=\"pre\">b</span></code> 替换为 <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span> <span class=\"pre\">+</span> <span class=\"pre\">-b</span></code>；在某些处理实数的语境中，还可以互换使用等式两端。例如，你现在已经有足够信息证明上一节中的定理 <code class=\"docutils literal notranslate\"><span class=\"pre\">self_sub</span></code>："
+  },
+  {
+    "id": "C02_Basics:0061",
+    "zh": "请证明你可以使用 <code class=\"docutils literal notranslate\"><span class=\"pre\">rw</span></code> 完成这一点；但如果把任意环 <code class=\"docutils literal notranslate\"><span class=\"pre\">R</span></code> 替换为实数，也可以使用 <code class=\"docutils literal notranslate\"><span class=\"pre\">apply</span></code> 或 <code class=\"docutils literal notranslate\"><span class=\"pre\">exact</span></code> 来证明。"
+  },
+  {
+    "id": "C02_Basics:0062",
+    "zh": "Lean 知道 <code class=\"docutils literal notranslate\"><span class=\"pre\">1</span> <span class=\"pre\">+</span> <span class=\"pre\">1</span> <span class=\"pre\">=</span> <span class=\"pre\">2</span></code> 在任意环中都成立。稍加努力，你可以用它证明上一节中的定理 <code class=\"docutils literal notranslate\"><span class=\"pre\">two_mul</span></code>："
+  },
+  {
+    "id": "C02_Basics:0063",
+    "zh": "本节最后指出，我们上面建立的某些关于加法和负元的事实，并不需要完整的环公理，甚至不需要加法交换。较弱的概念<em>群</em>可以公理化如下："
+  },
+  {
+    "id": "C02_Basics:0064",
+    "zh": "约定上，当群运算交换时使用加法记号，否则使用乘法记号。因此，Lean 在加法版本之外也定义了乘法版本（并且还定义了它们的阿贝尔变体 <code class=\"docutils literal notranslate\"><span class=\"pre\">AddCommGroup</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">CommGroup</span></code>）。"
+  },
+  {
+    "id": "C02_Basics:0065",
+    "zh": "如果你信心十足，可以尝试只使用这些公理证明下面关于群的事实。在此过程中，你需要证明若干辅助引理。本节已经完成的证明可以提供一些提示。"
+  },
+  {
+    "id": "C02_Basics:0066",
+    "zh": "显式调用这些引理很繁琐，因此 Mathlib 提供了若干类似 <cite>ring</cite> 的策略来覆盖大多数用法：<cite>group</cite> 用于非交换乘法群，<cite>abel</cite> 用于阿贝尔加法群，<cite>noncomm_ring</cite> 用于非交换环。代数结构称为 <cite>Ring</cite> 和 <cite>CommRing</cite>，而策略却命名为 <cite>noncomm_ring</cite> 和 <cite>ring</cite>，这看起来或许有些奇怪。这部分出于历史原因，也部分是为了便利：处理交换环的策略使用更频繁，因此给它一个更短的名称。"
+  }
+]

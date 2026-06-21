@@ -1,0 +1,162 @@
+[
+  {
+    "id": "C03_Logic:0001",
+    "zh": "<span class=\"section-number\">3. </span>逻辑"
+  },
+  {
+    "id": "C03_Logic:0002",
+    "zh": "<span class=\"section-number\">3.1. </span>蕴含与全称量词"
+  },
+  {
+    "id": "C03_Logic:0003",
+    "zh": "<span class=\"section-number\">3.2. </span>存在量词"
+  },
+  {
+    "id": "C03_Logic:0004",
+    "zh": "<span class=\"section-number\">3.3. </span>否定"
+  },
+  {
+    "id": "C03_Logic:0005",
+    "zh": "<span class=\"section-number\">3.4. </span>合取与当且仅当"
+  },
+  {
+    "id": "C03_Logic:0006",
+    "zh": "<span class=\"section-number\">3.5. </span>析取"
+  },
+  {
+    "id": "C03_Logic:0007",
+    "zh": "<span class=\"section-number\">3.6. </span>序列与收敛"
+  },
+  {
+    "id": "C03_Logic:0008",
+    "zh": "上一章中，我们处理了等式、不等式，以及诸如“<span class=\"math notranslate nohighlight\">\\(x\\)</span> 整除 <span class=\"math notranslate nohighlight\">\\(y\\)</span>”这样的基本数学命题。复杂的数学命题由这类简单命题借助逻辑术语构成，例如“且”“或”“非”，以及“若……则……”“每个”和“存在某个”。本章将说明如何处理以这种方式构成的命题。"
+  },
+  {
+    "id": "C03_Logic:0009",
+    "zh": "考虑 <code class=\"docutils literal notranslate\"><span class=\"pre\">#check</span></code> 之后的命题："
+  },
+  {
+    "id": "C03_Logic:0010",
+    "zh": "用文字来说，我们会说：“对每个实数 <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span></code>，若 <code class=\"docutils literal notranslate\"><span class=\"pre\">0</span> <span class=\"pre\">≤</span> <span class=\"pre\">x</span></code>，则 <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span></code> 的绝对值等于 <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span></code>。”我们也可以有更复杂的命题，例如："
+  },
+  {
+    "id": "C03_Logic:0011",
+    "zh": "用文字来说，我们会说：“对每个 <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span></code>、<code class=\"docutils literal notranslate\"><span class=\"pre\">y</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">ε</span></code>，若 <code class=\"docutils literal notranslate\"><span class=\"pre\">0</span> <span class=\"pre\">&lt;</span> <span class=\"pre\">ε</span> <span class=\"pre\">≤</span> <span class=\"pre\">1</span></code>，<code class=\"docutils literal notranslate\"><span class=\"pre\">x</span></code> 的绝对值小于 <code class=\"docutils literal notranslate\"><span class=\"pre\">ε</span></code>，且 <code class=\"docutils literal notranslate\"><span class=\"pre\">y</span></code> 的绝对值小于 <code class=\"docutils literal notranslate\"><span class=\"pre\">ε</span></code>，则 <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span> <span class=\"pre\">*</span> <span class=\"pre\">y</span></code> 的绝对值小于 <code class=\"docutils literal notranslate\"><span class=\"pre\">ε</span></code>。”在 Lean 中，一串蕴含中的隐含括号向右结合。因此，上面的表达式意为：“若 <code class=\"docutils literal notranslate\"><span class=\"pre\">0</span> <span class=\"pre\">&lt;</span> <span class=\"pre\">ε</span></code>，则若 <code class=\"docutils literal notranslate\"><span class=\"pre\">ε</span> <span class=\"pre\">≤</span> <span class=\"pre\">1</span></code>，则若 <code class=\"docutils literal notranslate\"><span class=\"pre\">|x|</span> <span class=\"pre\">&lt;</span> <span class=\"pre\">ε</span></code>，……”于是，该表达式表示所有假设合在一起推出结论。"
+  },
+  {
+    "id": "C03_Logic:0012",
+    "zh": "你已经看到，尽管这个命题中的全称量词遍历对象，而蕴含箭头引入假设，Lean 对二者的处理方式非常相似。特别地，如果你证明了这种形式的定理，就可以用同样方式把它应用于对象和假设。我们将以下命题作为例子；稍后会帮助你证明它："
+  },
+  {
+    "id": "C03_Logic:0013",
+    "zh": "你也已经看到，在 Lean 中，当量化变量可以由后续假设推断出来时，常常使用花括号把它们设为隐式变量。这样做之后，应用引理时只需把它应用于假设，而不必提及那些对象。"
+  },
+  {
+    "id": "C03_Logic:0014",
+    "zh": "到此为止，你也知道：若使用 <code class=\"docutils literal notranslate\"><span class=\"pre\">apply</span></code> 策略把 <code class=\"docutils literal notranslate\"><span class=\"pre\">my_lemma</span></code> 应用于形如 <code class=\"docutils literal notranslate\"><span class=\"pre\">|a</span> <span class=\"pre\">*</span> <span class=\"pre\">b|</span> <span class=\"pre\">&lt;</span> <span class=\"pre\">δ</span></code> 的目标，就会留下若干新目标，要求你证明每一个假设。"
+  },
+  {
+    "id": "C03_Logic:0015",
+    "zh": "要证明这样的命题，可以使用 <code class=\"docutils literal notranslate\"><span class=\"pre\">intro</span></code> 策略。请看它在这个例子中的作用："
+  },
+  {
+    "id": "C03_Logic:0016",
+    "zh": "对于全称量化的变量，我们可以使用任意名称；它们不必叫作 <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span></code>、<code class=\"docutils literal notranslate\"><span class=\"pre\">y</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">ε</span></code>。注意，即使这些变量被标记为隐式，我们仍然必须引入它们：把它们设为隐式，意味着在写使用 <code class=\"docutils literal notranslate\"><span class=\"pre\">my_lemma</span></code> 的表达式时省略它们；但它们仍是我们正在证明的命题的本质组成部分。在 <code class=\"docutils literal notranslate\"><span class=\"pre\">intro</span></code> 命令之后，目标就变成了如果我们像上一节那样在冒号之前列出所有变量和假设时一开始会看到的目标。稍后我们会看到，为什么有时必须在证明开始之后再引入变量和假设。"
+  },
+  {
+    "id": "C03_Logic:0017",
+    "zh": "为了帮助你证明这个引理，我们先给出开头部分："
+  },
+  {
+    "id": "C03_Logic:0018",
+    "zh": "请使用定理 <code class=\"docutils literal notranslate\"><span class=\"pre\">abs_mul</span></code>、<code class=\"docutils literal notranslate\"><span class=\"pre\">mul_le_mul</span></code>、<code class=\"docutils literal notranslate\"><span class=\"pre\">abs_nonneg</span></code>、<code class=\"docutils literal notranslate\"><span class=\"pre\">mul_lt_mul_of_pos_right</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">one_mul</span></code> 完成证明。记住，可以用 Ctrl-space 补全（Mac 上为 Cmd-space 补全）寻找这类定理。还要记住，可以使用 <code class=\"docutils literal notranslate\"><span class=\"pre\">.mp</span></code> 与 <code class=\"docutils literal notranslate\"><span class=\"pre\">.mpr</span></code>，或 <code class=\"docutils literal notranslate\"><span class=\"pre\">.1</span></code> 与 <code class=\"docutils literal notranslate\"><span class=\"pre\">.2</span></code>，从一个当且仅当命题中取出两个方向。"
+  },
+  {
+    "id": "C03_Logic:0019",
+    "zh": "全称量词常常隐藏在定义之中；必要时，Lean 会展开定义以显露它们。例如，让我们定义两个谓词 <code class=\"docutils literal notranslate\"><span class=\"pre\">FnUb</span> <span class=\"pre\">f</span> <span class=\"pre\">a</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">FnLb</span> <span class=\"pre\">f</span> <span class=\"pre\">a</span></code>，其中 <code class=\"docutils literal notranslate\"><span class=\"pre\">f</span></code> 是从实数到实数的函数，<code class=\"docutils literal notranslate\"><span class=\"pre\">a</span></code> 是实数。前者表示 <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span></code> 是 <code class=\"docutils literal notranslate\"><span class=\"pre\">f</span></code> 的取值的上界，后者表示 <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span></code> 是 <code class=\"docutils literal notranslate\"><span class=\"pre\">f</span></code> 的取值的下界。"
+  },
+  {
+    "id": "C03_Logic:0020",
+    "zh": "在下一个例子中，<code class=\"docutils literal notranslate\"><span class=\"pre\">fun</span> <span class=\"pre\">x</span> <span class=\"pre\">↦</span> <span class=\"pre\">f</span> <span class=\"pre\">x</span> <span class=\"pre\">+</span> <span class=\"pre\">g</span> <span class=\"pre\">x</span></code> 是把 <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span></code> 映到 <code class=\"docutils literal notranslate\"><span class=\"pre\">f</span> <span class=\"pre\">x</span> <span class=\"pre\">+</span> <span class=\"pre\">g</span> <span class=\"pre\">x</span></code> 的函数。在类型论中，从表达式 <code class=\"docutils literal notranslate\"><span class=\"pre\">f</span> <span class=\"pre\">x</span> <span class=\"pre\">+</span> <span class=\"pre\">g</span> <span class=\"pre\">x</span></code> 到这个函数的过程称为 lambda 抽象。"
+  },
+  {
+    "id": "C03_Logic:0021",
+    "zh": "对目标 <code class=\"docutils literal notranslate\"><span class=\"pre\">FnUb</span> <span class=\"pre\">(fun</span> <span class=\"pre\">x</span> <span class=\"pre\">↦</span> <span class=\"pre\">f</span> <span class=\"pre\">x</span> <span class=\"pre\">+</span> <span class=\"pre\">g</span> <span class=\"pre\">x)</span> <span class=\"pre\">(a</span> <span class=\"pre\">+</span> <span class=\"pre\">b)</span></code> 应用 <code class=\"docutils literal notranslate\"><span class=\"pre\">intro</span></code>，会迫使 Lean 展开 <code class=\"docutils literal notranslate\"><span class=\"pre\">FnUb</span></code> 的定义，并为全称量词引入 <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span></code>。此时目标变为 <code class=\"docutils literal notranslate\"><span class=\"pre\">(fun</span> <span class=\"pre\">(x</span> <span class=\"pre\">:</span> <span class=\"pre\">ℝ)</span> <span class=\"pre\">↦</span> <span class=\"pre\">f</span> <span class=\"pre\">x</span> <span class=\"pre\">+</span> <span class=\"pre\">g</span> <span class=\"pre\">x)</span> <span class=\"pre\">x</span> <span class=\"pre\">≤</span> <span class=\"pre\">a</span> <span class=\"pre\">+</span> <span class=\"pre\">b</span></code>。但是，把 <code class=\"docutils literal notranslate\"><span class=\"pre\">(fun</span> <span class=\"pre\">x</span> <span class=\"pre\">↦</span> <span class=\"pre\">f</span> <span class=\"pre\">x</span> <span class=\"pre\">+</span> <span class=\"pre\">g</span> <span class=\"pre\">x)</span></code> 应用于 <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span></code> 应得到 <code class=\"docutils literal notranslate\"><span class=\"pre\">f</span> <span class=\"pre\">x</span> <span class=\"pre\">+</span> <span class=\"pre\">g</span> <span class=\"pre\">x</span></code>，而 <code class=\"docutils literal notranslate\"><span class=\"pre\">dsimp</span></code> 命令执行这一化简。（其中 “d” 表示 “definitional”。）删除该命令后证明仍然成立；Lean 无论如何都必须执行这个约简，才能理解下一个 <code class=\"docutils literal notranslate\"><span class=\"pre\">apply</span></code>。<code class=\"docutils literal notranslate\"><span class=\"pre\">dsimp</span></code> 只是让目标更可读，并帮助我们判断下一步该做什么。另一种选择是使用 <code class=\"docutils literal notranslate\"><span class=\"pre\">change</span></code> 策略，写成 <code class=\"docutils literal notranslate\"><span class=\"pre\">change</span> <span class=\"pre\">f</span> <span class=\"pre\">x</span> <span class=\"pre\">+</span> <span class=\"pre\">g</span> <span class=\"pre\">x</span> <span class=\"pre\">≤</span> <span class=\"pre\">a</span> <span class=\"pre\">+</span> <span class=\"pre\">b</span></code>。这有助于提高证明的可读性，并使你能更好地控制目标如何变形。"
+  },
+  {
+    "id": "C03_Logic:0022",
+    "zh": "证明的其余部分是例行的。最后两个 <code class=\"docutils literal notranslate\"><span class=\"pre\">apply</span></code> 命令迫使 Lean 展开假设中 <code class=\"docutils literal notranslate\"><span class=\"pre\">FnUb</span></code> 的定义。请尝试以类似方式完成下面这些证明："
+  },
+  {
+    "id": "C03_Logic:0023",
+    "zh": "尽管我们为从实数到实数的函数定义了 <code class=\"docutils literal notranslate\"><span class=\"pre\">FnUb</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">FnLb</span></code>，但你应当认识到，这些定义和证明要一般得多。只要函数的陪域带有某种序结构，这些定义就适用于任意两个类型之间的函数。检查定理 <code class=\"docutils literal notranslate\"><span class=\"pre\">add_le_add</span></code> 的类型会发现，它适用于任何与相关序相容的幺半群结构；这究竟是什么意思目前并不重要，但值得知道自然数、整数、有理数和实数都是其实例。因此，如果我们在这个一般性层次证明定理 <code class=\"docutils literal notranslate\"><span class=\"pre\">fnUb_add</span></code>，它就可用于所有这些实例。"
+  },
+  {
+    "id": "C03_Logic:0024",
+    "zh": "你已经在 <a class=\"reference internal\" href=\"C02_Basics.html#proving-identities-in-algebraic-structures\"><span class=\"std std-numref\">第 2.2 节</span></a> 中见过这样的方括号，尽管我们尚未解释它们的含义。为了具体起见，本书多数例子会坚持使用实数；但值得知道的是，Mathlib 包含许多在高度一般性下工作的定义和定理。"
+  },
+  {
+    "id": "C03_Logic:0025",
+    "zh": "作为隐藏全称量词的另一个例子，Mathlib 定义了谓词 <code class=\"docutils literal notranslate\"><span class=\"pre\">Monotone</span></code>，表示函数关于其参数单调不减："
+  },
+  {
+    "id": "C03_Logic:0026",
+    "zh": "性质 <code class=\"docutils literal notranslate\"><span class=\"pre\">Monotone</span> <span class=\"pre\">f</span></code> 按定义恰好就是冒号之后的表达式。我们需要在 <code class=\"docutils literal notranslate\"><span class=\"pre\">h</span></code> 前写符号 <code class=\"docutils literal notranslate\"><span class=\"pre\">@</span></code>；否则 Lean 会展开 <code class=\"docutils literal notranslate\"><span class=\"pre\">h</span></code> 的隐式参数并插入占位符。"
+  },
+  {
+    "id": "C03_Logic:0027",
+    "zh": "证明关于单调性的命题时，通常使用 <code class=\"docutils literal notranslate\"><span class=\"pre\">intro</span></code> 引入两个变量，例如 <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">b</span></code>，以及假设 <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span> <span class=\"pre\">≤</span> <span class=\"pre\">b</span></code>。要<em>使用</em>单调性假设，可以把它应用于合适的参数和假设，然后把得到的表达式应用于目标。也可以把它应用于目标，让 Lean 通过把剩余假设显示为新的子目标来帮助你反向推理。"
+  },
+  {
+    "id": "C03_Logic:0028",
+    "zh": "当证明如此简短时，直接给出证明项往往很方便。为了描述一个临时引入对象 <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span></code>、<code class=\"docutils literal notranslate\"><span class=\"pre\">b</span></code> 和假设 <code class=\"docutils literal notranslate\"><span class=\"pre\">aleb</span></code> 的证明，Lean 使用记号 <code class=\"docutils literal notranslate\"><span class=\"pre\">fun</span> <span class=\"pre\">a</span> <span class=\"pre\">b</span> <span class=\"pre\">aleb</span> <span class=\"pre\">↦</span> <span class=\"pre\">...</span></code>。这类似于表达式 <code class=\"docutils literal notranslate\"><span class=\"pre\">fun</span> <span class=\"pre\">x</span> <span class=\"pre\">↦</span> <span class=\"pre\">x^2</span></code> 通过临时命名一个对象 <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span></code>，然后用它描述一个值来定义函数。因此，前一个证明中的 <code class=\"docutils literal notranslate\"><span class=\"pre\">intro</span></code> 命令对应下一个证明项中的 lambda 抽象，而 <code class=\"docutils literal notranslate\"><span class=\"pre\">apply</span></code> 命令则对应构造定理对其参数的应用。"
+  },
+  {
+    "id": "C03_Logic:0029",
+    "zh": "这里有一个有用技巧：如果你开始写证明项 <code class=\"docutils literal notranslate\"><span class=\"pre\">fun</span> <span class=\"pre\">a</span> <span class=\"pre\">b</span> <span class=\"pre\">aleb</span> <span class=\"pre\">↦</span> <span class=\"pre\">_</span></code>，用下划线表示剩余表达式应出现的位置，Lean 会标出错误，说明它无法猜出该表达式的值。若在 VS Code 中查看 Lean InfoView 窗口，或把鼠标悬停在波浪线错误标记上，Lean 会显示剩余表达式必须解决的目标。"
+  },
+  {
+    "id": "C03_Logic:0030",
+    "zh": "你会注意到，Lean 会对上述证明打印警告，说 <cite>a</cite> 和 <cite>b</cite> 未在函数体中使用。这是一种通用机制，例如可用于避免定理中含有不必要的假设。这里它并没有告诉我们什么真正有用的信息。我们可以写 <cite>set_option linter.unusedVariables false</cite>，将这个警告禁用到当前小节结束；也可以只在该例子中禁用，在例子上方写 <cite>set_option linter.unusedVariables false in</cite>。"
+  },
+  {
+    "id": "C03_Logic:0031",
+    "zh": "我们也可以把 <cite>a</cite> 和 <cite>b</cite> 替换为下划线，告诉 Lean 不想给它们命名。Lean 随后会使用自动生成的不可访问名称，例如 <cite>x✝</cite>。另一种选择是在名称前加下划线，告诉 Lean 我们并不打算使用它们。"
+  },
+  {
+    "id": "C03_Logic:0032",
+    "zh": "请尝试用策略或证明项证明下面的例子："
+  },
+  {
+    "id": "C03_Logic:0033",
+    "zh": "下面还有一些例子。从 <span class=\"math notranslate nohighlight\">\\(\\Bbb R\\)</span> 到 <span class=\"math notranslate nohighlight\">\\(\\Bbb R\\)</span> 的函数 <span class=\"math notranslate nohighlight\">\\(f\\)</span>，若对每个 <span class=\"math notranslate nohighlight\">\\(x\\)</span> 都有 <span class=\"math notranslate nohighlight\">\\(f(-x) = f(x)\\)</span>，则称为偶函数；若对每个 <span class=\"math notranslate nohighlight\">\\(x\\)</span> 都有 <span class=\"math notranslate nohighlight\">\\(f(-x) = -f(x)\\)</span>，则称为奇函数。下面的例子形式化定义这两个概念，并证明其中一个事实。你可以完成其余证明。"
+  },
+  {
+    "id": "C03_Logic:0034",
+    "zh": "第一个证明可以用 <code class=\"docutils literal notranslate\"><span class=\"pre\">dsimp</span></code> 或 <code class=\"docutils literal notranslate\"><span class=\"pre\">change</span></code> 缩短，以消除 lambda 抽象。但你可以检查，如果不显式消除 lambda 抽象，后续 <code class=\"docutils literal notranslate\"><span class=\"pre\">rw</span></code> 将无法工作，因为它无法在表达式中找到模式 <code class=\"docutils literal notranslate\"><span class=\"pre\">f</span> <span class=\"pre\">x</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">g</span> <span class=\"pre\">x</span></code>。与某些其他策略不同，<code class=\"docutils literal notranslate\"><span class=\"pre\">rw</span></code> 在句法层面操作；它不会替你展开定义或进行约简（它有一个变体 <code class=\"docutils literal notranslate\"><span class=\"pre\">erw</span></code>，会在这个方向上稍微多尝试一点，但也不会多很多）。"
+  },
+  {
+    "id": "C03_Logic:0035",
+    "zh": "一旦知道如何识别隐式全称量词，就会发现它们无处不在。"
+  },
+  {
+    "id": "C03_Logic:0036",
+    "zh": "Mathlib 包含一个很好的集合操作库。回忆一下，Lean 并不使用基于集合论的基础，因此这里“集合”一词具有日常数学意义：给定某个类型 <code class=\"docutils literal notranslate\"><span class=\"pre\">α</span></code> 的数学对象所组成的一个汇集。若 <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span></code> 的类型是 <code class=\"docutils literal notranslate\"><span class=\"pre\">α</span></code>，而 <code class=\"docutils literal notranslate\"><span class=\"pre\">s</span></code> 的类型是 <code class=\"docutils literal notranslate\"><span class=\"pre\">Set</span> <span class=\"pre\">α</span></code>，则 <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span> <span class=\"pre\">∈</span> <span class=\"pre\">s</span></code> 是一个命题，断言 <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span></code> 是 <code class=\"docutils literal notranslate\"><span class=\"pre\">s</span></code> 的元素。若 <code class=\"docutils literal notranslate\"><span class=\"pre\">y</span></code> 具有某个不同类型 <code class=\"docutils literal notranslate\"><span class=\"pre\">β</span></code>，则表达式 <code class=\"docutils literal notranslate\"><span class=\"pre\">y</span> <span class=\"pre\">∈</span> <span class=\"pre\">s</span></code> 没有意义。这里“没有意义”指的是“没有类型，因而 Lean 不接受它作为良构命题”。这与 Zermelo-Fraenkel 集合论形成对比；在后者中，对任意数学对象 <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">b</span></code>，<code class=\"docutils literal notranslate\"><span class=\"pre\">a</span> <span class=\"pre\">∈</span> <span class=\"pre\">b</span></code> 都是良构命题。例如，<code class=\"docutils literal notranslate\"><span class=\"pre\">sin</span> <span class=\"pre\">∈</span> <span class=\"pre\">cos</span></code> 在 ZF 中是良构命题。集合论基础的这一缺陷，是证明助手不采用它的重要动机之一：证明助手应通过发现无意义表达式来帮助我们。在 Lean 中，<code class=\"docutils literal notranslate\"><span class=\"pre\">sin</span></code> 的类型是 <code class=\"docutils literal notranslate\"><span class=\"pre\">ℝ</span> <span class=\"pre\">→</span> <span class=\"pre\">ℝ</span></code>，<code class=\"docutils literal notranslate\"><span class=\"pre\">cos</span></code> 的类型也是 <code class=\"docutils literal notranslate\"><span class=\"pre\">ℝ</span> <span class=\"pre\">→</span> <span class=\"pre\">ℝ</span></code>，即使展开定义后也不等于 <code class=\"docutils literal notranslate\"><span class=\"pre\">Set</span> <span class=\"pre\">(ℝ</span> <span class=\"pre\">→</span> <span class=\"pre\">ℝ)</span></code>，所以命题 <code class=\"docutils literal notranslate\"><span class=\"pre\">sin</span> <span class=\"pre\">∈</span> <span class=\"pre\">cos</span></code> 没有意义。人们也可以用 Lean 研究集合论本身。例如，连续统假设相对于 Zermelo-Fraenkel 公理的独立性已经在 Lean 中形式化。但这种集合论元理论完全超出了本书范围。"
+  },
+  {
+    "id": "C03_Logic:0037",
+    "zh": "若 <code class=\"docutils literal notranslate\"><span class=\"pre\">s</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">t</span></code> 的类型是 <code class=\"docutils literal notranslate\"><span class=\"pre\">Set</span> <span class=\"pre\">α</span></code>，则子集关系 <code class=\"docutils literal notranslate\"><span class=\"pre\">s</span> <span class=\"pre\">⊆</span> <span class=\"pre\">t</span></code> 定义为 <code class=\"docutils literal notranslate\"><span class=\"pre\">∀</span> <span class=\"pre\">{x</span> <span class=\"pre\">:</span> <span class=\"pre\">α},</span> <span class=\"pre\">x</span> <span class=\"pre\">∈</span> <span class=\"pre\">s</span> <span class=\"pre\">→</span> <span class=\"pre\">x</span> <span class=\"pre\">∈</span> <span class=\"pre\">t</span></code>。量词中的变量被标记为隐式变量，因此给定 <code class=\"docutils literal notranslate\"><span class=\"pre\">h</span> <span class=\"pre\">:</span> <span class=\"pre\">s</span> <span class=\"pre\">⊆</span> <span class=\"pre\">t</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">h'</span> <span class=\"pre\">:</span> <span class=\"pre\">x</span> <span class=\"pre\">∈</span> <span class=\"pre\">s</span></code> 时，可以写 <code class=\"docutils literal notranslate\"><span class=\"pre\">h</span> <span class=\"pre\">h'</span></code> 作为 <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span> <span class=\"pre\">∈</span> <span class=\"pre\">t</span></code> 的证明。下面的例子给出了子集关系自反性的策略证明和证明项，并要求你对传递性做同样的事情。"
+  },
+  {
+    "id": "C03_Logic:0038",
+    "zh": "正如我们为函数定义 <code class=\"docutils literal notranslate\"><span class=\"pre\">FnUb</span></code> 一样，也可以定义 <code class=\"docutils literal notranslate\"><span class=\"pre\">SetUb</span> <span class=\"pre\">s</span> <span class=\"pre\">a</span></code>，表示 <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span></code> 是集合 <code class=\"docutils literal notranslate\"><span class=\"pre\">s</span></code> 的上界；这里假定 <code class=\"docutils literal notranslate\"><span class=\"pre\">s</span></code> 是某个带序类型中元素组成的集合。在下一个例子中，我们要求你证明：如果 <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span></code> 是 <code class=\"docutils literal notranslate\"><span class=\"pre\">s</span></code> 的上界且 <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span> <span class=\"pre\">≤</span> <span class=\"pre\">b</span></code>，那么 <code class=\"docutils literal notranslate\"><span class=\"pre\">b</span></code> 也是 <code class=\"docutils literal notranslate\"><span class=\"pre\">s</span></code> 的上界。"
+  },
+  {
+    "id": "C03_Logic:0039",
+    "zh": "本节最后看一个重要例子。若对每个 <span class=\"math notranslate nohighlight\">\\(x_1\\)</span> 和 <span class=\"math notranslate nohighlight\">\\(x_2\\)</span>，由 <span class=\"math notranslate nohighlight\">\\(f(x_1) = f(x_2)\\)</span> 可推出 <span class=\"math notranslate nohighlight\">\\(x_1 = x_2\\)</span>，则称函数 <span class=\"math notranslate nohighlight\">\\(f\\)</span> 是单射。Mathlib 定义了 <code class=\"docutils literal notranslate\"><span class=\"pre\">Function.Injective</span> <span class=\"pre\">f</span></code>，其中 <code class=\"docutils literal notranslate\"><span class=\"pre\">x₁</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">x₂</span></code> 为隐式参数。下一个例子说明，在实数上，任何加上常数的函数都是单射。随后我们要求你证明，乘以非零常数的函数也是单射；可以从例子中的引理名获得启发。记住，在猜出引理名开头之后，应使用 Ctrl-space 补全。"
+  },
+  {
+    "id": "C03_Logic:0040",
+    "zh": "最后，请证明两个单射函数的复合仍为单射："
+  }
+]

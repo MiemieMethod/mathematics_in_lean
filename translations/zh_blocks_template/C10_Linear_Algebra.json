@@ -1,0 +1,962 @@
+[
+  {
+    "id": "C10_Linear_Algebra:0001",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "h1",
+    "text": "10. Linear algebra",
+    "html": "<h1><span class=\"section-number\">10. </span>Linear algebra</h1>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0002",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "h2",
+    "text": "10.1. Vector spaces and linear maps",
+    "html": "<h2><span class=\"section-number\">10.1. </span>Vector spaces and linear maps</h2>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0003",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "h2",
+    "text": "10.2. Subspaces and quotients",
+    "html": "<h2><span class=\"section-number\">10.2. </span>Subspaces and quotients</h2>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0004",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "h2",
+    "text": "10.3. Endomorphisms",
+    "html": "<h2><span class=\"section-number\">10.3. </span>Endomorphisms</h2>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0005",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "h2",
+    "text": "10.4. Matrices, bases and dimension",
+    "html": "<h2><span class=\"section-number\">10.4. </span>Matrices, bases and dimension</h2>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0006",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "h3",
+    "text": "10.1.1. Vector spaces",
+    "html": "<h3><span class=\"section-number\">10.1.1. </span>Vector spaces</h3>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0007",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "h3",
+    "text": "10.1.2. Linear maps",
+    "html": "<h3><span class=\"section-number\">10.1.2. </span>Linear maps</h3>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0008",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "h3",
+    "text": "10.1.3. Sums and products of vector spaces",
+    "html": "<h3><span class=\"section-number\">10.1.3. </span>Sums and products of vector spaces</h3>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0009",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "h3",
+    "text": "10.2.1. Subspaces",
+    "html": "<h3><span class=\"section-number\">10.2.1. </span>Subspaces</h3>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0010",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "h3",
+    "text": "10.2.2. Complete lattice structure and internal direct sums",
+    "html": "<h3><span class=\"section-number\">10.2.2. </span>Complete lattice structure and internal direct sums</h3>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0011",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "h3",
+    "text": "10.2.3. Subspace spanned by a set",
+    "html": "<h3><span class=\"section-number\">10.2.3. </span>Subspace spanned by a set</h3>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0012",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "h3",
+    "text": "10.2.4. Pushing and pulling subspaces",
+    "html": "<h3><span class=\"section-number\">10.2.4. </span>Pushing and pulling subspaces</h3>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0013",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "h3",
+    "text": "10.2.5. Quotient spaces",
+    "html": "<h3><span class=\"section-number\">10.2.5. </span>Quotient spaces</h3>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0014",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "h3",
+    "text": "10.4.1. Matrices",
+    "html": "<h3><span class=\"section-number\">10.4.1. </span>Matrices</h3>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0015",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "h3",
+    "text": "10.4.2. Bases",
+    "html": "<h3><span class=\"section-number\">10.4.2. </span>Bases</h3>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0016",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "h3",
+    "text": "10.4.3. Dimension",
+    "html": "<h3><span class=\"section-number\">10.4.3. </span>Dimension</h3>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0017",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "p",
+    "text": "We will start directly abstract linear algebra, taking place in a vector space over any field. However you can find information about matrices in Section 10.4.1 which does not logically depend on this abstract theory. Mathlib actually deals with a more general version of linear algebra involving the word module, but for now we will pretend this is only an eccentric spelling habit.",
+    "html": "<p id=\"index-0\">We will start directly abstract linear algebra, taking place in a vector space over any field.\nHowever you can find information about matrices in\n<a class=\"reference internal\" href=\"#matrices\"><span class=\"std std-numref\">Section 10.4.1</span></a> which does not logically depend on this abstract theory.\nMathlib actually deals with a more general version of linear algebra involving the word module,\nbut for now we will pretend this is only an eccentric spelling habit.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0018",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "p",
+    "text": "The way to say “let \\(K\\) be a field and let \\(V\\) be a vector space over \\(K\\) ” (and make them implicit arguments to later results) is:",
+    "html": "<p>The way to say “let <span class=\"math notranslate nohighlight\">\\(K\\)</span> be a field and let <span class=\"math notranslate nohighlight\">\\(V\\)</span> be a vector space over <span class=\"math notranslate nohighlight\">\\(K\\)</span>”\n(and make them implicit arguments to later results) is:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0019",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "p",
+    "text": "We explained in Chapter 8 why we need two separate typeclasses [AddCommGroup V] [Module K V] . The short version is the following. Mathematically we want to say that having a \\(K\\) -vector space structure implies having an additive commutative group structure. We could tell this to Lean. But then whenever Lean would need to find such a group structure on a type \\(V\\) , it would go hunting for vector space structures using a completely unspecified field \\(K\\) that cannot be inferred from \\(V\\) . This would be very bad for the type class synthesis system.",
+    "html": "<p>We explained in <a class=\"reference internal\" href=\"C08_Hierarchies.html#hierarchies\"><span class=\"std std-numref\">Chapter 8</span></a> why we need two separate\ntypeclasses <code class=\"docutils literal notranslate\"><span class=\"pre\">[AddCommGroup</span> <span class=\"pre\">V]</span> <span class=\"pre\">[Module</span> <span class=\"pre\">K</span> <span class=\"pre\">V]</span></code>.\nThe short version is the following.\nMathematically we want to say that having a <span class=\"math notranslate nohighlight\">\\(K\\)</span>-vector space structure\nimplies having an additive commutative group structure.\nWe could tell this to Lean. But then whenever Lean would need to find such a\ngroup structure on a type <span class=\"math notranslate nohighlight\">\\(V\\)</span>, it would go hunting for vector space\nstructures using a <em>completely unspecified</em> field <span class=\"math notranslate nohighlight\">\\(K\\)</span> that cannot be inferred\nfrom <span class=\"math notranslate nohighlight\">\\(V\\)</span>.\nThis would be very bad for the type class synthesis system.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0020",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "p",
+    "text": "The multiplication of a vector v by a scalar a is denoted by a • v . We list a couple of algebraic rules about the interaction of this operation with addition in the following examples. Of course simp or apply? would find those proofs. There is also a module tactic that solves goals following from the axioms of vector spaces and fields, in the same way the ring tactic is used in commutative rings or the group tactic is used in groups. But it is still useful to remember that scalar multiplication is abbreviated smul in lemma names.",
+    "html": "<p>The multiplication of a vector <cite>v</cite> by a scalar <cite>a</cite> is denoted by\n<cite>a • v</cite>. We list a couple of algebraic rules about the interaction of this\noperation with addition in the following examples. Of course <cite>simp</cite> or <cite>apply?</cite>\nwould find those proofs. There is also a <cite>module</cite> tactic that solves goals\nfollowing from the axioms of vector spaces and fields, in the same way the\n<cite>ring</cite> tactic is used in commutative rings or the <cite>group</cite> tactic is used in\ngroups. But it is still useful to remember that scalar\nmultiplication is abbreviated <cite>smul</cite> in lemma names.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0021",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "p",
+    "text": "As a quick note for more advanced readers, let us point out that, as suggested by terminology, Mathlib’s linear algebra also covers modules over (not necessarily commutative) rings. In fact it even covers semi-modules over semi-rings. If you think you do not need this level of generality, you can meditate the following example that nicely captures a lot of algebraic rules about ideals acting on submodules:",
+    "html": "<p>As a quick note for more advanced readers, let us point out that, as suggested by\nterminology, Mathlib’s linear algebra also covers modules over (not necessarily commutative)\nrings.\nIn fact it even covers semi-modules over semi-rings. If you think you do not need\nthis level of generality, you can meditate the following example that nicely captures\na lot of algebraic rules about ideals acting on submodules:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0022",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "p",
+    "text": "To say that M is a module over the ring R , we write:",
+    "html": "<p>To say that <code class=\"docutils literal notranslate\"><span class=\"pre\">M</span></code> is a module over the ring <code class=\"docutils literal notranslate\"><span class=\"pre\">R</span></code>, we write:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0023",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "p",
+    "text": "If we compare this to declaring a vector space, we see two differences. Apart from renaming the variables, the only change is to replace the Field K hypothesis with a Ring R hypothesis.",
+    "html": "<p>If we compare this to declaring a vector space, we see two differences. Apart from renaming the variables, the only change is to replace the <code class=\"docutils literal notranslate\"><span class=\"pre\">Field</span> <span class=\"pre\">K</span></code> hypothesis with a <code class=\"docutils literal notranslate\"><span class=\"pre\">Ring</span> <span class=\"pre\">R</span></code> hypothesis.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0024",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "p",
+    "text": "To say that M is a semi-module over the semi-ring R , we replace the Ring R hypothesis with a Semiring R hypothesis, and also replace AddCommGroup M with AddCommMonoid M , reflecting the fact that semi-modules do not have negation:",
+    "html": "<p>To say that <code class=\"docutils literal notranslate\"><span class=\"pre\">M</span></code> is a semi-module over the semi-ring <code class=\"docutils literal notranslate\"><span class=\"pre\">R</span></code>, we replace the <code class=\"docutils literal notranslate\"><span class=\"pre\">Ring</span> <span class=\"pre\">R</span></code> hypothesis with a <code class=\"docutils literal notranslate\"><span class=\"pre\">Semiring</span> <span class=\"pre\">R</span></code> hypothesis, and also replace <code class=\"docutils literal notranslate\"><span class=\"pre\">AddCommGroup</span> <span class=\"pre\">M</span></code> with <code class=\"docutils literal notranslate\"><span class=\"pre\">AddCommMonoid</span> <span class=\"pre\">M</span></code>, reflecting the fact that semi-modules do not have negation:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0025",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "p",
+    "text": "Lean cannot automatically infer that M has negation if R has, because a priori it cannot guess the correct R given an arbitrary M . So if we declare R to be a ring and M to be a module over R , then we have to either declare M to be an AddCommGroup , or add the instance to the context manually:",
+    "html": "<p>Lean <strong>cannot</strong> automatically infer that <code class=\"docutils literal notranslate\"><span class=\"pre\">M</span></code> has negation if <code class=\"docutils literal notranslate\"><span class=\"pre\">R</span></code> has,\nbecause a priori it cannot guess the correct <code class=\"docutils literal notranslate\"><span class=\"pre\">R</span></code> given an arbitrary <code class=\"docutils literal notranslate\"><span class=\"pre\">M</span></code>.\nSo if we declare <code class=\"docutils literal notranslate\"><span class=\"pre\">R</span></code> to be a ring and <code class=\"docutils literal notranslate\"><span class=\"pre\">M</span></code> to be a module over <code class=\"docutils literal notranslate\"><span class=\"pre\">R</span></code>,\nthen we have to either declare <code class=\"docutils literal notranslate\"><span class=\"pre\">M</span></code> to be an <code class=\"docutils literal notranslate\"><span class=\"pre\">AddCommGroup</span></code>, or add the instance to the context\nmanually:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0026",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "p",
+    "text": "Next we need linear maps. Like group morphisms, linear maps in Mathlib are bundled maps, i.e. packages made of a map and proofs of its linearity properties. Those bundled maps are converted to ordinary functions when applied. See Chapter 8 for more information about this design.",
+    "html": "<p id=\"index-1\">Next we need linear maps. Like group morphisms, linear maps in Mathlib are bundled maps, i.e. packages\nmade of a map and proofs of its linearity properties.\nThose bundled maps are converted to ordinary functions when applied.\nSee <a class=\"reference internal\" href=\"C08_Hierarchies.html#hierarchies\"><span class=\"std std-numref\">Chapter 8</span></a> for more information about this design.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0027",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "p",
+    "text": "The type of linear maps between two K -vector spaces V and W is denoted by V →ₗ[K] W . The subscript l stands for linear. At first it may feel odd to specify K in this notation. But this is crucial when several fields come into play. For instance real-linear maps from \\(ℂ\\) to \\(ℂ\\) are every map \\(z ↦ az + b\\bar{z}\\) while only the maps \\(z ↦ az\\) are complex linear, and this difference is crucial in complex analysis.",
+    "html": "<p>The type of linear maps between two <code class=\"docutils literal notranslate\"><span class=\"pre\">K</span></code>-vector spaces\n<code class=\"docutils literal notranslate\"><span class=\"pre\">V</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">W</span></code> is denoted by <code class=\"docutils literal notranslate\"><span class=\"pre\">V</span> <span class=\"pre\">→ₗ[K]</span> <span class=\"pre\">W</span></code>. The subscript <cite>l</cite> stands for linear.\nAt first it may feel odd to specify <code class=\"docutils literal notranslate\"><span class=\"pre\">K</span></code> in this notation.\nBut this is crucial when several fields come into play.\nFor instance real-linear maps from <span class=\"math notranslate nohighlight\">\\(ℂ\\)</span> to <span class=\"math notranslate nohighlight\">\\(ℂ\\)</span> are every map <span class=\"math notranslate nohighlight\">\\(z ↦ az + b\\bar{z}\\)</span>\nwhile only the maps <span class=\"math notranslate nohighlight\">\\(z ↦ az\\)</span> are complex linear, and this difference is crucial in\ncomplex analysis.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0028",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "p",
+    "text": "Note that V →ₗ[K] W itself carries interesting algebraic structures (this is part of the motivation for bundling those maps). It is a K -vector space so we can add linear maps and multiply them by scalars.",
+    "html": "<p>Note that <code class=\"docutils literal notranslate\"><span class=\"pre\">V</span> <span class=\"pre\">→ₗ[K]</span> <span class=\"pre\">W</span></code> itself carries interesting algebraic structures (this\nis part of the motivation for bundling those maps).\nIt is a <code class=\"docutils literal notranslate\"><span class=\"pre\">K</span></code>-vector space so we can add linear maps and multiply them by scalars.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0029",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "p",
+    "text": "One downside of using bundled maps is that we cannot use ordinary function composition. We need to use LinearMap.comp or the notation ∘ₗ .",
+    "html": "<p>One downside of using bundled maps is that we cannot use ordinary function composition.\nWe need to use <code class=\"docutils literal notranslate\"><span class=\"pre\">LinearMap.comp</span></code> or the notation <code class=\"docutils literal notranslate\"><span class=\"pre\">∘ₗ</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0030",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "p",
+    "text": "There are two main ways to construct linear maps. First we can build the structure by providing the function and the linearity proof. As usual, this is facilitated by the structure code action: you can type example : V →ₗ[K] V := _ and use the code action “Generate a skeleton” attached to the underscore.",
+    "html": "<p>There are two main ways to construct linear maps.\nFirst we can build the structure by providing the function and the linearity proof.\nAs usual, this is facilitated by the structure code action: you can type\n<code class=\"docutils literal notranslate\"><span class=\"pre\">example</span> <span class=\"pre\">:</span> <span class=\"pre\">V</span> <span class=\"pre\">→ₗ[K]</span> <span class=\"pre\">V</span> <span class=\"pre\">:=</span> <span class=\"pre\">_</span></code> and use the code action “Generate a skeleton” attached to the\nunderscore.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0031",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "p",
+    "text": "You may wonder why the proof fields of LinearMap have names ending with a prime. This is because they are defined before the coercion to functions is defined, hence they are phrased in terms of LinearMap.toFun . Then they are restated as LinearMap.map_add and LinearMap.map_smul in terms of the coercion to function. This is not yet the end of the story. One also wants a version of map_add that applies to any (bundled) map preserving addition, such as additive group morphisms, linear maps, continuous linear maps, K -algebra maps etc… This one is map_add (in the root namespace). The intermediate version, LinearMap.map_add is a bit redundant but allows to use dot notation, which can be nice sometimes. A similar story exists for map_smul , and the general framework is explained in Chapter 8 .",
+    "html": "<p>You may wonder why the proof fields of <code class=\"docutils literal notranslate\"><span class=\"pre\">LinearMap</span></code> have names ending with a prime.\nThis is because they are defined before the coercion to functions is defined, hence they are\nphrased in terms of <code class=\"docutils literal notranslate\"><span class=\"pre\">LinearMap.toFun</span></code>. Then they are restated as <code class=\"docutils literal notranslate\"><span class=\"pre\">LinearMap.map_add</span></code>\nand <code class=\"docutils literal notranslate\"><span class=\"pre\">LinearMap.map_smul</span></code> in terms of the coercion to function.\nThis is not yet the end of the story. One also wants a version of <code class=\"docutils literal notranslate\"><span class=\"pre\">map_add</span></code> that applies to\nany (bundled) map preserving addition, such as additive group morphisms, linear maps, continuous\nlinear maps, <code class=\"docutils literal notranslate\"><span class=\"pre\">K</span></code>-algebra maps etc… This one is <code class=\"docutils literal notranslate\"><span class=\"pre\">map_add</span></code> (in the root namespace).\nThe intermediate version, <code class=\"docutils literal notranslate\"><span class=\"pre\">LinearMap.map_add</span></code> is a bit redundant but allows to use dot notation, which\ncan be nice sometimes. A similar story exists for <code class=\"docutils literal notranslate\"><span class=\"pre\">map_smul</span></code>, and the general framework\nis explained in <a class=\"reference internal\" href=\"C08_Hierarchies.html#hierarchies\"><span class=\"std std-numref\">Chapter 8</span></a>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0032",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "p",
+    "text": "One can also build linear maps from the ones that are already defined in Mathlib using various combinators. For instance the above example is already known as LinearMap.lsmul K V 3 . There are several reason why K and V are explicit arguments here. The most pressing one is that from a bare LinearMap.lsmul 3 there would be no way for Lean to infer V or even K . But also LinearMap.lsmul K V is an interesting object by itself: it has type K →ₗ[K] V →ₗ[K] V , meaning it is a K -linear map from K —seen as a vector space over itself— to the space of K -linear maps from V to V .",
+    "html": "<p>One can also build linear maps from the ones that are already defined in Mathlib\nusing various combinators.\nFor instance the above example is already known as <code class=\"docutils literal notranslate\"><span class=\"pre\">LinearMap.lsmul</span> <span class=\"pre\">K</span> <span class=\"pre\">V</span> <span class=\"pre\">3</span></code>.\nThere are several reason why <code class=\"docutils literal notranslate\"><span class=\"pre\">K</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">V</span></code> are explicit arguments here.\nThe most pressing one is that from a bare <code class=\"docutils literal notranslate\"><span class=\"pre\">LinearMap.lsmul</span> <span class=\"pre\">3</span></code> there would be no way\nfor Lean to infer <code class=\"docutils literal notranslate\"><span class=\"pre\">V</span></code> or even <code class=\"docutils literal notranslate\"><span class=\"pre\">K</span></code>.\nBut also <code class=\"docutils literal notranslate\"><span class=\"pre\">LinearMap.lsmul</span> <span class=\"pre\">K</span> <span class=\"pre\">V</span></code> is an interesting object by itself: it has type\n<code class=\"docutils literal notranslate\"><span class=\"pre\">K</span> <span class=\"pre\">→ₗ[K]</span> <span class=\"pre\">V</span> <span class=\"pre\">→ₗ[K]</span> <span class=\"pre\">V</span></code>, meaning it is a <code class=\"docutils literal notranslate\"><span class=\"pre\">K</span></code>-linear map from <code class=\"docutils literal notranslate\"><span class=\"pre\">K</span></code>\n—seen as a vector space over itself— to the space of <code class=\"docutils literal notranslate\"><span class=\"pre\">K</span></code>-linear maps from <code class=\"docutils literal notranslate\"><span class=\"pre\">V</span></code> to <code class=\"docutils literal notranslate\"><span class=\"pre\">V</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0033",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "p",
+    "text": "There is also a type LinearEquiv of linear isomorphisms denoted by V ≃ₗ[K] W . The inverse of f : V ≃ₗ[K] W is f.symm : W ≃ₗ[K] V , composition of f and g is f.trans g also denoted by f ≪≫ₗ g , and the identity isomorphism of V is LinearEquiv.refl K V . Elements of this type are automatically coerced to morphisms and functions when necessary.",
+    "html": "<p>There is also a type <code class=\"docutils literal notranslate\"><span class=\"pre\">LinearEquiv</span></code> of linear isomorphisms denoted by <code class=\"docutils literal notranslate\"><span class=\"pre\">V</span> <span class=\"pre\">≃ₗ[K]</span> <span class=\"pre\">W</span></code>.\nThe inverse of <code class=\"docutils literal notranslate\"><span class=\"pre\">f</span> <span class=\"pre\">:</span> <span class=\"pre\">V</span> <span class=\"pre\">≃ₗ[K]</span> <span class=\"pre\">W</span></code> is <code class=\"docutils literal notranslate\"><span class=\"pre\">f.symm</span> <span class=\"pre\">:</span> <span class=\"pre\">W</span> <span class=\"pre\">≃ₗ[K]</span> <span class=\"pre\">V</span></code>,\ncomposition of <code class=\"docutils literal notranslate\"><span class=\"pre\">f</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">g</span></code> is <code class=\"docutils literal notranslate\"><span class=\"pre\">f.trans</span> <span class=\"pre\">g</span></code> also denoted by <code class=\"docutils literal notranslate\"><span class=\"pre\">f</span> <span class=\"pre\">≪≫ₗ</span> <span class=\"pre\">g</span></code>, and\nthe identity isomorphism of <code class=\"docutils literal notranslate\"><span class=\"pre\">V</span></code> is <code class=\"docutils literal notranslate\"><span class=\"pre\">LinearEquiv.refl</span> <span class=\"pre\">K</span> <span class=\"pre\">V</span></code>.\nElements of this type are automatically coerced to morphisms and functions when necessary.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0034",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "p",
+    "text": "One can use LinearEquiv.ofBijective to build an isomorphism from a bijective morphism. Doing so makes the inverse function noncomputable.",
+    "html": "<p>One can use <code class=\"docutils literal notranslate\"><span class=\"pre\">LinearEquiv.ofBijective</span></code> to build an isomorphism from a bijective morphism.\nDoing so makes the inverse function noncomputable.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0035",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "p",
+    "text": "Note that in the above example, Lean uses the announced type to understand that .ofBijective refers to LinearEquiv.ofBijective (without needing to open any namespace).",
+    "html": "<p>Note that in the above example, Lean uses the announced type to understand that <code class=\"docutils literal notranslate\"><span class=\"pre\">.ofBijective</span></code>\nrefers to <code class=\"docutils literal notranslate\"><span class=\"pre\">LinearEquiv.ofBijective</span></code> (without needing to open any namespace).</p>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0036",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "p",
+    "text": "We can build new vector spaces out of old ones using direct sums and direct products. Let us start with two vectors spaces. In this case there is no difference between sum and product, and we can simply use the product type. In the following snippet of code we simply show how to get all the structure maps (inclusions and projections) as linear maps, as well as the universal properties constructing linear maps into products and out of sums (if you are not familiar with the category-theoretic distinction between sums and products, you can simply ignore the universal property vocabulary and focus on the types of the following examples).",
+    "html": "<p>We can build new vector spaces out of old ones using direct sums and direct\nproducts.\nLet us start with two vectors spaces. In this case there is no difference between sum and product,\nand we can simply use the product type.\nIn the following snippet of code we simply show how to get all the structure maps (inclusions\nand projections) as linear maps, as well as the universal properties constructing linear maps\ninto products and out of sums (if you are not familiar with the category-theoretic distinction\nbetween sums and products, you can simply ignore the universal property vocabulary and focus\non the types of the following examples).</p>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0037",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "p",
+    "text": "Let us now turn to sums and products of arbitrary families of vector spaces. Here we will simply see how to define a family of vector spaces and access the universal properties of sums and products. Note that the direct sum notation is scoped to the DirectSum namespace, and that the universal property of direct sums requires decidable equality on the indexing type (this is somehow an implementation accident).",
+    "html": "<p>Let us now turn to sums and products of arbitrary families of vector spaces.\nHere we will simply see how to define a family of vector spaces and access the universal\nproperties of sums and products.\nNote that the direct sum notation is scoped to the <code class=\"docutils literal notranslate\"><span class=\"pre\">DirectSum</span></code> namespace, and\nthat the universal property of direct sums requires decidable equality on the\nindexing type (this is somehow an implementation accident).</p>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0038",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "p",
+    "text": "Just as linear maps are bundled, a linear subspace of V is also a bundled structure consisting of a set in V , called the carrier of the subspace, with the relevant closure properties. Again the word module appears instead of vector space because of the more general context that Mathlib actually uses for linear algebra.",
+    "html": "<p>Just as linear maps are bundled, a linear subspace of <code class=\"docutils literal notranslate\"><span class=\"pre\">V</span></code> is also a bundled structure consisting of\na set in <code class=\"docutils literal notranslate\"><span class=\"pre\">V</span></code>, called the carrier of the subspace, with the relevant closure properties.\nAgain the word module appears instead of vector space because of the more general context that\nMathlib actually uses for linear algebra.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0039",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "p",
+    "text": "In the example above, it is important to understand that Submodule K V is the type of K -linear subspaces of V , rather than a predicate IsSubmodule U where U is an element of Set V . Submodule K V is endowed with a coercion to Set V and a membership predicate on V . See Section 8.3 for an explanation of how and why this is done.",
+    "html": "<p>In the example above, it is important to understand that <code class=\"docutils literal notranslate\"><span class=\"pre\">Submodule</span> <span class=\"pre\">K</span> <span class=\"pre\">V</span></code> is the type of <code class=\"docutils literal notranslate\"><span class=\"pre\">K</span></code>-linear\nsubspaces of <code class=\"docutils literal notranslate\"><span class=\"pre\">V</span></code>, rather than a predicate <code class=\"docutils literal notranslate\"><span class=\"pre\">IsSubmodule</span> <span class=\"pre\">U</span></code> where <code class=\"docutils literal notranslate\"><span class=\"pre\">U</span></code> is an element of <code class=\"docutils literal notranslate\"><span class=\"pre\">Set</span> <span class=\"pre\">V</span></code>.\n<code class=\"docutils literal notranslate\"><span class=\"pre\">Submodule</span> <span class=\"pre\">K</span> <span class=\"pre\">V</span></code> is endowed with a coercion to <code class=\"docutils literal notranslate\"><span class=\"pre\">Set</span> <span class=\"pre\">V</span></code> and a membership predicate on <code class=\"docutils literal notranslate\"><span class=\"pre\">V</span></code>.\nSee <a class=\"reference internal\" href=\"C08_Hierarchies.html#section-hierarchies-subobjects\"><span class=\"std std-numref\">Section 8.3</span></a> for an explanation of how and why this is done.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0040",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "p",
+    "text": "Of course, two subspaces are the same if and only if they have the same elements. This fact is registered for use with the ext tactic, which can be used to prove two subspaces are equal in the same way it is used to prove that two sets are equal.",
+    "html": "<p>Of course, two subspaces are the same if and only if they have the same elements. This fact\nis registered for use with the <code class=\"docutils literal notranslate\"><span class=\"pre\">ext</span></code> tactic, which can be used to prove two subspaces are\nequal in the same way it is used to prove that two sets are equal.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0041",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "p",
+    "text": "To state and prove, for example, that ℝ is a ℝ -linear subspace of ℂ , what we really want is to construct a term of type Submodule ℝ ℂ whose projection to Set ℂ is ℝ , or, more precisely, the image of ℝ in ℂ .",
+    "html": "<p>To state and prove, for example, that <code class=\"docutils literal notranslate\"><span class=\"pre\">ℝ</span></code> is a <code class=\"docutils literal notranslate\"><span class=\"pre\">ℝ</span></code>-linear subspace of <code class=\"docutils literal notranslate\"><span class=\"pre\">ℂ</span></code>,\nwhat we really want is to construct a term of type <code class=\"docutils literal notranslate\"><span class=\"pre\">Submodule</span> <span class=\"pre\">ℝ</span> <span class=\"pre\">ℂ</span></code> whose projection to\n<code class=\"docutils literal notranslate\"><span class=\"pre\">Set</span> <span class=\"pre\">ℂ</span></code> is <code class=\"docutils literal notranslate\"><span class=\"pre\">ℝ</span></code>, or, more precisely, the image of <code class=\"docutils literal notranslate\"><span class=\"pre\">ℝ</span></code> in <code class=\"docutils literal notranslate\"><span class=\"pre\">ℂ</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0042",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "p",
+    "text": "The prime at the end of proof fields in Submodule are analogous to the one in LinearMap . Those fields are stated in terms of the carrier field because they are defined before the MemberShip instance. They are then superseded by Submodule.add_mem , Submodule.zero_mem and Submodule.smul_mem that we saw above.",
+    "html": "<p>The prime at the end of proof fields in <code class=\"docutils literal notranslate\"><span class=\"pre\">Submodule</span></code> are analogous to the one in <code class=\"docutils literal notranslate\"><span class=\"pre\">LinearMap</span></code>.\nThose fields are stated in terms of the <code class=\"docutils literal notranslate\"><span class=\"pre\">carrier</span></code> field because they are defined before the\n<code class=\"docutils literal notranslate\"><span class=\"pre\">MemberShip</span></code> instance. They are then superseded by <code class=\"docutils literal notranslate\"><span class=\"pre\">Submodule.add_mem</span></code>, <code class=\"docutils literal notranslate\"><span class=\"pre\">Submodule.zero_mem</span></code>\nand <code class=\"docutils literal notranslate\"><span class=\"pre\">Submodule.smul_mem</span></code> that we saw above.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0043",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "p",
+    "text": "As an exercise in manipulating subspaces and linear maps, you will define the pre-image of a subspace by a linear map (of course we will see below that Mathlib already knows about this). Remember that Set.mem_preimage can be used to rewrite a statement involving membership and preimage. This is the only lemma you will need in addition to the lemmas discussed above about LinearMap and Submodule .",
+    "html": "<p>As an exercise in manipulating subspaces and linear maps, you will define the pre-image of\na subspace by a linear map (of course we will see below that Mathlib already knows about this).\nRemember that <code class=\"docutils literal notranslate\"><span class=\"pre\">Set.mem_preimage</span></code> can be used to rewrite a statement involving\nmembership and preimage. This is the only lemma you will need in addition to the lemmas\ndiscussed above about <code class=\"docutils literal notranslate\"><span class=\"pre\">LinearMap</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">Submodule</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0044",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "p",
+    "text": "Using type classes, Mathlib knows that a subspace of a vector space inherits a vector space structure.",
+    "html": "<p>Using type classes, Mathlib knows that a subspace of a vector space inherits a vector space structure.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0045",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "p",
+    "text": "This example is subtle. The object U is not a type, but Lean automatically coerces it to a type by interpreting it as a subtype of V . So the above example can be restated more explicitly as:",
+    "html": "<p>This example is subtle. The object <code class=\"docutils literal notranslate\"><span class=\"pre\">U</span></code> is not a type, but Lean automatically coerces it to\na type by interpreting it as a subtype of <code class=\"docutils literal notranslate\"><span class=\"pre\">V</span></code>.\nSo the above example can be restated more explicitly as:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0046",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "p",
+    "text": "An important benefit of having a type Submodule K V instead of a predicate IsSubmodule : Set V → Prop is that one can easily endow Submodule K V with additional structure. Importantly, it has the structure of a complete lattice structure with respect to inclusion. For instance, instead of having a lemma stating that an intersection of two subspaces of V is again a subspace, we use the lattice operation ⊓ to construct the intersection. We can then apply arbitrary lemmas about lattices to the construction.",
+    "html": "<p>An important benefit of having a type <code class=\"docutils literal notranslate\"><span class=\"pre\">Submodule</span> <span class=\"pre\">K</span> <span class=\"pre\">V</span></code> instead of a predicate\n<code class=\"docutils literal notranslate\"><span class=\"pre\">IsSubmodule</span> <span class=\"pre\">:</span> <span class=\"pre\">Set</span> <span class=\"pre\">V</span> <span class=\"pre\">→</span> <span class=\"pre\">Prop</span></code> is that one can easily endow <code class=\"docutils literal notranslate\"><span class=\"pre\">Submodule</span> <span class=\"pre\">K</span> <span class=\"pre\">V</span></code> with additional structure.\nImportantly, it has the structure of a complete lattice structure with respect to\ninclusion. For instance, instead of having a lemma stating that an intersection of\ntwo subspaces of <code class=\"docutils literal notranslate\"><span class=\"pre\">V</span></code> is again a subspace, we\nuse the lattice operation <code class=\"docutils literal notranslate\"><span class=\"pre\">⊓</span></code> to construct the intersection. We can then apply arbitrary\nlemmas about lattices to the construction.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0047",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "p",
+    "text": "Let us check that the set underlying the infimum of two subspaces is indeed, by definition, their intersection.",
+    "html": "<p>Let us check that the set underlying the infimum of two subspaces is indeed, by definition,\ntheir intersection.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0048",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "p",
+    "text": "It may look strange to have a different notation for what amounts to the intersection of the underlying sets, but the correspondence does not carry over to the supremum operation and set union, since a union of subspaces is not, in general, a subspace. Instead one needs to use the subspace generated by the union, which is done using Submodule.span .",
+    "html": "<p>It may look strange to have a different notation for what amounts to the intersection of the\nunderlying sets, but the correspondence does not carry over to the supremum operation and set\nunion, since a union of subspaces is not, in general, a subspace.\nInstead one needs to use the subspace generated by the union, which is done\nusing <code class=\"docutils literal notranslate\"><span class=\"pre\">Submodule.span</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0049",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "p",
+    "text": "Another subtlety is that V itself does not have type Submodule K V , so we need a way to talk about V seen as a subspace of V . This is also provided by the lattice structure: the full subspace is the top element of this lattice.",
+    "html": "<p>Another subtlety is that <code class=\"docutils literal notranslate\"><span class=\"pre\">V</span></code> itself does not have type <code class=\"docutils literal notranslate\"><span class=\"pre\">Submodule</span> <span class=\"pre\">K</span> <span class=\"pre\">V</span></code>,\nso we need a way to talk about <code class=\"docutils literal notranslate\"><span class=\"pre\">V</span></code> seen as a subspace of <code class=\"docutils literal notranslate\"><span class=\"pre\">V</span></code>.\nThis is also provided by the lattice structure: the full subspace is the top element of\nthis lattice.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0050",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "p",
+    "text": "Similarly the bottom element of this lattice is the subspace whose only element is the zero element.",
+    "html": "<p>Similarly the bottom element of this lattice is the subspace whose only element is the\nzero element.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0051",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "p",
+    "text": "In particular we can discuss the case of subspaces that are in (internal) direct sum. In the case of two subspaces, we use the general purpose predicate IsCompl which makes sense for any bounded partially ordered type. In the case of general families of subspaces we use DirectSum.IsInternal .",
+    "html": "<p>In particular we can discuss the case of subspaces that are in (internal) direct sum.\nIn the case of two subspaces, we use the general purpose predicate <code class=\"docutils literal notranslate\"><span class=\"pre\">IsCompl</span></code>\nwhich makes sense for any bounded partially ordered type.\nIn the case of general families of subspaces we use <code class=\"docutils literal notranslate\"><span class=\"pre\">DirectSum.IsInternal</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0052",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "p",
+    "text": "In addition to building subspaces out of existing subspaces, we can build them out of any set s using Submodule.span K s which builds the smallest subspace containing s . On paper it is common to use that this space is made of all linear combinations of elements of s . But it is often more efficient to use its universal property expressed by Submodule.span_le , and the whole theory of Galois connections.",
+    "html": "<p>In addition to building subspaces out of existing subspaces, we can build them out\nof any set <code class=\"docutils literal notranslate\"><span class=\"pre\">s</span></code> using <code class=\"docutils literal notranslate\"><span class=\"pre\">Submodule.span</span> <span class=\"pre\">K</span> <span class=\"pre\">s</span></code> which builds the smallest subspace\ncontaining <code class=\"docutils literal notranslate\"><span class=\"pre\">s</span></code>.\nOn paper it is common to use that this space is made of all linear combinations of elements of\n<code class=\"docutils literal notranslate\"><span class=\"pre\">s</span></code>.\nBut it is often more efficient to use its universal property expressed by <code class=\"docutils literal notranslate\"><span class=\"pre\">Submodule.span_le</span></code>,\nand the whole theory of Galois connections.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0053",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "p",
+    "text": "When those are not enough, one can use the relevant induction principle Submodule.span_induction which ensures a property holds for every element of the span of s as long as it holds on zero and elements of s and is stable under sum and scalar multiplication.",
+    "html": "<p>When those are not enough, one can use the relevant induction principle\n<code class=\"docutils literal notranslate\"><span class=\"pre\">Submodule.span_induction</span></code> which ensures a property holds for every element of the\nspan of <code class=\"docutils literal notranslate\"><span class=\"pre\">s</span></code> as long as it holds on <code class=\"docutils literal notranslate\"><span class=\"pre\">zero</span></code> and elements of <code class=\"docutils literal notranslate\"><span class=\"pre\">s</span></code> and is stable under\nsum and scalar multiplication.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0054",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "p",
+    "text": "As an exercise, let us reprove one implication of Submodule.mem_sup . Remember that you can use the module tactic to close goals that follow from the axioms relating the various algebraic operations on V .",
+    "html": "<p>As an exercise, let us reprove one implication of <code class=\"docutils literal notranslate\"><span class=\"pre\">Submodule.mem_sup</span></code>.\nRemember that you can use the <cite>module</cite> tactic to close goals that follow from\nthe axioms relating the various algebraic operations on <code class=\"docutils literal notranslate\"><span class=\"pre\">V</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0055",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "p",
+    "text": "As promised earlier, we now describe how to push and pull subspaces by linear maps. As usual in Mathlib, the first operation is called map and the second one is called comap .",
+    "html": "<p>As promised earlier, we now describe how to push and pull subspaces by linear maps.\nAs usual in Mathlib, the first operation is called <code class=\"docutils literal notranslate\"><span class=\"pre\">map</span></code> and the second one is called\n<code class=\"docutils literal notranslate\"><span class=\"pre\">comap</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0056",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "p",
+    "text": "Note those live in the Submodule namespace so one can use dot notation and write E.map φ instead of Submodule.map φ E , but this is pretty awkward to read (although some Mathlib contributors use this spelling).",
+    "html": "<p>Note those live in the <code class=\"docutils literal notranslate\"><span class=\"pre\">Submodule</span></code> namespace so one can use dot notation and write\n<code class=\"docutils literal notranslate\"><span class=\"pre\">E.map</span> <span class=\"pre\">φ</span></code> instead of <code class=\"docutils literal notranslate\"><span class=\"pre\">Submodule.map</span> <span class=\"pre\">φ</span> <span class=\"pre\">E</span></code>, but this is pretty awkward to read (although some\nMathlib contributors use this spelling).</p>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0057",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "p",
+    "text": "In particular the range and kernel of a linear map are subspaces. Those special cases are important enough to get declarations.",
+    "html": "<p>In particular the range and kernel of a linear map are subspaces. Those special cases are important\nenough to get declarations.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0058",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "p",
+    "text": "Note that we cannot write φ.ker instead of LinearMap.ker φ because LinearMap.ker also applies to classes of maps preserving more structure, hence it does not expect an argument whose type starts with LinearMap , hence dot notation doesn’t work here. However we were able to use the other flavor of dot notation in the right-hand side. Because Lean expects a term with type Submodule K V after elaborating the left-hand side, it interprets .comap as Submodule.comap .",
+    "html": "<p>Note that we cannot write <code class=\"docutils literal notranslate\"><span class=\"pre\">φ.ker</span></code> instead of <code class=\"docutils literal notranslate\"><span class=\"pre\">LinearMap.ker</span> <span class=\"pre\">φ</span></code> because <code class=\"docutils literal notranslate\"><span class=\"pre\">LinearMap.ker</span></code> also\napplies to classes of maps preserving more structure, hence it does not expect an argument\nwhose type starts with <code class=\"docutils literal notranslate\"><span class=\"pre\">LinearMap</span></code>, hence dot notation doesn’t work here.\nHowever we were able to use the other flavor of dot notation in the right-hand side. Because\nLean expects a term with type <code class=\"docutils literal notranslate\"><span class=\"pre\">Submodule</span> <span class=\"pre\">K</span> <span class=\"pre\">V</span></code> after elaborating the left-hand side, it interprets\n<code class=\"docutils literal notranslate\"><span class=\"pre\">.comap</span></code> as <code class=\"docutils literal notranslate\"><span class=\"pre\">Submodule.comap</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0059",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "p",
+    "text": "The following lemmas give the key relations between those submodule and the properties of φ .",
+    "html": "<p>The following lemmas give the key relations between those submodule and the properties of <code class=\"docutils literal notranslate\"><span class=\"pre\">φ</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0060",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "p",
+    "text": "As an exercise, let us prove the Galois connection property for map and comap . One can use the following lemmas but this is not required since they are true by definition.",
+    "html": "<p>As an exercise, let us prove the Galois connection property for <code class=\"docutils literal notranslate\"><span class=\"pre\">map</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">comap</span></code>.\nOne can use the following lemmas but this is not required since they are true by definition.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0061",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "p",
+    "text": "Quotient vector spaces use the general quotient notation (typed with \\quot , not the ordinary / ). The projection onto a quotient space is Submodule.mkQ and the universal property is Submodule.liftQ .",
+    "html": "<p>Quotient vector spaces use the general quotient notation (typed with <code class=\"docutils literal notranslate\"><span class=\"pre\">\\quot</span></code>, not the ordinary\n<code class=\"docutils literal notranslate\"><span class=\"pre\">/</span></code>).\nThe projection onto a quotient space is <code class=\"docutils literal notranslate\"><span class=\"pre\">Submodule.mkQ</span></code> and the universal property is\n<code class=\"docutils literal notranslate\"><span class=\"pre\">Submodule.liftQ</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0062",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "p",
+    "text": "As an exercise, let us prove the correspondence theorem for subspaces of quotient spaces. Mathlib knows a slightly more precise version as Submodule.comapMkQRelIso .",
+    "html": "<p>As an exercise, let us prove the correspondence theorem for subspaces of quotient spaces.\nMathlib knows a slightly more precise version as <code class=\"docutils literal notranslate\"><span class=\"pre\">Submodule.comapMkQRelIso</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0063",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "p",
+    "text": "An important special case of linear maps are endomorphisms: linear maps from a vector space to itself. They are interesting because they form a K -algebra. In particular we can evaluate polynomials with coefficients in K on them, and they can have eigenvalues and eigenvectors.",
+    "html": "<p>An important special case of linear maps are endomorphisms: linear maps from a vector space to itself.\nThey are interesting because they form a <code class=\"docutils literal notranslate\"><span class=\"pre\">K</span></code>-algebra. In particular we can evaluate polynomials\nwith coefficients in <code class=\"docutils literal notranslate\"><span class=\"pre\">K</span></code> on them, and they can have eigenvalues and eigenvectors.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0064",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "p",
+    "text": "Mathlib uses the abbreviation Module.End K V := V →ₗ[K] V which is convenient when using a lot of these (especially after opening the Module namespace).",
+    "html": "<p>Mathlib uses the abbreviation <code class=\"docutils literal notranslate\"><span class=\"pre\">Module.End</span> <span class=\"pre\">K</span> <span class=\"pre\">V</span> <span class=\"pre\">:=</span> <span class=\"pre\">V</span> <span class=\"pre\">→ₗ[K]</span> <span class=\"pre\">V</span></code> which is convenient when\nusing a lot of these (especially after opening the <code class=\"docutils literal notranslate\"><span class=\"pre\">Module</span></code> namespace).</p>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0065",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "p",
+    "text": "As an exercise manipulating endomorphisms, subspaces and polynomials, let us prove the (binary) kernels lemma: for any endomorphism \\(φ\\) and any two relatively prime polynomials \\(P\\) and \\(Q\\) , we have \\(\\ker P(φ) ⊕ \\ker Q(φ) = \\ker \\big(PQ(φ)\\big)\\) .",
+    "html": "<p>As an exercise manipulating endomorphisms, subspaces and polynomials, let us prove the\n(binary) kernels lemma: for any endomorphism <span class=\"math notranslate nohighlight\">\\(φ\\)</span> and any two relatively\nprime polynomials <span class=\"math notranslate nohighlight\">\\(P\\)</span> and <span class=\"math notranslate nohighlight\">\\(Q\\)</span>, we have <span class=\"math notranslate nohighlight\">\\(\\ker P(φ) ⊕ \\ker Q(φ) = \\ker \\big(PQ(φ)\\big)\\)</span>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0066",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "p",
+    "text": "Note that IsCoprime x y is defined as ∃ a b, a * x + b * y = 1 .",
+    "html": "<p>Note that <code class=\"docutils literal notranslate\"><span class=\"pre\">IsCoprime</span> <span class=\"pre\">x</span> <span class=\"pre\">y</span></code> is defined as <code class=\"docutils literal notranslate\"><span class=\"pre\">∃</span> <span class=\"pre\">a</span> <span class=\"pre\">b,</span> <span class=\"pre\">a</span> <span class=\"pre\">*</span> <span class=\"pre\">x</span> <span class=\"pre\">+</span> <span class=\"pre\">b</span> <span class=\"pre\">*</span> <span class=\"pre\">y</span> <span class=\"pre\">=</span> <span class=\"pre\">1</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0067",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "p",
+    "text": "We now move to the discussions of eigenspaces and eigenvalues. The eigenspace associated to an endomorphism \\(φ\\) and a scalar \\(a\\) is the kernel of \\(φ - aId\\) . Eigenspaces are defined for all values of a , although they are interesting only when they are non-zero. However an eigenvector is, by definition, a non-zero element of an eigenspace. The corresponding predicate is End.HasEigenvector .",
+    "html": "<p>We now move to the discussions of eigenspaces and eigenvalues. The eigenspace\nassociated to an endomorphism <span class=\"math notranslate nohighlight\">\\(φ\\)</span> and a scalar <span class=\"math notranslate nohighlight\">\\(a\\)</span> is the kernel of <span class=\"math notranslate nohighlight\">\\(φ - aId\\)</span>.\nEigenspaces are defined for all values of <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span></code>, although\nthey are interesting only when they are non-zero.\nHowever an eigenvector is, by definition, a non-zero element of an eigenspace. The corresponding\npredicate is <code class=\"docutils literal notranslate\"><span class=\"pre\">End.HasEigenvector</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0068",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "p",
+    "text": "Then there is a predicate End.HasEigenvalue and the corresponding subtype End.Eigenvalues .",
+    "html": "<p>Then there is a predicate <code class=\"docutils literal notranslate\"><span class=\"pre\">End.HasEigenvalue</span></code> and the corresponding subtype <code class=\"docutils literal notranslate\"><span class=\"pre\">End.Eigenvalues</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0069",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "p",
+    "text": "Before introducing bases for abstract vector spaces, we go back to the much more elementary setup of linear algebra in \\(K^n\\) for some field \\(K\\) . Here the main objects are vectors and matrices. For concrete vectors, one can use the ![…] notation, where components are separated by commas. For concrete matrices we can use the !![…] notation, rows are separated by semicolons and elements of the rows are separated by commas. When entries have a computable type such as ℕ or ℚ , we can use the eval command to play with basic operations.",
+    "html": "<p id=\"index-3\">Before introducing bases for abstract vector spaces, we go back to the much more elementary setup\nof linear algebra in <span class=\"math notranslate nohighlight\">\\(K^n\\)</span> for some field <span class=\"math notranslate nohighlight\">\\(K\\)</span>.\nHere the main objects are vectors and matrices.\nFor concrete vectors, one can use the <code class=\"docutils literal notranslate\"><span class=\"pre\">![…]</span></code> notation, where components are separated by commas.\nFor concrete matrices we can use the <code class=\"docutils literal notranslate\"><span class=\"pre\">!![…]</span></code> notation, rows are separated by semicolons\nand elements of the rows are separated by commas.\nWhen entries have a computable type such as <code class=\"docutils literal notranslate\"><span class=\"pre\">ℕ</span></code> or <code class=\"docutils literal notranslate\"><span class=\"pre\">ℚ</span></code>, we can use\nthe <code class=\"docutils literal notranslate\"><span class=\"pre\">eval</span></code> command to play with basic operations.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0070",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "p",
+    "text": "It is important to understand that this use of #eval is interesting only for exploration, it is not meant to replace a computer algebra system such as Sage. The data representation used here for matrices is not computationally efficient in any way. It uses functions instead of arrays and is optimized for proving, not computing. The virtual machine used by #eval is also not optimized for this use.",
+    "html": "<p>It is important to understand that this use of <code class=\"docutils literal notranslate\"><span class=\"pre\">#eval</span></code> is interesting only for\nexploration, it is not meant to replace a computer algebra system such as Sage.\nThe data representation used here for matrices is <em>not</em> computationally\nefficient in any way. It uses functions instead of arrays and is optimized for\nproving, not computing.\nThe virtual machine used by <code class=\"docutils literal notranslate\"><span class=\"pre\">#eval</span></code> is also not optimized for this use.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0071",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "p",
+    "text": "Beware the matrix notation list rows but the vector notation is neither a row vector nor a column vector. Multiplication of a matrix with a vector from the left (resp. right) interprets the vector as a row (resp. column) vector. This corresponds to operations Matrix.vecMul , with notation ᵥ* and Matrix.mulVec , with notation ` *ᵥ` . Those notations are scoped in the Matrix namespace that we therefore need to open.",
+    "html": "<p>Beware the matrix notation list rows but the vector notation\nis neither a row vector nor a column vector. Multiplication of a matrix with a vector\nfrom the left (resp. right) interprets the vector as a row (resp. column) vector.\nThis corresponds to operations\n<code class=\"docutils literal notranslate\"><span class=\"pre\">Matrix.vecMul</span></code>, with notation <code class=\"docutils literal notranslate\"><span class=\"pre\">ᵥ*</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">Matrix.mulVec</span></code>, with notation ` <cite>*ᵥ`</cite>.\nThose notations are scoped in the <code class=\"docutils literal notranslate\"><span class=\"pre\">Matrix</span></code> namespace that we therefore need to open.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0072",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "p",
+    "text": "In order to generate matrices with identical rows or columns specified by a vector, we use Matrix.replicateRow and Matrix.replicateCol , with arguments the type indexing the rows or columns and the vector. For instance one can get single row or single column matrixes (more precisely matrices whose rows or columns are indexed by Fin 1 ).",
+    "html": "<p>In order to generate matrices with identical rows or columns specified by a vector, we\nuse <code class=\"docutils literal notranslate\"><span class=\"pre\">Matrix.replicateRow</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">Matrix.replicateCol</span></code>, with arguments the type indexing the\nrows or columns and the vector.\nFor instance one can get single row or single column matrixes (more precisely matrices whose rows\nor columns are indexed by <code class=\"docutils literal notranslate\"><span class=\"pre\">Fin</span> <span class=\"pre\">1</span></code>).</p>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0073",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "p",
+    "text": "Other familiar operations include the vector dot product, matrix transpose, and, for square matrices, determinant and trace.",
+    "html": "<p>Other familiar operations include the vector dot product, matrix transpose, and,\nfor square matrices, determinant and trace.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0074",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "p",
+    "text": "When entries do not have a computable type, for instance if they are real numbers, we cannot hope that #eval can help. Also this kind of evaluation cannot be used in proofs without considerably expanding the trusted code base (i.e. the part of Lean that you need to trust when checking proofs).",
+    "html": "<p>When entries do not have a computable type, for instance if they are real numbers, we cannot\nhope that <code class=\"docutils literal notranslate\"><span class=\"pre\">#eval</span></code> can help. Also this kind of evaluation cannot be used in proofs without\nconsiderably expanding the trusted code base (i.e. the part of Lean that you need to trust when\nchecking proofs).</p>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0075",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "p",
+    "text": "So it is good to also use the simp and norm_num tactics in proofs, or their command counter-part for quick exploration.",
+    "html": "<p>So it is good to also use the <code class=\"docutils literal notranslate\"><span class=\"pre\">simp</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">norm_num</span></code> tactics in proofs, or\ntheir command counter-part for quick exploration.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0076",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "p",
+    "text": "The next important operation on square matrices is inversion. In the same way as division of numbers is always defined and returns the artificial value zero for division by zero, the inversion operation is defined on all matrices and returns the zero matrix for non-invertible matrices.",
+    "html": "<p>The next important operation on square matrices is inversion.\nIn the same way as division of numbers is always defined and returns the artificial value\nzero for division by zero, the inversion operation is defined on all matrices and returns\nthe zero matrix for non-invertible matrices.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0077",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "p",
+    "text": "More precisely, there is general function Ring.inverse that does this in any ring, and, for any matrix A , A⁻¹ is defined as Ring.inverse A.det • A.adjugate . According to Cramer’s rule, this is indeed the inverse of A when the determinant of A is not zero.",
+    "html": "<p>More precisely, there is general function <code class=\"docutils literal notranslate\"><span class=\"pre\">Ring.inverse</span></code> that does this in any ring,\nand, for any matrix <code class=\"docutils literal notranslate\"><span class=\"pre\">A</span></code>, <code class=\"docutils literal notranslate\"><span class=\"pre\">A⁻¹</span></code> is defined as <code class=\"docutils literal notranslate\"><span class=\"pre\">Ring.inverse</span> <span class=\"pre\">A.det</span> <span class=\"pre\">•</span> <span class=\"pre\">A.adjugate</span></code>.\nAccording to Cramer’s rule, this is indeed the inverse of <code class=\"docutils literal notranslate\"><span class=\"pre\">A</span></code> when the determinant of <code class=\"docutils literal notranslate\"><span class=\"pre\">A</span></code> is\nnot zero.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0078",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "p",
+    "text": "Of course this definition is really useful only for invertible matrices. There is a general type class Invertible that helps recording this. For instance, the simp call in the next example will use the inv_mul_of_invertible lemma which has an Invertible type-class assumption, so it will trigger only if this can be found by the type-class synthesis system. Here we make this fact available using a have statement.",
+    "html": "<p>Of course this definition is really useful only for invertible matrices.\nThere is a general type class <code class=\"docutils literal notranslate\"><span class=\"pre\">Invertible</span></code> that helps recording this.\nFor instance, the <code class=\"docutils literal notranslate\"><span class=\"pre\">simp</span></code> call in the next example will use the <code class=\"docutils literal notranslate\"><span class=\"pre\">inv_mul_of_invertible</span></code>\nlemma which has an <code class=\"docutils literal notranslate\"><span class=\"pre\">Invertible</span></code> type-class assumption, so it will trigger\nonly if this can be found by the type-class synthesis system.\nHere we make this fact available using a <code class=\"docutils literal notranslate\"><span class=\"pre\">have</span></code> statement.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0079",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "p",
+    "text": "In this fully concrete case, we could also use the norm_num machinery, and apply? to find the final line:",
+    "html": "<p>In this fully concrete case, we could also use the <code class=\"docutils literal notranslate\"><span class=\"pre\">norm_num</span></code> machinery,\nand <code class=\"docutils literal notranslate\"><span class=\"pre\">apply?</span></code> to find the final line:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0080",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "p",
+    "text": "All the concrete matrices above have their rows and columns indexed by Fin n for some n (not necessarily the same for rows and columns). But sometimes it is more convenient to index matrices using arbitrary finite types. For instance the adjacency matrix of a finite graph has rows and columns naturally indexed by the vertices of the graph.",
+    "html": "<p>All the concrete matrices above have their rows and columns indexed by <code class=\"docutils literal notranslate\"><span class=\"pre\">Fin</span> <span class=\"pre\">n</span></code> for\nsome <code class=\"docutils literal notranslate\"><span class=\"pre\">n</span></code> (not necessarily the same for rows and columns).\nBut sometimes it is more convenient to index matrices using arbitrary finite types.\nFor instance the adjacency matrix of a finite graph has rows and columns naturally indexed by\nthe vertices of the graph.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0081",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "p",
+    "text": "In fact, when one simply wants to define matrices without defining any operation on them, finiteness of the indexing types are not even needed, and coefficients can have any type, without any algebraic structure. So Mathlib simply defines Matrix m n α to be m → n → α for any types m , n and α , and the matrices we have been using so far had types such as Matrix (Fin 2) (Fin 2) ℝ . Of course algebraic operations require more assumptions on m , n and α .",
+    "html": "<p>In fact, when one simply wants to define matrices without defining any operation on them,\nfiniteness of the indexing types are not even needed, and coefficients can have any type,\nwithout any algebraic structure.\nSo Mathlib simply defines <code class=\"docutils literal notranslate\"><span class=\"pre\">Matrix</span> <span class=\"pre\">m</span> <span class=\"pre\">n</span> <span class=\"pre\">α</span></code> to be <code class=\"docutils literal notranslate\"><span class=\"pre\">m</span> <span class=\"pre\">→</span> <span class=\"pre\">n</span> <span class=\"pre\">→</span> <span class=\"pre\">α</span></code> for any types <code class=\"docutils literal notranslate\"><span class=\"pre\">m</span></code>, <code class=\"docutils literal notranslate\"><span class=\"pre\">n</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">α</span></code>,\nand the matrices we have been using so far had types such as <code class=\"docutils literal notranslate\"><span class=\"pre\">Matrix</span> <span class=\"pre\">(Fin</span> <span class=\"pre\">2)</span> <span class=\"pre\">(Fin</span> <span class=\"pre\">2)</span> <span class=\"pre\">ℝ</span></code>.\nOf course algebraic operations require more assumptions on <code class=\"docutils literal notranslate\"><span class=\"pre\">m</span></code>, <code class=\"docutils literal notranslate\"><span class=\"pre\">n</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">α</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0082",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "p",
+    "text": "Note the main reason why we do not use m → n → α directly is to allow the type class system to understand what we want. For instance, for a ring R , the type n → R is endowed with the point-wise multiplication operation, and similarly m → n → R has this operation which is not the multiplication we want on matrices.",
+    "html": "<p>Note the main reason why we do not use <code class=\"docutils literal notranslate\"><span class=\"pre\">m</span> <span class=\"pre\">→</span> <span class=\"pre\">n</span> <span class=\"pre\">→</span> <span class=\"pre\">α</span></code> directly is to allow the type class\nsystem to understand what we want. For instance, for a ring <code class=\"docutils literal notranslate\"><span class=\"pre\">R</span></code>, the type <code class=\"docutils literal notranslate\"><span class=\"pre\">n</span> <span class=\"pre\">→</span> <span class=\"pre\">R</span></code> is\nendowed with the point-wise multiplication operation, and similarly <code class=\"docutils literal notranslate\"><span class=\"pre\">m</span> <span class=\"pre\">→</span> <span class=\"pre\">n</span> <span class=\"pre\">→</span> <span class=\"pre\">R</span></code>\nhas this operation which is <em>not</em> the multiplication we want on matrices.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0083",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "p",
+    "text": "In the first example below, we force Lean to see through the definition of Matrix and accept the statement as meaningful, and then prove it by checking all entries.",
+    "html": "<p>In the first example below, we force Lean to see through the definition of <code class=\"docutils literal notranslate\"><span class=\"pre\">Matrix</span></code>\nand accept the statement as meaningful, and then prove it by checking all entries.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0084",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "p",
+    "text": "But then the next two examples reveal that Lean uses the point-wise multiplication on Fin 2 → Fin 2 → ℤ but the matrix multiplication on Matrix (Fin 2) (Fin 2) ℤ .",
+    "html": "<p>But then the next two examples reveal that Lean uses the point-wise multiplication\non <code class=\"docutils literal notranslate\"><span class=\"pre\">Fin</span> <span class=\"pre\">2</span> <span class=\"pre\">→</span> <span class=\"pre\">Fin</span> <span class=\"pre\">2</span> <span class=\"pre\">→</span> <span class=\"pre\">ℤ</span></code> but the matrix multiplication on <code class=\"docutils literal notranslate\"><span class=\"pre\">Matrix</span> <span class=\"pre\">(Fin</span> <span class=\"pre\">2)</span> <span class=\"pre\">(Fin</span> <span class=\"pre\">2)</span> <span class=\"pre\">ℤ</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0085",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "p",
+    "text": "In order to define matrices as functions without losing the benefits of Matrix for type class synthesis, we can use the equivalence Matrix.of between functions and matrices. This equivalence is secretly defined using Equiv.refl .",
+    "html": "<p>In order to define matrices as functions without losing the benefits of <code class=\"docutils literal notranslate\"><span class=\"pre\">Matrix</span></code>\nfor type class synthesis, we can use the equivalence <code class=\"docutils literal notranslate\"><span class=\"pre\">Matrix.of</span></code> between functions\nand matrices. This equivalence is secretly defined using <code class=\"docutils literal notranslate\"><span class=\"pre\">Equiv.refl</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0086",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "p",
+    "text": "For instance we can define Vandermonde matrices corresponding to a vector v .",
+    "html": "<p>For instance we can define Vandermonde matrices corresponding to a vector <code class=\"docutils literal notranslate\"><span class=\"pre\">v</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0087",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "p",
+    "text": "We now want to discuss bases of vector spaces. Informally there are many ways to define this notion. One can use a universal property. One can say a basis is a family of vectors that is linearly independent and spanning. Or one can combine those properties and directly say that a basis is a family of vectors such that every vectors can be written uniquely as a linear combination of bases vectors. Yet another way to say it is that a basis provides a linear isomorphism with a power of the base field K , seen as a vector space over K .",
+    "html": "<p>We now want to discuss bases of vector spaces. Informally there are many ways to define this notion.\nOne can use a universal property.\nOne can say a basis is a family of vectors that is linearly independent and spanning.\nOr one can combine those properties and directly say that a basis is a family of vectors\nsuch that every vectors can be written uniquely as a linear combination of bases vectors.\nYet another way to say it is that a basis provides a linear isomorphism with a power of\nthe base field <code class=\"docutils literal notranslate\"><span class=\"pre\">K</span></code>, seen as a vector space over <code class=\"docutils literal notranslate\"><span class=\"pre\">K</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0088",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "p",
+    "text": "This isomorphism version is actually the one that Mathlib uses as a definition under the hood, and other characterizations are proven from it. One must be slightly careful with the “power of K ” idea in the case of infinite bases. Indeed, only finite linear combinations make sense in this algebraic context. So what we need as a reference vector space is not a direct product of copies of K but a direct sum. We could use ⨁ i : ι, K for some type ι indexing the basis, but instead we use the more specialized spelling ι →₀ K , which means “functions from ι to K with finite support”, i.e. functions which vanish outside a finite set in ι (this finite set is not fixed, it depends on the function). Evaluating such a function coming from a basis B at a vector v and i : ι returns the component (or coordinate) of v on the i -th basis vector.",
+    "html": "<p>This isomorphism version is actually the one that Mathlib uses as a definition under the hood, and\nother characterizations are proven from it.\nOne must be slightly careful with the “power of <code class=\"docutils literal notranslate\"><span class=\"pre\">K</span></code>” idea in the case of infinite bases.\nIndeed, only finite linear combinations make sense in this algebraic context. So what we need\nas a reference vector space is not a direct product of copies of <code class=\"docutils literal notranslate\"><span class=\"pre\">K</span></code> but a direct sum.\nWe could use <code class=\"docutils literal notranslate\"><span class=\"pre\">⨁</span> <span class=\"pre\">i</span> <span class=\"pre\">:</span> <span class=\"pre\">ι,</span> <span class=\"pre\">K</span></code> for some type <code class=\"docutils literal notranslate\"><span class=\"pre\">ι</span></code> indexing the basis,\nbut instead we use the more specialized spelling <code class=\"docutils literal notranslate\"><span class=\"pre\">ι</span> <span class=\"pre\">→₀</span> <span class=\"pre\">K</span></code>, which means\n“functions from <code class=\"docutils literal notranslate\"><span class=\"pre\">ι</span></code> to <code class=\"docutils literal notranslate\"><span class=\"pre\">K</span></code> with finite support”, i.e. functions which vanish outside a finite set\nin <code class=\"docutils literal notranslate\"><span class=\"pre\">ι</span></code> (this finite set is not fixed, it depends on the function).\nEvaluating such a function coming from a basis <code class=\"docutils literal notranslate\"><span class=\"pre\">B</span></code> at a vector <code class=\"docutils literal notranslate\"><span class=\"pre\">v</span></code> and\n<code class=\"docutils literal notranslate\"><span class=\"pre\">i</span> <span class=\"pre\">:</span> <span class=\"pre\">ι</span></code> returns the component (or coordinate) of <code class=\"docutils literal notranslate\"><span class=\"pre\">v</span></code> on the <code class=\"docutils literal notranslate\"><span class=\"pre\">i</span></code>-th basis vector.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0089",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "p",
+    "text": "The type of bases indexed by a type ι of V as a K vector space is Basis ι K V . The isomorphism is called Basis.repr .",
+    "html": "<p>The type of bases indexed by a type <code class=\"docutils literal notranslate\"><span class=\"pre\">ι</span></code> of <code class=\"docutils literal notranslate\"><span class=\"pre\">V</span></code> as a <code class=\"docutils literal notranslate\"><span class=\"pre\">K</span></code> vector space is <code class=\"docutils literal notranslate\"><span class=\"pre\">Basis</span> <span class=\"pre\">ι</span> <span class=\"pre\">K</span> <span class=\"pre\">V</span></code>.\nThe isomorphism is called <code class=\"docutils literal notranslate\"><span class=\"pre\">Basis.repr</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0090",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "p",
+    "text": "Instead of starting with such an isomorphism, one can start with a family b of vectors that is linearly independent and spanning, this is Basis.mk .",
+    "html": "<p>Instead of starting with such an isomorphism, one can start with a family <code class=\"docutils literal notranslate\"><span class=\"pre\">b</span></code> of vectors that is\nlinearly independent and spanning, this is <code class=\"docutils literal notranslate\"><span class=\"pre\">Basis.mk</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0091",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "p",
+    "text": "The assumption that the family is spanning is spelled out as ⊤ ≤ Submodule.span K (Set.range b) . Here ⊤ is the top submodule of V , i.e. V seen as submodule of itself. This spelling looks a bit tortuous, but we will see below that it is almost equivalent by definition to the more readable ∀ v, v ∈ Submodule.span K (Set.range b) (the underscores in the snippet below refers to the useless information v ∈ ⊤ ).",
+    "html": "<p>The assumption that the family is spanning is spelled out as <code class=\"docutils literal notranslate\"><span class=\"pre\">⊤</span> <span class=\"pre\">≤</span> <span class=\"pre\">Submodule.span</span> <span class=\"pre\">K</span> <span class=\"pre\">(Set.range</span> <span class=\"pre\">b)</span></code>.\nHere <code class=\"docutils literal notranslate\"><span class=\"pre\">⊤</span></code> is the top submodule of <code class=\"docutils literal notranslate\"><span class=\"pre\">V</span></code>, i.e. <code class=\"docutils literal notranslate\"><span class=\"pre\">V</span></code> seen as submodule of itself.\nThis spelling looks a bit tortuous, but we will see below that it is almost equivalent by definition\nto the more readable <code class=\"docutils literal notranslate\"><span class=\"pre\">∀</span> <span class=\"pre\">v,</span> <span class=\"pre\">v</span> <span class=\"pre\">∈</span> <span class=\"pre\">Submodule.span</span> <span class=\"pre\">K</span> <span class=\"pre\">(Set.range</span> <span class=\"pre\">b)</span></code> (the underscores in the snippet\nbelow refers to the useless information <code class=\"docutils literal notranslate\"><span class=\"pre\">v</span> <span class=\"pre\">∈</span> <span class=\"pre\">⊤</span></code>).</p>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0092",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "p",
+    "text": "In particular the model vector space ι →₀ K has a so-called canonical basis whose repr function evaluated on any vector is the identity isomorphism. It is called Finsupp.basisSingleOne where Finsupp means function with finite support and basisSingleOne refers to the fact that basis vectors are functions which vanish except for a single input value. More precisely the basis vector indexed by i : ι is Finsupp.single i 1 which is the finitely supported function taking value 1 at i and 0 everywhere else.",
+    "html": "<p>In particular the model vector space <code class=\"docutils literal notranslate\"><span class=\"pre\">ι</span> <span class=\"pre\">→₀</span> <span class=\"pre\">K</span></code> has a so-called canonical basis whose <code class=\"docutils literal notranslate\"><span class=\"pre\">repr</span></code>\nfunction evaluated on any vector is the identity isomorphism. It is called\n<code class=\"docutils literal notranslate\"><span class=\"pre\">Finsupp.basisSingleOne</span></code> where <code class=\"docutils literal notranslate\"><span class=\"pre\">Finsupp</span></code> means function with finite support and\n<code class=\"docutils literal notranslate\"><span class=\"pre\">basisSingleOne</span></code> refers to the fact that basis vectors are functions which\nvanish except for a single input value. More precisely the basis vector indexed by <code class=\"docutils literal notranslate\"><span class=\"pre\">i</span> <span class=\"pre\">:</span> <span class=\"pre\">ι</span></code>\nis <code class=\"docutils literal notranslate\"><span class=\"pre\">Finsupp.single</span> <span class=\"pre\">i</span> <span class=\"pre\">1</span></code> which is the finitely supported function taking value <code class=\"docutils literal notranslate\"><span class=\"pre\">1</span></code> at <code class=\"docutils literal notranslate\"><span class=\"pre\">i</span></code>\nand <code class=\"docutils literal notranslate\"><span class=\"pre\">0</span></code> everywhere else.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0093",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "p",
+    "text": "The story of finitely supported functions is unneeded when the indexing type is finite. In this case we can use the simpler Pi.basisFun which gives a basis of the whole ι → K .",
+    "html": "<p>The story of finitely supported functions is unneeded when the indexing type is finite.\nIn this case we can use the simpler <code class=\"docutils literal notranslate\"><span class=\"pre\">Pi.basisFun</span></code> which gives a basis of the whole\n<code class=\"docutils literal notranslate\"><span class=\"pre\">ι</span> <span class=\"pre\">→</span> <span class=\"pre\">K</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0094",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "p",
+    "text": "Going back to the general case of bases of abstract vector spaces, we can express any vector as a linear combination of basis vectors. Let us first see the easy case of finite bases.",
+    "html": "<p>Going back to the general case of bases of abstract vector spaces, we can express\nany vector as a linear combination of basis vectors.\nLet us first see the easy case of finite bases.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0095",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "p",
+    "text": "When ι is not finite, the above statement makes no sense a priori: we cannot take a sum over ι . However the support of the function being summed is finite (it is the support of B.repr v ). But we need to apply a construction that takes this into account. Here Mathlib uses a special purpose function that requires some time to get used to: Finsupp.linearCombination (which is built on top of the more general Finsupp.sum ). Given a finitely supported function c from a type ι to the base field K and any function f from ι to V , Finsupp.linearCombination K f c is the sum over the support of c of the scalar multiplication c • f . In particular, we can replace it by a sum over any finite set containing the support of c .",
+    "html": "<p>When <code class=\"docutils literal notranslate\"><span class=\"pre\">ι</span></code> is not finite, the above statement makes no sense a priori: we cannot take a sum over <code class=\"docutils literal notranslate\"><span class=\"pre\">ι</span></code>.\nHowever the support of the function being summed is finite (it is the support of <code class=\"docutils literal notranslate\"><span class=\"pre\">B.repr</span> <span class=\"pre\">v</span></code>).\nBut we need to apply a construction that takes this into account.\nHere Mathlib uses a special purpose function that requires some time to get used to:\n<code class=\"docutils literal notranslate\"><span class=\"pre\">Finsupp.linearCombination</span></code> (which is built on top of the more general <code class=\"docutils literal notranslate\"><span class=\"pre\">Finsupp.sum</span></code>).\nGiven a finitely supported function <code class=\"docutils literal notranslate\"><span class=\"pre\">c</span></code> from a type <code class=\"docutils literal notranslate\"><span class=\"pre\">ι</span></code> to the base field <code class=\"docutils literal notranslate\"><span class=\"pre\">K</span></code> and any\nfunction <code class=\"docutils literal notranslate\"><span class=\"pre\">f</span></code> from <code class=\"docutils literal notranslate\"><span class=\"pre\">ι</span></code> to <code class=\"docutils literal notranslate\"><span class=\"pre\">V</span></code>, <code class=\"docutils literal notranslate\"><span class=\"pre\">Finsupp.linearCombination</span> <span class=\"pre\">K</span> <span class=\"pre\">f</span> <span class=\"pre\">c</span></code> is the\nsum over the support of <code class=\"docutils literal notranslate\"><span class=\"pre\">c</span></code> of the scalar multiplication <code class=\"docutils literal notranslate\"><span class=\"pre\">c</span> <span class=\"pre\">•</span> <span class=\"pre\">f</span></code>. In\nparticular, we can replace it by a sum over any finite set containing the\nsupport of <code class=\"docutils literal notranslate\"><span class=\"pre\">c</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0096",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "p",
+    "text": "One could also assume that f is finitely supported and still get a well defined sum. But the choice made by Finsupp.linearCombination is the one relevant to our basis discussion since it allows to state the generalization of Basis.sum_repr .",
+    "html": "<p>One could also assume that <code class=\"docutils literal notranslate\"><span class=\"pre\">f</span></code> is finitely supported and still get a well defined sum.\nBut the choice made by <code class=\"docutils literal notranslate\"><span class=\"pre\">Finsupp.linearCombination</span></code> is the one relevant to our basis discussion since it allows\nto state the generalization of <code class=\"docutils literal notranslate\"><span class=\"pre\">Basis.sum_repr</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0097",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "p",
+    "text": "One could wonder why K is an explicit argument here, despite the fact it can be inferred from the type of c . The point is that the partially applied Finsupp.linearCombination K f is interesting in itself. It is not a bare function from ι →₀ K to V but a K -linear map.",
+    "html": "<p>One could wonder why <code class=\"docutils literal notranslate\"><span class=\"pre\">K</span></code> is an explicit argument here, despite the fact it can be inferred from\nthe type of <code class=\"docutils literal notranslate\"><span class=\"pre\">c</span></code>. The point is that the partially applied <code class=\"docutils literal notranslate\"><span class=\"pre\">Finsupp.linearCombination</span> <span class=\"pre\">K</span> <span class=\"pre\">f</span></code>\nis interesting in itself. It is not a bare function from <code class=\"docutils literal notranslate\"><span class=\"pre\">ι</span> <span class=\"pre\">→₀</span> <span class=\"pre\">K</span></code> to <code class=\"docutils literal notranslate\"><span class=\"pre\">V</span></code> but a\n<code class=\"docutils literal notranslate\"><span class=\"pre\">K</span></code>-linear map.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0098",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "p",
+    "text": "Returning to the mathematical discussion, it is important to understand that the representation of vectors in a basis is less useful in formalized mathematics than you may think. Indeed it is very often more efficient to directly use more abstract properties of bases. In particular the universal property of bases connecting them to other free objects in algebra allows to construct linear maps by specifying the images of basis vectors. This is Basis.constr . For any K -vector space W , our basis B gives a linear isomorphism Basis.constr B K from ι → W to V →ₗ[K] W . This isomorphism is characterized by the fact that it sends any function u : ι → W to a linear map sending the basis vector B i to u i , for every i : ι .",
+    "html": "<p>Returning to the mathematical discussion, it is important to understand that the\nrepresentation of vectors in a basis is less useful in formalized\nmathematics than you may think.\nIndeed it is very often more efficient to directly use more abstract properties of bases.\nIn particular the universal property of bases connecting them to other free objects in algebra\nallows to construct linear maps by specifying the images of basis vectors.\nThis is <code class=\"docutils literal notranslate\"><span class=\"pre\">Basis.constr</span></code>. For any <code class=\"docutils literal notranslate\"><span class=\"pre\">K</span></code>-vector space <code class=\"docutils literal notranslate\"><span class=\"pre\">W</span></code>, our basis <code class=\"docutils literal notranslate\"><span class=\"pre\">B</span></code>\ngives a linear isomorphism <code class=\"docutils literal notranslate\"><span class=\"pre\">Basis.constr</span> <span class=\"pre\">B</span> <span class=\"pre\">K</span></code> from <code class=\"docutils literal notranslate\"><span class=\"pre\">ι</span> <span class=\"pre\">→</span> <span class=\"pre\">W</span></code> to <code class=\"docutils literal notranslate\"><span class=\"pre\">V</span> <span class=\"pre\">→ₗ[K]</span> <span class=\"pre\">W</span></code>.\nThis isomorphism is characterized by the fact that it sends any function <code class=\"docutils literal notranslate\"><span class=\"pre\">u</span> <span class=\"pre\">:</span> <span class=\"pre\">ι</span> <span class=\"pre\">→</span> <span class=\"pre\">W</span></code>\nto a linear map sending the basis vector <code class=\"docutils literal notranslate\"><span class=\"pre\">B</span> <span class=\"pre\">i</span></code> to <code class=\"docutils literal notranslate\"><span class=\"pre\">u</span> <span class=\"pre\">i</span></code>, for every <code class=\"docutils literal notranslate\"><span class=\"pre\">i</span> <span class=\"pre\">:</span> <span class=\"pre\">ι</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0099",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "p",
+    "text": "This property is indeed characteristic because linear maps are determined by their values on bases:",
+    "html": "<p>This property is indeed characteristic because linear maps are determined by their values\non bases:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0100",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "p",
+    "text": "If we also have a basis B' on the target space then we can identify linear maps with matrices. This identification is a K -linear isomorphism.",
+    "html": "<p>If we also have a basis <code class=\"docutils literal notranslate\"><span class=\"pre\">B'</span></code> on the target space then we can identify linear maps\nwith matrices. This identification is a <code class=\"docutils literal notranslate\"><span class=\"pre\">K</span></code>-linear isomorphism.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0101",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "p",
+    "text": "As an exercise on this topic, we will prove part of the theorem which guarantees that endomorphisms have a well-defined determinant. Namely we want to prove that when two bases are indexed by the same type, the matrices they attach to any endomorphism have the same determinant. This would then need to be complemented using that bases all have isomorphic indexing types to get the full result.",
+    "html": "<p>As an exercise on this topic, we will prove part of the theorem which guarantees that\nendomorphisms have a well-defined determinant.\nNamely we want to prove that when two bases are indexed by the same type, the matrices\nthey attach to any endomorphism have the same determinant.\nThis would then need to be complemented using that bases all have isomorphic indexing types to\nget the full result.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0102",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "p",
+    "text": "Of course Mathlib already knows this, and simp can close the goal immediately, so you shouldn’t use it too soon, but rather use the provided lemmas.",
+    "html": "<p>Of course Mathlib already knows this, and <code class=\"docutils literal notranslate\"><span class=\"pre\">simp</span></code> can close the goal immediately, so you\nshouldn’t use it too soon, but rather use the provided lemmas.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0103",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "p",
+    "text": "Returning to the case of a single vector space, bases are also useful to define the concept of dimension. Here again, there is the elementary case of finite-dimensional vector spaces. For such spaces we expect a dimension which is a natural number. This is Module.finrank . It takes the base field as an explicit argument since a given abelian group can be a vector space over different fields.",
+    "html": "<p>Returning to the case of a single vector space, bases are also useful to define the concept of\ndimension.\nHere again, there is the elementary case of finite-dimensional vector spaces.\nFor such spaces we expect a dimension which is a natural number.\nThis is <code class=\"docutils literal notranslate\"><span class=\"pre\">Module.finrank</span></code>. It takes the base field as an explicit argument\nsince a given abelian group can be a vector space over different fields.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0104",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "p",
+    "text": "Note that Module.finrank is defined for any vector space. It returns zero for infinite dimensional vector spaces, just as division by zero returns zero.",
+    "html": "<p>Note that <code class=\"docutils literal notranslate\"><span class=\"pre\">Module.finrank</span></code> is defined for any vector space. It returns\nzero for infinite dimensional vector spaces, just as division by zero returns zero.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0105",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "p",
+    "text": "Of course many lemmas require a finite dimension assumption. This is the role of the FiniteDimensional typeclass. For instance, think about how the next example fails without this assumption.",
+    "html": "<p>Of course many lemmas require a finite dimension assumption. This is the role of\nthe <code class=\"docutils literal notranslate\"><span class=\"pre\">FiniteDimensional</span></code> typeclass. For instance, think about how the next\nexample fails without this assumption.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0106",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "p",
+    "text": "In the above statement, Nontrivial V means V has at least two different elements. Note that Module.finrank_pos_iff has no explicit argument. This is fine when using it from left to right, but not when using it from right to left because Lean has no way to guess K from the statement Nontrivial V . In that case it is useful to use the name argument syntax, after checking that the lemma is stated over a ring named R . So we can write:",
+    "html": "<p>In the above statement, <code class=\"docutils literal notranslate\"><span class=\"pre\">Nontrivial</span> <span class=\"pre\">V</span></code> means <code class=\"docutils literal notranslate\"><span class=\"pre\">V</span></code> has at least two different elements.\nNote that <code class=\"docutils literal notranslate\"><span class=\"pre\">Module.finrank_pos_iff</span></code> has no explicit argument.\nThis is fine when using it from left to right, but not when using it from right to left\nbecause Lean has no way to guess <code class=\"docutils literal notranslate\"><span class=\"pre\">K</span></code> from the statement <code class=\"docutils literal notranslate\"><span class=\"pre\">Nontrivial</span> <span class=\"pre\">V</span></code>.\nIn that case it is useful to use the name argument syntax, after checking that the lemma\nis stated over a ring named <code class=\"docutils literal notranslate\"><span class=\"pre\">R</span></code>. So we can write:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0107",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "p",
+    "text": "The above spelling is strange because we already have h as an assumption, so we could just as well give the full proof Module.finrank_pos_iff.1 h but it is good to know for more complicated cases.",
+    "html": "<p>The above spelling is strange because we already have <code class=\"docutils literal notranslate\"><span class=\"pre\">h</span></code> as an assumption, so we could\njust as well give the full proof <code class=\"docutils literal notranslate\"><span class=\"pre\">Module.finrank_pos_iff.1</span> <span class=\"pre\">h</span></code> but it\nis good to know for more complicated cases.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0108",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "p",
+    "text": "By definition, FiniteDimensional K V can be read from any basis.",
+    "html": "<p>By definition, <code class=\"docutils literal notranslate\"><span class=\"pre\">FiniteDimensional</span> <span class=\"pre\">K</span> <span class=\"pre\">V</span></code> can be read from any basis.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0109",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "p",
+    "text": "Using that the subtype corresponding to a linear subspace has a vector space structure, we can talk about the dimension of a subspace.",
+    "html": "<p>Using that the subtype corresponding to a linear subspace has a vector space structure,\nwe can talk about the dimension of a subspace.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0110",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "p",
+    "text": "In the first statement above, the purpose of the type ascriptions is to make sure that coercion to Type* does not trigger too early.",
+    "html": "<p>In the first statement above, the purpose of the type ascriptions is to make sure that\ncoercion to <code class=\"docutils literal notranslate\"><span class=\"pre\">Type*</span></code> does not trigger too early.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0111",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "p",
+    "text": "We are now ready for an exercise about finrank and subspaces.",
+    "html": "<p>We are now ready for an exercise about <code class=\"docutils literal notranslate\"><span class=\"pre\">finrank</span></code> and subspaces.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0112",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "p",
+    "text": "Let us now move to the general case of dimension theory. In this case finrank is useless, but we still have that, for any two bases of the same vector space, there is a bijection between the types indexing those bases. So we can still hope to define the rank as a cardinal, i.e. an element of the “quotient of the collection of types under the existence of a bijection equivalence relation”.",
+    "html": "<p>Let us now move to the general case of dimension theory. In this case\n<code class=\"docutils literal notranslate\"><span class=\"pre\">finrank</span></code> is useless, but we still have that, for any two bases of the same\nvector space, there is a bijection between the types indexing those bases. So we\ncan still hope to define the rank as a cardinal, i.e. an element of the “quotient of\nthe collection of types under the existence of a bijection equivalence\nrelation”.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0113",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "p",
+    "text": "When discussing cardinal, it gets harder to ignore foundational issues around Russel’s paradox like we do everywhere else in this book. There is no type of all types because it would lead to logical inconsistencies. This issue is solved by the hierarchy of universes that we usually try to ignore.",
+    "html": "<p>When discussing cardinal, it gets harder to ignore foundational issues around Russel’s paradox\nlike we do everywhere else in this book.\nThere is no type of all types because it would lead to logical inconsistencies.\nThis issue is solved by the hierarchy of universes that\nwe usually try to ignore.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0114",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "p",
+    "text": "Each type has a universe level, and those levels behave similarly to natural numbers. In particular there is zeroth level, and the corresponding universe Type 0 is simply denoted by Type . This universe is enough to hold almost all of classical mathematics. For instance ℕ and ℝ have type Type . Each level u has a successor denoted by u + 1 , and Type u has type Type (u+1) .",
+    "html": "<p>Each type has a universe level, and those levels behave similarly to natural\nnumbers. In particular there is zeroth level, and the corresponding universe\n<code class=\"docutils literal notranslate\"><span class=\"pre\">Type</span> <span class=\"pre\">0</span></code> is simply denoted by <code class=\"docutils literal notranslate\"><span class=\"pre\">Type</span></code>. This universe is enough to hold\nalmost all of classical mathematics. For instance <code class=\"docutils literal notranslate\"><span class=\"pre\">ℕ</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">ℝ</span></code> have type <code class=\"docutils literal notranslate\"><span class=\"pre\">Type</span></code>.\nEach level <code class=\"docutils literal notranslate\"><span class=\"pre\">u</span></code> has a successor denoted\nby <code class=\"docutils literal notranslate\"><span class=\"pre\">u</span> <span class=\"pre\">+</span> <span class=\"pre\">1</span></code>, and <code class=\"docutils literal notranslate\"><span class=\"pre\">Type</span> <span class=\"pre\">u</span></code> has type <code class=\"docutils literal notranslate\"><span class=\"pre\">Type</span> <span class=\"pre\">(u+1)</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0115",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "p",
+    "text": "But universe levels are not natural numbers, they have a really different nature and don’t have a type. In particular you cannot state in Lean something like u ≠ u + 1 . There is simply no type where this would take place. Even stating Type u ≠ Type (u+1) does not make any sense since Type u and Type (u+1) have different types.",
+    "html": "<p>But universe levels are not natural numbers, they have a really different nature and don’t\nhave a type. In particular you cannot state in Lean something like <code class=\"docutils literal notranslate\"><span class=\"pre\">u</span> <span class=\"pre\">≠</span> <span class=\"pre\">u</span> <span class=\"pre\">+</span> <span class=\"pre\">1</span></code>.\nThere is simply no type where this would take place. Even stating\n<code class=\"docutils literal notranslate\"><span class=\"pre\">Type</span> <span class=\"pre\">u</span> <span class=\"pre\">≠</span> <span class=\"pre\">Type</span> <span class=\"pre\">(u+1)</span></code> does not make any sense since <code class=\"docutils literal notranslate\"><span class=\"pre\">Type</span> <span class=\"pre\">u</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">Type</span> <span class=\"pre\">(u+1)</span></code>\nhave different types.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0116",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "p",
+    "text": "Whenever we write Type* , Lean inserts a universe level variable named u_n where n is a number. This allows definitions and statements to live in all universes.",
+    "html": "<p>Whenever we write <code class=\"docutils literal notranslate\"><span class=\"pre\">Type*</span></code>, Lean inserts a universe level variable named <code class=\"docutils literal notranslate\"><span class=\"pre\">u_n</span></code> where <code class=\"docutils literal notranslate\"><span class=\"pre\">n</span></code> is a\nnumber. This allows definitions and statements to live in all universes.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0117",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "p",
+    "text": "Given a universe level u , we can define an equivalence relation on Type u saying two types α and β are equivalent if there is a bijection between them. The quotient type Cardinal.{u} lives in Type (u+1) . The curly braces denote a universe variable. The image of α : Type u in this quotient is Cardinal.mk α : Cardinal.{u} .",
+    "html": "<p>Given a universe level <code class=\"docutils literal notranslate\"><span class=\"pre\">u</span></code>, we can define an equivalence relation on <code class=\"docutils literal notranslate\"><span class=\"pre\">Type</span> <span class=\"pre\">u</span></code> saying\ntwo types <code class=\"docutils literal notranslate\"><span class=\"pre\">α</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">β</span></code> are equivalent if there is a bijection between them.\nThe quotient type <code class=\"docutils literal notranslate\"><span class=\"pre\">Cardinal.{u}</span></code> lives in <code class=\"docutils literal notranslate\"><span class=\"pre\">Type</span> <span class=\"pre\">(u+1)</span></code>. The curly braces\ndenote a universe variable. The image of <code class=\"docutils literal notranslate\"><span class=\"pre\">α</span> <span class=\"pre\">:</span> <span class=\"pre\">Type</span> <span class=\"pre\">u</span></code> in this quotient is\n<code class=\"docutils literal notranslate\"><span class=\"pre\">Cardinal.mk</span> <span class=\"pre\">α</span> <span class=\"pre\">:</span> <span class=\"pre\">Cardinal.{u}</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0118",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "p",
+    "text": "But we cannot directly compare cardinals in different universes. So technically we cannot define the rank of a vector space V as the cardinal of all types indexing a basis of V . So instead it is defined as the supremum Module.rank K V of cardinals of all linearly independent sets in V . If V has universe level u then its rank has type Cardinal.{u} .",
+    "html": "<p>But we cannot directly compare cardinals in different universes. So technically we\ncannot define the rank of a vector space <code class=\"docutils literal notranslate\"><span class=\"pre\">V</span></code> as the cardinal of all types indexing\na basis of <code class=\"docutils literal notranslate\"><span class=\"pre\">V</span></code>.\nSo instead it is defined as the supremum <code class=\"docutils literal notranslate\"><span class=\"pre\">Module.rank</span> <span class=\"pre\">K</span> <span class=\"pre\">V</span></code> of cardinals of\nall linearly independent sets in <code class=\"docutils literal notranslate\"><span class=\"pre\">V</span></code>. If <code class=\"docutils literal notranslate\"><span class=\"pre\">V</span></code> has universe level <code class=\"docutils literal notranslate\"><span class=\"pre\">u</span></code> then\nits rank has type <code class=\"docutils literal notranslate\"><span class=\"pre\">Cardinal.{u}</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0119",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "p",
+    "text": "One can still relate this definition to bases. Indeed there is also a commutative max operation on universe levels, and given two universe levels u and v there is an operation Cardinal.lift.{u, v} : Cardinal.{v} → Cardinal.{max v u} that allows to put cardinals in a common universe and state the dimension theorem.",
+    "html": "<p>One can still relate this definition to bases. Indeed there is also a commutative <code class=\"docutils literal notranslate\"><span class=\"pre\">max</span></code>\noperation on universe levels, and given two universe levels <code class=\"docutils literal notranslate\"><span class=\"pre\">u</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">v</span></code>\nthere is an operation <code class=\"docutils literal notranslate\"><span class=\"pre\">Cardinal.lift.{u,</span> <span class=\"pre\">v}</span> <span class=\"pre\">:</span> <span class=\"pre\">Cardinal.{v}</span> <span class=\"pre\">→</span> <span class=\"pre\">Cardinal.{max</span> <span class=\"pre\">v</span> <span class=\"pre\">u}</span></code>\nthat allows to put cardinals in a common universe and state the dimension theorem.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C10_Linear_Algebra:0120",
+    "file": "C10_Linear_Algebra.html",
+    "tag": "p",
+    "text": "We can relate the finite dimensional case to this discussion using the coercion from natural numbers to finite cardinals (or more precisely the finite cardinals which live in Cardinal.{v} where v is the universe level of V ).",
+    "html": "<p>We can relate the finite dimensional case to this discussion using the coercion\nfrom natural numbers to finite cardinals (or more precisely the finite cardinals which live in <code class=\"docutils literal notranslate\"><span class=\"pre\">Cardinal.{v}</span></code> where <code class=\"docutils literal notranslate\"><span class=\"pre\">v</span></code> is the universe level of <code class=\"docutils literal notranslate\"><span class=\"pre\">V</span></code>).</p>",
+    "zh": ""
+  }
+]

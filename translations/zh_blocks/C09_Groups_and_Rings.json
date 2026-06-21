@@ -1,0 +1,978 @@
+[
+  {
+    "id": "C09_Groups_and_Rings:0001",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "h1",
+    "text": "9. Groups and Rings",
+    "html": "<h1><span class=\"section-number\">9. </span>Groups and Rings</h1>",
+    "zh": "<span class=\"section-number\">9. </span>群与环"
+  },
+  {
+    "id": "C09_Groups_and_Rings:0002",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "h2",
+    "text": "9.1. Monoids and Groups",
+    "html": "<h2><span class=\"section-number\">9.1. </span>Monoids and Groups</h2>",
+    "zh": "<span class=\"section-number\">9.1. </span>幺半群与群"
+  },
+  {
+    "id": "C09_Groups_and_Rings:0003",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "h2",
+    "text": "9.2. Rings",
+    "html": "<h2><span class=\"section-number\">9.2. </span>Rings</h2>",
+    "zh": "<span class=\"section-number\">9.2. </span>环"
+  },
+  {
+    "id": "C09_Groups_and_Rings:0004",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "h3",
+    "text": "9.1.1. Monoids and their morphisms",
+    "html": "<h3><span class=\"section-number\">9.1.1. </span>Monoids and their morphisms</h3>",
+    "zh": "<span class=\"section-number\">9.1.1. </span>幺半群及其态射"
+  },
+  {
+    "id": "C09_Groups_and_Rings:0005",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "h3",
+    "text": "9.1.2. Groups and their morphisms",
+    "html": "<h3><span class=\"section-number\">9.1.2. </span>Groups and their morphisms</h3>",
+    "zh": "<span class=\"section-number\">9.1.2. </span>群及其态射"
+  },
+  {
+    "id": "C09_Groups_and_Rings:0006",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "h3",
+    "text": "9.1.3. Subgroups",
+    "html": "<h3><span class=\"section-number\">9.1.3. </span>Subgroups</h3>",
+    "zh": "<span class=\"section-number\">9.1.3. </span>子群"
+  },
+  {
+    "id": "C09_Groups_and_Rings:0007",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "h3",
+    "text": "9.1.4. Concrete groups",
+    "html": "<h3><span class=\"section-number\">9.1.4. </span>Concrete groups</h3>",
+    "zh": "<span class=\"section-number\">9.1.4. </span>具体群"
+  },
+  {
+    "id": "C09_Groups_and_Rings:0008",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "h3",
+    "text": "9.1.5. Group actions",
+    "html": "<h3><span class=\"section-number\">9.1.5. </span>Group actions</h3>",
+    "zh": "<span class=\"section-number\">9.1.5. </span>群作用"
+  },
+  {
+    "id": "C09_Groups_and_Rings:0009",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "h3",
+    "text": "9.1.6. Quotient groups",
+    "html": "<h3><span class=\"section-number\">9.1.6. </span>Quotient groups</h3>",
+    "zh": "<span class=\"section-number\">9.1.6. </span>商群"
+  },
+  {
+    "id": "C09_Groups_and_Rings:0010",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "h3",
+    "text": "9.2.1. Rings, their units, morphisms and subrings",
+    "html": "<h3><span class=\"section-number\">9.2.1. </span>Rings, their units, morphisms and subrings</h3>",
+    "zh": "<span class=\"section-number\">9.2.1. </span>环、单位、态射与子环"
+  },
+  {
+    "id": "C09_Groups_and_Rings:0011",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "h3",
+    "text": "9.2.2. Ideals and quotients",
+    "html": "<h3><span class=\"section-number\">9.2.2. </span>Ideals and quotients</h3>",
+    "zh": "<span class=\"section-number\">9.2.2. </span>理想与商"
+  },
+  {
+    "id": "C09_Groups_and_Rings:0012",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "h3",
+    "text": "9.2.3. Algebras and polynomials",
+    "html": "<h3><span class=\"section-number\">9.2.3. </span>Algebras and polynomials</h3>",
+    "zh": "<span class=\"section-number\">9.2.3. </span>代数与多项式"
+  },
+  {
+    "id": "C09_Groups_and_Rings:0013",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "p",
+    "text": "We saw in Section 2.2 how to reason about operations in groups and rings. Later, in Section 7.2 , we saw how to define abstract algebraic structures, such as group structures, as well as concrete instances such as the ring structure on the Gaussian integers. Chapter 8 explained how hierarchies of abstract structures are handled in Mathlib.",
+    "html": "<p>We saw in <a class=\"reference internal\" href=\"C02_Basics.html#proving-identities-in-algebraic-structures\"><span class=\"std std-numref\">Section 2.2</span></a> how to reason about\noperations in groups and rings. Later, in <a class=\"reference internal\" href=\"C07_Structures.html#section-algebraic-structures\"><span class=\"std std-numref\">Section 7.2</span></a>, we saw how\nto define abstract algebraic structures, such as group structures, as well as concrete instances\nsuch as the ring structure on the Gaussian integers. <a class=\"reference internal\" href=\"C08_Hierarchies.html#hierarchies\"><span class=\"std std-numref\">Chapter 8</span></a> explained how\nhierarchies of abstract structures are handled in Mathlib.</p>",
+    "zh": "我们在<a class=\"reference internal\" href=\"C02_Basics.html#proving-identities-in-algebraic-structures\"><span class=\"std std-numref\">Section 2.2</span></a>中看到如何对群和环中的运算进行推理。随后在<a class=\"reference internal\" href=\"C07_Structures.html#section-algebraic-structures\"><span class=\"std std-numref\">Section 7.2</span></a>中，我们看到如何定义抽象代数结构，例如群结构，以及高斯整数上的环结构这类具体实例。<a class=\"reference internal\" href=\"C08_Hierarchies.html#hierarchies\"><span class=\"std std-numref\">Chapter 8</span></a>解释了 Mathlib 如何处理抽象结构的层级。"
+  },
+  {
+    "id": "C09_Groups_and_Rings:0014",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "p",
+    "text": "In this chapter we work with groups and rings in more detail. We won’t be able to cover every aspect of the treatment of these topics in Mathlib, especially since Mathlib is constantly growing. But we will provide entry points to the library and show how the essential concepts are used. There is some overlap with the discussion of Chapter 8 , but here we will focus on how to use Mathlib instead of the design decisions behind the way the topics are treated. So making sense of some of the examples may require reviewing the background from Chapter 8 .",
+    "html": "<p>In this chapter we work with groups and rings in more detail. We won’t be able to\ncover every aspect of the treatment of these topics in Mathlib, especially since Mathlib is constantly growing.\nBut we will provide entry points to the library and show how the essential concepts are used.\nThere is some overlap with the discussion of\n<a class=\"reference internal\" href=\"C08_Hierarchies.html#hierarchies\"><span class=\"std std-numref\">Chapter 8</span></a>, but here we will focus on how to use Mathlib instead of the design\ndecisions behind the way the topics are treated.\nSo making sense of some of the examples may require reviewing the background from\n<a class=\"reference internal\" href=\"C08_Hierarchies.html#hierarchies\"><span class=\"std std-numref\">Chapter 8</span></a>.</p>",
+    "zh": "本章将更详细地处理群与环。我们无法涵盖 Mathlib 中关于这些主题的所有内容，尤其是 Mathlib 还在不断增长。不过，我们会提供进入库的入口，并展示基本概念如何使用。这里与<a class=\"reference internal\" href=\"C08_Hierarchies.html#hierarchies\"><span class=\"std std-numref\">Chapter 8</span></a>的讨论有一些重叠，但我们将重点放在如何使用 Mathlib，而不是这些主题处理方式背后的设计决策。因此，理解某些例子可能需要回顾<a class=\"reference internal\" href=\"C08_Hierarchies.html#hierarchies\"><span class=\"std std-numref\">Chapter 8</span></a>的背景。"
+  },
+  {
+    "id": "C09_Groups_and_Rings:0015",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "p",
+    "text": "Courses in abstract algebra often start with groups and then progress to rings, fields, and vector spaces. This involves some contortions when discussing multiplication on rings since the multiplication operation does not come from a group structure but many of the proofs carry over verbatim from group theory to this new setting. The most common fix, when doing mathematics with pen and paper, is to leave those proofs as exercises. A less efficient but safer and more formalization-friendly way of proceeding is to use monoids. A monoid structure on a type M is an internal composition law that is associative and has a neutral element. Monoids are used primarily to accommodate both groups and the multiplicative structure of rings. But there are also a number of natural examples; for instance, the set of natural numbers equipped with addition forms a monoid.",
+    "html": "<p>Courses in abstract algebra often start with groups and\nthen progress to rings, fields, and vector spaces. This involves some contortions when discussing\nmultiplication on rings since the multiplication operation does not come from a group structure\nbut many of the proofs carry over verbatim from group theory to this new setting.\nThe most common fix, when doing mathematics with pen and paper,\nis to leave those proofs as exercises. A less efficient but safer and\nmore formalization-friendly way of proceeding is to use monoids. A <em>monoid</em> structure on a type <cite>M</cite>\nis an internal composition law that is associative and has a neutral element.\nMonoids are used primarily to accommodate both groups and the multiplicative structure of\nrings. But there are also a number of natural examples; for instance, the set of natural numbers\nequipped with addition forms a monoid.</p>",
+    "zh": "抽象代数课程常常从群开始，然后推进到环、域和向量空间。讨论环上的乘法时，这会带来一些扭曲，因为乘法运算并非来自群结构，但许多证明可以从群论逐字搬到这个新情境中。用纸笔做数学时，最常见的补救办法是把这些证明留作练习。一种效率稍低但更安全、也更适合形式化的做法，是使用<em>monoid</em>。类型 <cite>M</cite> 上的幺半群结构是一个内部合成律，满足结合律并有单位元。幺半群主要用于同时容纳群和环的乘法结构。不过也有许多自然例子；例如，自然数集合配备加法后形成幺半群。"
+  },
+  {
+    "id": "C09_Groups_and_Rings:0016",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "p",
+    "text": "From a practical point of view, you can mostly ignore monoids when using Mathlib. But you need to know they exist when you are looking for a lemma by browsing Mathlib files. Otherwise, you might end up looking for a statement in the group theory files when it is actually found with monoids because it does not require elements to be invertible.",
+    "html": "<p>From a practical point of view, you can mostly ignore monoids when using Mathlib. But you need\nto know they exist when you are looking for a lemma by browsing Mathlib files. Otherwise, you\nmight end up looking for a statement in the group theory files when it is actually found\nwith monoids because it does not require elements to be invertible.</p>",
+    "zh": "从实践角度看，使用 Mathlib 时大多可以忽略幺半群。但在浏览 Mathlib 文件寻找引理时，需要知道它们存在。否则，你可能会在群论文件中寻找某个陈述，而它其实在幺半群相关文件中，因为它并不要求元素可逆。"
+  },
+  {
+    "id": "C09_Groups_and_Rings:0017",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "p",
+    "text": "The type of monoid structures on a type M is written Monoid M . The function Monoid is a type class so it will almost always appear as an instance implicit argument (in other words, in square brackets). By default, Monoid uses multiplicative notation for the operation; for additive notation use AddMonoid instead. The commutative versions of these structures add the prefix Comm before Monoid .",
+    "html": "<p>The type of monoid structures on a type <code class=\"docutils literal notranslate\"><span class=\"pre\">M</span></code> is written <code class=\"docutils literal notranslate\"><span class=\"pre\">Monoid</span> <span class=\"pre\">M</span></code>.\nThe function <code class=\"docutils literal notranslate\"><span class=\"pre\">Monoid</span></code> is a type class so it will almost always appear as an instance implicit\nargument (in other words, in square brackets).\nBy default, <code class=\"docutils literal notranslate\"><span class=\"pre\">Monoid</span></code> uses multiplicative notation for the operation; for additive notation\nuse <code class=\"docutils literal notranslate\"><span class=\"pre\">AddMonoid</span></code> instead.\nThe commutative versions of these structures add the prefix <code class=\"docutils literal notranslate\"><span class=\"pre\">Comm</span></code> before <code class=\"docutils literal notranslate\"><span class=\"pre\">Monoid</span></code>.</p>",
+    "zh": "类型 <code class=\"docutils literal notranslate\"><span class=\"pre\">M</span></code> 上幺半群结构的类型写作 <code class=\"docutils literal notranslate\"><span class=\"pre\">Monoid</span> <span class=\"pre\">M</span></code>。函数 <code class=\"docutils literal notranslate\"><span class=\"pre\">Monoid</span></code> 是类型类，因此几乎总会以实例隐式参数出现（换言之，在方括号中）。默认情况下，<code class=\"docutils literal notranslate\"><span class=\"pre\">Monoid</span></code> 对运算使用乘法记号；若要使用加法记号，则用 <code class=\"docutils literal notranslate\"><span class=\"pre\">AddMonoid</span></code>。这些结构的交换版本会在 <code class=\"docutils literal notranslate\"><span class=\"pre\">Monoid</span></code> 前加前缀 <code class=\"docutils literal notranslate\"><span class=\"pre\">Comm</span></code>。"
+  },
+  {
+    "id": "C09_Groups_and_Rings:0018",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "p",
+    "text": "Note that although AddMonoid is found in the library, it is generally confusing to use additive notation with a non-commutative operation.",
+    "html": "<p>Note that although <code class=\"docutils literal notranslate\"><span class=\"pre\">AddMonoid</span></code> is found in the library,\nit is generally confusing to use additive notation with a non-commutative operation.</p>",
+    "zh": "注意，虽然库中有 <code class=\"docutils literal notranslate\"><span class=\"pre\">AddMonoid</span></code>，但对非交换运算使用加法记号通常会造成混淆。"
+  },
+  {
+    "id": "C09_Groups_and_Rings:0019",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "p",
+    "text": "The type of morphisms between monoids M and N is called MonoidHom M N and written M →* N . Lean will automatically see such a morphism as a function from M to N when we apply it to elements of M . The additive version is called AddMonoidHom and written M →+ N .",
+    "html": "<p>The type of morphisms between monoids <code class=\"docutils literal notranslate\"><span class=\"pre\">M</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">N</span></code> is called <code class=\"docutils literal notranslate\"><span class=\"pre\">MonoidHom</span> <span class=\"pre\">M</span> <span class=\"pre\">N</span></code> and written\n<code class=\"docutils literal notranslate\"><span class=\"pre\">M</span> <span class=\"pre\">→*</span> <span class=\"pre\">N</span></code>. Lean will automatically see such a morphism as a function from <code class=\"docutils literal notranslate\"><span class=\"pre\">M</span></code> to <code class=\"docutils literal notranslate\"><span class=\"pre\">N</span></code> when\nwe apply it to elements of <code class=\"docutils literal notranslate\"><span class=\"pre\">M</span></code>. The additive version is called <code class=\"docutils literal notranslate\"><span class=\"pre\">AddMonoidHom</span></code> and written\n<code class=\"docutils literal notranslate\"><span class=\"pre\">M</span> <span class=\"pre\">→+</span> <span class=\"pre\">N</span></code>.</p>",
+    "zh": "<code class=\"docutils literal notranslate\"><span class=\"pre\">M</span></code> 与 <code class=\"docutils literal notranslate\"><span class=\"pre\">N</span></code> 之间幺半群态射的类型称为 <code class=\"docutils literal notranslate\"><span class=\"pre\">MonoidHom</span> <span class=\"pre\">M</span> <span class=\"pre\">N</span></code>，记作 <code class=\"docutils literal notranslate\"><span class=\"pre\">M</span> <span class=\"pre\">→*</span> <span class=\"pre\">N</span></code>。当把这样的态射应用到 <code class=\"docutils literal notranslate\"><span class=\"pre\">M</span></code> 的元素上时，Lean 会自动把它看作从 <code class=\"docutils literal notranslate\"><span class=\"pre\">M</span></code> 到 <code class=\"docutils literal notranslate\"><span class=\"pre\">N</span></code> 的函数。加法版本称为 <code class=\"docutils literal notranslate\"><span class=\"pre\">AddMonoidHom</span></code>，记作 <code class=\"docutils literal notranslate\"><span class=\"pre\">M</span> <span class=\"pre\">→+</span> <span class=\"pre\">N</span></code>。"
+  },
+  {
+    "id": "C09_Groups_and_Rings:0020",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "p",
+    "text": "These morphisms are bundled maps, i.e. they package together a map and some of its properties. Remember that Section 8.2 explains bundled maps; here we simply note the slightly unfortunate consequence that we cannot use ordinary function composition to compose maps. Instead, we need to use MonoidHom.comp and AddMonoidHom.comp .",
+    "html": "<p>These morphisms are bundled maps, i.e. they package together a map and some of its properties.\nRemember that <a class=\"reference internal\" href=\"C08_Hierarchies.html#section-hierarchies-morphisms\"><span class=\"std std-numref\">Section 8.2</span></a> explains bundled maps;\nhere we simply note the slightly unfortunate consequence that we cannot use ordinary function\ncomposition to compose maps. Instead, we need to use <code class=\"docutils literal notranslate\"><span class=\"pre\">MonoidHom.comp</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">AddMonoidHom.comp</span></code>.</p>",
+    "zh": "这些态射是打包映射，也就是说，它们把一个映射及其若干性质打包在一起。记住，<a class=\"reference internal\" href=\"C08_Hierarchies.html#section-hierarchies-morphisms\"><span class=\"std std-numref\">Section 8.2</span></a>解释了打包映射；这里我们只指出一个略显遗憾的后果：不能用普通函数复合来复合这些映射。相反，需要使用 <code class=\"docutils literal notranslate\"><span class=\"pre\">MonoidHom.comp</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">AddMonoidHom.comp</span></code>。"
+  },
+  {
+    "id": "C09_Groups_and_Rings:0021",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "p",
+    "text": "We will have much more to say about groups, which are monoids with the extra property that every element has an inverse.",
+    "html": "<p>We will have much more to say about groups, which are monoids with the extra\nproperty that every element has an inverse.</p>",
+    "zh": "关于群，我们还有更多内容要说；群就是额外满足每个元素都有逆元这一性质的幺半群。"
+  },
+  {
+    "id": "C09_Groups_and_Rings:0022",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "p",
+    "text": "Similar to the ring tactic that we saw earlier, there is a group tactic that proves any identity that holds in any group. (Equivalently, it proves the identities that hold in free groups.)",
+    "html": "<p id=\"index-2\">Similar to the <code class=\"docutils literal notranslate\"><span class=\"pre\">ring</span></code> tactic that we saw earlier, there is a <code class=\"docutils literal notranslate\"><span class=\"pre\">group</span></code> tactic that proves\nany identity that holds in any group. (Equivalently, it proves the identities that hold in\nfree groups.)</p>",
+    "zh": "类似于前面见过的 <code class=\"docutils literal notranslate\"><span class=\"pre\">ring</span></code> 策略，也有一个 <code class=\"docutils literal notranslate\"><span class=\"pre\">group</span></code> 策略可以证明任意群中成立的恒等式。（等价地，它证明自由群中成立的恒等式。）"
+  },
+  {
+    "id": "C09_Groups_and_Rings:0023",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "p",
+    "text": "There is also a tactic for identities in commutative additive groups called abel .",
+    "html": "<p id=\"index-3\">There is also a tactic for identities in commutative additive groups called <code class=\"docutils literal notranslate\"><span class=\"pre\">abel</span></code>.</p>",
+    "zh": "还有一个用于交换加法群恒等式的策略，称为 <code class=\"docutils literal notranslate\"><span class=\"pre\">abel</span></code>。"
+  },
+  {
+    "id": "C09_Groups_and_Rings:0024",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "p",
+    "text": "Interestingly, a group morphism is nothing more than a monoid morphism between groups. So we can copy and paste one of our earlier examples, replacing Monoid with Group .",
+    "html": "<p>Interestingly, a group\nmorphism is nothing more than a monoid morphism between groups. So we can copy and paste one of our\nearlier examples, replacing <code class=\"docutils literal notranslate\"><span class=\"pre\">Monoid</span></code> with <code class=\"docutils literal notranslate\"><span class=\"pre\">Group</span></code>.</p>",
+    "zh": "有趣的是，群态射不过是群之间的幺半群态射。因此，可以复制粘贴前面的一个例子，把 <code class=\"docutils literal notranslate\"><span class=\"pre\">Monoid</span></code> 替换为 <code class=\"docutils literal notranslate\"><span class=\"pre\">Group</span></code>。"
+  },
+  {
+    "id": "C09_Groups_and_Rings:0025",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "p",
+    "text": "Of course we do get some new properties, such as this one:",
+    "html": "<p>Of course we do get some new properties, such as this one:</p>",
+    "zh": "当然，我们确实会得到一些新性质，例如下面这个："
+  },
+  {
+    "id": "C09_Groups_and_Rings:0026",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "p",
+    "text": "You may be worried that constructing group morphisms will require us to do unnecessary work since the definition of monoid morphism enforces that neutral elements are sent to neutral elements while this is automatic in the case of group morphisms. In practice the extra work is not hard, but, to avoid it, there is a function building a group morphism from a function between groups that is compatible with the composition laws.",
+    "html": "<p>You may be worried that constructing group morphisms will require us to do unnecessary work since\nthe definition of monoid morphism enforces that neutral elements are sent to neutral elements\nwhile this is automatic in the case of group morphisms. In practice the extra work is not hard,\nbut, to avoid it, there is a function building a group morphism from a function\nbetween groups that is compatible with the composition laws.</p>",
+    "zh": "你可能担心，构造群态射会要求做不必要的工作，因为幺半群态射的定义要求单位元映到单位元，而对群态射来说这是自动的。实践中，额外工作并不困难；不过，为避免它，有一个函数可以从群之间与合成律相容的函数构造群态射。"
+  },
+  {
+    "id": "C09_Groups_and_Rings:0027",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "p",
+    "text": "There is also a type MulEquiv of group (or monoid) isomorphisms denoted by ≃* (and AddEquiv denoted by ≃+ in additive notation). The inverse of f : G ≃* H is MulEquiv.symm f : H ≃* G , composition of f and g is MulEquiv.trans f g , and the identity isomorphism of G is M̀ulEquiv.refl G . Using anonymous projector notation, the first two can be written f.symm and f.trans g respectively. Elements of this type are automatically coerced to morphisms and functions when necessary.",
+    "html": "<p>There is also a type <code class=\"docutils literal notranslate\"><span class=\"pre\">MulEquiv</span></code> of group (or monoid) isomorphisms denoted by <code class=\"docutils literal notranslate\"><span class=\"pre\">≃*</span></code> (and\n<code class=\"docutils literal notranslate\"><span class=\"pre\">AddEquiv</span></code> denoted by <code class=\"docutils literal notranslate\"><span class=\"pre\">≃+</span></code> in additive notation).\nThe inverse of <code class=\"docutils literal notranslate\"><span class=\"pre\">f</span> <span class=\"pre\">:</span> <span class=\"pre\">G</span> <span class=\"pre\">≃*</span> <span class=\"pre\">H</span></code> is <code class=\"docutils literal notranslate\"><span class=\"pre\">MulEquiv.symm</span> <span class=\"pre\">f</span> <span class=\"pre\">:</span> <span class=\"pre\">H</span> <span class=\"pre\">≃*</span> <span class=\"pre\">G</span></code>,\ncomposition of <code class=\"docutils literal notranslate\"><span class=\"pre\">f</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">g</span></code> is <code class=\"docutils literal notranslate\"><span class=\"pre\">MulEquiv.trans</span> <span class=\"pre\">f</span> <span class=\"pre\">g</span></code>, and\nthe identity isomorphism of <code class=\"docutils literal notranslate\"><span class=\"pre\">G</span></code> is <code class=\"docutils literal notranslate\"><span class=\"pre\">M̀ulEquiv.refl</span> <span class=\"pre\">G</span></code>.\nUsing anonymous projector notation, the first two can be written <code class=\"docutils literal notranslate\"><span class=\"pre\">f.symm</span></code> and\n<code class=\"docutils literal notranslate\"><span class=\"pre\">f.trans</span> <span class=\"pre\">g</span></code> respectively.\nElements of this type are automatically coerced to morphisms and functions when necessary.</p>",
+    "zh": "还有一个群（或幺半群）同构类型 <code class=\"docutils literal notranslate\"><span class=\"pre\">MulEquiv</span></code>，记作 <code class=\"docutils literal notranslate\"><span class=\"pre\">≃*</span></code>（加法记号中对应 <code class=\"docutils literal notranslate\"><span class=\"pre\">AddEquiv</span></code>，记作 <code class=\"docutils literal notranslate\"><span class=\"pre\">≃+</span></code>）。<code class=\"docutils literal notranslate\"><span class=\"pre\">f</span> <span class=\"pre\">:</span> <span class=\"pre\">G</span> <span class=\"pre\">≃*</span> <span class=\"pre\">H</span></code> 的逆是 <code class=\"docutils literal notranslate\"><span class=\"pre\">MulEquiv.symm</span> <span class=\"pre\">f</span> <span class=\"pre\">:</span> <span class=\"pre\">H</span> <span class=\"pre\">≃*</span> <span class=\"pre\">G</span></code>，<code class=\"docutils literal notranslate\"><span class=\"pre\">f</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">g</span></code> 的复合是 <code class=\"docutils literal notranslate\"><span class=\"pre\">MulEquiv.trans</span> <span class=\"pre\">f</span> <span class=\"pre\">g</span></code>，<code class=\"docutils literal notranslate\"><span class=\"pre\">G</span></code> 的恒等同构是 <code class=\"docutils literal notranslate\"><span class=\"pre\">M̀ulEquiv.refl</span> <span class=\"pre\">G</span></code>。使用匿名投影记号，前两者可分别写作 <code class=\"docutils literal notranslate\"><span class=\"pre\">f.symm</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">f.trans</span> <span class=\"pre\">g</span></code>。必要时，该类型的元素会自动强制转换为态射和函数。"
+  },
+  {
+    "id": "C09_Groups_and_Rings:0028",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "p",
+    "text": "One can use MulEquiv.ofBijective to build an isomorphism from a bijective morphism. Doing so makes the inverse function noncomputable.",
+    "html": "<p>One can use <code class=\"docutils literal notranslate\"><span class=\"pre\">MulEquiv.ofBijective</span></code> to build an isomorphism from a bijective morphism.\nDoing so makes the inverse function noncomputable.</p>",
+    "zh": "可以使用 <code class=\"docutils literal notranslate\"><span class=\"pre\">MulEquiv.ofBijective</span></code> 从双射态射构造同构。这样做会使逆函数不可计算。"
+  },
+  {
+    "id": "C09_Groups_and_Rings:0029",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "p",
+    "text": "Just as group morphisms are bundled, a subgroup of G is also a bundled structure consisting of a set in G with the relevant closure properties.",
+    "html": "<p>Just as group morphisms are bundled, a subgroup of <code class=\"docutils literal notranslate\"><span class=\"pre\">G</span></code> is also a bundled structure consisting of\na set in <code class=\"docutils literal notranslate\"><span class=\"pre\">G</span></code> with the relevant closure properties.</p>",
+    "zh": "正如群态射是打包的，<code class=\"docutils literal notranslate\"><span class=\"pre\">G</span></code> 的子群也是打包结构，由 <code class=\"docutils literal notranslate\"><span class=\"pre\">G</span></code> 中的一个集合及相关闭包性质组成。"
+  },
+  {
+    "id": "C09_Groups_and_Rings:0030",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "p",
+    "text": "In the example above, it is important to understand that Subgroup G is the type of subgroups of G , rather than a predicate IsSubgroup H where H is an element of Set G . Subgroup G is endowed with a coercion to Set G and a membership predicate on G . See Section 8.3 for an explanation of how and why this is done.",
+    "html": "<p>In the example above, it is important to understand that <code class=\"docutils literal notranslate\"><span class=\"pre\">Subgroup</span> <span class=\"pre\">G</span></code> is the type of subgroups\nof <code class=\"docutils literal notranslate\"><span class=\"pre\">G</span></code>, rather than a predicate <code class=\"docutils literal notranslate\"><span class=\"pre\">IsSubgroup</span> <span class=\"pre\">H</span></code> where <code class=\"docutils literal notranslate\"><span class=\"pre\">H</span></code> is an element of <code class=\"docutils literal notranslate\"><span class=\"pre\">Set</span> <span class=\"pre\">G</span></code>.\n<code class=\"docutils literal notranslate\"><span class=\"pre\">Subgroup</span> <span class=\"pre\">G</span></code> is endowed with a coercion to <code class=\"docutils literal notranslate\"><span class=\"pre\">Set</span> <span class=\"pre\">G</span></code> and a membership predicate on <code class=\"docutils literal notranslate\"><span class=\"pre\">G</span></code>.\nSee <a class=\"reference internal\" href=\"C08_Hierarchies.html#section-hierarchies-subobjects\"><span class=\"std std-numref\">Section 8.3</span></a> for an explanation of how and why this is done.</p>",
+    "zh": "在上面的例子中，重要的是要理解 <code class=\"docutils literal notranslate\"><span class=\"pre\">Subgroup</span> <span class=\"pre\">G</span></code> 是 <code class=\"docutils literal notranslate\"><span class=\"pre\">G</span></code> 的子群类型，而不是谓词 <code class=\"docutils literal notranslate\"><span class=\"pre\">IsSubgroup</span> <span class=\"pre\">H</span></code>，其中 <code class=\"docutils literal notranslate\"><span class=\"pre\">H</span></code> 是 <code class=\"docutils literal notranslate\"><span class=\"pre\">Set</span> <span class=\"pre\">G</span></code> 的元素。<code class=\"docutils literal notranslate\"><span class=\"pre\">Subgroup</span> <span class=\"pre\">G</span></code> 配备了到 <code class=\"docutils literal notranslate\"><span class=\"pre\">Set</span> <span class=\"pre\">G</span></code> 的强制转换，以及 <code class=\"docutils literal notranslate\"><span class=\"pre\">G</span></code> 上的成员谓词。关于如何以及为何这样做，可参见<a class=\"reference internal\" href=\"C08_Hierarchies.html#section-hierarchies-subobjects\"><span class=\"std std-numref\">Section 8.3</span></a>。"
+  },
+  {
+    "id": "C09_Groups_and_Rings:0031",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "p",
+    "text": "Of course, two subgroups are the same if and only if they have the same elements. This fact is registered for use with the ext tactic, which can be used to prove two subgroups are equal in the same way it is used to prove that two sets are equal.",
+    "html": "<p>Of course, two subgroups are the same if and only if they have the same elements. This fact\nis registered for use with the <code class=\"docutils literal notranslate\"><span class=\"pre\">ext</span></code> tactic, which can be used to prove two subgroups are\nequal in the same way it is used to prove that two sets are equal.</p>",
+    "zh": "当然，两个子群相同当且仅当它们有相同的元素。这个事实已注册给 <code class=\"docutils literal notranslate\"><span class=\"pre\">ext</span></code> 策略使用；它可以像证明两个集合相等一样，用来证明两个子群相等。"
+  },
+  {
+    "id": "C09_Groups_and_Rings:0032",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "p",
+    "text": "To state and prove, for example, that ℤ is an additive subgroup of ℚ , what we really want is to construct a term of type AddSubgroup ℚ whose projection to Set ℚ is ℤ , or, more precisely, the image of ℤ in ℚ .",
+    "html": "<p>To state and prove, for example, that <code class=\"docutils literal notranslate\"><span class=\"pre\">ℤ</span></code> is an additive subgroup of <code class=\"docutils literal notranslate\"><span class=\"pre\">ℚ</span></code>,\nwhat we really want is to construct a term of type <code class=\"docutils literal notranslate\"><span class=\"pre\">AddSubgroup</span> <span class=\"pre\">ℚ</span></code> whose projection to\n<code class=\"docutils literal notranslate\"><span class=\"pre\">Set</span> <span class=\"pre\">ℚ</span></code> is <code class=\"docutils literal notranslate\"><span class=\"pre\">ℤ</span></code>, or, more precisely, the image of <code class=\"docutils literal notranslate\"><span class=\"pre\">ℤ</span></code> in <code class=\"docutils literal notranslate\"><span class=\"pre\">ℚ</span></code>.</p>",
+    "zh": "例如，要陈述并证明 <code class=\"docutils literal notranslate\"><span class=\"pre\">ℤ</span></code> 是 <code class=\"docutils literal notranslate\"><span class=\"pre\">ℚ</span></code> 的加法子群，我们真正想做的是构造一个类型为 <code class=\"docutils literal notranslate\"><span class=\"pre\">AddSubgroup</span> <span class=\"pre\">ℚ</span></code> 的项，其到 <code class=\"docutils literal notranslate\"><span class=\"pre\">Set</span> <span class=\"pre\">ℚ</span></code> 的投影为 <code class=\"docutils literal notranslate\"><span class=\"pre\">ℤ</span></code>，或者更准确地说，是 <code class=\"docutils literal notranslate\"><span class=\"pre\">ℤ</span></code> 在 <code class=\"docutils literal notranslate\"><span class=\"pre\">ℚ</span></code> 中的像。"
+  },
+  {
+    "id": "C09_Groups_and_Rings:0033",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "p",
+    "text": "Using type classes, Mathlib knows that a subgroup of a group inherits a group structure.",
+    "html": "<p>Using type classes, Mathlib knows that a subgroup of a group inherits a group structure.</p>",
+    "zh": "借助类型类，Mathlib 知道群的子群继承群结构。"
+  },
+  {
+    "id": "C09_Groups_and_Rings:0034",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "p",
+    "text": "This example is subtle. The object H is not a type, but Lean automatically coerces it to a type by interpreting it as a subtype of G . So the above example can be restated more explicitly as:",
+    "html": "<p>This example is subtle. The object <code class=\"docutils literal notranslate\"><span class=\"pre\">H</span></code> is not a type, but Lean automatically coerces it to\na type by interpreting it as a subtype of <code class=\"docutils literal notranslate\"><span class=\"pre\">G</span></code>.\nSo the above example can be restated more explicitly as:</p>",
+    "zh": "这个例子有些微妙。对象 <code class=\"docutils literal notranslate\"><span class=\"pre\">H</span></code> 不是类型，但 Lean 会把它解释为 <code class=\"docutils literal notranslate\"><span class=\"pre\">G</span></code> 的子类型，从而自动强制转换为类型。因此，上面的例子可以更显式地重述为："
+  },
+  {
+    "id": "C09_Groups_and_Rings:0035",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "p",
+    "text": "An important benefit of having a type Subgroup G instead of a predicate IsSubgroup : Set G → Prop is that one can easily endow Subgroup G with additional structure. Importantly, it has the structure of a complete lattice structure with respect to inclusion. For instance, instead of having a lemma stating that an intersection of two subgroups of G is again a subgroup, we have used the lattice operation ⊓ to construct the intersection. We can then apply arbitrary lemmas about lattices to the construction.",
+    "html": "<p>An important benefit of having a type <code class=\"docutils literal notranslate\"><span class=\"pre\">Subgroup</span> <span class=\"pre\">G</span></code> instead of a predicate\n<code class=\"docutils literal notranslate\"><span class=\"pre\">IsSubgroup</span> <span class=\"pre\">:</span> <span class=\"pre\">Set</span> <span class=\"pre\">G</span> <span class=\"pre\">→</span> <span class=\"pre\">Prop</span></code> is that one can easily endow <code class=\"docutils literal notranslate\"><span class=\"pre\">Subgroup</span> <span class=\"pre\">G</span></code> with additional structure.\nImportantly, it has the structure of a complete lattice structure with respect to\ninclusion. For instance, instead of having a lemma stating that an intersection of\ntwo subgroups of <code class=\"docutils literal notranslate\"><span class=\"pre\">G</span></code> is again a subgroup, we\nhave used the lattice operation <code class=\"docutils literal notranslate\"><span class=\"pre\">⊓</span></code> to construct the intersection. We can then apply arbitrary\nlemmas about lattices to the construction.</p>",
+    "zh": "拥有类型 <code class=\"docutils literal notranslate\"><span class=\"pre\">Subgroup</span> <span class=\"pre\">G</span></code> 而不是谓词 <code class=\"docutils literal notranslate\"><span class=\"pre\">IsSubgroup</span> <span class=\"pre\">:</span> <span class=\"pre\">Set</span> <span class=\"pre\">G</span> <span class=\"pre\">→</span> <span class=\"pre\">Prop</span></code> 的一个重要好处是，可以很容易地给 <code class=\"docutils literal notranslate\"><span class=\"pre\">Subgroup</span> <span class=\"pre\">G</span></code> 赋予额外结构。尤其重要的是，相对于包含关系，它具有完备格结构。例如，我们不是有一个说明 <code class=\"docutils literal notranslate\"><span class=\"pre\">G</span></code> 的两个子群之交仍为子群的引理，而是使用格运算 <code class=\"docutils literal notranslate\"><span class=\"pre\">⊓</span></code> 来构造这个交。随后可以把关于格的任意引理应用到该构造上。"
+  },
+  {
+    "id": "C09_Groups_and_Rings:0036",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "p",
+    "text": "Let us check that the set underlying the infimum of two subgroups is indeed, by definition, their intersection.",
+    "html": "<p>Let us check that the set underlying the infimum of two subgroups is indeed, by definition,\ntheir intersection.</p>",
+    "zh": "让我们检查，两个子群下确界的底层集合按定义确实就是它们的交。"
+  },
+  {
+    "id": "C09_Groups_and_Rings:0037",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "p",
+    "text": "It may look strange to have a different notation for what amounts to the intersection of the underlying sets, but the correspondence does not carry over to the supremum operation and set union, since a union of subgroups is not, in general, a subgroup. Instead one needs to use the subgroup generated by the union, which is done using Subgroup.closure .",
+    "html": "<p>It may look strange to have a different notation for what amounts to the intersection of the\nunderlying sets, but the correspondence does not carry over to the supremum operation and set\nunion, since a union of subgroups is not, in general, a subgroup.\nInstead one needs to use the subgroup generated by the union, which is done\nusing <code class=\"docutils literal notranslate\"><span class=\"pre\">Subgroup.closure</span></code>.</p>",
+    "zh": "对底层集合的交使用不同记号可能看起来奇怪，但这种对应关系不能迁移到上确界运算和集合并上，因为子群的并通常不是子群。相反，需要使用由并生成的子群，这通过 <code class=\"docutils literal notranslate\"><span class=\"pre\">Subgroup.closure</span></code> 完成。"
+  },
+  {
+    "id": "C09_Groups_and_Rings:0038",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "p",
+    "text": "Another subtlety is that G itself does not have type Subgroup G , so we need a way to talk about G seen as a subgroup of G . This is also provided by the lattice structure: the full subgroup is the top element of this lattice.",
+    "html": "<p>Another subtlety is that <code class=\"docutils literal notranslate\"><span class=\"pre\">G</span></code> itself does not have type <code class=\"docutils literal notranslate\"><span class=\"pre\">Subgroup</span> <span class=\"pre\">G</span></code>,\nso we need a way to talk about <code class=\"docutils literal notranslate\"><span class=\"pre\">G</span></code> seen as a subgroup of <code class=\"docutils literal notranslate\"><span class=\"pre\">G</span></code>.\nThis is also provided by the lattice structure: the full subgroup is the top element of\nthis lattice.</p>",
+    "zh": "另一个微妙点是，<code class=\"docutils literal notranslate\"><span class=\"pre\">G</span></code> 本身不具有类型 <code class=\"docutils literal notranslate\"><span class=\"pre\">Subgroup</span> <span class=\"pre\">G</span></code>，所以需要一种方式谈论把 <code class=\"docutils literal notranslate\"><span class=\"pre\">G</span></code> 看成 <code class=\"docutils literal notranslate\"><span class=\"pre\">G</span></code> 的子群。这同样由格结构提供：全子群就是该格的顶元素。"
+  },
+  {
+    "id": "C09_Groups_and_Rings:0039",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "p",
+    "text": "Similarly the bottom element of this lattice is the subgroup whose only element is the neutral element.",
+    "html": "<p>Similarly the bottom element of this lattice is the subgroup whose only element is the\nneutral element.</p>",
+    "zh": "类似地，该格的底元素是唯一元素为单位元的子群。"
+  },
+  {
+    "id": "C09_Groups_and_Rings:0040",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "p",
+    "text": "As an exercise in manipulating groups and subgroups, you can define the conjugate of a subgroup by an element of the ambient group.",
+    "html": "<p>As an exercise in manipulating groups and subgroups, you can define the conjugate of a subgroup\nby an element of the ambient group.</p>",
+    "zh": "作为操作群和子群的练习，可以定义子群被母群中一个元素共轭后的结果。"
+  },
+  {
+    "id": "C09_Groups_and_Rings:0041",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "p",
+    "text": "Tying the previous two topics together, one can push forward and pull back subgroups using group morphisms. The naming convention in Mathlib is to call those operations map and comap . These are not the common mathematical terms, but they have the advantage of being shorter than “pushforward” and “direct image.”",
+    "html": "<p>Tying the previous two topics together, one can push forward and pull back subgroups using\ngroup morphisms. The naming convention in Mathlib is to call those operations <code class=\"docutils literal notranslate\"><span class=\"pre\">map</span></code>\nand <code class=\"docutils literal notranslate\"><span class=\"pre\">comap</span></code>.\nThese are not the common mathematical terms, but they have the advantage of being\nshorter than “pushforward” and “direct image.”</p>",
+    "zh": "把前两个主题联系起来，可以使用群态射对子群进行推出和拉回。Mathlib 中的命名约定是把这些操作称为 <code class=\"docutils literal notranslate\"><span class=\"pre\">map</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">comap</span></code>。这些不是常见的数学术语，但优点是比“推出”和“直接像”更短。"
+  },
+  {
+    "id": "C09_Groups_and_Rings:0042",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "p",
+    "text": "In particular, the preimage of the bottom subgroup under a morphism f is a subgroup called the kernel of f , and the range of f is also a subgroup.",
+    "html": "<p>In particular, the preimage of the bottom subgroup under a morphism <code class=\"docutils literal notranslate\"><span class=\"pre\">f</span></code> is a subgroup called\nthe <em>kernel</em> of <code class=\"docutils literal notranslate\"><span class=\"pre\">f</span></code>, and the range of <code class=\"docutils literal notranslate\"><span class=\"pre\">f</span></code> is also a subgroup.</p>",
+    "zh": "特别地，底子群在态射 <code class=\"docutils literal notranslate\"><span class=\"pre\">f</span></code> 下的原像是一个子群，称为 <code class=\"docutils literal notranslate\"><span class=\"pre\">f</span></code> 的<em>kernel</em>；而 <code class=\"docutils literal notranslate\"><span class=\"pre\">f</span></code> 的值域也是一个子群。"
+  },
+  {
+    "id": "C09_Groups_and_Rings:0043",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "p",
+    "text": "As exercises in manipulating group morphisms and subgroups, let us prove some elementary properties. They are already proved in Mathlib, so do not use exact? too quickly if you want to benefit from these exercises.",
+    "html": "<p>As exercises in manipulating group morphisms and subgroups, let us prove some elementary properties.\nThey are already proved in Mathlib, so do not use <code class=\"docutils literal notranslate\"><span class=\"pre\">exact?</span></code> too quickly if you want to benefit\nfrom these exercises.</p>",
+    "zh": "作为操作群态射和子群的练习，让我们证明一些初等性质。它们在 Mathlib 中已经被证明；若想从这些练习中获益，不要太快使用 <code class=\"docutils literal notranslate\"><span class=\"pre\">exact?</span></code>。"
+  },
+  {
+    "id": "C09_Groups_and_Rings:0044",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "p",
+    "text": "Let us finish this introduction to subgroups in Mathlib with two very classical results. Lagrange theorem states the cardinality of a subgroup of a finite group divides the cardinality of the group. Sylow’s first theorem is a famous partial converse to Lagrange’s theorem.",
+    "html": "<p>Let us finish this introduction to subgroups in Mathlib with two very classical results.\nLagrange theorem states the cardinality of a subgroup of a finite group divides the cardinality of\nthe group. Sylow’s first theorem is a famous partial converse to Lagrange’s theorem.</p>",
+    "zh": "让我们用两个非常经典的结果结束对 Mathlib 中子群的介绍。拉格朗日定理说明，有限群的子群基数整除该群的基数。Sylow 第一定理是拉格朗日定理的一个著名部分逆命题。"
+  },
+  {
+    "id": "C09_Groups_and_Rings:0045",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "p",
+    "text": "While this corner of Mathlib is partly set up to allow computation, we can tell Lean to use nonconstructive logic anyway using the following open scoped command.",
+    "html": "<p>While this corner of Mathlib is partly set up to allow computation, we can tell\nLean to use nonconstructive logic anyway using the following <code class=\"docutils literal notranslate\"><span class=\"pre\">open</span> <span class=\"pre\">scoped</span></code> command.</p>",
+    "zh": "虽然 Mathlib 的这一角落部分设置为允许计算，我们仍可使用下面的 <code class=\"docutils literal notranslate\"><span class=\"pre\">open</span> <span class=\"pre\">scoped</span></code> 命令告诉 Lean 使用非构造逻辑。"
+  },
+  {
+    "id": "C09_Groups_and_Rings:0046",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "p",
+    "text": "The next two exercises derive a corollary of Lagrange’s lemma. (This is also already in Mathlib, so do not use exact? too quickly.)",
+    "html": "<p>The next two exercises derive a corollary of Lagrange’s lemma. (This is also already in Mathlib,\nso do not use <code class=\"docutils literal notranslate\"><span class=\"pre\">exact?</span></code> too quickly.)</p>",
+    "zh": "接下来的两个练习推出拉格朗日引理的一个推论。（这同样已经在 Mathlib 中，所以不要太快使用 <code class=\"docutils literal notranslate\"><span class=\"pre\">exact?</span></code>。）"
+  },
+  {
+    "id": "C09_Groups_and_Rings:0047",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "p",
+    "text": "One can also manipulate concrete groups in Mathlib, although this is typically more complicated than working with the abstract theory. For instance, given any type X , the group of permutations of X is Equiv.Perm X . In particular the symmetric group \\(\\mathfrak{S}_n\\) is Equiv.Perm (Fin n) . One can state abstract results about this group, for instance saying that Equiv.Perm X is generated by cycles if X is finite.",
+    "html": "<p>One can also manipulate concrete groups in Mathlib, although this is typically more complicated\nthan working with the abstract theory.\nFor instance, given any type <code class=\"docutils literal notranslate\"><span class=\"pre\">X</span></code>, the group of permutations of <code class=\"docutils literal notranslate\"><span class=\"pre\">X</span></code> is <code class=\"docutils literal notranslate\"><span class=\"pre\">Equiv.Perm</span> <span class=\"pre\">X</span></code>.\nIn particular the symmetric group <span class=\"math notranslate nohighlight\">\\(\\mathfrak{S}_n\\)</span> is <code class=\"docutils literal notranslate\"><span class=\"pre\">Equiv.Perm</span> <span class=\"pre\">(Fin</span> <span class=\"pre\">n)</span></code>.\nOne can state abstract results about this group, for instance saying that <code class=\"docutils literal notranslate\"><span class=\"pre\">Equiv.Perm</span> <span class=\"pre\">X</span></code> is\ngenerated by cycles if <code class=\"docutils literal notranslate\"><span class=\"pre\">X</span></code> is finite.</p>",
+    "zh": "也可以在 Mathlib 中操作具体群，尽管这通常比使用抽象理论更复杂。例如，给定任意类型 <code class=\"docutils literal notranslate\"><span class=\"pre\">X</span></code>，<code class=\"docutils literal notranslate\"><span class=\"pre\">X</span></code> 的置换群是 <code class=\"docutils literal notranslate\"><span class=\"pre\">Equiv.Perm</span> <span class=\"pre\">X</span></code>。特别地，对称群 <span class=\"math notranslate nohighlight\">\\(\\mathfrak{S}_n\\)</span> 是 <code class=\"docutils literal notranslate\"><span class=\"pre\">Equiv.Perm</span> <span class=\"pre\">(Fin</span> <span class=\"pre\">n)</span></code>。可以陈述关于该群的抽象结果，例如说若 <code class=\"docutils literal notranslate\"><span class=\"pre\">X</span></code> 有限，则 <code class=\"docutils literal notranslate\"><span class=\"pre\">Equiv.Perm</span> <span class=\"pre\">X</span></code> 由轮换生成。"
+  },
+  {
+    "id": "C09_Groups_and_Rings:0048",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "p",
+    "text": "One can be fully concrete and compute actual products of cycles. Below we use the #simp command, which calls the simp tactic on a given expression. The notation c[] is used to define a cyclic permutation. In the example, the result is a permutation of ℕ . One could use a type ascription such as (1 : Fin 5) on the first number appearing to make it a computation in Perm (Fin 5) .",
+    "html": "<p>One can be fully concrete and compute actual products of cycles. Below we use the <code class=\"docutils literal notranslate\"><span class=\"pre\">#simp</span></code> command,\nwhich calls the <code class=\"docutils literal notranslate\"><span class=\"pre\">simp</span></code> tactic on a given expression. The notation <code class=\"docutils literal notranslate\"><span class=\"pre\">c[]</span></code> is used to define a\ncyclic permutation. In the example, the result is a permutation of <code class=\"docutils literal notranslate\"><span class=\"pre\">ℕ</span></code>. One could use a type\nascription such as <code class=\"docutils literal notranslate\"><span class=\"pre\">(1</span> <span class=\"pre\">:</span> <span class=\"pre\">Fin</span> <span class=\"pre\">5)</span></code> on the first number appearing to make it a computation in\n<code class=\"docutils literal notranslate\"><span class=\"pre\">Perm</span> <span class=\"pre\">(Fin</span> <span class=\"pre\">5)</span></code>.</p>",
+    "zh": "也可以完全具体地计算轮换的实际乘积。下面使用命令 <code class=\"docutils literal notranslate\"><span class=\"pre\">#simp</span></code>，它会在给定表达式上调用 <code class=\"docutils literal notranslate\"><span class=\"pre\">simp</span></code> 策略。记号 <code class=\"docutils literal notranslate\"><span class=\"pre\">c[]</span></code> 用于定义循环置换。在例子中，结果是 <code class=\"docutils literal notranslate\"><span class=\"pre\">ℕ</span></code> 的一个置换。可以在出现的第一个数字上使用类型标注，例如 <code class=\"docutils literal notranslate\"><span class=\"pre\">(1</span> <span class=\"pre\">:</span> <span class=\"pre\">Fin</span> <span class=\"pre\">5)</span></code>，使其成为 <code class=\"docutils literal notranslate\"><span class=\"pre\">Perm</span> <span class=\"pre\">(Fin</span> <span class=\"pre\">5)</span></code> 中的计算。"
+  },
+  {
+    "id": "C09_Groups_and_Rings:0049",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "p",
+    "text": "Another way to work with concrete groups is to use free groups and group presentations. The free group on a type α is FreeGroup α and the inclusion map is FreeGroup.of : α → FreeGroup α . For instance let us define a type S with three elements denoted by a , b and c , and the element ab⁻¹ of the corresponding free group.",
+    "html": "<p>Another way to work with concrete groups is to use free groups and group presentations.\nThe free group on a type <code class=\"docutils literal notranslate\"><span class=\"pre\">α</span></code> is <code class=\"docutils literal notranslate\"><span class=\"pre\">FreeGroup</span> <span class=\"pre\">α</span></code> and the inclusion map is\n<code class=\"docutils literal notranslate\"><span class=\"pre\">FreeGroup.of</span> <span class=\"pre\">:</span> <span class=\"pre\">α</span> <span class=\"pre\">→</span> <span class=\"pre\">FreeGroup</span> <span class=\"pre\">α</span></code>. For instance let us define a type <code class=\"docutils literal notranslate\"><span class=\"pre\">S</span></code> with three elements denoted\nby <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span></code>, <code class=\"docutils literal notranslate\"><span class=\"pre\">b</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">c</span></code>, and the element <code class=\"docutils literal notranslate\"><span class=\"pre\">ab⁻¹</span></code> of the corresponding free group.</p>",
+    "zh": "处理具体群的另一种方式是使用自由群和群表示。类型 <code class=\"docutils literal notranslate\"><span class=\"pre\">α</span></code> 上的自由群是 <code class=\"docutils literal notranslate\"><span class=\"pre\">FreeGroup</span> <span class=\"pre\">α</span></code>，包含映射是 <code class=\"docutils literal notranslate\"><span class=\"pre\">FreeGroup.of</span> <span class=\"pre\">:</span> <span class=\"pre\">α</span> <span class=\"pre\">→</span> <span class=\"pre\">FreeGroup</span> <span class=\"pre\">α</span></code>。例如，定义一个有三个元素的类型 <code class=\"docutils literal notranslate\"><span class=\"pre\">S</span></code>，这些元素记为 <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span></code>、<code class=\"docutils literal notranslate\"><span class=\"pre\">b</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">c</span></code>，并定义相应自由群中的元素 <code class=\"docutils literal notranslate\"><span class=\"pre\">ab⁻¹</span></code>。"
+  },
+  {
+    "id": "C09_Groups_and_Rings:0050",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "p",
+    "text": "Note that we gave the expected type of the definition so that Lean knows that .of means FreeGroup.of .",
+    "html": "<p>Note that we gave the expected type of the definition so that Lean knows that <code class=\"docutils literal notranslate\"><span class=\"pre\">.of</span></code> means\n<code class=\"docutils literal notranslate\"><span class=\"pre\">FreeGroup.of</span></code>.</p>",
+    "zh": "注意，我们给出了定义的预期类型，使 Lean 知道 <code class=\"docutils literal notranslate\"><span class=\"pre\">.of</span></code> 表示 <code class=\"docutils literal notranslate\"><span class=\"pre\">FreeGroup.of</span></code>。"
+  },
+  {
+    "id": "C09_Groups_and_Rings:0051",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "p",
+    "text": "The universal property of free groups is embodied as the equivalence FreeGroup.lift . For example, let us define the group morphism from FreeGroup S to Perm (Fin 5) that sends a to c[1, 2, 3] , b to c[2, 3, 1] , and c to c[2, 3] ,",
+    "html": "<p>The universal property of free groups is embodied as the equivalence <code class=\"docutils literal notranslate\"><span class=\"pre\">FreeGroup.lift</span></code>.\nFor example, let us define the group morphism from <code class=\"docutils literal notranslate\"><span class=\"pre\">FreeGroup</span> <span class=\"pre\">S</span></code> to <code class=\"docutils literal notranslate\"><span class=\"pre\">Perm</span> <span class=\"pre\">(Fin</span> <span class=\"pre\">5)</span></code> that\nsends <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span></code> to <code class=\"docutils literal notranslate\"><span class=\"pre\">c[1,</span> <span class=\"pre\">2,</span> <span class=\"pre\">3]</span></code>, <code class=\"docutils literal notranslate\"><span class=\"pre\">b</span></code> to <code class=\"docutils literal notranslate\"><span class=\"pre\">c[2,</span> <span class=\"pre\">3,</span> <span class=\"pre\">1]</span></code>, and <code class=\"docutils literal notranslate\"><span class=\"pre\">c</span></code> to <code class=\"docutils literal notranslate\"><span class=\"pre\">c[2,</span> <span class=\"pre\">3]</span></code>,</p>",
+    "zh": "自由群的泛性质体现为等价 <code class=\"docutils literal notranslate\"><span class=\"pre\">FreeGroup.lift</span></code>。例如，定义一个从 <code class=\"docutils literal notranslate\"><span class=\"pre\">FreeGroup</span> <span class=\"pre\">S</span></code> 到 <code class=\"docutils literal notranslate\"><span class=\"pre\">Perm</span> <span class=\"pre\">(Fin</span> <span class=\"pre\">5)</span></code> 的群态射，它把 <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span></code> 送到 <code class=\"docutils literal notranslate\"><span class=\"pre\">c[1,</span> <span class=\"pre\">2,</span> <span class=\"pre\">3]</span></code>，把 <code class=\"docutils literal notranslate\"><span class=\"pre\">b</span></code> 送到 <code class=\"docutils literal notranslate\"><span class=\"pre\">c[2,</span> <span class=\"pre\">3,</span> <span class=\"pre\">1]</span></code>，并把 <code class=\"docutils literal notranslate\"><span class=\"pre\">c</span></code> 送到 <code class=\"docutils literal notranslate\"><span class=\"pre\">c[2,</span> <span class=\"pre\">3]</span></code>。"
+  },
+  {
+    "id": "C09_Groups_and_Rings:0052",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "p",
+    "text": "As a last concrete example, let us see how to define a group generated by a single element whose cube is one (so that group will be isomorphic to \\(\\mathbb{Z}/3\\) ) and build a morphism from that group to Perm (Fin 5) .",
+    "html": "<p>As a last concrete example, let us see how to define a group generated by a single element whose\ncube is one (so that group will be isomorphic to <span class=\"math notranslate nohighlight\">\\(\\mathbb{Z}/3\\)</span>) and build a morphism\nfrom that group to <code class=\"docutils literal notranslate\"><span class=\"pre\">Perm</span> <span class=\"pre\">(Fin</span> <span class=\"pre\">5)</span></code>.</p>",
+    "zh": "作为最后一个具体例子，来看如何定义由单个元素生成且其三次方为一的群（因此该群同构于 <span class=\"math notranslate nohighlight\">\\(\\mathbb{Z}/3\\)</span>），并构造从该群到 <code class=\"docutils literal notranslate\"><span class=\"pre\">Perm</span> <span class=\"pre\">(Fin</span> <span class=\"pre\">5)</span></code> 的态射。"
+  },
+  {
+    "id": "C09_Groups_and_Rings:0053",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "p",
+    "text": "As a type with exactly one element, we will use Unit whose only element is denoted by () . The function PresentedGroup takes a set of relations, i.e. a set of elements of some free group, and returns a group that is this free group quotiented by a normal subgroup generated by relations. (We will see how to handle more general quotients in Section 9.1.6 .) Since we somehow hide this behind a definition, we use deriving Group to force creation of a group instance on myGroup .",
+    "html": "<p>As a type with exactly one element, we will use <code class=\"docutils literal notranslate\"><span class=\"pre\">Unit</span></code> whose\nonly element is denoted by <code class=\"docutils literal notranslate\"><span class=\"pre\">()</span></code>. The function <code class=\"docutils literal notranslate\"><span class=\"pre\">PresentedGroup</span></code> takes a set of relations,\ni.e. a set of elements of some free group, and returns a group that is this free group quotiented\nby a normal subgroup generated by relations. (We will see how to handle more general quotients\nin <a class=\"reference internal\" href=\"#quotient-groups\"><span class=\"std std-numref\">Section 9.1.6</span></a>.) Since we somehow hide this behind a definition, we use <code class=\"docutils literal notranslate\"><span class=\"pre\">deriving</span> <span class=\"pre\">Group</span></code> to force creation\nof a group instance on <code class=\"docutils literal notranslate\"><span class=\"pre\">myGroup</span></code>.</p>",
+    "zh": "作为恰有一个元素的类型，我们将使用 <code class=\"docutils literal notranslate\"><span class=\"pre\">Unit</span></code>，其唯一元素记作 <code class=\"docutils literal notranslate\"><span class=\"pre\">()</span></code>。函数 <code class=\"docutils literal notranslate\"><span class=\"pre\">PresentedGroup</span></code> 接受一个关系集合，即某个自由群元素的集合，并返回该自由群对由这些关系生成的正规子群取商得到的群。（我们将在<a class=\"reference internal\" href=\"#quotient-groups\"><span class=\"std std-numref\">Section 9.1.6</span></a>中看到如何处理更一般的商。）由于我们以某种方式把这件事隐藏在定义背后，所以使用 <code class=\"docutils literal notranslate\"><span class=\"pre\">deriving</span> <span class=\"pre\">Group</span></code> 强制在 <code class=\"docutils literal notranslate\"><span class=\"pre\">myGroup</span></code> 上创建一个群实例。"
+  },
+  {
+    "id": "C09_Groups_and_Rings:0054",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "p",
+    "text": "The universal property of presented groups ensures that morphisms out of this group can be built from functions that send the relations to the neutral element of the target group. So we need such a function and a proof that the condition holds. Then we can feed this proof to PresentedGroup.toGroup to get the desired group morphism.",
+    "html": "<p>The universal property of presented groups ensures that morphisms out of this group can be built\nfrom functions that send the relations to the neutral element of the target group.\nSo we need such a function and a proof that the condition holds. Then we can feed this proof\nto <code class=\"docutils literal notranslate\"><span class=\"pre\">PresentedGroup.toGroup</span></code> to get the desired group morphism.</p>",
+    "zh": "表示群的泛性质保证，从该群出发的态射可以由把关系送到目标群单位元的函数构造。因此需要这样一个函数，以及该条件成立的证明。然后可以把这个证明传给 <code class=\"docutils literal notranslate\"><span class=\"pre\">PresentedGroup.toGroup</span></code>，得到所需的群态射。"
+  },
+  {
+    "id": "C09_Groups_and_Rings:0055",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "p",
+    "text": "One important way that group theory interacts with the rest of mathematics is through the use of group actions. An action of a group G on some type X is nothing more than a morphism from G to Equiv.Perm X . So in a sense group actions are already covered by the previous discussion. But we don’t want to carry this morphism around; instead, we want it to be inferred automatically by Lean as much as possible. So we have a type class for this, which is MulAction G X . The downside of this setup is that having multiple actions of the same group on the same type requires some contortions, such as defining type synonyms, each of which carries different type class instances.",
+    "html": "<p>One important way that group theory interacts with the rest of mathematics is through\nthe use of group actions.\nAn action of a group <code class=\"docutils literal notranslate\"><span class=\"pre\">G</span></code> on some type <code class=\"docutils literal notranslate\"><span class=\"pre\">X</span></code> is nothing more than a morphism from <code class=\"docutils literal notranslate\"><span class=\"pre\">G</span></code> to\n<code class=\"docutils literal notranslate\"><span class=\"pre\">Equiv.Perm</span> <span class=\"pre\">X</span></code>. So in a sense group actions are already covered by the previous discussion.\nBut we don’t want to carry this morphism around; instead, we want it to be inferred automatically\nby Lean as much as possible. So we have a type class for this, which is <code class=\"docutils literal notranslate\"><span class=\"pre\">MulAction</span> <span class=\"pre\">G</span> <span class=\"pre\">X</span></code>.\nThe downside of this setup is that having multiple actions of the same group on the same type\nrequires some contortions, such as defining type synonyms, each of which carries different\ntype class instances.</p>",
+    "zh": "群论与数学其他部分相互作用的一种重要方式是使用群作用。群 <code class=\"docutils literal notranslate\"><span class=\"pre\">G</span></code> 在某个类型 <code class=\"docutils literal notranslate\"><span class=\"pre\">X</span></code> 上的作用，不过是从 <code class=\"docutils literal notranslate\"><span class=\"pre\">G</span></code> 到 <code class=\"docutils literal notranslate\"><span class=\"pre\">Equiv.Perm</span> <span class=\"pre\">X</span></code> 的态射。因此，从某种意义上说，群作用已经被前面的讨论覆盖了。但我们不希望随身携带这个态射；相反，希望它尽可能由 Lean 自动推断。因此有一个类型类 <code class=\"docutils literal notranslate\"><span class=\"pre\">MulAction</span> <span class=\"pre\">G</span> <span class=\"pre\">X</span></code>。这种设置的缺点是，同一个群在同一个类型上有多个作用时，需要一些迂回办法，例如定义类型同义词，并为每个同义词携带不同的类型类实例。"
+  },
+  {
+    "id": "C09_Groups_and_Rings:0056",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "p",
+    "text": "This allows us in particular to use g • x to denote the action of a group element g on a point x .",
+    "html": "<p>This allows us in particular to use <code class=\"docutils literal notranslate\"><span class=\"pre\">g</span> <span class=\"pre\">•</span> <span class=\"pre\">x</span></code> to denote the action of a group element <code class=\"docutils literal notranslate\"><span class=\"pre\">g</span></code> on\na point <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span></code>.</p>",
+    "zh": "特别地，这允许我们用 <code class=\"docutils literal notranslate\"><span class=\"pre\">g</span> <span class=\"pre\">•</span> <span class=\"pre\">x</span></code> 表示群元素 <code class=\"docutils literal notranslate\"><span class=\"pre\">g</span></code> 对点 <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span></code> 的作用。"
+  },
+  {
+    "id": "C09_Groups_and_Rings:0057",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "p",
+    "text": "There is also a version for additive group called AddAction , where the action is denoted by +ᵥ . This is used for instance in the definition of affine spaces.",
+    "html": "<p>There is also a version for additive group called <code class=\"docutils literal notranslate\"><span class=\"pre\">AddAction</span></code>, where the action is denoted by\n<code class=\"docutils literal notranslate\"><span class=\"pre\">+ᵥ</span></code>. This is used for instance in the definition of affine spaces.</p>",
+    "zh": "还有用于加法群的版本，称为 <code class=\"docutils literal notranslate\"><span class=\"pre\">AddAction</span></code>，其中作用记作 <code class=\"docutils literal notranslate\"><span class=\"pre\">+ᵥ</span></code>。例如，它用于仿射空间的定义。"
+  },
+  {
+    "id": "C09_Groups_and_Rings:0058",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "p",
+    "text": "The underlying group morphism is called MulAction.toPermHom .",
+    "html": "<p>The underlying group morphism is called <code class=\"docutils literal notranslate\"><span class=\"pre\">MulAction.toPermHom</span></code>.</p>",
+    "zh": "底层群态射称为 <code class=\"docutils literal notranslate\"><span class=\"pre\">MulAction.toPermHom</span></code>。"
+  },
+  {
+    "id": "C09_Groups_and_Rings:0059",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "p",
+    "text": "As an illustration let us see how to define the Cayley isomorphism embedding of any group G into a permutation group, namely Perm G . To instantiate [MulAction G G] , Lean finds the standard group action given by left multiplication, which is what we want.",
+    "html": "<p>As an illustration let us see how to define the Cayley isomorphism embedding of any group <code class=\"docutils literal notranslate\"><span class=\"pre\">G</span></code> into\na permutation group, namely <code class=\"docutils literal notranslate\"><span class=\"pre\">Perm</span> <span class=\"pre\">G</span></code>. To instantiate <code class=\"docutils literal notranslate\"><span class=\"pre\">[MulAction</span> <span class=\"pre\">G</span> <span class=\"pre\">G]</span></code>, Lean finds\nthe standard group action given by left multiplication, which is what we want.</p>",
+    "zh": "作为说明，来看如何定义 Cayley 同构嵌入：把任意群 <code class=\"docutils literal notranslate\"><span class=\"pre\">G</span></code> 嵌入置换群，即 <code class=\"docutils literal notranslate\"><span class=\"pre\">Perm</span> <span class=\"pre\">G</span></code>。为了实例化 <code class=\"docutils literal notranslate\"><span class=\"pre\">[MulAction</span> <span class=\"pre\">G</span> <span class=\"pre\">G]</span></code>，Lean 会找到由左乘给出的标准群作用，这正是我们想要的。"
+  },
+  {
+    "id": "C09_Groups_and_Rings:0060",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "p",
+    "text": "Note that nothing before the above definition required having a group rather than a monoid (or any type endowed with a multiplication operation really).",
+    "html": "<p>Note that nothing before the above definition required having a group rather than a monoid (or any\ntype endowed with a multiplication operation really).</p>",
+    "zh": "注意，在上面的定义之前，没有任何内容真正要求拥有群而非幺半群（事实上，只要类型配备乘法运算即可）。"
+  },
+  {
+    "id": "C09_Groups_and_Rings:0061",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "p",
+    "text": "The group condition really enters the picture when we will want to partition X into orbits. The corresponding equivalence relation on X is called MulAction.orbitRel . It is not declared as a global instance.",
+    "html": "<p>The group condition really enters the picture when we will want to partition <code class=\"docutils literal notranslate\"><span class=\"pre\">X</span></code> into orbits.\nThe corresponding equivalence relation on <code class=\"docutils literal notranslate\"><span class=\"pre\">X</span></code> is called <code class=\"docutils literal notranslate\"><span class=\"pre\">MulAction.orbitRel</span></code>.\nIt is not declared as a global instance.</p>",
+    "zh": "当我们想把 <code class=\"docutils literal notranslate\"><span class=\"pre\">X</span></code> 分解为轨道时，群条件才真正进入图景。<code class=\"docutils literal notranslate\"><span class=\"pre\">X</span></code> 上相应的等价关系称为 <code class=\"docutils literal notranslate\"><span class=\"pre\">MulAction.orbitRel</span></code>。它没有被声明为全局实例。"
+  },
+  {
+    "id": "C09_Groups_and_Rings:0062",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "p",
+    "text": "Using this we can state that X is partitioned into orbits under the action of G . More precisely, we get a bijection between X and the dependent product (ω : orbitRel.Quotient G X) × (orbit G (Quotient.out' ω)) where Quotient.out' ω simply chooses an element that projects to ω . Recall that elements of this dependent product are pairs ⟨ω, x⟩ where the type orbit G (Quotient.out' ω) of x depends on ω .",
+    "html": "<p>Using this we can state that <code class=\"docutils literal notranslate\"><span class=\"pre\">X</span></code> is partitioned into orbits under the action of <code class=\"docutils literal notranslate\"><span class=\"pre\">G</span></code>.\nMore precisely, we get a bijection between <code class=\"docutils literal notranslate\"><span class=\"pre\">X</span></code> and the dependent product\n<code class=\"docutils literal notranslate\"><span class=\"pre\">(ω</span> <span class=\"pre\">:</span> <span class=\"pre\">orbitRel.Quotient</span> <span class=\"pre\">G</span> <span class=\"pre\">X)</span> <span class=\"pre\">×</span> <span class=\"pre\">(orbit</span> <span class=\"pre\">G</span> <span class=\"pre\">(Quotient.out'</span> <span class=\"pre\">ω))</span></code>\nwhere <code class=\"docutils literal notranslate\"><span class=\"pre\">Quotient.out'</span> <span class=\"pre\">ω</span></code> simply chooses an element that projects to <code class=\"docutils literal notranslate\"><span class=\"pre\">ω</span></code>.\nRecall that elements of this dependent product are pairs <code class=\"docutils literal notranslate\"><span class=\"pre\">⟨ω,</span> <span class=\"pre\">x⟩</span></code> where the type\n<code class=\"docutils literal notranslate\"><span class=\"pre\">orbit</span> <span class=\"pre\">G</span> <span class=\"pre\">(Quotient.out'</span> <span class=\"pre\">ω)</span></code> of <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span></code> depends on <code class=\"docutils literal notranslate\"><span class=\"pre\">ω</span></code>.</p>",
+    "zh": "利用这一点，可以陈述 <code class=\"docutils literal notranslate\"><span class=\"pre\">X</span></code> 在 <code class=\"docutils literal notranslate\"><span class=\"pre\">G</span></code> 的作用下被划分为轨道。更准确地说，我们得到 <code class=\"docutils literal notranslate\"><span class=\"pre\">X</span></code> 与依赖积 <code class=\"docutils literal notranslate\"><span class=\"pre\">(ω</span> <span class=\"pre\">:</span> <span class=\"pre\">orbitRel.Quotient</span> <span class=\"pre\">G</span> <span class=\"pre\">X)</span> <span class=\"pre\">×</span> <span class=\"pre\">(orbit</span> <span class=\"pre\">G</span> <span class=\"pre\">(Quotient.out'</span> <span class=\"pre\">ω))</span></code> 之间的双射，其中 <code class=\"docutils literal notranslate\"><span class=\"pre\">Quotient.out'</span> <span class=\"pre\">ω</span></code> 只是选择一个投影到 <code class=\"docutils literal notranslate\"><span class=\"pre\">ω</span></code> 的元素。回忆一下，这个依赖积的元素是对 <code class=\"docutils literal notranslate\"><span class=\"pre\">⟨ω,</span> <span class=\"pre\">x⟩</span></code>，其中 <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span></code> 的类型 <code class=\"docutils literal notranslate\"><span class=\"pre\">orbit</span> <span class=\"pre\">G</span> <span class=\"pre\">(Quotient.out'</span> <span class=\"pre\">ω)</span></code> 依赖于 <code class=\"docutils literal notranslate\"><span class=\"pre\">ω</span></code>。"
+  },
+  {
+    "id": "C09_Groups_and_Rings:0063",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "p",
+    "text": "In particular, when X is finite, this can be combined with Fintype.card_congr and Fintype.card_sigma to deduce that the cardinality of X is the sum of the cardinalities of the orbits. Furthermore, the orbits are in bijection with the quotient of G under the action of the stabilizers by left translation. This action of a subgroup by left-translation is used to define quotients of a group by a subgroup with notation / so we can use the following concise statement.",
+    "html": "<p>In particular, when X is finite, this can be combined with <code class=\"docutils literal notranslate\"><span class=\"pre\">Fintype.card_congr</span></code> and\n<code class=\"docutils literal notranslate\"><span class=\"pre\">Fintype.card_sigma</span></code> to deduce that the cardinality of <code class=\"docutils literal notranslate\"><span class=\"pre\">X</span></code> is the sum of the cardinalities\nof the orbits.\nFurthermore, the orbits are in bijection with the quotient of <code class=\"docutils literal notranslate\"><span class=\"pre\">G</span></code> under the action of the\nstabilizers by left translation.\nThis action of a subgroup by left-translation is used to define quotients of a group by a\nsubgroup with notation <cite>/</cite> so we can use the following concise statement.</p>",
+    "zh": "特别地，当 <code class=\"docutils literal notranslate\"><span class=\"pre\">X</span></code> 有限时，可以把它与 <code class=\"docutils literal notranslate\"><span class=\"pre\">Fintype.card_congr</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">Fintype.card_sigma</span></code> 结合起来，推出 <code class=\"docutils literal notranslate\"><span class=\"pre\">X</span></code> 的基数等于各轨道基数之和。此外，轨道与 <code class=\"docutils literal notranslate\"><span class=\"pre\">G</span></code> 在稳定子左平移作用下的商之间双射。子群通过左平移的这个作用被用于定义群对子群的商，记号为 <cite>/</cite>，所以可以使用下面这个简洁陈述。"
+  },
+  {
+    "id": "C09_Groups_and_Rings:0064",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "p",
+    "text": "An important special case of combining the above two results is when X is a group G equipped with the action of a subgroup H by translation. In this case all stabilizers are trivial so every orbit is in bijection with H and we get:",
+    "html": "<p>An important special case of combining the above two results is when <code class=\"docutils literal notranslate\"><span class=\"pre\">X</span></code> is a group <code class=\"docutils literal notranslate\"><span class=\"pre\">G</span></code>\nequipped with the action of a subgroup <code class=\"docutils literal notranslate\"><span class=\"pre\">H</span></code> by translation.\nIn this case all stabilizers are trivial so every orbit is in bijection with <code class=\"docutils literal notranslate\"><span class=\"pre\">H</span></code> and we get:</p>",
+    "zh": "结合上述两个结果的一个重要特例，是 <code class=\"docutils literal notranslate\"><span class=\"pre\">X</span></code> 为群 <code class=\"docutils literal notranslate\"><span class=\"pre\">G</span></code>，并配备子群 <code class=\"docutils literal notranslate\"><span class=\"pre\">H</span></code> 通过平移给出的作用。在这种情况下，所有稳定子都是平凡的，所以每个轨道都与 <code class=\"docutils literal notranslate\"><span class=\"pre\">H</span></code> 双射，于是得到："
+  },
+  {
+    "id": "C09_Groups_and_Rings:0065",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "p",
+    "text": "This is the conceptual variant of the version of Lagrange theorem that we saw above. Note this version makes no finiteness assumption.",
+    "html": "<p>This is the conceptual variant of the version of Lagrange theorem that we saw above.\nNote this version makes no finiteness assumption.</p>",
+    "zh": "这是上面所见拉格朗日定理版本的概念性变体。注意，这个版本不作有限性假设。"
+  },
+  {
+    "id": "C09_Groups_and_Rings:0066",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "p",
+    "text": "As an exercise for this section, let us build the action of a group on its subgroup by conjugation, using our definition of conjugate from a previous exercise.",
+    "html": "<p>As an exercise for this section, let us build the action of a group on its subgroup by\nconjugation, using our definition of <code class=\"docutils literal notranslate\"><span class=\"pre\">conjugate</span></code> from a previous exercise.</p>",
+    "zh": "作为本节练习，请使用前一个练习中定义的 <code class=\"docutils literal notranslate\"><span class=\"pre\">conjugate</span></code>，构造群在其子群上由共轭给出的作用。"
+  },
+  {
+    "id": "C09_Groups_and_Rings:0067",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "p",
+    "text": "In the above discussion of subgroups acting on groups, we saw the quotient G ⧸ H appear. In general this is only a type. It can be endowed with a group structure such that the quotient map is a group morphism if and only if H is a normal subgroup (and this group structure is then unique).",
+    "html": "<p>In the above discussion of subgroups acting on groups, we saw the quotient <code class=\"docutils literal notranslate\"><span class=\"pre\">G</span> <span class=\"pre\">⧸</span> <span class=\"pre\">H</span></code> appear.\nIn general this is only a type. It can be endowed with a group structure such that the quotient\nmap is a group morphism if and only if <code class=\"docutils literal notranslate\"><span class=\"pre\">H</span></code> is a normal subgroup (and this group structure is\nthen unique).</p>",
+    "zh": "在上面关于子群作用于群的讨论中，我们看到了商 <code class=\"docutils literal notranslate\"><span class=\"pre\">G</span> <span class=\"pre\">⧸</span> <span class=\"pre\">H</span></code>。一般而言，它只是一个类型。当且仅当 <code class=\"docutils literal notranslate\"><span class=\"pre\">H</span></code> 是正规子群时，它才能被赋予群结构，使商映射成为群态射（而该群结构随后是唯一的）。"
+  },
+  {
+    "id": "C09_Groups_and_Rings:0068",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "p",
+    "text": "The normality assumption is a type class Subgroup.Normal so that type class inference can use it to derive the group structure on the quotient.",
+    "html": "<p>The normality assumption is a type class <code class=\"docutils literal notranslate\"><span class=\"pre\">Subgroup.Normal</span></code> so that type class inference can use it\nto derive the group structure on the quotient.</p>",
+    "zh": "正规性假设是一个类型类 <code class=\"docutils literal notranslate\"><span class=\"pre\">Subgroup.Normal</span></code>，因此类型类推断可以使用它来导出商上的群结构。"
+  },
+  {
+    "id": "C09_Groups_and_Rings:0069",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "p",
+    "text": "The universal property of quotient groups is accessed through QuotientGroup.lift : a group morphism φ descends to G ⧸ N as soon as its kernel contains N .",
+    "html": "<p>The universal property of quotient groups is accessed through <code class=\"docutils literal notranslate\"><span class=\"pre\">QuotientGroup.lift</span></code>:\na group morphism <code class=\"docutils literal notranslate\"><span class=\"pre\">φ</span></code> descends to <code class=\"docutils literal notranslate\"><span class=\"pre\">G</span> <span class=\"pre\">⧸</span> <span class=\"pre\">N</span></code> as soon as its kernel contains <code class=\"docutils literal notranslate\"><span class=\"pre\">N</span></code>.</p>",
+    "zh": "商群的泛性质通过 <code class=\"docutils literal notranslate\"><span class=\"pre\">QuotientGroup.lift</span></code> 使用：只要群态射 <code class=\"docutils literal notranslate\"><span class=\"pre\">φ</span></code> 的核包含 <code class=\"docutils literal notranslate\"><span class=\"pre\">N</span></code>，它就下降到 <code class=\"docutils literal notranslate\"><span class=\"pre\">G</span> <span class=\"pre\">⧸</span> <span class=\"pre\">N</span></code>。"
+  },
+  {
+    "id": "C09_Groups_and_Rings:0070",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "p",
+    "text": "The fact that the target group is called M is the above snippet is a clue that having a monoid structure on M would be enough.",
+    "html": "<p>The fact that the target group is called <code class=\"docutils literal notranslate\"><span class=\"pre\">M</span></code> is the above snippet is a clue that having a\nmonoid structure on <code class=\"docutils literal notranslate\"><span class=\"pre\">M</span></code> would be enough.</p>",
+    "zh": "上面片段中目标群称为 <code class=\"docutils literal notranslate\"><span class=\"pre\">M</span></code>，这暗示在 <code class=\"docutils literal notranslate\"><span class=\"pre\">M</span></code> 上有幺半群结构其实已经足够。"
+  },
+  {
+    "id": "C09_Groups_and_Rings:0071",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "p",
+    "text": "An important special case is when N = ker φ . In that case the descended morphism is injective and we get a group isomorphism onto its image. This result is often called the first isomorphism theorem.",
+    "html": "<p>An important special case is when <code class=\"docutils literal notranslate\"><span class=\"pre\">N</span> <span class=\"pre\">=</span> <span class=\"pre\">ker</span> <span class=\"pre\">φ</span></code>. In that case the descended morphism is\ninjective and we get a group isomorphism onto its image. This result is often called\nthe first isomorphism theorem.</p>",
+    "zh": "一个重要特例是 <code class=\"docutils literal notranslate\"><span class=\"pre\">N</span> <span class=\"pre\">=</span> <span class=\"pre\">ker</span> <span class=\"pre\">φ</span></code>。在这种情况下，下降得到的态射是单射，并得到到其像上的群同构。这个结果通常称为第一同构定理。"
+  },
+  {
+    "id": "C09_Groups_and_Rings:0072",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "p",
+    "text": "Applying the universal property to a composition of a morphism φ : G →* G' with a quotient group projection Quotient.mk' N' , we can also aim for a morphism from G ⧸ N to G' ⧸ N' . The condition required on φ is usually formulated by saying “ φ should send N inside N' .” But this is equivalent to asking that φ should pull N' back over N , and the latter condition is nicer to work with since the definition of pullback does not involve an existential quantifier.",
+    "html": "<p>Applying the universal property to a composition of a morphism <code class=\"docutils literal notranslate\"><span class=\"pre\">φ</span> <span class=\"pre\">:</span> <span class=\"pre\">G</span> <span class=\"pre\">→*</span> <span class=\"pre\">G'</span></code>\nwith a quotient group projection <code class=\"docutils literal notranslate\"><span class=\"pre\">Quotient.mk'</span> <span class=\"pre\">N'</span></code>,\nwe can also aim for a morphism from <code class=\"docutils literal notranslate\"><span class=\"pre\">G</span> <span class=\"pre\">⧸</span> <span class=\"pre\">N</span></code> to <code class=\"docutils literal notranslate\"><span class=\"pre\">G'</span> <span class=\"pre\">⧸</span> <span class=\"pre\">N'</span></code>.\nThe condition required on <code class=\"docutils literal notranslate\"><span class=\"pre\">φ</span></code> is usually formulated by saying “<code class=\"docutils literal notranslate\"><span class=\"pre\">φ</span></code> should send <code class=\"docutils literal notranslate\"><span class=\"pre\">N</span></code> inside\n<code class=\"docutils literal notranslate\"><span class=\"pre\">N'</span></code>.” But this is equivalent to asking that <code class=\"docutils literal notranslate\"><span class=\"pre\">φ</span></code> should pull <code class=\"docutils literal notranslate\"><span class=\"pre\">N'</span></code> back over\n<code class=\"docutils literal notranslate\"><span class=\"pre\">N</span></code>, and the latter condition is nicer to work with since the definition of pullback does not\ninvolve an existential quantifier.</p>",
+    "zh": "把泛性质应用到态射 <code class=\"docutils literal notranslate\"><span class=\"pre\">φ</span> <span class=\"pre\">:</span> <span class=\"pre\">G</span> <span class=\"pre\">→*</span> <span class=\"pre\">G'</span></code> 与商群投影 <code class=\"docutils literal notranslate\"><span class=\"pre\">Quotient.mk'</span> <span class=\"pre\">N'</span></code> 的复合，也可以得到从 <code class=\"docutils literal notranslate\"><span class=\"pre\">G</span> <span class=\"pre\">⧸</span> <span class=\"pre\">N</span></code> 到 <code class=\"docutils literal notranslate\"><span class=\"pre\">G'</span> <span class=\"pre\">⧸</span> <span class=\"pre\">N'</span></code> 的态射。对 <code class=\"docutils literal notranslate\"><span class=\"pre\">φ</span></code> 所需的条件通常表述为“<code class=\"docutils literal notranslate\"><span class=\"pre\">φ</span></code> 应把 <code class=\"docutils literal notranslate\"><span class=\"pre\">N</span></code> 映入 <code class=\"docutils literal notranslate\"><span class=\"pre\">N'</span></code>”。但这等价于要求 <code class=\"docutils literal notranslate\"><span class=\"pre\">φ</span></code> 把 <code class=\"docutils literal notranslate\"><span class=\"pre\">N'</span></code> 拉回到 <code class=\"docutils literal notranslate\"><span class=\"pre\">N</span></code> 之上；后一条件更便于使用，因为拉回的定义不含存在量词。"
+  },
+  {
+    "id": "C09_Groups_and_Rings:0073",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "p",
+    "text": "One subtle point to keep in mind is that the type G ⧸ N really depends on N (up to definitional equality), so having a proof that two normal subgroups N and M are equal is not enough to make the corresponding quotient types definitionally equal. However, the universal properties do give an isomorphism in this case.",
+    "html": "<p>One subtle point to keep in mind is that the type <code class=\"docutils literal notranslate\"><span class=\"pre\">G</span> <span class=\"pre\">⧸</span> <span class=\"pre\">N</span></code> really depends on <code class=\"docutils literal notranslate\"><span class=\"pre\">N</span></code>\n(up to definitional equality), so having a proof that two normal subgroups <code class=\"docutils literal notranslate\"><span class=\"pre\">N</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">M</span></code> are equal\nis not enough to make the corresponding quotient types definitionally equal.\nHowever, the universal properties do give an isomorphism in this case.</p>",
+    "zh": "需要记住一个微妙点：类型 <code class=\"docutils literal notranslate\"><span class=\"pre\">G</span> <span class=\"pre\">⧸</span> <span class=\"pre\">N</span></code> 确实依赖于 <code class=\"docutils literal notranslate\"><span class=\"pre\">N</span></code>（直至定义相等），所以有一个证明说明两个正规子群 <code class=\"docutils literal notranslate\"><span class=\"pre\">N</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">M</span></code> 相等，并不足以使相应商类型按定义相等。不过，在这种情况下，泛性质确实给出一个同构。"
+  },
+  {
+    "id": "C09_Groups_and_Rings:0074",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "p",
+    "text": "As a final series of exercises for this section, we will prove that if H and K are disjoint normal subgroups of a finite group G such that the product of their cardinalities is equal to the cardinality of G then G is isomorphic to H × K . Recall that disjoint in this context means H ⊓ K = ⊥ .",
+    "html": "<p>As a final series of exercises for this section, we will prove that if <code class=\"docutils literal notranslate\"><span class=\"pre\">H</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">K</span></code> are disjoint\nnormal subgroups of a finite group <code class=\"docutils literal notranslate\"><span class=\"pre\">G</span></code> such that the product of their cardinalities is equal to\nthe cardinality of <code class=\"docutils literal notranslate\"><span class=\"pre\">G</span></code>\nthen <code class=\"docutils literal notranslate\"><span class=\"pre\">G</span></code> is isomorphic to <code class=\"docutils literal notranslate\"><span class=\"pre\">H</span> <span class=\"pre\">×</span> <span class=\"pre\">K</span></code>. Recall that disjoint in this context means <code class=\"docutils literal notranslate\"><span class=\"pre\">H</span> <span class=\"pre\">⊓</span> <span class=\"pre\">K</span> <span class=\"pre\">=</span> <span class=\"pre\">⊥</span></code>.</p>",
+    "zh": "作为本节最后一组练习，我们将证明：若有限群 <code class=\"docutils literal notranslate\"><span class=\"pre\">G</span></code> 的正规子群 <code class=\"docutils literal notranslate\"><span class=\"pre\">H</span></code> 与 <code class=\"docutils literal notranslate\"><span class=\"pre\">K</span></code> 互不相交，并且它们基数的乘积等于 <code class=\"docutils literal notranslate\"><span class=\"pre\">G</span></code> 的基数，则 <code class=\"docutils literal notranslate\"><span class=\"pre\">G</span></code> 同构于 <code class=\"docutils literal notranslate\"><span class=\"pre\">H</span> <span class=\"pre\">×</span> <span class=\"pre\">K</span></code>。回忆，在此语境中“互不相交”表示 <code class=\"docutils literal notranslate\"><span class=\"pre\">H</span> <span class=\"pre\">⊓</span> <span class=\"pre\">K</span> <span class=\"pre\">=</span> <span class=\"pre\">⊥</span></code>。"
+  },
+  {
+    "id": "C09_Groups_and_Rings:0075",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "p",
+    "text": "We start with playing a bit with Lagrange’s lemma, without assuming the subgroups are normal or disjoint.",
+    "html": "<p>We start with playing a bit with Lagrange’s lemma, without assuming the subgroups are normal\nor disjoint.</p>",
+    "zh": "首先稍微操作一下拉格朗日引理，此时不假设子群正规或互不相交。"
+  },
+  {
+    "id": "C09_Groups_and_Rings:0076",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "p",
+    "text": "From now on, we assume that our subgroups are normal and disjoint, and we assume the cardinality condition. Now we construct the first building block of the desired isomorphism.",
+    "html": "<p>From now on, we assume that our subgroups are normal and disjoint, and we assume the cardinality\ncondition. Now we construct the first building block of the desired isomorphism.</p>",
+    "zh": "从现在起，假设我们的子群正规且互不相交，并假设基数条件。现在构造所需同构的第一个构件。"
+  },
+  {
+    "id": "C09_Groups_and_Rings:0077",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "p",
+    "text": "Now we can define our second building block. We will need MonoidHom.prod , which builds a morphism from G₀ to G₁ × G₂ out of morphisms from G₀ to G₁ and G₂ .",
+    "html": "<p>Now we can define our second building block.\nWe will need <code class=\"docutils literal notranslate\"><span class=\"pre\">MonoidHom.prod</span></code>, which builds a morphism from <code class=\"docutils literal notranslate\"><span class=\"pre\">G₀</span></code> to <code class=\"docutils literal notranslate\"><span class=\"pre\">G₁</span> <span class=\"pre\">×</span> <span class=\"pre\">G₂</span></code> out of\nmorphisms from <code class=\"docutils literal notranslate\"><span class=\"pre\">G₀</span></code> to <code class=\"docutils literal notranslate\"><span class=\"pre\">G₁</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">G₂</span></code>.</p>",
+    "zh": "现在可以定义第二个构件。我们将需要 <code class=\"docutils literal notranslate\"><span class=\"pre\">MonoidHom.prod</span></code>，它由从 <code class=\"docutils literal notranslate\"><span class=\"pre\">G₀</span></code> 到 <code class=\"docutils literal notranslate\"><span class=\"pre\">G₁</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">G₂</span></code> 的态射，构造从 <code class=\"docutils literal notranslate\"><span class=\"pre\">G₀</span></code> 到 <code class=\"docutils literal notranslate\"><span class=\"pre\">G₁</span> <span class=\"pre\">×</span> <span class=\"pre\">G₂</span></code> 的态射。"
+  },
+  {
+    "id": "C09_Groups_and_Rings:0078",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "p",
+    "text": "We are ready to put all pieces together.",
+    "html": "<p>We are ready to put all pieces together.</p>",
+    "zh": "现在可以把所有部分合在一起。"
+  },
+  {
+    "id": "C09_Groups_and_Rings:0079",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "p",
+    "text": "The type of ring structures on a type R is Ring R . The variant where multiplication is assumed to be commutative is CommRing R . We have already seen that the ring tactic will prove any equality that follows from the axioms of a commutative ring.",
+    "html": "<p>The type of ring structures on a type <code class=\"docutils literal notranslate\"><span class=\"pre\">R</span></code> is <code class=\"docutils literal notranslate\"><span class=\"pre\">Ring</span> <span class=\"pre\">R</span></code>. The variant where multiplication is\nassumed to be commutative is <code class=\"docutils literal notranslate\"><span class=\"pre\">CommRing</span> <span class=\"pre\">R</span></code>. We have already seen that the <code class=\"docutils literal notranslate\"><span class=\"pre\">ring</span></code> tactic will\nprove any equality that follows from the axioms of a commutative ring.</p>",
+    "zh": "类型 <code class=\"docutils literal notranslate\"><span class=\"pre\">R</span></code> 上环结构的类型是 <code class=\"docutils literal notranslate\"><span class=\"pre\">Ring</span> <span class=\"pre\">R</span></code>。假设乘法可交换的变体是 <code class=\"docutils literal notranslate\"><span class=\"pre\">CommRing</span> <span class=\"pre\">R</span></code>。我们已经看到，策略 <code class=\"docutils literal notranslate\"><span class=\"pre\">ring</span></code> 会证明任意由交换环公理推出的等式。"
+  },
+  {
+    "id": "C09_Groups_and_Rings:0080",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "p",
+    "text": "More exotic variants do not require that the addition on R forms a group but only an additive monoid. The corresponding type classes are Semiring R and CommSemiring R . The type of natural numbers is an important instance of CommSemiring R , as is any type of functions taking values in the natural numbers. Another important example is the type of ideals in a ring, which will be discussed below. The name of the ring tactic is doubly misleading, since it assumes commutativity but works in semirings as well. In other words, it applies to any CommSemiring .",
+    "html": "<p>More exotic variants do not require that the addition on <code class=\"docutils literal notranslate\"><span class=\"pre\">R</span></code> forms a group but only an additive\nmonoid. The corresponding type classes are <code class=\"docutils literal notranslate\"><span class=\"pre\">Semiring</span> <span class=\"pre\">R</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">CommSemiring</span> <span class=\"pre\">R</span></code>.\nThe type of natural numbers is an important instance of <code class=\"docutils literal notranslate\"><span class=\"pre\">CommSemiring</span> <span class=\"pre\">R</span></code>, as is any type\nof functions taking values in the natural numbers.\nAnother important example is the type of ideals in a ring, which will be discussed below.\nThe name of the <code class=\"docutils literal notranslate\"><span class=\"pre\">ring</span></code> tactic is doubly misleading, since it assumes commutativity but works\nin semirings as well. In other words, it applies to any <code class=\"docutils literal notranslate\"><span class=\"pre\">CommSemiring</span></code>.</p>",
+    "zh": "更特殊的变体不要求 <code class=\"docutils literal notranslate\"><span class=\"pre\">R</span></code> 上的加法形成群，只要求它形成加法幺半群。相应的类型类是 <code class=\"docutils literal notranslate\"><span class=\"pre\">Semiring</span> <span class=\"pre\">R</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">CommSemiring</span> <span class=\"pre\">R</span></code>。自然数类型是 <code class=\"docutils literal notranslate\"><span class=\"pre\">CommSemiring</span> <span class=\"pre\">R</span></code> 的一个重要实例，任何取值于自然数的函数类型也是如此。另一个重要例子是环中理想的类型，稍后会讨论。策略 <code class=\"docutils literal notranslate\"><span class=\"pre\">ring</span></code> 的名称有双重误导性，因为它假设交换性，却也能在半环中工作。换言之，它适用于任意 <code class=\"docutils literal notranslate\"><span class=\"pre\">CommSemiring</span></code>。"
+  },
+  {
+    "id": "C09_Groups_and_Rings:0081",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "p",
+    "text": "There are also versions of the ring and semiring classes that do not assume the existence of a multiplicative unit or the associativity of multiplication. We will not discuss those here.",
+    "html": "<p>There are also versions of the ring and semiring classes that do not assume the existence of a\nmultiplicative unit or\nthe associativity of multiplication. We will not discuss those here.</p>",
+    "zh": "环和半环类还有一些版本，不假设乘法单位元存在，也不假设乘法满足结合律。这里不讨论这些版本。"
+  },
+  {
+    "id": "C09_Groups_and_Rings:0082",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "p",
+    "text": "Some concepts that are traditionally taught in an introduction to ring theory are actually about the underlying multiplicative monoid. A prominent example is the definition of the units of a ring. Every (multiplicative) monoid M has a predicate IsUnit : M → Prop asserting existence of a two-sided inverse, a type Units M of units with notation Mˣ , and a coercion to M . The type Units M bundles an invertible element with its inverse as well as properties than ensure that each is indeed the inverse of the other. This implementation detail is relevant mainly when defining computable functions. In most situations one can use IsUnit.unit {x : M} : IsUnit x → Mˣ to build a unit. In the commutative case, one also has Units.mkOfMulEqOne (x y : M) : x * y = 1 → Mˣ which builds x seen as unit.",
+    "html": "<p>Some concepts that are traditionally taught in an introduction to ring theory are actually about\nthe underlying multiplicative monoid.\nA prominent example is the definition of the units of a ring. Every (multiplicative) monoid <code class=\"docutils literal notranslate\"><span class=\"pre\">M</span></code>\nhas a predicate <code class=\"docutils literal notranslate\"><span class=\"pre\">IsUnit</span> <span class=\"pre\">:</span> <span class=\"pre\">M</span> <span class=\"pre\">→</span> <span class=\"pre\">Prop</span></code> asserting existence of a two-sided inverse, a\ntype <code class=\"docutils literal notranslate\"><span class=\"pre\">Units</span> <span class=\"pre\">M</span></code> of units with notation <code class=\"docutils literal notranslate\"><span class=\"pre\">Mˣ</span></code>, and a coercion to <code class=\"docutils literal notranslate\"><span class=\"pre\">M</span></code>.\nThe type <code class=\"docutils literal notranslate\"><span class=\"pre\">Units</span> <span class=\"pre\">M</span></code> bundles an invertible element with its inverse as well as properties than ensure\nthat each is indeed the inverse of the other.\nThis implementation detail is relevant mainly when defining computable functions. In most\nsituations one can use <code class=\"docutils literal notranslate\"><span class=\"pre\">IsUnit.unit</span> <span class=\"pre\">{x</span> <span class=\"pre\">:</span> <span class=\"pre\">M}</span> <span class=\"pre\">:</span> <span class=\"pre\">IsUnit</span> <span class=\"pre\">x</span> <span class=\"pre\">→</span> <span class=\"pre\">Mˣ</span></code> to build a unit.\nIn the commutative case, one also has <code class=\"docutils literal notranslate\"><span class=\"pre\">Units.mkOfMulEqOne</span> <span class=\"pre\">(x</span> <span class=\"pre\">y</span> <span class=\"pre\">:</span> <span class=\"pre\">M)</span> <span class=\"pre\">:</span> <span class=\"pre\">x</span> <span class=\"pre\">*</span> <span class=\"pre\">y</span> <span class=\"pre\">=</span> <span class=\"pre\">1</span> <span class=\"pre\">→</span> <span class=\"pre\">Mˣ</span></code>\nwhich builds <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span></code> seen as unit.</p>",
+    "zh": "一些传统上在环论入门中讲授的概念，实际上只涉及底层乘法幺半群。一个突出例子是环的单位的定义。每个（乘法）幺半群 <code class=\"docutils literal notranslate\"><span class=\"pre\">M</span></code> 都有一个谓词 <code class=\"docutils literal notranslate\"><span class=\"pre\">IsUnit</span> <span class=\"pre\">:</span> <span class=\"pre\">M</span> <span class=\"pre\">→</span> <span class=\"pre\">Prop</span></code>，断言双侧逆元存在；有一个单位类型 <code class=\"docutils literal notranslate\"><span class=\"pre\">Units</span> <span class=\"pre\">M</span></code>，记作 <code class=\"docutils literal notranslate\"><span class=\"pre\">Mˣ</span></code>；并有到 <code class=\"docutils literal notranslate\"><span class=\"pre\">M</span></code> 的强制转换。类型 <code class=\"docutils literal notranslate\"><span class=\"pre\">Units</span> <span class=\"pre\">M</span></code> 把一个可逆元素、它的逆，以及保证二者确实互为逆的性质打包在一起。这个实现细节主要在定义可计算函数时相关。在大多数情形中，可以用 <code class=\"docutils literal notranslate\"><span class=\"pre\">IsUnit.unit</span> <span class=\"pre\">{x</span> <span class=\"pre\">:</span> <span class=\"pre\">M}</span> <span class=\"pre\">:</span> <span class=\"pre\">IsUnit</span> <span class=\"pre\">x</span> <span class=\"pre\">→</span> <span class=\"pre\">Mˣ</span></code> 构造单位。在交换情形中，还有 <code class=\"docutils literal notranslate\"><span class=\"pre\">Units.mkOfMulEqOne</span> <span class=\"pre\">(x</span> <span class=\"pre\">y</span> <span class=\"pre\">:</span> <span class=\"pre\">M)</span> <span class=\"pre\">:</span> <span class=\"pre\">x</span> <span class=\"pre\">*</span> <span class=\"pre\">y</span> <span class=\"pre\">=</span> <span class=\"pre\">1</span> <span class=\"pre\">→</span> <span class=\"pre\">Mˣ</span></code>，它把 <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span></code> 视为单位来构造。"
+  },
+  {
+    "id": "C09_Groups_and_Rings:0083",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "p",
+    "text": "The type of ring morphisms between two (semi)-rings R and S is RingHom R S , with notation R →+* S .",
+    "html": "<p>The type of ring morphisms between two (semi)-rings <code class=\"docutils literal notranslate\"><span class=\"pre\">R</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">S</span></code> is <code class=\"docutils literal notranslate\"><span class=\"pre\">RingHom</span> <span class=\"pre\">R</span> <span class=\"pre\">S</span></code>,\nwith notation <code class=\"docutils literal notranslate\"><span class=\"pre\">R</span> <span class=\"pre\">→+*</span> <span class=\"pre\">S</span></code>.</p>",
+    "zh": "两个（半）环 <code class=\"docutils literal notranslate\"><span class=\"pre\">R</span></code> 与 <code class=\"docutils literal notranslate\"><span class=\"pre\">S</span></code> 之间环态射的类型是 <code class=\"docutils literal notranslate\"><span class=\"pre\">RingHom</span> <span class=\"pre\">R</span> <span class=\"pre\">S</span></code>，记作 <code class=\"docutils literal notranslate\"><span class=\"pre\">R</span> <span class=\"pre\">→+*</span> <span class=\"pre\">S</span></code>。"
+  },
+  {
+    "id": "C09_Groups_and_Rings:0084",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "p",
+    "text": "The isomorphism variant is RingEquiv , with notation ≃+* .",
+    "html": "<p>The isomorphism variant is <code class=\"docutils literal notranslate\"><span class=\"pre\">RingEquiv</span></code>, with notation <code class=\"docutils literal notranslate\"><span class=\"pre\">≃+*</span></code>.</p>",
+    "zh": "同构版本是 <code class=\"docutils literal notranslate\"><span class=\"pre\">RingEquiv</span></code>，记号为 <code class=\"docutils literal notranslate\"><span class=\"pre\">≃+*</span></code>。"
+  },
+  {
+    "id": "C09_Groups_and_Rings:0085",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "p",
+    "text": "As with submonoids and subgroups, there is a Subring R type for subrings of a ring R , but this type is a lot less useful than the type of subgroups since one cannot quotient a ring by a subring.",
+    "html": "<p>As with submonoids and subgroups, there is a <code class=\"docutils literal notranslate\"><span class=\"pre\">Subring</span> <span class=\"pre\">R</span></code> type for subrings of a ring <code class=\"docutils literal notranslate\"><span class=\"pre\">R</span></code>,\nbut this type is a lot less useful than the type of subgroups since one cannot quotient a ring by\na subring.</p>",
+    "zh": "与子幺半群和子群一样，对环 <code class=\"docutils literal notranslate\"><span class=\"pre\">R</span></code> 的子环也有类型 <code class=\"docutils literal notranslate\"><span class=\"pre\">Subring</span> <span class=\"pre\">R</span></code>；但这个类型远不如子群类型有用，因为不能用子环对环取商。"
+  },
+  {
+    "id": "C09_Groups_and_Rings:0086",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "p",
+    "text": "Also notice that RingHom.range produces a subring.",
+    "html": "<p>Also notice that <code class=\"docutils literal notranslate\"><span class=\"pre\">RingHom.range</span></code> produces a subring.</p>",
+    "zh": "还要注意，<code class=\"docutils literal notranslate\"><span class=\"pre\">RingHom.range</span></code> 产生一个子环。"
+  },
+  {
+    "id": "C09_Groups_and_Rings:0087",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "p",
+    "text": "For historical reasons, Mathlib only has a theory of ideals for commutative rings. (The ring library was originally developed to make quick progress toward the foundations of modern algebraic geometry.) So in this section we will work with commutative (semi)rings. Ideals of R are defined as submodules of R seen as R -modules. Modules will be covered later in a chapter on linear algebra, but this implementation detail can mostly be safely ignored since most (but not all) relevant lemmas are restated in the special context of ideals. But anonymous projection notation won’t always work as expected. For instance, one cannot replace Ideal.Quotient.mk I by I.Quotient.mk in the snippet below because there are two . s and so it will parse as (Ideal.Quotient I).mk ; but Ideal.Quotient by itself doesn’t exist.",
+    "html": "<p>For historical reasons, Mathlib only has a theory of ideals for commutative rings.\n(The ring library was originally developed to make quick progress toward the foundations of modern\nalgebraic geometry.) So in this section we will work with commutative (semi)rings.\nIdeals of <code class=\"docutils literal notranslate\"><span class=\"pre\">R</span></code> are defined as submodules of <code class=\"docutils literal notranslate\"><span class=\"pre\">R</span></code> seen as <code class=\"docutils literal notranslate\"><span class=\"pre\">R</span></code>-modules. Modules will\nbe covered later in a chapter on linear algebra, but this implementation detail can mostly be\nsafely ignored since most (but not all) relevant lemmas are restated in the special context of\nideals. But anonymous projection notation won’t always work as expected. For instance,\none cannot replace <code class=\"docutils literal notranslate\"><span class=\"pre\">Ideal.Quotient.mk</span> <span class=\"pre\">I</span></code> by <code class=\"docutils literal notranslate\"><span class=\"pre\">I.Quotient.mk</span></code> in the snippet below because there\nare two <code class=\"docutils literal notranslate\"><span class=\"pre\">.</span></code>s and so it will parse as <code class=\"docutils literal notranslate\"><span class=\"pre\">(Ideal.Quotient</span> <span class=\"pre\">I).mk</span></code>; but <code class=\"docutils literal notranslate\"><span class=\"pre\">Ideal.Quotient</span></code> by itself\ndoesn’t exist.</p>",
+    "zh": "由于历史原因，Mathlib 只对交换环有理想理论。（环库最初是为快速推进现代代数几何基础而开发的。）因此，本节将使用交换（半）环。<code class=\"docutils literal notranslate\"><span class=\"pre\">R</span></code> 的理想被定义为把 <code class=\"docutils literal notranslate\"><span class=\"pre\">R</span></code> 看作 <code class=\"docutils literal notranslate\"><span class=\"pre\">R</span></code>-模时的子模。模将在后面的线性代数章节中介绍，但这个实现细节通常可以安全忽略，因为大多数（但不是全部）相关引理都在理想这一特殊语境中重新陈述。不过，匿名投影记号并不总会按预期工作。例如，下面片段中不能把 <code class=\"docutils literal notranslate\"><span class=\"pre\">Ideal.Quotient.mk</span> <span class=\"pre\">I</span></code> 替换为 <code class=\"docutils literal notranslate\"><span class=\"pre\">I.Quotient.mk</span></code>，因为其中有两个 <code class=\"docutils literal notranslate\"><span class=\"pre\">.</span></code>，所以它会被解析为 <code class=\"docutils literal notranslate\"><span class=\"pre\">(Ideal.Quotient</span> <span class=\"pre\">I).mk</span></code>；但 <code class=\"docutils literal notranslate\"><span class=\"pre\">Ideal.Quotient</span></code> 本身并不存在。"
+  },
+  {
+    "id": "C09_Groups_and_Rings:0088",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "p",
+    "text": "The universal property of quotient rings is Ideal.Quotient.lift .",
+    "html": "<p>The universal property of quotient rings is <code class=\"docutils literal notranslate\"><span class=\"pre\">Ideal.Quotient.lift</span></code>.</p>",
+    "zh": "商环的泛性质是 <code class=\"docutils literal notranslate\"><span class=\"pre\">Ideal.Quotient.lift</span></code>。"
+  },
+  {
+    "id": "C09_Groups_and_Rings:0089",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "p",
+    "text": "In particular it leads to the first isomorphism theorem for rings.",
+    "html": "<p>In particular it leads to the first isomorphism theorem for rings.</p>",
+    "zh": "特别地，它导出环的第一同构定理。"
+  },
+  {
+    "id": "C09_Groups_and_Rings:0090",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "p",
+    "text": "Ideals form a complete lattice structure with the inclusion relation, as well as a semiring structure. These two structures interact nicely.",
+    "html": "<p>Ideals form a complete lattice structure with the inclusion relation, as well as a semiring\nstructure. These two structures interact nicely.</p>",
+    "zh": "理想相对于包含关系形成完备格结构，同时也形成半环结构。这两个结构之间相互配合良好。"
+  },
+  {
+    "id": "C09_Groups_and_Rings:0091",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "p",
+    "text": "One can use ring morphisms to push ideals forward and pull them back using Ideal.map and Ideal.comap , respectively. As usual, the latter is more convenient to use since it does not involve an existential quantifier. This explains why it is used to state the condition that allows us to build morphisms between quotient rings.",
+    "html": "<p>One can use ring morphisms to push ideals forward and pull them back using <code class=\"docutils literal notranslate\"><span class=\"pre\">Ideal.map</span></code> and\n<code class=\"docutils literal notranslate\"><span class=\"pre\">Ideal.comap</span></code>, respectively. As usual,\nthe latter is more convenient to use since it does not involve an existential quantifier.\nThis explains why it is used to state the condition that allows us to build morphisms between\nquotient rings.</p>",
+    "zh": "可以使用环态射分别通过 <code class=\"docutils literal notranslate\"><span class=\"pre\">Ideal.map</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">Ideal.comap</span></code> 推出和拉回理想。照常，后者更方便使用，因为它不涉及存在量词。这解释了为什么在陈述允许构造商环之间态射的条件时使用它。"
+  },
+  {
+    "id": "C09_Groups_and_Rings:0092",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "p",
+    "text": "One subtle point is that the type R ⧸ I really depends on I (up to definitional equality), so having a proof that two ideals I and J are equal is not enough to make the corresponding quotient types definitionally equal. However, the universal properties do provide an isomorphism in this case.",
+    "html": "<p>One subtle point is that the type <code class=\"docutils literal notranslate\"><span class=\"pre\">R</span> <span class=\"pre\">⧸</span> <span class=\"pre\">I</span></code> really depends on <code class=\"docutils literal notranslate\"><span class=\"pre\">I</span></code>\n(up to definitional equality), so having a proof that two ideals <code class=\"docutils literal notranslate\"><span class=\"pre\">I</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">J</span></code> are equal is not\nenough to make the corresponding quotient types definitionally equal.\nHowever, the universal properties do provide an isomorphism in this case.</p>",
+    "zh": "一个微妙点是，类型 <code class=\"docutils literal notranslate\"><span class=\"pre\">R</span> <span class=\"pre\">⧸</span> <span class=\"pre\">I</span></code> 确实依赖于 <code class=\"docutils literal notranslate\"><span class=\"pre\">I</span></code>（直至定义相等），所以有一个证明说明两个理想 <code class=\"docutils literal notranslate\"><span class=\"pre\">I</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">J</span></code> 相等，并不足以使相应商类型按定义相等。不过，泛性质在这种情况下确实提供一个同构。"
+  },
+  {
+    "id": "C09_Groups_and_Rings:0093",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "p",
+    "text": "We can now present the Chinese remainder isomorphism as an example. Pay attention to the difference between the indexed infimum symbol ⨅ and the big product of types symbol Π . Depending on your font, those can be pretty hard to distinguish.",
+    "html": "<p>We can now present the Chinese remainder isomorphism as an example. Pay attention to the difference\nbetween the indexed infimum symbol <code class=\"docutils literal notranslate\"><span class=\"pre\">⨅</span></code> and the big product of types symbol <code class=\"docutils literal notranslate\"><span class=\"pre\">Π</span></code>. Depending on\nyour font, those can be pretty hard to distinguish.</p>",
+    "zh": "现在可以把中国剩余同构作为例子给出。注意带指标下确界符号 <code class=\"docutils literal notranslate\"><span class=\"pre\">⨅</span></code> 与类型的大积符号 <code class=\"docutils literal notranslate\"><span class=\"pre\">Π</span></code> 之间的区别。根据字体不同，它们可能很难区分。"
+  },
+  {
+    "id": "C09_Groups_and_Rings:0094",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "p",
+    "text": "The elementary version of the Chinese remainder theorem, a statement about ZMod , can be easily deduced from the previous one:",
+    "html": "<p>The elementary version of the Chinese remainder theorem, a statement about <code class=\"docutils literal notranslate\"><span class=\"pre\">ZMod</span></code>, can be easily\ndeduced from the previous one:</p>",
+    "zh": "中国剩余定理的初等版本，即关于 <code class=\"docutils literal notranslate\"><span class=\"pre\">ZMod</span></code> 的陈述，可以很容易从前一个定理推出："
+  },
+  {
+    "id": "C09_Groups_and_Rings:0095",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "p",
+    "text": "As a series of exercises, we will reprove the Chinese remainder theorem in the general case.",
+    "html": "<p>As a series of exercises, we will reprove the Chinese remainder theorem in the general case.</p>",
+    "zh": "作为一组练习，我们将在一般情形中重新证明中国剩余定理。"
+  },
+  {
+    "id": "C09_Groups_and_Rings:0096",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "p",
+    "text": "We first need to define the map appearing in the theorem, as a ring morphism, using the universal property of quotient rings.",
+    "html": "<p>We first need to define the map appearing in the theorem, as a ring morphism, using the\nuniversal property of quotient rings.</p>",
+    "zh": "首先，需要使用商环的泛性质，把定理中出现的映射定义为一个环态射。"
+  },
+  {
+    "id": "C09_Groups_and_Rings:0097",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "p",
+    "text": "Make sure the following next two lemmas can be proven by rfl .",
+    "html": "<p>Make sure the following next two lemmas can be proven by <code class=\"docutils literal notranslate\"><span class=\"pre\">rfl</span></code>.</p>",
+    "zh": "请确认接下来的两个引理可以用 <code class=\"docutils literal notranslate\"><span class=\"pre\">rfl</span></code> 证明。"
+  },
+  {
+    "id": "C09_Groups_and_Rings:0098",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "p",
+    "text": "The next lemma proves the easy half of the Chinese remainder theorem, without any assumption on the family of ideals. The proof is less than one line long.",
+    "html": "<p>The next lemma proves the easy half of the Chinese remainder theorem, without any assumption on\nthe family of ideals. The proof is less than one line long.</p>",
+    "zh": "下一个引理证明中国剩余定理的容易一半，并且不对理想族作任何假设。证明不到一行。"
+  },
+  {
+    "id": "C09_Groups_and_Rings:0099",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "p",
+    "text": "We are now ready for the heart of the theorem, which will show the surjectivity of our chineseMap . First we need to know the different ways one can express the coprimality (also called co-maximality assumption). Only the first two will be needed below.",
+    "html": "<p>We are now ready for the heart of the theorem, which will show the surjectivity\nof our <code class=\"docutils literal notranslate\"><span class=\"pre\">chineseMap</span></code>. First we need to know the different ways one can express the coprimality\n(also called co-maximality assumption). Only the first two will be needed below.</p>",
+    "zh": "现在准备进入定理的核心，它将证明 <code class=\"docutils literal notranslate\"><span class=\"pre\">chineseMap</span></code> 的满射性。首先，需要了解表达互素性（也称余极大性假设）的不同方式。下面只会用到前两个。"
+  },
+  {
+    "id": "C09_Groups_and_Rings:0100",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "p",
+    "text": "We take the opportunity to use induction on Finset . Relevant lemmas on Finset are given below. Remember that the ring tactic works for semirings and that the ideals of a ring form a semiring.",
+    "html": "<p>We take the opportunity to use induction on <code class=\"docutils literal notranslate\"><span class=\"pre\">Finset</span></code>. Relevant lemmas on <code class=\"docutils literal notranslate\"><span class=\"pre\">Finset</span></code> are given\nbelow.\nRemember that the <code class=\"docutils literal notranslate\"><span class=\"pre\">ring</span></code> tactic works for semirings and that the ideals of a ring form a semiring.</p>",
+    "zh": "我们借此机会对 <code class=\"docutils literal notranslate\"><span class=\"pre\">Finset</span></code> 作归纳。关于 <code class=\"docutils literal notranslate\"><span class=\"pre\">Finset</span></code> 的相关引理列在下面。记住，<code class=\"docutils literal notranslate\"><span class=\"pre\">ring</span></code> 策略适用于半环，而环的理想形成半环。"
+  },
+  {
+    "id": "C09_Groups_and_Rings:0101",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "p",
+    "text": "We can now prove surjectivity of the map appearing in the Chinese remainder theorem.",
+    "html": "<p>We can now prove surjectivity of the map appearing in the Chinese remainder theorem.</p>",
+    "zh": "现在可以证明中国剩余定理中出现的映射是满射。"
+  },
+  {
+    "id": "C09_Groups_and_Rings:0102",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "p",
+    "text": "Now all the pieces come together in the following:",
+    "html": "<p>Now all the pieces come together in the following:</p>",
+    "zh": "现在所有部分在下面汇合："
+  },
+  {
+    "id": "C09_Groups_and_Rings:0103",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "p",
+    "text": "Given a commutative (semi)ring R , an algebra over R is a semiring A equipped with a ring morphism from R to A whose image commutes with every element of A . This is encoded as a type class Algebra R A . The morphism from R to A is called the structure map and is denoted algebraMap R A : R →+* A in Lean. Multiplication of a : A by algebraMap R A r for some r : R is called the scalar multiplication of a by r and denoted by r • a . Note that this notion of algebra is sometimes called an associative unital algebra to emphasize the existence of more general notions of algebra.",
+    "html": "<p>Given a commutative (semi)ring <code class=\"docutils literal notranslate\"><span class=\"pre\">R</span></code>, an <em>algebra over</em> <code class=\"docutils literal notranslate\"><span class=\"pre\">R</span></code> is a semiring <code class=\"docutils literal notranslate\"><span class=\"pre\">A</span></code> equipped\nwith a ring morphism from <code class=\"docutils literal notranslate\"><span class=\"pre\">R</span></code> to <code class=\"docutils literal notranslate\"><span class=\"pre\">A</span></code> whose image commutes with every element of <code class=\"docutils literal notranslate\"><span class=\"pre\">A</span></code>.\nThis is encoded as a type class <code class=\"docutils literal notranslate\"><span class=\"pre\">Algebra</span> <span class=\"pre\">R</span> <span class=\"pre\">A</span></code>.\nThe morphism from <code class=\"docutils literal notranslate\"><span class=\"pre\">R</span></code> to <code class=\"docutils literal notranslate\"><span class=\"pre\">A</span></code> is called the structure map and is denoted\n<code class=\"docutils literal notranslate\"><span class=\"pre\">algebraMap</span> <span class=\"pre\">R</span> <span class=\"pre\">A</span> <span class=\"pre\">:</span> <span class=\"pre\">R</span> <span class=\"pre\">→+*</span> <span class=\"pre\">A</span></code> in Lean.\nMultiplication of <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span> <span class=\"pre\">:</span> <span class=\"pre\">A</span></code> by <code class=\"docutils literal notranslate\"><span class=\"pre\">algebraMap</span> <span class=\"pre\">R</span> <span class=\"pre\">A</span> <span class=\"pre\">r</span></code> for some <code class=\"docutils literal notranslate\"><span class=\"pre\">r</span> <span class=\"pre\">:</span> <span class=\"pre\">R</span></code> is called the scalar\nmultiplication of <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span></code> by <code class=\"docutils literal notranslate\"><span class=\"pre\">r</span></code> and denoted by <code class=\"docutils literal notranslate\"><span class=\"pre\">r</span> <span class=\"pre\">•</span> <span class=\"pre\">a</span></code>.\nNote that this notion of algebra is sometimes called an <em>associative unital algebra</em> to emphasize the\nexistence of more general notions of algebra.</p>",
+    "zh": "给定交换（半）环 <code class=\"docutils literal notranslate\"><span class=\"pre\">R</span></code>，一个<em>algebra over</em> <code class=\"docutils literal notranslate\"><span class=\"pre\">R</span></code> 的代数，是一个半环 <code class=\"docutils literal notranslate\"><span class=\"pre\">A</span></code>，并配备从 <code class=\"docutils literal notranslate\"><span class=\"pre\">R</span></code> 到 <code class=\"docutils literal notranslate\"><span class=\"pre\">A</span></code> 的环态射，且该态射的像与 <code class=\"docutils literal notranslate\"><span class=\"pre\">A</span></code> 的每个元素交换。这被编码为类型类 <code class=\"docutils literal notranslate\"><span class=\"pre\">Algebra</span> <span class=\"pre\">R</span> <span class=\"pre\">A</span></code>。从 <code class=\"docutils literal notranslate\"><span class=\"pre\">R</span></code> 到 <code class=\"docutils literal notranslate\"><span class=\"pre\">A</span></code> 的态射称为结构映射，在 Lean 中记作 <code class=\"docutils literal notranslate\"><span class=\"pre\">algebraMap</span> <span class=\"pre\">R</span> <span class=\"pre\">A</span> <span class=\"pre\">:</span> <span class=\"pre\">R</span> <span class=\"pre\">→+*</span> <span class=\"pre\">A</span></code>。对某个 <code class=\"docutils literal notranslate\"><span class=\"pre\">r</span> <span class=\"pre\">:</span> <span class=\"pre\">R</span></code>，用 <code class=\"docutils literal notranslate\"><span class=\"pre\">algebraMap</span> <span class=\"pre\">R</span> <span class=\"pre\">A</span> <span class=\"pre\">r</span></code> 乘以 <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span> <span class=\"pre\">:</span> <span class=\"pre\">A</span></code>，称为 <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span></code> 由 <code class=\"docutils literal notranslate\"><span class=\"pre\">r</span></code> 作标量乘法，记作 <code class=\"docutils literal notranslate\"><span class=\"pre\">r</span> <span class=\"pre\">•</span> <span class=\"pre\">a</span></code>。注意，这里的代数概念有时称为<em>associative unital algebra</em>，以强调存在更一般的代数概念。"
+  },
+  {
+    "id": "C09_Groups_and_Rings:0104",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "p",
+    "text": "The fact that algebraMap R A is ring morphism packages together a lot of properties of scalar multiplication, such as the following:",
+    "html": "<p>The fact that <code class=\"docutils literal notranslate\"><span class=\"pre\">algebraMap</span> <span class=\"pre\">R</span> <span class=\"pre\">A</span></code> is ring morphism packages together a lot of properties of scalar\nmultiplication, such as the following:</p>",
+    "zh": "<code class=\"docutils literal notranslate\"><span class=\"pre\">algebraMap</span> <span class=\"pre\">R</span> <span class=\"pre\">A</span></code> 是环态射这一事实，把许多关于标量乘法的性质打包在一起，例如下面这些："
+  },
+  {
+    "id": "C09_Groups_and_Rings:0105",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "p",
+    "text": "The morphisms between two R -algebras A and B are ring morphisms which commute with scalar multiplication by elements of R . They are bundled morphisms with type AlgHom R A B , which is denoted by A →ₐ[R] B .",
+    "html": "<p>The morphisms between two <code class=\"docutils literal notranslate\"><span class=\"pre\">R</span></code>-algebras <code class=\"docutils literal notranslate\"><span class=\"pre\">A</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">B</span></code> are ring morphisms\nwhich commute with scalar multiplication by elements of <code class=\"docutils literal notranslate\"><span class=\"pre\">R</span></code>. They are bundled morphisms\nwith type <code class=\"docutils literal notranslate\"><span class=\"pre\">AlgHom</span> <span class=\"pre\">R</span> <span class=\"pre\">A</span> <span class=\"pre\">B</span></code>, which is denoted by <code class=\"docutils literal notranslate\"><span class=\"pre\">A</span> <span class=\"pre\">→ₐ[R]</span> <span class=\"pre\">B</span></code>.</p>",
+    "zh": "两个 <code class=\"docutils literal notranslate\"><span class=\"pre\">R</span></code>-代数 <code class=\"docutils literal notranslate\"><span class=\"pre\">A</span></code> 与 <code class=\"docutils literal notranslate\"><span class=\"pre\">B</span></code> 之间的态射，是与 <code class=\"docutils literal notranslate\"><span class=\"pre\">R</span></code> 中元素的标量乘法交换的环态射。它们是打包态射，类型为 <code class=\"docutils literal notranslate\"><span class=\"pre\">AlgHom</span> <span class=\"pre\">R</span> <span class=\"pre\">A</span> <span class=\"pre\">B</span></code>，记作 <code class=\"docutils literal notranslate\"><span class=\"pre\">A</span> <span class=\"pre\">→ₐ[R]</span> <span class=\"pre\">B</span></code>。"
+  },
+  {
+    "id": "C09_Groups_and_Rings:0106",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "p",
+    "text": "Important examples of non-commutative algebras include algebras of endomorphisms and algebras of square matrices, both of which will be covered in the chapter on linear algebra. In this chapter we will discuss one of the most important examples of a commutative algebra, namely, polynomial algebras.",
+    "html": "<p>Important examples of non-commutative algebras include algebras of endomorphisms and\nalgebras of square matrices, both of which will be covered in the chapter on linear algebra.\nIn this chapter we will discuss one of the most important examples of a commutative algebra,\nnamely, polynomial algebras.</p>",
+    "zh": "非交换代数的重要例子包括自同态代数和方阵代数，二者都会在线性代数章节中涉及。本章将讨论一个最重要的交换代数例子，即多项式代数。"
+  },
+  {
+    "id": "C09_Groups_and_Rings:0107",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "p",
+    "text": "The algebra of univariate polynomials with coefficients in R is called Polynomial R , which can be written as R[X] as soon as one opens the Polynomial namespace. The algebra structure map from R to R[X] is denoted by C , which stands for “constant” since the corresponding polynomial functions are always constant. The indeterminate is denoted by X .",
+    "html": "<p>The algebra of univariate polynomials with coefficients in <code class=\"docutils literal notranslate\"><span class=\"pre\">R</span></code> is called <code class=\"docutils literal notranslate\"><span class=\"pre\">Polynomial</span> <span class=\"pre\">R</span></code>,\nwhich can be written as <code class=\"docutils literal notranslate\"><span class=\"pre\">R[X]</span></code> as soon as one opens the <code class=\"docutils literal notranslate\"><span class=\"pre\">Polynomial</span></code> namespace.\nThe algebra structure map from <code class=\"docutils literal notranslate\"><span class=\"pre\">R</span></code> to <code class=\"docutils literal notranslate\"><span class=\"pre\">R[X]</span></code> is denoted by <code class=\"docutils literal notranslate\"><span class=\"pre\">C</span></code>,\nwhich stands for “constant” since the corresponding\npolynomial functions are always constant. The indeterminate is denoted by <code class=\"docutils literal notranslate\"><span class=\"pre\">X</span></code>.</p>",
+    "zh": "以 <code class=\"docutils literal notranslate\"><span class=\"pre\">R</span></code> 为系数的一元多项式代数称为 <code class=\"docutils literal notranslate\"><span class=\"pre\">Polynomial</span> <span class=\"pre\">R</span></code>；一旦打开 <code class=\"docutils literal notranslate\"><span class=\"pre\">Polynomial</span></code> 命名空间，它就可以写成 <code class=\"docutils literal notranslate\"><span class=\"pre\">R[X]</span></code>。从 <code class=\"docutils literal notranslate\"><span class=\"pre\">R</span></code> 到 <code class=\"docutils literal notranslate\"><span class=\"pre\">R[X]</span></code> 的代数结构映射记作 <code class=\"docutils literal notranslate\"><span class=\"pre\">C</span></code>，表示“常数”，因为相应的多项式函数总是常函数。不定元记作 <code class=\"docutils literal notranslate\"><span class=\"pre\">X</span></code>。"
+  },
+  {
+    "id": "C09_Groups_and_Rings:0108",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "p",
+    "text": "In the first example above, it is crucial that we give Lean the expected type since it cannot be determined from the body of the definition. In the second example, the target polynomial algebra can be inferred from our use of C r since the type of r is known.",
+    "html": "<p>In the first example above, it is crucial that we give Lean the expected type since it cannot be\ndetermined from the body of the definition. In the second example, the target polynomial\nalgebra can be inferred from our use of <code class=\"docutils literal notranslate\"><span class=\"pre\">C</span> <span class=\"pre\">r</span></code> since the type of <code class=\"docutils literal notranslate\"><span class=\"pre\">r</span></code> is known.</p>",
+    "zh": "在上面第一个例子中，给 Lean 预期类型至关重要，因为无法从定义体确定它。在第二个例子中，由于 <code class=\"docutils literal notranslate\"><span class=\"pre\">r</span></code> 的类型已知，目标多项式代数可以从我们使用 <code class=\"docutils literal notranslate\"><span class=\"pre\">C</span> <span class=\"pre\">r</span></code> 推断出来。"
+  },
+  {
+    "id": "C09_Groups_and_Rings:0109",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "p",
+    "text": "Because C is a ring morphism from R to R[X] , we can use all ring morphisms lemmas such as map_zero , map_one , map_mul , and map_pow before computing in the ring R[X] . For example:",
+    "html": "<p>Because <code class=\"docutils literal notranslate\"><span class=\"pre\">C</span></code> is a ring morphism from <code class=\"docutils literal notranslate\"><span class=\"pre\">R</span></code> to <code class=\"docutils literal notranslate\"><span class=\"pre\">R[X]</span></code>, we can use all ring morphisms lemmas\nsuch as <code class=\"docutils literal notranslate\"><span class=\"pre\">map_zero</span></code>, <code class=\"docutils literal notranslate\"><span class=\"pre\">map_one</span></code>, <code class=\"docutils literal notranslate\"><span class=\"pre\">map_mul</span></code>, and <code class=\"docutils literal notranslate\"><span class=\"pre\">map_pow</span></code> before computing in the ring\n<code class=\"docutils literal notranslate\"><span class=\"pre\">R[X]</span></code>. For example:</p>",
+    "zh": "因为 <code class=\"docutils literal notranslate\"><span class=\"pre\">C</span></code> 是从 <code class=\"docutils literal notranslate\"><span class=\"pre\">R</span></code> 到 <code class=\"docutils literal notranslate\"><span class=\"pre\">R[X]</span></code> 的环态射，所以在 <code class=\"docutils literal notranslate\"><span class=\"pre\">R[X]</span></code> 中计算之前，可以使用所有环态射引理，例如 <code class=\"docutils literal notranslate\"><span class=\"pre\">map_zero</span></code>、<code class=\"docutils literal notranslate\"><span class=\"pre\">map_one</span></code>、<code class=\"docutils literal notranslate\"><span class=\"pre\">map_mul</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">map_pow</span></code>。例如："
+  },
+  {
+    "id": "C09_Groups_and_Rings:0110",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "p",
+    "text": "You can access coefficients using Polynomial.coeff",
+    "html": "<p>You can access coefficients using <code class=\"docutils literal notranslate\"><span class=\"pre\">Polynomial.coeff</span></code></p>",
+    "zh": "可以使用 <code class=\"docutils literal notranslate\"><span class=\"pre\">Polynomial.coeff</span></code> 访问系数。"
+  },
+  {
+    "id": "C09_Groups_and_Rings:0111",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "p",
+    "text": "Defining the degree of a polynomial is always tricky because of the special case of the zero polynomial. Mathlib has two variants: Polynomial.natDegree : R[X] → ℕ assigns degree 0 to the zero polynomial, and Polynomial.degree : R[X] → WithBot ℕ assigns ⊥ . In the latter, WithBot ℕ can be seen as ℕ ∪ {-∞} , except that -∞ is denoted ⊥ , the same symbol as the bottom element in a complete lattice. This special value is used as the degree of the zero polynomial, and it is absorbent for addition. (It is almost absorbent for multiplication, except that ⊥ * 0 = 0 .)",
+    "html": "<p>Defining the degree of a polynomial is always tricky because of the special case of the zero\npolynomial. Mathlib has two variants: <code class=\"docutils literal notranslate\"><span class=\"pre\">Polynomial.natDegree</span> <span class=\"pre\">:</span> <span class=\"pre\">R[X]</span> <span class=\"pre\">→</span> <span class=\"pre\">ℕ</span></code> assigns degree\n<code class=\"docutils literal notranslate\"><span class=\"pre\">0</span></code> to the zero polynomial, and <code class=\"docutils literal notranslate\"><span class=\"pre\">Polynomial.degree</span> <span class=\"pre\">:</span> <span class=\"pre\">R[X]</span> <span class=\"pre\">→</span> <span class=\"pre\">WithBot</span> <span class=\"pre\">ℕ</span></code> assigns <code class=\"docutils literal notranslate\"><span class=\"pre\">⊥</span></code>.\nIn the latter, <code class=\"docutils literal notranslate\"><span class=\"pre\">WithBot</span> <span class=\"pre\">ℕ</span></code> can be seen as <code class=\"docutils literal notranslate\"><span class=\"pre\">ℕ</span> <span class=\"pre\">∪</span> <span class=\"pre\">{-∞}</span></code>, except that <code class=\"docutils literal notranslate\"><span class=\"pre\">-∞</span></code> is denoted <code class=\"docutils literal notranslate\"><span class=\"pre\">⊥</span></code>,\nthe same symbol as the bottom element in a complete lattice. This special value is used as the\ndegree of the zero polynomial, and it is absorbent for addition. (It is almost absorbent for\nmultiplication, except that <code class=\"docutils literal notranslate\"><span class=\"pre\">⊥</span> <span class=\"pre\">*</span> <span class=\"pre\">0</span> <span class=\"pre\">=</span> <span class=\"pre\">0</span></code>.)</p>",
+    "zh": "定义多项式次数总是棘手，因为零多项式是特殊情形。Mathlib 有两个变体：<code class=\"docutils literal notranslate\"><span class=\"pre\">Polynomial.natDegree</span> <span class=\"pre\">:</span> <span class=\"pre\">R[X]</span> <span class=\"pre\">→</span> <span class=\"pre\">ℕ</span></code> 把零多项式的次数指定为 <code class=\"docutils literal notranslate\"><span class=\"pre\">0</span></code>，而 <code class=\"docutils literal notranslate\"><span class=\"pre\">Polynomial.degree</span> <span class=\"pre\">:</span> <span class=\"pre\">R[X]</span> <span class=\"pre\">→</span> <span class=\"pre\">WithBot</span> <span class=\"pre\">ℕ</span></code> 指定为 <code class=\"docutils literal notranslate\"><span class=\"pre\">⊥</span></code>。后者中，<code class=\"docutils literal notranslate\"><span class=\"pre\">WithBot</span> <span class=\"pre\">ℕ</span></code> 可以看作 <code class=\"docutils literal notranslate\"><span class=\"pre\">ℕ</span> <span class=\"pre\">∪</span> <span class=\"pre\">{-∞}</span></code>，只是 <code class=\"docutils literal notranslate\"><span class=\"pre\">-∞</span></code> 记为 <code class=\"docutils literal notranslate\"><span class=\"pre\">⊥</span></code>，这与完备格中底元素使用同一符号。这个特殊值用作零多项式的次数，并且对加法具有吸收性。（它对乘法几乎也具有吸收性，例外是 <code class=\"docutils literal notranslate\"><span class=\"pre\">⊥</span> <span class=\"pre\">*</span> <span class=\"pre\">0</span> <span class=\"pre\">=</span> <span class=\"pre\">0</span></code>。）"
+  },
+  {
+    "id": "C09_Groups_and_Rings:0112",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "p",
+    "text": "Morally speaking, the degree version is the correct one. For instance, it allows us to state the expected formula for the degree of a product (assuming the base ring has no zero divisor).",
+    "html": "<p>Morally speaking, the <code class=\"docutils literal notranslate\"><span class=\"pre\">degree</span></code> version is the correct one. For instance, it allows us to state\nthe expected formula for the degree of a product (assuming the base ring has no zero divisor).</p>",
+    "zh": "从数学本质上说，<code class=\"docutils literal notranslate\"><span class=\"pre\">degree</span></code> 版本是正确的。例如，它允许我们陈述乘积次数的预期公式（假设基环没有零因子）。"
+  },
+  {
+    "id": "C09_Groups_and_Rings:0113",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "p",
+    "text": "Whereas the version for natDegree needs to assume non-zero polynomials.",
+    "html": "<p>Whereas the version for <code class=\"docutils literal notranslate\"><span class=\"pre\">natDegree</span></code> needs to assume non-zero polynomials.</p>",
+    "zh": "而 <code class=\"docutils literal notranslate\"><span class=\"pre\">natDegree</span></code> 版本则需要假设多项式非零。"
+  },
+  {
+    "id": "C09_Groups_and_Rings:0114",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "p",
+    "text": "However, ℕ is much nicer to use than WithBot ℕ , so Mathlib makes both versions available and provides lemmas to convert between them. Also, natDegree is the more convenient definition to use when computing the degree of a composition. Composition of polynomial is Polynomial.comp and we have:",
+    "html": "<p>However, <code class=\"docutils literal notranslate\"><span class=\"pre\">ℕ</span></code> is much nicer to use than <code class=\"docutils literal notranslate\"><span class=\"pre\">WithBot</span> <span class=\"pre\">ℕ</span></code>, so Mathlib makes both versions available\nand provides lemmas to convert between them. Also, <code class=\"docutils literal notranslate\"><span class=\"pre\">natDegree</span></code> is the more convenient definition\nto use when computing the degree of a composition. Composition of polynomial is <code class=\"docutils literal notranslate\"><span class=\"pre\">Polynomial.comp</span></code>\nand we have:</p>",
+    "zh": "然而，<code class=\"docutils literal notranslate\"><span class=\"pre\">ℕ</span></code> 比 <code class=\"docutils literal notranslate\"><span class=\"pre\">WithBot</span> <span class=\"pre\">ℕ</span></code> 好用得多，所以 Mathlib 同时提供两个版本，并提供在二者之间转换的引理。此外，在计算复合的次数时，<code class=\"docutils literal notranslate\"><span class=\"pre\">natDegree</span></code> 是更方便的定义。多项式的复合是 <code class=\"docutils literal notranslate\"><span class=\"pre\">Polynomial.comp</span></code>，并且有："
+  },
+  {
+    "id": "C09_Groups_and_Rings:0115",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "p",
+    "text": "Polynomials give rise to polynomial functions: any polynomial can be evaluated on R using Polynomial.eval .",
+    "html": "<p>Polynomials give rise to polynomial functions: any polynomial can be evaluated on <code class=\"docutils literal notranslate\"><span class=\"pre\">R</span></code>\nusing <code class=\"docutils literal notranslate\"><span class=\"pre\">Polynomial.eval</span></code>.</p>",
+    "zh": "多项式给出多项式函数：任意多项式都可以使用 <code class=\"docutils literal notranslate\"><span class=\"pre\">Polynomial.eval</span></code> 在 <code class=\"docutils literal notranslate\"><span class=\"pre\">R</span></code> 上求值。"
+  },
+  {
+    "id": "C09_Groups_and_Rings:0116",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "p",
+    "text": "In particular, there is a predicate, IsRoot , that holds for elements r in R where a polynomial vanishes.",
+    "html": "<p>In particular, there is a predicate, <code class=\"docutils literal notranslate\"><span class=\"pre\">IsRoot</span></code>, that holds for elements <code class=\"docutils literal notranslate\"><span class=\"pre\">r</span></code> in <code class=\"docutils literal notranslate\"><span class=\"pre\">R</span></code> where a\npolynomial vanishes.</p>",
+    "zh": "特别地，有一个谓词 <code class=\"docutils literal notranslate\"><span class=\"pre\">IsRoot</span></code>，它对 <code class=\"docutils literal notranslate\"><span class=\"pre\">R</span></code> 中使多项式为零的元素 <code class=\"docutils literal notranslate\"><span class=\"pre\">r</span></code> 成立。"
+  },
+  {
+    "id": "C09_Groups_and_Rings:0117",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "p",
+    "text": "We would like to say that, assuming R has no zero divisor, a polynomial has at most as many roots as its degree, where the roots are counted with multiplicities. But once again the case of the zero polynomial is painful. So Mathlib defines Polynomial.roots to send a polynomial P to a multiset, i.e. the finite set that is defined to be empty if P is zero and the roots of P , with multiplicities, otherwise. This is defined only when the underlying ring is a domain since otherwise the definition does not have good properties.",
+    "html": "<p>We would like to say that, assuming <code class=\"docutils literal notranslate\"><span class=\"pre\">R</span></code> has no zero divisor, a polynomial has at most as many\nroots as its degree, where the roots are counted with multiplicities.\nBut once again the case of the zero polynomial is painful.\nSo Mathlib defines <code class=\"docutils literal notranslate\"><span class=\"pre\">Polynomial.roots</span></code> to send a polynomial <code class=\"docutils literal notranslate\"><span class=\"pre\">P</span></code> to a multiset,\ni.e. the finite set that is defined to be empty if <code class=\"docutils literal notranslate\"><span class=\"pre\">P</span></code> is zero and the roots of <code class=\"docutils literal notranslate\"><span class=\"pre\">P</span></code>,\nwith multiplicities, otherwise. This is defined only when the underlying ring is a domain\nsince otherwise the definition does not have good properties.</p>",
+    "zh": "我们希望说，若 <code class=\"docutils literal notranslate\"><span class=\"pre\">R</span></code> 没有零因子，则一个多项式的根数（按重数计）至多为其次数。但零多项式的情形再次令人棘手。因此，Mathlib 定义 <code class=\"docutils literal notranslate\"><span class=\"pre\">Polynomial.roots</span></code>，把多项式 <code class=\"docutils literal notranslate\"><span class=\"pre\">P</span></code> 送到一个多重集：若 <code class=\"docutils literal notranslate\"><span class=\"pre\">P</span></code> 为零，则该有限集定义为空；否则为 <code class=\"docutils literal notranslate\"><span class=\"pre\">P</span></code> 的根，带重数。这个定义只在底层环为整环时可用，因为否则该定义没有良好性质。"
+  },
+  {
+    "id": "C09_Groups_and_Rings:0118",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "p",
+    "text": "Both Polynomial.eval and Polynomial.roots consider only the coefficient ring. They do not allow us to say that X ^ 2 - 2 : ℚ[X] has a root in ℝ or that X ^ 2 + 1 : ℝ[X] has a root in ℂ . For this, we need Polynomial.aeval , which will evaluate P : R[X] in any R -algebra. More precisely, given a semiring A and an instance of Algebra R A , Polynomial.aeval sends every element a : A to the R -algebra morphism R[X] → A that evaluates X at a . Since AlgHom has a coercion to functions, one can apply it to a polynomial. But aeval does not have a polynomial as an argument, so one cannot use dot notation like in P.eval above.",
+    "html": "<p>Both <code class=\"docutils literal notranslate\"><span class=\"pre\">Polynomial.eval</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">Polynomial.roots</span></code> consider only the coefficient ring. They do not\nallow us to say that <code class=\"docutils literal notranslate\"><span class=\"pre\">X</span> <span class=\"pre\">^</span> <span class=\"pre\">2</span> <span class=\"pre\">-</span> <span class=\"pre\">2</span> <span class=\"pre\">:</span> <span class=\"pre\">ℚ[X]</span></code> has a root in <code class=\"docutils literal notranslate\"><span class=\"pre\">ℝ</span></code> or that <code class=\"docutils literal notranslate\"><span class=\"pre\">X</span> <span class=\"pre\">^</span> <span class=\"pre\">2</span> <span class=\"pre\">+</span> <span class=\"pre\">1</span> <span class=\"pre\">:</span> <span class=\"pre\">ℝ[X]</span></code> has a root in\n<code class=\"docutils literal notranslate\"><span class=\"pre\">ℂ</span></code>. For this, we need <code class=\"docutils literal notranslate\"><span class=\"pre\">Polynomial.aeval</span></code>, which will evaluate <code class=\"docutils literal notranslate\"><span class=\"pre\">P</span> <span class=\"pre\">:</span> <span class=\"pre\">R[X]</span></code> in any <code class=\"docutils literal notranslate\"><span class=\"pre\">R</span></code>-algebra.\nMore precisely, given a semiring <code class=\"docutils literal notranslate\"><span class=\"pre\">A</span></code> and an instance of <code class=\"docutils literal notranslate\"><span class=\"pre\">Algebra</span> <span class=\"pre\">R</span> <span class=\"pre\">A</span></code>, <code class=\"docutils literal notranslate\"><span class=\"pre\">Polynomial.aeval</span></code> sends\nevery element <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span> <span class=\"pre\">:</span> <span class=\"pre\">A</span></code> to the <code class=\"docutils literal notranslate\"><span class=\"pre\">R</span></code>-algebra morphism <code class=\"docutils literal notranslate\"><span class=\"pre\">R[X]</span> <span class=\"pre\">→</span> <span class=\"pre\">A</span></code> that evaluates <code class=\"docutils literal notranslate\"><span class=\"pre\">X</span></code> at <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span></code>. Since <code class=\"docutils literal notranslate\"><span class=\"pre\">AlgHom</span></code>\nhas a coercion to functions, one can apply it to a polynomial.\nBut <code class=\"docutils literal notranslate\"><span class=\"pre\">aeval</span></code> does not have a polynomial as an argument, so one cannot use dot notation like in\n<code class=\"docutils literal notranslate\"><span class=\"pre\">P.eval</span></code> above.</p>",
+    "zh": "<code class=\"docutils literal notranslate\"><span class=\"pre\">Polynomial.eval</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">Polynomial.roots</span></code> 都只考虑系数环。它们无法表达 <code class=\"docutils literal notranslate\"><span class=\"pre\">X</span> <span class=\"pre\">^</span> <span class=\"pre\">2</span> <span class=\"pre\">-</span> <span class=\"pre\">2</span> <span class=\"pre\">:</span> <span class=\"pre\">ℚ[X]</span></code> 在 <code class=\"docutils literal notranslate\"><span class=\"pre\">ℝ</span></code> 中有根，或 <code class=\"docutils literal notranslate\"><span class=\"pre\">X</span> <span class=\"pre\">^</span> <span class=\"pre\">2</span> <span class=\"pre\">+</span> <span class=\"pre\">1</span> <span class=\"pre\">:</span> <span class=\"pre\">ℝ[X]</span></code> 在 <code class=\"docutils literal notranslate\"><span class=\"pre\">ℂ</span></code> 中有根。为此，需要 <code class=\"docutils literal notranslate\"><span class=\"pre\">Polynomial.aeval</span></code>，它会在任意 <code class=\"docutils literal notranslate\"><span class=\"pre\">R</span></code>-代数中对 <code class=\"docutils literal notranslate\"><span class=\"pre\">P</span> <span class=\"pre\">:</span> <span class=\"pre\">R[X]</span></code> 求值。更精确地说，给定一个半环 <code class=\"docutils literal notranslate\"><span class=\"pre\">A</span></code> 和一个 <code class=\"docutils literal notranslate\"><span class=\"pre\">Algebra</span> <span class=\"pre\">R</span> <span class=\"pre\">A</span></code> 实例，<code class=\"docutils literal notranslate\"><span class=\"pre\">Polynomial.aeval</span></code> 把每个元素 <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span> <span class=\"pre\">:</span> <span class=\"pre\">A</span></code> 送到 <code class=\"docutils literal notranslate\"><span class=\"pre\">R</span></code>-代数态射 <code class=\"docutils literal notranslate\"><span class=\"pre\">R[X]</span> <span class=\"pre\">→</span> <span class=\"pre\">A</span></code>，该态射把 <code class=\"docutils literal notranslate\"><span class=\"pre\">X</span></code> 求值为 <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span></code>。由于 <code class=\"docutils literal notranslate\"><span class=\"pre\">AlgHom</span></code> 有到函数的强制转换，可以把它应用到多项式上。但 <code class=\"docutils literal notranslate\"><span class=\"pre\">aeval</span></code> 不以多项式作为参数，所以不能像上面的 <code class=\"docutils literal notranslate\"><span class=\"pre\">P.eval</span></code> 一样使用点记号。"
+  },
+  {
+    "id": "C09_Groups_and_Rings:0119",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "p",
+    "text": "The function corresponding to roots in this context is aroots which takes a polynomial and then an algebra and outputs a multiset (with the same caveat about the zero polynomial as for roots ).",
+    "html": "<p>The function corresponding to <code class=\"docutils literal notranslate\"><span class=\"pre\">roots</span></code> in this context is <code class=\"docutils literal notranslate\"><span class=\"pre\">aroots</span></code> which takes a polynomial\nand then an algebra and outputs a multiset (with the same caveat about the zero polynomial as\nfor <code class=\"docutils literal notranslate\"><span class=\"pre\">roots</span></code>).</p>",
+    "zh": "在此语境中，与 <code class=\"docutils literal notranslate\"><span class=\"pre\">roots</span></code> 对应的函数是 <code class=\"docutils literal notranslate\"><span class=\"pre\">aroots</span></code>，它接受一个多项式，再接受一个代数，并输出一个多重集（对于零多项式有与 <code class=\"docutils literal notranslate\"><span class=\"pre\">roots</span></code> 相同的注意事项）。"
+  },
+  {
+    "id": "C09_Groups_and_Rings:0120",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "p",
+    "text": "More generally, given an ring morphism f : R →+* S one can evaluate P : R[X] at a point in S using Polynomial.eval₂ . This one produces an actual function from R[X] to S since it does not assume the existence of a Algebra R S instance, so dot notation works as you would expect.",
+    "html": "<p>More generally, given an ring morphism <code class=\"docutils literal notranslate\"><span class=\"pre\">f</span> <span class=\"pre\">:</span> <span class=\"pre\">R</span> <span class=\"pre\">→+*</span> <span class=\"pre\">S</span></code> one can evaluate <code class=\"docutils literal notranslate\"><span class=\"pre\">P</span> <span class=\"pre\">:</span> <span class=\"pre\">R[X]</span></code> at a point\nin <code class=\"docutils literal notranslate\"><span class=\"pre\">S</span></code> using <code class=\"docutils literal notranslate\"><span class=\"pre\">Polynomial.eval₂</span></code>. This one produces an actual function from <code class=\"docutils literal notranslate\"><span class=\"pre\">R[X]</span></code> to <code class=\"docutils literal notranslate\"><span class=\"pre\">S</span></code>\nsince it does not assume the existence of a <code class=\"docutils literal notranslate\"><span class=\"pre\">Algebra</span> <span class=\"pre\">R</span> <span class=\"pre\">S</span></code> instance, so dot notation works as\nyou would expect.</p>",
+    "zh": "更一般地，给定环态射 <code class=\"docutils literal notranslate\"><span class=\"pre\">f</span> <span class=\"pre\">:</span> <span class=\"pre\">R</span> <span class=\"pre\">→+*</span> <span class=\"pre\">S</span></code>，可以用 <code class=\"docutils literal notranslate\"><span class=\"pre\">Polynomial.eval₂</span></code> 在 <code class=\"docutils literal notranslate\"><span class=\"pre\">S</span></code> 中的一点对 <code class=\"docutils literal notranslate\"><span class=\"pre\">P</span> <span class=\"pre\">:</span> <span class=\"pre\">R[X]</span></code> 求值。它产生从 <code class=\"docutils literal notranslate\"><span class=\"pre\">R[X]</span></code> 到 <code class=\"docutils literal notranslate\"><span class=\"pre\">S</span></code> 的实际函数，因为它不假设存在 <code class=\"docutils literal notranslate\"><span class=\"pre\">Algebra</span> <span class=\"pre\">R</span> <span class=\"pre\">S</span></code> 实例，所以点记号会按预期工作。"
+  },
+  {
+    "id": "C09_Groups_and_Rings:0121",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "p",
+    "text": "Let us end by mentioning multivariate polynomials briefly. Given a commutative semiring R , the R -algebra of polynomials with coefficients in R and indeterminates indexed by a type σ is MVPolynomial σ R . Given i : σ , the corresponding polynomial is MvPolynomial.X i . (As usual, one can open the MVPolynomial namespace to shorten this to X i .) For instance, if we want two indeterminates we can use Fin 2 as σ and write the polynomial defining the unit circle in \\(\\mathbb{R}^2`\\) as:",
+    "html": "<p>Let us end by mentioning multivariate polynomials briefly. Given a commutative semiring <code class=\"docutils literal notranslate\"><span class=\"pre\">R</span></code>,\nthe <code class=\"docutils literal notranslate\"><span class=\"pre\">R</span></code>-algebra of polynomials with coefficients in <code class=\"docutils literal notranslate\"><span class=\"pre\">R</span></code> and indeterminates indexed by\na type <code class=\"docutils literal notranslate\"><span class=\"pre\">σ</span></code> is <code class=\"docutils literal notranslate\"><span class=\"pre\">MVPolynomial</span> <span class=\"pre\">σ</span> <span class=\"pre\">R</span></code>. Given <code class=\"docutils literal notranslate\"><span class=\"pre\">i</span> <span class=\"pre\">:</span> <span class=\"pre\">σ</span></code>, the corresponding polynomial is\n<code class=\"docutils literal notranslate\"><span class=\"pre\">MvPolynomial.X</span> <span class=\"pre\">i</span></code>. (As usual, one can open the <code class=\"docutils literal notranslate\"><span class=\"pre\">MVPolynomial</span></code> namespace to shorten this\nto <code class=\"docutils literal notranslate\"><span class=\"pre\">X</span> <span class=\"pre\">i</span></code>.)\nFor instance, if we want two indeterminates we can use\n<code class=\"docutils literal notranslate\"><span class=\"pre\">Fin</span> <span class=\"pre\">2</span></code> as <code class=\"docutils literal notranslate\"><span class=\"pre\">σ</span></code> and write the polynomial defining the unit circle in <span class=\"math notranslate nohighlight\">\\(\\mathbb{R}^2`\\)</span> as:</p>",
+    "zh": "最后简要提一下多元多项式。给定交换半环 <code class=\"docutils literal notranslate\"><span class=\"pre\">R</span></code>，以 <code class=\"docutils literal notranslate\"><span class=\"pre\">R</span></code> 为系数、由类型 <code class=\"docutils literal notranslate\"><span class=\"pre\">σ</span></code> 索引不定元的 <code class=\"docutils literal notranslate\"><span class=\"pre\">R</span></code>-代数是 <code class=\"docutils literal notranslate\"><span class=\"pre\">MVPolynomial</span> <span class=\"pre\">σ</span> <span class=\"pre\">R</span></code>。给定 <code class=\"docutils literal notranslate\"><span class=\"pre\">i</span> <span class=\"pre\">:</span> <span class=\"pre\">σ</span></code>，相应多项式是 <code class=\"docutils literal notranslate\"><span class=\"pre\">MvPolynomial.X</span> <span class=\"pre\">i</span></code>。（照常，可以打开 <code class=\"docutils literal notranslate\"><span class=\"pre\">MVPolynomial</span></code> 命名空间，把它缩写为 <code class=\"docutils literal notranslate\"><span class=\"pre\">X</span> <span class=\"pre\">i</span></code>。）例如，如果想要两个不定元，可以用 <code class=\"docutils literal notranslate\"><span class=\"pre\">Fin</span> <span class=\"pre\">2</span></code> 作为 <code class=\"docutils literal notranslate\"><span class=\"pre\">σ</span></code>，并把定义 <span class=\"math notranslate nohighlight\">\\(\\mathbb{R}^2`\\)</span> 中单位圆的多项式写作："
+  },
+  {
+    "id": "C09_Groups_and_Rings:0122",
+    "file": "C09_Groups_and_Rings.html",
+    "tag": "p",
+    "text": "Recall that function application has a very high precedence so the expression above is read as (X 0) ^ 2 + (X 1) ^ 2 - 1 . We can evaluate it to make sure the point with coordinates \\((1, 0)\\) is on the circle. Recall the ![...] notation denotes elements of Fin n → X for some natural number n determined by the number of arguments and some type X determined by the type of arguments.",
+    "html": "<p>Recall that function application has a very high precedence so the expression above is read as\n<code class=\"docutils literal notranslate\"><span class=\"pre\">(X</span> <span class=\"pre\">0)</span> <span class=\"pre\">^</span> <span class=\"pre\">2</span> <span class=\"pre\">+</span> <span class=\"pre\">(X</span> <span class=\"pre\">1)</span> <span class=\"pre\">^</span> <span class=\"pre\">2</span> <span class=\"pre\">-</span> <span class=\"pre\">1</span></code>.\nWe can evaluate it to make sure the point with coordinates <span class=\"math notranslate nohighlight\">\\((1, 0)\\)</span> is on the circle.\nRecall the <code class=\"docutils literal notranslate\"><span class=\"pre\">![...]</span></code> notation denotes elements of <code class=\"docutils literal notranslate\"><span class=\"pre\">Fin</span> <span class=\"pre\">n</span> <span class=\"pre\">→</span> <span class=\"pre\">X</span></code> for some natural number <code class=\"docutils literal notranslate\"><span class=\"pre\">n</span></code>\ndetermined by the number of arguments and some type <code class=\"docutils literal notranslate\"><span class=\"pre\">X</span></code> determined by the type of arguments.</p>",
+    "zh": "回忆，函数应用具有很高优先级，因此上面的表达式读作 <code class=\"docutils literal notranslate\"><span class=\"pre\">(X</span> <span class=\"pre\">0)</span> <span class=\"pre\">^</span> <span class=\"pre\">2</span> <span class=\"pre\">+</span> <span class=\"pre\">(X</span> <span class=\"pre\">1)</span> <span class=\"pre\">^</span> <span class=\"pre\">2</span> <span class=\"pre\">-</span> <span class=\"pre\">1</span></code>。可以对它求值，以确认坐标为 <span class=\"math notranslate nohighlight\">\\((1, 0)\\)</span> 的点在圆上。回忆，记号 <code class=\"docutils literal notranslate\"><span class=\"pre\">![...]</span></code> 表示 <code class=\"docutils literal notranslate\"><span class=\"pre\">Fin</span> <span class=\"pre\">n</span> <span class=\"pre\">→</span> <span class=\"pre\">X</span></code> 的元素，其中自然数 <code class=\"docutils literal notranslate\"><span class=\"pre\">n</span></code> 由参数个数决定，而类型 <code class=\"docutils literal notranslate\"><span class=\"pre\">X</span></code> 由参数类型决定。"
+  }
+]

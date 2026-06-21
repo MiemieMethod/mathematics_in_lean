@@ -1,0 +1,1082 @@
+[
+  {
+    "id": "C07_Structures:0001",
+    "file": "C07_Structures.html",
+    "tag": "h1",
+    "text": "7. Structures",
+    "html": "<h1><span class=\"section-number\">7. </span>Structures</h1>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0002",
+    "file": "C07_Structures.html",
+    "tag": "h2",
+    "text": "7.1. Defining structures",
+    "html": "<h2><span class=\"section-number\">7.1. </span>Defining structures</h2>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0003",
+    "file": "C07_Structures.html",
+    "tag": "h2",
+    "text": "7.2. Algebraic Structures",
+    "html": "<h2><span class=\"section-number\">7.2. </span>Algebraic Structures</h2>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0004",
+    "file": "C07_Structures.html",
+    "tag": "h2",
+    "text": "7.3. Building the Gaussian Integers",
+    "html": "<h2><span class=\"section-number\">7.3. </span>Building the Gaussian Integers</h2>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0005",
+    "file": "C07_Structures.html",
+    "tag": "p",
+    "text": "Modern mathematics makes essential use of algebraic structures, which encapsulate patterns that can be instantiated in multiple settings. The subject provides various ways of defining such structures and constructing particular instances.",
+    "html": "<p>Modern mathematics makes essential use of algebraic\nstructures,\nwhich encapsulate patterns that can be instantiated in\nmultiple settings.\nThe subject provides various ways of defining such structures and\nconstructing particular instances.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0006",
+    "file": "C07_Structures.html",
+    "tag": "p",
+    "text": "Lean therefore provides corresponding ways of defining structures formally and working with them. You have already seen examples of algebraic structures in Lean, such as rings and lattices, which were discussed in Chapter 2 . This chapter will explain the mysterious square bracket annotations that you saw there, [Ring α] and [Lattice α] . It will also show you how to define and use algebraic structures on your own.",
+    "html": "<p>Lean therefore provides corresponding ways of\ndefining structures formally and working with them.\nYou have already seen examples of algebraic structures in Lean,\nsuch as rings and lattices, which were discussed in\n<a class=\"reference internal\" href=\"C02_Basics.html#basics\"><span class=\"std std-numref\">Chapter 2</span></a>.\nThis chapter will explain the mysterious square bracket annotations\nthat you saw there,\n<code class=\"docutils literal notranslate\"><span class=\"pre\">[Ring</span> <span class=\"pre\">α]</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">[Lattice</span> <span class=\"pre\">α]</span></code>.\nIt will also show you how to define and use\nalgebraic structures on your own.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0007",
+    "file": "C07_Structures.html",
+    "tag": "p",
+    "text": "For more technical detail, you can consult Theorem Proving in Lean , and a paper by Anne Baanen, Use and abuse of instance parameters in the Lean mathematical library .",
+    "html": "<p>For more technical detail, you can consult <a class=\"reference external\" href=\"https://leanprover.github.io/theorem_proving_in_lean/\">Theorem Proving in Lean</a>,\nand a paper by Anne Baanen, <a class=\"reference external\" href=\"https://arxiv.org/abs/2202.01629\">Use and abuse of instance parameters in the Lean mathematical library</a>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0008",
+    "file": "C07_Structures.html",
+    "tag": "p",
+    "text": "In the broadest sense of the term, a structure is a specification of a collection of data, possibly with constraints that the data is required to satisfy. An instance of the structure is a particular bundle of data satisfying the constraints. For example, we can specify that a point is a tuple of three real numbers:",
+    "html": "<p>In the broadest sense of the term, a <em>structure</em> is a specification\nof a collection of data, possibly with constraints that the\ndata is required to satisfy.\nAn <em>instance</em> of the structure is a particular bundle of data satisfying\nthe constraints. For example, we can specify that a point is\na tuple of three real numbers:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0009",
+    "file": "C07_Structures.html",
+    "tag": "p",
+    "text": "The @[ext] annotation tells Lean to automatically generate theorems that can be used to prove that two instances of a structure are equal when their components are equal, a property known as extensionality .",
+    "html": "<p>The <code class=\"docutils literal notranslate\"><span class=\"pre\">@[ext]</span></code> annotation tells Lean to automatically generate theorems\nthat can be used to prove that two instances of a structure are equal\nwhen their components are equal, a property known as <em>extensionality</em>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0010",
+    "file": "C07_Structures.html",
+    "tag": "p",
+    "text": "We can then define particular instances of the Point structure. Lean provides multiple ways of doing that.",
+    "html": "<p>We can then define particular instances of the <code class=\"docutils literal notranslate\"><span class=\"pre\">Point</span></code> structure.\nLean provides multiple ways of doing that.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0011",
+    "file": "C07_Structures.html",
+    "tag": "p",
+    "text": "In the first example, the fields of the structure are named explicitly. The function Point.mk referred to in the definition of myPoint4 is known as the constructor for the Point structure, because it serves to construct elements. You can specify a different name if you want, like build .",
+    "html": "<p>In the first example, the fields of the structure are named\nexplicitly.\nThe function <code class=\"docutils literal notranslate\"><span class=\"pre\">Point.mk</span></code> referred to in the definition of <code class=\"docutils literal notranslate\"><span class=\"pre\">myPoint4</span></code>\nis known as the <em>constructor</em> for the <code class=\"docutils literal notranslate\"><span class=\"pre\">Point</span></code> structure, because\nit serves to construct elements.\nYou can specify a different name if you want, like <code class=\"docutils literal notranslate\"><span class=\"pre\">build</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0012",
+    "file": "C07_Structures.html",
+    "tag": "p",
+    "text": "The next two examples show how to define functions on structures. Whereas the second example makes the Point.mk constructor explicit, the first example uses an anonymous constructor for brevity. Lean can infer the relevant constructor from the indicated type of add . It is conventional to put definitions and theorems associated with a structure like Point in a namespace with the same name. In the example below, because we have opened the Point namespace, the full name of add is Point.add . When the namespace is not open, we have to use the full name. But remember that it is often convenient to use anonymous projection notation, which allows us to write a.add b instead of Point.add a b . Lean interprets the former as the latter because a has type Point .",
+    "html": "<p>The next two examples show how to define functions on structures.\nWhereas the second example makes the <code class=\"docutils literal notranslate\"><span class=\"pre\">Point.mk</span></code>\nconstructor explicit, the first example uses an anonymous constructor\nfor brevity.\nLean can infer the relevant constructor from the indicated type of\n<code class=\"docutils literal notranslate\"><span class=\"pre\">add</span></code>.\nIt is conventional to put definitions and theorems associated\nwith a structure like <code class=\"docutils literal notranslate\"><span class=\"pre\">Point</span></code> in a namespace with the same name.\nIn the example below, because we have opened the <code class=\"docutils literal notranslate\"><span class=\"pre\">Point</span></code>\nnamespace, the full name of <code class=\"docutils literal notranslate\"><span class=\"pre\">add</span></code> is <code class=\"docutils literal notranslate\"><span class=\"pre\">Point.add</span></code>.\nWhen the namespace is not open, we have to use the full name.\nBut remember that it is often convenient to use\nanonymous projection notation,\nwhich allows us to write <code class=\"docutils literal notranslate\"><span class=\"pre\">a.add</span> <span class=\"pre\">b</span></code> instead of <code class=\"docutils literal notranslate\"><span class=\"pre\">Point.add</span> <span class=\"pre\">a</span> <span class=\"pre\">b</span></code>.\nLean interprets the former as the latter because <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span></code> has type <code class=\"docutils literal notranslate\"><span class=\"pre\">Point</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0013",
+    "file": "C07_Structures.html",
+    "tag": "p",
+    "text": "Below we will continue to put definitions in the relevant namespace, but we will leave the namespacing commands out of the quoted snippets. To prove properties of the addition function, we can use rw to expand the definition and ext to reduce an equation between two elements of the structure to equations between the components. Below we use the protected keyword so that the name of the theorem is Point.add_comm , even when the namespace is open. This is helpful when we want to avoid ambiguity with a generic theorem like add_comm .",
+    "html": "<p>Below we will continue to put definitions in the relevant\nnamespace, but we will leave the namespacing commands out of the quoted\nsnippets. To prove properties of the addition function,\nwe can use <code class=\"docutils literal notranslate\"><span class=\"pre\">rw</span></code> to expand the definition and <code class=\"docutils literal notranslate\"><span class=\"pre\">ext</span></code> to\nreduce an equation between two elements of the structure to equations\nbetween the components.\nBelow we use the <code class=\"docutils literal notranslate\"><span class=\"pre\">protected</span></code> keyword so that the name of the\ntheorem is <code class=\"docutils literal notranslate\"><span class=\"pre\">Point.add_comm</span></code>, even when the namespace is open.\nThis is helpful when we want to avoid ambiguity with a generic\ntheorem like <code class=\"docutils literal notranslate\"><span class=\"pre\">add_comm</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0014",
+    "file": "C07_Structures.html",
+    "tag": "p",
+    "text": "Because Lean can unfold definitions and simplify projections internally, sometimes the equations we want hold definitionally.",
+    "html": "<p>Because Lean can unfold definitions and simplify projections\ninternally, sometimes the equations we want hold definitionally.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0015",
+    "file": "C07_Structures.html",
+    "tag": "p",
+    "text": "It is also possible to define functions on structures using pattern matching, in a manner similar to the way we defined recursive functions in Section 5.2 . The definitions addAlt and addAlt' below are essentially the same; the only difference is that we use anonymous constructor notation in the second. Although it is sometimes convenient to define functions this way, and structural eta-reduction makes this alternative definitionally equivalent, it can make things less convenient in later proofs. In particular, rw [addAlt] leaves us with a messier goal view containing a match statement.",
+    "html": "<p>It is also possible to define functions on structures using\npattern matching,\nin a manner similar to the way we defined recursive functions in\n<a class=\"reference internal\" href=\"C05_Elementary_Number_Theory.html#section-induction-and-recursion\"><span class=\"std std-numref\">Section 5.2</span></a>.\nThe definitions <code class=\"docutils literal notranslate\"><span class=\"pre\">addAlt</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">addAlt'</span></code> below are essentially the\nsame; the only difference is that we use anonymous constructor notation\nin the second.\nAlthough it is sometimes convenient to define functions this way, and structural eta-reduction makes\nthis alternative definitionally equivalent, it can make things less convenient in later proofs.\nIn particular, <code class=\"docutils literal notranslate\"><span class=\"pre\">rw</span> <span class=\"pre\">[addAlt]</span></code> leaves us with a messier goal view containing a <code class=\"docutils literal notranslate\"><span class=\"pre\">match</span></code> statement.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0016",
+    "file": "C07_Structures.html",
+    "tag": "p",
+    "text": "Mathematical constructions often involve taking apart bundled information and putting it together again in different ways. It therefore makes sense that Lean and Mathlib offer so many ways of doing this efficiently. As an exercise, try proving that Point.add is associative. Then define scalar multiplication for a point and show that it distributes over addition.",
+    "html": "<p>Mathematical constructions often involve taking apart bundled information and\nputting it together again in different ways.\nIt therefore makes sense that Lean and Mathlib offer so many ways\nof doing this efficiently.\nAs an exercise, try proving that <code class=\"docutils literal notranslate\"><span class=\"pre\">Point.add</span></code> is associative.\nThen define scalar multiplication for a point and show that it\ndistributes over addition.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0017",
+    "file": "C07_Structures.html",
+    "tag": "p",
+    "text": "Using structures is only the first step on the road to algebraic abstraction. We don’t yet have a way to link Point.add to the generic + symbol, or to connect Point.add_comm and Point.add_assoc to the generic add_comm and add_assoc theorems. These tasks belong to the algebraic aspect of using structures, and we will explain how to carry them out in the next section. For now, just think of a structure as a way of bundling together objects and information.",
+    "html": "<p>Using structures is only the first step on the road to\nalgebraic abstraction.\nWe don’t yet have a way to link <code class=\"docutils literal notranslate\"><span class=\"pre\">Point.add</span></code> to the generic <code class=\"docutils literal notranslate\"><span class=\"pre\">+</span></code> symbol,\nor to connect <code class=\"docutils literal notranslate\"><span class=\"pre\">Point.add_comm</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">Point.add_assoc</span></code> to\nthe generic <code class=\"docutils literal notranslate\"><span class=\"pre\">add_comm</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">add_assoc</span></code> theorems.\nThese tasks belong to the <em>algebraic</em> aspect of using structures,\nand we will explain how to carry them out in the next section.\nFor now, just think of a structure as a way of bundling together objects\nand information.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0018",
+    "file": "C07_Structures.html",
+    "tag": "p",
+    "text": "It is especially useful that a structure can specify not only data types but also constraints that the data must satisfy. In Lean, the latter are represented as fields of type Prop . For example, the standard 2-simplex is defined to be the set of points \\((x, y, z)\\) satisfying \\(x ≥ 0\\) , \\(y ≥ 0\\) , \\(z ≥ 0\\) , and \\(x + y + z = 1\\) . If you are not familiar with the notion, you should draw a picture, and convince yourself that this set is the equilateral triangle in three-space with vertices \\((1, 0, 0)\\) , \\((0, 1, 0)\\) , and \\((0, 0, 1)\\) , together with its interior. We can represent it in Lean as follows:",
+    "html": "<p>It is especially useful that a structure can specify not only\ndata types but also constraints that the data must satisfy.\nIn Lean, the latter are represented as fields of type <code class=\"docutils literal notranslate\"><span class=\"pre\">Prop</span></code>.\nFor example, the <em>standard 2-simplex</em> is defined to be the set of\npoints <span class=\"math notranslate nohighlight\">\\((x, y, z)\\)</span> satisfying <span class=\"math notranslate nohighlight\">\\(x ≥ 0\\)</span>, <span class=\"math notranslate nohighlight\">\\(y ≥ 0\\)</span>, <span class=\"math notranslate nohighlight\">\\(z ≥ 0\\)</span>,\nand <span class=\"math notranslate nohighlight\">\\(x + y + z = 1\\)</span>.\nIf you are not familiar with the notion, you should draw a picture,\nand convince yourself that this set is\nthe equilateral triangle in three-space with vertices\n<span class=\"math notranslate nohighlight\">\\((1, 0, 0)\\)</span>, <span class=\"math notranslate nohighlight\">\\((0, 1, 0)\\)</span>, and <span class=\"math notranslate nohighlight\">\\((0, 0, 1)\\)</span>,\ntogether with its interior.\nWe can represent it in Lean as follows:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0019",
+    "file": "C07_Structures.html",
+    "tag": "p",
+    "text": "Notice that the last four fields refer to x , y , and z , that is, the first three fields. We can define a map from the two-simplex to itself that swaps x and y :",
+    "html": "<p>Notice that the last four fields refer to <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span></code>, <code class=\"docutils literal notranslate\"><span class=\"pre\">y</span></code>, and <code class=\"docutils literal notranslate\"><span class=\"pre\">z</span></code>,\nthat is, the first three fields.\nWe can define a map from the two-simplex to itself that swaps <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">y</span></code>:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0020",
+    "file": "C07_Structures.html",
+    "tag": "p",
+    "text": "More interestingly, we can compute the midpoint of two points on the simplex. We have added the phrase noncomputable section at the beginning of this file in order to use division on the real numbers.",
+    "html": "<p>More interestingly, we can compute the midpoint of two points on\nthe simplex. We have added the phrase <code class=\"docutils literal notranslate\"><span class=\"pre\">noncomputable</span> <span class=\"pre\">section</span></code>\nat the beginning of this file in order to use division on the real numbers.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0021",
+    "file": "C07_Structures.html",
+    "tag": "p",
+    "text": "Here we have established x_nonneg , y_nonneg , and z_nonneg with concise proof terms, but establish sum_eq in tactic mode, using by .",
+    "html": "<p>Here we have established <code class=\"docutils literal notranslate\"><span class=\"pre\">x_nonneg</span></code>, <code class=\"docutils literal notranslate\"><span class=\"pre\">y_nonneg</span></code>, and <code class=\"docutils literal notranslate\"><span class=\"pre\">z_nonneg</span></code>\nwith concise proof terms, but establish <code class=\"docutils literal notranslate\"><span class=\"pre\">sum_eq</span></code> in tactic mode,\nusing <code class=\"docutils literal notranslate\"><span class=\"pre\">by</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0022",
+    "file": "C07_Structures.html",
+    "tag": "p",
+    "text": "Given a parameter \\(\\lambda\\) satisfying \\(0 \\le \\lambda \\le 1\\) , we can take the weighted average \\(\\lambda a + (1 - \\lambda) b\\) of two points \\(a\\) and \\(b\\) in the standard 2-simplex. We challenge you to define that function, in analogy to the midpoint function above.",
+    "html": "<p>Given a parameter <span class=\"math notranslate nohighlight\">\\(\\lambda\\)</span> satisfying <span class=\"math notranslate nohighlight\">\\(0 \\le \\lambda \\le 1\\)</span>,\nwe can take the weighted average <span class=\"math notranslate nohighlight\">\\(\\lambda a + (1 - \\lambda) b\\)</span>\nof two points <span class=\"math notranslate nohighlight\">\\(a\\)</span> and <span class=\"math notranslate nohighlight\">\\(b\\)</span> in the standard 2-simplex.\nWe challenge you to define that function, in analogy to the <code class=\"docutils literal notranslate\"><span class=\"pre\">midpoint</span></code>\nfunction above.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0023",
+    "file": "C07_Structures.html",
+    "tag": "p",
+    "text": "Structures can depend on parameters. For example, we can generalize the standard 2-simplex to the standard \\(n\\) -simplex for any \\(n\\) . At this stage, you don’t have to know anything about the type Fin n except that it has \\(n\\) elements, and that Lean knows how to sum over it.",
+    "html": "<p>Structures can depend on parameters.\nFor example, we can generalize the standard 2-simplex to the standard\n<span class=\"math notranslate nohighlight\">\\(n\\)</span>-simplex for any <span class=\"math notranslate nohighlight\">\\(n\\)</span>.\nAt this stage, you don’t have to know anything about the type <code class=\"docutils literal notranslate\"><span class=\"pre\">Fin</span> <span class=\"pre\">n</span></code>\nexcept that it has <span class=\"math notranslate nohighlight\">\\(n\\)</span> elements, and that Lean knows\nhow to sum over it.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0024",
+    "file": "C07_Structures.html",
+    "tag": "p",
+    "text": "As an exercise, see if you can define the weighted average of two points in the standard \\(n\\) -simplex. You can use Finset.sum_add_distrib and Finset.mul_sum to manipulate the relevant sums.",
+    "html": "<p>As an exercise, see if you can define the weighted average of\ntwo points in the standard <span class=\"math notranslate nohighlight\">\\(n\\)</span>-simplex.\nYou can use <code class=\"docutils literal notranslate\"><span class=\"pre\">Finset.sum_add_distrib</span></code>\nand <code class=\"docutils literal notranslate\"><span class=\"pre\">Finset.mul_sum</span></code> to manipulate the relevant sums.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0025",
+    "file": "C07_Structures.html",
+    "tag": "p",
+    "text": "We have seen that structures can be used to bundle together data and properties. Interestingly, they can also be used to bundle together properties without the data. For example, the next structure, IsLinear , bundles together the two components of linearity.",
+    "html": "<p>We have seen that structures can be used to bundle together data\nand properties.\nInterestingly, they can also be used to bundle together properties\nwithout the data.\nFor example, the next structure, <code class=\"docutils literal notranslate\"><span class=\"pre\">IsLinear</span></code>, bundles together\nthe two components of linearity.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0026",
+    "file": "C07_Structures.html",
+    "tag": "p",
+    "text": "It is worth pointing out that structures are not the only way to bundle together data. The Point data structure can be defined using the generic type product, and IsLinear can be defined with a simple and .",
+    "html": "<p>It is worth pointing out that structures are not the only way to bundle\ntogether data.\nThe <code class=\"docutils literal notranslate\"><span class=\"pre\">Point</span></code> data structure can be defined using the generic type product,\nand <code class=\"docutils literal notranslate\"><span class=\"pre\">IsLinear</span></code> can be defined with a simple <code class=\"docutils literal notranslate\"><span class=\"pre\">and</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0027",
+    "file": "C07_Structures.html",
+    "tag": "p",
+    "text": "Generic type constructions can even be used in place of structures with dependencies between their components. For example, the subtype construction combines a piece of data with a property. You can think of the type PReal in the next example as being the type of positive real numbers. Any x : PReal has two components: the value, and the property of being positive. You can access these components as x.val , which has type ℝ , and x.property , which represents the fact 0 < x.val .",
+    "html": "<p>Generic type constructions can even be used in place of structures\nwith dependencies between their components.\nFor example, the <em>subtype</em> construction combines a piece of data with\na property.\nYou can think of the type <code class=\"docutils literal notranslate\"><span class=\"pre\">PReal</span></code> in the next example as being\nthe type of positive real numbers.\nAny <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span> <span class=\"pre\">:</span> <span class=\"pre\">PReal</span></code> has two components: the value, and the property of being\npositive.\nYou can access these components as <code class=\"docutils literal notranslate\"><span class=\"pre\">x.val</span></code>, which has type <code class=\"docutils literal notranslate\"><span class=\"pre\">ℝ</span></code>,\nand <code class=\"docutils literal notranslate\"><span class=\"pre\">x.property</span></code>, which represents the fact <code class=\"docutils literal notranslate\"><span class=\"pre\">0</span> <span class=\"pre\">&lt;</span> <span class=\"pre\">x.val</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0028",
+    "file": "C07_Structures.html",
+    "tag": "p",
+    "text": "We could have used subtypes to define the standard 2-simplex, as well as the standard \\(n\\) -simplex for an arbitrary \\(n\\) .",
+    "html": "<p>We could have used subtypes to define the standard 2-simplex,\nas well as the standard <span class=\"math notranslate nohighlight\">\\(n\\)</span>-simplex for an arbitrary <span class=\"math notranslate nohighlight\">\\(n\\)</span>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0029",
+    "file": "C07_Structures.html",
+    "tag": "p",
+    "text": "Similarly, Sigma types are generalizations of ordered pairs, whereby the type of the second component depends on the type of the first.",
+    "html": "<p>Similarly, <em>Sigma types</em> are generalizations of ordered pairs,\nwhereby the type of the second component depends on the type of\nthe first.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0030",
+    "file": "C07_Structures.html",
+    "tag": "p",
+    "text": "Given s : StdSimplex , the first component s.fst is a natural number, and the second component is an element of the corresponding simplex StandardSimplex s.fst . The difference between a Sigma type and a subtype is that the second component of a Sigma type is data rather than a proposition.",
+    "html": "<p>Given <code class=\"docutils literal notranslate\"><span class=\"pre\">s</span> <span class=\"pre\">:</span> <span class=\"pre\">StdSimplex</span></code>, the first component <code class=\"docutils literal notranslate\"><span class=\"pre\">s.fst</span></code> is a natural\nnumber, and the second component is an element of the corresponding\nsimplex <code class=\"docutils literal notranslate\"><span class=\"pre\">StandardSimplex</span> <span class=\"pre\">s.fst</span></code>.\nThe difference between a Sigma type and a subtype is that\nthe second component of a Sigma type is data rather than a proposition.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0031",
+    "file": "C07_Structures.html",
+    "tag": "p",
+    "text": "But even though we can use products, subtypes, and Sigma types instead of structures, using structures has a number of advantages. Defining a structure abstracts away the underlying representation and provides custom names for the functions that access the components. This makes proofs more robust: proofs that rely only on the interface to a structure will generally continue to work when we change the definition, as long as we redefine the old accessors in terms of the new definition. Moreover, as we are about to see, Lean provides support for weaving structures together into a rich, interconnected hierarchy, and for managing the interactions between them.",
+    "html": "<p>But even though we can use products, subtypes, and Sigma types\ninstead of structures, using structures has a number of advantages.\nDefining a structure abstracts away the underlying representation\nand provides custom names for the functions that access the components.\nThis makes proofs more robust:\nproofs that rely only on the interface to a structure\nwill generally continue to work when we change the definition,\nas long as we redefine the old accessors in terms of the new definition.\nMoreover, as we are about to see, Lean provides support for\nweaving structures together into a rich, interconnected hierarchy,\nand for managing the interactions between them.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0032",
+    "file": "C07_Structures.html",
+    "tag": "p",
+    "text": "To clarify what we mean by the phrase algebraic structure , it will help to consider some examples.",
+    "html": "<p>To clarify what we mean by the phrase <em>algebraic structure</em>,\nit will help to consider some examples.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0033",
+    "file": "C07_Structures.html",
+    "tag": "p",
+    "text": "In each of these examples, the elements of the structure belong to a set, the carrier set , that sometimes stands proxy for the entire structure. For example, when we say “let \\(G\\) be a group” and then “let \\(g \\in G\\) ,” we are using \\(G\\) to stand for both the structure and its carrier. Not every algebraic structure is associated with a single carrier set in this way. For example, a bipartite graph involves a relation between two sets, as does a Galois connection . A category also involves two sets of interest, commonly called the objects and the morphisms .",
+    "html": "<p>In each of these examples, the elements of the structure belong to a\nset, the <em>carrier set</em>,\nthat sometimes stands proxy for the entire structure.\nFor example, when we say “let <span class=\"math notranslate nohighlight\">\\(G\\)</span> be a group” and then\n“let <span class=\"math notranslate nohighlight\">\\(g \\in G\\)</span>,” we are using <span class=\"math notranslate nohighlight\">\\(G\\)</span> to stand for both\nthe structure and its carrier.\nNot every algebraic structure is associated with a single carrier set in this way.\nFor example, a <em>bipartite graph</em> involves a relation between two sets,\nas does a <em>Galois connection</em>.\nA <em>category</em> also involves two sets of interest, commonly called the <em>objects</em>\nand the <em>morphisms</em>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0034",
+    "file": "C07_Structures.html",
+    "tag": "p",
+    "text": "The examples indicate some of the things that a proof assistant has to do in order to support algebraic reasoning. First, it needs to recognize concrete instances of structures. The number systems \\(\\mathbb{Z}\\) , \\(\\mathbb{Q}\\) , and \\(\\mathbb{R}\\) are all ordered rings, and we should be able to apply a generic theorem about ordered rings in any of these instances. Sometimes a concrete set may be an instance of a structure in more than one way. For example, in addition to the usual topology on \\(\\mathbb{R}\\) , which forms the basis for real analysis, we can also consider the discrete topology on \\(\\mathbb{R}\\) , in which every set is open.",
+    "html": "<p>The examples indicate some of the things that a proof assistant has to do\nin order to support algebraic reasoning.\nFirst, it needs to recognize concrete instances of structures.\nThe number systems <span class=\"math notranslate nohighlight\">\\(\\mathbb{Z}\\)</span>, <span class=\"math notranslate nohighlight\">\\(\\mathbb{Q}\\)</span>,\nand <span class=\"math notranslate nohighlight\">\\(\\mathbb{R}\\)</span> are all ordered rings,\nand we should be able to apply a generic theorem about ordered rings\nin any of these instances.\nSometimes a concrete set may be an instance of a structure in more than one way.\nFor example, in addition to the usual topology on <span class=\"math notranslate nohighlight\">\\(\\mathbb{R}\\)</span>,\nwhich forms the basis for real analysis,\nwe can also consider the <em>discrete</em> topology on <span class=\"math notranslate nohighlight\">\\(\\mathbb{R}\\)</span>,\nin which every set is open.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0035",
+    "file": "C07_Structures.html",
+    "tag": "p",
+    "text": "Second, a proof assistant needs to support generic notation on structures. In Lean, the notation * is used for multiplication in all the usual number systems, as well as for multiplication in generic groups and rings. When we use an expression like f x * y , Lean has to use information about the types of f , x , and y to determine which multiplication we have in mind.",
+    "html": "<p>Second, a proof assistant needs to support generic notation on structures.\nIn Lean, the notation <code class=\"docutils literal notranslate\"><span class=\"pre\">*</span></code>\nis used for multiplication in all the usual number systems,\nas well as for multiplication in generic groups and rings.\nWhen we use an expression like <code class=\"docutils literal notranslate\"><span class=\"pre\">f</span> <span class=\"pre\">x</span> <span class=\"pre\">*</span> <span class=\"pre\">y</span></code>,\nLean has to use information about the types of <code class=\"docutils literal notranslate\"><span class=\"pre\">f</span></code>, <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span></code>, and <code class=\"docutils literal notranslate\"><span class=\"pre\">y</span></code>\nto determine which multiplication we have in mind.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0036",
+    "file": "C07_Structures.html",
+    "tag": "p",
+    "text": "Third, it needs to deal with the fact that structures can inherit definitions, theorems, and notation from other structures in various ways. Some structures extend others by adding more axioms. A commutative ring is still a ring, so any definition that makes sense in a ring also makes sense in a commutative ring, and any theorem that holds in a ring also holds in a commutative ring. Some structures extend others by adding more data. For example, the additive part of any ring is an additive group. The ring structure adds a multiplication and an identity, as well as axioms that govern them and relate them to the additive part. Sometimes we can define one structure in terms of another. Any metric space has a canonical topology associated with it, the metric space topology , and there are various topologies that can be associated with any linear ordering.",
+    "html": "<p>Third, it needs to deal with the fact that structures can inherit\ndefinitions, theorems, and notation from other structures in various ways.\nSome structures extend others by adding more axioms.\nA commutative ring is still a ring, so any definition\nthat makes sense in a ring also makes sense in a commutative ring,\nand any theorem that holds in a ring also holds in a commutative ring.\nSome structures extend others by adding more data.\nFor example, the additive part of any ring is an additive group.\nThe ring structure adds a multiplication and an identity,\nas well as axioms that govern them and relate them to the additive part.\nSometimes we can define one structure in terms of another.\nAny metric space has a canonical topology associated with it,\nthe <em>metric space topology</em>, and there are various topologies that can be\nassociated with any linear ordering.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0037",
+    "file": "C07_Structures.html",
+    "tag": "p",
+    "text": "Finally, it is important to keep in mind that mathematics allows us to use functions and operations to define structures in the same way we use functions and operations to define numbers. Products and powers of groups are again groups. For every \\(n\\) , the integers modulo \\(n\\) form a ring, and for every \\(k > 0\\) , the \\(k \\times k\\) matrices of polynomials with coefficients in that ring again form a ring. Thus we can calculate with structures just as easily as we can calculate with their elements. This means that algebraic structures lead dual lives in mathematics, as containers for collections of objects and as objects in their own right. A proof assistant has to accommodate this dual role.",
+    "html": "<p>Finally, it is important to keep in mind that mathematics allows us to\nuse functions and operations to define structures in the same way we\nuse functions and operations to define numbers.\nProducts and powers of groups are again groups.\nFor every <span class=\"math notranslate nohighlight\">\\(n\\)</span>, the integers modulo <span class=\"math notranslate nohighlight\">\\(n\\)</span> form a ring,\nand for every <span class=\"math notranslate nohighlight\">\\(k &gt; 0\\)</span>, the <span class=\"math notranslate nohighlight\">\\(k \\times k\\)</span> matrices of polynomials\nwith coefficients in that ring again form a ring.\nThus we can calculate with structures just as easily as we can calculate\nwith their elements.\nThis means that algebraic structures lead dual lives in mathematics,\nas containers for collections of objects and as objects in their own right.\nA proof assistant has to accommodate this dual role.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0038",
+    "file": "C07_Structures.html",
+    "tag": "p",
+    "text": "When dealing with elements of a type that has an algebraic structure associated with it, a proof assistant needs to recognize the structure and find the relevant definitions, theorems, and notation. All this should sound like a lot of work, and it is. But Lean uses a small collection of fundamental mechanisms to carry out these tasks. The goal of this section is to explain these mechanisms and show you how to use them.",
+    "html": "<p>When dealing with elements of a type that has an algebraic structure\nassociated with it,\na proof assistant needs to recognize the structure and find the relevant\ndefinitions, theorems, and notation.\nAll this should sound like a lot of work, and it is.\nBut Lean uses a small collection of fundamental mechanisms to\ncarry out these tasks.\nThe goal of this section is to explain these mechanisms and show you\nhow to use them.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0039",
+    "file": "C07_Structures.html",
+    "tag": "p",
+    "text": "The first ingredient is almost too obvious to mention: formally speaking, algebraic structures are structures in the sense of Section 7.1 . An algebraic structure is a specification of a bundle of data satisfying some axiomatic hypotheses, and we saw in Section 7.1 that this is exactly what the structure command is designed to accommodate. It’s a marriage made in heaven!",
+    "html": "<p>The first ingredient is almost too obvious to mention:\nformally speaking, algebraic structures are structures in the sense\nof <a class=\"reference internal\" href=\"#section-structures\"><span class=\"std std-numref\">Section 7.1</span></a>.\nAn algebraic structure is a specification of a bundle of data satisfying\nsome axiomatic hypotheses, and we saw in <a class=\"reference internal\" href=\"#section-structures\"><span class=\"std std-numref\">Section 7.1</span></a> that\nthis is exactly what the <code class=\"docutils literal notranslate\"><span class=\"pre\">structure</span></code> command is designed to accommodate.\nIt’s a marriage made in heaven!</p>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0040",
+    "file": "C07_Structures.html",
+    "tag": "p",
+    "text": "Given a data type α , we can define a group structure on α as follows.",
+    "html": "<p>Given a data type <code class=\"docutils literal notranslate\"><span class=\"pre\">α</span></code>, we can define a group structure on <code class=\"docutils literal notranslate\"><span class=\"pre\">α</span></code>\nas follows.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0041",
+    "file": "C07_Structures.html",
+    "tag": "p",
+    "text": "Notice that the type α is a parameter in the definition of Group₁ . So you should think of an object struc : Group₁ α as being a group structure on α . We saw in Section 2.2 that the counterpart mul_inv_cancel to inv_mul_cancel follows from the other group axioms, so there is no need to add it to the definition.",
+    "html": "<p>Notice that the type <code class=\"docutils literal notranslate\"><span class=\"pre\">α</span></code> is a <em>parameter</em> in the definition of <code class=\"docutils literal notranslate\"><span class=\"pre\">Group₁</span></code>.\nSo you should think of an object <code class=\"docutils literal notranslate\"><span class=\"pre\">struc</span> <span class=\"pre\">:</span> <span class=\"pre\">Group₁</span> <span class=\"pre\">α</span></code> as being\na group structure on <code class=\"docutils literal notranslate\"><span class=\"pre\">α</span></code>.\nWe saw in <a class=\"reference internal\" href=\"C02_Basics.html#proving-identities-in-algebraic-structures\"><span class=\"std std-numref\">Section 2.2</span></a>\nthat the counterpart <code class=\"docutils literal notranslate\"><span class=\"pre\">mul_inv_cancel</span></code> to <code class=\"docutils literal notranslate\"><span class=\"pre\">inv_mul_cancel</span></code>\nfollows from the other group axioms, so there is no need\nto add it to the definition.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0042",
+    "file": "C07_Structures.html",
+    "tag": "p",
+    "text": "This definition of a group is similar to the definition of Group in Mathlib, and we have chosen the name Group₁ to distinguish our version. If you write #check Group and ctrl-click on the definition, you will see that the Mathlib version of Group is defined to extend another structure; we will explain how to do that later. If you type #print Group you will also see that the Mathlib version of Group has a number of extra fields. For reasons we will explain later, sometimes it is useful to add redundant information to a structure, so that there are additional fields for objects and functions that can be defined from the core data. Don’t worry about that for now. Rest assured that our simplified version Group₁ is morally the same as the definition of a group that Mathlib uses.",
+    "html": "<p>This definition of a group is similar to the definition of <code class=\"docutils literal notranslate\"><span class=\"pre\">Group</span></code> in\nMathlib,\nand we have chosen the name <code class=\"docutils literal notranslate\"><span class=\"pre\">Group₁</span></code> to distinguish our version.\nIf you write <code class=\"docutils literal notranslate\"><span class=\"pre\">#check</span> <span class=\"pre\">Group</span></code> and ctrl-click on the definition,\nyou will see that the Mathlib version of <code class=\"docutils literal notranslate\"><span class=\"pre\">Group</span></code> is defined to\nextend another structure; we will explain how to do that later.\nIf you type <code class=\"docutils literal notranslate\"><span class=\"pre\">#print</span> <span class=\"pre\">Group</span></code> you will also see that the Mathlib\nversion of <code class=\"docutils literal notranslate\"><span class=\"pre\">Group</span></code> has a number of extra fields.\nFor reasons we will explain later, sometimes it is useful to add\nredundant information to a structure,\nso that there are additional fields for objects and functions\nthat can be defined from the core\ndata. Don’t worry about that for now.\nRest assured that our simplified version <code class=\"docutils literal notranslate\"><span class=\"pre\">Group₁</span></code> is\nmorally the same as the definition of a group that Mathlib uses.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0043",
+    "file": "C07_Structures.html",
+    "tag": "p",
+    "text": "It is sometimes useful to bundle the type together with the structure, and Mathlib also contains a definition of a Grp structure that is equivalent to the following:",
+    "html": "<p>It is sometimes useful to bundle\nthe type together with the structure, and Mathlib also\ncontains a definition of a <code class=\"docutils literal notranslate\"><span class=\"pre\">Grp</span></code> structure that is equivalent to\nthe following:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0044",
+    "file": "C07_Structures.html",
+    "tag": "p",
+    "text": "The Mathlib version is found in Mathlib.Algebra.Category.Grp.Basic , and you can #check it if you add this to the imports at the beginning of the examples file.",
+    "html": "<p>The Mathlib version is found in <code class=\"docutils literal notranslate\"><span class=\"pre\">Mathlib.Algebra.Category.Grp.Basic</span></code>,\nand you can <code class=\"docutils literal notranslate\"><span class=\"pre\">#check</span></code> it if you add this to the imports at the\nbeginning of the examples file.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0045",
+    "file": "C07_Structures.html",
+    "tag": "p",
+    "text": "For reasons that will become clearer below, it is more often useful to keep the type α separate from the structure Group α . We refer to the two objects together as a partially bundled structure , since the representation combines most, but not all, of the components into one structure. It is common in Mathlib to use capital roman letters like G for a type when it is used as the carrier type for a group.",
+    "html": "<p>For reasons that will become clearer below, it is more often\nuseful to keep the type <code class=\"docutils literal notranslate\"><span class=\"pre\">α</span></code> separate from the structure <code class=\"docutils literal notranslate\"><span class=\"pre\">Group</span> <span class=\"pre\">α</span></code>.\nWe refer to the two objects together as a <em>partially bundled structure</em>,\nsince the representation combines most, but not all, of the components\ninto one structure. It is common in Mathlib\nto use capital roman letters like <code class=\"docutils literal notranslate\"><span class=\"pre\">G</span></code> for a type\nwhen it is used as the carrier type for a group.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0046",
+    "file": "C07_Structures.html",
+    "tag": "p",
+    "text": "Let’s construct a group by defining an element of the Group₁ type. For any pair of types α and β , Mathlib defines the type Equiv α β of equivalences between α and β . Mathlib also defines the suggestive notation α ≃ β for this type. An element f : α ≃ β is a bijection between α and β represented by four components: a function f.toFun from α to β , the inverse function f.invFun from β to α , and two properties that specify these functions are indeed inverse to one another.",
+    "html": "<p>Let’s construct a group by defining an element of the <code class=\"docutils literal notranslate\"><span class=\"pre\">Group₁</span></code> type.\nFor any pair of types <code class=\"docutils literal notranslate\"><span class=\"pre\">α</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">β</span></code>, Mathlib defines the type <code class=\"docutils literal notranslate\"><span class=\"pre\">Equiv</span> <span class=\"pre\">α</span> <span class=\"pre\">β</span></code>\nof <em>equivalences</em> between <code class=\"docutils literal notranslate\"><span class=\"pre\">α</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">β</span></code>.\nMathlib also defines the suggestive notation <code class=\"docutils literal notranslate\"><span class=\"pre\">α</span> <span class=\"pre\">≃</span> <span class=\"pre\">β</span></code> for this type.\nAn element <code class=\"docutils literal notranslate\"><span class=\"pre\">f</span> <span class=\"pre\">:</span> <span class=\"pre\">α</span> <span class=\"pre\">≃</span> <span class=\"pre\">β</span></code> is a bijection between <code class=\"docutils literal notranslate\"><span class=\"pre\">α</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">β</span></code>\nrepresented by four components:\na function <code class=\"docutils literal notranslate\"><span class=\"pre\">f.toFun</span></code> from <code class=\"docutils literal notranslate\"><span class=\"pre\">α</span></code> to <code class=\"docutils literal notranslate\"><span class=\"pre\">β</span></code>,\nthe inverse function <code class=\"docutils literal notranslate\"><span class=\"pre\">f.invFun</span></code> from <code class=\"docutils literal notranslate\"><span class=\"pre\">β</span></code> to <code class=\"docutils literal notranslate\"><span class=\"pre\">α</span></code>,\nand two properties that specify these functions are indeed inverse\nto one another.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0047",
+    "file": "C07_Structures.html",
+    "tag": "p",
+    "text": "Notice the creative naming of the last three constructions. We think of the identity function Equiv.refl , the inverse operation Equiv.symm , and the composition operation Equiv.trans as explicit evidence that the property of being in bijective correspondence is an equivalence relation.",
+    "html": "<p>Notice the creative naming of the last three constructions. We think of the\nidentity function <code class=\"docutils literal notranslate\"><span class=\"pre\">Equiv.refl</span></code>, the inverse operation <code class=\"docutils literal notranslate\"><span class=\"pre\">Equiv.symm</span></code>,\nand the composition operation <code class=\"docutils literal notranslate\"><span class=\"pre\">Equiv.trans</span></code> as explicit evidence\nthat the property of being in bijective correspondence is an equivalence relation.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0048",
+    "file": "C07_Structures.html",
+    "tag": "p",
+    "text": "Notice also that f.trans g requires composing the forward functions in reverse order. Mathlib has declared a coercion from Equiv α β to the function type α → β , so we can omit writing .toFun and have Lean insert it for us.",
+    "html": "<p>Notice also that <code class=\"docutils literal notranslate\"><span class=\"pre\">f.trans</span> <span class=\"pre\">g</span></code> requires composing the forward functions\nin reverse order. Mathlib has declared a <em>coercion</em> from <code class=\"docutils literal notranslate\"><span class=\"pre\">Equiv</span> <span class=\"pre\">α</span> <span class=\"pre\">β</span></code>\nto the function type <code class=\"docutils literal notranslate\"><span class=\"pre\">α</span> <span class=\"pre\">→</span> <span class=\"pre\">β</span></code>, so we can omit writing <code class=\"docutils literal notranslate\"><span class=\"pre\">.toFun</span></code>\nand have Lean insert it for us.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0049",
+    "file": "C07_Structures.html",
+    "tag": "p",
+    "text": "Mathlib also defines the type Perm α of equivalences between α and itself.",
+    "html": "<p>Mathlib also defines the type <code class=\"docutils literal notranslate\"><span class=\"pre\">Perm</span> <span class=\"pre\">α</span></code> of equivalences between\n<code class=\"docutils literal notranslate\"><span class=\"pre\">α</span></code> and itself.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0050",
+    "file": "C07_Structures.html",
+    "tag": "p",
+    "text": "It should be clear that Equiv.Perm α forms a group under composition of equivalences. We orient things so that mul f g is equal to g.trans f , whose forward function is f ∘ g . In other words, multiplication is what we ordinarily think of as composition of the bijections. Here we define this group:",
+    "html": "<p>It should be clear that <code class=\"docutils literal notranslate\"><span class=\"pre\">Equiv.Perm</span> <span class=\"pre\">α</span></code> forms a group under composition\nof equivalences. We orient things so that <code class=\"docutils literal notranslate\"><span class=\"pre\">mul</span> <span class=\"pre\">f</span> <span class=\"pre\">g</span></code> is\nequal to <code class=\"docutils literal notranslate\"><span class=\"pre\">g.trans</span> <span class=\"pre\">f</span></code>, whose forward function is <code class=\"docutils literal notranslate\"><span class=\"pre\">f</span> <span class=\"pre\">∘</span> <span class=\"pre\">g</span></code>.\nIn other words, multiplication is what we ordinarily think of as\ncomposition of the bijections. Here we define this group:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0051",
+    "file": "C07_Structures.html",
+    "tag": "p",
+    "text": "In fact, Mathlib defines exactly this Group structure on Equiv.Perm α in the file Algebra.Group.End . As always, you can hover over the theorems used in the definition of permGroup to see their statements, and you can jump to their definitions in the original file to learn more about how they are implemented.",
+    "html": "<p>In fact, Mathlib defines exactly this <code class=\"docutils literal notranslate\"><span class=\"pre\">Group</span></code> structure on <code class=\"docutils literal notranslate\"><span class=\"pre\">Equiv.Perm</span> <span class=\"pre\">α</span></code>\nin the file <code class=\"docutils literal notranslate\"><span class=\"pre\">Algebra.Group.End</span></code>.\nAs always, you can hover over the theorems used in the definition of\n<code class=\"docutils literal notranslate\"><span class=\"pre\">permGroup</span></code> to see their statements,\nand you can jump to their definitions in the original file to learn\nmore about how they are implemented.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0052",
+    "file": "C07_Structures.html",
+    "tag": "p",
+    "text": "In ordinary mathematics, we generally think of notation as independent of structure. For example, we can consider groups \\((G_1, \\cdot, 1, \\cdot^{-1})\\) , \\((G_2, \\circ, e, i(\\cdot))\\) , and \\((G_3, +, 0, -)\\) . In the first case, we write the binary operation as \\(\\cdot\\) , the identity as \\(1\\) , and the inverse function as \\(x \\mapsto x^{-1}\\) . In the second and third cases, we use the notational alternatives shown. When we formalize the notion of a group in Lean, however, the notation is more tightly linked to the structure. In Lean, the components of any Group are named mul , one , and inv , and in a moment we will see how multiplicative notation is set up to refer to them. If we want to use additive notation, we instead use an isomorphic structure AddGroup (the structure underlying additive groups). Its components are named add , zero , and neg , and the associated notation is what you would expect it to be.",
+    "html": "<p>In ordinary mathematics, we generally think of notation as\nindependent of structure.\nFor example, we can consider groups <span class=\"math notranslate nohighlight\">\\((G_1, \\cdot, 1, \\cdot^{-1})\\)</span>,\n<span class=\"math notranslate nohighlight\">\\((G_2, \\circ, e, i(\\cdot))\\)</span>, and <span class=\"math notranslate nohighlight\">\\((G_3, +, 0, -)\\)</span>.\nIn the first case, we write the binary operation as <span class=\"math notranslate nohighlight\">\\(\\cdot\\)</span>,\nthe identity as <span class=\"math notranslate nohighlight\">\\(1\\)</span>, and the inverse function as <span class=\"math notranslate nohighlight\">\\(x \\mapsto x^{-1}\\)</span>.\nIn the second and third cases, we use the notational alternatives shown.\nWhen we formalize the notion of a group in Lean, however,\nthe notation is more tightly linked to the structure.\nIn Lean, the components of any <code class=\"docutils literal notranslate\"><span class=\"pre\">Group</span></code> are named\n<code class=\"docutils literal notranslate\"><span class=\"pre\">mul</span></code>, <code class=\"docutils literal notranslate\"><span class=\"pre\">one</span></code>, and <code class=\"docutils literal notranslate\"><span class=\"pre\">inv</span></code>,\nand in a moment we will see how multiplicative notation is\nset up to refer to them.\nIf we want to use additive notation, we instead use an isomorphic structure\n<code class=\"docutils literal notranslate\"><span class=\"pre\">AddGroup</span></code> (the structure underlying additive groups). Its components are named <code class=\"docutils literal notranslate\"><span class=\"pre\">add</span></code>, <code class=\"docutils literal notranslate\"><span class=\"pre\">zero</span></code>,\nand <code class=\"docutils literal notranslate\"><span class=\"pre\">neg</span></code>, and the associated notation is what you would expect it to be.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0053",
+    "file": "C07_Structures.html",
+    "tag": "p",
+    "text": "Recall the type Point that we defined in Section 7.1 , and the addition function that we defined there. These definitions are reproduced in the examples file that accompanies this section. As an exercise, define an AddGroup₁ structure that is similar to the Group₁ structure we defined above, except that it uses the additive naming scheme just described. Define negation and a zero on the Point data type, and define the AddGroup₁ structure on Point .",
+    "html": "<p>Recall the type <code class=\"docutils literal notranslate\"><span class=\"pre\">Point</span></code> that we defined in <a class=\"reference internal\" href=\"#section-structures\"><span class=\"std std-numref\">Section 7.1</span></a>,\nand the addition function that we defined there.\nThese definitions are reproduced in the examples file that accompanies\nthis section.\nAs an exercise, define an <code class=\"docutils literal notranslate\"><span class=\"pre\">AddGroup₁</span></code> structure that is similar\nto the <code class=\"docutils literal notranslate\"><span class=\"pre\">Group₁</span></code> structure we defined above, except that it uses the\nadditive naming scheme just described.\nDefine negation and a zero on the <code class=\"docutils literal notranslate\"><span class=\"pre\">Point</span></code> data type,\nand define the <code class=\"docutils literal notranslate\"><span class=\"pre\">AddGroup₁</span></code> structure on <code class=\"docutils literal notranslate\"><span class=\"pre\">Point</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0054",
+    "file": "C07_Structures.html",
+    "tag": "p",
+    "text": "We are making progress. Now we know how to define algebraic structures in Lean, and we know how to define instances of those structures. But we also want to associate notation with structures so that we can use it with each instance. Moreover, we want to arrange it so that we can define an operation on a structure and use it with any particular instance, and we want to arrange it so that we can prove a theorem about a structure and use it with any instance.",
+    "html": "<p>We are making progress.\nNow we know how to define algebraic structures in Lean,\nand we know how to define instances of those structures.\nBut we also want to associate notation with structures\nso that we can use it with each instance.\nMoreover, we want to arrange it so that we can define an operation\non a structure and use it with any particular instance,\nand we want to arrange it so that we can prove a theorem about\na structure and use it with any instance.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0055",
+    "file": "C07_Structures.html",
+    "tag": "p",
+    "text": "In fact, Mathlib is already set up to use generic group notation, definitions, and theorems for Equiv.Perm α .",
+    "html": "<p>In fact, Mathlib is already set up to use generic group notation,\ndefinitions, and theorems for <code class=\"docutils literal notranslate\"><span class=\"pre\">Equiv.Perm</span> <span class=\"pre\">α</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0056",
+    "file": "C07_Structures.html",
+    "tag": "p",
+    "text": "You can check that this is not the case for the additive group structure on Point that we asked you to define above. Our task now is to understand that magic that goes on under the hood in order to make the examples for Equiv.Perm α work the way they do.",
+    "html": "<p>You can check that this is not the case for the additive group structure\non <code class=\"docutils literal notranslate\"><span class=\"pre\">Point</span></code> that we asked you to define above.\nOur task now is to understand that magic that goes on under the hood\nin order to make the examples for <code class=\"docutils literal notranslate\"><span class=\"pre\">Equiv.Perm</span> <span class=\"pre\">α</span></code> work the way they do.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0057",
+    "file": "C07_Structures.html",
+    "tag": "p",
+    "text": "The issue is that Lean needs to be able to find the relevant notation and the implicit group structure, using the information that is found in the expressions that we type. Similarly, when we write x + y with expressions x and y that have type ℝ , Lean needs to interpret the + symbol as the relevant addition function on the reals. It also has to recognize the type ℝ as an instance of a commutative ring, so that all the definitions and theorems for a commutative ring are available. For another example, continuity is defined in Lean relative to any two topological spaces. When we have f : ℝ → ℂ and we write Continuous f , Lean has to find the relevant topologies on ℝ and ℂ .",
+    "html": "<p>The issue is that Lean needs to be able to <em>find</em> the relevant\nnotation and the implicit group structure,\nusing the information that is found in the expressions that we type.\nSimilarly, when we write <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span> <span class=\"pre\">+</span> <span class=\"pre\">y</span></code> with expressions <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">y</span></code>\nthat have type <code class=\"docutils literal notranslate\"><span class=\"pre\">ℝ</span></code>, Lean needs to interpret the <code class=\"docutils literal notranslate\"><span class=\"pre\">+</span></code>\nsymbol as the relevant addition function on the reals.\nIt also has to recognize the type <code class=\"docutils literal notranslate\"><span class=\"pre\">ℝ</span></code> as an instance of a commutative ring,\nso that all the definitions and theorems for a commutative ring are available.\nFor another example,\ncontinuity is defined in Lean relative to any two topological spaces.\nWhen we have <code class=\"docutils literal notranslate\"><span class=\"pre\">f</span> <span class=\"pre\">:</span> <span class=\"pre\">ℝ</span> <span class=\"pre\">→</span> <span class=\"pre\">ℂ</span></code> and we write <code class=\"docutils literal notranslate\"><span class=\"pre\">Continuous</span> <span class=\"pre\">f</span></code>, Lean has to find the\nrelevant topologies on <code class=\"docutils literal notranslate\"><span class=\"pre\">ℝ</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">ℂ</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0058",
+    "file": "C07_Structures.html",
+    "tag": "p",
+    "text": "The magic is achieved with a combination of three things.",
+    "html": "<p>The magic is achieved with a combination of three things.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0059",
+    "file": "C07_Structures.html",
+    "tag": "p",
+    "text": "Whereas an annotation (grp : Group G) tells Lean that it should expect to be given that argument explicitly and the annotation {grp : Group G} tells Lean that it should try to figure it out from contextual cues in the expression, the annotation [grp : Group G] tells Lean that the corresponding argument should be synthesized using type class inference. Since the whole point to the use of such arguments is that we generally do not need to refer to them explicitly, Lean allows us to write [Group G] and leave the name anonymous. You have probably already noticed that Lean chooses names like _inst_1 automatically. When we use the anonymous square-bracket annotation with the variable command, then as long as the variables are still in scope, Lean automatically adds the argument [Group G] to any definition or theorem that mentions G .",
+    "html": "<p>Whereas an annotation <code class=\"docutils literal notranslate\"><span class=\"pre\">(grp</span> <span class=\"pre\">:</span> <span class=\"pre\">Group</span> <span class=\"pre\">G)</span></code> tells Lean that it should\nexpect to be given that argument explicitly and the annotation\n<code class=\"docutils literal notranslate\"><span class=\"pre\">{grp</span> <span class=\"pre\">:</span> <span class=\"pre\">Group</span> <span class=\"pre\">G}</span></code> tells Lean that it should try to figure it out\nfrom contextual cues in the expression,\nthe annotation <code class=\"docutils literal notranslate\"><span class=\"pre\">[grp</span> <span class=\"pre\">:</span> <span class=\"pre\">Group</span> <span class=\"pre\">G]</span></code> tells Lean that the corresponding\nargument should be synthesized using type class inference.\nSince the whole point to the use of such arguments is that\nwe generally do not need to refer to them explicitly,\nLean allows us to write <code class=\"docutils literal notranslate\"><span class=\"pre\">[Group</span> <span class=\"pre\">G]</span></code> and leave the name anonymous.\nYou have probably already noticed that Lean chooses names like <code class=\"docutils literal notranslate\"><span class=\"pre\">_inst_1</span></code>\nautomatically.\nWhen we use the anonymous square-bracket annotation with the <code class=\"docutils literal notranslate\"><span class=\"pre\">variable</span></code> command,\nthen as long as the variables are still in scope,\nLean automatically adds the argument <code class=\"docutils literal notranslate\"><span class=\"pre\">[Group</span> <span class=\"pre\">G]</span></code> to any definition or\ntheorem that mentions <code class=\"docutils literal notranslate\"><span class=\"pre\">G</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0060",
+    "file": "C07_Structures.html",
+    "tag": "p",
+    "text": "How do we register the information that Lean needs to use to carry out the search? Returning to our group example, we need only make two changes. First, instead of using the structure command to define the group structure, we use the keyword class to indicate that it is a candidate for class inference. Second, instead of defining particular instances with def , we use the keyword instance to register the particular instance with Lean. As with the names of class variables, we are allowed to leave the name of an instance definition anonymous, since in general we intend Lean to find it and put it to use without troubling us with the details.",
+    "html": "<p>How do we register the information that Lean needs to use to carry\nout the search?\nReturning to our group example, we need only make two changes.\nFirst, instead of using the <code class=\"docutils literal notranslate\"><span class=\"pre\">structure</span></code> command to define the group structure,\nwe use the keyword <code class=\"docutils literal notranslate\"><span class=\"pre\">class</span></code> to indicate that it is a candidate\nfor class inference.\nSecond, instead of defining particular instances with <code class=\"docutils literal notranslate\"><span class=\"pre\">def</span></code>,\nwe use the keyword <code class=\"docutils literal notranslate\"><span class=\"pre\">instance</span></code> to register the particular instance with\nLean. As with the names of class variables, we are allowed to leave the\nname of an instance definition anonymous,\nsince in general we intend Lean to find it and put it to use\nwithout troubling us with the details.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0061",
+    "file": "C07_Structures.html",
+    "tag": "p",
+    "text": "The following illustrates their use.",
+    "html": "<p>The following illustrates their use.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0062",
+    "file": "C07_Structures.html",
+    "tag": "p",
+    "text": "The #check command shows that Group₂.mul has an implicit argument [Group₂ α] that we expect to be found by class inference, where α is the type of the arguments to Group₂.mul . In other words, {α : Type*} is the implicit argument for the type of the group elements and [Group₂ α] is the implicit argument for the group structure on α . Similarly, when we define a generic squaring function my_square for Group₂ , we use an implicit argument {α : Type*} for the type of the elements and an implicit argument [Group₂ α] for the Group₂ structure.",
+    "html": "<p>The <code class=\"docutils literal notranslate\"><span class=\"pre\">#check</span></code> command shows that <code class=\"docutils literal notranslate\"><span class=\"pre\">Group₂.mul</span></code> has an implicit argument\n<code class=\"docutils literal notranslate\"><span class=\"pre\">[Group₂</span> <span class=\"pre\">α]</span></code> that we expect to be found by class inference,\nwhere <code class=\"docutils literal notranslate\"><span class=\"pre\">α</span></code> is the type of the arguments to <code class=\"docutils literal notranslate\"><span class=\"pre\">Group₂.mul</span></code>.\nIn other words, <code class=\"docutils literal notranslate\"><span class=\"pre\">{α</span> <span class=\"pre\">:</span> <span class=\"pre\">Type*}</span></code> is the implicit argument for the type\nof the group elements and <code class=\"docutils literal notranslate\"><span class=\"pre\">[Group₂</span> <span class=\"pre\">α]</span></code> is the implicit argument for the\ngroup structure on <code class=\"docutils literal notranslate\"><span class=\"pre\">α</span></code>.\nSimilarly, when we define a generic squaring function <code class=\"docutils literal notranslate\"><span class=\"pre\">my_square</span></code>\nfor <code class=\"docutils literal notranslate\"><span class=\"pre\">Group₂</span></code>, we use an implicit argument <code class=\"docutils literal notranslate\"><span class=\"pre\">{α</span> <span class=\"pre\">:</span> <span class=\"pre\">Type*}</span></code> for\nthe type of the elements and an implicit argument <code class=\"docutils literal notranslate\"><span class=\"pre\">[Group₂</span> <span class=\"pre\">α]</span></code> for\nthe <code class=\"docutils literal notranslate\"><span class=\"pre\">Group₂</span></code> structure.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0063",
+    "file": "C07_Structures.html",
+    "tag": "p",
+    "text": "In the first example, when we write Group₂.mul f g , the type of f and g tells Lean that in the argument α to Group₂.mul has to be instantiated to Equiv.Perm β . That means that Lean has to find an element of Group₂ (Equiv.Perm β) . The previous instance declaration tells Lean exactly how to do that. Problem solved!",
+    "html": "<p>In the first example,\nwhen we write <code class=\"docutils literal notranslate\"><span class=\"pre\">Group₂.mul</span> <span class=\"pre\">f</span> <span class=\"pre\">g</span></code>, the type of <code class=\"docutils literal notranslate\"><span class=\"pre\">f</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">g</span></code>\ntells Lean that in the argument <code class=\"docutils literal notranslate\"><span class=\"pre\">α</span></code> to <code class=\"docutils literal notranslate\"><span class=\"pre\">Group₂.mul</span></code>\nhas to be instantiated to <code class=\"docutils literal notranslate\"><span class=\"pre\">Equiv.Perm</span> <span class=\"pre\">β</span></code>.\nThat means that Lean has to find an element of <code class=\"docutils literal notranslate\"><span class=\"pre\">Group₂</span> <span class=\"pre\">(Equiv.Perm</span> <span class=\"pre\">β)</span></code>.\nThe previous <code class=\"docutils literal notranslate\"><span class=\"pre\">instance</span></code> declaration tells Lean exactly how to do that.\nProblem solved!</p>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0064",
+    "file": "C07_Structures.html",
+    "tag": "p",
+    "text": "This simple mechanism for registering information so that Lean can find it when it needs it is remarkably useful. Here is one way it comes up. In Lean’s foundation, a data type α may be empty. In a number of applications, however, it is useful to know that a type has at least one element. For example, the function List.headI , which returns the first element of a list, can return the default value when the list is empty. To make that work, the Lean library defines a class Inhabited α , which does nothing more than store a default value. We can show that the Point type is an instance:",
+    "html": "<p>This simple mechanism for registering information so that Lean can find it\nwhen it needs it is remarkably useful.\nHere is one way it comes up.\nIn Lean’s foundation, a data type <code class=\"docutils literal notranslate\"><span class=\"pre\">α</span></code> may be empty.\nIn a number of applications, however, it is useful to know that a\ntype has at least one element.\nFor example, the function <code class=\"docutils literal notranslate\"><span class=\"pre\">List.headI</span></code>, which returns the first\nelement of a list, can return the default value when the list is empty.\nTo make that work, the Lean library defines a class <code class=\"docutils literal notranslate\"><span class=\"pre\">Inhabited</span> <span class=\"pre\">α</span></code>,\nwhich does nothing more than store a default value.\nWe can show that the <code class=\"docutils literal notranslate\"><span class=\"pre\">Point</span></code> type is an instance:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0065",
+    "file": "C07_Structures.html",
+    "tag": "p",
+    "text": "The class inference mechanism is also used for generic notation. The expression x + y is an abbreviation for Add.add x y where—you guessed it— Add α is a class that stores a binary function on α . Writing x + y tells Lean to find a registered instance of [Add.add α] and use the corresponding function. Below, we register the addition function for Point .",
+    "html": "<p>The class inference mechanism is also used for generic notation.\nThe expression <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span> <span class=\"pre\">+</span> <span class=\"pre\">y</span></code> is an abbreviation for <code class=\"docutils literal notranslate\"><span class=\"pre\">Add.add</span> <span class=\"pre\">x</span> <span class=\"pre\">y</span></code>\nwhere—you guessed it—<code class=\"docutils literal notranslate\"><span class=\"pre\">Add</span> <span class=\"pre\">α</span></code> is a class that stores\na binary function on <code class=\"docutils literal notranslate\"><span class=\"pre\">α</span></code>.\nWriting <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span> <span class=\"pre\">+</span> <span class=\"pre\">y</span></code> tells Lean to find a registered instance of <code class=\"docutils literal notranslate\"><span class=\"pre\">[Add.add</span> <span class=\"pre\">α]</span></code>\nand use the corresponding function.\nBelow, we register the addition function for <code class=\"docutils literal notranslate\"><span class=\"pre\">Point</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0066",
+    "file": "C07_Structures.html",
+    "tag": "p",
+    "text": "In this way, we can assign the notation + to binary operations on other types as well.",
+    "html": "<p>In this way, we can assign the notation <code class=\"docutils literal notranslate\"><span class=\"pre\">+</span></code> to binary operations on other\ntypes as well.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0067",
+    "file": "C07_Structures.html",
+    "tag": "p",
+    "text": "But we can do even better. We have seen that * can be used in any group, + can be used in any additive group, and both can be used in any ring. When we define a new instance of a ring in Lean, we don’t have to define + and * for that instance, because Lean knows that these are defined for every ring. We can use this method to specify notation for our Group₂ class:",
+    "html": "<p>But we can do even better. We have seen that <code class=\"docutils literal notranslate\"><span class=\"pre\">*</span></code> can be used in any\ngroup, <code class=\"docutils literal notranslate\"><span class=\"pre\">+</span></code> can be used in any additive group, and both can be used in\nany ring.\nWhen we define a new instance of a ring in Lean,\nwe don’t have to define <code class=\"docutils literal notranslate\"><span class=\"pre\">+</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">*</span></code> for that instance,\nbecause Lean knows that these are defined for every ring.\nWe can use this method to specify notation for our <code class=\"docutils literal notranslate\"><span class=\"pre\">Group₂</span></code> class:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0068",
+    "file": "C07_Structures.html",
+    "tag": "p",
+    "text": "What makes this approach work is that Lean carries out a recursive search. According to the instances we have declared, Lean can find an instance of Mul (Equiv.Perm α) by finding an instance of Group₂ (Equiv.Perm α) , and it can find an instance of Group₂ (Equiv.Perm α) because we have provided one. Lean is capable of finding these two facts and chaining them together.",
+    "html": "<p>What makes this approach work is that Lean carries out a recursive search.\nAccording to the instances we have declared, Lean can find an instance of\n<code class=\"docutils literal notranslate\"><span class=\"pre\">Mul</span> <span class=\"pre\">(Equiv.Perm</span> <span class=\"pre\">α)</span></code> by finding an\ninstance of <code class=\"docutils literal notranslate\"><span class=\"pre\">Group₂</span> <span class=\"pre\">(Equiv.Perm</span> <span class=\"pre\">α)</span></code>, and it can find an instance of\n<code class=\"docutils literal notranslate\"><span class=\"pre\">Group₂</span> <span class=\"pre\">(Equiv.Perm</span> <span class=\"pre\">α)</span></code> because we have provided one.\nLean is capable of finding these two facts and chaining them together.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0069",
+    "file": "C07_Structures.html",
+    "tag": "p",
+    "text": "The example we have just given is dangerous, because Lean’s library also has an instance of Group (Equiv.Perm α) , and multiplication is defined on any group. So it is ambiguous as to which instance is found. In fact, Lean favors more recent declarations unless you explicitly specify a different priority. Also, there is another way to tell Lean that one structure is an instance of another, using the extends keyword. This is how Mathlib specifies that, for example, every commutative ring is a ring. You can find more information in Section 8 and in a section on class inference in Theorem Proving in Lean .",
+    "html": "<p>The example we have just given is dangerous, because Lean’s\nlibrary also has an instance of <code class=\"docutils literal notranslate\"><span class=\"pre\">Group</span> <span class=\"pre\">(Equiv.Perm</span> <span class=\"pre\">α)</span></code>, and\nmultiplication is defined on any group.\nSo it is ambiguous as to which instance is found.\nIn fact, Lean favors more recent declarations unless you explicitly\nspecify a different priority.\nAlso, there is another way to tell Lean that one structure is an\ninstance of another, using the <code class=\"docutils literal notranslate\"><span class=\"pre\">extends</span></code> keyword.\nThis is how Mathlib specifies that, for example,\nevery commutative ring is a ring.\nYou can find more information in <a class=\"reference internal\" href=\"C08_Hierarchies.html#hierarchies\"><span class=\"std std-numref\">Section 8</span></a> and in a\n<a class=\"reference external\" href=\"https://leanprover.github.io/theorem_proving_in_lean4/Type-Classes/#managing-type-class-inference\">section on class inference</a> in <em>Theorem Proving in Lean</em>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0070",
+    "file": "C07_Structures.html",
+    "tag": "p",
+    "text": "In general, it is a bad idea to specify a value of * for an instance of an algebraic structure that already has the notation defined. Redefining the notion of Group in Lean is an artificial example. In this case, however, both interpretations of the group notation unfold to Equiv.trans , Equiv.refl , and Equiv.symm , in the same way.",
+    "html": "<p>In general, it is a bad idea to specify a value of\n<code class=\"docutils literal notranslate\"><span class=\"pre\">*</span></code> for an instance of an algebraic structure that already has\nthe notation defined.\nRedefining the notion of <code class=\"docutils literal notranslate\"><span class=\"pre\">Group</span></code> in Lean is an artificial example.\nIn this case, however, both interpretations of the group notation unfold to\n<code class=\"docutils literal notranslate\"><span class=\"pre\">Equiv.trans</span></code>, <code class=\"docutils literal notranslate\"><span class=\"pre\">Equiv.refl</span></code>, and <code class=\"docutils literal notranslate\"><span class=\"pre\">Equiv.symm</span></code>, in the same way.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0071",
+    "file": "C07_Structures.html",
+    "tag": "p",
+    "text": "As a similarly artificial exercise, define a class AddGroup₂ in analogy to Group₂ . Define the usual notation for addition, negation, and zero on any AddGroup₂ using the classes Add , Neg , and Zero . Then show Point is an instance of AddGroup₂ . Try it out and make sure that the additive group notation works for elements of Point .",
+    "html": "<p>As a similarly artificial exercise,\ndefine a class <code class=\"docutils literal notranslate\"><span class=\"pre\">AddGroup₂</span></code> in analogy to <code class=\"docutils literal notranslate\"><span class=\"pre\">Group₂</span></code>.\nDefine the usual notation for addition, negation, and zero\non any <code class=\"docutils literal notranslate\"><span class=\"pre\">AddGroup₂</span></code>\nusing the classes <code class=\"docutils literal notranslate\"><span class=\"pre\">Add</span></code>, <code class=\"docutils literal notranslate\"><span class=\"pre\">Neg</span></code>, and <code class=\"docutils literal notranslate\"><span class=\"pre\">Zero</span></code>.\nThen show <code class=\"docutils literal notranslate\"><span class=\"pre\">Point</span></code> is an instance of <code class=\"docutils literal notranslate\"><span class=\"pre\">AddGroup₂</span></code>.\nTry it out and make sure that the additive group notation works for\nelements of <code class=\"docutils literal notranslate\"><span class=\"pre\">Point</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0072",
+    "file": "C07_Structures.html",
+    "tag": "p",
+    "text": "It is not a big problem that we have already declared instances Add , Neg , and Zero for Point above. Once again, the two ways of synthesizing the notation should come up with the same answer.",
+    "html": "<p>It is not a big problem that we have already declared instances\n<code class=\"docutils literal notranslate\"><span class=\"pre\">Add</span></code>, <code class=\"docutils literal notranslate\"><span class=\"pre\">Neg</span></code>, and <code class=\"docutils literal notranslate\"><span class=\"pre\">Zero</span></code> for <code class=\"docutils literal notranslate\"><span class=\"pre\">Point</span></code> above.\nOnce again, the two ways of synthesizing the notation should come up\nwith the same answer.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0073",
+    "file": "C07_Structures.html",
+    "tag": "p",
+    "text": "Class inference is subtle, and you have to be careful when using it, because it configures automation that invisibly governs the interpretation of the expressions we type. When used wisely, however, class inference is a powerful tool. It is what makes algebraic reasoning possible in Lean.",
+    "html": "<p>Class inference is subtle, and you have to be careful when using it,\nbecause it configures automation that invisibly governs the interpretation of\nthe expressions we type.\nWhen used wisely, however, class inference is a powerful tool.\nIt is what makes algebraic reasoning possible in Lean.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0074",
+    "file": "C07_Structures.html",
+    "tag": "p",
+    "text": "We will now illustrate the use of the algebraic hierarchy in Lean by building an important mathematical object, the Gaussian integers , and showing that it is a Euclidean domain. In other words, according to the terminology we have been using, we will define the Gaussian integers and show that they are an instance of the Euclidean domain structure.",
+    "html": "<p>We will now illustrate the use of the algebraic hierarchy in Lean by\nbuilding an important mathematical object, the <em>Gaussian integers</em>,\nand showing that it is a Euclidean domain. In other words, according to\nthe terminology we have been using, we will define the Gaussian integers\nand show that they are an instance of the Euclidean domain structure.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0075",
+    "file": "C07_Structures.html",
+    "tag": "p",
+    "text": "In ordinary mathematical terms, the set of Gaussian integers \\(\\Bbb{Z}[i]\\) is the set of complex numbers \\(\\{ a + b i \\mid a, b \\in \\Bbb{Z}\\}\\) . But rather than define them as a subset of the complex numbers, our goal here is to define them as a data type in their own right. We do this by representing a Gaussian integer as a pair of integers, which we think of as the real and imaginary parts.",
+    "html": "<p>In ordinary mathematical terms, the set of Gaussian integers <span class=\"math notranslate nohighlight\">\\(\\Bbb{Z}[i]\\)</span>\nis the set of complex numbers <span class=\"math notranslate nohighlight\">\\(\\{ a + b i \\mid a, b \\in \\Bbb{Z}\\}\\)</span>.\nBut rather than define them as a subset of the complex numbers, our goal\nhere is to define them as a data type in their own right. We do this by\nrepresenting a Gaussian integer as a pair of integers, which we think of as the\n<em>real</em> and <em>imaginary</em> parts.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0076",
+    "file": "C07_Structures.html",
+    "tag": "p",
+    "text": "We first show that the Gaussian integers have the structure of a ring, with 0 defined to be ⟨0, 0⟩ , 1 defined to be ⟨1, 0⟩ , and addition defined pointwise. To work out the definition of multiplication, remember that we want the element \\(i\\) , represented by ⟨0, 1⟩ , to be a square root of \\(-1\\) . Thus we want",
+    "html": "<p>We first show that the Gaussian integers have the structure of a ring,\nwith <code class=\"docutils literal notranslate\"><span class=\"pre\">0</span></code> defined to be <code class=\"docutils literal notranslate\"><span class=\"pre\">⟨0,</span> <span class=\"pre\">0⟩</span></code>, <code class=\"docutils literal notranslate\"><span class=\"pre\">1</span></code> defined to be <code class=\"docutils literal notranslate\"><span class=\"pre\">⟨1,</span> <span class=\"pre\">0⟩</span></code>, and\naddition defined pointwise. To work out the definition of multiplication,\nremember that we want the element <span class=\"math notranslate nohighlight\">\\(i\\)</span>, represented by <code class=\"docutils literal notranslate\"><span class=\"pre\">⟨0,</span> <span class=\"pre\">1⟩</span></code>, to\nbe a square root of <span class=\"math notranslate nohighlight\">\\(-1\\)</span>. Thus we want</p>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0077",
+    "file": "C07_Structures.html",
+    "tag": "p",
+    "text": "This explains the definition of Mul below.",
+    "html": "<p>This explains the definition of <code class=\"docutils literal notranslate\"><span class=\"pre\">Mul</span></code> below.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0078",
+    "file": "C07_Structures.html",
+    "tag": "p",
+    "text": "As noted in Section 7.1 , it is a good idea to put all the definitions related to a data type in a namespace with the same name. Thus in the Lean files associated with this chapter, these definitions are made in the GaussInt namespace.",
+    "html": "<p>As noted in <a class=\"reference internal\" href=\"#section-structures\"><span class=\"std std-numref\">Section 7.1</span></a>, it is a good idea to put all the definitions\nrelated to a data type in a namespace with the same name. Thus in the Lean\nfiles associated with this chapter, these definitions are made in the\n<code class=\"docutils literal notranslate\"><span class=\"pre\">GaussInt</span></code> namespace.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0079",
+    "file": "C07_Structures.html",
+    "tag": "p",
+    "text": "Notice that here we are defining the interpretations of the notation 0 , 1 , + , - , and * directly, rather than naming them GaussInt.zero and the like and assigning the notation to those. It is often useful to have an explicit name for the definitions, for example, to use with simp and rw .",
+    "html": "<p>Notice that here we are defining the interpretations of the notation <code class=\"docutils literal notranslate\"><span class=\"pre\">0</span></code>,\n<code class=\"docutils literal notranslate\"><span class=\"pre\">1</span></code>, <code class=\"docutils literal notranslate\"><span class=\"pre\">+</span></code>, <code class=\"docutils literal notranslate\"><span class=\"pre\">-</span></code>, and <code class=\"docutils literal notranslate\"><span class=\"pre\">*</span></code> directly, rather than naming them\n<code class=\"docutils literal notranslate\"><span class=\"pre\">GaussInt.zero</span></code> and the like and assigning the notation to those.\nIt is often useful to have an explicit name for the definitions, for example,\nto use with <code class=\"docutils literal notranslate\"><span class=\"pre\">simp</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">rw</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0080",
+    "file": "C07_Structures.html",
+    "tag": "p",
+    "text": "It is also useful to name the rules that compute the real and imaginary parts, and to declare them to the simplifier.",
+    "html": "<p>It is also useful to name the rules that compute the real and imaginary\nparts, and to declare them to the simplifier.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0081",
+    "file": "C07_Structures.html",
+    "tag": "p",
+    "text": "It is now surprisingly easy to show that the Gaussian integers are an instance of a commutative ring. We are putting the structure concept to good use. Each particular Gaussian integer is an instance of the GaussInt structure, whereas the type GaussInt itself, together with the relevant operations, is an instance of the CommRing structure. The CommRing structure, in turn, extends the notational structures Zero , One , Add , Neg , and Mul .",
+    "html": "<p>It is now surprisingly easy to show that the Gaussian integers are an instance\nof a commutative ring. We are putting the structure concept to good use.\nEach particular Gaussian integer is an instance of the <code class=\"docutils literal notranslate\"><span class=\"pre\">GaussInt</span></code> structure,\nwhereas the type <code class=\"docutils literal notranslate\"><span class=\"pre\">GaussInt</span></code> itself, together with the relevant operations, is an\ninstance of the <code class=\"docutils literal notranslate\"><span class=\"pre\">CommRing</span></code> structure. The <code class=\"docutils literal notranslate\"><span class=\"pre\">CommRing</span></code> structure, in turn,\nextends the notational structures <code class=\"docutils literal notranslate\"><span class=\"pre\">Zero</span></code>, <code class=\"docutils literal notranslate\"><span class=\"pre\">One</span></code>, <code class=\"docutils literal notranslate\"><span class=\"pre\">Add</span></code>,\n<code class=\"docutils literal notranslate\"><span class=\"pre\">Neg</span></code>, and <code class=\"docutils literal notranslate\"><span class=\"pre\">Mul</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0082",
+    "file": "C07_Structures.html",
+    "tag": "p",
+    "text": "If you type instance : CommRing GaussInt := _ , click on the light bulb that appears in VS Code, and then ask Lean to fill in a skeleton for the structure definition, you will see a scary number of entries. Jumping to the definition of the structure, however, shows that many of the fields have default definitions that Lean will fill in for you automatically. The essential ones appear in the definition below. A special case are nsmul and zsmul which should be ignored for now and will be explained in the next chapter. In each case, the relevant identity is proved by unfolding definitions, using the ext tactic to reduce the identities to their real and imaginary components, simplifying, and, if necessary, carrying out the relevant ring calculation in the integers. Note that we could easily avoid repeating all this code, but this is not the topic of the current discussion.",
+    "html": "<p>If you type <code class=\"docutils literal notranslate\"><span class=\"pre\">instance</span> <span class=\"pre\">:</span> <span class=\"pre\">CommRing</span> <span class=\"pre\">GaussInt</span> <span class=\"pre\">:=</span> <span class=\"pre\">_</span></code>, click on the light bulb\nthat appears in VS Code, and then ask Lean to fill in a skeleton for the\nstructure definition, you will see a scary number of entries.\nJumping to the definition of the structure, however, shows that many of the\nfields have default definitions that Lean will fill in for you automatically.\nThe essential ones appear in the definition below.\nA special case are <code class=\"docutils literal notranslate\"><span class=\"pre\">nsmul</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">zsmul</span></code> which should be ignored for now\nand will be explained in the next chapter.\nIn each case, the relevant\nidentity is proved by unfolding definitions, using the <code class=\"docutils literal notranslate\"><span class=\"pre\">ext</span></code> tactic\nto reduce the identities to their real and imaginary components,\nsimplifying, and, if necessary, carrying out the relevant ring calculation in\nthe integers. Note that we could easily avoid repeating all this code, but\nthis is not the topic of the current discussion.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0083",
+    "file": "C07_Structures.html",
+    "tag": "p",
+    "text": "Lean’s library defines the class of nontrivial types to be types with at least two distinct elements. In the context of a ring, this is equivalent to saying that the zero is not equal to the one. Since some common theorems depend on that fact, we may as well establish it now.",
+    "html": "<p>Lean’s library defines the class of <em>nontrivial</em> types to be types with at\nleast two distinct elements. In the context of a ring, this is equivalent\nto saying that the zero is not equal to the one. Since some common theorems\ndepend on that fact, we may as well establish it now.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0084",
+    "file": "C07_Structures.html",
+    "tag": "p",
+    "text": "We will now show that the Gaussian integers have an important additional property. A Euclidean domain is a ring \\(R\\) equipped with a norm function \\(N : R \\to \\mathbb{N}\\) with the following two properties:",
+    "html": "<p>We will now show that the Gaussian integers have an important additional\nproperty. A <em>Euclidean domain</em> is a ring <span class=\"math notranslate nohighlight\">\\(R\\)</span> equipped with a <em>norm</em>\nfunction <span class=\"math notranslate nohighlight\">\\(N : R \\to \\mathbb{N}\\)</span> with the following two properties:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0085",
+    "file": "C07_Structures.html",
+    "tag": "p",
+    "text": "The ring of integers \\(\\Bbb{Z}\\) with \\(N(a) = |a|\\) is an archetypal example of a Euclidean domain. In that case, we can take \\(q\\) to be the result of integer division of \\(a\\) by \\(b\\) and \\(r\\) to be the remainder. Note that when a and b are integers, a / b denotes integer division in Lean, and a % b denotes the remainder. These are defined so as to satisfly the following:",
+    "html": "<p>The ring of integers <span class=\"math notranslate nohighlight\">\\(\\Bbb{Z}\\)</span> with <span class=\"math notranslate nohighlight\">\\(N(a) = |a|\\)</span> is an\narchetypal example of a Euclidean domain.\nIn that case, we can take <span class=\"math notranslate nohighlight\">\\(q\\)</span> to be the\nresult of integer division of <span class=\"math notranslate nohighlight\">\\(a\\)</span> by <span class=\"math notranslate nohighlight\">\\(b\\)</span> and <span class=\"math notranslate nohighlight\">\\(r\\)</span>\nto be the remainder. Note that when <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">b</span></code> are integers, <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span> <span class=\"pre\">/</span> <span class=\"pre\">b</span></code> denotes\ninteger division in Lean, and <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span> <span class=\"pre\">%</span> <span class=\"pre\">b</span></code> denotes the remainder. These are defined so\nas to satisfly the following:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0086",
+    "file": "C07_Structures.html",
+    "tag": "p",
+    "text": "In an arbitrary ring, an element \\(a\\) is said to be a unit if it divides \\(1\\) . A nonzero element \\(a\\) is said to be irreducible if it cannot be written in the form \\(a = bc\\) where neither \\(b\\) nor \\(c\\) is a unit. In the integers, every irreducible element \\(a\\) is prime , which is to say, whenever \\(a\\) divides a product \\(bc\\) , it divides either \\(b\\) or \\(c\\) . But in other rings this property can fail. In the ring \\(\\Bbb{Z}[\\sqrt{-5}]\\) , we have",
+    "html": "<p>In an arbitrary ring, an element <span class=\"math notranslate nohighlight\">\\(a\\)</span> is said to be a <em>unit</em> if it divides\n<span class=\"math notranslate nohighlight\">\\(1\\)</span>. A nonzero element <span class=\"math notranslate nohighlight\">\\(a\\)</span> is said to be <em>irreducible</em> if it cannot\nbe written in the form <span class=\"math notranslate nohighlight\">\\(a = bc\\)</span>\nwhere neither <span class=\"math notranslate nohighlight\">\\(b\\)</span> nor <span class=\"math notranslate nohighlight\">\\(c\\)</span> is a unit. In the integers, every\nirreducible element <span class=\"math notranslate nohighlight\">\\(a\\)</span> is <em>prime</em>, which is to say, whenever <span class=\"math notranslate nohighlight\">\\(a\\)</span>\ndivides a product <span class=\"math notranslate nohighlight\">\\(bc\\)</span>, it divides either <span class=\"math notranslate nohighlight\">\\(b\\)</span> or <span class=\"math notranslate nohighlight\">\\(c\\)</span>. But\nin other rings this property can fail. In the ring\n<span class=\"math notranslate nohighlight\">\\(\\Bbb{Z}[\\sqrt{-5}]\\)</span>, we have</p>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0087",
+    "file": "C07_Structures.html",
+    "tag": "p",
+    "text": "and the elements \\(2\\) , \\(3\\) , \\(1 + \\sqrt{-5}\\) , and \\(1 - \\sqrt{-5}\\) are all irreducible, but they are not prime. For example, \\(2\\) divides the product \\((1 + \\sqrt{-5})(1 - \\sqrt{-5})\\) , but it does not divide either factor. In particular, we no longer have unique factorization: the number \\(6\\) can be factored into irreducible elements in more than one way.",
+    "html": "<p>and the elements <span class=\"math notranslate nohighlight\">\\(2\\)</span>, <span class=\"math notranslate nohighlight\">\\(3\\)</span>, <span class=\"math notranslate nohighlight\">\\(1 + \\sqrt{-5}\\)</span>, and\n<span class=\"math notranslate nohighlight\">\\(1 - \\sqrt{-5}\\)</span> are all irreducible, but they are not prime. For example,\n<span class=\"math notranslate nohighlight\">\\(2\\)</span> divides the product <span class=\"math notranslate nohighlight\">\\((1 + \\sqrt{-5})(1 - \\sqrt{-5})\\)</span>,\nbut it does not divide either factor. In particular, we no longer have\nunique factorization: the number <span class=\"math notranslate nohighlight\">\\(6\\)</span> can be factored into irreducible\nelements in more than one way.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0088",
+    "file": "C07_Structures.html",
+    "tag": "p",
+    "text": "In contrast, every Euclidean domain is a unique factorization domain, which implies that every irreducible element is prime. The axioms for a Euclidean domain imply that one can write any nonzero element as a finite product of irreducible elements. They also imply that one can use the Euclidean algorithm to find a greatest common divisor of any two nonzero elements a and b , i.e. an element that is divisible by any other common divisor. This, in turn, implies that factorization into irreducible elements is unique up to multiplication by units.",
+    "html": "<p>In contrast, every Euclidean domain is a unique factorization domain, which\nimplies that every irreducible element is prime.\nThe axioms for a Euclidean domain imply that one can write any nonzero element\nas a finite product of irreducible elements. They also imply that one can use\nthe Euclidean algorithm to find a greatest common divisor of any two\nnonzero elements <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">b</span></code>, i.e. an element that is divisible by any\nother common divisor. This, in turn, implies that factorization\ninto irreducible elements is unique up to multiplication by units.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0089",
+    "file": "C07_Structures.html",
+    "tag": "p",
+    "text": "We now show that the Gaussian integers are a Euclidean domain with the norm defined by \\(N(a + bi) = (a + bi)(a - bi) = a^2 + b^2\\) . The Gaussian integer \\(a - bi\\) is called the conjugate of \\(a + bi\\) . It is not hard to check that for any complex numbers \\(x\\) and \\(y\\) , we have \\(N(xy) = N(x)N(y)\\) .",
+    "html": "<p>We now show that the Gaussian integers are a Euclidean domain with\nthe norm defined by <span class=\"math notranslate nohighlight\">\\(N(a + bi) = (a + bi)(a - bi) = a^2 + b^2\\)</span>.\nThe Gaussian integer <span class=\"math notranslate nohighlight\">\\(a - bi\\)</span> is called the <em>conjugate</em> of <span class=\"math notranslate nohighlight\">\\(a + bi\\)</span>.\nIt is not hard to check that for any complex numbers <span class=\"math notranslate nohighlight\">\\(x\\)</span> and <span class=\"math notranslate nohighlight\">\\(y\\)</span>,\nwe have <span class=\"math notranslate nohighlight\">\\(N(xy) = N(x)N(y)\\)</span>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0090",
+    "file": "C07_Structures.html",
+    "tag": "p",
+    "text": "To see that this definition of the norm makes the Gaussian integers a Euclidean domain, only the first property is challenging. Suppose we want to write \\(a + bi = (c + di) q + r\\) for suitable \\(q\\) and \\(r\\) . Treating \\(a + bi\\) and \\(c + di\\) as complex numbers, carry out the division",
+    "html": "<p>To see that this definition of the norm makes the Gaussian integers a Euclidean\ndomain, only the first property is challenging. Suppose\nwe want to write <span class=\"math notranslate nohighlight\">\\(a + bi = (c + di) q + r\\)</span> for suitable <span class=\"math notranslate nohighlight\">\\(q\\)</span>\nand <span class=\"math notranslate nohighlight\">\\(r\\)</span>. Treating <span class=\"math notranslate nohighlight\">\\(a + bi\\)</span> and <span class=\"math notranslate nohighlight\">\\(c + di\\)</span> as complex\nnumbers, carry out the division</p>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0091",
+    "file": "C07_Structures.html",
+    "tag": "p",
+    "text": "The real and imaginary parts might not be integers, but we can round them to the nearest integers \\(u\\) and \\(v\\) . We can then express the right-hand side as \\((u + vi) + (u' + v'i)\\) , where \\(u' + v'i\\) is the part left over. Note that we have \\(|u'| \\le 1/2\\) and \\(|v'| \\le 1/2\\) , and hence",
+    "html": "<p>The real and imaginary parts might not be integers, but we can round\nthem to the nearest integers <span class=\"math notranslate nohighlight\">\\(u\\)</span> and <span class=\"math notranslate nohighlight\">\\(v\\)</span>. We can then express the\nright-hand side as <span class=\"math notranslate nohighlight\">\\((u + vi) + (u' + v'i)\\)</span>, where\n<span class=\"math notranslate nohighlight\">\\(u' + v'i\\)</span> is the part left over. Note that we have\n<span class=\"math notranslate nohighlight\">\\(|u'| \\le 1/2\\)</span> and <span class=\"math notranslate nohighlight\">\\(|v'| \\le 1/2\\)</span>, and hence</p>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0092",
+    "file": "C07_Structures.html",
+    "tag": "p",
+    "text": "Multiplying through by \\(c + di\\) , we have",
+    "html": "<p>Multiplying through by <span class=\"math notranslate nohighlight\">\\(c + di\\)</span>, we have</p>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0093",
+    "file": "C07_Structures.html",
+    "tag": "p",
+    "text": "Setting \\(q = u + vi\\) and \\(r = (c + di) (u' + v'i)\\) , we have \\(a + bi = (c + di) q + r\\) , and we only need to bound \\(N(r)\\) :",
+    "html": "<p>Setting <span class=\"math notranslate nohighlight\">\\(q = u + vi\\)</span> and <span class=\"math notranslate nohighlight\">\\(r = (c + di) (u' + v'i)\\)</span>, we have\n<span class=\"math notranslate nohighlight\">\\(a + bi = (c + di) q + r\\)</span>, and we only need to\nbound <span class=\"math notranslate nohighlight\">\\(N(r)\\)</span>:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0094",
+    "file": "C07_Structures.html",
+    "tag": "p",
+    "text": "The argument we just carried out requires viewing the Gaussian integers as a subset of the complex numbers. One option for formalizing it in Lean is therefore to embed the Gaussian integers in the complex numbers, embed the integers in the Gaussian integers, define the rounding function from the real numbers to the integers, and take great care to pass back and forth between these number systems appropriately. In fact, this is exactly the approach that is followed in Mathlib, where the Gaussian integers themselves are constructed as a special case of a ring of quadratic integers . See the file GaussianInt.lean .",
+    "html": "<p>The argument we just carried out requires viewing the Gaussian integers\nas a subset of the complex numbers. One option for formalizing it in Lean\nis therefore to embed the Gaussian integers in the complex numbers, embed\nthe integers in the Gaussian integers, define the rounding function from the\nreal numbers to the integers, and take great care to pass back and forth\nbetween these number systems appropriately.\nIn fact, this is exactly the approach that is followed in Mathlib,\nwhere the Gaussian integers themselves are constructed as a special case\nof a ring of <em>quadratic integers</em>.\nSee the file <a class=\"reference external\" href=\"https://github.com/leanprover-community/mathlib4/blob/master/Mathlib/NumberTheory/Zsqrtd/GaussianInt.lean\">GaussianInt.lean</a>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0095",
+    "file": "C07_Structures.html",
+    "tag": "p",
+    "text": "Here we will instead carry out an argument that stays in the integers. This illustrates a choice one commonly faces when formalizing mathematics. Given an argument that requires concepts or machinery that is not already in the library, one has two choices: either formalize the concepts and machinery needed, or adapt the argument to make use of concepts and machinery you already have. The first choice is generally a good investment of time when the results can be used in other contexts. Pragmatically speaking, however, sometimes seeking a more elementary proof is more efficient.",
+    "html": "<p>Here we will instead carry out an argument that stays in the integers.\nThis illustrates a choice one commonly faces when formalizing mathematics.\nGiven an argument that requires concepts or machinery that is not already\nin the library, one has two choices: either formalize the concepts and machinery\nneeded, or adapt the argument to make use of concepts and machinery you\nalready have.\nThe first choice is generally a good investment of time when the results\ncan be used in other contexts.\nPragmatically speaking, however, sometimes seeking a more elementary proof\nis more efficient.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0096",
+    "file": "C07_Structures.html",
+    "tag": "p",
+    "text": "The usual quotient-remainder theorem for the integers says that for every \\(a\\) and nonzero \\(b\\) , there are \\(q\\) and \\(r\\) such that \\(a = b q + r\\) and \\(0 \\le r < |b|\\) . Here we will make use of the following variation, which says that there are \\(q'\\) and \\(r'\\) such that \\(a = b q' + r'\\) and \\(|r'| \\le |b|/2\\) . You can check that if the value of \\(r\\) in the first statement satisfies \\(r \\le |b|/2\\) , we can take \\(q' = q\\) and \\(r' = r\\) , and otherwise we can take \\(q' = q + 1\\) and \\(r' = r - b\\) (for \\(b\\) positive; otherwise mutatis mutandis). We are grateful to Heather Macbeth for suggesting the following more elegant approach, which avoids definition by cases. We simply add b / 2 to a before dividing and then subtract it from the remainder.",
+    "html": "<p>The usual quotient-remainder theorem for the integers says that for\nevery <span class=\"math notranslate nohighlight\">\\(a\\)</span> and nonzero <span class=\"math notranslate nohighlight\">\\(b\\)</span>, there are <span class=\"math notranslate nohighlight\">\\(q\\)</span> and <span class=\"math notranslate nohighlight\">\\(r\\)</span>\nsuch that <span class=\"math notranslate nohighlight\">\\(a = b q + r\\)</span> and <span class=\"math notranslate nohighlight\">\\(0 \\le r &lt; |b|\\)</span>.\nHere we will make use of the following variation, which says that there\nare <span class=\"math notranslate nohighlight\">\\(q'\\)</span> and <span class=\"math notranslate nohighlight\">\\(r'\\)</span> such that\n<span class=\"math notranslate nohighlight\">\\(a = b q' + r'\\)</span> and <span class=\"math notranslate nohighlight\">\\(|r'| \\le |b|/2\\)</span>.\nYou can check that if the value of <span class=\"math notranslate nohighlight\">\\(r\\)</span> in the first statement\nsatisfies <span class=\"math notranslate nohighlight\">\\(r \\le |b|/2\\)</span>, we can take <span class=\"math notranslate nohighlight\">\\(q' = q\\)</span> and <span class=\"math notranslate nohighlight\">\\(r' = r\\)</span>,\nand otherwise we can take <span class=\"math notranslate nohighlight\">\\(q' = q + 1\\)</span> and <span class=\"math notranslate nohighlight\">\\(r' = r - b\\)</span>\n(for <span class=\"math notranslate nohighlight\">\\(b\\)</span> positive; otherwise mutatis mutandis).\nWe are grateful to Heather Macbeth for suggesting the following more\nelegant approach, which avoids definition by cases.\nWe simply add <code class=\"docutils literal notranslate\"><span class=\"pre\">b</span> <span class=\"pre\">/</span> <span class=\"pre\">2</span></code> to <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span></code> before dividing and then subtract it\nfrom the remainder.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0097",
+    "file": "C07_Structures.html",
+    "tag": "p",
+    "text": "Note the use of our old friend, linarith . We will also need to express mod' in terms of div' .",
+    "html": "<p>Note the use of our old friend, <code class=\"docutils literal notranslate\"><span class=\"pre\">linarith</span></code>. We will also need to express\n<code class=\"docutils literal notranslate\"><span class=\"pre\">mod'</span></code> in terms of <code class=\"docutils literal notranslate\"><span class=\"pre\">div'</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0098",
+    "file": "C07_Structures.html",
+    "tag": "p",
+    "text": "We will use the fact that \\(x^2 + y^2\\) is equal to zero if and only if \\(x\\) and \\(y\\) are both zero. As an exercise, we ask you to prove that this holds in any ordered ring.",
+    "html": "<p>We will use the fact that <span class=\"math notranslate nohighlight\">\\(x^2 + y^2\\)</span> is equal to zero if and only if\n<span class=\"math notranslate nohighlight\">\\(x\\)</span> and <span class=\"math notranslate nohighlight\">\\(y\\)</span> are both zero. As an exercise, we ask you to prove\nthat this holds in any ordered ring.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0099",
+    "file": "C07_Structures.html",
+    "tag": "p",
+    "text": "We will put all the remaining definitions and theorems in this section in the GaussInt namespace. First, we define the norm function and ask you to establish some of its properties. The proofs are all short.",
+    "html": "<p>We will put all the remaining definitions and theorems in this section\nin the <code class=\"docutils literal notranslate\"><span class=\"pre\">GaussInt</span></code> namespace.\nFirst, we define the <code class=\"docutils literal notranslate\"><span class=\"pre\">norm</span></code> function and ask you to establish\nsome of its properties.\nThe proofs are all short.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0100",
+    "file": "C07_Structures.html",
+    "tag": "p",
+    "text": "Next we define the conjugate function:",
+    "html": "<p>Next we define the conjugate function:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0101",
+    "file": "C07_Structures.html",
+    "tag": "p",
+    "text": "Finally, we define division for the Gaussian integers with the notation x / y , that rounds the complex quotient to the nearest Gaussian integer. We use our bespoke Int.div' for that purpose. As we calculated above, if x is \\(a + bi\\) and y is \\(c + di\\) , then the real and imaginary parts of x / y are the nearest integers to",
+    "html": "<p>Finally, we define division for the Gaussian integers\nwith the notation <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span> <span class=\"pre\">/</span> <span class=\"pre\">y</span></code>, that rounds the complex quotient to the nearest\nGaussian integer. We use our bespoke <code class=\"docutils literal notranslate\"><span class=\"pre\">Int.div'</span></code> for that purpose.\nAs we calculated above, if <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span></code> is <span class=\"math notranslate nohighlight\">\\(a + bi\\)</span> and <code class=\"docutils literal notranslate\"><span class=\"pre\">y</span></code> is <span class=\"math notranslate nohighlight\">\\(c + di\\)</span>,\nthen the real and imaginary parts of <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span> <span class=\"pre\">/</span> <span class=\"pre\">y</span></code> are the nearest integers to</p>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0102",
+    "file": "C07_Structures.html",
+    "tag": "p",
+    "text": "respectively. Here the numerators are the real and imaginary parts of \\((a + bi) (c - di)\\) , and the denominators are both equal to the norm of \\(c + di\\) .",
+    "html": "<p>respectively. Here the numerators are the real and imaginary parts of\n<span class=\"math notranslate nohighlight\">\\((a + bi) (c - di)\\)</span>, and the denominators are both equal to the norm\nof <span class=\"math notranslate nohighlight\">\\(c + di\\)</span>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0103",
+    "file": "C07_Structures.html",
+    "tag": "p",
+    "text": "Having defined x / y , we define x % y to be the remainder, x - (x / y) * y . As above, we record the definitions in the theorems div_def and mod_def so that we can use them with simp and rw .",
+    "html": "<p>Having defined <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span> <span class=\"pre\">/</span> <span class=\"pre\">y</span></code>, we define <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span> <span class=\"pre\">%</span> <span class=\"pre\">y</span></code> to be the remainder,\n<code class=\"docutils literal notranslate\"><span class=\"pre\">x</span> <span class=\"pre\">-</span> <span class=\"pre\">(x</span> <span class=\"pre\">/</span> <span class=\"pre\">y)</span> <span class=\"pre\">*</span> <span class=\"pre\">y</span></code>. As above, we record the definitions in the\ntheorems <code class=\"docutils literal notranslate\"><span class=\"pre\">div_def</span></code> and\n<code class=\"docutils literal notranslate\"><span class=\"pre\">mod_def</span></code> so that we can use them with <code class=\"docutils literal notranslate\"><span class=\"pre\">simp</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">rw</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0104",
+    "file": "C07_Structures.html",
+    "tag": "p",
+    "text": "These definitions immediately yield x = y * (x / y) + x % y for every x and y , so all we need to do is show that the norm of x % y is less than the norm of y when y is not zero.",
+    "html": "<p>These definitions immediately yield <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span> <span class=\"pre\">=</span> <span class=\"pre\">y</span> <span class=\"pre\">*</span> <span class=\"pre\">(x</span> <span class=\"pre\">/</span> <span class=\"pre\">y)</span> <span class=\"pre\">+</span> <span class=\"pre\">x</span> <span class=\"pre\">%</span> <span class=\"pre\">y</span></code> for every\n<code class=\"docutils literal notranslate\"><span class=\"pre\">x</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">y</span></code>, so all we need to do is show that the norm of <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span> <span class=\"pre\">%</span> <span class=\"pre\">y</span></code> is\nless than the norm of <code class=\"docutils literal notranslate\"><span class=\"pre\">y</span></code> when <code class=\"docutils literal notranslate\"><span class=\"pre\">y</span></code> is not zero.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0105",
+    "file": "C07_Structures.html",
+    "tag": "p",
+    "text": "We just defined the real and imaginary parts of x / y to be div' (x * conj y).re (norm y) and div' (x * conj y).im (norm y) , respectively. Calculating, we have",
+    "html": "<p>We just defined the real and imaginary parts of <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span> <span class=\"pre\">/</span> <span class=\"pre\">y</span></code> to be\n<code class=\"docutils literal notranslate\"><span class=\"pre\">div'</span> <span class=\"pre\">(x</span> <span class=\"pre\">*</span> <span class=\"pre\">conj</span> <span class=\"pre\">y).re</span> <span class=\"pre\">(norm</span> <span class=\"pre\">y)</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">div'</span> <span class=\"pre\">(x</span> <span class=\"pre\">*</span> <span class=\"pre\">conj</span> <span class=\"pre\">y).im</span> <span class=\"pre\">(norm</span> <span class=\"pre\">y)</span></code>,\nrespectively.\nCalculating, we have</p>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0106",
+    "file": "C07_Structures.html",
+    "tag": "p",
+    "text": "(x % y) * conj y = (x - x / y * y) * conj y = x * conj y - x / y * (y * conj y)",
+    "html": "<p><code class=\"docutils literal notranslate\"><span class=\"pre\">(x</span> <span class=\"pre\">%</span> <span class=\"pre\">y)</span> <span class=\"pre\">*</span> <span class=\"pre\">conj</span> <span class=\"pre\">y</span> <span class=\"pre\">=</span> <span class=\"pre\">(x</span> <span class=\"pre\">-</span> <span class=\"pre\">x</span> <span class=\"pre\">/</span> <span class=\"pre\">y</span> <span class=\"pre\">*</span> <span class=\"pre\">y)</span> <span class=\"pre\">*</span> <span class=\"pre\">conj</span> <span class=\"pre\">y</span> <span class=\"pre\">=</span> <span class=\"pre\">x</span> <span class=\"pre\">*</span> <span class=\"pre\">conj</span> <span class=\"pre\">y</span> <span class=\"pre\">-</span> <span class=\"pre\">x</span> <span class=\"pre\">/</span> <span class=\"pre\">y</span> <span class=\"pre\">*</span> <span class=\"pre\">(y</span> <span class=\"pre\">*</span> <span class=\"pre\">conj</span> <span class=\"pre\">y)</span></code></p>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0107",
+    "file": "C07_Structures.html",
+    "tag": "p",
+    "text": "The real and imaginary parts of the right-hand side are exactly mod' (x * conj y).re (norm y) and mod' (x * conj y).im (norm y) . By the properties of div' and mod' , these are guaranteed to be less than or equal to norm y / 2 . So we have",
+    "html": "<p>The real and imaginary parts of the right-hand side are exactly <code class=\"docutils literal notranslate\"><span class=\"pre\">mod'</span> <span class=\"pre\">(x</span> <span class=\"pre\">*</span> <span class=\"pre\">conj</span> <span class=\"pre\">y).re</span> <span class=\"pre\">(norm</span> <span class=\"pre\">y)</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">mod'</span> <span class=\"pre\">(x</span> <span class=\"pre\">*</span> <span class=\"pre\">conj</span> <span class=\"pre\">y).im</span> <span class=\"pre\">(norm</span> <span class=\"pre\">y)</span></code>.\nBy the properties of <code class=\"docutils literal notranslate\"><span class=\"pre\">div'</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">mod'</span></code>,\nthese are guaranteed to be less than or equal to <code class=\"docutils literal notranslate\"><span class=\"pre\">norm</span> <span class=\"pre\">y</span> <span class=\"pre\">/</span> <span class=\"pre\">2</span></code>.\nSo we have</p>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0108",
+    "file": "C07_Structures.html",
+    "tag": "p",
+    "text": "norm ((x % y) * conj y) ≤ (norm y / 2)^2 + (norm y / 2)^2 ≤ (norm y / 2) * norm y .",
+    "html": "<p><code class=\"docutils literal notranslate\"><span class=\"pre\">norm</span> <span class=\"pre\">((x</span> <span class=\"pre\">%</span> <span class=\"pre\">y)</span> <span class=\"pre\">*</span> <span class=\"pre\">conj</span> <span class=\"pre\">y)</span> <span class=\"pre\">≤</span> <span class=\"pre\">(norm</span> <span class=\"pre\">y</span> <span class=\"pre\">/</span> <span class=\"pre\">2)^2</span> <span class=\"pre\">+</span> <span class=\"pre\">(norm</span> <span class=\"pre\">y</span> <span class=\"pre\">/</span> <span class=\"pre\">2)^2</span> <span class=\"pre\">≤</span> <span class=\"pre\">(norm</span> <span class=\"pre\">y</span> <span class=\"pre\">/</span> <span class=\"pre\">2)</span> <span class=\"pre\">*</span> <span class=\"pre\">norm</span> <span class=\"pre\">y</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0109",
+    "file": "C07_Structures.html",
+    "tag": "p",
+    "text": "On the other hand, we have",
+    "html": "<p>On the other hand, we have</p>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0110",
+    "file": "C07_Structures.html",
+    "tag": "p",
+    "text": "norm ((x % y) * conj y) = norm (x % y) * norm (conj y) = norm (x % y) * norm y .",
+    "html": "<p><code class=\"docutils literal notranslate\"><span class=\"pre\">norm</span> <span class=\"pre\">((x</span> <span class=\"pre\">%</span> <span class=\"pre\">y)</span> <span class=\"pre\">*</span> <span class=\"pre\">conj</span> <span class=\"pre\">y)</span> <span class=\"pre\">=</span> <span class=\"pre\">norm</span> <span class=\"pre\">(x</span> <span class=\"pre\">%</span> <span class=\"pre\">y)</span> <span class=\"pre\">*</span> <span class=\"pre\">norm</span> <span class=\"pre\">(conj</span> <span class=\"pre\">y)</span> <span class=\"pre\">=</span> <span class=\"pre\">norm</span> <span class=\"pre\">(x</span> <span class=\"pre\">%</span> <span class=\"pre\">y)</span> <span class=\"pre\">*</span> <span class=\"pre\">norm</span> <span class=\"pre\">y</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0111",
+    "file": "C07_Structures.html",
+    "tag": "p",
+    "text": "Dividing through by norm y we have norm (x % y) ≤ (norm y) / 2 < norm y , as required.",
+    "html": "<p>Dividing through by <code class=\"docutils literal notranslate\"><span class=\"pre\">norm</span> <span class=\"pre\">y</span></code> we have <code class=\"docutils literal notranslate\"><span class=\"pre\">norm</span> <span class=\"pre\">(x</span> <span class=\"pre\">%</span> <span class=\"pre\">y)</span> <span class=\"pre\">≤</span> <span class=\"pre\">(norm</span> <span class=\"pre\">y)</span> <span class=\"pre\">/</span> <span class=\"pre\">2</span> <span class=\"pre\">&lt;</span> <span class=\"pre\">norm</span> <span class=\"pre\">y</span></code>,\nas required.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0112",
+    "file": "C07_Structures.html",
+    "tag": "p",
+    "text": "This messy calculation is carried out in the next proof. We encourage you to step through the details and see if you can find a nicer argument.",
+    "html": "<p>This messy calculation is carried out in the next proof. We encourage you\nto step through the details and see if you can find a nicer argument.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0113",
+    "file": "C07_Structures.html",
+    "tag": "p",
+    "text": "We are in the home stretch. Our norm function maps Gaussian integers to nonnegative integers. We need a function that maps Gaussian integers to natural numbers, and we obtain that by composing norm with the function Int.natAbs , which maps integers to the natural numbers. The first of the next two lemmas establishes that mapping the norm to the natural numbers and back to the integers does not change the value. The second one re-expresses the fact that the norm is decreasing.",
+    "html": "<p>We are in the home stretch. Our <code class=\"docutils literal notranslate\"><span class=\"pre\">norm</span></code> function maps Gaussian integers to\nnonnegative integers. We need a function that maps Gaussian integers to natural\nnumbers, and we obtain that by composing <code class=\"docutils literal notranslate\"><span class=\"pre\">norm</span></code> with the function\n<code class=\"docutils literal notranslate\"><span class=\"pre\">Int.natAbs</span></code>, which maps integers to the natural numbers.\nThe first of the next two lemmas establishes that mapping the norm to the\nnatural numbers and back to the integers does not change the value.\nThe second one re-expresses the fact that the norm is decreasing.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0114",
+    "file": "C07_Structures.html",
+    "tag": "p",
+    "text": "We also need to establish the second key property of the norm function on a Euclidean domain.",
+    "html": "<p>We also need to establish the second key property of the norm function\non a Euclidean domain.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0115",
+    "file": "C07_Structures.html",
+    "tag": "p",
+    "text": "We can now put it together to show that the Gaussian integers are an instance of a Euclidean domain. We use the quotient and remainder function we have defined. The Mathlib definition of a Euclidean domain is more general than the one above in that it allows us to show that remainder decreases with respect to any well-founded measure. Comparing the values of a norm function that returns natural numbers is just one instance of such a measure, and in that case, the required properties are the theorems natAbs_norm_mod_lt and not_norm_mul_left_lt_norm .",
+    "html": "<p>We can now put it together to show that the Gaussian integers are an\ninstance of a Euclidean domain. We use the quotient and remainder function we\nhave defined.\nThe Mathlib definition of a Euclidean domain is more general than the one\nabove in that it allows us to show that remainder decreases with respect\nto any well-founded measure.\nComparing the values of a norm function that returns natural numbers is\njust one instance of such a measure,\nand in that case, the required properties are the theorems\n<code class=\"docutils literal notranslate\"><span class=\"pre\">natAbs_norm_mod_lt</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">not_norm_mul_left_lt_norm</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0116",
+    "file": "C07_Structures.html",
+    "tag": "p",
+    "text": "An immediate payoff is that we now know that, in the Gaussian integers, the notions of being prime and being irreducible coincide.",
+    "html": "<p>An immediate payoff is that we now know that, in the Gaussian integers,\nthe notions of being prime and being irreducible coincide.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0117",
+    "file": "C07_Structures.html",
+    "tag": "li",
+    "text": "A partially ordered set consists of a set \\(P\\) and a binary relation \\(\\le\\) on \\(P\\) that is transitive, reflexive and antisymmetric.",
+    "html": "<li><p>A <em>partially ordered set</em> consists of a set <span class=\"math notranslate nohighlight\">\\(P\\)</span> and\na binary relation <span class=\"math notranslate nohighlight\">\\(\\le\\)</span> on <span class=\"math notranslate nohighlight\">\\(P\\)</span> that is transitive,\nreflexive and antisymmetric.</p></li>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0118",
+    "file": "C07_Structures.html",
+    "tag": "li",
+    "text": "A group consists of a set \\(G\\) with an associative binary operation, an identity element \\(1\\) , and a function \\(g \\mapsto g^{-1}\\) that returns an inverse for each \\(g\\) in \\(G\\) . A group is abelian or commutative if the operation is commutative.",
+    "html": "<li><p>A <em>group</em> consists of a set <span class=\"math notranslate nohighlight\">\\(G\\)</span> with an associative\nbinary operation, an identity element\n<span class=\"math notranslate nohighlight\">\\(1\\)</span>, and a function <span class=\"math notranslate nohighlight\">\\(g \\mapsto g^{-1}\\)</span> that returns\nan inverse for each <span class=\"math notranslate nohighlight\">\\(g\\)</span> in <span class=\"math notranslate nohighlight\">\\(G\\)</span>.\nA group is <em>abelian</em> or <em>commutative</em> if the operation is commutative.</p></li>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0119",
+    "file": "C07_Structures.html",
+    "tag": "li",
+    "text": "A lattice is a partially ordered set with meets and joins.",
+    "html": "<li><p>A <em>lattice</em> is a partially ordered set with meets and joins.</p></li>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0120",
+    "file": "C07_Structures.html",
+    "tag": "li",
+    "text": "A ring consists of an (additively written) abelian group \\((R, +, 0, x \\mapsto -x)\\) together with an associative multiplication operation \\(\\cdot\\) and an identity \\(1\\) , such that multiplication distributes over addition. A ring is commutative if the multiplication is commutative.",
+    "html": "<li><p>A <em>ring</em> consists of an (additively written) abelian group\n<span class=\"math notranslate nohighlight\">\\((R, +, 0, x \\mapsto -x)\\)</span>\ntogether with an associative multiplication operation\n<span class=\"math notranslate nohighlight\">\\(\\cdot\\)</span> and an identity <span class=\"math notranslate nohighlight\">\\(1\\)</span>,\nsuch that multiplication distributes over addition.\nA ring is <em>commutative</em> if the multiplication is commutative.</p></li>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0121",
+    "file": "C07_Structures.html",
+    "tag": "li",
+    "text": "An ordered ring \\((R, +, 0, -, \\cdot, 1, \\le)\\) consists of a ring together with a partial order on its elements, such that \\(a \\le b\\) implies \\(a + c \\le b + c\\) for every \\(a\\) , \\(b\\) , and \\(c\\) in \\(R\\) , and \\(0 \\le a\\) and \\(0 \\le b\\) implies \\(0 \\le a b\\) for every \\(a\\) and \\(b\\) in \\(R\\) .",
+    "html": "<li><p>An <em>ordered ring</em> <span class=\"math notranslate nohighlight\">\\((R, +, 0, -, \\cdot, 1, \\le)\\)</span> consists of a ring\ntogether with a partial order on its elements, such that <span class=\"math notranslate nohighlight\">\\(a \\le b\\)</span> implies\n<span class=\"math notranslate nohighlight\">\\(a + c \\le b + c\\)</span> for every <span class=\"math notranslate nohighlight\">\\(a\\)</span>, <span class=\"math notranslate nohighlight\">\\(b\\)</span>, and <span class=\"math notranslate nohighlight\">\\(c\\)</span> in <span class=\"math notranslate nohighlight\">\\(R\\)</span>,\nand <span class=\"math notranslate nohighlight\">\\(0 \\le a\\)</span> and <span class=\"math notranslate nohighlight\">\\(0 \\le b\\)</span> implies <span class=\"math notranslate nohighlight\">\\(0 \\le a b\\)</span> for\nevery <span class=\"math notranslate nohighlight\">\\(a\\)</span> and <span class=\"math notranslate nohighlight\">\\(b\\)</span> in <span class=\"math notranslate nohighlight\">\\(R\\)</span>.</p></li>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0122",
+    "file": "C07_Structures.html",
+    "tag": "li",
+    "text": "A metric space consists of a set \\(X\\) and a function \\(d : X \\times X \\to \\mathbb{R}\\) such that the following hold: \\(d(x, y) \\ge 0\\) for every \\(x\\) and \\(y\\) in \\(X\\) . \\(d(x, y) = 0\\) if and only if \\(x = y\\) . \\(d(x, y) = d(y, x)\\) for every \\(x\\) and \\(y\\) in \\(X\\) . \\(d(x, z) \\le d(x, y) + d(y, z)\\) for every \\(x\\) , \\(y\\) , and \\(z\\) in \\(X\\) .",
+    "html": "<li><p>A <em>metric space</em> consists of a set <span class=\"math notranslate nohighlight\">\\(X\\)</span> and a function\n<span class=\"math notranslate nohighlight\">\\(d : X \\times X \\to \\mathbb{R}\\)</span> such that the following hold:</p>\n<ul class=\"simple\">\n<li><p><span class=\"math notranslate nohighlight\">\\(d(x, y) \\ge 0\\)</span> for every <span class=\"math notranslate nohighlight\">\\(x\\)</span> and <span class=\"math notranslate nohighlight\">\\(y\\)</span> in <span class=\"math notranslate nohighlight\">\\(X\\)</span>.</p></li>\n<li><p><span class=\"math notranslate nohighlight\">\\(d(x, y) = 0\\)</span> if and only if <span class=\"math notranslate nohighlight\">\\(x = y\\)</span>.</p></li>\n<li><p><span class=\"math notranslate nohighlight\">\\(d(x, y) = d(y, x)\\)</span> for every <span class=\"math notranslate nohighlight\">\\(x\\)</span> and <span class=\"math notranslate nohighlight\">\\(y\\)</span> in <span class=\"math notranslate nohighlight\">\\(X\\)</span>.</p></li>\n<li><p><span class=\"math notranslate nohighlight\">\\(d(x, z) \\le d(x, y) + d(y, z)\\)</span> for every <span class=\"math notranslate nohighlight\">\\(x\\)</span>, <span class=\"math notranslate nohighlight\">\\(y\\)</span>, and\n<span class=\"math notranslate nohighlight\">\\(z\\)</span> in <span class=\"math notranslate nohighlight\">\\(X\\)</span>.</p></li>\n</ul>\n</li>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0123",
+    "file": "C07_Structures.html",
+    "tag": "li",
+    "text": "\\(d(x, y) \\ge 0\\) for every \\(x\\) and \\(y\\) in \\(X\\) .",
+    "html": "<li><p><span class=\"math notranslate nohighlight\">\\(d(x, y) \\ge 0\\)</span> for every <span class=\"math notranslate nohighlight\">\\(x\\)</span> and <span class=\"math notranslate nohighlight\">\\(y\\)</span> in <span class=\"math notranslate nohighlight\">\\(X\\)</span>.</p></li>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0124",
+    "file": "C07_Structures.html",
+    "tag": "li",
+    "text": "\\(d(x, y) = 0\\) if and only if \\(x = y\\) .",
+    "html": "<li><p><span class=\"math notranslate nohighlight\">\\(d(x, y) = 0\\)</span> if and only if <span class=\"math notranslate nohighlight\">\\(x = y\\)</span>.</p></li>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0125",
+    "file": "C07_Structures.html",
+    "tag": "li",
+    "text": "\\(d(x, y) = d(y, x)\\) for every \\(x\\) and \\(y\\) in \\(X\\) .",
+    "html": "<li><p><span class=\"math notranslate nohighlight\">\\(d(x, y) = d(y, x)\\)</span> for every <span class=\"math notranslate nohighlight\">\\(x\\)</span> and <span class=\"math notranslate nohighlight\">\\(y\\)</span> in <span class=\"math notranslate nohighlight\">\\(X\\)</span>.</p></li>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0126",
+    "file": "C07_Structures.html",
+    "tag": "li",
+    "text": "\\(d(x, z) \\le d(x, y) + d(y, z)\\) for every \\(x\\) , \\(y\\) , and \\(z\\) in \\(X\\) .",
+    "html": "<li><p><span class=\"math notranslate nohighlight\">\\(d(x, z) \\le d(x, y) + d(y, z)\\)</span> for every <span class=\"math notranslate nohighlight\">\\(x\\)</span>, <span class=\"math notranslate nohighlight\">\\(y\\)</span>, and\n<span class=\"math notranslate nohighlight\">\\(z\\)</span> in <span class=\"math notranslate nohighlight\">\\(X\\)</span>.</p></li>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0127",
+    "file": "C07_Structures.html",
+    "tag": "li",
+    "text": "A topological space consists of a set \\(X\\) and a collection \\(\\mathcal T\\) of subsets of \\(X\\) , called the open subsets of \\(X\\) , such that the following hold: The empty set and \\(X\\) are open. The intersection of two open sets is open. An arbitrary union of open sets is open.",
+    "html": "<li><p>A <em>topological space</em> consists of a set <span class=\"math notranslate nohighlight\">\\(X\\)</span> and a collection <span class=\"math notranslate nohighlight\">\\(\\mathcal T\\)</span>\nof subsets of <span class=\"math notranslate nohighlight\">\\(X\\)</span>, called the <em>open subsets of</em> <span class=\"math notranslate nohighlight\">\\(X\\)</span>, such that\nthe following hold:</p>\n<ul class=\"simple\">\n<li><p>The empty set and <span class=\"math notranslate nohighlight\">\\(X\\)</span> are open.</p></li>\n<li><p>The intersection of two open sets is open.</p></li>\n<li><p>An arbitrary union of open sets is open.</p></li>\n</ul>\n</li>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0128",
+    "file": "C07_Structures.html",
+    "tag": "li",
+    "text": "The empty set and \\(X\\) are open.",
+    "html": "<li><p>The empty set and <span class=\"math notranslate nohighlight\">\\(X\\)</span> are open.</p></li>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0129",
+    "file": "C07_Structures.html",
+    "tag": "li",
+    "text": "The intersection of two open sets is open.",
+    "html": "<li><p>The intersection of two open sets is open.</p></li>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0130",
+    "file": "C07_Structures.html",
+    "tag": "li",
+    "text": "An arbitrary union of open sets is open.",
+    "html": "<li><p>An arbitrary union of open sets is open.</p></li>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0131",
+    "file": "C07_Structures.html",
+    "tag": "li",
+    "text": "Logic. A definition that should be interpreted in any group takes, as arguments, the type of the group and the group structure as arguments. Similarly, a theorem about the elements of an arbitrary group begins with universal quantifiers over the type of the group and the group structure.",
+    "html": "<li><p><em>Logic.</em> A definition that should be interpreted in any group takes, as\narguments, the type of the group and the group structure as arguments.\nSimilarly, a theorem about the elements of an arbitrary group\nbegins with universal quantifiers over\nthe type of the group and the group structure.</p></li>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0132",
+    "file": "C07_Structures.html",
+    "tag": "li",
+    "text": "Implicit arguments. The arguments for the type and the structure are generally left implicit, so that we do not have to write them or see them in the Lean information window. Lean fills the information in for us silently.",
+    "html": "<li><p><em>Implicit arguments.</em> The arguments for the type and the structure\nare generally left implicit, so that we do not have to write them\nor see them in the Lean information window. Lean fills the\ninformation in for us silently.</p></li>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0133",
+    "file": "C07_Structures.html",
+    "tag": "li",
+    "text": "Type class inference. Also known as class inference , this is a simple but powerful mechanism that enables us to register information for Lean to use later on. When Lean is called on to fill in implicit arguments to a definition, theorem, or piece of notation, it can make use of information that has been registered.",
+    "html": "<li><p><em>Type class inference.</em> Also known as <em>class inference</em>,\nthis is a simple but powerful mechanism\nthat enables us to register information for Lean to use later on.\nWhen Lean is called on to fill in implicit arguments to a\ndefinition, theorem, or piece of notation,\nit can make use of information that has been registered.</p></li>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0134",
+    "file": "C07_Structures.html",
+    "tag": "li",
+    "text": "For every \\(a\\) and \\(b \\ne 0\\) in \\(R\\) , there are \\(q\\) and \\(r\\) in \\(R\\) such that \\(a = bq + r\\) and either \\(r = 0\\) or \\(N(r) < N(b)\\) .",
+    "html": "<li><p>For every <span class=\"math notranslate nohighlight\">\\(a\\)</span> and <span class=\"math notranslate nohighlight\">\\(b \\ne 0\\)</span> in <span class=\"math notranslate nohighlight\">\\(R\\)</span>, there are\n<span class=\"math notranslate nohighlight\">\\(q\\)</span> and <span class=\"math notranslate nohighlight\">\\(r\\)</span> in <span class=\"math notranslate nohighlight\">\\(R\\)</span> such that <span class=\"math notranslate nohighlight\">\\(a = bq + r\\)</span> and\neither <span class=\"math notranslate nohighlight\">\\(r = 0\\)</span> or <span class=\"math notranslate nohighlight\">\\(N(r) &lt; N(b)\\)</span>.</p></li>",
+    "zh": ""
+  },
+  {
+    "id": "C07_Structures:0135",
+    "file": "C07_Structures.html",
+    "tag": "li",
+    "text": "For every \\(a\\) and \\(b \\ne 0\\) , \\(N(a) \\le N(ab)\\) .",
+    "html": "<li><p>For every <span class=\"math notranslate nohighlight\">\\(a\\)</span> and <span class=\"math notranslate nohighlight\">\\(b \\ne 0\\)</span>, <span class=\"math notranslate nohighlight\">\\(N(a) \\le N(ab)\\)</span>.</p></li>",
+    "zh": ""
+  }
+]

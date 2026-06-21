@@ -1,0 +1,142 @@
+[
+  {
+    "id": "C05_Elementary_Number_Theory:0001",
+    "zh": "<span class=\"section-number\">5. </span>初等数论"
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0002",
+    "zh": "<span class=\"section-number\">5.1. </span>无理根"
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0003",
+    "zh": "<span class=\"section-number\">5.2. </span>归纳与递归"
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0004",
+    "zh": "<span class=\"section-number\">5.3. </span>无穷多个素数"
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0005",
+    "zh": "<span class=\"section-number\">5.4. </span>更多归纳法"
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0006",
+    "zh": "本章说明如何形式化数论中的一些初等结果。随着我们处理更有实质性的数学内容，证明会变得更长、更复杂，并建立在你已经掌握的技能之上。"
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0007",
+    "zh": "先从古希腊人已知的一个事实开始：2 的平方根是无理数。若反设不然，则可以把 <span class=\"math notranslate nohighlight\">\\(\\sqrt{2} = a / b\\)</span> 写成既约分数。两边平方得到 <span class=\"math notranslate nohighlight\">\\(a^2 = 2 b^2\\)</span>，这推出 <span class=\"math notranslate nohighlight\">\\(a\\)</span> 是偶数。若写 <span class=\"math notranslate nohighlight\">\\(a = 2c\\)</span>，则得到 <span class=\"math notranslate nohighlight\">\\(4c^2 = 2 b^2\\)</span>，从而 <span class=\"math notranslate nohighlight\">\\(b^2 = 2 c^2\\)</span>。这又推出 <span class=\"math notranslate nohighlight\">\\(b\\)</span> 也是偶数，与我们假定 <span class=\"math notranslate nohighlight\">\\(a / b\\)</span> 已经约成既约分数相矛盾。"
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0008",
+    "zh": "说 <span class=\"math notranslate nohighlight\">\\(a / b\\)</span> 是既约分数，意味着 <span class=\"math notranslate nohighlight\">\\(a\\)</span> 与 <span class=\"math notranslate nohighlight\">\\(b\\)</span> 没有公共因子，也就是说它们互素。Mathlib 把谓词 <code class=\"docutils literal notranslate\"><span class=\"pre\">Nat.Coprime</span> <span class=\"pre\">m</span> <span class=\"pre\">n</span></code> 定义为 <code class=\"docutils literal notranslate\"><span class=\"pre\">Nat.gcd</span> <span class=\"pre\">m</span> <span class=\"pre\">n</span> <span class=\"pre\">=</span> <span class=\"pre\">1</span></code>。使用 Lean 的匿名投影记法，若 <code class=\"docutils literal notranslate\"><span class=\"pre\">s</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">t</span></code> 是类型 <code class=\"docutils literal notranslate\"><span class=\"pre\">Nat</span></code> 的表达式，就可以写 <code class=\"docutils literal notranslate\"><span class=\"pre\">s.Coprime</span> <span class=\"pre\">t</span></code> 代替 <code class=\"docutils literal notranslate\"><span class=\"pre\">Nat.Coprime</span> <span class=\"pre\">s</span> <span class=\"pre\">t</span></code>；<code class=\"docutils literal notranslate\"><span class=\"pre\">Nat.gcd</span></code> 也类似。照常，在必要时 Lean 常会自动展开 <code class=\"docutils literal notranslate\"><span class=\"pre\">Nat.Coprime</span></code> 的定义，但我们也可以用标识符 <code class=\"docutils literal notranslate\"><span class=\"pre\">Nat.Coprime</span></code> 手动重写或化简。<code class=\"docutils literal notranslate\"><span class=\"pre\">norm_num</span></code> 策略足够聪明，可以计算具体数值。"
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0009",
+    "zh": "我们已经在 <a class=\"reference internal\" href=\"C02_Basics.html#more-examples-using-apply-and-rw\"><span class=\"std std-numref\">第 2.4 节</span></a> 中遇到过 <code class=\"docutils literal notranslate\"><span class=\"pre\">gcd</span></code> 函数。整数上也有一个 <code class=\"docutils literal notranslate\"><span class=\"pre\">gcd</span></code> 版本；稍后我们会回到不同数系之间关系的讨论。甚至还有一般的 <code class=\"docutils literal notranslate\"><span class=\"pre\">gcd</span></code> 函数，以及在一般代数结构类中有意义的一般 <code class=\"docutils literal notranslate\"><span class=\"pre\">Prime</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">Coprime</span></code> 概念。下一章我们将理解 Lean 如何管理这种一般性。在此之前，本节只关注自然数。"
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0010",
+    "zh": "我们还需要素数概念 <code class=\"docutils literal notranslate\"><span class=\"pre\">Nat.Prime</span></code>。定理 <code class=\"docutils literal notranslate\"><span class=\"pre\">Nat.prime_def_lt</span></code> 给出一个熟悉的刻画，而 <code class=\"docutils literal notranslate\"><span class=\"pre\">Nat.Prime.eq_one_or_self_of_dvd</span></code> 给出另一个刻画。"
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0011",
+    "zh": "在自然数中，素数具有不能写成非平凡因子乘积的性质。在更广泛的数学语境中，环中具有这一性质的元素称为不可约元素。若环中的一个元素满足：只要它整除一个乘积，就整除其中某个因子，则称它为素元素。自然数的一个重要性质是，在该语境中这两个概念重合，从而得到定理 <code class=\"docutils literal notranslate\"><span class=\"pre\">Nat.Prime.dvd_mul</span></code>。"
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0012",
+    "zh": "可以用这个事实建立上述论证中的关键性质：若一个数的平方是偶数，则该数本身也是偶数。Mathlib 在 <code class=\"docutils literal notranslate\"><span class=\"pre\">Algebra.Group.Even</span></code> 中定义了谓词 <code class=\"docutils literal notranslate\"><span class=\"pre\">Even</span></code>，但出于稍后会清楚的原因，我们将简单地使用 <code class=\"docutils literal notranslate\"><span class=\"pre\">2</span> <span class=\"pre\">∣</span> <span class=\"pre\">m</span></code> 来表示 <code class=\"docutils literal notranslate\"><span class=\"pre\">m</span></code> 是偶数。"
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0013",
+    "zh": "随着学习推进，你需要熟练找到所需事实。记住，如果能猜出名称前缀并已导入相关库，就可以使用 Tab 补全（有时是 Ctrl-Tab）寻找目标。可以在任意标识符上 Ctrl-点击，跳转到定义它的文件，从而浏览附近的定义和定理。也可以使用 Lean 社区网页上的搜索引擎；如果都失败了，不要犹豫，到 Zulip 上提问。"
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0014",
+    "zh": "我们证明 2 的平方根无理性的核心包含在下面的定理中。请尝试使用 <code class=\"docutils literal notranslate\"><span class=\"pre\">even_of_even_sqr</span></code> 和定理 <code class=\"docutils literal notranslate\"><span class=\"pre\">Nat.dvd_gcd</span></code> 补全证明草图。"
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0015",
+    "zh": "事实上，只需很少修改，就可以把 2 替换为任意素数。请在下一个例子中试一试。在证明末尾，需要从 <code class=\"docutils literal notranslate\"><span class=\"pre\">p</span> <span class=\"pre\">∣</span> <span class=\"pre\">1</span></code> 导出矛盾。可以使用 <code class=\"docutils literal notranslate\"><span class=\"pre\">Nat.Prime.two_le</span></code>，它说明任意素数都大于等于 2；以及 <code class=\"docutils literal notranslate\"><span class=\"pre\">Nat.le_of_dvd</span></code>。"
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0016",
+    "zh": "让我们考虑另一种方法。下面快速证明：若 <span class=\"math notranslate nohighlight\">\\(p\\)</span> 是素数，则 <span class=\"math notranslate nohighlight\">\\(m^2 \\ne p n^2\\)</span>。如果假设 <span class=\"math notranslate nohighlight\">\\(m^2 = p n^2\\)</span>，并考虑 <span class=\"math notranslate nohighlight\">\\(m\\)</span> 和 <span class=\"math notranslate nohighlight\">\\(n\\)</span> 的素因子分解，则 <span class=\"math notranslate nohighlight\">\\(p\\)</span> 在等式左侧出现偶数次，而在右侧出现奇数次，矛盾。注意，这个论证要求 <span class=\"math notranslate nohighlight\">\\(n\\)</span>，从而 <span class=\"math notranslate nohighlight\">\\(m\\)</span>，不等于零。下面的形式化确认这个假设足够。"
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0017",
+    "zh": "唯一分解定理说，每个非零自然数都能以唯一方式写成素数的乘积。Mathlib 包含该事实的形式版本，用函数 <code class=\"docutils literal notranslate\"><span class=\"pre\">Nat.primeFactorsList</span></code> 表示；它返回一个数按非递减顺序排列的素因子列表。库证明了 <code class=\"docutils literal notranslate\"><span class=\"pre\">Nat.primeFactorsList</span> <span class=\"pre\">n</span></code> 的所有元素都是素数，任意大于零的 <code class=\"docutils literal notranslate\"><span class=\"pre\">n</span></code> 等于其因子的乘积，并且如果 <code class=\"docutils literal notranslate\"><span class=\"pre\">n</span></code> 等于另一个素数列表的乘积，那么该列表是 <code class=\"docutils literal notranslate\"><span class=\"pre\">Nat.primeFactorsList</span> <span class=\"pre\">n</span></code> 的一个排列。"
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0018",
+    "zh": "即使我们还没有讨论列表成员关系、乘积或排列，你也可以浏览这些定理以及附近的其他定理。当前任务不需要其中任何内容。相反，我们将使用 Mathlib 有一个函数 <code class=\"docutils literal notranslate\"><span class=\"pre\">Nat.factorization</span></code> 这一事实，它把同样的数据表示为函数。具体地说，<code class=\"docutils literal notranslate\"><span class=\"pre\">Nat.factorization</span> <span class=\"pre\">n</span> <span class=\"pre\">p</span></code>，也可写作 <code class=\"docutils literal notranslate\"><span class=\"pre\">n.factorization</span> <span class=\"pre\">p</span></code>，返回 <code class=\"docutils literal notranslate\"><span class=\"pre\">p</span></code> 在 <code class=\"docutils literal notranslate\"><span class=\"pre\">n</span></code> 的素因子分解中的重数。我们将使用以下三个事实。"
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0019",
+    "zh": "事实上，<code class=\"docutils literal notranslate\"><span class=\"pre\">n.factorization</span></code> 在 Lean 中定义为一个有限支撑函数；这解释了你逐步查看上面证明时会看到的奇怪记号。现在不必担心这些。就这里的目的而言，可以把上面三个定理当作黑箱使用。"
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0020",
+    "zh": "下一个例子说明，化简器足够聪明，可以把 <code class=\"docutils literal notranslate\"><span class=\"pre\">n^2</span> <span class=\"pre\">≠</span> <span class=\"pre\">0</span></code> 替换为 <code class=\"docutils literal notranslate\"><span class=\"pre\">n</span> <span class=\"pre\">≠</span> <span class=\"pre\">0</span></code>。策略 <code class=\"docutils literal notranslate\"><span class=\"pre\">simpa</span></code> 只是调用 <code class=\"docutils literal notranslate\"><span class=\"pre\">simp</span></code> 后接 <code class=\"docutils literal notranslate\"><span class=\"pre\">assumption</span></code>。"
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0021",
+    "zh": "看看能否使用上述恒等式补全证明中缺失的部分。"
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0022",
+    "zh": "这个证明的一个优点是它也能推广。2 并没有特殊之处；稍作修改后，该证明表明：只要写出 <code class=\"docutils literal notranslate\"><span class=\"pre\">m^k</span> <span class=\"pre\">=</span> <span class=\"pre\">r</span> <span class=\"pre\">*</span> <span class=\"pre\">n^k</span></code>，任意素数 <code class=\"docutils literal notranslate\"><span class=\"pre\">p</span></code> 在 <code class=\"docutils literal notranslate\"><span class=\"pre\">r</span></code> 中的重数必须是 <code class=\"docutils literal notranslate\"><span class=\"pre\">k</span></code> 的倍数。"
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0023",
+    "zh": "为了把 <code class=\"docutils literal notranslate\"><span class=\"pre\">Nat.count_factors_mul_of_pos</span></code> 用于 <code class=\"docutils literal notranslate\"><span class=\"pre\">r</span> <span class=\"pre\">*</span> <span class=\"pre\">n^k</span></code>，需要知道 <code class=\"docutils literal notranslate\"><span class=\"pre\">r</span></code> 为正。但当 <code class=\"docutils literal notranslate\"><span class=\"pre\">r</span></code> 为零时，下面的定理是平凡的，并且容易由化简器证明。因此证明按情形进行。行 <code class=\"docutils literal notranslate\"><span class=\"pre\">rcases</span> <span class=\"pre\">r</span> <span class=\"pre\">with</span> <span class=\"pre\">_</span> <span class=\"pre\">|</span> <span class=\"pre\">r</span></code> 把目标替换为两个版本：一个把 <code class=\"docutils literal notranslate\"><span class=\"pre\">r</span></code> 替换为 <code class=\"docutils literal notranslate\"><span class=\"pre\">0</span></code>，另一个把 <code class=\"docutils literal notranslate\"><span class=\"pre\">r</span></code> 替换为 <code class=\"docutils literal notranslate\"><span class=\"pre\">r</span> <span class=\"pre\">+</span> <span class=\"pre\">1</span></code>。在第二种情形中，可以使用定理 <code class=\"docutils literal notranslate\"><span class=\"pre\">r.succ_ne_zero</span></code>，它建立 <code class=\"docutils literal notranslate\"><span class=\"pre\">r</span> <span class=\"pre\">+</span> <span class=\"pre\">1</span> <span class=\"pre\">≠</span> <span class=\"pre\">0</span></code>（<code class=\"docutils literal notranslate\"><span class=\"pre\">succ</span></code> 表示后继）。"
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0024",
+    "zh": "还要注意，以 <code class=\"docutils literal notranslate\"><span class=\"pre\">have</span> <span class=\"pre\">:</span> <span class=\"pre\">npow_nz</span></code> 开头的那一行给出了 <code class=\"docutils literal notranslate\"><span class=\"pre\">n^k</span> <span class=\"pre\">≠</span> <span class=\"pre\">0</span></code> 的一个短证明项证明。为了理解它如何工作，可以尝试把它替换为策略证明，然后思考这些策略如何描述该证明项。"
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0025",
+    "zh": "看看能否补全下面证明中的缺失部分。在最后，可以使用 <code class=\"docutils literal notranslate\"><span class=\"pre\">Nat.dvd_sub</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">Nat.dvd_mul_right</span></code> 完成证明。"
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0026",
+    "zh": "注意，这个例子并不假定 <code class=\"docutils literal notranslate\"><span class=\"pre\">p</span></code> 是素数；但当 <code class=\"docutils literal notranslate\"><span class=\"pre\">p</span></code> 不是素数时，结论是平凡的，因为此时 <code class=\"docutils literal notranslate\"><span class=\"pre\">r.factorization</span> <span class=\"pre\">p</span></code> 按定义为零，而证明无论如何都适用于所有情形。"
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0027",
+    "zh": "我们可能希望以多种方式改进这些结果。首先，一个证明 2 的平方根无理性的证明，应当真正谈论 2 的平方根，也就是实数或复数中的一个元素。而说它无理，应当谈论有理数，即没有任何有理数等于它。此外，还应把本节定理扩展到整数。虽然数学上显然，如果能把 2 的平方根写成两个整数的商，也就能把它写成两个自然数的商，但形式化证明这一点需要一些工作。"
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0028",
+    "zh": "在 Mathlib 中，自然数、整数、有理数、实数和复数分别由不同的数据类型表示。把注意力限制在单独的论域上往往很有帮助：我们会看到，对自然数做归纳很容易；而当实数不在图景中时，关于整数整除性的推理最容易。但必须在不同论域之间协调是一件麻烦事，我们将不得不处理它。本章稍后会回到这个问题。"
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0029",
+    "zh": "我们还应期待能够加强最后一个定理的结论，说明数 <code class=\"docutils literal notranslate\"><span class=\"pre\">r</span></code> 是一个 <code class=\"docutils literal notranslate\"><span class=\"pre\">k</span></code> 次幂，因为它的 <code class=\"docutils literal notranslate\"><span class=\"pre\">k</span></code> 次根就是每个整除 <code class=\"docutils literal notranslate\"><span class=\"pre\">r</span></code> 的素数，按其在 <code class=\"docutils literal notranslate\"><span class=\"pre\">r</span></code> 中的重数除以 <code class=\"docutils literal notranslate\"><span class=\"pre\">k</span></code> 后所得指数相乘。为了做到这一点，需要更好的手段来推理有限集上的乘积和求和，这也是我们稍后会回到的主题。"
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0030",
+    "zh": "事实上，本节中的结果都已在 Mathlib 的 <code class=\"docutils literal notranslate\"><span class=\"pre\">Data.Real.Irrational</span></code> 中以远为一般的形式建立。重数概念对任意交换幺半群都有定义，并且取值于扩展自然数 <code class=\"docutils literal notranslate\"><span class=\"pre\">enat</span></code>，它是在自然数中加入无穷大所得的类型。下一章我们将开始发展理解 Lean 如何支持这种一般性的手段。"
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0031",
+    "zh": "自然数集 <span class=\"math notranslate nohighlight\">\\(\\mathbb{N} = \\{0, 1, 2, \\ldots\\}\\)</span> 不仅本身极为重要，也在构造新的数学对象时起核心作用。Lean 的基础允许我们声明<em>归纳类型</em>，即由给定构造子列表归纳生成的类型。在 Lean 中，自然数声明如下。"
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0032",
+    "zh": "可以通过写 <code class=\"docutils literal notranslate\"><span class=\"pre\">#check</span> <span class=\"pre\">Nat</span></code>，然后在标识符 <code class=\"docutils literal notranslate\"><span class=\"pre\">Nat</span></code> 上 Ctrl-点击，在库中找到这个定义。该命令说明 <code class=\"docutils literal notranslate\"><span class=\"pre\">Nat</span></code> 是由两个构造子 <code class=\"docutils literal notranslate\"><span class=\"pre\">zero</span> <span class=\"pre\">:</span> <span class=\"pre\">Nat</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">succ</span> <span class=\"pre\">:</span> <span class=\"pre\">Nat</span> <span class=\"pre\">→</span> <span class=\"pre\">Nat</span></code> 自由且归纳生成的数据类型。当然，库分别为 <code class=\"docutils literal notranslate\"><span class=\"pre\">Nat</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">zero</span></code> 引入记号 <code class=\"docutils literal notranslate\"><span class=\"pre\">ℕ</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">0</span></code>。（数字会被翻译为二进制表示，但现在不必关心这些细节。）"
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0033",
+    "zh": "对工作数学家来说，“自由”意味着类型 <code class=\"docutils literal notranslate\"><span class=\"pre\">Nat</span></code> 有一个元素 <code class=\"docutils literal notranslate\"><span class=\"pre\">zero</span></code>，以及一个单射的后继函数 <code class=\"docutils literal notranslate\"><span class=\"pre\">succ</span></code>，且 <code class=\"docutils literal notranslate\"><span class=\"pre\">succ</span></code> 的像不包含 <code class=\"docutils literal notranslate\"><span class=\"pre\">zero</span></code>。"
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0034",
+    "zh": "对工作数学家来说，“归纳”意味着自然数带有归纳证明原理和递归定义原理。本节将说明如何使用它们。"
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0035",
+    "zh": "下面是阶乘函数递归定义的一个例子。"
+  }
+]

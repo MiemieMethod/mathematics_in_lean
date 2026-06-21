@@ -1,0 +1,138 @@
+[
+  {
+    "id": "C13_Integration_and_Measure_Theory:0001",
+    "file": "C13_Integration_and_Measure_Theory.html",
+    "tag": "h1",
+    "text": "13. Integration and Measure Theory",
+    "html": "<h1><span class=\"section-number\">13. </span>Integration and Measure Theory</h1>",
+    "zh": ""
+  },
+  {
+    "id": "C13_Integration_and_Measure_Theory:0002",
+    "file": "C13_Integration_and_Measure_Theory.html",
+    "tag": "h2",
+    "text": "13.1. Elementary Integration",
+    "html": "<h2><span class=\"section-number\">13.1. </span>Elementary Integration</h2>",
+    "zh": ""
+  },
+  {
+    "id": "C13_Integration_and_Measure_Theory:0003",
+    "file": "C13_Integration_and_Measure_Theory.html",
+    "tag": "h2",
+    "text": "13.2. Measure Theory",
+    "html": "<h2><span class=\"section-number\">13.2. </span>Measure Theory</h2>",
+    "zh": ""
+  },
+  {
+    "id": "C13_Integration_and_Measure_Theory:0004",
+    "file": "C13_Integration_and_Measure_Theory.html",
+    "tag": "h2",
+    "text": "13.3. Integration",
+    "html": "<h2><span class=\"section-number\">13.3. </span>Integration</h2>",
+    "zh": ""
+  },
+  {
+    "id": "C13_Integration_and_Measure_Theory:0005",
+    "file": "C13_Integration_and_Measure_Theory.html",
+    "tag": "p",
+    "text": "We first focus on integration of functions on finite intervals in ℝ . We can integrate elementary functions.",
+    "html": "<p>We first focus on integration of functions on finite intervals in <code class=\"docutils literal notranslate\"><span class=\"pre\">ℝ</span></code>. We can integrate\nelementary functions.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C13_Integration_and_Measure_Theory:0006",
+    "file": "C13_Integration_and_Measure_Theory.html",
+    "tag": "p",
+    "text": "The fundamental theorem of calculus relates integration and differentiation. Below we give simplified statements of the two parts of this theorem. The first part says that integration provides an inverse to differentiation and the second one specifies how to compute integrals of derivatives. (These two parts are very closely related, but their optimal versions, which are not shown here, are not equivalent.)",
+    "html": "<p>The fundamental theorem of calculus relates integration and differentiation.\nBelow we give simplified statements of the two parts of this theorem. The first part\nsays that integration provides an inverse to differentiation and the second one\nspecifies how to compute integrals of derivatives.\n(These two parts are very closely related, but their optimal versions,\nwhich are not shown here, are not equivalent.)</p>",
+    "zh": ""
+  },
+  {
+    "id": "C13_Integration_and_Measure_Theory:0007",
+    "file": "C13_Integration_and_Measure_Theory.html",
+    "tag": "p",
+    "text": "Convolution is also defined in Mathlib and its basic properties are proved.",
+    "html": "<p>Convolution is also defined in Mathlib and its basic properties are proved.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C13_Integration_and_Measure_Theory:0008",
+    "file": "C13_Integration_and_Measure_Theory.html",
+    "tag": "p",
+    "text": "The general context for integration in Mathlib is measure theory. Even the elementary integrals of the previous section are in fact Bochner integrals. Bochner integration is a generalization of Lebesgue integration where the target space can be any Banach space, not necessarily finite dimensional.",
+    "html": "<p>The general context for integration in Mathlib is measure theory. Even the elementary\nintegrals of the previous section are in fact Bochner integrals. Bochner integration is\na generalization of Lebesgue integration where the target space can be any Banach space,\nnot necessarily finite dimensional.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C13_Integration_and_Measure_Theory:0009",
+    "file": "C13_Integration_and_Measure_Theory.html",
+    "tag": "p",
+    "text": "The first component in the development of measure theory is the notion of a \\(\\sigma\\) -algebra of sets, which are called the measurable sets. The type class MeasurableSpace serves to equip a type with such a structure. The sets empty and univ are measurable, the complement of a measurable set is measurable, and a countable union or intersection of measurable sets is measurable. Note that these axioms are redundant; if you #print MeasurableSpace , you will see the ones that Mathlib uses. As the examples below show, countability assumptions can be expressed using the Encodable type class.",
+    "html": "<p>The first component in the development of measure theory\nis the notion of a <span class=\"math notranslate nohighlight\">\\(\\sigma\\)</span>-algebra of sets, which are called the\n<em>measurable</em> sets.\nThe type class <code class=\"docutils literal notranslate\"><span class=\"pre\">MeasurableSpace</span></code> serves to equip a type with such a structure.\nThe sets <code class=\"docutils literal notranslate\"><span class=\"pre\">empty</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">univ</span></code> are measurable,\nthe complement of a measurable set is measurable,\nand a countable union or intersection of measurable sets is measurable.\nNote that these axioms are redundant; if you <code class=\"docutils literal notranslate\"><span class=\"pre\">#print</span> <span class=\"pre\">MeasurableSpace</span></code>,\nyou will see the ones that Mathlib uses.\nAs the examples below show, countability assumptions can be expressed using the\n<code class=\"docutils literal notranslate\"><span class=\"pre\">Encodable</span></code> type class.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C13_Integration_and_Measure_Theory:0010",
+    "file": "C13_Integration_and_Measure_Theory.html",
+    "tag": "p",
+    "text": "Once a type is measurable, we can measure it. On paper, a measure on a set (or type) equipped with a \\(\\sigma\\) -algebra is a function from the measurable sets to the extended non-negative reals that is additive on countable disjoint unions. In Mathlib, we don’t want to carry around measurability assumptions every time we write an application of the measure to a set. So we extend the measure to any set s as the infimum of measures of measurable sets containing s . Of course, many lemmas still require measurability assumptions, but not all.",
+    "html": "<p>Once a type is measurable, we can measure it. On paper, a measure on a set\n(or type) equipped with a\n<span class=\"math notranslate nohighlight\">\\(\\sigma\\)</span>-algebra is a function from the measurable sets to\nthe extended non-negative reals that is\nadditive on countable disjoint unions.\nIn Mathlib, we don’t want to carry around measurability assumptions\nevery time we write an application of the measure to a set.\nSo we extend the measure to any set <code class=\"docutils literal notranslate\"><span class=\"pre\">s</span></code>\nas the infimum of measures of measurable sets containing <code class=\"docutils literal notranslate\"><span class=\"pre\">s</span></code>.\nOf course, many lemmas still require\nmeasurability assumptions, but not all.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C13_Integration_and_Measure_Theory:0011",
+    "file": "C13_Integration_and_Measure_Theory.html",
+    "tag": "p",
+    "text": "Once a type has a measure associated with it, we say that a property P holds almost everywhere if the set of elements where the property fails has measure 0. The collection of properties that hold almost everywhere form a filter, but Mathlib introduces special notation for saying that a property holds almost everywhere.",
+    "html": "<p>Once a type has a measure associated with it, we say that a property <code class=\"docutils literal notranslate\"><span class=\"pre\">P</span></code>\nholds <em>almost everywhere</em> if the set of elements where the property fails\nhas measure 0.\nThe collection of properties that hold almost everywhere form a filter,\nbut Mathlib introduces special notation for saying that a property holds\nalmost everywhere.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C13_Integration_and_Measure_Theory:0012",
+    "file": "C13_Integration_and_Measure_Theory.html",
+    "tag": "p",
+    "text": "Now that we have measurable spaces and measures we can consider integrals. As explained above, Mathlib uses a very general notion of integration that allows any Banach space as the target. As usual, we don’t want our notation to carry around assumptions, so we define integration in such a way that an integral is equal to zero if the function in question is not integrable. Most lemmas having to do with integrals have integrability assumptions.",
+    "html": "<p>Now that we have measurable spaces and measures we can consider integrals.\nAs explained above, Mathlib uses a very general notion of\nintegration that allows any Banach space as the target.\nAs usual, we don’t want our notation to\ncarry around assumptions, so we define integration in such a way\nthat an integral is equal to zero if the function in question is\nnot integrable.\nMost lemmas having to do with integrals have integrability assumptions.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C13_Integration_and_Measure_Theory:0013",
+    "file": "C13_Integration_and_Measure_Theory.html",
+    "tag": "p",
+    "text": "As an example of the complex interactions between our various conventions, let us see how to integrate constant functions. Recall that a measure μ takes values in ℝ≥0∞ , the type of extended non-negative reals. There is a function ENNReal.toReal : ℝ≥0∞ → ℝ which sends ⊤ , the point at infinity, to zero. For any s : Set α , if μ s = ⊤ , then nonzero constant functions are not integrable on s . In that case, their integrals are equal to zero by definition, as is (μ s).toReal . So in all cases we have the following lemma.",
+    "html": "<p>As an example of the complex interactions between our various conventions, let us see how to integrate constant functions.\nRecall that a measure <code class=\"docutils literal notranslate\"><span class=\"pre\">μ</span></code> takes values in <code class=\"docutils literal notranslate\"><span class=\"pre\">ℝ≥0∞</span></code>, the type of extended non-negative reals.\nThere is a function <code class=\"docutils literal notranslate\"><span class=\"pre\">ENNReal.toReal</span> <span class=\"pre\">:</span> <span class=\"pre\">ℝ≥0∞</span> <span class=\"pre\">→</span> <span class=\"pre\">ℝ</span></code> which sends <code class=\"docutils literal notranslate\"><span class=\"pre\">⊤</span></code>,\nthe point at infinity, to zero.\nFor any <code class=\"docutils literal notranslate\"><span class=\"pre\">s</span> <span class=\"pre\">:</span> <span class=\"pre\">Set</span> <span class=\"pre\">α</span></code>, if <code class=\"docutils literal notranslate\"><span class=\"pre\">μ</span> <span class=\"pre\">s</span> <span class=\"pre\">=</span> <span class=\"pre\">⊤</span></code>, then nonzero constant functions are not integrable on <code class=\"docutils literal notranslate\"><span class=\"pre\">s</span></code>.\nIn that case, their integrals are equal to zero by definition, as is <code class=\"docutils literal notranslate\"><span class=\"pre\">(μ</span> <span class=\"pre\">s).toReal</span></code>.\nSo in all cases we have the following lemma.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C13_Integration_and_Measure_Theory:0014",
+    "file": "C13_Integration_and_Measure_Theory.html",
+    "tag": "p",
+    "text": "We now quickly explain how to access the most important theorems in integration theory, starting with the dominated convergence theorem. There are several versions in Mathlib, and here we only show the most basic one.",
+    "html": "<p>We now quickly explain how to access the most important theorems in integration theory, starting\nwith the dominated convergence theorem. There are several versions in Mathlib,\nand here we only show the most basic one.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C13_Integration_and_Measure_Theory:0015",
+    "file": "C13_Integration_and_Measure_Theory.html",
+    "tag": "p",
+    "text": "Then we have Fubini’s theorem for integrals on product type.",
+    "html": "<p>Then we have Fubini’s theorem for integrals on product type.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C13_Integration_and_Measure_Theory:0016",
+    "file": "C13_Integration_and_Measure_Theory.html",
+    "tag": "p",
+    "text": "There is a very general version of convolution that applies to any continuous bilinear form.",
+    "html": "<p>There is a very general version of convolution that applies to any\ncontinuous bilinear form.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C13_Integration_and_Measure_Theory:0017",
+    "file": "C13_Integration_and_Measure_Theory.html",
+    "tag": "p",
+    "text": "Finally, Mathlib has a very general version of the change-of-variables formula. In the statement below, BorelSpace E means the \\(\\sigma\\) -algebra on E is generated by the open sets of E , and IsAddHaarMeasure μ means that the measure μ is left-invariant, gives finite mass to compact sets, and give positive mass to open sets.",
+    "html": "<p>Finally, Mathlib has a very general version of the change-of-variables formula.\nIn the statement below, <code class=\"docutils literal notranslate\"><span class=\"pre\">BorelSpace</span> <span class=\"pre\">E</span></code> means the\n<span class=\"math notranslate nohighlight\">\\(\\sigma\\)</span>-algebra on <code class=\"docutils literal notranslate\"><span class=\"pre\">E</span></code> is generated by the open sets of <code class=\"docutils literal notranslate\"><span class=\"pre\">E</span></code>,\nand <code class=\"docutils literal notranslate\"><span class=\"pre\">IsAddHaarMeasure</span> <span class=\"pre\">μ</span></code> means that the measure <code class=\"docutils literal notranslate\"><span class=\"pre\">μ</span></code> is left-invariant,\ngives finite mass to compact sets, and give positive mass to open sets.</p>",
+    "zh": ""
+  }
+]

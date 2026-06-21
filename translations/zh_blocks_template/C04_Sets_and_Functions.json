@@ -1,0 +1,706 @@
+[
+  {
+    "id": "C04_Sets_and_Functions:0001",
+    "file": "C04_Sets_and_Functions.html",
+    "tag": "h1",
+    "text": "4. Sets and Functions",
+    "html": "<h1><span class=\"section-number\">4. </span>Sets and Functions</h1>",
+    "zh": ""
+  },
+  {
+    "id": "C04_Sets_and_Functions:0002",
+    "file": "C04_Sets_and_Functions.html",
+    "tag": "h2",
+    "text": "4.1. Sets",
+    "html": "<h2><span class=\"section-number\">4.1. </span>Sets</h2>",
+    "zh": ""
+  },
+  {
+    "id": "C04_Sets_and_Functions:0003",
+    "file": "C04_Sets_and_Functions.html",
+    "tag": "h2",
+    "text": "4.2. Functions",
+    "html": "<h2><span class=\"section-number\">4.2. </span>Functions</h2>",
+    "zh": ""
+  },
+  {
+    "id": "C04_Sets_and_Functions:0004",
+    "file": "C04_Sets_and_Functions.html",
+    "tag": "h2",
+    "text": "4.3. The Schröder-Bernstein Theorem",
+    "html": "<h2><span class=\"section-number\">4.3. </span>The Schröder-Bernstein Theorem</h2>",
+    "zh": ""
+  },
+  {
+    "id": "C04_Sets_and_Functions:0005",
+    "file": "C04_Sets_and_Functions.html",
+    "tag": "p",
+    "text": "The vocabulary of sets, relations, and functions provides a uniform language for carrying out constructions in all the branches of mathematics. Since functions and relations can be defined in terms of sets, axiomatic set theory can be used as a foundation for mathematics.",
+    "html": "<p>The vocabulary of sets, relations, and functions provides a uniform\nlanguage for carrying out constructions in all the branches of\nmathematics.\nSince functions and relations can be defined in terms of sets,\naxiomatic set theory can be used as a foundation for mathematics.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C04_Sets_and_Functions:0006",
+    "file": "C04_Sets_and_Functions.html",
+    "tag": "p",
+    "text": "Lean’s foundation is based instead on the primitive notion of a type , and it includes ways of defining functions between types. Every expression in Lean has a type: there are natural numbers, real numbers, functions from reals to reals, groups, vector spaces, and so on. Some expressions are types, which is to say, their type is Type . Lean and Mathlib provide ways of defining new types, and ways of defining objects of those types.",
+    "html": "<p>Lean’s foundation is based instead on the primitive notion of a <em>type</em>,\nand it includes ways of defining functions between types.\nEvery expression in Lean has a type:\nthere are natural numbers, real numbers, functions from reals to reals,\ngroups, vector spaces, and so on.\nSome expressions <em>are</em> types,\nwhich is to say,\ntheir type is <code class=\"docutils literal notranslate\"><span class=\"pre\">Type</span></code>.\nLean and Mathlib provide ways of defining new types,\nand ways of defining objects of those types.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C04_Sets_and_Functions:0007",
+    "file": "C04_Sets_and_Functions.html",
+    "tag": "p",
+    "text": "Conceptually, you can think of a type as just a set of objects. Requiring every object to have a type has some advantages. For example, it makes it possible to overload notation like + , and it sometimes makes input less verbose because Lean can infer a lot of information from an object’s type. The type system also enables Lean to flag errors when you apply a function to the wrong number of arguments, or apply a function to arguments of the wrong type.",
+    "html": "<p>Conceptually, you can think of a type as just a set of objects.\nRequiring every object to have a type has some advantages.\nFor example, it makes it possible to overload notation like <code class=\"docutils literal notranslate\"><span class=\"pre\">+</span></code>,\nand it sometimes makes input less verbose\nbecause Lean can infer a lot of information from\nan object’s type.\nThe type system also enables Lean to flag errors when you\napply a function to the wrong number of arguments,\nor apply a function to arguments of the wrong type.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C04_Sets_and_Functions:0008",
+    "file": "C04_Sets_and_Functions.html",
+    "tag": "p",
+    "text": "Lean’s library does define elementary set-theoretic notions. In contrast to set theory, in Lean a set is always a set of objects of some type, such as a set of natural numbers or a set of functions from real numbers to real numbers. The distinction between types and sets takes some getting used to, but this chapter will take you through the essentials.",
+    "html": "<p>Lean’s library does define elementary set-theoretic notions.\nIn contrast to set theory,\nin Lean a set is always a set of objects of some type,\nsuch as a set of natural numbers or a set of functions\nfrom real numbers to real numbers.\nThe distinction between types and sets takes some getting used to,\nbut this chapter will take you through the essentials.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C04_Sets_and_Functions:0009",
+    "file": "C04_Sets_and_Functions.html",
+    "tag": "p",
+    "text": "If α is any type, the type Set α consists of sets of elements of α . This type supports the usual set-theoretic operations and relations. For example, s ⊆ t says that s is a subset of t , s ∩ t denotes the intersection of s and t , and s ∪ t denotes their union. The subset relation can be typed with \\ss or \\sub , intersection can be typed with \\i or \\cap , and union can be typed with \\un or \\cup . The library also defines the set univ , which consists of all the elements of type α , and the empty set, ∅ , which can be typed as \\empty . Given x : α and s : Set α , the expression x ∈ s says that x is a member of s . Theorems that mention set membership often include mem in their name. The expression x ∉ s abbreviates ¬ x ∈ s . You can type ∈ as \\in or \\mem and ∉ as \\notin .",
+    "html": "<p id=\"index-0\">If <code class=\"docutils literal notranslate\"><span class=\"pre\">α</span></code> is any type, the type <code class=\"docutils literal notranslate\"><span class=\"pre\">Set</span> <span class=\"pre\">α</span></code> consists of sets\nof elements of <code class=\"docutils literal notranslate\"><span class=\"pre\">α</span></code>.\nThis type supports the usual set-theoretic operations and relations.\nFor example, <code class=\"docutils literal notranslate\"><span class=\"pre\">s</span> <span class=\"pre\">⊆</span> <span class=\"pre\">t</span></code> says that <code class=\"docutils literal notranslate\"><span class=\"pre\">s</span></code> is a subset of <code class=\"docutils literal notranslate\"><span class=\"pre\">t</span></code>,\n<code class=\"docutils literal notranslate\"><span class=\"pre\">s</span> <span class=\"pre\">∩</span> <span class=\"pre\">t</span></code> denotes the intersection of <code class=\"docutils literal notranslate\"><span class=\"pre\">s</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">t</span></code>,\nand <code class=\"docutils literal notranslate\"><span class=\"pre\">s</span> <span class=\"pre\">∪</span> <span class=\"pre\">t</span></code> denotes their union.\nThe subset relation can be typed with <code class=\"docutils literal notranslate\"><span class=\"pre\">\\ss</span></code> or <code class=\"docutils literal notranslate\"><span class=\"pre\">\\sub</span></code>,\nintersection can be typed with <code class=\"docutils literal notranslate\"><span class=\"pre\">\\i</span></code> or <code class=\"docutils literal notranslate\"><span class=\"pre\">\\cap</span></code>,\nand union can be typed with <code class=\"docutils literal notranslate\"><span class=\"pre\">\\un</span></code> or <code class=\"docutils literal notranslate\"><span class=\"pre\">\\cup</span></code>.\nThe library also defines the set <code class=\"docutils literal notranslate\"><span class=\"pre\">univ</span></code>,\nwhich consists of all the elements of type <code class=\"docutils literal notranslate\"><span class=\"pre\">α</span></code>,\nand the empty set, <code class=\"docutils literal notranslate\"><span class=\"pre\">∅</span></code>, which can be typed as <code class=\"docutils literal notranslate\"><span class=\"pre\">\\empty</span></code>.\nGiven <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span> <span class=\"pre\">:</span> <span class=\"pre\">α</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">s</span> <span class=\"pre\">:</span> <span class=\"pre\">Set</span> <span class=\"pre\">α</span></code>,\nthe expression <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span> <span class=\"pre\">∈</span> <span class=\"pre\">s</span></code> says that <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span></code> is a member of <code class=\"docutils literal notranslate\"><span class=\"pre\">s</span></code>.\nTheorems that mention set membership often include <code class=\"docutils literal notranslate\"><span class=\"pre\">mem</span></code>\nin their name.\nThe expression <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span> <span class=\"pre\">∉</span> <span class=\"pre\">s</span></code> abbreviates <code class=\"docutils literal notranslate\"><span class=\"pre\">¬</span> <span class=\"pre\">x</span> <span class=\"pre\">∈</span> <span class=\"pre\">s</span></code>.\nYou can type <code class=\"docutils literal notranslate\"><span class=\"pre\">∈</span></code> as <code class=\"docutils literal notranslate\"><span class=\"pre\">\\in</span></code> or <code class=\"docutils literal notranslate\"><span class=\"pre\">\\mem</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">∉</span></code> as <code class=\"docutils literal notranslate\"><span class=\"pre\">\\notin</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C04_Sets_and_Functions:0010",
+    "file": "C04_Sets_and_Functions.html",
+    "tag": "p",
+    "text": "One way to prove things about sets is to use rw or the simplifier to expand the definitions. In the second example below, we use simp only to tell the simplifier to use only the list of identities we give it, and not its full database of identities. Unlike rw , simp can perform simplifications inside a universal or existential quantifier. If you step through the proof, you can see the effects of these commands.",
+    "html": "<p id=\"index-1\">One way to prove things about sets is to use <code class=\"docutils literal notranslate\"><span class=\"pre\">rw</span></code>\nor the simplifier to expand the definitions.\nIn the second example below, we use <code class=\"docutils literal notranslate\"><span class=\"pre\">simp</span> <span class=\"pre\">only</span></code>\nto tell the simplifier to use only the list\nof identities we give it,\nand not its full database of identities.\nUnlike <code class=\"docutils literal notranslate\"><span class=\"pre\">rw</span></code>, <code class=\"docutils literal notranslate\"><span class=\"pre\">simp</span></code> can perform simplifications\ninside a universal or existential quantifier.\nIf you step through the proof,\nyou can see the effects of these commands.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C04_Sets_and_Functions:0011",
+    "file": "C04_Sets_and_Functions.html",
+    "tag": "p",
+    "text": "In this example, we open the Set namespace to have access to the shorter names for the theorems. But, in fact, we can delete the calls to rw and simp entirely:",
+    "html": "<p>In this example, we open the <code class=\"docutils literal notranslate\"><span class=\"pre\">Set</span></code> namespace to have\naccess to the shorter names for the theorems.\nBut, in fact, we can delete the calls to <code class=\"docutils literal notranslate\"><span class=\"pre\">rw</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">simp</span></code>\nentirely:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C04_Sets_and_Functions:0012",
+    "file": "C04_Sets_and_Functions.html",
+    "tag": "p",
+    "text": "What is going on here is known as definitional reduction : to make sense of the intro command and the anonymous constructors Lean is forced to expand the definitions. The following example also illustrate the phenomenon:",
+    "html": "<p>What is going on here is known as <em>definitional reduction</em>:\nto make sense of the <code class=\"docutils literal notranslate\"><span class=\"pre\">intro</span></code> command and the anonymous constructors\nLean is forced to expand the definitions.\nThe following example also illustrate the phenomenon:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C04_Sets_and_Functions:0013",
+    "file": "C04_Sets_and_Functions.html",
+    "tag": "p",
+    "text": "To deal with unions, we can use Set.union_def and Set.mem_union . Since x ∈ s ∪ t unfolds to x ∈ s ∨ x ∈ t , we can also use the cases tactic to force a definitional reduction.",
+    "html": "<p>To deal with unions, we can use <code class=\"docutils literal notranslate\"><span class=\"pre\">Set.union_def</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">Set.mem_union</span></code>.\nSince <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span> <span class=\"pre\">∈</span> <span class=\"pre\">s</span> <span class=\"pre\">∪</span> <span class=\"pre\">t</span></code> unfolds to <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span> <span class=\"pre\">∈</span> <span class=\"pre\">s</span> <span class=\"pre\">∨</span> <span class=\"pre\">x</span> <span class=\"pre\">∈</span> <span class=\"pre\">t</span></code>,\nwe can also use the <code class=\"docutils literal notranslate\"><span class=\"pre\">cases</span></code> tactic to force a definitional reduction.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C04_Sets_and_Functions:0014",
+    "file": "C04_Sets_and_Functions.html",
+    "tag": "p",
+    "text": "Since intersection binds tighter than union, the use of parentheses in the expression (s ∩ t) ∪ (s ∩ u) is unnecessary, but they make the meaning of the expression clearer. The following is a shorter proof of the same fact:",
+    "html": "<p>Since intersection binds tighter than union,\nthe use of parentheses in the expression <code class=\"docutils literal notranslate\"><span class=\"pre\">(s</span> <span class=\"pre\">∩</span> <span class=\"pre\">t)</span> <span class=\"pre\">∪</span> <span class=\"pre\">(s</span> <span class=\"pre\">∩</span> <span class=\"pre\">u)</span></code>\nis unnecessary, but they make the meaning of the expression clearer.\nThe following is a shorter proof of the same fact:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C04_Sets_and_Functions:0015",
+    "file": "C04_Sets_and_Functions.html",
+    "tag": "p",
+    "text": "As an exercise, try proving the other inclusion:",
+    "html": "<p>As an exercise, try proving the other inclusion:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C04_Sets_and_Functions:0016",
+    "file": "C04_Sets_and_Functions.html",
+    "tag": "p",
+    "text": "It might help to know that when using rintro , sometimes we need to use parentheses around a disjunctive pattern h1 | h2 to get Lean to parse it correctly.",
+    "html": "<p>It might help to know that when using <code class=\"docutils literal notranslate\"><span class=\"pre\">rintro</span></code>,\nsometimes we need to use parentheses around a disjunctive pattern\n<code class=\"docutils literal notranslate\"><span class=\"pre\">h1</span> <span class=\"pre\">|</span> <span class=\"pre\">h2</span></code> to get Lean to parse it correctly.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C04_Sets_and_Functions:0017",
+    "file": "C04_Sets_and_Functions.html",
+    "tag": "p",
+    "text": "The library also defines set difference, s \\ t , where the backslash is a special unicode character entered as \\\\ . The expression x ∈ s \\ t expands to x ∈ s ∧ x ∉ t . (The ∉ can be entered as \\notin .) It can be rewritten manually using Set.diff_eq and dsimp or Set.mem_diff , but the following two proofs of the same inclusion show how to avoid using them.",
+    "html": "<p>The library also defines set difference, <code class=\"docutils literal notranslate\"><span class=\"pre\">s</span> <span class=\"pre\">\\</span> <span class=\"pre\">t</span></code>,\nwhere the backslash is a special unicode character\nentered as <code class=\"docutils literal notranslate\"><span class=\"pre\">\\\\</span></code>.\nThe expression <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span> <span class=\"pre\">∈</span> <span class=\"pre\">s</span> <span class=\"pre\">\\</span> <span class=\"pre\">t</span></code> expands to <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span> <span class=\"pre\">∈</span> <span class=\"pre\">s</span> <span class=\"pre\">∧</span> <span class=\"pre\">x</span> <span class=\"pre\">∉</span> <span class=\"pre\">t</span></code>.\n(The <code class=\"docutils literal notranslate\"><span class=\"pre\">∉</span></code> can be entered as <code class=\"docutils literal notranslate\"><span class=\"pre\">\\notin</span></code>.)\nIt can be rewritten manually using <code class=\"docutils literal notranslate\"><span class=\"pre\">Set.diff_eq</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">dsimp</span></code>\nor <code class=\"docutils literal notranslate\"><span class=\"pre\">Set.mem_diff</span></code>,\nbut the following two proofs of the same inclusion\nshow how to avoid using them.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C04_Sets_and_Functions:0018",
+    "file": "C04_Sets_and_Functions.html",
+    "tag": "p",
+    "text": "As an exercise, prove the reverse inclusion:",
+    "html": "<p>As an exercise, prove the reverse inclusion:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C04_Sets_and_Functions:0019",
+    "file": "C04_Sets_and_Functions.html",
+    "tag": "p",
+    "text": "To prove that two sets are equal, it suffices to show that every element of one is an element of the other. This principle is known as “extensionality,” and, unsurprisingly, the ext tactic is equipped to handle it.",
+    "html": "<p>To prove that two sets are equal,\nit suffices to show that every element of one is an element\nof the other.\nThis principle is known as “extensionality,”\nand, unsurprisingly,\nthe <code class=\"docutils literal notranslate\"><span class=\"pre\">ext</span></code> tactic is equipped to handle it.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C04_Sets_and_Functions:0020",
+    "file": "C04_Sets_and_Functions.html",
+    "tag": "p",
+    "text": "Once again, deleting the line simp only [mem_inter_iff] does not harm the proof. In fact, if you like inscrutable proof terms, the following one-line proof is for you:",
+    "html": "<p>Once again, deleting the line <code class=\"docutils literal notranslate\"><span class=\"pre\">simp</span> <span class=\"pre\">only</span> <span class=\"pre\">[mem_inter_iff]</span></code>\ndoes not harm the proof.\nIn fact, if you like inscrutable proof terms,\nthe following one-line proof is for you:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C04_Sets_and_Functions:0021",
+    "file": "C04_Sets_and_Functions.html",
+    "tag": "p",
+    "text": "Here is an even shorter proof, using the simplifier:",
+    "html": "<p>Here is an even shorter proof,\nusing the simplifier:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C04_Sets_and_Functions:0022",
+    "file": "C04_Sets_and_Functions.html",
+    "tag": "p",
+    "text": "An alternative to using ext is to use the theorem Subset.antisymm which allows us to prove an equation s = t between sets by proving s ⊆ t and t ⊆ s .",
+    "html": "<p>An alternative to using <code class=\"docutils literal notranslate\"><span class=\"pre\">ext</span></code> is to use\nthe theorem <code class=\"docutils literal notranslate\"><span class=\"pre\">Subset.antisymm</span></code>\nwhich allows us to prove an equation <code class=\"docutils literal notranslate\"><span class=\"pre\">s</span> <span class=\"pre\">=</span> <span class=\"pre\">t</span></code>\nbetween sets by proving <code class=\"docutils literal notranslate\"><span class=\"pre\">s</span> <span class=\"pre\">⊆</span> <span class=\"pre\">t</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">t</span> <span class=\"pre\">⊆</span> <span class=\"pre\">s</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C04_Sets_and_Functions:0023",
+    "file": "C04_Sets_and_Functions.html",
+    "tag": "p",
+    "text": "Try finishing this proof term:",
+    "html": "<p>Try finishing this proof term:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C04_Sets_and_Functions:0024",
+    "file": "C04_Sets_and_Functions.html",
+    "tag": "p",
+    "text": "Remember that you can replace sorry by an underscore, and when you hover over it, Lean will show you what it expects at that point.",
+    "html": "<p>Remember that you can replace <cite>sorry</cite> by an underscore,\nand when you hover over it,\nLean will show you what it expects at that point.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C04_Sets_and_Functions:0025",
+    "file": "C04_Sets_and_Functions.html",
+    "tag": "p",
+    "text": "Here are some set-theoretic identities you might enjoy proving:",
+    "html": "<p>Here are some set-theoretic identities you might enjoy proving:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C04_Sets_and_Functions:0026",
+    "file": "C04_Sets_and_Functions.html",
+    "tag": "p",
+    "text": "When it comes to representing sets, here is what is going on underneath the hood. In type theory, a property or predicate on a type α is just a function P : α → Prop . This makes sense: given a : α , P a is just the proposition that P holds for a . In the library, Set α is defined to be α → Prop and x ∈ s is defined to be s x . In other words, sets are really properties, treated as objects.",
+    "html": "<p>When it comes to representing sets,\nhere is what is going on underneath the hood.\nIn type theory, a <em>property</em> or <em>predicate</em> on a type <code class=\"docutils literal notranslate\"><span class=\"pre\">α</span></code>\nis just a function <code class=\"docutils literal notranslate\"><span class=\"pre\">P</span> <span class=\"pre\">:</span> <span class=\"pre\">α</span> <span class=\"pre\">→</span> <span class=\"pre\">Prop</span></code>.\nThis makes sense:\ngiven <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span> <span class=\"pre\">:</span> <span class=\"pre\">α</span></code>, <code class=\"docutils literal notranslate\"><span class=\"pre\">P</span> <span class=\"pre\">a</span></code> is just the proposition\nthat <code class=\"docutils literal notranslate\"><span class=\"pre\">P</span></code> holds for <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span></code>.\nIn the library, <code class=\"docutils literal notranslate\"><span class=\"pre\">Set</span> <span class=\"pre\">α</span></code> is defined to be <code class=\"docutils literal notranslate\"><span class=\"pre\">α</span> <span class=\"pre\">→</span> <span class=\"pre\">Prop</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span> <span class=\"pre\">∈</span> <span class=\"pre\">s</span></code> is defined to be <code class=\"docutils literal notranslate\"><span class=\"pre\">s</span> <span class=\"pre\">x</span></code>.\nIn other words, sets are really properties, treated as objects.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C04_Sets_and_Functions:0027",
+    "file": "C04_Sets_and_Functions.html",
+    "tag": "p",
+    "text": "The library also defines set-builder notation. The expression { y | P y } unfolds to (fun y ↦ P y) , so x ∈ { y | P y } reduces to P x . So we can turn the property of being even into the set of even numbers:",
+    "html": "<p>The library also defines set-builder notation.\nThe expression <code class=\"docutils literal notranslate\"><span class=\"pre\">{</span> <span class=\"pre\">y</span> <span class=\"pre\">|</span> <span class=\"pre\">P</span> <span class=\"pre\">y</span> <span class=\"pre\">}</span></code> unfolds to <code class=\"docutils literal notranslate\"><span class=\"pre\">(fun</span> <span class=\"pre\">y</span> <span class=\"pre\">↦</span> <span class=\"pre\">P</span> <span class=\"pre\">y)</span></code>,\nso <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span> <span class=\"pre\">∈</span> <span class=\"pre\">{</span> <span class=\"pre\">y</span> <span class=\"pre\">|</span> <span class=\"pre\">P</span> <span class=\"pre\">y</span> <span class=\"pre\">}</span></code> reduces to <code class=\"docutils literal notranslate\"><span class=\"pre\">P</span> <span class=\"pre\">x</span></code>.\nSo we can turn the property of being even into the set of even numbers:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C04_Sets_and_Functions:0028",
+    "file": "C04_Sets_and_Functions.html",
+    "tag": "p",
+    "text": "You should step through this proof and make sure you understand what is going on. Note we tell the simplifier to not use the lemma Nat.not_even_iff because we want to keep ¬ Even n in our goal. Try deleting the line rw [evens, odds] and confirm that the proof still works.",
+    "html": "<p>You should step through this proof and make sure\nyou understand what is going on.\nNote we tell the simplifier to <em>not</em> use the lemma\n<code class=\"docutils literal notranslate\"><span class=\"pre\">Nat.not_even_iff</span></code> because we want to keep\n<code class=\"docutils literal notranslate\"><span class=\"pre\">¬</span> <span class=\"pre\">Even</span> <span class=\"pre\">n</span></code> in our goal.\nTry deleting the line <code class=\"docutils literal notranslate\"><span class=\"pre\">rw</span> <span class=\"pre\">[evens,</span> <span class=\"pre\">odds]</span></code>\nand confirm that the proof still works.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C04_Sets_and_Functions:0029",
+    "file": "C04_Sets_and_Functions.html",
+    "tag": "p",
+    "text": "In fact, set-builder notation is used to define",
+    "html": "<p>In fact, set-builder notation is used to define</p>",
+    "zh": ""
+  },
+  {
+    "id": "C04_Sets_and_Functions:0030",
+    "file": "C04_Sets_and_Functions.html",
+    "tag": "p",
+    "text": "We often need to indicate the type of ∅ and univ explicitly, because Lean has trouble guessing which ones we mean. The following examples show how Lean unfolds the last two definitions when needed. In the second one, trivial is the canonical proof of True in the library.",
+    "html": "<p>We often need to indicate the type of <code class=\"docutils literal notranslate\"><span class=\"pre\">∅</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">univ</span></code>\nexplicitly,\nbecause Lean has trouble guessing which ones we mean.\nThe following examples show how Lean unfolds the last\ntwo definitions when needed. In the second one,\n<code class=\"docutils literal notranslate\"><span class=\"pre\">trivial</span></code> is the canonical proof of <code class=\"docutils literal notranslate\"><span class=\"pre\">True</span></code> in the library.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C04_Sets_and_Functions:0031",
+    "file": "C04_Sets_and_Functions.html",
+    "tag": "p",
+    "text": "As an exercise, prove the following inclusion. Use intro n to unfold the definition of subset, and use the simplifier to reduce the set-theoretic constructions to logic. We also recommend using the theorems Nat.Prime.eq_two_or_odd and Nat.odd_iff .",
+    "html": "<p>As an exercise, prove the following inclusion.\nUse <code class=\"docutils literal notranslate\"><span class=\"pre\">intro</span> <span class=\"pre\">n</span></code> to unfold the definition of subset,\nand use the simplifier to reduce the\nset-theoretic constructions to logic.\nWe also recommend using the theorems\n<code class=\"docutils literal notranslate\"><span class=\"pre\">Nat.Prime.eq_two_or_odd</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">Nat.odd_iff</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C04_Sets_and_Functions:0032",
+    "file": "C04_Sets_and_Functions.html",
+    "tag": "p",
+    "text": "Be careful: it is somewhat confusing that the library has multiple versions of the predicate Prime . The most general one makes sense in any commutative monoid with a zero element. The predicate Nat.Prime is specific to the natural numbers. Fortunately, there is a theorem that says that in the specific case, the two notions agree, so you can always rewrite one to the other.",
+    "html": "<p>Be careful: it is somewhat confusing that the library has multiple versions\nof the predicate <code class=\"docutils literal notranslate\"><span class=\"pre\">Prime</span></code>.\nThe most general one makes sense in any commutative monoid with a zero element.\nThe predicate <code class=\"docutils literal notranslate\"><span class=\"pre\">Nat.Prime</span></code> is specific to the natural numbers.\nFortunately, there is a theorem that says that in the specific case,\nthe two notions agree, so you can always rewrite one to the other.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C04_Sets_and_Functions:0033",
+    "file": "C04_Sets_and_Functions.html",
+    "tag": "p",
+    "text": "The rwa tactic follows a rewrite with the assumption tactic.",
+    "html": "<p id=\"index-2\">The <cite>rwa</cite> tactic follows a rewrite with the assumption tactic.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C04_Sets_and_Functions:0034",
+    "file": "C04_Sets_and_Functions.html",
+    "tag": "p",
+    "text": "Lean introduces the notation ∀ x ∈ s, ... , “for every x in s .,” as an abbreviation for ∀ x, x ∈ s → ... . It also introduces the notation ∃ x ∈ s, ..., “there exists an x in s such that ..” These are sometimes known as bounded quantifiers , because the construction serves to restrict their significance to the set s . As a result, theorems in the library that make use of them often contain ball or bex in the name. The theorem bex_def asserts that ∃ x ∈ s, ... is equivalent to ∃ x, x ∈ s ∧ ..., but when they are used with rintro , use , and anonymous constructors, these two expressions behave roughly the same. As a result, we usually don’t need to use bex_def to transform them explicitly. Here are some examples of how they are used:",
+    "html": "<p id=\"index-3\">Lean introduces the notation <code class=\"docutils literal notranslate\"><span class=\"pre\">∀</span> <span class=\"pre\">x</span> <span class=\"pre\">∈</span> <span class=\"pre\">s,</span> <span class=\"pre\">...</span></code>,\n“for every <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span></code> in <code class=\"docutils literal notranslate\"><span class=\"pre\">s</span></code> .,”\nas an abbreviation for  <code class=\"docutils literal notranslate\"><span class=\"pre\">∀</span> <span class=\"pre\">x,</span> <span class=\"pre\">x</span> <span class=\"pre\">∈</span> <span class=\"pre\">s</span> <span class=\"pre\">→</span> <span class=\"pre\">...</span></code>.\nIt also introduces the notation <code class=\"docutils literal notranslate\"><span class=\"pre\">∃</span> <span class=\"pre\">x</span> <span class=\"pre\">∈</span> <span class=\"pre\">s,</span> <span class=\"pre\">...,</span></code>\n“there exists an <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span></code> in <code class=\"docutils literal notranslate\"><span class=\"pre\">s</span></code> such that ..”\nThese are sometimes known as <em>bounded quantifiers</em>,\nbecause the construction serves to restrict their significance\nto the set <code class=\"docutils literal notranslate\"><span class=\"pre\">s</span></code>.\nAs a result, theorems in the library that make use of them\noften contain <code class=\"docutils literal notranslate\"><span class=\"pre\">ball</span></code> or <code class=\"docutils literal notranslate\"><span class=\"pre\">bex</span></code> in the name.\nThe theorem <code class=\"docutils literal notranslate\"><span class=\"pre\">bex_def</span></code> asserts that <code class=\"docutils literal notranslate\"><span class=\"pre\">∃</span> <span class=\"pre\">x</span> <span class=\"pre\">∈</span> <span class=\"pre\">s,</span> <span class=\"pre\">...</span></code> is equivalent\nto <code class=\"docutils literal notranslate\"><span class=\"pre\">∃</span> <span class=\"pre\">x,</span> <span class=\"pre\">x</span> <span class=\"pre\">∈</span> <span class=\"pre\">s</span> <span class=\"pre\">∧</span> <span class=\"pre\">...,</span></code>\nbut when they are used with <code class=\"docutils literal notranslate\"><span class=\"pre\">rintro</span></code>, <code class=\"docutils literal notranslate\"><span class=\"pre\">use</span></code>,\nand anonymous constructors,\nthese two expressions behave roughly the same.\nAs a result, we usually don’t need to use <code class=\"docutils literal notranslate\"><span class=\"pre\">bex_def</span></code>\nto transform them explicitly.\nHere are some examples of how they are used:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C04_Sets_and_Functions:0035",
+    "file": "C04_Sets_and_Functions.html",
+    "tag": "p",
+    "text": "See if you can prove these slight variations:",
+    "html": "<p>See if you can prove these slight variations:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C04_Sets_and_Functions:0036",
+    "file": "C04_Sets_and_Functions.html",
+    "tag": "p",
+    "text": "Indexed unions and intersections are another important set-theoretic construction. We can model a sequence \\(A_0, A_1, A_2, \\ldots\\) of sets of elements of α as a function A : ℕ → Set α , in which case ⋃ i, A i denotes their union, and ⋂ i, A i denotes their intersection. There is nothing special about the natural numbers here, so ℕ can be replaced by any type I used to index the sets. The following illustrates their use.",
+    "html": "<p>Indexed unions and intersections are\nanother important set-theoretic construction.\nWe can model a sequence <span class=\"math notranslate nohighlight\">\\(A_0, A_1, A_2, \\ldots\\)</span> of sets of\nelements of <code class=\"docutils literal notranslate\"><span class=\"pre\">α</span></code>\nas a function <code class=\"docutils literal notranslate\"><span class=\"pre\">A</span> <span class=\"pre\">:</span> <span class=\"pre\">ℕ</span> <span class=\"pre\">→</span> <span class=\"pre\">Set</span> <span class=\"pre\">α</span></code>,\nin which case <code class=\"docutils literal notranslate\"><span class=\"pre\">⋃</span> <span class=\"pre\">i,</span> <span class=\"pre\">A</span> <span class=\"pre\">i</span></code> denotes their union,\nand <code class=\"docutils literal notranslate\"><span class=\"pre\">⋂</span> <span class=\"pre\">i,</span> <span class=\"pre\">A</span> <span class=\"pre\">i</span></code> denotes their intersection.\nThere is nothing special about the natural numbers here,\nso <code class=\"docutils literal notranslate\"><span class=\"pre\">ℕ</span></code> can be replaced by any type <code class=\"docutils literal notranslate\"><span class=\"pre\">I</span></code>\nused to index the sets.\nThe following illustrates their use.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C04_Sets_and_Functions:0037",
+    "file": "C04_Sets_and_Functions.html",
+    "tag": "p",
+    "text": "Parentheses are often needed with an indexed union or intersection because, as with the quantifiers, the scope of the bound variable extends as far as it can.",
+    "html": "<p>Parentheses are often needed with an\nindexed union or intersection because,\nas with the quantifiers,\nthe scope of the bound variable extends as far as it can.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C04_Sets_and_Functions:0038",
+    "file": "C04_Sets_and_Functions.html",
+    "tag": "p",
+    "text": "Try proving the following identity. One direction requires classical logic! We recommend using by_cases xs : x ∈ s at an appropriate point in the proof.",
+    "html": "<p>Try proving the following identity.\nOne direction requires classical logic!\nWe recommend using <code class=\"docutils literal notranslate\"><span class=\"pre\">by_cases</span> <span class=\"pre\">xs</span> <span class=\"pre\">:</span> <span class=\"pre\">x</span> <span class=\"pre\">∈</span> <span class=\"pre\">s</span></code>\nat an appropriate point in the proof.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C04_Sets_and_Functions:0039",
+    "file": "C04_Sets_and_Functions.html",
+    "tag": "p",
+    "text": "Mathlib also has bounded unions and intersections, which are analogous to the bounded quantifiers. You can unpack their meaning with mem_iUnion₂ and mem_iInter₂ . As the following examples show, Lean’s simplifier carries out these replacements as well.",
+    "html": "<p>Mathlib also has bounded unions and intersections,\nwhich are analogous to the bounded quantifiers.\nYou can unpack their meaning with <code class=\"docutils literal notranslate\"><span class=\"pre\">mem_iUnion₂</span></code>\nand <code class=\"docutils literal notranslate\"><span class=\"pre\">mem_iInter₂</span></code>.\nAs the following examples show,\nLean’s simplifier carries out these replacements as well.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C04_Sets_and_Functions:0040",
+    "file": "C04_Sets_and_Functions.html",
+    "tag": "p",
+    "text": "Try solving the following example, which is similar. If you start typing eq_univ , tab completion will tell you that apply eq_univ_of_forall is a good way to start the proof. We also recommend using the theorem Nat.exists_infinite_primes .",
+    "html": "<p>Try solving the following example, which is similar.\nIf you start typing <code class=\"docutils literal notranslate\"><span class=\"pre\">eq_univ</span></code>,\ntab completion will tell you that <code class=\"docutils literal notranslate\"><span class=\"pre\">apply</span> <span class=\"pre\">eq_univ_of_forall</span></code>\nis a good way to start the proof.\nWe also recommend using the theorem <code class=\"docutils literal notranslate\"><span class=\"pre\">Nat.exists_infinite_primes</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C04_Sets_and_Functions:0041",
+    "file": "C04_Sets_and_Functions.html",
+    "tag": "p",
+    "text": "Give a collection of sets, s : Set (Set α) , their union, ⋃₀ s , has type Set α and is defined as {x | ∃ t ∈ s, x ∈ t} . Similarly, their intersection, ⋂₀ s , is defined as {x | ∀ t ∈ s, x ∈ t} . These operations are called sUnion and sInter , respectively. The following examples show their relationship to bounded union and intersection.",
+    "html": "<p>Give a collection of sets, <code class=\"docutils literal notranslate\"><span class=\"pre\">s</span> <span class=\"pre\">:</span> <span class=\"pre\">Set</span> <span class=\"pre\">(Set</span> <span class=\"pre\">α)</span></code>,\ntheir union, <code class=\"docutils literal notranslate\"><span class=\"pre\">⋃₀</span> <span class=\"pre\">s</span></code>, has type <code class=\"docutils literal notranslate\"><span class=\"pre\">Set</span> <span class=\"pre\">α</span></code>\nand is defined as <code class=\"docutils literal notranslate\"><span class=\"pre\">{x</span> <span class=\"pre\">|</span> <span class=\"pre\">∃</span> <span class=\"pre\">t</span> <span class=\"pre\">∈</span> <span class=\"pre\">s,</span> <span class=\"pre\">x</span> <span class=\"pre\">∈</span> <span class=\"pre\">t}</span></code>.\nSimilarly, their intersection, <code class=\"docutils literal notranslate\"><span class=\"pre\">⋂₀</span> <span class=\"pre\">s</span></code>, is defined as\n<code class=\"docutils literal notranslate\"><span class=\"pre\">{x</span> <span class=\"pre\">|</span> <span class=\"pre\">∀</span> <span class=\"pre\">t</span> <span class=\"pre\">∈</span> <span class=\"pre\">s,</span> <span class=\"pre\">x</span> <span class=\"pre\">∈</span> <span class=\"pre\">t}</span></code>.\nThese operations are called <code class=\"docutils literal notranslate\"><span class=\"pre\">sUnion</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">sInter</span></code>, respectively.\nThe following examples show their relationship to bounded union\nand intersection.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C04_Sets_and_Functions:0042",
+    "file": "C04_Sets_and_Functions.html",
+    "tag": "p",
+    "text": "In the library, these identities are called sUnion_eq_biUnion and sInter_eq_biInter .",
+    "html": "<p>In the library, these identities are called\n<code class=\"docutils literal notranslate\"><span class=\"pre\">sUnion_eq_biUnion</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">sInter_eq_biInter</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C04_Sets_and_Functions:0043",
+    "file": "C04_Sets_and_Functions.html",
+    "tag": "p",
+    "text": "If f : α → β is a function and p is a set of elements of type β , the library defines preimage f p , written f ⁻¹' p , to be {x | f x ∈ p} . The expression x ∈ f ⁻¹' p reduces to f x ∈ p . This is often convenient, as in the following example:",
+    "html": "<p>If <code class=\"docutils literal notranslate\"><span class=\"pre\">f</span> <span class=\"pre\">:</span> <span class=\"pre\">α</span> <span class=\"pre\">→</span> <span class=\"pre\">β</span></code> is a function and  <code class=\"docutils literal notranslate\"><span class=\"pre\">p</span></code> is a set of\nelements of type <code class=\"docutils literal notranslate\"><span class=\"pre\">β</span></code>,\nthe library defines <code class=\"docutils literal notranslate\"><span class=\"pre\">preimage</span> <span class=\"pre\">f</span> <span class=\"pre\">p</span></code>, written <code class=\"docutils literal notranslate\"><span class=\"pre\">f</span> <span class=\"pre\">⁻¹'</span> <span class=\"pre\">p</span></code>,\nto be <code class=\"docutils literal notranslate\"><span class=\"pre\">{x</span> <span class=\"pre\">|</span> <span class=\"pre\">f</span> <span class=\"pre\">x</span> <span class=\"pre\">∈</span> <span class=\"pre\">p}</span></code>.\nThe expression <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span> <span class=\"pre\">∈</span> <span class=\"pre\">f</span> <span class=\"pre\">⁻¹'</span> <span class=\"pre\">p</span></code> reduces to <code class=\"docutils literal notranslate\"><span class=\"pre\">f</span> <span class=\"pre\">x</span> <span class=\"pre\">∈</span> <span class=\"pre\">p</span></code>.\nThis is often convenient, as in the following example:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C04_Sets_and_Functions:0044",
+    "file": "C04_Sets_and_Functions.html",
+    "tag": "p",
+    "text": "If s is a set of elements of type α , the library also defines image f s , written f '' s , to be {y | ∃ x, x ∈ s ∧ f x = y} . So a hypothesis y ∈ f '' s decomposes to a triple ⟨x, xs, xeq⟩ with x : α satisfying the hypotheses xs : x ∈ s and xeq : f x = y . The rfl tag in the rintro tactic (see Section 3.2 ) was made precisely for this sort of situation.",
+    "html": "<p>If <code class=\"docutils literal notranslate\"><span class=\"pre\">s</span></code> is a set of elements of type <code class=\"docutils literal notranslate\"><span class=\"pre\">α</span></code>,\nthe library also defines <code class=\"docutils literal notranslate\"><span class=\"pre\">image</span> <span class=\"pre\">f</span> <span class=\"pre\">s</span></code>,\nwritten <code class=\"docutils literal notranslate\"><span class=\"pre\">f</span> <span class=\"pre\">''</span> <span class=\"pre\">s</span></code>,\nto be <code class=\"docutils literal notranslate\"><span class=\"pre\">{y</span> <span class=\"pre\">|</span> <span class=\"pre\">∃</span> <span class=\"pre\">x,</span> <span class=\"pre\">x</span> <span class=\"pre\">∈</span> <span class=\"pre\">s</span> <span class=\"pre\">∧</span> <span class=\"pre\">f</span> <span class=\"pre\">x</span> <span class=\"pre\">=</span> <span class=\"pre\">y}</span></code>.\nSo a hypothesis  <code class=\"docutils literal notranslate\"><span class=\"pre\">y</span> <span class=\"pre\">∈</span> <span class=\"pre\">f</span> <span class=\"pre\">''</span> <span class=\"pre\">s</span></code> decomposes to a triple\n<code class=\"docutils literal notranslate\"><span class=\"pre\">⟨x,</span> <span class=\"pre\">xs,</span> <span class=\"pre\">xeq⟩</span></code> with <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span> <span class=\"pre\">:</span> <span class=\"pre\">α</span></code> satisfying the hypotheses <code class=\"docutils literal notranslate\"><span class=\"pre\">xs</span> <span class=\"pre\">:</span> <span class=\"pre\">x</span> <span class=\"pre\">∈</span> <span class=\"pre\">s</span></code>\nand <code class=\"docutils literal notranslate\"><span class=\"pre\">xeq</span> <span class=\"pre\">:</span> <span class=\"pre\">f</span> <span class=\"pre\">x</span> <span class=\"pre\">=</span> <span class=\"pre\">y</span></code>.\nThe <code class=\"docutils literal notranslate\"><span class=\"pre\">rfl</span></code> tag in the <code class=\"docutils literal notranslate\"><span class=\"pre\">rintro</span></code> tactic (see <a class=\"reference internal\" href=\"C03_Logic.html#the-existential-quantifier\"><span class=\"std std-numref\">Section 3.2</span></a>) was made precisely\nfor this sort of situation.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C04_Sets_and_Functions:0045",
+    "file": "C04_Sets_and_Functions.html",
+    "tag": "p",
+    "text": "Notice also that the use tactic applies rfl to close goals when it can.",
+    "html": "<p>Notice also that the <code class=\"docutils literal notranslate\"><span class=\"pre\">use</span></code> tactic applies <code class=\"docutils literal notranslate\"><span class=\"pre\">rfl</span></code>\nto close goals when it can.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C04_Sets_and_Functions:0046",
+    "file": "C04_Sets_and_Functions.html",
+    "tag": "p",
+    "text": "Here is another example:",
+    "html": "<p>Here is another example:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C04_Sets_and_Functions:0047",
+    "file": "C04_Sets_and_Functions.html",
+    "tag": "p",
+    "text": "We can replace the line use x, xs by apply mem_image_of_mem f xs if we want to use a theorem specifically designed for that purpose. But knowing that the image is defined in terms of an existential quantifier is often convenient.",
+    "html": "<p>We can replace the line <code class=\"docutils literal notranslate\"><span class=\"pre\">use</span> <span class=\"pre\">x,</span> <span class=\"pre\">xs</span></code> by\n<code class=\"docutils literal notranslate\"><span class=\"pre\">apply</span> <span class=\"pre\">mem_image_of_mem</span> <span class=\"pre\">f</span> <span class=\"pre\">xs</span></code> if we want to\nuse a theorem specifically designed for that purpose.\nBut knowing that the image is defined in terms\nof an existential quantifier is often convenient.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C04_Sets_and_Functions:0048",
+    "file": "C04_Sets_and_Functions.html",
+    "tag": "p",
+    "text": "The following equivalence is a good exercise:",
+    "html": "<p>The following equivalence is a good exercise:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C04_Sets_and_Functions:0049",
+    "file": "C04_Sets_and_Functions.html",
+    "tag": "p",
+    "text": "It shows that image f and preimage f are an instance of what is known as a Galois connection between Set α and Set β , each partially ordered by the subset relation. In the library, this equivalence is named image_subset_iff . In practice, the right-hand side is often the more useful representation, because x ∈ f ⁻¹' t unfolds to f x ∈ t whereas working with y ∈ f '' s requires decomposing an existential quantifier.",
+    "html": "<p>It shows that <code class=\"docutils literal notranslate\"><span class=\"pre\">image</span> <span class=\"pre\">f</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">preimage</span> <span class=\"pre\">f</span></code> are\nan instance of what is known as a <em>Galois connection</em>\nbetween <code class=\"docutils literal notranslate\"><span class=\"pre\">Set</span> <span class=\"pre\">α</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">Set</span> <span class=\"pre\">β</span></code>,\neach partially ordered by the subset relation.\nIn the library, this equivalence is named\n<code class=\"docutils literal notranslate\"><span class=\"pre\">image_subset_iff</span></code>.\nIn practice, the right-hand side is often the\nmore useful representation,\nbecause <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span> <span class=\"pre\">∈</span> <span class=\"pre\">f</span> <span class=\"pre\">⁻¹'</span> <span class=\"pre\">t</span></code> unfolds to <code class=\"docutils literal notranslate\"><span class=\"pre\">f</span> <span class=\"pre\">x</span> <span class=\"pre\">∈</span> <span class=\"pre\">t</span></code>\nwhereas working with <code class=\"docutils literal notranslate\"><span class=\"pre\">y</span> <span class=\"pre\">∈</span> <span class=\"pre\">f</span> <span class=\"pre\">''</span> <span class=\"pre\">s</span></code> requires\ndecomposing an existential quantifier.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C04_Sets_and_Functions:0050",
+    "file": "C04_Sets_and_Functions.html",
+    "tag": "p",
+    "text": "Here is a long list of set-theoretic identities for you to enjoy. You don’t have to do all of them at once; do a few of them, and set the rest aside for a rainy day.",
+    "html": "<p>Here is a long list of set-theoretic identities for\nyou to enjoy.\nYou don’t have to do all of them at once;\ndo a few of them,\nand set the rest aside for a rainy day.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C04_Sets_and_Functions:0051",
+    "file": "C04_Sets_and_Functions.html",
+    "tag": "p",
+    "text": "You can also try your hand at the next group of exercises, which characterize the behavior of images and preimages with respect to indexed unions and intersections. In the third exercise, the argument i : I is needed to guarantee that the index set is nonempty. To prove any of these, we recommend using ext or intro to unfold the meaning of an equation or inclusion between sets, and then calling simp to unpack the conditions for membership.",
+    "html": "<p>You can also try your hand at the next group of exercises,\nwhich characterize the behavior of images and preimages\nwith respect to indexed unions and intersections.\nIn the third exercise, the argument <code class=\"docutils literal notranslate\"><span class=\"pre\">i</span> <span class=\"pre\">:</span> <span class=\"pre\">I</span></code> is needed\nto guarantee that the index set is nonempty.\nTo prove any of these, we recommend using <code class=\"docutils literal notranslate\"><span class=\"pre\">ext</span></code> or <code class=\"docutils literal notranslate\"><span class=\"pre\">intro</span></code>\nto unfold the meaning of an equation or inclusion between sets,\nand then calling <code class=\"docutils literal notranslate\"><span class=\"pre\">simp</span></code> to unpack the conditions for membership.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C04_Sets_and_Functions:0052",
+    "file": "C04_Sets_and_Functions.html",
+    "tag": "p",
+    "text": "The library defines a predicate InjOn f s to say that f is injective on s . It is defined as follows:",
+    "html": "<p>The library defines a predicate <code class=\"docutils literal notranslate\"><span class=\"pre\">InjOn</span> <span class=\"pre\">f</span> <span class=\"pre\">s</span></code> to say that\n<code class=\"docutils literal notranslate\"><span class=\"pre\">f</span></code> is injective on <code class=\"docutils literal notranslate\"><span class=\"pre\">s</span></code>.\nIt is defined as follows:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C04_Sets_and_Functions:0053",
+    "file": "C04_Sets_and_Functions.html",
+    "tag": "p",
+    "text": "The statement Injective f is provably equivalent to InjOn f univ . Similarly, the library defines range f to be {x | ∃y, f y = x} , so range f is provably equal to f '' univ . This is a common theme in Mathlib: although many properties of functions are defined relative to their full domain, there are often relativized versions that restrict the statements to a subset of the domain type.",
+    "html": "<p>The statement <code class=\"docutils literal notranslate\"><span class=\"pre\">Injective</span> <span class=\"pre\">f</span></code> is provably equivalent\nto <code class=\"docutils literal notranslate\"><span class=\"pre\">InjOn</span> <span class=\"pre\">f</span> <span class=\"pre\">univ</span></code>.\nSimilarly, the library defines <code class=\"docutils literal notranslate\"><span class=\"pre\">range</span> <span class=\"pre\">f</span></code> to be\n<code class=\"docutils literal notranslate\"><span class=\"pre\">{x</span> <span class=\"pre\">|</span> <span class=\"pre\">∃y,</span> <span class=\"pre\">f</span> <span class=\"pre\">y</span> <span class=\"pre\">=</span> <span class=\"pre\">x}</span></code>,\nso <code class=\"docutils literal notranslate\"><span class=\"pre\">range</span> <span class=\"pre\">f</span></code> is provably equal to <code class=\"docutils literal notranslate\"><span class=\"pre\">f</span> <span class=\"pre\">''</span> <span class=\"pre\">univ</span></code>.\nThis is a common theme in Mathlib:\nalthough many properties of functions are defined relative\nto their full domain,\nthere are often relativized versions that restrict\nthe statements to a subset of the domain type.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C04_Sets_and_Functions:0054",
+    "file": "C04_Sets_and_Functions.html",
+    "tag": "p",
+    "text": "Here are some examples of InjOn and range in use:",
+    "html": "<p>Here are some examples of <code class=\"docutils literal notranslate\"><span class=\"pre\">InjOn</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">range</span></code> in use:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C04_Sets_and_Functions:0055",
+    "file": "C04_Sets_and_Functions.html",
+    "tag": "p",
+    "text": "Try proving these:",
+    "html": "<p>Try proving these:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C04_Sets_and_Functions:0056",
+    "file": "C04_Sets_and_Functions.html",
+    "tag": "p",
+    "text": "To define the inverse of a function f : α → β , we will use two new ingredients. First, we need to deal with the fact that an arbitrary type in Lean may be empty. To define the inverse to f at y when there is no x satisfying f x = y , we want to assign a default value in α . Adding the annotation [Inhabited α] as a variable is tantamount to assuming that α has a preferred element, which is denoted default . Second, in the case where there is more than one x such that f x = y , the inverse function needs to choose one of them. This requires an appeal to the axiom of choice . Lean allows various ways of accessing it; one convenient method is to use the classical choose operator, illustrated below.",
+    "html": "<p>To define the inverse of a function <code class=\"docutils literal notranslate\"><span class=\"pre\">f</span> <span class=\"pre\">:</span> <span class=\"pre\">α</span> <span class=\"pre\">→</span> <span class=\"pre\">β</span></code>,\nwe will use two new ingredients.\nFirst, we need to deal with the fact that\nan arbitrary type in Lean may be empty.\nTo define the inverse to <code class=\"docutils literal notranslate\"><span class=\"pre\">f</span></code> at <code class=\"docutils literal notranslate\"><span class=\"pre\">y</span></code> when there is\nno <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span></code> satisfying <code class=\"docutils literal notranslate\"><span class=\"pre\">f</span> <span class=\"pre\">x</span> <span class=\"pre\">=</span> <span class=\"pre\">y</span></code>,\nwe want to assign a default value in <code class=\"docutils literal notranslate\"><span class=\"pre\">α</span></code>.\nAdding the annotation <code class=\"docutils literal notranslate\"><span class=\"pre\">[Inhabited</span> <span class=\"pre\">α]</span></code> as a variable\nis tantamount to assuming that <code class=\"docutils literal notranslate\"><span class=\"pre\">α</span></code> has a\npreferred element, which is denoted <code class=\"docutils literal notranslate\"><span class=\"pre\">default</span></code>.\nSecond, in the case where there is more than one <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span></code>\nsuch that <code class=\"docutils literal notranslate\"><span class=\"pre\">f</span> <span class=\"pre\">x</span> <span class=\"pre\">=</span> <span class=\"pre\">y</span></code>,\nthe inverse function needs to <em>choose</em> one of them.\nThis requires an appeal to the <em>axiom of choice</em>.\nLean allows various ways of accessing it;\none convenient method is to use the classical <code class=\"docutils literal notranslate\"><span class=\"pre\">choose</span></code>\noperator, illustrated below.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C04_Sets_and_Functions:0057",
+    "file": "C04_Sets_and_Functions.html",
+    "tag": "p",
+    "text": "Given h : ∃ x, P x , the value of Classical.choose h is some x satisfying P x . The theorem Classical.choose_spec h says that Classical.choose h meets this specification.",
+    "html": "<p>Given <code class=\"docutils literal notranslate\"><span class=\"pre\">h</span> <span class=\"pre\">:</span> <span class=\"pre\">∃</span> <span class=\"pre\">x,</span> <span class=\"pre\">P</span> <span class=\"pre\">x</span></code>, the value of <code class=\"docutils literal notranslate\"><span class=\"pre\">Classical.choose</span> <span class=\"pre\">h</span></code>\nis some <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span></code> satisfying <code class=\"docutils literal notranslate\"><span class=\"pre\">P</span> <span class=\"pre\">x</span></code>.\nThe theorem <code class=\"docutils literal notranslate\"><span class=\"pre\">Classical.choose_spec</span> <span class=\"pre\">h</span></code> says that <code class=\"docutils literal notranslate\"><span class=\"pre\">Classical.choose</span> <span class=\"pre\">h</span></code>\nmeets this specification.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C04_Sets_and_Functions:0058",
+    "file": "C04_Sets_and_Functions.html",
+    "tag": "p",
+    "text": "With these in hand, we can define the inverse function as follows:",
+    "html": "<p>With these in hand, we can define the inverse function\nas follows:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C04_Sets_and_Functions:0059",
+    "file": "C04_Sets_and_Functions.html",
+    "tag": "p",
+    "text": "The lines noncomputable section and open Classical are needed because we are using classical logic in an essential way. On input y , the function inverse f returns some value of x satisfying f x = y if there is one, and a default element of α otherwise. This is an instance of a dependent if construction, since in the positive case, the value returned, Classical.choose h , depends on the assumption h . The identity dif_pos h rewrites if h : e then a else b to a given h : e , and, similarly, dif_neg h rewrites it to b given h : ¬ e . There are also versions if_pos and if_neg that works for non-dependent if constructions and will be used in the next section. The theorem inverse_spec says that inverse f meets the first part of this specification.",
+    "html": "<p>The lines <code class=\"docutils literal notranslate\"><span class=\"pre\">noncomputable</span> <span class=\"pre\">section</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">open</span> <span class=\"pre\">Classical</span></code>\nare needed because we are using classical logic in an essential way.\nOn input <code class=\"docutils literal notranslate\"><span class=\"pre\">y</span></code>, the function <code class=\"docutils literal notranslate\"><span class=\"pre\">inverse</span> <span class=\"pre\">f</span></code>\nreturns some value of <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span></code> satisfying <code class=\"docutils literal notranslate\"><span class=\"pre\">f</span> <span class=\"pre\">x</span> <span class=\"pre\">=</span> <span class=\"pre\">y</span></code> if there is one,\nand a default element of <code class=\"docutils literal notranslate\"><span class=\"pre\">α</span></code> otherwise.\nThis is an instance of a <em>dependent if</em> construction,\nsince in the positive case, the value returned,\n<code class=\"docutils literal notranslate\"><span class=\"pre\">Classical.choose</span> <span class=\"pre\">h</span></code>, depends on the assumption <code class=\"docutils literal notranslate\"><span class=\"pre\">h</span></code>.\nThe identity <code class=\"docutils literal notranslate\"><span class=\"pre\">dif_pos</span> <span class=\"pre\">h</span></code> rewrites <code class=\"docutils literal notranslate\"><span class=\"pre\">if</span> <span class=\"pre\">h</span> <span class=\"pre\">:</span> <span class=\"pre\">e</span> <span class=\"pre\">then</span> <span class=\"pre\">a</span> <span class=\"pre\">else</span> <span class=\"pre\">b</span></code>\nto <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span></code> given <code class=\"docutils literal notranslate\"><span class=\"pre\">h</span> <span class=\"pre\">:</span> <span class=\"pre\">e</span></code>,\nand, similarly, <code class=\"docutils literal notranslate\"><span class=\"pre\">dif_neg</span> <span class=\"pre\">h</span></code> rewrites it to <code class=\"docutils literal notranslate\"><span class=\"pre\">b</span></code> given <code class=\"docutils literal notranslate\"><span class=\"pre\">h</span> <span class=\"pre\">:</span> <span class=\"pre\">¬</span> <span class=\"pre\">e</span></code>.\nThere are also versions <code class=\"docutils literal notranslate\"><span class=\"pre\">if_pos</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">if_neg</span></code> that works for non-dependent\nif constructions and will be used in the next section.\nThe theorem <code class=\"docutils literal notranslate\"><span class=\"pre\">inverse_spec</span></code> says that <code class=\"docutils literal notranslate\"><span class=\"pre\">inverse</span> <span class=\"pre\">f</span></code>\nmeets the first part of this specification.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C04_Sets_and_Functions:0060",
+    "file": "C04_Sets_and_Functions.html",
+    "tag": "p",
+    "text": "Don’t worry if you do not fully understand how these work. The theorem inverse_spec alone should be enough to show that inverse f is a left inverse if and only if f is injective and a right inverse if and only if f is surjective. Look up the definition of LeftInverse and RightInverse by double-clicking or right-clicking on them in VS Code, or using the commands #print LeftInverse and #print RightInverse . Then try to prove the two theorems. They are tricky! It helps to do the proofs on paper before you start hacking through the details. You should be able to prove each of them with about a half-dozen short lines. If you are looking for an extra challenge, try to condense each proof to a single-line proof term.",
+    "html": "<p>Don’t worry if you do not fully understand how these work.\nThe theorem <code class=\"docutils literal notranslate\"><span class=\"pre\">inverse_spec</span></code> alone should be enough to show\nthat <code class=\"docutils literal notranslate\"><span class=\"pre\">inverse</span> <span class=\"pre\">f</span></code> is a left inverse if and only if <code class=\"docutils literal notranslate\"><span class=\"pre\">f</span></code> is injective\nand a right inverse if and only if <code class=\"docutils literal notranslate\"><span class=\"pre\">f</span></code> is surjective.\nLook up the definition of <code class=\"docutils literal notranslate\"><span class=\"pre\">LeftInverse</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">RightInverse</span></code>\nby double-clicking or right-clicking on them in VS Code,\nor using the commands <code class=\"docutils literal notranslate\"><span class=\"pre\">#print</span> <span class=\"pre\">LeftInverse</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">#print</span> <span class=\"pre\">RightInverse</span></code>.\nThen try to prove the two theorems.\nThey are tricky!\nIt helps to do the proofs on paper before\nyou start hacking through the details.\nYou should be able to prove each of them with about a half-dozen\nshort lines.\nIf you are looking for an extra challenge,\ntry to condense each proof to a single-line proof term.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C04_Sets_and_Functions:0061",
+    "file": "C04_Sets_and_Functions.html",
+    "tag": "p",
+    "text": "We close this section with a type-theoretic statement of Cantor’s famous theorem that there is no surjective function from a set to its power set. See if you can understand the proof, and then fill in the two lines that are missing.",
+    "html": "<p>We close this section with a type-theoretic statement of Cantor’s\nfamous theorem that there is no surjective function from a set\nto its power set.\nSee if you can understand the proof,\nand then fill in the two lines that are missing.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C04_Sets_and_Functions:0062",
+    "file": "C04_Sets_and_Functions.html",
+    "tag": "p",
+    "text": "We close this chapter with an elementary but nontrivial theorem of set theory. Let \\(\\alpha\\) and \\(\\beta\\) be sets. (In our formalization, they will actually be types.) Suppose \\(f : \\alpha → \\beta\\) and \\(g : \\beta → \\alpha\\) are both injective. Intuitively, this means that \\(\\alpha\\) is no bigger than \\(\\beta\\) and vice-versa. If \\(\\alpha\\) and \\(\\beta\\) are finite, this implies that they have the same cardinality, which is equivalent to saying that there is a bijection between them. In the nineteenth century, Cantor stated that same result holds even in the case where \\(\\alpha\\) and \\(\\beta\\) are infinite. This was eventually established by Dedekind, Schröder, and Bernstein independently.",
+    "html": "<p>We close this chapter with an elementary but nontrivial theorem of set theory.\nLet <span class=\"math notranslate nohighlight\">\\(\\alpha\\)</span> and <span class=\"math notranslate nohighlight\">\\(\\beta\\)</span> be sets.\n(In our formalization, they will actually be types.)\nSuppose <span class=\"math notranslate nohighlight\">\\(f : \\alpha → \\beta\\)</span> and <span class=\"math notranslate nohighlight\">\\(g : \\beta → \\alpha\\)</span>\nare both injective.\nIntuitively, this means that <span class=\"math notranslate nohighlight\">\\(\\alpha\\)</span> is no bigger than <span class=\"math notranslate nohighlight\">\\(\\beta\\)</span> and vice-versa.\nIf <span class=\"math notranslate nohighlight\">\\(\\alpha\\)</span> and <span class=\"math notranslate nohighlight\">\\(\\beta\\)</span> are finite, this implies that\nthey have the same cardinality, which is equivalent to saying that there\nis a bijection between them.\nIn the nineteenth century, Cantor stated that same result holds even in the\ncase where <span class=\"math notranslate nohighlight\">\\(\\alpha\\)</span> and <span class=\"math notranslate nohighlight\">\\(\\beta\\)</span> are infinite.\nThis was eventually established by Dedekind, Schröder, and Bernstein\nindependently.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C04_Sets_and_Functions:0063",
+    "file": "C04_Sets_and_Functions.html",
+    "tag": "p",
+    "text": "Our formalization will introduce some new methods that we will explain in greater detail in chapters to come. Don’t worry if they go by too quickly here. Our goal is to show you that you already have the skills to contribute to the formal proof of a real mathematical result.",
+    "html": "<p>Our formalization will introduce some new methods that we will explain\nin greater detail in chapters to come.\nDon’t worry if they go by too quickly here.\nOur goal is to show you that you already have the skills to contribute\nto the formal proof of a real mathematical result.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C04_Sets_and_Functions:0064",
+    "file": "C04_Sets_and_Functions.html",
+    "tag": "p",
+    "text": "To understand the idea behind the proof, consider the image of the map \\(g\\) in \\(\\alpha\\) . On that image, the inverse of \\(g\\) is defined and is a bijection with \\(\\beta\\) .",
+    "html": "<p>To understand the idea behind the proof, consider the image of the map\n<span class=\"math notranslate nohighlight\">\\(g\\)</span> in <span class=\"math notranslate nohighlight\">\\(\\alpha\\)</span>.\nOn that image, the inverse of <span class=\"math notranslate nohighlight\">\\(g\\)</span> is defined and is a bijection\nwith <span class=\"math notranslate nohighlight\">\\(\\beta\\)</span>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C04_Sets_and_Functions:0065",
+    "file": "C04_Sets_and_Functions.html",
+    "tag": "p",
+    "text": "The problem is that the bijection does not include the shaded region in the diagram, which is nonempty if \\(g\\) is not surjective. Alternatively, we can use \\(f\\) to map all of \\(\\alpha\\) to \\(\\beta\\) , but in that case the problem is that if \\(f\\) is not surjective, it will miss some elements of \\(\\beta\\) .",
+    "html": "<p>The problem is that the bijection does not include the shaded region\nin the diagram, which is nonempty if <span class=\"math notranslate nohighlight\">\\(g\\)</span> is not surjective.\nAlternatively, we can use <span class=\"math notranslate nohighlight\">\\(f\\)</span> to map all of\n<span class=\"math notranslate nohighlight\">\\(\\alpha\\)</span> to <span class=\"math notranslate nohighlight\">\\(\\beta\\)</span>,\nbut in that case the problem is that if <span class=\"math notranslate nohighlight\">\\(f\\)</span> is not surjective,\nit will miss some elements of <span class=\"math notranslate nohighlight\">\\(\\beta\\)</span>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C04_Sets_and_Functions:0066",
+    "file": "C04_Sets_and_Functions.html",
+    "tag": "p",
+    "text": "But now consider the composition \\(g \\circ f\\) from \\(\\alpha\\) to itself. Because the composition is injective, it forms a bijection between \\(\\alpha\\) and its image, yielding a scaled-down copy of \\(\\alpha\\) inside itself.",
+    "html": "<p>But now consider the composition <span class=\"math notranslate nohighlight\">\\(g \\circ f\\)</span> from <span class=\"math notranslate nohighlight\">\\(\\alpha\\)</span> to\nitself. Because the composition is injective, it forms a bijection between\n<span class=\"math notranslate nohighlight\">\\(\\alpha\\)</span> and its image, yielding a scaled-down copy of <span class=\"math notranslate nohighlight\">\\(\\alpha\\)</span>\ninside itself.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C04_Sets_and_Functions:0067",
+    "file": "C04_Sets_and_Functions.html",
+    "tag": "p",
+    "text": "This composition maps the inner shaded ring to yet another such set, which we can think of as an even smaller concentric shaded ring, and so on. This yields a concentric sequence of shaded rings, each of which is in bijective correspondence with the next. If we map each ring to the next and leave the unshaded parts of \\(\\alpha\\) alone, we have a bijection of \\(\\alpha\\) with the image of \\(g\\) . Composing with \\(g^{-1}\\) , this yields the desired bijection between \\(\\alpha\\) and \\(\\beta\\) .",
+    "html": "<p>This composition maps the inner shaded ring to yet another such\nset, which we can think of as an even smaller concentric shaded ring,\nand so on.\nThis yields a\nconcentric sequence of shaded rings, each of which is in\nbijective correspondence with the next.\nIf we map each ring to the next and leave the unshaded\nparts of <span class=\"math notranslate nohighlight\">\\(\\alpha\\)</span> alone,\nwe have a bijection of <span class=\"math notranslate nohighlight\">\\(\\alpha\\)</span> with the image of <span class=\"math notranslate nohighlight\">\\(g\\)</span>.\nComposing with <span class=\"math notranslate nohighlight\">\\(g^{-1}\\)</span>, this yields the desired\nbijection between <span class=\"math notranslate nohighlight\">\\(\\alpha\\)</span> and <span class=\"math notranslate nohighlight\">\\(\\beta\\)</span>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C04_Sets_and_Functions:0068",
+    "file": "C04_Sets_and_Functions.html",
+    "tag": "p",
+    "text": "We can describe this bijection more simply. Let \\(A\\) be the union of the sequence of shaded regions, and define \\(h : \\alpha \\to \\beta\\) as follows:",
+    "html": "<p>We can describe this bijection more simply.\nLet <span class=\"math notranslate nohighlight\">\\(A\\)</span> be the union of the sequence of shaded regions, and\ndefine <span class=\"math notranslate nohighlight\">\\(h : \\alpha \\to \\beta\\)</span> as follows:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C04_Sets_and_Functions:0069",
+    "file": "C04_Sets_and_Functions.html",
+    "tag": "p",
+    "text": "In other words, we use \\(f\\) on the shaded parts, and we use the inverse of \\(g\\) everywhere else. The resulting map \\(h\\) is injective because each component is injective and the images of the two components are disjoint. To see that it is surjective, suppose we are given a \\(y\\) in \\(\\beta\\) , and consider \\(g(y)\\) . If \\(g(y)\\) is in one of the shaded regions, it cannot be in the first ring, so we have \\(g(y) = g(f(x))\\) for some \\(x\\) is in the previous ring. By the injectivity of \\(g\\) , we have \\(h(x) = f(x) = y\\) . If \\(g(y)\\) is not in the shaded region, then by the definition of \\(h\\) , we have \\(h(g(y))= y\\) . Either way, \\(y\\) is in the image of \\(h\\) .",
+    "html": "<p>In other words, we use <span class=\"math notranslate nohighlight\">\\(f\\)</span> on the shaded parts,\nand we use the inverse of <span class=\"math notranslate nohighlight\">\\(g\\)</span> everywhere else.\nThe resulting map <span class=\"math notranslate nohighlight\">\\(h\\)</span> is injective\nbecause each component is injective\nand the images of the two components are disjoint.\nTo see that it is surjective,\nsuppose we are given a <span class=\"math notranslate nohighlight\">\\(y\\)</span> in <span class=\"math notranslate nohighlight\">\\(\\beta\\)</span>, and\nconsider <span class=\"math notranslate nohighlight\">\\(g(y)\\)</span>.\nIf <span class=\"math notranslate nohighlight\">\\(g(y)\\)</span> is in one of the shaded regions,\nit cannot be in the first ring, so we have <span class=\"math notranslate nohighlight\">\\(g(y) = g(f(x))\\)</span>\nfor some <span class=\"math notranslate nohighlight\">\\(x\\)</span> is in the previous ring.\nBy the injectivity of <span class=\"math notranslate nohighlight\">\\(g\\)</span>, we have <span class=\"math notranslate nohighlight\">\\(h(x) = f(x) = y\\)</span>.\nIf <span class=\"math notranslate nohighlight\">\\(g(y)\\)</span> is not in the shaded region,\nthen by the definition of <span class=\"math notranslate nohighlight\">\\(h\\)</span>, we have <span class=\"math notranslate nohighlight\">\\(h(g(y))= y\\)</span>.\nEither way, <span class=\"math notranslate nohighlight\">\\(y\\)</span> is in the image of <span class=\"math notranslate nohighlight\">\\(h\\)</span>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C04_Sets_and_Functions:0070",
+    "file": "C04_Sets_and_Functions.html",
+    "tag": "p",
+    "text": "This argument should sound plausible, but the details are delicate. Formalizing the proof will not only improve our confidence in the result, but also help us understand it better. Because the proof uses classical logic, we tell Lean that our definitions will generally not be computable.",
+    "html": "<p>This argument should sound plausible, but the details are delicate.\nFormalizing the proof will not only improve our confidence in the\nresult, but also help us understand it better.\nBecause the proof uses classical logic, we tell Lean that our definitions\nwill generally not be computable.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C04_Sets_and_Functions:0071",
+    "file": "C04_Sets_and_Functions.html",
+    "tag": "p",
+    "text": "The annotation [Nonempty β] specifies that β is nonempty. We use it because the Mathlib primitive that we will use to construct \\(g^{-1}\\) requires it. The case of the theorem where \\(\\beta\\) is empty is trivial, and even though it would not be hard to generalize the formalization to cover that case as well, we will not bother. Specifically, we need the hypothesis [Nonempty β] for the operation invFun that is defined in Mathlib. Given x : α , invFun g x chooses a preimage of x in β if there is one, and returns an arbitrary element of β otherwise. The function invFun g is always a left inverse if g is injective and a right inverse if g is surjective.",
+    "html": "<p>The annotation <code class=\"docutils literal notranslate\"><span class=\"pre\">[Nonempty</span> <span class=\"pre\">β]</span></code> specifies that <code class=\"docutils literal notranslate\"><span class=\"pre\">β</span></code> is nonempty.\nWe use it because the Mathlib primitive that we will use to\nconstruct <span class=\"math notranslate nohighlight\">\\(g^{-1}\\)</span> requires it.\nThe case of the theorem where <span class=\"math notranslate nohighlight\">\\(\\beta\\)</span> is empty is trivial,\nand even though it would not be hard to generalize the formalization to cover\nthat case as well, we will not bother.\nSpecifically, we need the hypothesis <code class=\"docutils literal notranslate\"><span class=\"pre\">[Nonempty</span> <span class=\"pre\">β]</span></code> for the operation\n<code class=\"docutils literal notranslate\"><span class=\"pre\">invFun</span></code> that is defined in Mathlib.\nGiven <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span> <span class=\"pre\">:</span> <span class=\"pre\">α</span></code>, <code class=\"docutils literal notranslate\"><span class=\"pre\">invFun</span> <span class=\"pre\">g</span> <span class=\"pre\">x</span></code> chooses a preimage of <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span></code>\nin <code class=\"docutils literal notranslate\"><span class=\"pre\">β</span></code> if there is one,\nand returns an arbitrary element of <code class=\"docutils literal notranslate\"><span class=\"pre\">β</span></code> otherwise.\nThe function <code class=\"docutils literal notranslate\"><span class=\"pre\">invFun</span> <span class=\"pre\">g</span></code> is always a left inverse if <code class=\"docutils literal notranslate\"><span class=\"pre\">g</span></code> is injective\nand a right inverse if <code class=\"docutils literal notranslate\"><span class=\"pre\">g</span></code> is surjective.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C04_Sets_and_Functions:0072",
+    "file": "C04_Sets_and_Functions.html",
+    "tag": "p",
+    "text": "We define the set corresponding to the union of the shaded regions as follows.",
+    "html": "<p>We define the set corresponding to the union of the shaded regions as follows.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C04_Sets_and_Functions:0073",
+    "file": "C04_Sets_and_Functions.html",
+    "tag": "p",
+    "text": "The definition sbAux is an example of a recursive definition , which we will explain in the next chapter. It defines a sequence of sets",
+    "html": "<p>The definition <code class=\"docutils literal notranslate\"><span class=\"pre\">sbAux</span></code> is an example of a <em>recursive definition</em>,\nwhich we will explain in the next chapter.\nIt defines a sequence of sets</p>",
+    "zh": ""
+  },
+  {
+    "id": "C04_Sets_and_Functions:0074",
+    "file": "C04_Sets_and_Functions.html",
+    "tag": "p",
+    "text": "The definition sbSet corresponds to the set \\(A = \\bigcup_{n \\in \\mathbb{N}} S_n\\) in our proof sketch. The function \\(h\\) described above is now defined as follows:",
+    "html": "<p>The definition <code class=\"docutils literal notranslate\"><span class=\"pre\">sbSet</span></code> corresponds to the set\n<span class=\"math notranslate nohighlight\">\\(A = \\bigcup_{n \\in \\mathbb{N}} S_n\\)</span> in our proof sketch.\nThe function <span class=\"math notranslate nohighlight\">\\(h\\)</span> described above is now defined as follows:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C04_Sets_and_Functions:0075",
+    "file": "C04_Sets_and_Functions.html",
+    "tag": "p",
+    "text": "We will need the fact that our definition of \\(g^{-1}\\) is a right inverse on the complement of \\(A\\) , which is to say, on the non-shaded regions of \\(\\alpha\\) . This is so because the outermost ring, \\(S_0\\) , is equal to \\(\\alpha \\setminus g(\\beta)\\) , so the complement of \\(A\\) is contained in \\(g(\\beta)\\) . As a result, for every \\(x\\) in the complement of \\(A\\) , there is a \\(y\\) such that \\(g(y) = x\\) . (By the injectivity of \\(g\\) , this \\(y\\) is unique, but next theorem says only that invFun g x returns some y such that g y = x .)",
+    "html": "<p>We will need the fact that our definition of <span class=\"math notranslate nohighlight\">\\(g^{-1}\\)</span> is a\nright inverse on the complement of <span class=\"math notranslate nohighlight\">\\(A\\)</span>,\nwhich is to say, on the non-shaded regions of <span class=\"math notranslate nohighlight\">\\(\\alpha\\)</span>.\nThis is so because the outermost ring, <span class=\"math notranslate nohighlight\">\\(S_0\\)</span>, is equal to\n<span class=\"math notranslate nohighlight\">\\(\\alpha \\setminus g(\\beta)\\)</span>, so the complement of <span class=\"math notranslate nohighlight\">\\(A\\)</span> is\ncontained in <span class=\"math notranslate nohighlight\">\\(g(\\beta)\\)</span>.\nAs a result, for every <span class=\"math notranslate nohighlight\">\\(x\\)</span> in the complement of <span class=\"math notranslate nohighlight\">\\(A\\)</span>,\nthere is a <span class=\"math notranslate nohighlight\">\\(y\\)</span> such that <span class=\"math notranslate nohighlight\">\\(g(y) = x\\)</span>.\n(By the injectivity of <span class=\"math notranslate nohighlight\">\\(g\\)</span>, this <span class=\"math notranslate nohighlight\">\\(y\\)</span> is unique,\nbut next theorem says only that <code class=\"docutils literal notranslate\"><span class=\"pre\">invFun</span> <span class=\"pre\">g</span> <span class=\"pre\">x</span></code> returns some <code class=\"docutils literal notranslate\"><span class=\"pre\">y</span></code>\nsuch that <code class=\"docutils literal notranslate\"><span class=\"pre\">g</span> <span class=\"pre\">y</span> <span class=\"pre\">=</span> <span class=\"pre\">x</span></code>.)</p>",
+    "zh": ""
+  },
+  {
+    "id": "C04_Sets_and_Functions:0076",
+    "file": "C04_Sets_and_Functions.html",
+    "tag": "p",
+    "text": "Step through the proof below, make sure you understand what is going on, and fill in the remaining parts. You will need to use invFun_eq at the end. Notice that rewriting with sbAux here replaces sbAux f g 0 with the right-hand side of the corresponding defining equation.",
+    "html": "<p>Step through the proof below, make sure you understand what is going on,\nand fill in the remaining parts.\nYou will need to use <code class=\"docutils literal notranslate\"><span class=\"pre\">invFun_eq</span></code> at the end.\nNotice that rewriting with <code class=\"docutils literal notranslate\"><span class=\"pre\">sbAux</span></code> here replaces <code class=\"docutils literal notranslate\"><span class=\"pre\">sbAux</span> <span class=\"pre\">f</span> <span class=\"pre\">g</span> <span class=\"pre\">0</span></code>\nwith the right-hand side of the corresponding defining equation.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C04_Sets_and_Functions:0077",
+    "file": "C04_Sets_and_Functions.html",
+    "tag": "p",
+    "text": "We now turn to the proof that \\(h\\) is injective. Informally, the proof goes as follows. First, suppose \\(h(x_1) = h(x_2)\\) . If \\(x_1\\) is in \\(A\\) , then \\(h(x_1) = f(x_1)\\) , and we can show that \\(x_2\\) is in \\(A\\) as follows. If it isn’t, then we have \\(h(x_2) = g^{-1}(x_2)\\) . From \\(f(x_1) = h(x_1) = h(x_2)\\) we have \\(g(f(x_1)) = x_2\\) . From the definition of \\(A\\) , since \\(x_1\\) is in \\(A\\) , \\(x_2\\) is in \\(A\\) as well, a contradiction. Hence, if \\(x_1\\) is in \\(A\\) , so is \\(x_2\\) , in which case we have \\(f(x_1) = h(x_1) = h(x_2) = f(x_2)\\) . The injectivity of \\(f\\) then implies \\(x_1 = x_2\\) . The symmetric argument shows that if \\(x_2\\) is in \\(A\\) , then so is \\(x_1\\) , which again implies \\(x_1 = x_2\\) .",
+    "html": "<p>We now turn to the proof that <span class=\"math notranslate nohighlight\">\\(h\\)</span> is injective.\nInformally, the proof goes as follows.\nFirst, suppose <span class=\"math notranslate nohighlight\">\\(h(x_1) = h(x_2)\\)</span>.\nIf <span class=\"math notranslate nohighlight\">\\(x_1\\)</span> is in <span class=\"math notranslate nohighlight\">\\(A\\)</span>, then <span class=\"math notranslate nohighlight\">\\(h(x_1) = f(x_1)\\)</span>,\nand we can show that <span class=\"math notranslate nohighlight\">\\(x_2\\)</span> is in <span class=\"math notranslate nohighlight\">\\(A\\)</span> as follows.\nIf it isn’t, then we have <span class=\"math notranslate nohighlight\">\\(h(x_2) = g^{-1}(x_2)\\)</span>.\nFrom <span class=\"math notranslate nohighlight\">\\(f(x_1) = h(x_1) = h(x_2)\\)</span> we have <span class=\"math notranslate nohighlight\">\\(g(f(x_1)) = x_2\\)</span>.\nFrom the definition of <span class=\"math notranslate nohighlight\">\\(A\\)</span>, since <span class=\"math notranslate nohighlight\">\\(x_1\\)</span> is in <span class=\"math notranslate nohighlight\">\\(A\\)</span>,\n<span class=\"math notranslate nohighlight\">\\(x_2\\)</span> is in <span class=\"math notranslate nohighlight\">\\(A\\)</span> as well, a contradiction.\nHence, if <span class=\"math notranslate nohighlight\">\\(x_1\\)</span> is in <span class=\"math notranslate nohighlight\">\\(A\\)</span>, so is <span class=\"math notranslate nohighlight\">\\(x_2\\)</span>,\nin which case we have <span class=\"math notranslate nohighlight\">\\(f(x_1) = h(x_1) = h(x_2) = f(x_2)\\)</span>.\nThe injectivity of <span class=\"math notranslate nohighlight\">\\(f\\)</span> then implies <span class=\"math notranslate nohighlight\">\\(x_1 = x_2\\)</span>.\nThe symmetric argument shows that if <span class=\"math notranslate nohighlight\">\\(x_2\\)</span> is in <span class=\"math notranslate nohighlight\">\\(A\\)</span>,\nthen so is <span class=\"math notranslate nohighlight\">\\(x_1\\)</span>, which again implies <span class=\"math notranslate nohighlight\">\\(x_1 = x_2\\)</span>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C04_Sets_and_Functions:0078",
+    "file": "C04_Sets_and_Functions.html",
+    "tag": "p",
+    "text": "The only remaining possibility is that neither \\(x_1\\) nor \\(x_2\\) is in \\(A\\) . In that case, we have \\(g^{-1}(x_1) = h(x_1) = h(x_2) = g^{-1}(x_2)\\) . Applying \\(g\\) to both sides yields \\(x_1 = x_2\\) .",
+    "html": "<p>The only remaining possibility is that neither <span class=\"math notranslate nohighlight\">\\(x_1\\)</span> nor <span class=\"math notranslate nohighlight\">\\(x_2\\)</span>\nis in <span class=\"math notranslate nohighlight\">\\(A\\)</span>. In that case, we have\n<span class=\"math notranslate nohighlight\">\\(g^{-1}(x_1) = h(x_1) = h(x_2) = g^{-1}(x_2)\\)</span>.\nApplying <span class=\"math notranslate nohighlight\">\\(g\\)</span> to both sides yields <span class=\"math notranslate nohighlight\">\\(x_1 = x_2\\)</span>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C04_Sets_and_Functions:0079",
+    "file": "C04_Sets_and_Functions.html",
+    "tag": "p",
+    "text": "Once again, we encourage you to step through the following proof to see how the argument plays out in Lean. See if you can finish off the proof using sb_right_inv .",
+    "html": "<p>Once again, we encourage you to step through the following proof\nto see how the argument plays out in Lean.\nSee if you can finish off the proof using <code class=\"docutils literal notranslate\"><span class=\"pre\">sb_right_inv</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C04_Sets_and_Functions:0080",
+    "file": "C04_Sets_and_Functions.html",
+    "tag": "p",
+    "text": "The proof introduces some new tactics. To start with, notice the set tactic, which introduces abbreviations A and h for sbSet f g and sb_fun f g respectively. We name the corresponding defining equations A_def and h_def . The abbreviations are definitional, which is to say, Lean will sometimes unfold them automatically when needed. But not always; for example, when using rw , we generally need to use A_def and h_def explicitly. So the definitions bring a tradeoff: they can make expressions shorter and more readable, but they sometimes require us to do more work.",
+    "html": "<p>The proof introduces some new tactics.\nTo start with, notice the <code class=\"docutils literal notranslate\"><span class=\"pre\">set</span></code> tactic, which introduces abbreviations\n<code class=\"docutils literal notranslate\"><span class=\"pre\">A</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">h</span></code> for <code class=\"docutils literal notranslate\"><span class=\"pre\">sbSet</span> <span class=\"pre\">f</span> <span class=\"pre\">g</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">sb_fun</span> <span class=\"pre\">f</span> <span class=\"pre\">g</span></code> respectively.\nWe name the corresponding defining equations <code class=\"docutils literal notranslate\"><span class=\"pre\">A_def</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">h_def</span></code>.\nThe abbreviations are definitional, which is to say, Lean will sometimes\nunfold them automatically when needed.\nBut not always; for example, when using <code class=\"docutils literal notranslate\"><span class=\"pre\">rw</span></code>, we generally need to\nuse <code class=\"docutils literal notranslate\"><span class=\"pre\">A_def</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">h_def</span></code> explicitly.\nSo the definitions bring a tradeoff: they can make expressions shorter\nand more readable, but they sometimes require us to do more work.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C04_Sets_and_Functions:0081",
+    "file": "C04_Sets_and_Functions.html",
+    "tag": "p",
+    "text": "A more interesting tactic is the wlog tactic, which encapsulates the symmetry argument in the informal proof above. We will not dwell on it now, but notice that it does exactly what we want. If you hover over the tactic you can take a look at its documentation.",
+    "html": "<p>A more interesting tactic is the <code class=\"docutils literal notranslate\"><span class=\"pre\">wlog</span></code> tactic, which encapsulates\nthe symmetry argument in the informal proof above.\nWe will not dwell on it now, but notice that it does exactly what we want.\nIf you hover over the tactic you can take a look at its documentation.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C04_Sets_and_Functions:0082",
+    "file": "C04_Sets_and_Functions.html",
+    "tag": "p",
+    "text": "The argument for surjectivity is even easier. Given \\(y\\) in \\(\\beta\\) , we consider two cases, depending on whether \\(g(y)\\) is in \\(A\\) . If it is, it can’t be in \\(S_0\\) , the outermost ring, because by definition that is disjoint from the image of \\(g\\) . Thus it is an element of \\(S_{n+1}\\) for some \\(n\\) . This means that it is of the form \\(g(f(x))\\) for some \\(x\\) in \\(S_n\\) . By the injectivity of \\(g\\) , we have \\(f(x) = y\\) . In the case where \\(g(y)\\) is in the complement of \\(A\\) , we immediately have \\(h(g(y))= y\\) , and we are done.",
+    "html": "<p>The argument for surjectivity is even easier.\nGiven <span class=\"math notranslate nohighlight\">\\(y\\)</span> in <span class=\"math notranslate nohighlight\">\\(\\beta\\)</span>,\nwe consider two cases, depending on whether <span class=\"math notranslate nohighlight\">\\(g(y)\\)</span> is in <span class=\"math notranslate nohighlight\">\\(A\\)</span>.\nIf it is, it can’t be in <span class=\"math notranslate nohighlight\">\\(S_0\\)</span>, the outermost ring,\nbecause by definition that is disjoint from the image of <span class=\"math notranslate nohighlight\">\\(g\\)</span>.\nThus it is an element of <span class=\"math notranslate nohighlight\">\\(S_{n+1}\\)</span> for some <span class=\"math notranslate nohighlight\">\\(n\\)</span>.\nThis means that it is of the form <span class=\"math notranslate nohighlight\">\\(g(f(x))\\)</span> for some\n<span class=\"math notranslate nohighlight\">\\(x\\)</span> in <span class=\"math notranslate nohighlight\">\\(S_n\\)</span>.\nBy the injectivity of <span class=\"math notranslate nohighlight\">\\(g\\)</span>, we have <span class=\"math notranslate nohighlight\">\\(f(x) = y\\)</span>.\nIn the case where <span class=\"math notranslate nohighlight\">\\(g(y)\\)</span> is in the complement of <span class=\"math notranslate nohighlight\">\\(A\\)</span>,\nwe immediately have <span class=\"math notranslate nohighlight\">\\(h(g(y))= y\\)</span>, and we are done.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C04_Sets_and_Functions:0083",
+    "file": "C04_Sets_and_Functions.html",
+    "tag": "p",
+    "text": "Once again, we encourage you to step through the proof and fill in the missing parts. The tactic rcases n with _ | n splits on the cases g y ∈ sbAux f g 0 and g y ∈ sbAux f g (n + 1) . In both cases, calling the simplifier with simp [sbAux] applies the corresponding defining equation of sbAux .",
+    "html": "<p>Once again, we encourage you to step through the proof and fill in\nthe missing parts.\nThe tactic <code class=\"docutils literal notranslate\"><span class=\"pre\">rcases</span> <span class=\"pre\">n</span> <span class=\"pre\">with</span> <span class=\"pre\">_</span> <span class=\"pre\">|</span> <span class=\"pre\">n</span></code> splits on the cases <code class=\"docutils literal notranslate\"><span class=\"pre\">g</span> <span class=\"pre\">y</span> <span class=\"pre\">∈</span> <span class=\"pre\">sbAux</span> <span class=\"pre\">f</span> <span class=\"pre\">g</span> <span class=\"pre\">0</span></code>\nand <code class=\"docutils literal notranslate\"><span class=\"pre\">g</span> <span class=\"pre\">y</span> <span class=\"pre\">∈</span> <span class=\"pre\">sbAux</span> <span class=\"pre\">f</span> <span class=\"pre\">g</span> <span class=\"pre\">(n</span> <span class=\"pre\">+</span> <span class=\"pre\">1)</span></code>.\nIn both cases, calling the simplifier with <code class=\"docutils literal notranslate\"><span class=\"pre\">simp</span> <span class=\"pre\">[sbAux]</span></code>\napplies the corresponding defining equation of <code class=\"docutils literal notranslate\"><span class=\"pre\">sbAux</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C04_Sets_and_Functions:0084",
+    "file": "C04_Sets_and_Functions.html",
+    "tag": "p",
+    "text": "We can now put it all together. The final statement is short and sweet, and the proof uses the fact that Bijective h unfolds to Injective h ∧ Surjective h .",
+    "html": "<p>We can now put it all together. The final statement is short and sweet,\nand the proof uses the fact that <code class=\"docutils literal notranslate\"><span class=\"pre\">Bijective</span> <span class=\"pre\">h</span></code> unfolds to\n<code class=\"docutils literal notranslate\"><span class=\"pre\">Injective</span> <span class=\"pre\">h</span> <span class=\"pre\">∧</span> <span class=\"pre\">Surjective</span> <span class=\"pre\">h</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C04_Sets_and_Functions:0085",
+    "file": "C04_Sets_and_Functions.html",
+    "tag": "li",
+    "text": "s ∩ t as {x | x ∈ s ∧ x ∈ t} ,",
+    "html": "<li><p><code class=\"docutils literal notranslate\"><span class=\"pre\">s</span> <span class=\"pre\">∩</span> <span class=\"pre\">t</span></code> as <code class=\"docutils literal notranslate\"><span class=\"pre\">{x</span> <span class=\"pre\">|</span> <span class=\"pre\">x</span> <span class=\"pre\">∈</span> <span class=\"pre\">s</span> <span class=\"pre\">∧</span> <span class=\"pre\">x</span> <span class=\"pre\">∈</span> <span class=\"pre\">t}</span></code>,</p></li>",
+    "zh": ""
+  },
+  {
+    "id": "C04_Sets_and_Functions:0086",
+    "file": "C04_Sets_and_Functions.html",
+    "tag": "li",
+    "text": "s ∪ t as {x | x ∈ s ∨ x ∈ t} ,",
+    "html": "<li><p><code class=\"docutils literal notranslate\"><span class=\"pre\">s</span> <span class=\"pre\">∪</span> <span class=\"pre\">t</span></code> as <code class=\"docutils literal notranslate\"><span class=\"pre\">{x</span> <span class=\"pre\">|</span> <span class=\"pre\">x</span> <span class=\"pre\">∈</span> <span class=\"pre\">s</span> <span class=\"pre\">∨</span> <span class=\"pre\">x</span> <span class=\"pre\">∈</span> <span class=\"pre\">t}</span></code>,</p></li>",
+    "zh": ""
+  },
+  {
+    "id": "C04_Sets_and_Functions:0087",
+    "file": "C04_Sets_and_Functions.html",
+    "tag": "li",
+    "text": "∅ as {x | False} , and",
+    "html": "<li><p><code class=\"docutils literal notranslate\"><span class=\"pre\">∅</span></code> as <code class=\"docutils literal notranslate\"><span class=\"pre\">{x</span> <span class=\"pre\">|</span> <span class=\"pre\">False}</span></code>, and</p></li>",
+    "zh": ""
+  },
+  {
+    "id": "C04_Sets_and_Functions:0088",
+    "file": "C04_Sets_and_Functions.html",
+    "tag": "li",
+    "text": "univ as {x | True} .",
+    "html": "<li><p><code class=\"docutils literal notranslate\"><span class=\"pre\">univ</span></code> as <code class=\"docutils literal notranslate\"><span class=\"pre\">{x</span> <span class=\"pre\">|</span> <span class=\"pre\">True}</span></code>.</p></li>",
+    "zh": ""
+  }
+]

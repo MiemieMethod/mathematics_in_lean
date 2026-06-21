@@ -1,0 +1,274 @@
+[
+  {
+    "id": "C12_Differential_Calculus:0001",
+    "file": "C12_Differential_Calculus.html",
+    "tag": "h1",
+    "text": "12. Differential Calculus",
+    "html": "<h1><span class=\"section-number\">12. </span>Differential Calculus</h1>",
+    "zh": ""
+  },
+  {
+    "id": "C12_Differential_Calculus:0002",
+    "file": "C12_Differential_Calculus.html",
+    "tag": "h2",
+    "text": "12.1. Elementary Differential Calculus",
+    "html": "<h2><span class=\"section-number\">12.1. </span>Elementary Differential Calculus</h2>",
+    "zh": ""
+  },
+  {
+    "id": "C12_Differential_Calculus:0003",
+    "file": "C12_Differential_Calculus.html",
+    "tag": "h2",
+    "text": "12.2. Differential Calculus in Normed Spaces",
+    "html": "<h2><span class=\"section-number\">12.2. </span>Differential Calculus in Normed Spaces</h2>",
+    "zh": ""
+  },
+  {
+    "id": "C12_Differential_Calculus:0004",
+    "file": "C12_Differential_Calculus.html",
+    "tag": "h3",
+    "text": "12.2.1. Normed spaces",
+    "html": "<h3><span class=\"section-number\">12.2.1. </span>Normed spaces</h3>",
+    "zh": ""
+  },
+  {
+    "id": "C12_Differential_Calculus:0005",
+    "file": "C12_Differential_Calculus.html",
+    "tag": "h3",
+    "text": "12.2.2. Continuous linear maps",
+    "html": "<h3><span class=\"section-number\">12.2.2. </span>Continuous linear maps</h3>",
+    "zh": ""
+  },
+  {
+    "id": "C12_Differential_Calculus:0006",
+    "file": "C12_Differential_Calculus.html",
+    "tag": "h3",
+    "text": "12.2.3. Asymptotic comparisons",
+    "html": "<h3><span class=\"section-number\">12.2.3. </span>Asymptotic comparisons</h3>",
+    "zh": ""
+  },
+  {
+    "id": "C12_Differential_Calculus:0007",
+    "file": "C12_Differential_Calculus.html",
+    "tag": "h3",
+    "text": "12.2.4. Differentiability",
+    "html": "<h3><span class=\"section-number\">12.2.4. </span>Differentiability</h3>",
+    "zh": ""
+  },
+  {
+    "id": "C12_Differential_Calculus:0008",
+    "file": "C12_Differential_Calculus.html",
+    "tag": "p",
+    "text": "We now consider the formalization of notions from analysis , starting with differentiation in this chapter and turning integration and measure theory in the next. In Section 12.1 , we stick with the setting of functions from the real numbers to the real numbers, which is familiar from any introductory calculus class. In Section 12.2 , we then consider the notion of a derivative in a much broader setting.",
+    "html": "<p>We now consider the formalization of notions from <em>analysis</em>,\nstarting with differentiation in this chapter\nand turning integration and measure theory in the next.\nIn <a class=\"reference internal\" href=\"#elementary-differential-calculus\"><span class=\"std std-numref\">Section 12.1</span></a>, we stick with the\nsetting of functions from the real numbers to the real numbers,\nwhich is familiar from any introductory calculus class.\nIn <a class=\"reference internal\" href=\"#normed-spaces\"><span class=\"std std-numref\">Section 12.2</span></a>, we then consider the notion of a derivative in\na much broader setting.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C12_Differential_Calculus:0009",
+    "file": "C12_Differential_Calculus.html",
+    "tag": "p",
+    "text": "Let f be a function from the reals to the reals. There is a difference between talking about the derivative of f at a single point and talking about the derivative function. In Mathlib, the first notion is represented as follows.",
+    "html": "<p>Let <code class=\"docutils literal notranslate\"><span class=\"pre\">f</span></code> be a function from the reals to the reals. There is a difference\nbetween talking about the derivative of <code class=\"docutils literal notranslate\"><span class=\"pre\">f</span></code> at a single point and\ntalking about the derivative function.\nIn Mathlib, the first notion is represented as follows.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C12_Differential_Calculus:0010",
+    "file": "C12_Differential_Calculus.html",
+    "tag": "p",
+    "text": "We can also express that f is differentiable at a point without specifying its derivative there by writing DifferentiableAt ℝ . We specify ℝ explicitly because in a slightly more general context, when talking about functions from ℂ to ℂ , we want to be able to distinguish between being differentiable in the real sense and being differentiable in the sense of the complex derivative.",
+    "html": "<p>We can also express that <code class=\"docutils literal notranslate\"><span class=\"pre\">f</span></code> is differentiable at a point without\nspecifying its derivative there\nby writing <code class=\"docutils literal notranslate\"><span class=\"pre\">DifferentiableAt</span> <span class=\"pre\">ℝ</span></code>.\nWe specify <code class=\"docutils literal notranslate\"><span class=\"pre\">ℝ</span></code> explicitly because in a slightly more general context,\nwhen talking about functions from <code class=\"docutils literal notranslate\"><span class=\"pre\">ℂ</span></code> to <code class=\"docutils literal notranslate\"><span class=\"pre\">ℂ</span></code>,\nwe want to be able to distinguish between being differentiable in the real sense\nand being differentiable in the sense of the complex derivative.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C12_Differential_Calculus:0011",
+    "file": "C12_Differential_Calculus.html",
+    "tag": "p",
+    "text": "It would be inconvenient to have to provide a proof of differentiability every time we want to refer to a derivative. So Mathlib provides a function deriv f : ℝ → ℝ that is defined for any function f : ℝ → ℝ but is defined to take the value 0 at any point where f is not differentiable.",
+    "html": "<p>It would be inconvenient to have to provide a proof of differentiability\nevery time we want to refer to a derivative.\nSo Mathlib provides a function <code class=\"docutils literal notranslate\"><span class=\"pre\">deriv</span> <span class=\"pre\">f</span> <span class=\"pre\">:</span> <span class=\"pre\">ℝ</span> <span class=\"pre\">→</span> <span class=\"pre\">ℝ</span></code> that is defined for any\nfunction <code class=\"docutils literal notranslate\"><span class=\"pre\">f</span> <span class=\"pre\">:</span> <span class=\"pre\">ℝ</span> <span class=\"pre\">→</span> <span class=\"pre\">ℝ</span></code>\nbut is defined to take the value <code class=\"docutils literal notranslate\"><span class=\"pre\">0</span></code> at any point where <code class=\"docutils literal notranslate\"><span class=\"pre\">f</span></code> is not differentiable.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C12_Differential_Calculus:0012",
+    "file": "C12_Differential_Calculus.html",
+    "tag": "p",
+    "text": "Of course there are many lemmas about deriv that do require differentiability assumptions. For instance, you should think about a counterexample to the next lemma without the differentiability assumptions.",
+    "html": "<p>Of course there are many lemmas about <code class=\"docutils literal notranslate\"><span class=\"pre\">deriv</span></code> that do require differentiability assumptions.\nFor instance, you should think about a counterexample to the next lemma without the\ndifferentiability assumptions.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C12_Differential_Calculus:0013",
+    "file": "C12_Differential_Calculus.html",
+    "tag": "p",
+    "text": "Interestingly, however, there are statements that can avoid differentiability assumptions by taking advantage of the fact that the value of deriv defaults to zero when the function is not differentiable. So making sense of the following statement requires knowing the precise definition of deriv .",
+    "html": "<p>Interestingly, however, there are statements that can avoid differentiability\nassumptions by taking advantage\nof the fact that the value of <code class=\"docutils literal notranslate\"><span class=\"pre\">deriv</span></code> defaults to zero when the function is\nnot differentiable.\nSo making sense of the following statement requires knowing the precise\ndefinition of <code class=\"docutils literal notranslate\"><span class=\"pre\">deriv</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C12_Differential_Calculus:0014",
+    "file": "C12_Differential_Calculus.html",
+    "tag": "p",
+    "text": "We can even state Rolle’s theorem without any differentiability assumptions, which seems even weirder.",
+    "html": "<p>We can even state Rolle’s theorem without any differentiability assumptions, which\nseems even weirder.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C12_Differential_Calculus:0015",
+    "file": "C12_Differential_Calculus.html",
+    "tag": "p",
+    "text": "Of course, this trick does not work for the general mean value theorem.",
+    "html": "<p>Of course, this trick does not work for the general mean value theorem.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C12_Differential_Calculus:0016",
+    "file": "C12_Differential_Calculus.html",
+    "tag": "p",
+    "text": "Lean can automatically compute some simple derivatives using the simp tactic.",
+    "html": "<p>Lean can automatically compute some simple derivatives using the <code class=\"docutils literal notranslate\"><span class=\"pre\">simp</span></code> tactic.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C12_Differential_Calculus:0017",
+    "file": "C12_Differential_Calculus.html",
+    "tag": "p",
+    "text": "Differentiation can be generalized beyond ℝ using the notion of a normed vector space , which encapsulates both direction and distance. We start with the notion of a normed group , which is an additive commutative group equipped with a real-valued norm function satisfying the following conditions.",
+    "html": "<p>Differentiation can be generalized beyond <code class=\"docutils literal notranslate\"><span class=\"pre\">ℝ</span></code> using the notion of a\n<em>normed vector space</em>, which encapsulates both direction and distance.\nWe start with the notion of a <em>normed group</em>, which is an additive commutative\ngroup equipped with a real-valued norm function\nsatisfying the following conditions.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C12_Differential_Calculus:0018",
+    "file": "C12_Differential_Calculus.html",
+    "tag": "p",
+    "text": "Every normed space is a metric space with distance function \\(d(x, y) = \\| x - y \\|\\) , and hence it is also a topological space. Lean and Mathlib know this.",
+    "html": "<p>Every normed space is a metric space with distance function\n<span class=\"math notranslate nohighlight\">\\(d(x, y) = \\| x - y \\|\\)</span>, and hence it is also a topological space.\nLean and Mathlib know this.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C12_Differential_Calculus:0019",
+    "file": "C12_Differential_Calculus.html",
+    "tag": "p",
+    "text": "In order to use the notion of a norm with concepts from linear algebra, we add the assumption NormedSpace ℝ E on top of NormedAddGroup E . This stipulates that E is a vector space over ℝ and that scalar multiplication satisfies the following condition.",
+    "html": "<p>In order to use the notion of a norm with concepts from linear algebra,\nwe add the assumption <code class=\"docutils literal notranslate\"><span class=\"pre\">NormedSpace</span> <span class=\"pre\">ℝ</span> <span class=\"pre\">E</span></code> on top of <code class=\"docutils literal notranslate\"><span class=\"pre\">NormedAddGroup</span> <span class=\"pre\">E</span></code>.\nThis stipulates that <code class=\"docutils literal notranslate\"><span class=\"pre\">E</span></code> is a vector space over <code class=\"docutils literal notranslate\"><span class=\"pre\">ℝ</span></code> and that\nscalar multiplication satisfies the following condition.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C12_Differential_Calculus:0020",
+    "file": "C12_Differential_Calculus.html",
+    "tag": "p",
+    "text": "A complete normed space is known as a Banach space . Every finite-dimensional vector space is complete.",
+    "html": "<p>A complete normed space is known as a <em>Banach space</em>.\nEvery finite-dimensional vector space is complete.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C12_Differential_Calculus:0021",
+    "file": "C12_Differential_Calculus.html",
+    "tag": "p",
+    "text": "In all the previous examples, we used the real numbers as the base field. More generally, we can make sense of calculus with a vector space over any nontrivially normed field . These are fields that are equipped with a real-valued norm that is multiplicative and has the property that not every element has norm zero or one (equivalently, there is an element whose norm is bigger than one).",
+    "html": "<p>In all the previous examples, we used the real numbers as the base field.\nMore generally, we can make sense of calculus with a vector space over any\n<em>nontrivially normed field</em>. These are fields that are equipped with a\nreal-valued norm that is multiplicative and has the property that\nnot every element has norm zero or one\n(equivalently, there is an element whose norm is bigger than one).</p>",
+    "zh": ""
+  },
+  {
+    "id": "C12_Differential_Calculus:0022",
+    "file": "C12_Differential_Calculus.html",
+    "tag": "p",
+    "text": "A finite-dimensional vector space over a nontrivially normed field is complete as long as the field itself is complete.",
+    "html": "<p>A finite-dimensional vector space over a nontrivially normed field is\ncomplete as long as the field itself is complete.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C12_Differential_Calculus:0023",
+    "file": "C12_Differential_Calculus.html",
+    "tag": "p",
+    "text": "We now turn to the morphisms in the category of normed spaces, namely, continuous linear maps. In Mathlib, the type of 𝕜 -linear continuous maps between normed spaces E and F is written E →L[𝕜] F . They are implemented as bundled maps , which means that an element of this type is a structure that that includes the function itself and the properties of being linear and continuous. Lean will insert a coercion so that a continuous linear map can be treated as a function.",
+    "html": "<p>We now turn to the morphisms in the category of normed spaces, namely,\ncontinuous linear maps.\nIn Mathlib, the type of <code class=\"docutils literal notranslate\"><span class=\"pre\">𝕜</span></code>-linear continuous maps between normed spaces\n<code class=\"docutils literal notranslate\"><span class=\"pre\">E</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">F</span></code> is written <code class=\"docutils literal notranslate\"><span class=\"pre\">E</span> <span class=\"pre\">→L[𝕜]</span> <span class=\"pre\">F</span></code>.\nThey are implemented as <em>bundled maps</em>, which means that an element of this type\nis a structure that that includes the function itself and the properties\nof being linear and continuous.\nLean will insert a coercion so that a continuous linear map can be treated\nas a function.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C12_Differential_Calculus:0024",
+    "file": "C12_Differential_Calculus.html",
+    "tag": "p",
+    "text": "Continuous linear maps have an operator norm that is characterized by the following properties.",
+    "html": "<p>Continuous linear maps have an operator norm that is characterized by the\nfollowing properties.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C12_Differential_Calculus:0025",
+    "file": "C12_Differential_Calculus.html",
+    "tag": "p",
+    "text": "There is also a notion of bundled continuous linear isomorphism . Their type of such isomorphisms is E ≃L[𝕜] F .",
+    "html": "<p>There is also a notion of bundled continuous linear <em>isomorphism</em>.\nTheir type of such isomorphisms is <code class=\"docutils literal notranslate\"><span class=\"pre\">E</span> <span class=\"pre\">≃L[𝕜]</span> <span class=\"pre\">F</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C12_Differential_Calculus:0026",
+    "file": "C12_Differential_Calculus.html",
+    "tag": "p",
+    "text": "As a challenging exercise, you can prove the Banach-Steinhaus theorem, also known as the Uniform Boundedness Principle. The principle states that a family of continuous linear maps from a Banach space into a normed space is pointwise bounded, then the norms of these linear maps are uniformly bounded. The main ingredient is Baire’s theorem nonempty_interior_of_iUnion_of_closed . (You proved a version of this in the topology chapter.) Minor ingredients include continuous_linear_map.opNorm_le_of_shell , interior_subset and interior_iInter_subset and isClosed_le .",
+    "html": "<p>As a challenging exercise, you can prove the Banach-Steinhaus theorem, also\nknown as the Uniform Boundedness Principle.\nThe principle states that a family of continuous linear maps from a Banach space\ninto a normed space is pointwise\nbounded, then the norms of these linear maps are uniformly bounded.\nThe main ingredient is Baire’s theorem\n<code class=\"docutils literal notranslate\"><span class=\"pre\">nonempty_interior_of_iUnion_of_closed</span></code>. (You proved a version of this in the topology chapter.)\nMinor ingredients include <code class=\"docutils literal notranslate\"><span class=\"pre\">continuous_linear_map.opNorm_le_of_shell</span></code>,\n<code class=\"docutils literal notranslate\"><span class=\"pre\">interior_subset</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">interior_iInter_subset</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">isClosed_le</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C12_Differential_Calculus:0027",
+    "file": "C12_Differential_Calculus.html",
+    "tag": "p",
+    "text": "Defining differentiability also requires asymptotic comparisons. Mathlib has an extensive library covering the big O and little o relations, whose definitions are shown below. Opening the asymptotics locale allows us to use the corresponding notation. Here we will only use little o to define differentiability.",
+    "html": "<p>Defining differentiability also requires asymptotic comparisons.\nMathlib has an extensive library covering the big O and little o relations,\nwhose definitions are shown below.\nOpening the <code class=\"docutils literal notranslate\"><span class=\"pre\">asymptotics</span></code> locale allows us to use the corresponding\nnotation.\nHere we will only use little o to define differentiability.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C12_Differential_Calculus:0028",
+    "file": "C12_Differential_Calculus.html",
+    "tag": "p",
+    "text": "We are now ready to discuss differentiable functions between normed spaces. In analogy the elementary one-dimensional, Mathlib defines a predicate HasFDerivAt and a function fderiv . Here the letter “f” stands for Fréchet .",
+    "html": "<p>We are now ready to discuss differentiable functions between normed spaces.\nIn analogy the elementary one-dimensional,\nMathlib defines a predicate <code class=\"docutils literal notranslate\"><span class=\"pre\">HasFDerivAt</span></code> and a function <code class=\"docutils literal notranslate\"><span class=\"pre\">fderiv</span></code>.\nHere the letter\n“f” stands for <em>Fréchet</em>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C12_Differential_Calculus:0029",
+    "file": "C12_Differential_Calculus.html",
+    "tag": "p",
+    "text": "We also have iterated derivatives that take values in the type of multilinear maps E [×n]→L[𝕜] F , and we have continuously differential functions. The type ℕ∞ is ℕ with an additional element ∞ that is bigger than every natural number. So \\(\\mathcal{C}^\\infty\\) functions are functions f that satisfy ContDiff 𝕜 ⊤ f .",
+    "html": "<p>We also have iterated derivatives that take values in the type of multilinear maps\n<code class=\"docutils literal notranslate\"><span class=\"pre\">E</span> <span class=\"pre\">[×n]→L[𝕜]</span> <span class=\"pre\">F</span></code>,\nand we have continuously differential functions.\nThe type <code class=\"docutils literal notranslate\"><span class=\"pre\">ℕ∞</span></code> is <code class=\"docutils literal notranslate\"><span class=\"pre\">ℕ</span></code> with an additional element <code class=\"docutils literal notranslate\"><span class=\"pre\">∞</span></code> that\nis bigger than every natural number.\nSo <span class=\"math notranslate nohighlight\">\\(\\mathcal{C}^\\infty\\)</span> functions are functions <code class=\"docutils literal notranslate\"><span class=\"pre\">f</span></code> that satisfy\n<code class=\"docutils literal notranslate\"><span class=\"pre\">ContDiff</span> <span class=\"pre\">𝕜</span> <span class=\"pre\">⊤</span> <span class=\"pre\">f</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C12_Differential_Calculus:0030",
+    "file": "C12_Differential_Calculus.html",
+    "tag": "p",
+    "text": "The differentiability parameter in ContDiff can also take value ω : WithTop ℕ∞ to denote analytic functions.",
+    "html": "<p>The differentiability parameter in <code class=\"docutils literal notranslate\"><span class=\"pre\">ContDiff</span></code> can also take value <code class=\"docutils literal notranslate\"><span class=\"pre\">ω</span> <span class=\"pre\">:</span> <span class=\"pre\">WithTop</span> <span class=\"pre\">ℕ∞</span></code>\nto denote analytic functions.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C12_Differential_Calculus:0031",
+    "file": "C12_Differential_Calculus.html",
+    "tag": "p",
+    "text": "There is a stricter notion of differentiability called HasStrictFDerivAt , which is used in the statement of the inverse function theorem and the statement of the implicit function theorem, both of which are in Mathlib. Over ℝ or ℂ , continuously differentiable functions are strictly differentiable.",
+    "html": "<p>There is a stricter notion of differentiability called\n<code class=\"docutils literal notranslate\"><span class=\"pre\">HasStrictFDerivAt</span></code>, which is used in the statement\nof the inverse function theorem and the statement of the implicit function\ntheorem, both of which are in Mathlib.\nOver <code class=\"docutils literal notranslate\"><span class=\"pre\">ℝ</span></code> or <code class=\"docutils literal notranslate\"><span class=\"pre\">ℂ</span></code>, continuously differentiable\nfunctions are strictly differentiable.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C12_Differential_Calculus:0032",
+    "file": "C12_Differential_Calculus.html",
+    "tag": "p",
+    "text": "The local inverse theorem is stated using an operation that produces an inverse function from a function and the assumptions that the function is strictly differentiable at a point a and that its derivative is an isomorphism.",
+    "html": "<p>The local inverse theorem is stated using an operation that produces an\ninverse function from a\nfunction and the assumptions that the function is strictly differentiable at a\npoint <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span></code> and that its derivative is an isomorphism.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C12_Differential_Calculus:0033",
+    "file": "C12_Differential_Calculus.html",
+    "tag": "p",
+    "text": "The first example below gets this local inverse. The next ones state that it is indeed a local inverse from the left and from the right, and that it is strictly differentiable.",
+    "html": "<p>The first example below gets this local inverse.\nThe next ones state that it is indeed a local inverse\nfrom the left and from the right, and that it is strictly differentiable.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C12_Differential_Calculus:0034",
+    "file": "C12_Differential_Calculus.html",
+    "tag": "p",
+    "text": "This has been only a quick tour of the differential calculus in Mathlib. The library contains many variations that we have not discussed. For example, you may want to use one-sided derivatives in the one-dimensional setting. The means to do so are found in Mathlib in a more general context; see HasFDerivWithinAt or the even more general HasFDerivAtFilter .",
+    "html": "<p>This has been only a quick tour of the differential calculus in Mathlib.\nThe library contains many variations that we have not discussed.\nFor example, you may want to use one-sided derivatives in the\none-dimensional setting. The means to do so are found in Mathlib in a more\ngeneral context;\nsee <code class=\"docutils literal notranslate\"><span class=\"pre\">HasFDerivWithinAt</span></code> or the even more general <code class=\"docutils literal notranslate\"><span class=\"pre\">HasFDerivAtFilter</span></code>.</p>",
+    "zh": ""
+  }
+]

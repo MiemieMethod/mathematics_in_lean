@@ -1,0 +1,114 @@
+[
+  {
+    "id": "C03_Logic:0121",
+    "zh": "仍然可以嵌套模式，并使用关键字 <code class=\"docutils literal notranslate\"><span class=\"pre\">rfl</span></code> 来替换等式："
+  },
+  {
+    "id": "C03_Logic:0122",
+    "zh": "看看你能否用一行（较长的）代码证明下面的命题。使用 <code class=\"docutils literal notranslate\"><span class=\"pre\">rcases</span></code> 拆开假设并分情况讨论，然后用 <code class=\"docutils literal notranslate\"><span class=\"pre\">&lt;;&gt;</span> <span class=\"pre\">linarith</span></code> 解决每个分支。"
+  },
+  {
+    "id": "C03_Logic:0123",
+    "zh": "在实数上，等式 <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span> <span class=\"pre\">*</span> <span class=\"pre\">y</span> <span class=\"pre\">=</span> <span class=\"pre\">0</span></code> 告诉我们 <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span> <span class=\"pre\">=</span> <span class=\"pre\">0</span></code> 或 <code class=\"docutils literal notranslate\"><span class=\"pre\">y</span> <span class=\"pre\">=</span> <span class=\"pre\">0</span></code>。在 Mathlib 中，这一事实名为 <code class=\"docutils literal notranslate\"><span class=\"pre\">eq_zero_or_eq_zero_of_mul_eq_zero</span></code>，它也是析取如何出现的一个漂亮例子。看看你能否用它证明下面的命题："
+  },
+  {
+    "id": "C03_Logic:0124",
+    "zh": "记住，可以使用 <code class=\"docutils literal notranslate\"><span class=\"pre\">ring</span></code> 策略帮助完成计算。"
+  },
+  {
+    "id": "C03_Logic:0125",
+    "zh": "在任意环 <span class=\"math notranslate nohighlight\">\\(R\\)</span> 中，若元素 <span class=\"math notranslate nohighlight\">\\(x\\)</span> 满足对某个非零 <span class=\"math notranslate nohighlight\">\\(y\\)</span> 有 <span class=\"math notranslate nohighlight\">\\(xy = 0\\)</span>，则称 <span class=\"math notranslate nohighlight\">\\(x\\)</span> 为左零因子；若满足对某个非零 <span class=\"math notranslate nohighlight\">\\(y\\)</span> 有 <span class=\"math notranslate nohighlight\">\\(yx = 0\\)</span>，则称 <span class=\"math notranslate nohighlight\">\\(x\\)</span> 为右零因子；一个左零因子或右零因子统称为零因子。定理 <code class=\"docutils literal notranslate\"><span class=\"pre\">eq_zero_or_eq_zero_of_mul_eq_zero</span></code> 表明实数没有非平凡零因子。具有这一性质的交换环称为整环。你对上面两个定理的证明，在任意整环中也同样有效："
+  },
+  {
+    "id": "C03_Logic:0126",
+    "zh": "事实上，如果足够小心，第一个定理不必使用乘法交换性即可证明。在这种情况下，只需假定 <code class=\"docutils literal notranslate\"><span class=\"pre\">R</span></code> 是 <code class=\"docutils literal notranslate\"><span class=\"pre\">Ring</span></code>，而不必是 <code class=\"docutils literal notranslate\"><span class=\"pre\">CommRing</span></code>。"
+  },
+  {
+    "id": "C03_Logic:0127",
+    "zh": "有时在证明中，我们想根据某个命题是否为真来分情况讨论。对任意命题 <code class=\"docutils literal notranslate\"><span class=\"pre\">P</span></code>，可以使用 <code class=\"docutils literal notranslate\"><span class=\"pre\">em</span> <span class=\"pre\">P</span> <span class=\"pre\">:</span> <span class=\"pre\">P</span> <span class=\"pre\">∨</span> <span class=\"pre\">¬</span> <span class=\"pre\">P</span></code>。名称 <code class=\"docutils literal notranslate\"><span class=\"pre\">em</span></code> 是 “excluded middle”（排中律）的缩写。"
+  },
+  {
+    "id": "C03_Logic:0128",
+    "zh": "另一种选择是使用 <code class=\"docutils literal notranslate\"><span class=\"pre\">by_cases</span></code> 策略。"
+  },
+  {
+    "id": "C03_Logic:0129",
+    "zh": "注意，<code class=\"docutils literal notranslate\"><span class=\"pre\">by_cases</span></code> 策略允许你指定在每个分支中引入的假设标签；在这个例子中，一个分支里是 <code class=\"docutils literal notranslate\"><span class=\"pre\">h'</span> <span class=\"pre\">:</span> <span class=\"pre\">P</span></code>，另一个分支里是 <code class=\"docutils literal notranslate\"><span class=\"pre\">h'</span> <span class=\"pre\">:</span> <span class=\"pre\">¬</span> <span class=\"pre\">P</span></code>。如果省略标签，Lean 默认使用 <code class=\"docutils literal notranslate\"><span class=\"pre\">h</span></code>。请尝试证明下面的等价命题，并用 <code class=\"docutils literal notranslate\"><span class=\"pre\">by_cases</span></code> 建立其中一个方向。"
+  },
+  {
+    "id": "C03_Logic:0130",
+    "zh": "现在我们掌握了足够多的技巧，可以做一些真正的数学。在 Lean 中，可以把实数序列 <span class=\"math notranslate nohighlight\">\\(s_0, s_1, s_2, \\ldots\\)</span> 表示为函数 <code class=\"docutils literal notranslate\"><span class=\"pre\">s</span> <span class=\"pre\">:</span> <span class=\"pre\">ℕ</span> <span class=\"pre\">→</span> <span class=\"pre\">ℝ</span></code>。若对每个 <span class=\"math notranslate nohighlight\">\\(\\varepsilon > 0\\)</span>，都存在某个位置，从那里往后序列始终位于 <span class=\"math notranslate nohighlight\">\\(a\\)</span> 的 <span class=\"math notranslate nohighlight\">\\(\\varepsilon\\)</span> 邻域内，也就是说，存在自然数 <span class=\"math notranslate nohighlight\">\\(N\\)</span>，使得对每个 <span class=\"math notranslate nohighlight\">\\(n \\ge N\\)</span>，都有 <span class=\"math notranslate nohighlight\">\\(|s_n - a| < \\varepsilon\\)</span>，则称该序列收敛到数 <span class=\"math notranslate nohighlight\">\\(a\\)</span>。在 Lean 中，可以把它写成如下形式："
+  },
+  {
+    "id": "C03_Logic:0131",
+    "zh": "记号 <code class=\"docutils literal notranslate\"><span class=\"pre\">∀</span> <span class=\"pre\">ε</span> <span class=\"pre\">&gt;</span> <span class=\"pre\">0,</span> <span class=\"pre\">...</span></code> 是 <code class=\"docutils literal notranslate\"><span class=\"pre\">∀</span> <span class=\"pre\">ε,</span> <span class=\"pre\">ε</span> <span class=\"pre\">&gt;</span> <span class=\"pre\">0</span> <span class=\"pre\">→</span> <span class=\"pre\">...</span></code> 的便利缩写；类似地，<code class=\"docutils literal notranslate\"><span class=\"pre\">∀</span> <span class=\"pre\">n</span> <span class=\"pre\">≥</span> <span class=\"pre\">N,</span> <span class=\"pre\">...</span></code> 是 <code class=\"docutils literal notranslate\"><span class=\"pre\">∀</span> <span class=\"pre\">n,</span> <span class=\"pre\">n</span> <span class=\"pre\">≥</span> <span class=\"pre\">N</span> <span class=\"pre\">→</span> <span class=\"pre\">...</span></code> 的缩写。还要记住，<code class=\"docutils literal notranslate\"><span class=\"pre\">ε</span> <span class=\"pre\">&gt;</span> <span class=\"pre\">0</span></code> 又定义为 <code class=\"docutils literal notranslate\"><span class=\"pre\">0</span> <span class=\"pre\">&lt;</span> <span class=\"pre\">ε</span></code>，而 <code class=\"docutils literal notranslate\"><span class=\"pre\">n</span> <span class=\"pre\">≥</span> <span class=\"pre\">N</span></code> 定义为 <code class=\"docutils literal notranslate\"><span class=\"pre\">N</span> <span class=\"pre\">≤</span> <span class=\"pre\">n</span></code>。"
+  },
+  {
+    "id": "C03_Logic:0132",
+    "zh": "本节将建立一些关于收敛的性质。但首先，我们讨论三个处理等式时有用的策略。第一个是 <code class=\"docutils literal notranslate\"><span class=\"pre\">ext</span></code> 策略，它提供了一种证明两个函数相等的方法。设 <span class=\"math notranslate nohighlight\">\\(f(x) = x + 1\\)</span> 和 <span class=\"math notranslate nohighlight\">\\(g(x) = 1 + x\\)</span> 是从实数到实数的函数。那么当然有 <span class=\"math notranslate nohighlight\">\\(f = g\\)</span>，因为它们在每个 <span class=\"math notranslate nohighlight\">\\(x\\)</span> 处返回相同的值。<code class=\"docutils literal notranslate\"><span class=\"pre\">ext</span></code> 策略使我们能够通过证明两个函数在所有参数值处取值相同，来证明函数之间的等式。"
+  },
+  {
+    "id": "C03_Logic:0133",
+    "zh": "稍后我们会看到，<code class=\"docutils literal notranslate\"><span class=\"pre\">ext</span></code> 实际上更加一般，并且可以指定出现的变量名。例如，你可以尝试把上面证明中的 <code class=\"docutils literal notranslate\"><span class=\"pre\">ext</span></code> 替换为 <code class=\"docutils literal notranslate\"><span class=\"pre\">ext</span> <span class=\"pre\">u</span> <span class=\"pre\">v</span></code>。第二个策略 <code class=\"docutils literal notranslate\"><span class=\"pre\">congr</span></code> 允许我们通过调和两个表达式中不同的部分来证明等式："
+  },
+  {
+    "id": "C03_Logic:0134",
+    "zh": "这里，<code class=\"docutils literal notranslate\"><span class=\"pre\">congr</span></code> 策略剥去两边的 <code class=\"docutils literal notranslate\"><span class=\"pre\">abs</span></code>，留下要证明的目标 <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span> <span class=\"pre\">=</span> <span class=\"pre\">a</span> <span class=\"pre\">-</span> <span class=\"pre\">b</span> <span class=\"pre\">+</span> <span class=\"pre\">b</span></code>。"
+  },
+  {
+    "id": "C03_Logic:0135",
+    "zh": "最后，<code class=\"docutils literal notranslate\"><span class=\"pre\">convert</span></code> 策略用于在某个定理的结论与当前目标不完全匹配时，把该定理应用于目标。例如，假设我们想从 <code class=\"docutils literal notranslate\"><span class=\"pre\">1</span> <span class=\"pre\">&lt;</span> <span class=\"pre\">a</span></code> 证明 <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span> <span class=\"pre\">&lt;</span> <span class=\"pre\">a</span> <span class=\"pre\">*</span> <span class=\"pre\">a</span></code>。库中的一个定理 <code class=\"docutils literal notranslate\"><span class=\"pre\">mul_lt_mul_iff_left₀</span></code> 可让我们证明 <code class=\"docutils literal notranslate\"><span class=\"pre\">1</span> <span class=\"pre\">*</span> <span class=\"pre\">a</span> <span class=\"pre\">&lt;</span> <span class=\"pre\">a</span> <span class=\"pre\">*</span> <span class=\"pre\">a</span></code>。一种做法是反向工作，把目标重写为这种形式。相反，<code class=\"docutils literal notranslate\"><span class=\"pre\">convert</span></code> 策略允许我们按原样应用该定理，并留下证明若干等式的任务，这些等式正是使目标匹配所需的。"
+  },
+  {
+    "id": "C03_Logic:0136",
+    "zh": "这个例子展示了另一个有用技巧：当我们应用一个带下划线的表达式而 Lean 无法自动填入该下划线时，它会把它简单地留下来，作为另一个目标交给我们。"
+  },
+  {
+    "id": "C03_Logic:0137",
+    "zh": "下面证明任意常值序列 <span class=\"math notranslate nohighlight\">\\(a, a, a, \\ldots\\)</span> 都收敛。"
+  },
+  {
+    "id": "C03_Logic:0138",
+    "zh": "Lean 有一个策略 <code class=\"docutils literal notranslate\"><span class=\"pre\">simp</span></code>，它常常能省去手工执行类似 <code class=\"docutils literal notranslate\"><span class=\"pre\">rw</span> <span class=\"pre\">[sub_self,</span> <span class=\"pre\">abs_zero]</span></code> 步骤的麻烦。我们很快会进一步介绍它。"
+  },
+  {
+    "id": "C03_Logic:0139",
+    "zh": "作为一个更有趣的定理，我们来证明：若 <code class=\"docutils literal notranslate\"><span class=\"pre\">s</span></code> 收敛到 <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span></code>，且 <code class=\"docutils literal notranslate\"><span class=\"pre\">t</span></code> 收敛到 <code class=\"docutils literal notranslate\"><span class=\"pre\">b</span></code>，则 <code class=\"docutils literal notranslate\"><span class=\"pre\">fun</span> <span class=\"pre\">n</span> <span class=\"pre\">↦</span> <span class=\"pre\">s</span> <span class=\"pre\">n</span> <span class=\"pre\">+</span> <span class=\"pre\">t</span> <span class=\"pre\">n</span></code> 收敛到 <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span> <span class=\"pre\">+</span> <span class=\"pre\">b</span></code>。在开始写形式化证明之前，心中有一个清楚的纸笔证明会很有帮助。给定大于 0 的 <code class=\"docutils literal notranslate\"><span class=\"pre\">ε</span></code>，思路是使用假设得到一个 <code class=\"docutils literal notranslate\"><span class=\"pre\">Ns</span></code>，使得从该点以后，<code class=\"docutils literal notranslate\"><span class=\"pre\">s</span></code> 与 <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span></code> 的距离小于 <code class=\"docutils literal notranslate\"><span class=\"pre\">ε</span> <span class=\"pre\">/</span> <span class=\"pre\">2</span></code>；再得到一个 <code class=\"docutils literal notranslate\"><span class=\"pre\">Nt</span></code>，使得从该点以后，<code class=\"docutils literal notranslate\"><span class=\"pre\">t</span></code> 与 <code class=\"docutils literal notranslate\"><span class=\"pre\">b</span></code> 的距离小于 <code class=\"docutils literal notranslate\"><span class=\"pre\">ε</span> <span class=\"pre\">/</span> <span class=\"pre\">2</span></code>。于是，只要 <code class=\"docutils literal notranslate\"><span class=\"pre\">n</span></code> 大于等于 <code class=\"docutils literal notranslate\"><span class=\"pre\">Ns</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">Nt</span></code> 的最大值，序列 <code class=\"docutils literal notranslate\"><span class=\"pre\">fun</span> <span class=\"pre\">n</span> <span class=\"pre\">↦</span> <span class=\"pre\">s</span> <span class=\"pre\">n</span> <span class=\"pre\">+</span> <span class=\"pre\">t</span> <span class=\"pre\">n</span></code> 就应当与 <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span> <span class=\"pre\">+</span> <span class=\"pre\">b</span></code> 的距离小于 <code class=\"docutils literal notranslate\"><span class=\"pre\">ε</span></code>。下面的例子开始实现这个策略。看看你能否把它完成。"
+  },
+  {
+    "id": "C03_Logic:0140",
+    "zh": "作为提示，可以使用 <code class=\"docutils literal notranslate\"><span class=\"pre\">le_of_max_le_left</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">le_of_max_le_right</span></code>，而 <code class=\"docutils literal notranslate\"><span class=\"pre\">norm_num</span></code> 可以证明 <code class=\"docutils literal notranslate\"><span class=\"pre\">ε</span> <span class=\"pre\">/</span> <span class=\"pre\">2</span> <span class=\"pre\">+</span> <span class=\"pre\">ε</span> <span class=\"pre\">/</span> <span class=\"pre\">2</span> <span class=\"pre\">=</span> <span class=\"pre\">ε</span></code>。此外，使用 <code class=\"docutils literal notranslate\"><span class=\"pre\">congr</span></code> 策略证明 <code class=\"docutils literal notranslate\"><span class=\"pre\">|s</span> <span class=\"pre\">n</span> <span class=\"pre\">+</span> <span class=\"pre\">t</span> <span class=\"pre\">n</span> <span class=\"pre\">-</span> <span class=\"pre\">(a</span> <span class=\"pre\">+</span> <span class=\"pre\">b)|</span></code> 等于 <code class=\"docutils literal notranslate\"><span class=\"pre\">|(s</span> <span class=\"pre\">n</span> <span class=\"pre\">-</span> <span class=\"pre\">a)</span> <span class=\"pre\">+</span> <span class=\"pre\">(t</span> <span class=\"pre\">n</span> <span class=\"pre\">-</span> <span class=\"pre\">b)|</span></code> 也很有帮助，因为这样就可以使用三角不等式。注意，我们把所有变量 <code class=\"docutils literal notranslate\"><span class=\"pre\">s</span></code>、<code class=\"docutils literal notranslate\"><span class=\"pre\">t</span></code>、<code class=\"docutils literal notranslate\"><span class=\"pre\">a</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">b</span></code> 都标记为隐式变量，因为它们可以由假设推断出来。"
+  },
+  {
+    "id": "C03_Logic:0141",
+    "zh": "把同一个定理中的加法替换为乘法后，证明会更棘手。我们将先证明一些辅助命题。请看看能否也完成下一个证明，它表明若 <code class=\"docutils literal notranslate\"><span class=\"pre\">s</span></code> 收敛到 <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span></code>，则 <code class=\"docutils literal notranslate\"><span class=\"pre\">fun</span> <span class=\"pre\">n</span> <span class=\"pre\">↦</span> <span class=\"pre\">c</span> <span class=\"pre\">*</span> <span class=\"pre\">s</span> <span class=\"pre\">n</span></code> 收敛到 <code class=\"docutils literal notranslate\"><span class=\"pre\">c</span> <span class=\"pre\">*</span> <span class=\"pre\">a</span></code>。按 <code class=\"docutils literal notranslate\"><span class=\"pre\">c</span></code> 是否等于零分情况讨论会很有帮助。我们已经处理了零的情形，并留下了带有额外假设 <code class=\"docutils literal notranslate\"><span class=\"pre\">c</span></code> 非零时的结果让你证明。"
+  },
+  {
+    "id": "C03_Logic:0142",
+    "zh": "下一个定理本身也很有意思：它表明收敛序列最终在绝对值意义下有界。我们已经给出开头；看看你能否完成它。"
+  },
+  {
+    "id": "C03_Logic:0143",
+    "zh": "事实上，这个定理还可以加强为：存在一个界 <code class=\"docutils literal notranslate\"><span class=\"pre\">b</span></code>，对所有 <code class=\"docutils literal notranslate\"><span class=\"pre\">n</span></code> 都成立。但当前版本已足以满足我们的需要，并且我们将在本节末尾看到它在更一般情形下也成立。"
+  },
+  {
+    "id": "C03_Logic:0144",
+    "zh": "下一个引理是辅助性的：我们证明若 <code class=\"docutils literal notranslate\"><span class=\"pre\">s</span></code> 收敛到 <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span></code>，且 <code class=\"docutils literal notranslate\"><span class=\"pre\">t</span></code> 收敛到 <code class=\"docutils literal notranslate\"><span class=\"pre\">0</span></code>，则 <code class=\"docutils literal notranslate\"><span class=\"pre\">fun</span> <span class=\"pre\">n</span> <span class=\"pre\">↦</span> <span class=\"pre\">s</span> <span class=\"pre\">n</span> <span class=\"pre\">*</span> <span class=\"pre\">t</span> <span class=\"pre\">n</span></code> 收敛到 <code class=\"docutils literal notranslate\"><span class=\"pre\">0</span></code>。为此，我们使用前一个定理找到一个 <code class=\"docutils literal notranslate\"><span class=\"pre\">B</span></code>，它在某个点 <code class=\"docutils literal notranslate\"><span class=\"pre\">N₀</span></code> 之后界住 <code class=\"docutils literal notranslate\"><span class=\"pre\">s</span></code>。看看你能否理解我们勾勒出的策略并完成证明。"
+  },
+  {
+    "id": "C03_Logic:0145",
+    "zh": "如果你已经做到这里，恭喜！我们距离目标定理已经很近了。下面的证明将完成它。"
+  },
+  {
+    "id": "C03_Logic:0146",
+    "zh": "作为另一个有挑战性的练习，请尝试补全下面的证明草稿，证明极限唯一。（如果你很有信心，可以删除证明草稿并尝试从零开始证明。）"
+  },
+  {
+    "id": "C03_Logic:0147",
+    "zh": "本节最后指出，我们的证明可以推广。例如，我们对自然数所使用的唯一性质，是其结构带有偏序以及 <code class=\"docutils literal notranslate\"><span class=\"pre\">min</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">max</span></code>。可以检查，如果把各处的 <code class=\"docutils literal notranslate\"><span class=\"pre\">ℕ</span></code> 替换为任意线性序 <code class=\"docutils literal notranslate\"><span class=\"pre\">α</span></code>，一切仍然成立："
+  },
+  {
+    "id": "C03_Logic:0148",
+    "zh": "在 <a class=\"reference internal\" href=\"C11_Topology.html#filters\"><span class=\"std std-numref\">第 11.1 节</span></a> 中，我们会看到 Mathlib 有机制以远为一般的方式处理收敛；它不仅抽象掉定义域和陪域的具体特征，也抽象不同类型的收敛。"
+  }
+]

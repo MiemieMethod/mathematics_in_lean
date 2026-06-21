@@ -1,0 +1,326 @@
+[
+  {
+    "id": "C02_Basics:0067",
+    "zh": "重写非常适合用来证明等式；但其他类型的定理又该如何处理？例如，若 <span class=\"math notranslate nohighlight\">\\(b \\le c\\)</span>，如何证明诸如 <span class=\"math notranslate nohighlight\">\\(a + e^b \\le a + e^c\\)</span> 这样的不等式？我们已经看到，定理可以应用于参数和假设，而 <code class=\"docutils literal notranslate\"><span class=\"pre\">apply</span></code> 与 <code class=\"docutils literal notranslate\"><span class=\"pre\">exact</span></code> 策略可以用来解决目标。本节将充分利用这些工具。"
+  },
+  {
+    "id": "C02_Basics:0068",
+    "zh": "考虑库中的定理 <code class=\"docutils literal notranslate\"><span class=\"pre\">le_refl</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">le_trans</span></code>："
+  },
+  {
+    "id": "C02_Basics:0069",
+    "zh": "正如我们将在 <a class=\"reference internal\" href=\"C03_Logic.html#implication-and-the-universal-quantifier\"><span class=\"std std-numref\">第 3.1 节</span></a> 中更详细说明的，<code class=\"docutils literal notranslate\"><span class=\"pre\">le_trans</span></code> 陈述中的隐含括号向右结合，因此它应解释为 <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span> <span class=\"pre\">≤</span> <span class=\"pre\">b</span> <span class=\"pre\">→</span> <span class=\"pre\">(b</span> <span class=\"pre\">≤</span> <span class=\"pre\">c</span> <span class=\"pre\">→</span> <span class=\"pre\">a</span> <span class=\"pre\">≤</span> <span class=\"pre\">c)</span></code>。库的设计者把 <code class=\"docutils literal notranslate\"><span class=\"pre\">le_trans</span></code> 的参数 <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span></code>、<code class=\"docutils literal notranslate\"><span class=\"pre\">b</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">c</span></code> 设为隐式参数，所以 Lean 不会允许你显式提供它们（除非你坚持如此；我们稍后会讨论这一点）。相反，Lean 期望从使用它们的语境中推断这些参数。例如，当语境中有假设 <code class=\"docutils literal notranslate\"><span class=\"pre\">h</span> <span class=\"pre\">:</span> <span class=\"pre\">a</span> <span class=\"pre\">≤</span> <span class=\"pre\">b</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">h'</span> <span class=\"pre\">:</span> <span class=\"pre\">b</span> <span class=\"pre\">≤</span> <span class=\"pre\">c</span></code> 时，下列写法都可行："
+  },
+  {
+    "id": "C02_Basics:0070",
+    "zh": "<code class=\"docutils literal notranslate\"><span class=\"pre\">apply</span></code> 策略接受一个一般命题或蕴含命题的证明，尝试把它的结论与当前目标匹配，并把其中的假设（若有）留下来作为新的目标。如果给出的证明与目标完全匹配（在<em>定义相等</em>意义下），则可以用 <code class=\"docutils literal notranslate\"><span class=\"pre\">exact</span></code> 策略代替 <code class=\"docutils literal notranslate\"><span class=\"pre\">apply</span></code>。因此，下面这些写法都成立："
+  },
+  {
+    "id": "C02_Basics:0071",
+    "zh": "在第一个例子中，应用 <code class=\"docutils literal notranslate\"><span class=\"pre\">le_trans</span></code> 会产生两个目标，我们用圆点标明每个目标的证明从何处开始。圆点不是必需的，但它们可以<em>聚焦</em>目标：在由圆点引入的代码块中，只显示一个目标，并且必须在该代码块结束前完成它。这里我们通过另起一个圆点块来结束第一个代码块；同样也可以通过减少缩进来达到这一效果。在第三个例子和最后一个例子中，我们完全避免进入策略模式：<code class=\"docutils literal notranslate\"><span class=\"pre\">le_trans</span> <span class=\"pre\">h₀</span> <span class=\"pre\">h₁</span></code> 与 <code class=\"docutils literal notranslate\"><span class=\"pre\">le_refl</span> <span class=\"pre\">x</span></code> 正是所需的证明项。"
+  },
+  {
+    "id": "C02_Basics:0072",
+    "zh": "下面还有几个库定理："
+  },
+  {
+    "id": "C02_Basics:0073",
+    "zh": "请把它们与 <code class=\"docutils literal notranslate\"><span class=\"pre\">apply</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">exact</span></code> 结合起来，证明如下命题："
+  },
+  {
+    "id": "C02_Basics:0074",
+    "zh": "事实上，Lean 有一个策略可以自动处理这类事情："
+  },
+  {
+    "id": "C02_Basics:0075",
+    "zh": "<code class=\"docutils literal notranslate\"><span class=\"pre\">linarith</span></code> 策略专门用于处理<em>线性算术</em>。"
+  },
+  {
+    "id": "C02_Basics:0076",
+    "zh": "除了语境中的等式和不等式之外，<code class=\"docutils literal notranslate\"><span class=\"pre\">linarith</span></code> 还会使用你作为参数传入的额外不等式。在下一个例子中，<code class=\"docutils literal notranslate\"><span class=\"pre\">exp_le_exp.mpr</span> <span class=\"pre\">h'</span></code> 是 <code class=\"docutils literal notranslate\"><span class=\"pre\">exp</span> <span class=\"pre\">b</span> <span class=\"pre\">≤</span> <span class=\"pre\">exp</span> <span class=\"pre\">c</span></code> 的一个证明，我们稍后会解释这一点。注意，在 Lean 中，我们写 <code class=\"docutils literal notranslate\"><span class=\"pre\">f</span> <span class=\"pre\">x</span></code> 来表示函数 <code class=\"docutils literal notranslate\"><span class=\"pre\">f</span></code> 作用于参数 <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span></code>，这与写 <code class=\"docutils literal notranslate\"><span class=\"pre\">h</span> <span class=\"pre\">x</span></code> 表示事实或定理 <code class=\"docutils literal notranslate\"><span class=\"pre\">h</span></code> 作用于参数 <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span></code> 所得结果完全相同。只有复合参数才需要括号，例如 <code class=\"docutils literal notranslate\"><span class=\"pre\">f</span> <span class=\"pre\">(x</span> <span class=\"pre\">+</span> <span class=\"pre\">y)</span></code>。若没有括号，<code class=\"docutils literal notranslate\"><span class=\"pre\">f</span> <span class=\"pre\">x</span> <span class=\"pre\">+</span> <span class=\"pre\">y</span></code> 会被解析为 <code class=\"docutils literal notranslate\"><span class=\"pre\">(f</span> <span class=\"pre\">x)</span> <span class=\"pre\">+</span> <span class=\"pre\">y</span></code>。"
+  },
+  {
+    "id": "C02_Basics:0077",
+    "zh": "下面是库中另外一些可用于建立实数不等式的定理。"
+  },
+  {
+    "id": "C02_Basics:0078",
+    "zh": "其中一些定理，如 <code class=\"docutils literal notranslate\"><span class=\"pre\">exp_le_exp</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">exp_lt_exp</span></code>，使用<em>双向蕴含</em>，它表示“当且仅当”。（在 VS Code 中可以用 <code class=\"docutils literal notranslate\"><span class=\"pre\">\\lr</span></code> 或 <code class=\"docutils literal notranslate\"><span class=\"pre\">\\iff</span></code> 输入。）我们将在下一章更详细讨论这个连接词。这类定理可以配合 <code class=\"docutils literal notranslate\"><span class=\"pre\">rw</span></code> 使用，把目标重写成一个等价目标："
+  },
+  {
+    "id": "C02_Basics:0079",
+    "zh": "不过在本节中，我们将使用如下事实：若 <code class=\"docutils literal notranslate\"><span class=\"pre\">h</span> <span class=\"pre\">:</span> <span class=\"pre\">A</span> <span class=\"pre\">↔</span> <span class=\"pre\">B</span></code> 是这样的等价命题，则 <code class=\"docutils literal notranslate\"><span class=\"pre\">h.mp</span></code> 给出正向方向 <code class=\"docutils literal notranslate\"><span class=\"pre\">A</span> <span class=\"pre\">→</span> <span class=\"pre\">B</span></code>，而 <code class=\"docutils literal notranslate\"><span class=\"pre\">h.mpr</span></code> 给出反向方向 <code class=\"docutils literal notranslate\"><span class=\"pre\">B</span> <span class=\"pre\">→</span> <span class=\"pre\">A</span></code>。这里 <code class=\"docutils literal notranslate\"><span class=\"pre\">mp</span></code> 表示 “modus ponens”，<code class=\"docutils literal notranslate\"><span class=\"pre\">mpr</span></code> 表示 “modus ponens reverse”。如果愿意，也可以分别用 <code class=\"docutils literal notranslate\"><span class=\"pre\">h.1</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">h.2</span></code> 代替 <code class=\"docutils literal notranslate\"><span class=\"pre\">h.mp</span></code> 与 <code class=\"docutils literal notranslate\"><span class=\"pre\">h.mpr</span></code>。因此，下面的证明成立："
+  },
+  {
+    "id": "C02_Basics:0080",
+    "zh": "第一行 <code class=\"docutils literal notranslate\"><span class=\"pre\">apply</span> <span class=\"pre\">add_lt_add_of_lt_of_le</span></code> 产生两个目标，我们再次用圆点把第一个目标的证明与第二个目标的证明分开。"
+  },
+  {
+    "id": "C02_Basics:0081",
+    "zh": "请自行尝试下面的例子。中间的例子表明，<code class=\"docutils literal notranslate\"><span class=\"pre\">norm_num</span></code> 策略可以用来解决具体的数值目标。"
+  },
+  {
+    "id": "C02_Basics:0082",
+    "zh": "从这些例子应当可以看出，能够找到所需的库定理，是形式化工作的重要组成部分。你可以使用若干策略："
+  },
+  {
+    "id": "C02_Basics:0083",
+    "zh": "若要在这个例子中尝试 <code class=\"docutils literal notranslate\"><span class=\"pre\">apply?</span></code>，请删除 <code class=\"docutils literal notranslate\"><span class=\"pre\">exact</span></code> 命令，并取消前一行的注释。借助这些技巧，看看能否找到完成下一个例子所需的内容："
+  },
+  {
+    "id": "C02_Basics:0084",
+    "zh": "使用同样的技巧，确认用 <code class=\"docutils literal notranslate\"><span class=\"pre\">linarith</span></code> 代替 <code class=\"docutils literal notranslate\"><span class=\"pre\">apply?</span></code> 也可以完成证明。"
+  },
+  {
+    "id": "C02_Basics:0085",
+    "zh": "下面是另一个不等式的例子："
+  },
+  {
+    "id": "C02_Basics:0086",
+    "zh": "Mathlib 通常会在 <code class=\"docutils literal notranslate\"><span class=\"pre\">*</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">^</span></code> 这样的二元运算符两侧加入空格；但在这个例子中，更紧凑的格式反而提高了可读性。这里有几件事情值得注意。第一，表达式 <code class=\"docutils literal notranslate\"><span class=\"pre\">s</span> <span class=\"pre\">≥</span> <span class=\"pre\">t</span></code> 与 <code class=\"docutils literal notranslate\"><span class=\"pre\">t</span> <span class=\"pre\">≤</span> <span class=\"pre\">s</span></code> 定义相等。原则上，这意味着二者应当可以互换使用。但 Lean 的某些自动化不能识别这种等价，因此 Mathlib 往往偏好使用 <code class=\"docutils literal notranslate\"><span class=\"pre\">≤</span></code> 而不是 <code class=\"docutils literal notranslate\"><span class=\"pre\">≥</span></code>。第二，我们大量使用了 <code class=\"docutils literal notranslate\"><span class=\"pre\">ring</span></code> 策略。它确实节省时间！最后，注意在第二个 <code class=\"docutils literal notranslate\"><span class=\"pre\">calc</span></code> 证明的第二行中，不必写 <code class=\"docutils literal notranslate\"><span class=\"pre\">by</span> <span class=\"pre\">exact</span> <span class=\"pre\">add_le_add</span> <span class=\"pre\">(le_refl</span> <span class=\"pre\">_)</span> <span class=\"pre\">h</span></code>，可以直接写证明项 <code class=\"docutils literal notranslate\"><span class=\"pre\">add_le_add</span> <span class=\"pre\">(le_refl</span> <span class=\"pre\">_)</span> <span class=\"pre\">h</span></code>。"
+  },
+  {
+    "id": "C02_Basics:0087",
+    "zh": "事实上，上述证明中唯一需要一点技巧的地方，是找出假设 <code class=\"docutils literal notranslate\"><span class=\"pre\">h</span></code>。一旦有了它，第二个计算只涉及线性算术，<code class=\"docutils literal notranslate\"><span class=\"pre\">linarith</span></code> 可以处理："
+  },
+  {
+    "id": "C02_Basics:0088",
+    "zh": "很好！我们邀请你用这些想法证明下面的定理。可以使用定理 <code class=\"docutils literal notranslate\"><span class=\"pre\">abs_le'.mpr</span></code>。还需要使用 <code class=\"docutils literal notranslate\"><span class=\"pre\">constructor</span></code> 策略把合取拆分成两个目标；参见 <a class=\"reference internal\" href=\"C03_Logic.html#conjunction-and-iff\"><span class=\"std std-numref\">第 3.4 节</span></a>。"
+  },
+  {
+    "id": "C02_Basics:0089",
+    "zh": "如果你成功解决了它，恭喜！你已经很好地走在成为形式化大师的路上。"
+  },
+  {
+    "id": "C02_Basics:0090",
+    "zh": "实数上的 <code class=\"docutils literal notranslate\"><span class=\"pre\">min</span></code> 函数由以下三个事实唯一刻画："
+  },
+  {
+    "id": "C02_Basics:0091",
+    "zh": "你能猜出以类似方式刻画 <code class=\"docutils literal notranslate\"><span class=\"pre\">max</span></code> 的那些定理叫什么名字吗？"
+  },
+  {
+    "id": "C02_Basics:0092",
+    "zh": "注意，我们必须通过写 <code class=\"docutils literal notranslate\"><span class=\"pre\">min</span> <span class=\"pre\">a</span> <span class=\"pre\">b</span></code> 而不是 <code class=\"docutils literal notranslate\"><span class=\"pre\">min</span> <span class=\"pre\">(a,</span> <span class=\"pre\">b)</span></code>，把 <code class=\"docutils literal notranslate\"><span class=\"pre\">min</span></code> 应用于一对参数 <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">b</span></code>。形式上，<code class=\"docutils literal notranslate\"><span class=\"pre\">min</span></code> 的类型是 <code class=\"docutils literal notranslate\"><span class=\"pre\">ℝ</span> <span class=\"pre\">→</span> <span class=\"pre\">ℝ</span> <span class=\"pre\">→</span> <span class=\"pre\">ℝ</span></code>。当我们写出带有多个箭头的类型时，约定是隐含括号向右结合，因此该类型解释为 <code class=\"docutils literal notranslate\"><span class=\"pre\">ℝ</span> <span class=\"pre\">→</span> <span class=\"pre\">(ℝ</span> <span class=\"pre\">→</span> <span class=\"pre\">ℝ)</span></code>。其效果是：若 <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">b</span></code> 的类型都是 <code class=\"docutils literal notranslate\"><span class=\"pre\">ℝ</span></code>，则 <code class=\"docutils literal notranslate\"><span class=\"pre\">min</span> <span class=\"pre\">a</span></code> 的类型是 <code class=\"docutils literal notranslate\"><span class=\"pre\">ℝ</span> <span class=\"pre\">→</span> <span class=\"pre\">ℝ</span></code>，而 <code class=\"docutils literal notranslate\"><span class=\"pre\">min</span> <span class=\"pre\">a</span> <span class=\"pre\">b</span></code> 的类型是 <code class=\"docutils literal notranslate\"><span class=\"pre\">ℝ</span></code>，所以 <code class=\"docutils literal notranslate\"><span class=\"pre\">min</span></code> 如预期那样表现为一个二元函数。以这种方式处理多个参数称为<em>柯里化</em>，得名于逻辑学家 Haskell Curry。"
+  },
+  {
+    "id": "C02_Basics:0093",
+    "zh": "Lean 中运算的优先级也需要一些时间适应。函数应用比中缀运算结合得更紧，因此表达式 <code class=\"docutils literal notranslate\"><span class=\"pre\">min</span> <span class=\"pre\">a</span> <span class=\"pre\">b</span> <span class=\"pre\">+</span> <span class=\"pre\">c</span></code> 会被解释为 <code class=\"docutils literal notranslate\"><span class=\"pre\">(min</span> <span class=\"pre\">a</span> <span class=\"pre\">b)</span> <span class=\"pre\">+</span> <span class=\"pre\">c</span></code>。随着练习增加，这些约定会逐渐变成自然习惯。"
+  },
+  {
+    "id": "C02_Basics:0094",
+    "zh": "使用定理 <code class=\"docutils literal notranslate\"><span class=\"pre\">le_antisymm</span></code>，如果两个实数彼此小于等于对方，就可以证明它们相等。借助这一点和上述事实，我们可以证明 <code class=\"docutils literal notranslate\"><span class=\"pre\">min</span></code> 是交换的："
+  },
+  {
+    "id": "C02_Basics:0095",
+    "zh": "这里我们使用圆点来分隔不同目标的证明。我们的用法并不完全一致：在外层，我们对两个目标都使用圆点和缩进；而在嵌套证明中，只在还剩多个目标时使用圆点。两种约定都是合理且有用的。我们还使用 <code class=\"docutils literal notranslate\"><span class=\"pre\">show</span></code> 策略来组织证明，并指明每个代码块正在证明什么。即使没有这些 <code class=\"docutils literal notranslate\"><span class=\"pre\">show</span></code> 命令，证明仍然成立；但使用它们会使证明更易阅读和维护。"
+  },
+  {
+    "id": "C02_Basics:0096",
+    "zh": "这个证明可能显得重复。为了预示稍后将学习的技巧，我们指出避免重复的一种方法是先陈述一个局部引理，然后使用它："
+  },
+  {
+    "id": "C02_Basics:0097",
+    "zh": "我们将在 <a class=\"reference internal\" href=\"C03_Logic.html#implication-and-the-universal-quantifier\"><span class=\"std std-numref\">第 3.1 节</span></a> 中更多讨论全称量词；这里暂且只需知道，假设 <code class=\"docutils literal notranslate\"><span class=\"pre\">h</span></code> 表示对任意 <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">y</span></code>，所需不等式都成立，而 <code class=\"docutils literal notranslate\"><span class=\"pre\">intro</span></code> 策略引入任意的 <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">y</span></code> 来建立结论。<code class=\"docutils literal notranslate\"><span class=\"pre\">le_antisymm</span></code> 之后的第一个 <code class=\"docutils literal notranslate\"><span class=\"pre\">apply</span></code> 隐式使用 <code class=\"docutils literal notranslate\"><span class=\"pre\">h</span> <span class=\"pre\">a</span> <span class=\"pre\">b</span></code>，第二个则使用 <code class=\"docutils literal notranslate\"><span class=\"pre\">h</span> <span class=\"pre\">b</span> <span class=\"pre\">a</span></code>。"
+  },
+  {
+    "id": "C02_Basics:0098",
+    "zh": "另一个解法是使用 <code class=\"docutils literal notranslate\"><span class=\"pre\">repeat</span></code> 策略；它会尽可能多次地应用某个策略（或策略块）。"
+  },
+  {
+    "id": "C02_Basics:0099",
+    "zh": "我们鼓励你把下面这些命题作为练习来证明。第一个可以用刚才描述的任一技巧来缩短证明。"
+  },
+  {
+    "id": "C02_Basics:0100",
+    "zh": "当然，你也可以证明 <code class=\"docutils literal notranslate\"><span class=\"pre\">max</span></code> 的结合律。"
+  },
+  {
+    "id": "C02_Basics:0101",
+    "zh": "一个有趣的事实是，<code class=\"docutils literal notranslate\"><span class=\"pre\">min</span></code> 对 <code class=\"docutils literal notranslate\"><span class=\"pre\">max</span></code> 的分配方式类似于乘法对加法的分配，反之亦然。换言之，在实数上，我们有恒等式 <code class=\"docutils literal notranslate\"><span class=\"pre\">min</span> <span class=\"pre\">a</span> <span class=\"pre\">(max</span> <span class=\"pre\">b</span> <span class=\"pre\">c)</span> <span class=\"pre\">=</span> <span class=\"pre\">max</span> <span class=\"pre\">(min</span> <span class=\"pre\">a</span> <span class=\"pre\">b)</span> <span class=\"pre\">(min</span> <span class=\"pre\">a</span> <span class=\"pre\">c)</span></code>，也有把 <code class=\"docutils literal notranslate\"><span class=\"pre\">max</span></code> 与 <code class=\"docutils literal notranslate\"><span class=\"pre\">min</span></code> 对调后的对应版本。但下一节会看到，这些结论并不只由 <code class=\"docutils literal notranslate\"><span class=\"pre\">≤</span></code> 的传递性、自反性以及上面列出的 <code class=\"docutils literal notranslate\"><span class=\"pre\">min</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">max</span></code> 的刻画性质推出。我们还需要使用实数上的 <code class=\"docutils literal notranslate\"><span class=\"pre\">≤</span></code> 是<em>全序</em>这一事实，也就是说，它满足 <code class=\"docutils literal notranslate\"><span class=\"pre\">∀</span> <span class=\"pre\">x</span> <span class=\"pre\">y,</span> <span class=\"pre\">x</span> <span class=\"pre\">≤</span> <span class=\"pre\">y</span> <span class=\"pre\">∨</span> <span class=\"pre\">y</span> <span class=\"pre\">≤</span> <span class=\"pre\">x</span></code>。这里的析取符号 <code class=\"docutils literal notranslate\"><span class=\"pre\">∨</span></code> 表示“或”。在第一种情形中有 <code class=\"docutils literal notranslate\"><span class=\"pre\">min</span> <span class=\"pre\">x</span> <span class=\"pre\">y</span> <span class=\"pre\">=</span> <span class=\"pre\">x</span></code>，在第二种情形中有 <code class=\"docutils literal notranslate\"><span class=\"pre\">min</span> <span class=\"pre\">x</span> <span class=\"pre\">y</span> <span class=\"pre\">=</span> <span class=\"pre\">y</span></code>。我们将在 <a class=\"reference internal\" href=\"C03_Logic.html#disjunction\"><span class=\"std std-numref\">第 3.5 节</span></a> 中学习如何按情形推理；但目前我们只处理不需要拆分情形的例子。"
+  },
+  {
+    "id": "C02_Basics:0102",
+    "zh": "下面就是这样的一个例子："
+  },
+  {
+    "id": "C02_Basics:0103",
+    "zh": "显然，<code class=\"docutils literal notranslate\"><span class=\"pre\">aux</span></code> 提供了证明等式所需的两个不等式之一；但把它应用于合适的值，也能得到另一个方向。作为提示，可以使用定理 <code class=\"docutils literal notranslate\"><span class=\"pre\">add_neg_cancel_right</span></code> 和策略 <code class=\"docutils literal notranslate\"><span class=\"pre\">linarith</span></code>。"
+  },
+  {
+    "id": "C02_Basics:0104",
+    "zh": "库中三角不等式的名称清楚体现了 Lean 的命名约定："
+  },
+  {
+    "id": "C02_Basics:0105",
+    "zh": "请使用它证明下面的变体，同时也使用 <code class=\"docutils literal notranslate\"><span class=\"pre\">add_sub_cancel_right</span></code>："
+  },
+  {
+    "id": "C02_Basics:0106",
+    "zh": "看看你能否在三行以内完成。可以使用定理 <code class=\"docutils literal notranslate\"><span class=\"pre\">sub_add_cancel</span></code>。"
+  },
+  {
+    "id": "C02_Basics:0107",
+    "zh": "我们在后续各节还会使用的另一个重要关系，是自然数上的整除关系 <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span> <span class=\"pre\">∣</span> <span class=\"pre\">y</span></code>。请注意，整除符号不是键盘上的普通竖线；它是一个 Unicode 字符，在 VS Code 中可通过输入 <code class=\"docutils literal notranslate\"><span class=\"pre\">\\|</span></code> 获得。按约定，Mathlib 在定理名中用 <code class=\"docutils literal notranslate\"><span class=\"pre\">dvd</span></code> 表示它。"
+  },
+  {
+    "id": "C02_Basics:0108",
+    "zh": "在最后一个例子中，指数是自然数，应用 <code class=\"docutils literal notranslate\"><span class=\"pre\">dvd_mul_left</span></code> 会迫使 Lean 把 <code class=\"docutils literal notranslate\"><span class=\"pre\">x^2</span></code> 的定义展开为 <code class=\"docutils literal notranslate\"><span class=\"pre\">x^1</span> <span class=\"pre\">*</span> <span class=\"pre\">x</span></code>。看看你能否猜出证明下面命题所需的定理名称："
+  },
+  {
+    "id": "C02_Basics:0109",
+    "zh": "就整除关系而言，最大公因数 <code class=\"docutils literal notranslate\"><span class=\"pre\">gcd</span></code> 和最小公倍数 <code class=\"docutils literal notranslate\"><span class=\"pre\">lcm</span></code> 类似于 <code class=\"docutils literal notranslate\"><span class=\"pre\">min</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">max</span></code>。由于每个数都整除 <code class=\"docutils literal notranslate\"><span class=\"pre\">0</span></code>，因此 <code class=\"docutils literal notranslate\"><span class=\"pre\">0</span></code> 在整除意义下实际上是最大元素："
+  },
+  {
+    "id": "C02_Basics:0110",
+    "zh": "看看你能否猜出证明下面命题所需的定理名称："
+  },
+  {
+    "id": "C02_Basics:0111",
+    "zh": "提示：可以使用 <code class=\"docutils literal notranslate\"><span class=\"pre\">dvd_antisymm</span></code>；但若这样做，Lean 会抱怨该表达式在一般定理和专门用于自然数的版本 <code class=\"docutils literal notranslate\"><span class=\"pre\">Nat.dvd_antisymm</span></code> 之间有歧义。可以用 <code class=\"docutils literal notranslate\"><span class=\"pre\">_root_.dvd_antisymm</span></code> 指明一般版本；两者都能工作。"
+  },
+  {
+    "id": "C02_Basics:0112",
+    "zh": "在 <a class=\"reference internal\" href=\"C02_Basics.html#proving-identities-in-algebraic-structures\"><span class=\"std std-numref\">第 2.2 节</span></a> 中，我们看到支配实数的许多常见恒等式，也适用于更一般的代数结构类，例如交换环。描述代数结构时，我们可以使用任意想要的公理，而不只限于等式。例如，一个偏序由一个集合及其上的一个二元关系组成，该关系满足自反性、传递性和反对称性，就像实数上的 <code class=\"docutils literal notranslate\"><span class=\"pre\">≤</span></code> 一样。Lean 知道偏序："
+  },
+  {
+    "id": "C02_Basics:0113",
+    "zh": "这里我们采用 Mathlib 的约定，用 <code class=\"docutils literal notranslate\"><span class=\"pre\">α</span></code>、<code class=\"docutils literal notranslate\"><span class=\"pre\">β</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">γ</span></code>（分别输入为 <code class=\"docutils literal notranslate\"><span class=\"pre\">\\a</span></code>、<code class=\"docutils literal notranslate\"><span class=\"pre\">\\b</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">\\g</span></code>）表示任意类型。库中常用 <code class=\"docutils literal notranslate\"><span class=\"pre\">R</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">G</span></code> 这样的字母分别表示环、群等代数结构的载体；但一般来说，类型通常用希腊字母表示，尤其是在它们几乎没有附加结构时。"
+  },
+  {
+    "id": "C02_Basics:0114",
+    "zh": "任一偏序 <code class=\"docutils literal notranslate\"><span class=\"pre\">≤</span></code> 还伴随一个严格偏序 <code class=\"docutils literal notranslate\"><span class=\"pre\">&lt;</span></code>，其作用有些类似于实数上的 <code class=\"docutils literal notranslate\"><span class=\"pre\">&lt;</span></code>。说 <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span></code> 在该序下小于 <code class=\"docutils literal notranslate\"><span class=\"pre\">y</span></code>，等价于说它小于等于 <code class=\"docutils literal notranslate\"><span class=\"pre\">y</span></code> 且不等于 <code class=\"docutils literal notranslate\"><span class=\"pre\">y</span></code>。"
+  },
+  {
+    "id": "C02_Basics:0115",
+    "zh": "在这个例子中，符号 <code class=\"docutils literal notranslate\"><span class=\"pre\">∧</span></code> 表示“且”，符号 <code class=\"docutils literal notranslate\"><span class=\"pre\">¬</span></code> 表示“非”，而 <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span> <span class=\"pre\">≠</span> <span class=\"pre\">y</span></code> 是 <code class=\"docutils literal notranslate\"><span class=\"pre\">¬</span> <span class=\"pre\">(x</span> <span class=\"pre\">=</span> <span class=\"pre\">y)</span></code> 的缩写。在 <a class=\"reference internal\" href=\"C03_Logic.html#logic\"><span class=\"std std-numref\">第 3 章</span></a> 中，你将学习如何使用这些逻辑连接词证明 <code class=\"docutils literal notranslate\"><span class=\"pre\">&lt;</span></code> 具有上述性质。"
+  },
+  {
+    "id": "C02_Basics:0116",
+    "zh": "<em>格</em>是一种结构，它在偏序上增加两个运算 <code class=\"docutils literal notranslate\"><span class=\"pre\">⊓</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">⊔</span></code>，分别类似于实数上的 <code class=\"docutils literal notranslate\"><span class=\"pre\">min</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">max</span></code>："
+  },
+  {
+    "id": "C02_Basics:0117",
+    "zh": "<code class=\"docutils literal notranslate\"><span class=\"pre\">⊓</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">⊔</span></code> 的刻画分别说明它们可称为<em>最大下界</em>和<em>最小上界</em>。在 VS Code 中，可以用 <code class=\"docutils literal notranslate\"><span class=\"pre\">\\glb</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">\\lub</span></code> 输入这些符号。它们也常称为<em>下确界</em>和<em>上确界</em>，Mathlib 在定理名中用 <code class=\"docutils literal notranslate\"><span class=\"pre\">inf</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">sup</span></code> 指称它们。更复杂的是，它们还常称为<em>交</em>和<em>并</em>。因此，如果处理格，就需要记住如下术语对应表："
+  },
+  {
+    "id": "C02_Basics:0118",
+    "zh": "格的一些实例包括："
+  },
+  {
+    "id": "C02_Basics:0119",
+    "zh": "你可以验证，正如 <code class=\"docutils literal notranslate\"><span class=\"pre\">min</span></code> / <code class=\"docutils literal notranslate\"><span class=\"pre\">max</span></code> 以及 <code class=\"docutils literal notranslate\"><span class=\"pre\">gcd</span></code> / <code class=\"docutils literal notranslate\"><span class=\"pre\">lcm</span></code> 那样，仅凭下确界和上确界的刻画公理，再加上 <code class=\"docutils literal notranslate\"><span class=\"pre\">le_refl</span></code> 与 <code class=\"docutils literal notranslate\"><span class=\"pre\">le_trans</span></code>，即可证明它们的交换律和结合律。"
+  },
+  {
+    "id": "C02_Basics:0120",
+    "zh": "当目标为 <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span> <span class=\"pre\">≤</span> <span class=\"pre\">z</span></code> 时使用 <code class=\"docutils literal notranslate\"><span class=\"pre\">apply</span> <span class=\"pre\">le_trans</span></code> 并不是好主意。实际上，Lean 无法猜出我们想使用哪个中间元素 <code class=\"docutils literal notranslate\"><span class=\"pre\">y</span></code>。因此，<code class=\"docutils literal notranslate\"><span class=\"pre\">apply</span> <span class=\"pre\">le_trans</span></code> 会产生三个形如 <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span> <span class=\"pre\">≤</span> <span class=\"pre\">?a</span></code>、<code class=\"docutils literal notranslate\"><span class=\"pre\">?a</span> <span class=\"pre\">≤</span> <span class=\"pre\">z</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">α</span></code> 的目标，其中 <code class=\"docutils literal notranslate\"><span class=\"pre\">?a</span></code>（可能有一个更复杂的自动生成名称）代表神秘的 <code class=\"docutils literal notranslate\"><span class=\"pre\">y</span></code>。最后一个类型为 <code class=\"docutils literal notranslate\"><span class=\"pre\">α</span></code> 的目标，是要求给出 <code class=\"docutils literal notranslate\"><span class=\"pre\">y</span></code> 的值。它排在最后，是因为 Lean 希望能从第一个目标 <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span> <span class=\"pre\">≤</span> <span class=\"pre\">?a</span></code> 的证明中自动推断它。为了避免这种不便，可以使用 <code class=\"docutils literal notranslate\"><span class=\"pre\">calc</span></code> 策略显式给出 <code class=\"docutils literal notranslate\"><span class=\"pre\">y</span></code>。或者，也可以使用 <code class=\"docutils literal notranslate\"><span class=\"pre\">trans</span></code> 策略；它以 <code class=\"docutils literal notranslate\"><span class=\"pre\">y</span></code> 为参数，并产生预期的目标 <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span> <span class=\"pre\">≤</span> <span class=\"pre\">y</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">y</span> <span class=\"pre\">≤</span> <span class=\"pre\">z</span></code>。当然，也可以直接给出完整证明来避免这个问题，例如 <code class=\"docutils literal notranslate\"><span class=\"pre\">exact</span> <span class=\"pre\">le_trans</span> <span class=\"pre\">inf_le_left</span> <span class=\"pre\">inf_le_right</span></code>，但这需要更多预先规划。"
+  },
+  {
+    "id": "C02_Basics:0121",
+    "zh": "这些定理在 Mathlib 中分别名为 <code class=\"docutils literal notranslate\"><span class=\"pre\">inf_comm</span></code>、<code class=\"docutils literal notranslate\"><span class=\"pre\">inf_assoc</span></code>、<code class=\"docutils literal notranslate\"><span class=\"pre\">sup_comm</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">sup_assoc</span></code>。"
+  },
+  {
+    "id": "C02_Basics:0122",
+    "zh": "另一个很好的练习是仅用这些公理证明<em>吸收律</em>："
+  },
+  {
+    "id": "C02_Basics:0123",
+    "zh": "这些定理在 Mathlib 中可分别以名称 <code class=\"docutils literal notranslate\"><span class=\"pre\">inf_sup_self</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">sup_inf_self</span></code> 找到。"
+  },
+  {
+    "id": "C02_Basics:0124",
+    "zh": "若一个格还满足额外恒等式 <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span> <span class=\"pre\">⊓</span> <span class=\"pre\">(y</span> <span class=\"pre\">⊔</span> <span class=\"pre\">z)</span> <span class=\"pre\">=</span> <span class=\"pre\">(x</span> <span class=\"pre\">⊓</span> <span class=\"pre\">y)</span> <span class=\"pre\">⊔</span> <span class=\"pre\">(x</span> <span class=\"pre\">⊓</span> <span class=\"pre\">z)</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span> <span class=\"pre\">⊔</span> <span class=\"pre\">(y</span> <span class=\"pre\">⊓</span> <span class=\"pre\">z)</span> <span class=\"pre\">=</span> <span class=\"pre\">(x</span> <span class=\"pre\">⊔</span> <span class=\"pre\">y)</span> <span class=\"pre\">⊓</span> <span class=\"pre\">(x</span> <span class=\"pre\">⊔</span> <span class=\"pre\">z)</span></code>，则称为<em>分配格</em>。Lean 也知道这些结构："
+  },
+  {
+    "id": "C02_Basics:0125",
+    "zh": "在 <code class=\"docutils literal notranslate\"><span class=\"pre\">⊓</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">⊔</span></code> 交换律成立的前提下，左右两个版本很容易证明等价。给出一个有限元素的非分配格的显式描述，从而说明并非每个格都是分配格，是一个很好的练习。另一个好练习是证明：在任意格中，任一条分配律都蕴含另一条分配律："
+  },
+  {
+    "id": "C02_Basics:0126",
+    "zh": "可以把公理化结构组合成更大的结构。例如，<em>严格有序环</em>由一个环以及其载体上的一个偏序组成，并满足额外公理，表明环运算与该序相容："
+  },
+  {
+    "id": "C02_Basics:0127",
+    "zh": "<a class=\"reference internal\" href=\"C03_Logic.html#logic\"><span class=\"std std-numref\">第 3 章</span></a> 将提供从 <code class=\"docutils literal notranslate\"><span class=\"pre\">mul_pos</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">&lt;</span></code> 的定义推出下列结论的方法："
+  },
+  {
+    "id": "C02_Basics:0128",
+    "zh": "随后可以把它作为一个较长练习来证明：许多用于实数算术和实数序关系推理的常见事实，对任意有序环也一般成立。下面有几个例子可供尝试，只使用环、偏序的性质，以及最后两个例子中列出的事实（注意，这些环并未假定为交换环，因此不能使用 <cite>ring</cite> 策略）："
+  },
+  {
+    "id": "C02_Basics:0129",
+    "zh": "最后，再看一个例子。度量空间由一个集合以及一个距离概念 <code class=\"docutils literal notranslate\"><span class=\"pre\">dist</span> <span class=\"pre\">x</span> <span class=\"pre\">y</span></code> 组成，后者把任意一对元素映射到一个实数。距离函数假定满足如下公理："
+  },
+  {
+    "id": "C02_Basics:0130",
+    "zh": "掌握本节内容之后，你可以证明这些公理推出距离总是非负的："
+  },
+  {
+    "id": "C02_Basics:0131",
+    "zh": "如你可能已经猜到的，这个定理在 Mathlib 中名为 <code class=\"docutils literal notranslate\"><span class=\"pre\">dist_nonneg</span></code>。"
+  },
+  {
+    "id": "C02_Basics:0132",
+    "zh": "<span class=\"math notranslate nohighlight\">\\(R\\)</span> 连同 <span class=\"math notranslate nohighlight\">\\(+\\)</span> 构成一个<em>阿贝尔群</em>，其中 <span class=\"math notranslate nohighlight\">\\(0\\)</span> 是加法单位元，取负给出逆元。"
+  },
+  {
+    "id": "C02_Basics:0133",
+    "zh": "乘法满足结合律，以 <span class=\"math notranslate nohighlight\">\\(1\\)</span> 为单位元，并且乘法对加法满足分配律。"
+  },
+  {
+    "id": "C02_Basics:0134",
+    "zh": "可以在 Mathlib 的 GitHub 仓库中浏览 Mathlib。"
+  },
+  {
+    "id": "C02_Basics:0135",
+    "zh": "可以使用 Mathlib 网页上的 API 文档。"
+  },
+  {
+    "id": "C02_Basics:0136",
+    "zh": "可以使用 Loogle <https://loogle.lean-lang.org> 通过模式搜索 Lean 与 Mathlib 中的定义和定理。"
+  },
+  {
+    "id": "C02_Basics:0137",
+    "zh": "可以依靠 Mathlib 的命名约定以及编辑器中的 Ctrl-space 补全（Mac 键盘上为 Cmd-space）来猜测定理名称。在 Lean 中，名为 <code class=\"docutils literal notranslate\"><span class=\"pre\">A_of_B_of_C</span></code> 的定理，通常从形如 <code class=\"docutils literal notranslate\"><span class=\"pre\">B</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">C</span></code> 的假设推出形如 <code class=\"docutils literal notranslate\"><span class=\"pre\">A</span></code> 的结论，其中 <code class=\"docutils literal notranslate\"><span class=\"pre\">A</span></code>、<code class=\"docutils literal notranslate\"><span class=\"pre\">B</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">C</span></code> 近似反映我们朗读目标的方式。因此，一个证明类似 <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span> <span class=\"pre\">+</span> <span class=\"pre\">y</span> <span class=\"pre\">≤</span> <span class=\"pre\">...</span></code> 的定理很可能以 <code class=\"docutils literal notranslate\"><span class=\"pre\">add_le</span></code> 开头。输入 <code class=\"docutils literal notranslate\"><span class=\"pre\">add_le</span></code> 并按 Ctrl-space，会出现一些有用的候选。注意，连续按两次 Ctrl-space 会显示关于可用补全的更多信息。"
+  },
+  {
+    "id": "C02_Basics:0138",
+    "zh": "如果在 VS Code 中右击一个已有定理名，编辑器会显示一个菜单，其中有跳转到该定理定义所在文件的选项；你也可以在附近找到类似定理。"
+  },
+  {
+    "id": "C02_Basics:0139",
+    "zh": "可以使用 <code class=\"docutils literal notranslate\"><span class=\"pre\">apply?</span></code> 策略，它会尝试在库中寻找相关定理。"
+  },
+  {
+    "id": "C02_Basics:0140",
+    "zh": "<code class=\"docutils literal notranslate\"><span class=\"pre\">⊓</span></code> 是最大下界、下确界，或交。"
+  },
+  {
+    "id": "C02_Basics:0141",
+    "zh": "<code class=\"docutils literal notranslate\"><span class=\"pre\">⊔</span></code> 是最小上界、上确界，或并。"
+  },
+  {
+    "id": "C02_Basics:0142",
+    "zh": "任意全序上的 <code class=\"docutils literal notranslate\"><span class=\"pre\">min</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">max</span></code>，例如整数或实数上的 <code class=\"docutils literal notranslate\"><span class=\"pre\">≤</span></code>"
+  },
+  {
+    "id": "C02_Basics:0143",
+    "zh": "某个论域的子集族上的 <code class=\"docutils literal notranslate\"><span class=\"pre\">∩</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">∪</span></code>，其序关系为 <code class=\"docutils literal notranslate\"><span class=\"pre\">⊆</span></code>"
+  },
+  {
+    "id": "C02_Basics:0144",
+    "zh": "布尔真值上的 <code class=\"docutils literal notranslate\"><span class=\"pre\">∧</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">∨</span></code>，其序关系 <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span> <span class=\"pre\">≤</span> <span class=\"pre\">y</span></code> 表示 <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span></code> 为假或 <code class=\"docutils literal notranslate\"><span class=\"pre\">y</span></code> 为真"
+  },
+  {
+    "id": "C02_Basics:0145",
+    "zh": "自然数（或正自然数）上的 <code class=\"docutils literal notranslate\"><span class=\"pre\">gcd</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">lcm</span></code>，其序关系是整除关系 <code class=\"docutils literal notranslate\"><span class=\"pre\">∣</span></code>"
+  },
+  {
+    "id": "C02_Basics:0146",
+    "zh": "向量空间的线性子空间族，其中最大下界由交给出，最小上界由两个空间的和给出，序关系为包含关系"
+  },
+  {
+    "id": "C02_Basics:0147",
+    "zh": "一个集合（或在 Lean 中，一个类型）上的拓扑族，其中两个拓扑的最大下界是由它们的并生成的拓扑，最小上界是它们的交，序关系为反向包含"
+  }
+]

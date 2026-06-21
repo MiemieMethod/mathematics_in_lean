@@ -1,0 +1,158 @@
+[
+  {
+    "id": "C04_Sets_and_Functions:0046",
+    "zh": "下面还有一个例子："
+  },
+  {
+    "id": "C04_Sets_and_Functions:0047",
+    "zh": "如果想使用专门为此目的设计的定理，可以把 <code class=\"docutils literal notranslate\"><span class=\"pre\">use</span> <span class=\"pre\">x,</span> <span class=\"pre\">xs</span></code> 这一行替换为 <code class=\"docutils literal notranslate\"><span class=\"pre\">apply</span> <span class=\"pre\">mem_image_of_mem</span> <span class=\"pre\">f</span> <span class=\"pre\">xs</span></code>。不过，知道像集是以存在量词定义的，往往很方便。"
+  },
+  {
+    "id": "C04_Sets_and_Functions:0048",
+    "zh": "下面这个等价命题是一个很好的练习："
+  },
+  {
+    "id": "C04_Sets_and_Functions:0049",
+    "zh": "它表明 <code class=\"docutils literal notranslate\"><span class=\"pre\">image</span> <span class=\"pre\">f</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">preimage</span> <span class=\"pre\">f</span></code> 构成了 <code class=\"docutils literal notranslate\"><span class=\"pre\">Set</span> <span class=\"pre\">α</span></code> 与 <code class=\"docutils literal notranslate\"><span class=\"pre\">Set</span> <span class=\"pre\">β</span></code> 之间所谓 Galois 连接的一个实例，其中二者都按子集关系部分有序。在库中，这个等价命题名为 <code class=\"docutils literal notranslate\"><span class=\"pre\">image_subset_iff</span></code>。实践中，右侧通常是更有用的表示，因为 <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span> <span class=\"pre\">∈</span> <span class=\"pre\">f</span> <span class=\"pre\">⁻¹'</span> <span class=\"pre\">t</span></code> 会展开为 <code class=\"docutils literal notranslate\"><span class=\"pre\">f</span> <span class=\"pre\">x</span> <span class=\"pre\">∈</span> <span class=\"pre\">t</span></code>，而处理 <code class=\"docutils literal notranslate\"><span class=\"pre\">y</span> <span class=\"pre\">∈</span> <span class=\"pre\">f</span> <span class=\"pre\">''</span> <span class=\"pre\">s</span></code> 则需要拆开一个存在量词。"
+  },
+  {
+    "id": "C04_Sets_and_Functions:0050",
+    "zh": "下面是一长串集合论恒等式，供你享用。不必一次全部完成；先做其中几个，其余可以留到有空时再做。"
+  },
+  {
+    "id": "C04_Sets_and_Functions:0051",
+    "zh": "也可以尝试下一组练习，它们刻画像和原像关于指标化并集与交集的行为。在第三个练习中，需要参数 <code class=\"docutils literal notranslate\"><span class=\"pre\">i</span> <span class=\"pre\">:</span> <span class=\"pre\">I</span></code> 来保证指标集非空。证明这些命题时，我们建议使用 <code class=\"docutils literal notranslate\"><span class=\"pre\">ext</span></code> 或 <code class=\"docutils literal notranslate\"><span class=\"pre\">intro</span></code> 展开集合之间等式或包含关系的含义，然后调用 <code class=\"docutils literal notranslate\"><span class=\"pre\">simp</span></code> 来拆解成员关系的条件。"
+  },
+  {
+    "id": "C04_Sets_and_Functions:0052",
+    "zh": "库定义谓词 <code class=\"docutils literal notranslate\"><span class=\"pre\">InjOn</span> <span class=\"pre\">f</span> <span class=\"pre\">s</span></code>，表示 <code class=\"docutils literal notranslate\"><span class=\"pre\">f</span></code> 在 <code class=\"docutils literal notranslate\"><span class=\"pre\">s</span></code> 上是单射。它定义如下："
+  },
+  {
+    "id": "C04_Sets_and_Functions:0053",
+    "zh": "命题 <code class=\"docutils literal notranslate\"><span class=\"pre\">Injective</span> <span class=\"pre\">f</span></code> 可证明地等价于 <code class=\"docutils literal notranslate\"><span class=\"pre\">InjOn</span> <span class=\"pre\">f</span> <span class=\"pre\">univ</span></code>。类似地，库把 <code class=\"docutils literal notranslate\"><span class=\"pre\">range</span> <span class=\"pre\">f</span></code> 定义为 <code class=\"docutils literal notranslate\"><span class=\"pre\">{x</span> <span class=\"pre\">|</span> <span class=\"pre\">∃y,</span> <span class=\"pre\">f</span> <span class=\"pre\">y</span> <span class=\"pre\">=</span> <span class=\"pre\">x}</span></code>，因此 <code class=\"docutils literal notranslate\"><span class=\"pre\">range</span> <span class=\"pre\">f</span></code> 可证明地等于 <code class=\"docutils literal notranslate\"><span class=\"pre\">f</span> <span class=\"pre\">''</span> <span class=\"pre\">univ</span></code>。这是 Mathlib 中的一个常见主题：虽然函数的许多性质是相对于其完整定义域定义的，但常常也有把这些陈述限制到定义域类型的某个子集上的相对化版本。"
+  },
+  {
+    "id": "C04_Sets_and_Functions:0054",
+    "zh": "下面是使用 <code class=\"docutils literal notranslate\"><span class=\"pre\">InjOn</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">range</span></code> 的一些例子："
+  },
+  {
+    "id": "C04_Sets_and_Functions:0055",
+    "zh": "请尝试证明这些命题："
+  },
+  {
+    "id": "C04_Sets_and_Functions:0056",
+    "zh": "要定义函数 <code class=\"docutils literal notranslate\"><span class=\"pre\">f</span> <span class=\"pre\">:</span> <span class=\"pre\">α</span> <span class=\"pre\">→</span> <span class=\"pre\">β</span></code> 的逆，我们将使用两个新成分。首先，需要处理 Lean 中任意类型可能为空这一事实。当不存在满足 <code class=\"docutils literal notranslate\"><span class=\"pre\">f</span> <span class=\"pre\">x</span> <span class=\"pre\">=</span> <span class=\"pre\">y</span></code> 的 <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span></code> 时，要定义 <code class=\"docutils literal notranslate\"><span class=\"pre\">f</span></code> 在 <code class=\"docutils literal notranslate\"><span class=\"pre\">y</span></code> 处的逆值，我们希望给 <code class=\"docutils literal notranslate\"><span class=\"pre\">α</span></code> 中指定一个默认值。把标注 <code class=\"docutils literal notranslate\"><span class=\"pre\">[Inhabited</span> <span class=\"pre\">α]</span></code> 作为变量加入，就等同于假定 <code class=\"docutils literal notranslate\"><span class=\"pre\">α</span></code> 有一个首选元素，记作 <code class=\"docutils literal notranslate\"><span class=\"pre\">default</span></code>。其次，在有多个 <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span></code> 满足 <code class=\"docutils literal notranslate\"><span class=\"pre\">f</span> <span class=\"pre\">x</span> <span class=\"pre\">=</span> <span class=\"pre\">y</span></code> 的情况下，逆函数需要从中选择一个。这需要诉诸选择公理。Lean 允许以多种方式使用它；一种方便方法是使用经典的 <code class=\"docutils literal notranslate\"><span class=\"pre\">choose</span></code> 运算符，如下所示。"
+  },
+  {
+    "id": "C04_Sets_and_Functions:0057",
+    "zh": "给定 <code class=\"docutils literal notranslate\"><span class=\"pre\">h</span> <span class=\"pre\">:</span> <span class=\"pre\">∃</span> <span class=\"pre\">x,</span> <span class=\"pre\">P</span> <span class=\"pre\">x</span></code>，值 <code class=\"docutils literal notranslate\"><span class=\"pre\">Classical.choose</span> <span class=\"pre\">h</span></code> 是某个满足 <code class=\"docutils literal notranslate\"><span class=\"pre\">P</span> <span class=\"pre\">x</span></code> 的 <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span></code>。定理 <code class=\"docutils literal notranslate\"><span class=\"pre\">Classical.choose_spec</span> <span class=\"pre\">h</span></code> 说明 <code class=\"docutils literal notranslate\"><span class=\"pre\">Classical.choose</span> <span class=\"pre\">h</span></code> 满足这个规范。"
+  },
+  {
+    "id": "C04_Sets_and_Functions:0058",
+    "zh": "有了这些准备，就可以如下定义逆函数："
+  },
+  {
+    "id": "C04_Sets_and_Functions:0059",
+    "zh": "这里需要 <code class=\"docutils literal notranslate\"><span class=\"pre\">noncomputable</span> <span class=\"pre\">section</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">open</span> <span class=\"pre\">Classical</span></code> 这两行，因为我们在本质上使用了经典逻辑。输入 <code class=\"docutils literal notranslate\"><span class=\"pre\">y</span></code> 时，函数 <code class=\"docutils literal notranslate\"><span class=\"pre\">inverse</span> <span class=\"pre\">f</span></code> 在存在满足 <code class=\"docutils literal notranslate\"><span class=\"pre\">f</span> <span class=\"pre\">x</span> <span class=\"pre\">=</span> <span class=\"pre\">y</span></code> 的 <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span></code> 时返回某个这样的 <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span></code>，否则返回 <code class=\"docutils literal notranslate\"><span class=\"pre\">α</span></code> 的默认元素。这是依赖式 <code class=\"docutils literal notranslate\"><span class=\"pre\">if</span></code> 构造的一个实例，因为在肯定情形下，返回值 <code class=\"docutils literal notranslate\"><span class=\"pre\">Classical.choose</span> <span class=\"pre\">h</span></code> 依赖于假设 <code class=\"docutils literal notranslate\"><span class=\"pre\">h</span></code>。恒等式 <code class=\"docutils literal notranslate\"><span class=\"pre\">dif_pos</span> <span class=\"pre\">h</span></code> 在给定 <code class=\"docutils literal notranslate\"><span class=\"pre\">h</span> <span class=\"pre\">:</span> <span class=\"pre\">e</span></code> 时，把 <code class=\"docutils literal notranslate\"><span class=\"pre\">if</span> <span class=\"pre\">h</span> <span class=\"pre\">:</span> <span class=\"pre\">e</span> <span class=\"pre\">then</span> <span class=\"pre\">a</span> <span class=\"pre\">else</span> <span class=\"pre\">b</span></code> 重写为 <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span></code>；类似地，<code class=\"docutils literal notranslate\"><span class=\"pre\">dif_neg</span> <span class=\"pre\">h</span></code> 在给定 <code class=\"docutils literal notranslate\"><span class=\"pre\">h</span> <span class=\"pre\">:</span> <span class=\"pre\">¬</span> <span class=\"pre\">e</span></code> 时把它重写为 <code class=\"docutils literal notranslate\"><span class=\"pre\">b</span></code>。还有适用于非依赖式 <code class=\"docutils literal notranslate\"><span class=\"pre\">if</span></code> 构造的版本 <code class=\"docutils literal notranslate\"><span class=\"pre\">if_pos</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">if_neg</span></code>，下一节会用到。定理 <code class=\"docutils literal notranslate\"><span class=\"pre\">inverse_spec</span></code> 说明 <code class=\"docutils literal notranslate\"><span class=\"pre\">inverse</span> <span class=\"pre\">f</span></code> 满足该规范的第一部分。"
+  },
+  {
+    "id": "C04_Sets_and_Functions:0060",
+    "zh": "如果没有完全理解这些机制，也不必担心。仅定理 <code class=\"docutils literal notranslate\"><span class=\"pre\">inverse_spec</span></code> 就应足以说明：<code class=\"docutils literal notranslate\"><span class=\"pre\">inverse</span> <span class=\"pre\">f</span></code> 是左逆当且仅当 <code class=\"docutils literal notranslate\"><span class=\"pre\">f</span></code> 是单射，是右逆当且仅当 <code class=\"docutils literal notranslate\"><span class=\"pre\">f</span></code> 是满射。请在 VS Code 中双击或右击 <code class=\"docutils literal notranslate\"><span class=\"pre\">LeftInverse</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">RightInverse</span></code> 来查看它们的定义，或使用命令 <code class=\"docutils literal notranslate\"><span class=\"pre\">#print</span> <span class=\"pre\">LeftInverse</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">#print</span> <span class=\"pre\">RightInverse</span></code>。然后尝试证明两个定理。它们很有挑战！开始处理细节前，先在纸上完成证明会有帮助。每个证明大约可用半打短行完成。如果想额外挑战自己，可以尝试把每个证明压缩成一个单行证明项。"
+  },
+  {
+    "id": "C04_Sets_and_Functions:0061",
+    "zh": "本节最后给出 Cantor 著名定理的类型论陈述：不存在从一个集合到其幂集的满射函数。看看你能否理解这个证明，然后补全缺失的两行。"
+  },
+  {
+    "id": "C04_Sets_and_Functions:0062",
+    "zh": "本章最后以集合论中的一个初等但非平凡的定理收尾。设 <span class=\"math notranslate nohighlight\">\\(\\alpha\\)</span> 和 <span class=\"math notranslate nohighlight\">\\(\\beta\\)</span> 为集合。（在我们的形式化中，它们实际上是类型。）假设 <span class=\"math notranslate nohighlight\">\\(f : \\alpha \\to \\beta\\)</span> 和 <span class=\"math notranslate nohighlight\">\\(g : \\beta \\to \\alpha\\)</span> 都是单射。直观地说，这意味着 <span class=\"math notranslate nohighlight\">\\(\\alpha\\)</span> 不大于 <span class=\"math notranslate nohighlight\">\\(\\beta\\)</span>，反之亦然。如果 <span class=\"math notranslate nohighlight\">\\(\\alpha\\)</span> 和 <span class=\"math notranslate nohighlight\">\\(\\beta\\)</span> 有限，这就蕴含它们有相同基数，等价地说，二者之间存在一个双射。十九世纪时，Cantor 陈述了即使在 <span class=\"math notranslate nohighlight\">\\(\\alpha\\)</span> 和 <span class=\"math notranslate nohighlight\">\\(\\beta\\)</span> 无限时同样成立的结果。后来 Dedekind、Schröder 和 Bernstein 分别独立证明了它。"
+  },
+  {
+    "id": "C04_Sets_and_Functions:0063",
+    "zh": "我们的形式化将引入一些新方法，后续章节会更详细解释。如果这里讲得太快，也不必担心。我们的目标是让你看到，你已经具备为真实数学结果的形式化证明作出贡献的技能。"
+  },
+  {
+    "id": "C04_Sets_and_Functions:0064",
+    "zh": "为了理解证明背后的思想，考虑映射 <span class=\"math notranslate nohighlight\">\\(g\\)</span> 在 <span class=\"math notranslate nohighlight\">\\(\\alpha\\)</span> 中的像。在这个像上，<span class=\"math notranslate nohighlight\">\\(g\\)</span> 的逆是有定义的，并且给出它与 <span class=\"math notranslate nohighlight\">\\(\\beta\\)</span> 的一个双射。"
+  },
+  {
+    "id": "C04_Sets_and_Functions:0065",
+    "zh": "问题在于，如果 <span class=\"math notranslate nohighlight\">\\(g\\)</span> 不是满射，这个双射没有覆盖图中阴影区域；该区域非空。另一种做法是用 <span class=\"math notranslate nohighlight\">\\(f\\)</span> 把整个 <span class=\"math notranslate nohighlight\">\\(\\alpha\\)</span> 映到 <span class=\"math notranslate nohighlight\">\\(\\beta\\)</span>，但那样的问题是，如果 <span class=\"math notranslate nohighlight\">\\(f\\)</span> 不是满射，就会遗漏 <span class=\"math notranslate nohighlight\">\\(\\beta\\)</span> 中的一些元素。"
+  },
+  {
+    "id": "C04_Sets_and_Functions:0066",
+    "zh": "现在考虑从 <span class=\"math notranslate nohighlight\">\\(\\alpha\\)</span> 到自身的复合 <span class=\"math notranslate nohighlight\">\\(g \\circ f\\)</span>。因为该复合是单射，它在 <span class=\"math notranslate nohighlight\">\\(\\alpha\\)</span> 与其像之间形成一个双射，从而在 <span class=\"math notranslate nohighlight\">\\(\\alpha\\)</span> 内部得到一个缩小的 <span class=\"math notranslate nohighlight\">\\(\\alpha\\)</span> 副本。"
+  },
+  {
+    "id": "C04_Sets_and_Functions:0067",
+    "zh": "这个复合把内侧阴影环映到另一个同类集合，我们可以把它看作更小的同心阴影环，如此继续。于是得到一个同心的阴影环序列，每个环都与下一个环双射对应。如果把每个环映到下一个环，并保持 <span class=\"math notranslate nohighlight\">\\(\\alpha\\)</span> 的非阴影部分不变，就得到 <span class=\"math notranslate nohighlight\">\\(\\alpha\\)</span> 与 <span class=\"math notranslate nohighlight\">\\(g\\)</span> 的像之间的一个双射。再与 <span class=\"math notranslate nohighlight\">\\(g^{-1}\\)</span> 复合，就得到所需的 <span class=\"math notranslate nohighlight\">\\(\\alpha\\)</span> 与 <span class=\"math notranslate nohighlight\">\\(\\beta\\)</span> 之间的双射。"
+  },
+  {
+    "id": "C04_Sets_and_Functions:0068",
+    "zh": "可以更简单地描述这个双射。设 <span class=\"math notranslate nohighlight\">\\(A\\)</span> 为阴影区域序列的并，并如下定义 <span class=\"math notranslate nohighlight\">\\(h : \\alpha \\to \\beta\\)</span>："
+  },
+  {
+    "id": "C04_Sets_and_Functions:0069",
+    "zh": "换言之，在阴影部分使用 <span class=\"math notranslate nohighlight\">\\(f\\)</span>，在其他地方使用 <span class=\"math notranslate nohighlight\">\\(g\\)</span> 的逆。所得映射 <span class=\"math notranslate nohighlight\">\\(h\\)</span> 是单射，因为每个组成部分都是单射，且两个组成部分的像互不相交。要看它是满射，设给定 <span class=\"math notranslate nohighlight\">\\(\\beta\\)</span> 中的 <span class=\"math notranslate nohighlight\">\\(y\\)</span>，并考虑 <span class=\"math notranslate nohighlight\">\\(g(y)\\)</span>。若 <span class=\"math notranslate nohighlight\">\\(g(y)\\)</span> 位于某个阴影区域，则它不能在第一个环中，所以有 <span class=\"math notranslate nohighlight\">\\(g(y) = g(f(x))\\)</span>，其中 <span class=\"math notranslate nohighlight\">\\(x\\)</span> 位于前一个环中。由 <span class=\"math notranslate nohighlight\">\\(g\\)</span> 的单射性，得到 <span class=\"math notranslate nohighlight\">\\(h(x) = f(x) = y\\)</span>。若 <span class=\"math notranslate nohighlight\">\\(g(y)\\)</span> 不在阴影区域，则由 <span class=\"math notranslate nohighlight\">\\(h\\)</span> 的定义有 <span class=\"math notranslate nohighlight\">\\(h(g(y)) = y\\)</span>。无论哪种情况，<span class=\"math notranslate nohighlight\">\\(y\\)</span> 都在 <span class=\"math notranslate nohighlight\">\\(h\\)</span> 的像中。"
+  },
+  {
+    "id": "C04_Sets_and_Functions:0070",
+    "zh": "这个论证听起来应当是可信的，但细节相当微妙。形式化证明不仅会增强我们对结果的信心，也会帮助我们更好地理解它。由于证明使用经典逻辑，我们告诉 Lean：我们的定义通常不是可计算的。"
+  },
+  {
+    "id": "C04_Sets_and_Functions:0071",
+    "zh": "标注 <code class=\"docutils literal notranslate\"><span class=\"pre\">[Nonempty</span> <span class=\"pre\">β]</span></code> 指明 <code class=\"docutils literal notranslate\"><span class=\"pre\">β</span></code> 非空。我们使用它，是因为将要用来构造 <span class=\"math notranslate nohighlight\">\\(g^{-1}\\)</span> 的 Mathlib 原语需要这一点。当 <span class=\"math notranslate nohighlight\">\\(\\beta\\)</span> 为空时，定理的情形是平凡的；虽然把形式化推广到涵盖该情形并不困难，但我们不费这个功夫。具体地说，我们需要假设 <code class=\"docutils literal notranslate\"><span class=\"pre\">[Nonempty</span> <span class=\"pre\">β]</span></code> 来使用 Mathlib 中定义的运算 <code class=\"docutils literal notranslate\"><span class=\"pre\">invFun</span></code>。给定 <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span> <span class=\"pre\">:</span> <span class=\"pre\">α</span></code>，<code class=\"docutils literal notranslate\"><span class=\"pre\">invFun</span> <span class=\"pre\">g</span> <span class=\"pre\">x</span></code> 在存在 <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span></code> 在 <code class=\"docutils literal notranslate\"><span class=\"pre\">β</span></code> 中的原像时选择一个这样的原像，否则返回 <code class=\"docutils literal notranslate\"><span class=\"pre\">β</span></code> 的任意元素。若 <code class=\"docutils literal notranslate\"><span class=\"pre\">g</span></code> 是单射，则函数 <code class=\"docutils literal notranslate\"><span class=\"pre\">invFun</span> <span class=\"pre\">g</span></code> 总是一个左逆；若 <code class=\"docutils literal notranslate\"><span class=\"pre\">g</span></code> 是满射，则它总是一个右逆。"
+  },
+  {
+    "id": "C04_Sets_and_Functions:0072",
+    "zh": "我们如下定义与阴影区域之并对应的集合。"
+  },
+  {
+    "id": "C04_Sets_and_Functions:0073",
+    "zh": "定义 <code class=\"docutils literal notranslate\"><span class=\"pre\">sbAux</span></code> 是<em>递归定义</em>的一个例子，我们将在下一章解释。它定义了一个集合序列"
+  },
+  {
+    "id": "C04_Sets_and_Functions:0074",
+    "zh": "定义 <code class=\"docutils literal notranslate\"><span class=\"pre\">sbSet</span></code> 对应证明草图中的集合 <span class=\"math notranslate nohighlight\">\\(A = \\bigcup_{n \\in \\mathbb{N}} S_n\\)</span>。上面描述的函数 <span class=\"math notranslate nohighlight\">\\(h\\)</span> 现在定义如下："
+  },
+  {
+    "id": "C04_Sets_and_Functions:0075",
+    "zh": "我们将需要这样一个事实：我们对 <span class=\"math notranslate nohighlight\">\\(g^{-1}\\)</span> 的定义，在 <span class=\"math notranslate nohighlight\">\\(A\\)</span> 的补集上是右逆，也就是说，在 <span class=\"math notranslate nohighlight\">\\(\\alpha\\)</span> 的非阴影区域上是右逆。这是因为最外侧环 <span class=\"math notranslate nohighlight\">\\(S_0\\)</span> 等于 <span class=\"math notranslate nohighlight\">\\(\\alpha \\setminus g(\\beta)\\)</span>，所以 <span class=\"math notranslate nohighlight\">\\(A\\)</span> 的补集包含于 <span class=\"math notranslate nohighlight\">\\(g(\\beta)\\)</span>。因此，对补集中的每个 <span class=\"math notranslate nohighlight\">\\(x\\)</span>，都存在 <span class=\"math notranslate nohighlight\">\\(y\\)</span> 使得 <span class=\"math notranslate nohighlight\">\\(g(y) = x\\)</span>。（由 <span class=\"math notranslate nohighlight\">\\(g\\)</span> 的单射性，这个 <span class=\"math notranslate nohighlight\">\\(y\\)</span> 是唯一的；但下一个定理只说明 <code class=\"docutils literal notranslate\"><span class=\"pre\">invFun</span> <span class=\"pre\">g</span> <span class=\"pre\">x</span></code> 返回某个满足 <code class=\"docutils literal notranslate\"><span class=\"pre\">g</span> <span class=\"pre\">y</span> <span class=\"pre\">=</span> <span class=\"pre\">x</span></code> 的 <code class=\"docutils literal notranslate\"><span class=\"pre\">y</span></code>。）"
+  },
+  {
+    "id": "C04_Sets_and_Functions:0076",
+    "zh": "请逐步查看下面的证明，确保理解其中发生了什么，并补全剩余部分。最后需要使用 <code class=\"docutils literal notranslate\"><span class=\"pre\">invFun_eq</span></code>。注意，这里用 <code class=\"docutils literal notranslate\"><span class=\"pre\">sbAux</span></code> 重写，会把 <code class=\"docutils literal notranslate\"><span class=\"pre\">sbAux</span> <span class=\"pre\">f</span> <span class=\"pre\">g</span> <span class=\"pre\">0</span></code> 替换为相应定义方程的右端。"
+  },
+  {
+    "id": "C04_Sets_and_Functions:0077",
+    "zh": "现在转向证明 <span class=\"math notranslate nohighlight\">\\(h\\)</span> 是单射。非形式地说，证明如下。首先，假设 <span class=\"math notranslate nohighlight\">\\(h(x_1) = h(x_2)\\)</span>。若 <span class=\"math notranslate nohighlight\">\\(x_1\\)</span> 在 <span class=\"math notranslate nohighlight\">\\(A\\)</span> 中，则 <span class=\"math notranslate nohighlight\">\\(h(x_1) = f(x_1)\\)</span>，并且可以如下证明 <span class=\"math notranslate nohighlight\">\\(x_2\\)</span> 也在 <span class=\"math notranslate nohighlight\">\\(A\\)</span> 中。若它不在，则 <span class=\"math notranslate nohighlight\">\\(h(x_2) = g^{-1}(x_2)\\)</span>。由 <span class=\"math notranslate nohighlight\">\\(f(x_1) = h(x_1) = h(x_2)\\)</span> 得到 <span class=\"math notranslate nohighlight\">\\(g(f(x_1)) = x_2\\)</span>。根据 <span class=\"math notranslate nohighlight\">\\(A\\)</span> 的定义，由于 <span class=\"math notranslate nohighlight\">\\(x_1\\)</span> 在 <span class=\"math notranslate nohighlight\">\\(A\\)</span> 中，<span class=\"math notranslate nohighlight\">\\(x_2\\)</span> 也在 <span class=\"math notranslate nohighlight\">\\(A\\)</span> 中，矛盾。因此，若 <span class=\"math notranslate nohighlight\">\\(x_1\\)</span> 在 <span class=\"math notranslate nohighlight\">\\(A\\)</span> 中，则 <span class=\"math notranslate nohighlight\">\\(x_2\\)</span> 也在；此时有 <span class=\"math notranslate nohighlight\">\\(f(x_1) = h(x_1) = h(x_2) = f(x_2)\\)</span>。由 <span class=\"math notranslate nohighlight\">\\(f\\)</span> 的单射性推出 <span class=\"math notranslate nohighlight\">\\(x_1 = x_2\\)</span>。对称论证表明，若 <span class=\"math notranslate nohighlight\">\\(x_2\\)</span> 在 <span class=\"math notranslate nohighlight\">\\(A\\)</span> 中，则 <span class=\"math notranslate nohighlight\">\\(x_1\\)</span> 也在，从而同样推出 <span class=\"math notranslate nohighlight\">\\(x_1 = x_2\\)</span>。"
+  },
+  {
+    "id": "C04_Sets_and_Functions:0078",
+    "zh": "唯一剩下的可能性是 <span class=\"math notranslate nohighlight\">\\(x_1\\)</span> 与 <span class=\"math notranslate nohighlight\">\\(x_2\\)</span> 都不在 <span class=\"math notranslate nohighlight\">\\(A\\)</span> 中。在这种情况下，有 <span class=\"math notranslate nohighlight\">\\(g^{-1}(x_1) = h(x_1) = h(x_2) = g^{-1}(x_2)\\)</span>。对等式两边应用 <span class=\"math notranslate nohighlight\">\\(g\\)</span>，得到 <span class=\"math notranslate nohighlight\">\\(x_1 = x_2\\)</span>。"
+  },
+  {
+    "id": "C04_Sets_and_Functions:0079",
+    "zh": "我们再次鼓励你逐步查看下面的证明，看看这个论证如何在 Lean 中展开。看看能否使用 <code class=\"docutils literal notranslate\"><span class=\"pre\">sb_right_inv</span></code> 完成证明。"
+  },
+  {
+    "id": "C04_Sets_and_Functions:0080",
+    "zh": "这个证明引入了一些新策略。首先，注意 <code class=\"docutils literal notranslate\"><span class=\"pre\">set</span></code> 策略，它为 <code class=\"docutils literal notranslate\"><span class=\"pre\">sbSet</span> <span class=\"pre\">f</span> <span class=\"pre\">g</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">sb_fun</span> <span class=\"pre\">f</span> <span class=\"pre\">g</span></code> 分别引入缩写 <code class=\"docutils literal notranslate\"><span class=\"pre\">A</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">h</span></code>。我们把相应的定义方程命名为 <code class=\"docutils literal notranslate\"><span class=\"pre\">A_def</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">h_def</span></code>。这些缩写是定义性的，也就是说，必要时 Lean 有时会自动展开它们。但并非总是如此；例如使用 <code class=\"docutils literal notranslate\"><span class=\"pre\">rw</span></code> 时，通常需要显式使用 <code class=\"docutils literal notranslate\"><span class=\"pre\">A_def</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">h_def</span></code>。因此，这些定义带来一种权衡：它们可以使表达式更短、更可读，但有时也要求我们做更多工作。"
+  },
+  {
+    "id": "C04_Sets_and_Functions:0081",
+    "zh": "更有趣的策略是 <code class=\"docutils literal notranslate\"><span class=\"pre\">wlog</span></code>，它封装了上面非形式证明中的对称性论证。我们现在不详细讨论它，但请注意它恰好完成了我们想要的事情。若把鼠标悬停在该策略上，可以查看它的文档。"
+  },
+  {
+    "id": "C04_Sets_and_Functions:0082",
+    "zh": "满射性的证明更容易。给定 <span class=\"math notranslate nohighlight\">\\(\\beta\\)</span> 中的 <span class=\"math notranslate nohighlight\">\\(y\\)</span>，我们根据 <span class=\"math notranslate nohighlight\">\\(g(y)\\)</span> 是否在 <span class=\"math notranslate nohighlight\">\\(A\\)</span> 中分两种情况。如果在，它不可能位于最外侧环 <span class=\"math notranslate nohighlight\">\\(S_0\\)</span>，因为按定义该环与 <span class=\"math notranslate nohighlight\">\\(g\\)</span> 的像不相交。因此，它对某个 <span class=\"math notranslate nohighlight\">\\(n\\)</span> 是 <span class=\"math notranslate nohighlight\">\\(S_{n+1}\\)</span> 的元素。这意味着它形如 <span class=\"math notranslate nohighlight\">\\(g(f(x))\\)</span>，其中 <span class=\"math notranslate nohighlight\">\\(x\\)</span> 在 <span class=\"math notranslate nohighlight\">\\(S_n\\)</span> 中。由 <span class=\"math notranslate nohighlight\">\\(g\\)</span> 的单射性，得到 <span class=\"math notranslate nohighlight\">\\(f(x) = y\\)</span>。若 <span class=\"math notranslate nohighlight\">\\(g(y)\\)</span> 在 <span class=\"math notranslate nohighlight\">\\(A\\)</span> 的补集中，则立即有 <span class=\"math notranslate nohighlight\">\\(h(g(y)) = y\\)</span>，证明完成。"
+  },
+  {
+    "id": "C04_Sets_and_Functions:0083",
+    "zh": "我们再次鼓励你逐步查看证明并补全缺失部分。策略 <code class=\"docutils literal notranslate\"><span class=\"pre\">rcases</span> <span class=\"pre\">n</span> <span class=\"pre\">with</span> <span class=\"pre\">_</span> <span class=\"pre\">|</span> <span class=\"pre\">n</span></code> 会把情况分为 <code class=\"docutils literal notranslate\"><span class=\"pre\">g</span> <span class=\"pre\">y</span> <span class=\"pre\">∈</span> <span class=\"pre\">sbAux</span> <span class=\"pre\">f</span> <span class=\"pre\">g</span> <span class=\"pre\">0</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">g</span> <span class=\"pre\">y</span> <span class=\"pre\">∈</span> <span class=\"pre\">sbAux</span> <span class=\"pre\">f</span> <span class=\"pre\">g</span> <span class=\"pre\">(n</span> <span class=\"pre\">+</span> <span class=\"pre\">1)</span></code>。在两种情形中，调用 <code class=\"docutils literal notranslate\"><span class=\"pre\">simp</span> <span class=\"pre\">[sbAux]</span></code> 都会应用 <code class=\"docutils literal notranslate\"><span class=\"pre\">sbAux</span></code> 的相应定义方程。"
+  },
+  {
+    "id": "C04_Sets_and_Functions:0084",
+    "zh": "现在可以把一切组合起来。最终陈述简短漂亮，而证明使用了 <code class=\"docutils literal notranslate\"><span class=\"pre\">Bijective</span> <span class=\"pre\">h</span></code> 展开为 <code class=\"docutils literal notranslate\"><span class=\"pre\">Injective</span> <span class=\"pre\">h</span> <span class=\"pre\">∧</span> <span class=\"pre\">Surjective</span> <span class=\"pre\">h</span></code> 这一事实。"
+  }
+]

@@ -1,0 +1,162 @@
+[
+  {
+    "id": "C03_Logic:0041",
+    "zh": "存在量词可以在 VS Code 中输入为 <code class=\"docutils literal notranslate\"><span class=\"pre\">\\ex</span></code>，用于表示“存在”。Lean 中的形式表达式 <code class=\"docutils literal notranslate\"><span class=\"pre\">∃</span> <span class=\"pre\">x</span> <span class=\"pre\">:</span> <span class=\"pre\">ℝ,</span> <span class=\"pre\">2</span> <span class=\"pre\">&lt;</span> <span class=\"pre\">x</span> <span class=\"pre\">∧</span> <span class=\"pre\">x</span> <span class=\"pre\">&lt;</span> <span class=\"pre\">3</span></code> 表示在 2 与 3 之间存在一个实数。（我们将在 <a class=\"reference internal\" href=\"C03_Logic.html#conjunction-and-iff\"><span class=\"std std-numref\">第 3.4 节</span></a> 中讨论合取符号 <code class=\"docutils literal notranslate\"><span class=\"pre\">∧</span></code>。）证明这类命题的标准方式，是给出一个实数，并证明它具有所陈述的性质。数 <code class=\"docutils literal notranslate\"><span class=\"pre\">2.5</span></code> 具有所需性质；它可以输入为 <code class=\"docutils literal notranslate\"><span class=\"pre\">5</span> <span class=\"pre\">/</span> <span class=\"pre\">2</span></code>，或在 Lean 无法从语境推断我们指的是实数时输入为 <code class=\"docutils literal notranslate\"><span class=\"pre\">(5</span> <span class=\"pre\">:</span> <span class=\"pre\">ℝ)</span> <span class=\"pre\">/</span> <span class=\"pre\">2</span></code>；<code class=\"docutils literal notranslate\"><span class=\"pre\">norm_num</span></code> 策略可以证明它满足该描述。"
+  },
+  {
+    "id": "C03_Logic:0042",
+    "zh": "有几种方式可以把这些信息组合起来。若目标以存在量词开头，<code class=\"docutils literal notranslate\"><span class=\"pre\">use</span></code> 策略用于给出对象，并留下证明该对象满足相应性质的目标。"
+  },
+  {
+    "id": "C03_Logic:0043",
+    "zh": "除了数据之外，也可以向 <code class=\"docutils literal notranslate\"><span class=\"pre\">use</span></code> 策略给出证明："
+  },
+  {
+    "id": "C03_Logic:0044",
+    "zh": "事实上，<code class=\"docutils literal notranslate\"><span class=\"pre\">use</span></code> 策略还会自动尝试使用可用假设。"
+  },
+  {
+    "id": "C03_Logic:0045",
+    "zh": "另一种方式是使用 Lean 的匿名构造子记号来构造存在量词的证明。"
+  },
+  {
+    "id": "C03_Logic:0046",
+    "zh": "注意，这里没有 <code class=\"docutils literal notranslate\"><span class=\"pre\">by</span></code>；我们给出的是显式证明项。左右尖括号可分别输入为 <code class=\"docutils literal notranslate\"><span class=\"pre\">\\&lt;</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">\\&gt;</span></code>，它们告诉 Lean 使用适合当前目标的构造方式，把给定数据组合起来。我们也可以不先进入策略模式而直接使用这个记号："
+  },
+  {
+    "id": "C03_Logic:0047",
+    "zh": "现在我们知道如何证明存在命题。那么如何使用存在命题呢？如果已知存在一个具有某性质的对象，就应当能够给其中任意一个命名并对它推理。例如，回忆上一节中的谓词 <code class=\"docutils literal notranslate\"><span class=\"pre\">FnUb</span> <span class=\"pre\">f</span> <span class=\"pre\">a</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">FnLb</span> <span class=\"pre\">f</span> <span class=\"pre\">a</span></code>，它们分别表示 <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span></code> 是 <code class=\"docutils literal notranslate\"><span class=\"pre\">f</span></code> 的上界或下界。我们可以用存在量词说“<code class=\"docutils literal notranslate\"><span class=\"pre\">f</span></code> 有界”，而不指明具体界："
+  },
+  {
+    "id": "C03_Logic:0048",
+    "zh": "我们可以使用上一节中的定理 <code class=\"docutils literal notranslate\"><span class=\"pre\">FnUb_add</span></code> 证明：若 <code class=\"docutils literal notranslate\"><span class=\"pre\">f</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">g</span></code> 都有上界，则 <code class=\"docutils literal notranslate\"><span class=\"pre\">fun</span> <span class=\"pre\">x</span> <span class=\"pre\">↦</span> <span class=\"pre\">f</span> <span class=\"pre\">x</span> <span class=\"pre\">+</span> <span class=\"pre\">g</span> <span class=\"pre\">x</span></code> 也有上界。"
+  },
+  {
+    "id": "C03_Logic:0049",
+    "zh": "<code class=\"docutils literal notranslate\"><span class=\"pre\">rcases</span></code> 策略会拆开存在量词中的信息。像 <code class=\"docutils literal notranslate\"><span class=\"pre\">⟨a,</span> <span class=\"pre\">ubfa⟩</span></code> 这样的标注使用与匿名构造子相同的尖括号，称为<em>模式</em>；它描述了我们在拆开主参数时预期得到的信息。给定假设 <code class=\"docutils literal notranslate\"><span class=\"pre\">ubf</span></code>，表示 <code class=\"docutils literal notranslate\"><span class=\"pre\">f</span></code> 有上界，命令 <code class=\"docutils literal notranslate\"><span class=\"pre\">rcases</span> <span class=\"pre\">ubf</span> <span class=\"pre\">with</span> <span class=\"pre\">⟨a,</span> <span class=\"pre\">ubfa⟩</span></code> 会向语境加入一个新变量 <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span></code>，表示某个上界，同时加入假设 <code class=\"docutils literal notranslate\"><span class=\"pre\">ubfa</span></code>，表示它具有给定性质。目标保持不变；改变的是我们现在可以使用这个新对象和新假设来证明目标。这是数学推理中的常见方法：我们拆开由某个假设断言或蕴含其存在性的对象，然后用它建立其他事物的存在性。"
+  },
+  {
+    "id": "C03_Logic:0050",
+    "zh": "请尝试使用这种方法建立下面的命题。你可能会发现，把上一节中的某些例子像 <code class=\"docutils literal notranslate\"><span class=\"pre\">fn_ub_add</span></code> 那样改成命名定理会很有用；也可以直接把参数插入证明中。"
+  },
+  {
+    "id": "C03_Logic:0051",
+    "zh": "<code class=\"docutils literal notranslate\"><span class=\"pre\">rcases</span></code> 中的 “r” 表示 “recursive”，因为它允许我们使用任意复杂的模式来拆开嵌套数据。<code class=\"docutils literal notranslate\"><span class=\"pre\">rintro</span></code> 策略是 <code class=\"docutils literal notranslate\"><span class=\"pre\">intro</span></code> 与 <code class=\"docutils literal notranslate\"><span class=\"pre\">rcases</span></code> 的组合："
+  },
+  {
+    "id": "C03_Logic:0052",
+    "zh": "事实上，Lean 也支持在表达式和证明项中使用带模式匹配的 <code class=\"docutils literal notranslate\"><span class=\"pre\">fun</span></code>："
+  },
+  {
+    "id": "C03_Logic:0053",
+    "zh": "拆开假设中的信息是如此重要，以至于 Lean 和 Mathlib 提供了许多方法。例如，<code class=\"docutils literal notranslate\"><span class=\"pre\">obtain</span></code> 策略提供了富有提示性的语法："
+  },
+  {
+    "id": "C03_Logic:0054",
+    "zh": "可以把第一条 <code class=\"docutils literal notranslate\"><span class=\"pre\">obtain</span></code> 指令理解为：把 <code class=\"docutils literal notranslate\"><span class=\"pre\">ubf</span></code> 的“内容”与给定模式匹配，并把各组成部分赋给命名变量。我们说 <code class=\"docutils literal notranslate\"><span class=\"pre\">rcases</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">obtain</span></code> 会析构它们的参数。"
+  },
+  {
+    "id": "C03_Logic:0055",
+    "zh": "Lean 还支持类似其他函数式编程语言中的语法："
+  },
+  {
+    "id": "C03_Logic:0056",
+    "zh": "在第一个例子中，如果把光标放在 <code class=\"docutils literal notranslate\"><span class=\"pre\">cases</span> <span class=\"pre\">ubf</span></code> 之后，会看到该策略产生一个目标，Lean 给它标记为 <code class=\"docutils literal notranslate\"><span class=\"pre\">intro</span></code>。（这个具体名称来自用于构造存在命题证明的公理化原语的内部名称。）随后 <code class=\"docutils literal notranslate\"><span class=\"pre\">case</span></code> 策略为各组成部分命名。第二个例子类似，只是使用 <code class=\"docutils literal notranslate\"><span class=\"pre\">next</span></code> 而非 <code class=\"docutils literal notranslate\"><span class=\"pre\">case</span></code>，从而可以避免提及 <code class=\"docutils literal notranslate\"><span class=\"pre\">intro</span></code>。最后两个例子中的 <code class=\"docutils literal notranslate\"><span class=\"pre\">match</span></code> 一词强调了这里所做的正是计算机科学家所谓的“模式匹配”。注意，第三个证明以 <code class=\"docutils literal notranslate\"><span class=\"pre\">by</span></code> 开始；在它之后，策略版本的 <code class=\"docutils literal notranslate\"><span class=\"pre\">match</span></code> 要求箭头右侧是一个策略证明。最后一个例子是证明项：完全没有策略出现。"
+  },
+  {
+    "id": "C03_Logic:0057",
+    "zh": "在本书余下部分，我们会坚持使用 <code class=\"docutils literal notranslate\"><span class=\"pre\">rcases</span></code>、<code class=\"docutils literal notranslate\"><span class=\"pre\">rintro</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">obtain</span></code>，作为使用存在量词的首选方式。不过，了解替代语法并无坏处，尤其是在你可能与计算机科学家共处时。"
+  },
+  {
+    "id": "C03_Logic:0058",
+    "zh": "为了说明 <code class=\"docutils literal notranslate\"><span class=\"pre\">rcases</span></code> 的一种用法，我们证明一个古老的数学常识：若两个整数 <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">y</span></code> 都可以写成两个平方数之和，则它们的乘积 <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span> <span class=\"pre\">*</span> <span class=\"pre\">y</span></code> 也可以写成两个平方数之和。事实上，这个命题对任意交换环都成立，而不仅限于整数。在下一个例子中，<code class=\"docutils literal notranslate\"><span class=\"pre\">rcases</span></code> 一次拆开两个存在量词。然后我们把把 <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span> <span class=\"pre\">*</span> <span class=\"pre\">y</span></code> 表示为平方和所需的神奇取值作为列表提供给 <code class=\"docutils literal notranslate\"><span class=\"pre\">use</span></code> 语句，并用 <code class=\"docutils literal notranslate\"><span class=\"pre\">ring</span></code> 验证它们有效。"
+  },
+  {
+    "id": "C03_Logic:0059",
+    "zh": "这个证明没有提供太多洞见，但可以用以下方式来说明它的动机。高斯整数是形如 <span class=\"math notranslate nohighlight\">\\(a + bi\\)</span> 的数，其中 <span class=\"math notranslate nohighlight\">\\(a\\)</span> 和 <span class=\"math notranslate nohighlight\">\\(b\\)</span> 是整数，且 <span class=\"math notranslate nohighlight\">\\(i = \\sqrt{-1}\\)</span>。按定义，高斯整数 <span class=\"math notranslate nohighlight\">\\(a + bi\\)</span> 的范数是 <span class=\"math notranslate nohighlight\">\\(a^2 + b^2\\)</span>。因此，高斯整数的范数是平方和，且任意平方和都可以这样表示。上述定理反映了这样一个事实：高斯整数乘积的范数等于范数的乘积；如果 <span class=\"math notranslate nohighlight\">\\(x\\)</span> 是 <span class=\"math notranslate nohighlight\">\\(a + bi\\)</span> 的范数，而 <span class=\"math notranslate nohighlight\">\\(y\\)</span> 是 <span class=\"math notranslate nohighlight\">\\(c + di\\)</span> 的范数，则 <span class=\"math notranslate nohighlight\">\\(xy\\)</span> 是 <span class=\"math notranslate nohighlight\">\\((a + bi)(c + di)\\)</span> 的范数。这个晦涩的证明说明，最容易形式化的证明并不总是最清楚的证明。在 <a class=\"reference internal\" href=\"C07_Structures.html#building-the-gaussian-integers\"><span class=\"std std-numref\">第 7.3 节</span></a> 中，我们会提供定义高斯整数的手段，并用它们给出一个替代证明。"
+  },
+  {
+    "id": "C03_Logic:0060",
+    "zh": "拆开存在量词内部的等式，再用它重写目标中的表达式，这种模式经常出现；频繁到 <code class=\"docutils literal notranslate\"><span class=\"pre\">rcases</span></code> 策略为它提供了一个缩写：若使用关键字 <code class=\"docutils literal notranslate\"><span class=\"pre\">rfl</span></code> 代替新的标识符，<code class=\"docutils literal notranslate\"><span class=\"pre\">rcases</span></code> 会自动执行重写（这个技巧不适用于模式匹配 lambda）。"
+  },
+  {
+    "id": "C03_Logic:0061",
+    "zh": "与全称量词一样，只要知道如何识别，存在量词也会隐藏在许多地方。例如，整除关系隐含地就是一个“存在”命题。"
+  },
+  {
+    "id": "C03_Logic:0062",
+    "zh": "同样，这为配合 <code class=\"docutils literal notranslate\"><span class=\"pre\">rfl</span></code> 使用 <code class=\"docutils literal notranslate\"><span class=\"pre\">rcases</span></code> 提供了一个很好的场景。请在上面的证明中试一试；效果相当顺手！"
+  },
+  {
+    "id": "C03_Logic:0063",
+    "zh": "然后请尝试证明下面的命题："
+  },
+  {
+    "id": "C03_Logic:0064",
+    "zh": "另一个重要例子是满射。若对陪域 <span class=\"math notranslate nohighlight\">\\(\\beta\\)</span> 中每个 <span class=\"math notranslate nohighlight\">\\(y\\)</span>，都存在定义域 <span class=\"math notranslate nohighlight\">\\(\\alpha\\)</span> 中的 <span class=\"math notranslate nohighlight\">\\(x\\)</span>，使得 <span class=\"math notranslate nohighlight\">\\(f(x) = y\\)</span>，则称函数 <span class=\"math notranslate nohighlight\">\\(f : \\alpha \\to \\beta\\)</span> 是满射。注意，这个陈述同时包含全称量词和存在量词，这解释了为什么下一个例子同时使用 <code class=\"docutils literal notranslate\"><span class=\"pre\">intro</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">use</span></code>。"
+  },
+  {
+    "id": "C03_Logic:0065",
+    "zh": "请自行使用定理 <code class=\"docutils literal notranslate\"><span class=\"pre\">mul_div_cancel₀</span></code> 尝试这个例子："
+  },
+  {
+    "id": "C03_Logic:0066",
+    "zh": "此时值得一提的是，有一个策略 <code class=\"docutils literal notranslate\"><span class=\"pre\">field_simp</span></code>，常常能以有用的方式消去分母。它可以与 <code class=\"docutils literal notranslate\"><span class=\"pre\">ring</span></code> 策略配合使用。"
+  },
+  {
+    "id": "C03_Logic:0067",
+    "zh": "下一个例子通过把满射性假设应用于合适的值来使用它。注意，<code class=\"docutils literal notranslate\"><span class=\"pre\">rcases</span></code> 可以用于任意表达式，而不仅仅用于假设。"
+  },
+  {
+    "id": "C03_Logic:0068",
+    "zh": "看看能否用这些方法证明满射函数的复合仍然是满射。"
+  },
+  {
+    "id": "C03_Logic:0069",
+    "zh": "符号 <code class=\"docutils literal notranslate\"><span class=\"pre\">¬</span></code> 用来表示否定，因此 <code class=\"docutils literal notranslate\"><span class=\"pre\">¬</span> <span class=\"pre\">x</span> <span class=\"pre\">&lt;</span> <span class=\"pre\">y</span></code> 表示 <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span></code> 不小于 <code class=\"docutils literal notranslate\"><span class=\"pre\">y</span></code>，<code class=\"docutils literal notranslate\"><span class=\"pre\">¬</span> <span class=\"pre\">x</span> <span class=\"pre\">=</span> <span class=\"pre\">y</span></code>（或等价地，<code class=\"docutils literal notranslate\"><span class=\"pre\">x</span> <span class=\"pre\">≠</span> <span class=\"pre\">y</span></code>）表示 <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span></code> 不等于 <code class=\"docutils literal notranslate\"><span class=\"pre\">y</span></code>，而 <code class=\"docutils literal notranslate\"><span class=\"pre\">¬</span> <span class=\"pre\">∃</span> <span class=\"pre\">z,</span> <span class=\"pre\">x</span> <span class=\"pre\">&lt;</span> <span class=\"pre\">z</span> <span class=\"pre\">∧</span> <span class=\"pre\">z</span> <span class=\"pre\">&lt;</span> <span class=\"pre\">y</span></code> 表示不存在严格位于 <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span></code> 与 <code class=\"docutils literal notranslate\"><span class=\"pre\">y</span></code> 之间的 <code class=\"docutils literal notranslate\"><span class=\"pre\">z</span></code>。在 Lean 中，记号 <code class=\"docutils literal notranslate\"><span class=\"pre\">¬</span> <span class=\"pre\">A</span></code> 是 <code class=\"docutils literal notranslate\"><span class=\"pre\">A</span> <span class=\"pre\">→</span> <span class=\"pre\">False</span></code> 的缩写，可以理解为 <code class=\"docutils literal notranslate\"><span class=\"pre\">A</span></code> 蕴含矛盾。实际而言，这意味着你已经知道一些处理否定的方法：可以通过引入假设 <code class=\"docutils literal notranslate\"><span class=\"pre\">h</span> <span class=\"pre\">:</span> <span class=\"pre\">A</span></code> 并证明 <code class=\"docutils literal notranslate\"><span class=\"pre\">False</span></code> 来证明 <code class=\"docutils literal notranslate\"><span class=\"pre\">¬</span> <span class=\"pre\">A</span></code>；若有 <code class=\"docutils literal notranslate\"><span class=\"pre\">h</span> <span class=\"pre\">:</span> <span class=\"pre\">¬</span> <span class=\"pre\">A</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">h'</span> <span class=\"pre\">:</span> <span class=\"pre\">A</span></code>，则把 <code class=\"docutils literal notranslate\"><span class=\"pre\">h</span></code> 应用于 <code class=\"docutils literal notranslate\"><span class=\"pre\">h'</span></code> 就得到 <code class=\"docutils literal notranslate\"><span class=\"pre\">False</span></code>。"
+  },
+  {
+    "id": "C03_Logic:0070",
+    "zh": "为说明这一点，考虑严格序的非自反性原理 <code class=\"docutils literal notranslate\"><span class=\"pre\">lt_irrefl</span></code>，它说对每个 <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span></code> 都有 <code class=\"docutils literal notranslate\"><span class=\"pre\">¬</span> <span class=\"pre\">a</span> <span class=\"pre\">&lt;</span> <span class=\"pre\">a</span></code>。不对称性原理 <code class=\"docutils literal notranslate\"><span class=\"pre\">lt_asymm</span></code> 说 <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span> <span class=\"pre\">&lt;</span> <span class=\"pre\">b</span> <span class=\"pre\">→</span> <span class=\"pre\">¬</span> <span class=\"pre\">b</span> <span class=\"pre\">&lt;</span> <span class=\"pre\">a</span></code>。我们来证明 <code class=\"docutils literal notranslate\"><span class=\"pre\">lt_asymm</span></code> 可由 <code class=\"docutils literal notranslate\"><span class=\"pre\">lt_irrefl</span></code> 推出。"
+  },
+  {
+    "id": "C03_Logic:0071",
+    "zh": "这个例子引入了几个新技巧。首先，当你使用 <code class=\"docutils literal notranslate\"><span class=\"pre\">have</span></code> 而不给出标签时，Lean 会使用名称 <code class=\"docutils literal notranslate\"><span class=\"pre\">this</span></code>，从而提供一个方便的方式回指它。由于证明很短，我们给出显式证明项。但这个证明中真正应当关注的是 <code class=\"docutils literal notranslate\"><span class=\"pre\">intro</span></code> 策略的结果：它留下一个 <code class=\"docutils literal notranslate\"><span class=\"pre\">False</span></code> 目标；以及我们最终通过把 <code class=\"docutils literal notranslate\"><span class=\"pre\">lt_irrefl</span></code> 应用于 <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span> <span class=\"pre\">&lt;</span> <span class=\"pre\">a</span></code> 的证明来证明 <code class=\"docutils literal notranslate\"><span class=\"pre\">False</span></code>。"
+  },
+  {
+    "id": "C03_Logic:0072",
+    "zh": "下面是另一个例子，它使用上一节定义的谓词 <code class=\"docutils literal notranslate\"><span class=\"pre\">FnHasUb</span></code>，该谓词表示函数有上界。"
+  },
+  {
+    "id": "C03_Logic:0073",
+    "zh": "请记住，当目标可由语境中的线性等式和不等式推出时，使用 <code class=\"docutils literal notranslate\"><span class=\"pre\">linarith</span></code> 往往很方便。"
+  },
+  {
+    "id": "C03_Logic:0074",
+    "zh": "看看能否用类似方式证明这些命题："
+  },
+  {
+    "id": "C03_Logic:0075",
+    "zh": "Mathlib 提供了若干有用定理，用于联系序关系与否定："
+  },
+  {
+    "id": "C03_Logic:0076",
+    "zh": "回忆谓词 <code class=\"docutils literal notranslate\"><span class=\"pre\">Monotone</span> <span class=\"pre\">f</span></code>，它表示 <code class=\"docutils literal notranslate\"><span class=\"pre\">f</span></code> 单调不减。请使用刚刚列出的某些定理证明如下命题："
+  },
+  {
+    "id": "C03_Logic:0077",
+    "zh": "我们可以证明，如果把上一段代码中的第一个例子里的 <code class=\"docutils literal notranslate\"><span class=\"pre\">&lt;</span></code> 替换为 <code class=\"docutils literal notranslate\"><span class=\"pre\">≤</span></code>，则该命题无法证明。注意，可以通过给出反例来证明全称量化命题的否定。请完成证明。"
+  },
+  {
+    "id": "C03_Logic:0078",
+    "zh": "这个例子引入了 <code class=\"docutils literal notranslate\"><span class=\"pre\">let</span></code> 策略，它向语境添加一个局部定义。如果把光标放在 <code class=\"docutils literal notranslate\"><span class=\"pre\">let</span></code> 命令之后，在目标窗口中会看到定义 <code class=\"docutils literal notranslate\"><span class=\"pre\">f</span> <span class=\"pre\">:</span> <span class=\"pre\">ℝ</span> <span class=\"pre\">→</span> <span class=\"pre\">ℝ</span> <span class=\"pre\">:=</span> <span class=\"pre\">fun</span> <span class=\"pre\">x</span> <span class=\"pre\">↦</span> <span class=\"pre\">0</span></code> 已被加入语境。必要时，Lean 会展开 <code class=\"docutils literal notranslate\"><span class=\"pre\">f</span></code> 的定义。特别地，当我们用 <code class=\"docutils literal notranslate\"><span class=\"pre\">le_refl</span></code> 证明 <code class=\"docutils literal notranslate\"><span class=\"pre\">f</span> <span class=\"pre\">1</span> <span class=\"pre\">≤</span> <span class=\"pre\">f</span> <span class=\"pre\">0</span></code> 时，Lean 会把 <code class=\"docutils literal notranslate\"><span class=\"pre\">f</span> <span class=\"pre\">1</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">f</span> <span class=\"pre\">0</span></code> 约简为 <code class=\"docutils literal notranslate\"><span class=\"pre\">0</span></code>。"
+  },
+  {
+    "id": "C03_Logic:0079",
+    "zh": "请使用 <code class=\"docutils literal notranslate\"><span class=\"pre\">le_of_not_gt</span></code> 证明下面的命题："
+  },
+  {
+    "id": "C03_Logic:0080",
+    "zh": "在我们刚完成的许多证明中，隐含着这样一个事实：若 <code class=\"docutils literal notranslate\"><span class=\"pre\">P</span></code> 是任意性质，则说没有任何对象具有性质 <code class=\"docutils literal notranslate\"><span class=\"pre\">P</span></code>，等价于说所有对象都不具有性质 <code class=\"docutils literal notranslate\"><span class=\"pre\">P</span></code>；而说并非所有对象都具有性质 <code class=\"docutils literal notranslate\"><span class=\"pre\">P</span></code>，等价于说存在某个对象不具有性质 <code class=\"docutils literal notranslate\"><span class=\"pre\">P</span></code>。换言之，以下四个蕴含都是有效的（但其中一个不能用目前已经解释的方法证明）："
+  }
+]

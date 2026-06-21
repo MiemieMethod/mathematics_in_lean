@@ -5,8 +5,7 @@
 微分学
 ======
 
-
-我们现在考虑来自 **分析学** 概念的形式化，从本章的微分开始，然后在下一章讨论积分和测度论。在 :numref:`elementary_differential_calculus` 中，我们仍采用从实数到实数的函数这一常见于任何微积分入门课程的设定。在 :numref:`normed_spaces` 中，我们则在更广泛的背景下考虑导数的概念。
+现在考虑 *分析学* 中若干概念的形式化：本章从微分开始，下一章转向积分与测度论。在 :numref:`elementary_differential_calculus` 中，我们限于从实数到实数的函数这一设置，这是任何初等微积分课程都熟悉的情形。然后在 :numref:`normed_spaces` 中，我们将在更广泛的设置下考察导数概念。
 
 .. include:: C12_Differential_Calculus/S01_Elementary_Differential_Calculus.inc
 .. include:: C12_Differential_Calculus/S02_Differential_Calculus_in_Normed_Spaces.inc

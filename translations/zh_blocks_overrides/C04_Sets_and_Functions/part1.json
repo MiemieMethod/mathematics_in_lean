@@ -1,0 +1,198 @@
+[
+  {
+    "id": "C04_Sets_and_Functions:0001",
+    "zh": "<span class=\"section-number\">4. </span>集合与函数"
+  },
+  {
+    "id": "C04_Sets_and_Functions:0002",
+    "zh": "<span class=\"section-number\">4.1. </span>集合"
+  },
+  {
+    "id": "C04_Sets_and_Functions:0003",
+    "zh": "<span class=\"section-number\">4.2. </span>函数"
+  },
+  {
+    "id": "C04_Sets_and_Functions:0004",
+    "zh": "<span class=\"section-number\">4.3. </span>施罗德-伯恩斯坦定理"
+  },
+  {
+    "id": "C04_Sets_and_Functions:0005",
+    "zh": "集合、关系和函数的词汇，为数学各分支中的构造提供了一种统一语言。由于函数和关系可以用集合来定义，公理化集合论可以作为数学的基础。"
+  },
+  {
+    "id": "C04_Sets_and_Functions:0006",
+    "zh": "Lean 的基础则建立在类型这一原始概念之上，并包含定义类型之间函数的方法。Lean 中每个表达式都有类型：有自然数、实数、从实数到实数的函数、群、向量空间等等。有些表达式本身是类型，也就是说，它们的类型是 <code class=\"docutils literal notranslate\"><span class=\"pre\">Type</span></code>。Lean 和 Mathlib 提供了定义新类型的方法，也提供了定义这些类型中对象的方法。"
+  },
+  {
+    "id": "C04_Sets_and_Functions:0007",
+    "zh": "从概念上说，可以把类型看作对象的集合。要求每个对象都有类型具有若干优点。例如，它使得像 <code class=\"docutils literal notranslate\"><span class=\"pre\">+</span></code> 这样的记号可以重载；并且有时可以减少输入的冗长程度，因为 Lean 能从对象的类型推断出大量信息。类型系统还使 Lean 能够在你把函数应用于错误数量的参数，或把函数应用于错误类型的参数时指出错误。"
+  },
+  {
+    "id": "C04_Sets_and_Functions:0008",
+    "zh": "Lean 的库确实定义了初等集合论概念。与集合论不同，在 Lean 中，集合总是某个类型对象的集合，例如自然数集合，或从实数到实数的函数集合。类型与集合之间的区别需要一些时间适应，但本章会带你掌握其要点。"
+  },
+  {
+    "id": "C04_Sets_and_Functions:0009",
+    "zh": "若 <code class=\"docutils literal notranslate\"><span class=\"pre\">α</span></code> 是任意类型，则类型 <code class=\"docutils literal notranslate\"><span class=\"pre\">Set</span> <span class=\"pre\">α</span></code> 由 <code class=\"docutils literal notranslate\"><span class=\"pre\">α</span></code> 的元素组成的集合构成。这个类型支持通常的集合论运算和关系。例如，<code class=\"docutils literal notranslate\"><span class=\"pre\">s</span> <span class=\"pre\">⊆</span> <span class=\"pre\">t</span></code> 表示 <code class=\"docutils literal notranslate\"><span class=\"pre\">s</span></code> 是 <code class=\"docutils literal notranslate\"><span class=\"pre\">t</span></code> 的子集，<code class=\"docutils literal notranslate\"><span class=\"pre\">s</span> <span class=\"pre\">∩</span> <span class=\"pre\">t</span></code> 表示 <code class=\"docutils literal notranslate\"><span class=\"pre\">s</span></code> 与 <code class=\"docutils literal notranslate\"><span class=\"pre\">t</span></code> 的交，<code class=\"docutils literal notranslate\"><span class=\"pre\">s</span> <span class=\"pre\">∪</span> <span class=\"pre\">t</span></code> 表示它们的并。子集关系可输入为 <code class=\"docutils literal notranslate\"><span class=\"pre\">\\ss</span></code> 或 <code class=\"docutils literal notranslate\"><span class=\"pre\">\\sub</span></code>，交可输入为 <code class=\"docutils literal notranslate\"><span class=\"pre\">\\i</span></code> 或 <code class=\"docutils literal notranslate\"><span class=\"pre\">\\cap</span></code>，并可输入为 <code class=\"docutils literal notranslate\"><span class=\"pre\">\\un</span></code> 或 <code class=\"docutils literal notranslate\"><span class=\"pre\">\\cup</span></code>。库还定义了集合 <code class=\"docutils literal notranslate\"><span class=\"pre\">univ</span></code>，它包含类型 <code class=\"docutils literal notranslate\"><span class=\"pre\">α</span></code> 的所有元素；以及空集 <code class=\"docutils literal notranslate\"><span class=\"pre\">∅</span></code>，可输入为 <code class=\"docutils literal notranslate\"><span class=\"pre\">\\empty</span></code>。给定 <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span> <span class=\"pre\">:</span> <span class=\"pre\">α</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">s</span> <span class=\"pre\">:</span> <span class=\"pre\">Set</span> <span class=\"pre\">α</span></code>，表达式 <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span> <span class=\"pre\">∈</span> <span class=\"pre\">s</span></code> 表示 <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span></code> 是 <code class=\"docutils literal notranslate\"><span class=\"pre\">s</span></code> 的元素。提到集合成员关系的定理名中常包含 <code class=\"docutils literal notranslate\"><span class=\"pre\">mem</span></code>。表达式 <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span> <span class=\"pre\">∉</span> <span class=\"pre\">s</span></code> 是 <code class=\"docutils literal notranslate\"><span class=\"pre\">¬</span> <span class=\"pre\">x</span> <span class=\"pre\">∈</span> <span class=\"pre\">s</span></code> 的缩写。可以用 <code class=\"docutils literal notranslate\"><span class=\"pre\">\\in</span></code> 或 <code class=\"docutils literal notranslate\"><span class=\"pre\">\\mem</span></code> 输入 <code class=\"docutils literal notranslate\"><span class=\"pre\">∈</span></code>，用 <code class=\"docutils literal notranslate\"><span class=\"pre\">\\notin</span></code> 输入 <code class=\"docutils literal notranslate\"><span class=\"pre\">∉</span></code>。"
+  },
+  {
+    "id": "C04_Sets_and_Functions:0010",
+    "zh": "证明关于集合的命题的一种方法，是使用 <code class=\"docutils literal notranslate\"><span class=\"pre\">rw</span></code> 或化简器展开定义。在下面第二个例子中，我们使用 <code class=\"docutils literal notranslate\"><span class=\"pre\">simp</span> <span class=\"pre\">only</span></code>，告诉化简器只使用我们给出的恒等式列表，而不使用其完整恒等式数据库。不同于 <code class=\"docutils literal notranslate\"><span class=\"pre\">rw</span></code>，<code class=\"docutils literal notranslate\"><span class=\"pre\">simp</span></code> 可以在全称或存在量词内部进行化简。逐步查看证明时，可以看到这些命令的效果。"
+  },
+  {
+    "id": "C04_Sets_and_Functions:0011",
+    "zh": "在这个例子中，我们打开 <code class=\"docutils literal notranslate\"><span class=\"pre\">Set</span></code> 命名空间，以便使用这些定理的较短名称。但事实上，可以完全删除对 <code class=\"docutils literal notranslate\"><span class=\"pre\">rw</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">simp</span></code> 的调用："
+  },
+  {
+    "id": "C04_Sets_and_Functions:0012",
+    "zh": "这里发生的事情称为<em>定义约简</em>：为了理解 <code class=\"docutils literal notranslate\"><span class=\"pre\">intro</span></code> 命令和匿名构造子，Lean 被迫展开定义。下面的例子也说明了这一现象："
+  },
+  {
+    "id": "C04_Sets_and_Functions:0013",
+    "zh": "处理并集时，可以使用 <code class=\"docutils literal notranslate\"><span class=\"pre\">Set.union_def</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">Set.mem_union</span></code>。由于 <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span> <span class=\"pre\">∈</span> <span class=\"pre\">s</span> <span class=\"pre\">∪</span> <span class=\"pre\">t</span></code> 展开为 <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span> <span class=\"pre\">∈</span> <span class=\"pre\">s</span> <span class=\"pre\">∨</span> <span class=\"pre\">x</span> <span class=\"pre\">∈</span> <span class=\"pre\">t</span></code>，也可以使用 <code class=\"docutils literal notranslate\"><span class=\"pre\">cases</span></code> 策略迫使定义约简发生。"
+  },
+  {
+    "id": "C04_Sets_and_Functions:0014",
+    "zh": "由于交的结合优先级高于并，表达式 <code class=\"docutils literal notranslate\"><span class=\"pre\">(s</span> <span class=\"pre\">∩</span> <span class=\"pre\">t)</span> <span class=\"pre\">∪</span> <span class=\"pre\">(s</span> <span class=\"pre\">∩</span> <span class=\"pre\">u)</span></code> 中的括号并非必要，但它们使表达式的含义更清楚。下面是同一事实的一个较短证明："
+  },
+  {
+    "id": "C04_Sets_and_Functions:0015",
+    "zh": "作为练习，请尝试证明另一个包含关系："
+  },
+  {
+    "id": "C04_Sets_and_Functions:0016",
+    "zh": "也许有帮助的是：使用 <code class=\"docutils literal notranslate\"><span class=\"pre\">rintro</span></code> 时，有时需要给析取模式 <code class=\"docutils literal notranslate\"><span class=\"pre\">h1</span> <span class=\"pre\">|</span> <span class=\"pre\">h2</span></code> 加括号，才能让 Lean 正确解析它。"
+  },
+  {
+    "id": "C04_Sets_and_Functions:0017",
+    "zh": "库还定义了集合差 <code class=\"docutils literal notranslate\"><span class=\"pre\">s</span> <span class=\"pre\">\\</span> <span class=\"pre\">t</span></code>，其中反斜杠是输入为 <code class=\"docutils literal notranslate\"><span class=\"pre\">\\\\</span></code> 的特殊 Unicode 字符。表达式 <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span> <span class=\"pre\">∈</span> <span class=\"pre\">s</span> <span class=\"pre\">\\</span> <span class=\"pre\">t</span></code> 展开为 <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span> <span class=\"pre\">∈</span> <span class=\"pre\">s</span> <span class=\"pre\">∧</span> <span class=\"pre\">x</span> <span class=\"pre\">∉</span> <span class=\"pre\">t</span></code>。（<code class=\"docutils literal notranslate\"><span class=\"pre\">∉</span></code> 可输入为 <code class=\"docutils literal notranslate\"><span class=\"pre\">\\notin</span></code>。）可以用 <code class=\"docutils literal notranslate\"><span class=\"pre\">Set.diff_eq</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">dsimp</span></code>，或用 <code class=\"docutils literal notranslate\"><span class=\"pre\">Set.mem_diff</span></code> 手动重写它；但下面两个证明同一包含关系的证明展示了如何避免使用它们。"
+  },
+  {
+    "id": "C04_Sets_and_Functions:0018",
+    "zh": "作为练习，请证明反向包含："
+  },
+  {
+    "id": "C04_Sets_and_Functions:0019",
+    "zh": "要证明两个集合相等，只需证明一个集合的每个元素都是另一个集合的元素。这个原则称为“外延性”；不出意料，<code class=\"docutils literal notranslate\"><span class=\"pre\">ext</span></code> 策略正是为处理它而配备的。"
+  },
+  {
+    "id": "C04_Sets_and_Functions:0020",
+    "zh": "同样，删除 <code class=\"docutils literal notranslate\"><span class=\"pre\">simp</span> <span class=\"pre\">only</span> <span class=\"pre\">[mem_inter_iff]</span></code> 这一行并不会破坏证明。事实上，如果你喜欢难以读懂的证明项，下面这个单行证明就是为你准备的："
+  },
+  {
+    "id": "C04_Sets_and_Functions:0021",
+    "zh": "下面是一个使用化简器的更短证明："
+  },
+  {
+    "id": "C04_Sets_and_Functions:0022",
+    "zh": "使用 <code class=\"docutils literal notranslate\"><span class=\"pre\">ext</span></code> 的另一种选择，是使用定理 <code class=\"docutils literal notranslate\"><span class=\"pre\">Subset.antisymm</span></code>；它允许我们通过证明 <code class=\"docutils literal notranslate\"><span class=\"pre\">s</span> <span class=\"pre\">⊆</span> <span class=\"pre\">t</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">t</span> <span class=\"pre\">⊆</span> <span class=\"pre\">s</span></code>，来证明集合等式 <code class=\"docutils literal notranslate\"><span class=\"pre\">s</span> <span class=\"pre\">=</span> <span class=\"pre\">t</span></code>。"
+  },
+  {
+    "id": "C04_Sets_and_Functions:0023",
+    "zh": "请尝试完成这个证明项："
+  },
+  {
+    "id": "C04_Sets_and_Functions:0024",
+    "zh": "记住，可以把 <code class=\"docutils literal notranslate\"><span class=\"pre\">sorry</span></code> 替换为下划线；当你把鼠标悬停在它上面时，Lean 会显示此处期望什么。"
+  },
+  {
+    "id": "C04_Sets_and_Functions:0025",
+    "zh": "下面是一些你或许会乐于证明的集合论恒等式："
+  },
+  {
+    "id": "C04_Sets_and_Functions:0026",
+    "zh": "关于集合的表示，其底层机制如下。在类型论中，类型 <code class=\"docutils literal notranslate\"><span class=\"pre\">α</span></code> 上的性质或谓词只是函数 <code class=\"docutils literal notranslate\"><span class=\"pre\">P</span> <span class=\"pre\">:</span> <span class=\"pre\">α</span> <span class=\"pre\">→</span> <span class=\"pre\">Prop</span></code>。这很自然：给定 <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span> <span class=\"pre\">:</span> <span class=\"pre\">α</span></code>，<code class=\"docutils literal notranslate\"><span class=\"pre\">P</span> <span class=\"pre\">a</span></code> 正是断言 <code class=\"docutils literal notranslate\"><span class=\"pre\">P</span></code> 对 <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span></code> 成立的命题。在库中，<code class=\"docutils literal notranslate\"><span class=\"pre\">Set</span> <span class=\"pre\">α</span></code> 定义为 <code class=\"docutils literal notranslate\"><span class=\"pre\">α</span> <span class=\"pre\">→</span> <span class=\"pre\">Prop</span></code>，而 <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span> <span class=\"pre\">∈</span> <span class=\"pre\">s</span></code> 定义为 <code class=\"docutils literal notranslate\"><span class=\"pre\">s</span> <span class=\"pre\">x</span></code>。换句话说，集合其实就是性质，只是被当作对象来处理。"
+  },
+  {
+    "id": "C04_Sets_and_Functions:0027",
+    "zh": "库还定义了集合构造式记号。表达式 <code class=\"docutils literal notranslate\"><span class=\"pre\">{</span> <span class=\"pre\">y</span> <span class=\"pre\">|</span> <span class=\"pre\">P</span> <span class=\"pre\">y</span> <span class=\"pre\">}</span></code> 展开为 <code class=\"docutils literal notranslate\"><span class=\"pre\">(fun</span> <span class=\"pre\">y</span> <span class=\"pre\">↦</span> <span class=\"pre\">P</span> <span class=\"pre\">y)</span></code>，因此 <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span> <span class=\"pre\">∈</span> <span class=\"pre\">{</span> <span class=\"pre\">y</span> <span class=\"pre\">|</span> <span class=\"pre\">P</span> <span class=\"pre\">y</span> <span class=\"pre\">}</span></code> 约简为 <code class=\"docutils literal notranslate\"><span class=\"pre\">P</span> <span class=\"pre\">x</span></code>。因此，我们可以把“为偶数”这一性质转换为偶数集合："
+  },
+  {
+    "id": "C04_Sets_and_Functions:0028",
+    "zh": "你应当逐步查看这个证明，确保理解发生了什么。注意，我们告诉化简器不要使用引理 <code class=\"docutils literal notranslate\"><span class=\"pre\">Nat.not_even_iff</span></code>，因为希望在目标中保留 <code class=\"docutils literal notranslate\"><span class=\"pre\">¬</span> <span class=\"pre\">Even</span> <span class=\"pre\">n</span></code>。请尝试删除 <code class=\"docutils literal notranslate\"><span class=\"pre\">rw</span> <span class=\"pre\">[evens,</span> <span class=\"pre\">odds]</span></code> 这一行，并确认证明仍然成立。"
+  },
+  {
+    "id": "C04_Sets_and_Functions:0029",
+    "zh": "事实上，集合构造式记号用于定义"
+  },
+  {
+    "id": "C04_Sets_and_Functions:0030",
+    "zh": "我们常常需要显式指出 <code class=\"docutils literal notranslate\"><span class=\"pre\">∅</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">univ</span></code> 的类型，因为 Lean 很难猜出我们指的是哪一个。下面的例子展示了必要时 Lean 如何展开最后两个定义。在第二个例子中，<code class=\"docutils literal notranslate\"><span class=\"pre\">trivial</span></code> 是库中 <code class=\"docutils literal notranslate\"><span class=\"pre\">True</span></code> 的标准证明。"
+  },
+  {
+    "id": "C04_Sets_and_Functions:0031",
+    "zh": "作为练习，请证明下面的包含关系。使用 <code class=\"docutils literal notranslate\"><span class=\"pre\">intro</span> <span class=\"pre\">n</span></code> 展开子集定义，并使用化简器把集合论构造化归为逻辑。我们还建议使用定理 <code class=\"docutils literal notranslate\"><span class=\"pre\">Nat.Prime.eq_two_or_odd</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">Nat.odd_iff</span></code>。"
+  },
+  {
+    "id": "C04_Sets_and_Functions:0032",
+    "zh": "请小心：库中有多个版本的谓词 <code class=\"docutils literal notranslate\"><span class=\"pre\">Prime</span></code>，这有些容易混淆。最一般的版本在任意带零元的交换幺半群中都有意义。谓词 <code class=\"docutils literal notranslate\"><span class=\"pre\">Nat.Prime</span></code> 则专门用于自然数。幸运的是，有一个定理说明在这个特定情形下二者一致，因此总可以把一个重写为另一个。"
+  },
+  {
+    "id": "C04_Sets_and_Functions:0033",
+    "zh": "<code class=\"docutils literal notranslate\"><span class=\"pre\">rwa</span></code> 策略先执行重写，然后执行 <code class=\"docutils literal notranslate\"><span class=\"pre\">assumption</span></code> 策略。"
+  },
+  {
+    "id": "C04_Sets_and_Functions:0034",
+    "zh": "Lean 引入记号 <code class=\"docutils literal notranslate\"><span class=\"pre\">∀</span> <span class=\"pre\">x</span> <span class=\"pre\">∈</span> <span class=\"pre\">s,</span> <span class=\"pre\">...</span></code>，读作“对 <code class=\"docutils literal notranslate\"><span class=\"pre\">s</span></code> 中每个 <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span></code>”，作为 <code class=\"docutils literal notranslate\"><span class=\"pre\">∀</span> <span class=\"pre\">x,</span> <span class=\"pre\">x</span> <span class=\"pre\">∈</span> <span class=\"pre\">s</span> <span class=\"pre\">→</span> <span class=\"pre\">...</span></code> 的缩写。它也引入记号 <code class=\"docutils literal notranslate\"><span class=\"pre\">∃</span> <span class=\"pre\">x</span> <span class=\"pre\">∈</span> <span class=\"pre\">s,</span> <span class=\"pre\">...</span></code>，读作“存在 <code class=\"docutils literal notranslate\"><span class=\"pre\">s</span></code> 中的 <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span></code> 使得……”。这些有时称为<em>有界量词</em>，因为这种构造把量词的意义限制到集合 <code class=\"docutils literal notranslate\"><span class=\"pre\">s</span></code> 上。因此，库中使用它们的定理名常包含 <code class=\"docutils literal notranslate\"><span class=\"pre\">ball</span></code> 或 <code class=\"docutils literal notranslate\"><span class=\"pre\">bex</span></code>。定理 <code class=\"docutils literal notranslate\"><span class=\"pre\">bex_def</span></code> 断言 <code class=\"docutils literal notranslate\"><span class=\"pre\">∃</span> <span class=\"pre\">x</span> <span class=\"pre\">∈</span> <span class=\"pre\">s,</span> <span class=\"pre\">...</span></code> 等价于 <code class=\"docutils literal notranslate\"><span class=\"pre\">∃</span> <span class=\"pre\">x,</span> <span class=\"pre\">x</span> <span class=\"pre\">∈</span> <span class=\"pre\">s</span> <span class=\"pre\">∧</span> <span class=\"pre\">...</span></code>；但当它们与 <code class=\"docutils literal notranslate\"><span class=\"pre\">rintro</span></code>、<code class=\"docutils literal notranslate\"><span class=\"pre\">use</span></code> 和匿名构造子一起使用时，这两个表达式行为大致相同。因此，我们通常不需要显式用 <code class=\"docutils literal notranslate\"><span class=\"pre\">bex_def</span></code> 变换它们。下面是一些用法示例："
+  },
+  {
+    "id": "C04_Sets_and_Functions:0035",
+    "zh": "看看能否证明下面这些稍作变化的命题："
+  },
+  {
+    "id": "C04_Sets_and_Functions:0036",
+    "zh": "指标化并集和交集是另一类重要的集合论构造。可以把 <code class=\"docutils literal notranslate\"><span class=\"pre\">α</span></code> 的元素集合所成的序列 <span class=\"math notranslate nohighlight\">\\(A_0, A_1, A_2, \\ldots\\)</span> 表示为函数 <code class=\"docutils literal notranslate\"><span class=\"pre\">A</span> <span class=\"pre\">:</span> <span class=\"pre\">ℕ</span> <span class=\"pre\">→</span> <span class=\"pre\">Set</span> <span class=\"pre\">α</span></code>；此时 <code class=\"docutils literal notranslate\"><span class=\"pre\">⋃</span> <span class=\"pre\">i,</span> <span class=\"pre\">A</span> <span class=\"pre\">i</span></code> 表示它们的并，<code class=\"docutils literal notranslate\"><span class=\"pre\">⋂</span> <span class=\"pre\">i,</span> <span class=\"pre\">A</span> <span class=\"pre\">i</span></code> 表示它们的交。这里自然数没有特殊之处，<code class=\"docutils literal notranslate\"><span class=\"pre\">ℕ</span></code> 可以替换为任意用于给集合编号的类型 <code class=\"docutils literal notranslate\"><span class=\"pre\">I</span></code>。下面展示它们的用法。"
+  },
+  {
+    "id": "C04_Sets_and_Functions:0037",
+    "zh": "指标化并集或交集经常需要括号，因为和量词一样，绑定变量的作用域会尽可能向右延伸。"
+  },
+  {
+    "id": "C04_Sets_and_Functions:0038",
+    "zh": "请尝试证明下面的恒等式。其中一个方向需要经典逻辑！我们建议在证明的适当位置使用 <code class=\"docutils literal notranslate\"><span class=\"pre\">by_cases</span> <span class=\"pre\">xs</span> <span class=\"pre\">:</span> <span class=\"pre\">x</span> <span class=\"pre\">∈</span> <span class=\"pre\">s</span></code>。"
+  },
+  {
+    "id": "C04_Sets_and_Functions:0039",
+    "zh": "Mathlib 也有有界并集和有界交集，它们类似于有界量词。可以用 <code class=\"docutils literal notranslate\"><span class=\"pre\">mem_iUnion₂</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">mem_iInter₂</span></code> 展开其含义。如下例所示，Lean 的化简器也会执行这些替换。"
+  },
+  {
+    "id": "C04_Sets_and_Functions:0040",
+    "zh": "请尝试解决下面这个类似的例子。如果开始输入 <code class=\"docutils literal notranslate\"><span class=\"pre\">eq_univ</span></code>，Tab 补全会提示 <code class=\"docutils literal notranslate\"><span class=\"pre\">apply</span> <span class=\"pre\">eq_univ_of_forall</span></code> 是一个好的证明开头。我们还建议使用定理 <code class=\"docutils literal notranslate\"><span class=\"pre\">Nat.exists_infinite_primes</span></code>。"
+  },
+  {
+    "id": "C04_Sets_and_Functions:0041",
+    "zh": "给定集合族 <code class=\"docutils literal notranslate\"><span class=\"pre\">s</span> <span class=\"pre\">:</span> <span class=\"pre\">Set</span> <span class=\"pre\">(Set</span> <span class=\"pre\">α)</span></code>，它们的并 <code class=\"docutils literal notranslate\"><span class=\"pre\">⋃₀</span> <span class=\"pre\">s</span></code> 的类型是 <code class=\"docutils literal notranslate\"><span class=\"pre\">Set</span> <span class=\"pre\">α</span></code>，并定义为 <code class=\"docutils literal notranslate\"><span class=\"pre\">{x</span> <span class=\"pre\">|</span> <span class=\"pre\">∃</span> <span class=\"pre\">t</span> <span class=\"pre\">∈</span> <span class=\"pre\">s,</span> <span class=\"pre\">x</span> <span class=\"pre\">∈</span> <span class=\"pre\">t}</span></code>。类似地，它们的交 <code class=\"docutils literal notranslate\"><span class=\"pre\">⋂₀</span> <span class=\"pre\">s</span></code> 定义为 <code class=\"docutils literal notranslate\"><span class=\"pre\">{x</span> <span class=\"pre\">|</span> <span class=\"pre\">∀</span> <span class=\"pre\">t</span> <span class=\"pre\">∈</span> <span class=\"pre\">s,</span> <span class=\"pre\">x</span> <span class=\"pre\">∈</span> <span class=\"pre\">t}</span></code>。这些运算分别称为 <code class=\"docutils literal notranslate\"><span class=\"pre\">sUnion</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">sInter</span></code>。下面的例子展示它们与有界并集和有界交集的关系。"
+  },
+  {
+    "id": "C04_Sets_and_Functions:0042",
+    "zh": "在库中，这些恒等式分别称为 <code class=\"docutils literal notranslate\"><span class=\"pre\">sUnion_eq_biUnion</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">sInter_eq_biInter</span></code>。"
+  },
+  {
+    "id": "C04_Sets_and_Functions:0043",
+    "zh": "若 <code class=\"docutils literal notranslate\"><span class=\"pre\">f</span> <span class=\"pre\">:</span> <span class=\"pre\">α</span> <span class=\"pre\">→</span> <span class=\"pre\">β</span></code> 是函数，且 <code class=\"docutils literal notranslate\"><span class=\"pre\">p</span></code> 是类型 <code class=\"docutils literal notranslate\"><span class=\"pre\">β</span></code> 的元素组成的集合，则库定义 <code class=\"docutils literal notranslate\"><span class=\"pre\">preimage</span> <span class=\"pre\">f</span> <span class=\"pre\">p</span></code>，记作 <code class=\"docutils literal notranslate\"><span class=\"pre\">f</span> <span class=\"pre\">⁻¹'</span> <span class=\"pre\">p</span></code>，为 <code class=\"docutils literal notranslate\"><span class=\"pre\">{x</span> <span class=\"pre\">|</span> <span class=\"pre\">f</span> <span class=\"pre\">x</span> <span class=\"pre\">∈</span> <span class=\"pre\">p}</span></code>。表达式 <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span> <span class=\"pre\">∈</span> <span class=\"pre\">f</span> <span class=\"pre\">⁻¹'</span> <span class=\"pre\">p</span></code> 约简为 <code class=\"docutils literal notranslate\"><span class=\"pre\">f</span> <span class=\"pre\">x</span> <span class=\"pre\">∈</span> <span class=\"pre\">p</span></code>。这常常很方便，如下面的例子所示："
+  },
+  {
+    "id": "C04_Sets_and_Functions:0044",
+    "zh": "若 <code class=\"docutils literal notranslate\"><span class=\"pre\">s</span></code> 是类型 <code class=\"docutils literal notranslate\"><span class=\"pre\">α</span></code> 的元素组成的集合，库还定义 <code class=\"docutils literal notranslate\"><span class=\"pre\">image</span> <span class=\"pre\">f</span> <span class=\"pre\">s</span></code>，记作 <code class=\"docutils literal notranslate\"><span class=\"pre\">f</span> <span class=\"pre\">''</span> <span class=\"pre\">s</span></code>，为 <code class=\"docutils literal notranslate\"><span class=\"pre\">{y</span> <span class=\"pre\">|</span> <span class=\"pre\">∃</span> <span class=\"pre\">x,</span> <span class=\"pre\">x</span> <span class=\"pre\">∈</span> <span class=\"pre\">s</span> <span class=\"pre\">∧</span> <span class=\"pre\">f</span> <span class=\"pre\">x</span> <span class=\"pre\">=</span> <span class=\"pre\">y}</span></code>。因此，假设 <code class=\"docutils literal notranslate\"><span class=\"pre\">y</span> <span class=\"pre\">∈</span> <span class=\"pre\">f</span> <span class=\"pre\">''</span> <span class=\"pre\">s</span></code> 会分解为三元组 <code class=\"docutils literal notranslate\"><span class=\"pre\">⟨x,</span> <span class=\"pre\">xs,</span> <span class=\"pre\">xeq⟩</span></code>，其中 <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span> <span class=\"pre\">:</span> <span class=\"pre\">α</span></code> 满足假设 <code class=\"docutils literal notranslate\"><span class=\"pre\">xs</span> <span class=\"pre\">:</span> <span class=\"pre\">x</span> <span class=\"pre\">∈</span> <span class=\"pre\">s</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">xeq</span> <span class=\"pre\">:</span> <span class=\"pre\">f</span> <span class=\"pre\">x</span> <span class=\"pre\">=</span> <span class=\"pre\">y</span></code>。<code class=\"docutils literal notranslate\"><span class=\"pre\">rintro</span></code> 策略中的 <code class=\"docutils literal notranslate\"><span class=\"pre\">rfl</span></code> 标记（见 <a class=\"reference internal\" href=\"C03_Logic.html#the-existential-quantifier\"><span class=\"std std-numref\">第 3.2 节</span></a>）正是为这类情形准备的。"
+  },
+  {
+    "id": "C04_Sets_and_Functions:0045",
+    "zh": "还要注意，<code class=\"docutils literal notranslate\"><span class=\"pre\">use</span></code> 策略会在可能时应用 <code class=\"docutils literal notranslate\"><span class=\"pre\">rfl</span></code> 来关闭目标。"
+  },
+  {
+    "id": "C04_Sets_and_Functions:0085",
+    "zh": "<code class=\"docutils literal notranslate\"><span class=\"pre\">s</span> <span class=\"pre\">∩</span> <span class=\"pre\">t</span></code> 定义为 <code class=\"docutils literal notranslate\"><span class=\"pre\">{x</span> <span class=\"pre\">|</span> <span class=\"pre\">x</span> <span class=\"pre\">∈</span> <span class=\"pre\">s</span> <span class=\"pre\">∧</span> <span class=\"pre\">x</span> <span class=\"pre\">∈</span> <span class=\"pre\">t}</span></code>，"
+  },
+  {
+    "id": "C04_Sets_and_Functions:0086",
+    "zh": "<code class=\"docutils literal notranslate\"><span class=\"pre\">s</span> <span class=\"pre\">∪</span> <span class=\"pre\">t</span></code> 定义为 <code class=\"docutils literal notranslate\"><span class=\"pre\">{x</span> <span class=\"pre\">|</span> <span class=\"pre\">x</span> <span class=\"pre\">∈</span> <span class=\"pre\">s</span> <span class=\"pre\">∨</span> <span class=\"pre\">x</span> <span class=\"pre\">∈</span> <span class=\"pre\">t}</span></code>，"
+  },
+  {
+    "id": "C04_Sets_and_Functions:0087",
+    "zh": "<code class=\"docutils literal notranslate\"><span class=\"pre\">∅</span></code> 定义为 <code class=\"docutils literal notranslate\"><span class=\"pre\">{x</span> <span class=\"pre\">|</span> <span class=\"pre\">False}</span></code>，并且"
+  },
+  {
+    "id": "C04_Sets_and_Functions:0088",
+    "zh": "<code class=\"docutils literal notranslate\"><span class=\"pre\">univ</span></code> 定义为 <code class=\"docutils literal notranslate\"><span class=\"pre\">{x</span> <span class=\"pre\">|</span> <span class=\"pre\">True}</span></code>。"
+  }
+]

@@ -1,0 +1,142 @@
+[
+  {
+    "id": "C01_Introduction:0001",
+    "zh": "<span class=\"section-number\">1. </span>引言"
+  },
+  {
+    "id": "C01_Introduction:0002",
+    "zh": "<span class=\"section-number\">1.1. </span>入门"
+  },
+  {
+    "id": "C01_Introduction:0003",
+    "zh": "<span class=\"section-number\">1.2. </span>概览"
+  },
+  {
+    "id": "C01_Introduction:0004",
+    "zh": "本书的目标，是教会读者使用 Lean 4 交互式证明助手来形式化数学。本书假定读者具备一定的数学知识，但所需预备知识并不多。尽管我们将涉及从数论到测度论与分析的诸多例子，重点仍将放在这些领域的初等方面；如果读者尚不熟悉相关内容，也可以在学习过程中逐步掌握。我们也不预设读者具有形式化方法方面的背景。形式化可以看作一种计算机编程：我们将用一种规整的、类似程序语言且 Lean 能够理解的语言，来写出数学定义、定理与证明。作为回报，Lean 会提供反馈和信息，解释表达式并保证它们是良构的，最终还会认证我们的证明确实正确。"
+  },
+  {
+    "id": "C01_Introduction:0005",
+    "zh": "关于 Lean 的更多信息，可以参见 <a class=\"reference external\" href=\"https://leanprover.github.io\">Lean 项目页面</a>以及 <a class=\"reference external\" href=\"https://leanprover-community.github.io/\">Lean 社区网页</a>。本教程建立在 Lean 庞大且持续增长的库 <em>Mathlib</em> 之上。我们也强烈建议尚未加入的读者加入 <a class=\"reference external\" href=\"https://leanprover.zulipchat.com/\">Lean Zulip 在线聊天室</a>。在那里，你会遇到一个活跃而友善的 Lean 爱好者社群，大家乐于回答问题并提供支持。"
+  },
+  {
+    "id": "C01_Introduction:0006",
+    "zh": "虽然读者可以在线阅读本书的 PDF 或 HTML 版本，但本书的设计目标是交互式阅读，也就是在 VS Code 编辑器中运行 Lean。开始学习前，请先完成以下步骤："
+  },
+  {
+    "id": "C01_Introduction:0007",
+    "zh": "到这一步，你可以按如下方式在 VS Code 的侧边面板中打开本教材："
+  },
+  {
+    "id": "C01_Introduction:0008",
+    "zh": "另一种方式是在云端通过 <a class=\"reference external\" href=\"https://github.com/codespaces\">Codespaces</a> 运行 Lean 和 VS Code。关于如何使用 Codespaces，可以在 Mathematics in Lean 的 <a class=\"reference external\" href=\"https://github.com/leanprover-community/mathematics_in_lean\">项目页面</a>找到说明。即便采用这种方式，我们仍建议按照上文所述，在 <cite>MIL</cite> 文件夹的副本中工作。"
+  },
+  {
+    "id": "C01_Introduction:0009",
+    "zh": "本教材及其关联仓库仍在持续开发中。你可以在 <code class=\"docutils literal notranslate\"><span class=\"pre\">mathematics_in_lean</span></code> 文件夹中输入 <code class=\"docutils literal notranslate\"><span class=\"pre\">git</span> <span class=\"pre\">pull</span></code>，随后输入 <code class=\"docutils literal notranslate\"><span class=\"pre\">lake</span> <span class=\"pre\">exe</span> <span class=\"pre\">cache</span> <span class=\"pre\">get</span></code> 来更新仓库。（这假定你没有修改 <code class=\"docutils literal notranslate\"><span class=\"pre\">MIL</span></code> 文件夹中的内容；这也正是我们建议创建副本的原因。）"
+  },
+  {
+    "id": "C01_Introduction:0010",
+    "zh": "我们希望读者在阅读教材时，在 <code class=\"docutils literal notranslate\"><span class=\"pre\">MIL</span></code> 文件夹中完成练习；教材正文则提供解释、说明与提示。正文中经常会包含如下例子："
+  },
+  {
+    "id": "C01_Introduction:0011",
+    "zh": "你应当能够在相应的 Lean 文件中找到对应例子。点击该行时，VS Code 会在 <code class=\"docutils literal notranslate\"><span class=\"pre\">Lean</span> <span class=\"pre\">InfoView</span></code> 窗口中显示 Lean 的反馈；将光标悬停在 <code class=\"docutils literal notranslate\"><span class=\"pre\">#eval</span></code> 命令上时，VS Code 会在弹出窗口中显示 Lean 对该命令的响应。我们鼓励你编辑文件，并尝试自己构造例子。"
+  },
+  {
+    "id": "C01_Introduction:0012",
+    "zh": "本书还提供了大量具有挑战性的练习，供读者尝试。不要匆忙跳过它们！Lean 关乎以交互方式<em>做</em>数学，而不只是阅读关于数学的文字。完成练习是这种体验的核心。当然，你不必完成所有练习；当你确信自己已经掌握相关技能时，完全可以继续向后阅读。你也总是可以将自己的解答同每一节对应的 <code class=\"docutils literal notranslate\"><span class=\"pre\">solutions</span></code> 文件夹中的解答进行比较。"
+  },
+  {
+    "id": "C01_Introduction:0013",
+    "zh": "简单地说，Lean 是一种用于在称为<em>依值类型论</em>的形式语言中构造复杂表达式的工具。"
+  },
+  {
+    "id": "C01_Introduction:0014",
+    "zh": "每个表达式都有一个<em>类型</em>，你可以使用 <cite>#check</cite> 命令将其打印出来。有些表达式的类型形如 <cite>ℕ</cite> 或 <cite>ℕ → ℕ</cite>。这些表达式是数学对象。"
+  },
+  {
+    "id": "C01_Introduction:0015",
+    "zh": "有些表达式的类型是 <cite>Prop</cite>。这些表达式是数学命题。"
+  },
+  {
+    "id": "C01_Introduction:0016",
+    "zh": "还有一些表达式的类型是 <cite>P</cite>，而 <cite>P</cite> 本身的类型是 <cite>Prop</cite>。这样的表达式就是命题 <cite>P</cite> 的一个证明。"
+  },
+  {
+    "id": "C01_Introduction:0017",
+    "zh": "如果你能够构造一个类型为 <code class=\"docutils literal notranslate\"><span class=\"pre\">FermatLastTheorem</span></code> 的表达式，并且 Lean 接受它为该类型的项，那么你就完成了一件相当了不起的事。（使用 <code class=\"docutils literal notranslate\"><span class=\"pre\">sorry</span></code> 是作弊，而 Lean 知道这一点。）至此，你已经知道这场游戏的目标；剩下要学习的只是规则。"
+  },
+  {
+    "id": "C01_Introduction:0018",
+    "zh": "本书与配套教程 <a class=\"reference external\" href=\"https://leanprover.github.io/theorem_proving_in_lean4/\">Theorem Proving in Lean</a> 相辅相成；后者对 Lean 的底层逻辑框架和核心语法作了更系统的介绍。<em>Theorem Proving in Lean</em> 适合那种在使用一台新洗碗机之前，愿意从头到尾读完用户手册的人。如果你更倾向于先按下<em>启动</em>按钮，再慢慢弄清楚如何启用强力洗涤功能，那么从本书开始，并在必要时回头查阅 <em>Theorem Proving in Lean</em>，会更合适。"
+  },
+  {
+    "id": "C01_Introduction:0019",
+    "zh": "<em>Mathematics in Lean</em> 与 <em>Theorem Proving in Lean</em> 的另一项区别在于，本书更强调<em>策略</em>的使用。既然我们的目标是构造复杂表达式，Lean 提供了两种途径：我们可以直接写出这些表达式本身（也就是写出合适的文本描述），也可以向 Lean 给出构造这些表达式的<em>指令</em>。例如，下列表达式表示这样一个事实的证明：若 <code class=\"docutils literal notranslate\"><span class=\"pre\">n</span></code> 为偶数，则 <code class=\"docutils literal notranslate\"><span class=\"pre\">m</span> <span class=\"pre\">*</span> <span class=\"pre\">n</span></code> 也是偶数。"
+  },
+  {
+    "id": "C01_Introduction:0020",
+    "zh": "这个<em>证明项</em>可以压缩成一行："
+  },
+  {
+    "id": "C01_Introduction:0021",
+    "zh": "下面则是同一定理的一个<em>策略式</em>证明，其中以 <code class=\"docutils literal notranslate\"><span class=\"pre\">--</span></code> 开头的行是注释，因此会被 Lean 忽略："
+  },
+  {
+    "id": "C01_Introduction:0022",
+    "zh": "在 VS Code 中逐行输入这样的证明时，Lean 会在单独窗口中显示<em>证明状态</em>，告诉你已经建立了哪些事实，以及为了证明定理还剩下哪些任务。你可以逐行移动光标来回放证明，因为 Lean 会持续显示光标所在位置的证明状态。在这个例子中，你会看到证明的第一行引入了 <code class=\"docutils literal notranslate\"><span class=\"pre\">m</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">n</span></code>（如果愿意，此时也可以给它们另取名字），并且把假设 <code class=\"docutils literal notranslate\"><span class=\"pre\">Even</span> <span class=\"pre\">n</span></code> 分解为某个 <code class=\"docutils literal notranslate\"><span class=\"pre\">k</span></code> 以及假设 <code class=\"docutils literal notranslate\"><span class=\"pre\">n</span> <span class=\"pre\">=</span> <span class=\"pre\">2</span> <span class=\"pre\">*</span> <span class=\"pre\">k</span></code>。第二行 <code class=\"docutils literal notranslate\"><span class=\"pre\">use</span> <span class=\"pre\">m</span> <span class=\"pre\">*</span> <span class=\"pre\">k</span></code> 声明：我们将通过证明 <code class=\"docutils literal notranslate\"><span class=\"pre\">m</span> <span class=\"pre\">*</span> <span class=\"pre\">n</span> <span class=\"pre\">=</span> <span class=\"pre\">2</span> <span class=\"pre\">*</span> <span class=\"pre\">(m</span> <span class=\"pre\">*</span> <span class=\"pre\">k)</span></code> 来说明 <code class=\"docutils literal notranslate\"><span class=\"pre\">m</span> <span class=\"pre\">*</span> <span class=\"pre\">n</span></code> 是偶数。下一行使用 <code class=\"docutils literal notranslate\"><span class=\"pre\">rw</span></code> 策略在目标中把 <code class=\"docutils literal notranslate\"><span class=\"pre\">n</span></code> 替换为 <code class=\"docutils literal notranslate\"><span class=\"pre\">2</span> <span class=\"pre\">*</span> <span class=\"pre\">k</span></code>（<code class=\"docutils literal notranslate\"><span class=\"pre\">rw</span></code> 是 “rewrite” 的缩写），而 <code class=\"docutils literal notranslate\"><span class=\"pre\">ring</span></code> 策略则解出由此得到的目标 <code class=\"docutils literal notranslate\"><span class=\"pre\">m</span> <span class=\"pre\">*</span> <span class=\"pre\">(2</span> <span class=\"pre\">*</span> <span class=\"pre\">k)</span> <span class=\"pre\">=</span> <span class=\"pre\">2</span> <span class=\"pre\">*</span> <span class=\"pre\">(m</span> <span class=\"pre\">*</span> <span class=\"pre\">k)</span></code>。"
+  },
+  {
+    "id": "C01_Introduction:0023",
+    "zh": "以小步构造证明并获得增量反馈的能力极其强大。正因如此，策略式证明通常比直接写证明项更容易也更快捷。二者之间并没有截然分明的界线：策略式证明可以嵌入证明项中，就像上例中的 <code class=\"docutils literal notranslate\"><span class=\"pre\">by</span> <span class=\"pre\">rw</span> <span class=\"pre\">[hk,</span> <span class=\"pre\">mul_add]</span></code> 那样。我们也会看到，反过来，在策略式证明中插入一个短小的证明项也常常很有用。尽管如此，本书的重点仍将放在策略的使用上。"
+  },
+  {
+    "id": "C01_Introduction:0024",
+    "zh": "在我们的例子中，策略式证明也可以缩减为一行："
+  },
+  {
+    "id": "C01_Introduction:0025",
+    "zh": "这里我们使用策略完成了一些小的证明步骤。但策略也可以提供相当程度的自动化，并为更长的计算和更大的推理步骤给出论证。例如，我们可以调用 Lean 的简化器，并指定若干关于奇偶性的化简规则，从而自动证明我们的定理。"
+  },
+  {
+    "id": "C01_Introduction:0026",
+    "zh": "这两本入门教程之间还有一个重要区别：<em>Theorem Proving in Lean</em> 只依赖核心 Lean 及其内建策略，而 <em>Mathematics in Lean</em> 则建立在 Lean 强大且持续增长的库 <em>Mathlib</em> 之上。因此，我们可以展示如何使用库中的若干数学对象和定理，以及一些非常有用的策略。本书并不打算作为该库的完整概览；<a class=\"reference external\" href=\"https://leanprover-community.github.io/\">社区</a>网页中已有大量文档。我们的目标毋宁是介绍这种形式化背后的思维方式，并指出一些基本入口，使读者能够从容地浏览库并自行寻找所需内容。"
+  },
+  {
+    "id": "C01_Introduction:0027",
+    "zh": "交互式定理证明有时令人挫败，而且学习曲线陡峭。不过，Lean 社区对新手非常友好，<a class=\"reference external\" href=\"https://leanprover.zulipchat.com/\">Lean Zulip 聊天室</a> 中几乎随时都有人可以回答问题。我们希望在那里见到你；也毫不怀疑，过不了多久，你也能够回答这类问题，并为 <em>Mathlib</em> 的发展作出贡献。"
+  },
+  {
+    "id": "C01_Introduction:0028",
+    "zh": "因此，如果你愿意接受，这就是你的任务：投入其中，尝试练习，带着问题来到 Zulip，并享受这个过程。不过也请预先知道：交互式定理证明会迫使你以根本上新的方式思考数学和数学推理。你的生活也许从此不再相同。"
+  },
+  {
+    "id": "C01_Introduction:0029",
+    "zh": "<em>致谢。</em> 感谢 Gabriel Ebner 搭建了在 VS Code 中运行本教程的基础设施；感谢 Kim Morrison 和 Mario Carneiro 帮助将本教程从 Lean 4 早期版本迁移而来。我们也感谢 Takeshi Abe、Julian Berman、Alex Best、Axel Boldt、Thomas Browning、Bulwi Cha、Hanson Char、Bryan Gin-ge Chen、Steven Clontz、Mauricio Collaris、Johan Commelin、Mark Czubin、Alexandru Duca、Pierpaolo Frasa、Denis Gorbachev、Winston de Greef、Darij Grinberg、Mathieu Guay-Paquet、Rik Heurter、Marc Huisinga、Benjamin Jones、Julian Külshammer、Victor Liu、Jimmy Lu、Martin C. Martin、Giovanni Mascellani、John McDowell、Joseph McKinsey、Bhavik Mehta、Sebastian Miele、Isaiah Mindich、Kabelo Moiloa、Hunter Monroe、Pietro Monticone、Oliver Nash、Emanuelle Natale、Filippo A. E. Nuccio、Pim Otte、Nicolas Rolland、Keith Rush、Yannick Seurin、Guilherme Silva、Bernardo Subercaseaux、Pedro Sánchez Terraf、Matthew Toohey、Alistair Tucker、Floris van Doorn、Veniamin Viflyantsev、Eric Wieser 以及其他人提供的帮助与修正。我们的工作得到了 Hoskinson Center for Formal Mathematics 的部分支持。"
+  },
+  {
+    "id": "C01_Introduction:0030",
+    "zh": "<p>按照这些<a class=\"reference external\" href=\"https://lean-lang.org/install/\">安装说明</a>安装 Lean 4 和 VS Code。</p>"
+  },
+  {
+    "id": "C01_Introduction:0031",
+    "zh": "<p>点击 VS Code 右上角的全称量词符号，选择 <cite>Open Project</cite>、<cite>Download Project</cite>，再选择 <cite>Mathematics in Lean</cite>，以获取本仓库。</p>"
+  },
+  {
+    "id": "C01_Introduction:0032",
+    "zh": "<p>本书每一节都有一个关联的 Lean 文件，其中包含例子和练习。它们位于按章节组织的 <code class=\"docutils literal notranslate\"><span class=\"pre\">MIL</span></code> 文件夹中。我们强烈建议复制该文件夹，并在副本中实验和完成练习。这样既能保持原文件不变，也能在仓库内容更新时更方便地同步（见下文）。你可以把副本命名为 <code class=\"docutils literal notranslate\"><span class=\"pre\">my_files</span></code>，或任何你喜欢的名字，并用它创建自己的 Lean 文件。</p>"
+  },
+  {
+    "id": "C01_Introduction:0033",
+    "zh": "<p>输入 <code class=\"docutils literal notranslate\"><span class=\"pre\">ctrl-shift-P</span></code>（macOS 中为 <code class=\"docutils literal notranslate\"><span class=\"pre\">command-shift-P</span></code>）。</p>"
+  },
+  {
+    "id": "C01_Introduction:0034",
+    "zh": "<p>在出现的输入栏中输入 <code class=\"docutils literal notranslate\"><span class=\"pre\">Lean</span> <span class=\"pre\">4:</span> <span class=\"pre\">Docs:</span> <span class=\"pre\">Show</span> <span class=\"pre\">Documentation</span> <span class=\"pre\">Resources</span></code>，然后按回车。（一旦菜单中高亮该项，也可以直接按回车选择。）</p>"
+  },
+  {
+    "id": "C01_Introduction:0035",
+    "zh": "<p>在打开的窗口中点击 <code class=\"docutils literal notranslate\"><span class=\"pre\">Mathematics</span> <span class=\"pre\">in</span> <span class=\"pre\">Lean</span></code>。</p>"
+  }
+]

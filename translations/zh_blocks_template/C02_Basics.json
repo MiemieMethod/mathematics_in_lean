@@ -1,0 +1,1178 @@
+[
+  {
+    "id": "C02_Basics:0001",
+    "file": "C02_Basics.html",
+    "tag": "h1",
+    "text": "2. Basics",
+    "html": "<h1><span class=\"section-number\">2. </span>Basics</h1>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0002",
+    "file": "C02_Basics.html",
+    "tag": "h2",
+    "text": "2.1. Calculating",
+    "html": "<h2><span class=\"section-number\">2.1. </span>Calculating</h2>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0003",
+    "file": "C02_Basics.html",
+    "tag": "h2",
+    "text": "2.2. Proving Identities in Algebraic Structures",
+    "html": "<h2><span class=\"section-number\">2.2. </span>Proving Identities in Algebraic Structures</h2>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0004",
+    "file": "C02_Basics.html",
+    "tag": "h2",
+    "text": "2.3. Using Theorems and Lemmas",
+    "html": "<h2><span class=\"section-number\">2.3. </span>Using Theorems and Lemmas</h2>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0005",
+    "file": "C02_Basics.html",
+    "tag": "h2",
+    "text": "2.4. More examples using apply and rw",
+    "html": "<h2><span class=\"section-number\">2.4. </span>More examples using apply and rw</h2>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0006",
+    "file": "C02_Basics.html",
+    "tag": "h2",
+    "text": "2.5. Proving Facts about Algebraic Structures",
+    "html": "<h2><span class=\"section-number\">2.5. </span>Proving Facts about Algebraic Structures</h2>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0007",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "This chapter is designed to introduce you to the nuts and bolts of mathematical reasoning in Lean: calculating, applying lemmas and theorems, and reasoning about generic structures.",
+    "html": "<p>This chapter is designed to introduce you to the nuts and\nbolts of mathematical reasoning in Lean: calculating,\napplying lemmas and theorems,\nand reasoning about generic structures.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0008",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "We generally learn to carry out mathematical calculations without thinking of them as proofs. But when we justify each step in a calculation, as Lean requires us to do, the net result is a proof that the left-hand side of the calculation is equal to the right-hand side.",
+    "html": "<p>We generally learn to carry out mathematical calculations\nwithout thinking of them as proofs.\nBut when we justify each step in a calculation,\nas Lean requires us to do,\nthe net result is a proof that the left-hand side of the calculation\nis equal to the right-hand side.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0009",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "In Lean, stating a theorem is tantamount to stating a goal, namely, the goal of proving the theorem. Lean provides the rewriting tactic rw , to replace the left-hand side of an identity by the right-hand side in the goal. If a , b , and c are real numbers, mul_assoc a b c is the identity a * b * c = a * (b * c) and mul_comm a b is the identity a * b = b * a . Lean provides automation that generally eliminates the need to refer the facts like these explicitly, but they are useful for the purposes of illustration. In Lean, multiplication associates to the left, so the left-hand side of mul_assoc could also be written (a * b) * c . However, it is generally good style to be mindful of Lean’s notational conventions and leave out parentheses when Lean does as well.",
+    "html": "<p id=\"index-0\">In Lean, stating a theorem is tantamount to stating a goal,\nnamely, the goal of proving the theorem.\nLean provides the rewriting tactic <code class=\"docutils literal notranslate\"><span class=\"pre\">rw</span></code>,\nto replace the left-hand side of an identity by the right-hand side\nin the goal. If <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span></code>, <code class=\"docutils literal notranslate\"><span class=\"pre\">b</span></code>, and <code class=\"docutils literal notranslate\"><span class=\"pre\">c</span></code> are real numbers,\n<code class=\"docutils literal notranslate\"><span class=\"pre\">mul_assoc</span> <span class=\"pre\">a</span> <span class=\"pre\">b</span> <span class=\"pre\">c</span></code>  is the identity <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span> <span class=\"pre\">*</span> <span class=\"pre\">b</span> <span class=\"pre\">*</span> <span class=\"pre\">c</span> <span class=\"pre\">=</span> <span class=\"pre\">a</span> <span class=\"pre\">*</span> <span class=\"pre\">(b</span> <span class=\"pre\">*</span> <span class=\"pre\">c)</span></code>\nand <code class=\"docutils literal notranslate\"><span class=\"pre\">mul_comm</span> <span class=\"pre\">a</span> <span class=\"pre\">b</span></code> is the identity <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span> <span class=\"pre\">*</span> <span class=\"pre\">b</span> <span class=\"pre\">=</span> <span class=\"pre\">b</span> <span class=\"pre\">*</span> <span class=\"pre\">a</span></code>.\nLean provides automation that generally eliminates the need\nto refer the facts like these explicitly,\nbut they are useful for the purposes of illustration.\nIn Lean, multiplication associates to the left,\nso the left-hand side of <code class=\"docutils literal notranslate\"><span class=\"pre\">mul_assoc</span></code> could also be written <code class=\"docutils literal notranslate\"><span class=\"pre\">(a</span> <span class=\"pre\">*</span> <span class=\"pre\">b)</span> <span class=\"pre\">*</span> <span class=\"pre\">c</span></code>.\nHowever, it is generally good style to be mindful of Lean’s\nnotational conventions and leave out parentheses when Lean does as well.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0010",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "Let’s try out rw .",
+    "html": "<p>Let’s try out <code class=\"docutils literal notranslate\"><span class=\"pre\">rw</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0011",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "The import lines at the beginning of the associated examples file import the theory of the real numbers from Mathlib, as well as useful automation. For the sake of brevity, we generally suppress information like this in the textbook.",
+    "html": "<p>The <code class=\"docutils literal notranslate\"><span class=\"pre\">import</span></code> lines at the beginning of the associated examples file\nimport the theory of the real numbers from Mathlib, as well as useful automation.\nFor the sake of brevity,\nwe generally suppress information like this in the textbook.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0012",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "You are welcome to make changes to see what happens. You can type the ℝ character as \\R or \\real in VS Code. The symbol doesn’t appear until you hit space or the tab key. If you hover over a symbol when reading a Lean file, VS Code will show you the syntax that can be used to enter it. If you are curious to see all available abbreviations, you can hit Ctrl-Shift-P and then type abbreviations to get access to the Lean 4: Show Unicode Input Abbreviations command. If your keyboard does not have an easily accessible backslash, you can change the leading character by changing the lean4.input.leader setting.",
+    "html": "<p>You are welcome to make changes to see what happens.\nYou can type the <code class=\"docutils literal notranslate\"><span class=\"pre\">ℝ</span></code> character as <code class=\"docutils literal notranslate\"><span class=\"pre\">\\R</span></code> or <code class=\"docutils literal notranslate\"><span class=\"pre\">\\real</span></code>\nin VS Code.\nThe symbol doesn’t appear until you hit space or the tab key.\nIf you hover over a symbol when reading a Lean file,\nVS Code will show you the syntax that can be used to enter it.\nIf you are curious to see all available abbreviations, you can hit Ctrl-Shift-P\nand then type abbreviations to get access to the <code class=\"docutils literal notranslate\"><span class=\"pre\">Lean</span> <span class=\"pre\">4:</span> <span class=\"pre\">Show</span> <span class=\"pre\">Unicode</span> <span class=\"pre\">Input</span> <span class=\"pre\">Abbreviations</span></code> command.\nIf your keyboard does not have an easily accessible backslash,\nyou can change the leading character by changing the\n<code class=\"docutils literal notranslate\"><span class=\"pre\">lean4.input.leader</span></code> setting.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0013",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "When a cursor is in the middle of a tactic proof, Lean reports on the current proof state in the Lean Infoview window. As you move your cursor past each step of the proof, you can see the state change. A typical proof state in Lean might look as follows:",
+    "html": "<p id=\"index-2\">When a cursor is in the middle of a tactic proof,\nLean reports on the current <em>proof state</em> in the\n<em>Lean Infoview</em> window.\nAs you move your cursor past each step of the proof,\nyou can see the state change.\nA typical proof state in Lean might look as follows:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0014",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "The lines before the one that begins with ⊢ denote the context : they are the objects and assumptions currently at play. In this example, these include two objects, x and y , each a natural number. They also include three assumptions, labelled h₁ , h₂ , and h₃ . In Lean, everything in a context is labelled with an identifier. You can type these subscripted labels as h\\1 , h\\2 , and h\\3 , but any legal identifiers would do: you can use h1 , h2 , h3 instead, or foo , bar , and baz . The last line represents the goal , that is, the fact to be proved. Sometimes people use target for the fact to be proved, and goal for the combination of the context and the target. In practice, the intended meaning is usually clear.",
+    "html": "<p>The lines before the one that begins with <code class=\"docutils literal notranslate\"><span class=\"pre\">⊢</span></code> denote the <em>context</em>:\nthey are the objects and assumptions currently at play.\nIn this example, these include two objects, <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">y</span></code>,\neach a natural number.\nThey also include three assumptions,\nlabelled <code class=\"docutils literal notranslate\"><span class=\"pre\">h₁</span></code>, <code class=\"docutils literal notranslate\"><span class=\"pre\">h₂</span></code>, and <code class=\"docutils literal notranslate\"><span class=\"pre\">h₃</span></code>.\nIn Lean, everything in a context is labelled with an identifier.\nYou can type these subscripted labels as <code class=\"docutils literal notranslate\"><span class=\"pre\">h\\1</span></code>, <code class=\"docutils literal notranslate\"><span class=\"pre\">h\\2</span></code>, and <code class=\"docutils literal notranslate\"><span class=\"pre\">h\\3</span></code>,\nbut any legal identifiers would do:\nyou can use <code class=\"docutils literal notranslate\"><span class=\"pre\">h1</span></code>, <code class=\"docutils literal notranslate\"><span class=\"pre\">h2</span></code>, <code class=\"docutils literal notranslate\"><span class=\"pre\">h3</span></code> instead,\nor <code class=\"docutils literal notranslate\"><span class=\"pre\">foo</span></code>, <code class=\"docutils literal notranslate\"><span class=\"pre\">bar</span></code>, and <code class=\"docutils literal notranslate\"><span class=\"pre\">baz</span></code>.\nThe last line represents the <em>goal</em>,\nthat is, the fact to be proved.\nSometimes people use <em>target</em> for the fact to be proved,\nand <em>goal</em> for the combination of the context and the target.\nIn practice, the intended meaning is usually clear.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0015",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "Try proving these identities, in each case replacing sorry by a tactic proof. With the rw tactic, you can use a left arrow ( \\l ) to reverse an identity. For example, rw [← mul_assoc a b c] replaces a * (b * c) by a * b * c in the current goal. Note that the left-pointing arrow refers to going from right to left in the identity provided by mul_assoc , it has nothing to do with the left or right side of the goal.",
+    "html": "<p>Try proving these identities,\nin each case replacing <code class=\"docutils literal notranslate\"><span class=\"pre\">sorry</span></code> by a tactic proof.\nWith the <code class=\"docutils literal notranslate\"><span class=\"pre\">rw</span></code> tactic, you can use a left arrow (<code class=\"docutils literal notranslate\"><span class=\"pre\">\\l</span></code>)\nto reverse an identity.\nFor example, <code class=\"docutils literal notranslate\"><span class=\"pre\">rw</span> <span class=\"pre\">[←</span> <span class=\"pre\">mul_assoc</span> <span class=\"pre\">a</span> <span class=\"pre\">b</span> <span class=\"pre\">c]</span></code>\nreplaces <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span> <span class=\"pre\">*</span> <span class=\"pre\">(b</span> <span class=\"pre\">*</span> <span class=\"pre\">c)</span></code> by <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span> <span class=\"pre\">*</span> <span class=\"pre\">b</span> <span class=\"pre\">*</span> <span class=\"pre\">c</span></code> in the current goal. Note that\nthe left-pointing arrow refers to going from right to left in the identity provided\nby <code class=\"docutils literal notranslate\"><span class=\"pre\">mul_assoc</span></code>, it has nothing to do with the left or right side of the goal.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0016",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "You can also use identities like mul_assoc and mul_comm without arguments. In this case, the rewrite tactic tries to match the left-hand side with an expression in the goal, using the first pattern it finds.",
+    "html": "<p>You can also use identities like <code class=\"docutils literal notranslate\"><span class=\"pre\">mul_assoc</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">mul_comm</span></code> without arguments.\nIn this case, the rewrite tactic tries to match the left-hand side with\nan expression in the goal,\nusing the first pattern it finds.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0017",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "You can also provide partial information. For example, mul_comm a matches any pattern of the form a * ? and rewrites it to ? * a . Try doing the first of these examples without providing any arguments at all, and the second with only one argument.",
+    "html": "<p>You can also provide <em>partial</em> information.\nFor example, <code class=\"docutils literal notranslate\"><span class=\"pre\">mul_comm</span> <span class=\"pre\">a</span></code> matches any pattern of the form\n<code class=\"docutils literal notranslate\"><span class=\"pre\">a</span> <span class=\"pre\">*</span> <span class=\"pre\">?</span></code> and rewrites it to <code class=\"docutils literal notranslate\"><span class=\"pre\">?</span> <span class=\"pre\">*</span> <span class=\"pre\">a</span></code>.\nTry doing the first of these examples without\nproviding any arguments at all,\nand the second with only one argument.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0018",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "You can also use rw with facts from the local context.",
+    "html": "<p>You can also use <code class=\"docutils literal notranslate\"><span class=\"pre\">rw</span></code> with facts from the local context.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0019",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "Try these, using the theorem sub_self for the second one:",
+    "html": "<p>Try these, using the theorem <code class=\"docutils literal notranslate\"><span class=\"pre\">sub_self</span></code> for the second one:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0020",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "Multiple rewrite commands can be carried out with a single command, by listing the relevant identities separated by commas inside the square brackets.",
+    "html": "<p>Multiple rewrite commands can be carried out with a single command,\nby listing the relevant identities separated by commas inside the square brackets.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0021",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "You still see the incremental progress by placing the cursor after a comma in any list of rewrites.",
+    "html": "<p>You still see the incremental progress by placing the cursor after\na comma in any list of rewrites.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0022",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "Another trick is that we can declare variables once and for all outside an example or theorem. Lean then includes them automatically.",
+    "html": "<p>Another trick is that we can declare variables once and for all outside\nan example or theorem. Lean then includes them automatically.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0023",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "Inspection of the tactic state at the beginning of the above proof reveals that Lean indeed included all variables. We can delimit the scope of the declaration by putting it in a section ... end block. Finally, recall from the introduction that Lean provides us with a command to determine the type of an expression:",
+    "html": "<p>Inspection of the tactic state at the beginning of the above proof\nreveals that Lean indeed included all variables.\nWe can delimit the scope of the declaration by putting it\nin a <code class=\"docutils literal notranslate\"><span class=\"pre\">section</span> <span class=\"pre\">...</span> <span class=\"pre\">end</span></code> block.\nFinally, recall from the introduction that Lean provides us with a\ncommand to determine the type of an expression:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0024",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "The #check command works for both objects and facts. In response to the command #check a , Lean reports that a has type ℝ . In response to the command #check mul_comm a b , Lean reports that mul_comm a b is a proof of the fact a * b = b * a . The command #check (a : ℝ) states our expectation that the type of a is ℝ , and Lean will raise an error if that is not the case. We will explain the output of the last three #check commands later, but in the meanwhile, you can take a look at them, and experiment with some #check commands of your own.",
+    "html": "<p>The <code class=\"docutils literal notranslate\"><span class=\"pre\">#check</span></code> command works for both objects and facts.\nIn response to the command <code class=\"docutils literal notranslate\"><span class=\"pre\">#check</span> <span class=\"pre\">a</span></code>, Lean reports that <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span></code> has type <code class=\"docutils literal notranslate\"><span class=\"pre\">ℝ</span></code>.\nIn response to the command <code class=\"docutils literal notranslate\"><span class=\"pre\">#check</span> <span class=\"pre\">mul_comm</span> <span class=\"pre\">a</span> <span class=\"pre\">b</span></code>,\nLean reports that <code class=\"docutils literal notranslate\"><span class=\"pre\">mul_comm</span> <span class=\"pre\">a</span> <span class=\"pre\">b</span></code> is a proof of the fact <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span> <span class=\"pre\">*</span> <span class=\"pre\">b</span> <span class=\"pre\">=</span> <span class=\"pre\">b</span> <span class=\"pre\">*</span> <span class=\"pre\">a</span></code>.\nThe command <code class=\"docutils literal notranslate\"><span class=\"pre\">#check</span> <span class=\"pre\">(a</span> <span class=\"pre\">:</span> <span class=\"pre\">ℝ)</span></code> states our expectation that the\ntype of <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span></code> is <code class=\"docutils literal notranslate\"><span class=\"pre\">ℝ</span></code>,\nand Lean will raise an error if that is not the case.\nWe will explain the output of the last three <code class=\"docutils literal notranslate\"><span class=\"pre\">#check</span></code> commands later,\nbut in the meanwhile, you can take a look at them,\nand experiment with some <code class=\"docutils literal notranslate\"><span class=\"pre\">#check</span></code> commands of your own.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0025",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "Let’s try some more examples. The theorem two_mul a says that 2 * a = a + a . The theorems add_mul and mul_add express the distributivity of multiplication over addition, and the theorem add_assoc expresses the associativity of addition. Use the #check command to see the precise statements.",
+    "html": "<p>Let’s try some more examples. The theorem <code class=\"docutils literal notranslate\"><span class=\"pre\">two_mul</span> <span class=\"pre\">a</span></code> says\nthat <code class=\"docutils literal notranslate\"><span class=\"pre\">2</span> <span class=\"pre\">*</span> <span class=\"pre\">a</span> <span class=\"pre\">=</span> <span class=\"pre\">a</span> <span class=\"pre\">+</span> <span class=\"pre\">a</span></code>. The theorems <code class=\"docutils literal notranslate\"><span class=\"pre\">add_mul</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">mul_add</span></code>\nexpress the distributivity of multiplication over addition,\nand the theorem <code class=\"docutils literal notranslate\"><span class=\"pre\">add_assoc</span></code> expresses the associativity of addition.\nUse the <code class=\"docutils literal notranslate\"><span class=\"pre\">#check</span></code> command to see the precise statements.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0026",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "Whereas it is possible to figure out what is going on in this proof by stepping through it in the editor, it is hard to read on its own. Lean provides a more structured way of writing proofs like this using the calc keyword.",
+    "html": "<p>Whereas it is possible to figure out what is going on in this proof\nby stepping through it in the editor,\nit is hard to read on its own.\nLean provides a more structured way of writing proofs like this\nusing the <code class=\"docutils literal notranslate\"><span class=\"pre\">calc</span></code> keyword.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0027",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "Notice that the proof does not begin with by : an expression that begins with calc is a proof term . A calc expression can also be used inside a tactic proof, but Lean interprets it as the instruction to use the resulting proof term to solve the goal. The calc syntax is finicky: the underscores and justification have to be in the format indicated above. Lean uses indentation to determine things like where a block of tactics or a calc block begins and ends; try changing the indentation in the proof above to see what happens.",
+    "html": "<p>Notice that the proof does <em>not</em> begin with <code class=\"docutils literal notranslate\"><span class=\"pre\">by</span></code>:\nan expression that begins with <code class=\"docutils literal notranslate\"><span class=\"pre\">calc</span></code> is a <em>proof term</em>.\nA <code class=\"docutils literal notranslate\"><span class=\"pre\">calc</span></code> expression can also be used inside a tactic proof,\nbut Lean interprets it as the instruction to use the resulting\nproof term to solve the goal.\nThe <code class=\"docutils literal notranslate\"><span class=\"pre\">calc</span></code> syntax is finicky: the underscores and justification\nhave to be in the format indicated above.\nLean uses indentation to determine things like where a block\nof tactics or a <code class=\"docutils literal notranslate\"><span class=\"pre\">calc</span></code> block begins and ends;\ntry changing the indentation in the proof above to see what happens.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0028",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "One way to write a calc proof is to outline it first using the sorry tactic for justification, make sure Lean accepts the expression modulo these, and then justify the individual steps using tactics.",
+    "html": "<p>One way to write a <code class=\"docutils literal notranslate\"><span class=\"pre\">calc</span></code> proof is to outline it first\nusing the <code class=\"docutils literal notranslate\"><span class=\"pre\">sorry</span></code> tactic for justification,\nmake sure Lean accepts the expression modulo these,\nand then justify the individual steps using tactics.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0029",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "Try proving the following identity using both a pure rw proof and a more structured calc proof:",
+    "html": "<p>Try proving the following identity using both a pure <code class=\"docutils literal notranslate\"><span class=\"pre\">rw</span></code> proof\nand a more structured <code class=\"docutils literal notranslate\"><span class=\"pre\">calc</span></code> proof:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0030",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "The following exercise is a little more challenging. You can use the theorems listed underneath.",
+    "html": "<p>The following exercise is a little more challenging.\nYou can use the theorems listed underneath.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0031",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "We can also perform rewriting in an assumption in the context. For example, rw [mul_comm a b] at hyp replaces a * b by b * a in the assumption hyp .",
+    "html": "<p id=\"index-4\">We can also perform rewriting in an assumption in the context.\nFor example, <code class=\"docutils literal notranslate\"><span class=\"pre\">rw</span> <span class=\"pre\">[mul_comm</span> <span class=\"pre\">a</span> <span class=\"pre\">b]</span> <span class=\"pre\">at</span> <span class=\"pre\">hyp</span></code> replaces <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span> <span class=\"pre\">*</span> <span class=\"pre\">b</span></code> by <code class=\"docutils literal notranslate\"><span class=\"pre\">b</span> <span class=\"pre\">*</span> <span class=\"pre\">a</span></code>\nin the assumption <code class=\"docutils literal notranslate\"><span class=\"pre\">hyp</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0032",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "In the last step, the exact tactic can use hyp to solve the goal because at that point hyp matches the goal exactly.",
+    "html": "<p id=\"index-5\">In the last step, the <code class=\"docutils literal notranslate\"><span class=\"pre\">exact</span></code> tactic can use <code class=\"docutils literal notranslate\"><span class=\"pre\">hyp</span></code> to solve the goal\nbecause at that point <code class=\"docutils literal notranslate\"><span class=\"pre\">hyp</span></code> matches the goal exactly.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0033",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "We close this section by noting that Mathlib provides a useful bit of automation with a ring tactic, which is designed to prove identities in any commutative ring as long as they follow purely from the ring axioms, without using any local assumption.",
+    "html": "<p id=\"index-6\">We close this section by noting that Mathlib provides a\nuseful bit of automation with a <code class=\"docutils literal notranslate\"><span class=\"pre\">ring</span></code> tactic,\nwhich is designed to prove identities in any commutative ring as long as they follow\npurely from the ring axioms, without using any local assumption.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0034",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "The ring tactic is imported indirectly when we import Mathlib.Data.Real.Basic , but we will see in the next section that it can be used for calculations on structures other than the real numbers. It can be imported explicitly with the command import Mathlib.Tactic . We will see there are similar tactics for other common kind of algebraic structures.",
+    "html": "<p>The <code class=\"docutils literal notranslate\"><span class=\"pre\">ring</span></code> tactic is imported indirectly when we\nimport <code class=\"docutils literal notranslate\"><span class=\"pre\">Mathlib.Data.Real.Basic</span></code>,\nbut we will see in the next section that it can be used\nfor calculations on structures other than the real numbers.\nIt can be imported explicitly with the command\n<code class=\"docutils literal notranslate\"><span class=\"pre\">import</span> <span class=\"pre\">Mathlib.Tactic</span></code>.\nWe will see there are similar tactics for other common kind of algebraic\nstructures.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0035",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "There is a variation of rw called nth_rw that allows you to replace only particular instances of an expression in the goal. Possible matches are enumerated starting with 1, so in the following example, nth_rw 2 [h] replaces the second occurrence of a + b with c .",
+    "html": "<p>There is a variation of <code class=\"docutils literal notranslate\"><span class=\"pre\">rw</span></code> called <code class=\"docutils literal notranslate\"><span class=\"pre\">nth_rw</span></code> that allows you to replace only particular instances of an expression in the goal.\nPossible matches are enumerated starting with 1,\nso in the following example, <code class=\"docutils literal notranslate\"><span class=\"pre\">nth_rw</span> <span class=\"pre\">2</span> <span class=\"pre\">[h]</span></code> replaces the second\noccurrence of <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span> <span class=\"pre\">+</span> <span class=\"pre\">b</span></code> with <code class=\"docutils literal notranslate\"><span class=\"pre\">c</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0036",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "Mathematically, a ring consists of a collection of objects, \\(R\\) , operations \\(+\\) \\(\\times\\) , and constants \\(0\\) and \\(1\\) , and an operation \\(x \\mapsto -x\\) such that:",
+    "html": "<p id=\"index-7\">Mathematically, a ring consists of a collection of objects,\n<span class=\"math notranslate nohighlight\">\\(R\\)</span>, operations <span class=\"math notranslate nohighlight\">\\(+\\)</span> <span class=\"math notranslate nohighlight\">\\(\\times\\)</span>, and constants <span class=\"math notranslate nohighlight\">\\(0\\)</span>\nand <span class=\"math notranslate nohighlight\">\\(1\\)</span>, and an operation <span class=\"math notranslate nohighlight\">\\(x \\mapsto -x\\)</span> such that:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0037",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "In Lean, the collection of objects is represented as a type , R . The ring axioms are as follows:",
+    "html": "<p>In Lean, the collection of objects is represented as a <em>type</em>, <code class=\"docutils literal notranslate\"><span class=\"pre\">R</span></code>.\nThe ring axioms are as follows:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0038",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "You will learn more about the square brackets in the first line later, but for the time being, suffice it to say that the declaration gives us a type, R , and a ring structure on R . Lean then allows us to use generic ring notation with elements of R , and to make use of a library of theorems about rings.",
+    "html": "<p>You will learn more about the square brackets in the first line later,\nbut for the time being,\nsuffice it to say that the declaration gives us a type, <code class=\"docutils literal notranslate\"><span class=\"pre\">R</span></code>,\nand a ring structure on <code class=\"docutils literal notranslate\"><span class=\"pre\">R</span></code>.\nLean then allows us to use generic ring notation with elements of <code class=\"docutils literal notranslate\"><span class=\"pre\">R</span></code>,\nand to make use of a library of theorems about rings.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0039",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "The names of some of the theorems should look familiar: they are exactly the ones we used to calculate with the real numbers in the last section. Lean is good not only for proving things about concrete mathematical structures like the natural numbers and the integers, but also for proving things about abstract structures, characterized axiomatically, like rings. Moreover, Lean supports generic reasoning about both abstract and concrete structures, and can be trained to recognize appropriate instances. So any theorem about rings can be applied to concrete rings like the integers, ℤ , the rational numbers, ℚ , and the complex numbers ℂ . It can also be applied to any instance of an abstract structure that extends rings, such as any ordered ring or any field.",
+    "html": "<p>The names of some of the theorems should look familiar:\nthey are exactly the ones we used to calculate with the real numbers\nin the last section.\nLean is good not only for proving things about concrete mathematical\nstructures like the natural numbers and the integers,\nbut also for proving things about abstract structures,\ncharacterized axiomatically, like rings.\nMoreover, Lean supports <em>generic reasoning</em> about\nboth abstract and concrete structures,\nand can be trained to recognize appropriate instances.\nSo any theorem about rings can be applied to concrete rings\nlike the integers, <code class=\"docutils literal notranslate\"><span class=\"pre\">ℤ</span></code>, the rational numbers,  <code class=\"docutils literal notranslate\"><span class=\"pre\">ℚ</span></code>,\nand the complex numbers <code class=\"docutils literal notranslate\"><span class=\"pre\">ℂ</span></code>.\nIt can also be applied to any instance of an abstract\nstructure that extends rings,\nsuch as any ordered ring or any field.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0040",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "Not all important properties of the real numbers hold in an arbitrary ring, however. For example, multiplication on the real numbers is commutative, but that does not hold in general. If you have taken a course in linear algebra, you will recognize that, for every \\(n\\) , the \\(n\\) by \\(n\\) matrices of real numbers form a ring in which commutativity usually fails. If we declare R to be a commutative ring, in fact, all the theorems in the last section continue to hold when we replace ℝ by R .",
+    "html": "<p id=\"index-8\">Not all important properties of the real numbers hold in an\narbitrary ring, however.\nFor example, multiplication on the real numbers\nis commutative,\nbut that does not hold in general.\nIf you have taken a course in linear algebra,\nyou will recognize that, for every <span class=\"math notranslate nohighlight\">\\(n\\)</span>,\nthe <span class=\"math notranslate nohighlight\">\\(n\\)</span> by <span class=\"math notranslate nohighlight\">\\(n\\)</span> matrices of real numbers\nform a ring in which commutativity usually fails. If we declare <code class=\"docutils literal notranslate\"><span class=\"pre\">R</span></code> to be a\n<em>commutative</em> ring, in fact, all the theorems\nin the last section continue to hold when we replace\n<code class=\"docutils literal notranslate\"><span class=\"pre\">ℝ</span></code> by <code class=\"docutils literal notranslate\"><span class=\"pre\">R</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0041",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "We leave it to you to check that all the other proofs go through unchanged. Notice that when a proof is short, like by ring or by linarith or by sorry , it is common (and permissible) to put it on the same line as the by . Good proof-writing style should strike a balance between concision and readability.",
+    "html": "<p>We leave it to you to check that all the other proofs go through unchanged.\nNotice that when a proof is short, like <code class=\"docutils literal notranslate\"><span class=\"pre\">by</span> <span class=\"pre\">ring</span></code> or <code class=\"docutils literal notranslate\"><span class=\"pre\">by</span> <span class=\"pre\">linarith</span></code>\nor <code class=\"docutils literal notranslate\"><span class=\"pre\">by</span> <span class=\"pre\">sorry</span></code>,\nit is common (and permissible) to put it on the same line as\nthe <code class=\"docutils literal notranslate\"><span class=\"pre\">by</span></code>.\nGood proof-writing style should strike a balance between concision and readability.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0042",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "The goal of this section is to strengthen the skills you have developed in the last section and apply them to reasoning axiomatically about rings. We will start with the axioms listed above, and use them to derive other facts. Most of the facts we prove are already in Mathlib. We will give the versions we prove the same names to help you learn the contents of the library as well as the naming conventions.",
+    "html": "<p>The goal of this section is to strengthen the skills\nyou have developed in the last section\nand apply them to reasoning axiomatically about rings.\nWe will start with the axioms listed above,\nand use them to derive other facts.\nMost of the facts we prove are already in Mathlib.\nWe will give the versions we prove the same names\nto help you learn the contents of the library\nas well as the naming conventions.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0043",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "Lean provides an organizational mechanism similar to those used in programming languages: when a definition or theorem foo is introduced in a namespace bar , its full name is bar.foo . The command open bar later opens the namespace, which allows us to use the shorter name foo . To avoid errors due to name clashes, in the next example we put our versions of the library theorems in a new namespace called MyRing.",
+    "html": "<p id=\"index-9\">Lean provides an organizational mechanism similar\nto those used in programming languages:\nwhen a definition or theorem <code class=\"docutils literal notranslate\"><span class=\"pre\">foo</span></code> is introduced in a <em>namespace</em>\n<code class=\"docutils literal notranslate\"><span class=\"pre\">bar</span></code>, its full name is <code class=\"docutils literal notranslate\"><span class=\"pre\">bar.foo</span></code>.\nThe command <code class=\"docutils literal notranslate\"><span class=\"pre\">open</span> <span class=\"pre\">bar</span></code> later <em>opens</em> the namespace,\nwhich allows us to use the shorter name <code class=\"docutils literal notranslate\"><span class=\"pre\">foo</span></code>.\nTo avoid errors due to name clashes,\nin the next example we put our versions of the library\ntheorems in a new namespace called <code class=\"docutils literal notranslate\"><span class=\"pre\">MyRing.</span></code></p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0044",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "The next example shows that we do not need add_zero or add_neg_cancel as ring axioms, because they follow from the other axioms.",
+    "html": "<p>The next example shows that we do not need <code class=\"docutils literal notranslate\"><span class=\"pre\">add_zero</span></code> or <code class=\"docutils literal notranslate\"><span class=\"pre\">add_neg_cancel</span></code>\nas ring axioms, because they follow from the other axioms.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0045",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "The net effect is that we can temporarily reprove a theorem in the library, and then go on using the library version after that. But don’t cheat! In the exercises that follow, take care to use only the general facts about rings that we have proved earlier in this section.",
+    "html": "<p>The net effect is that we can temporarily reprove a theorem in the library,\nand then go on using the library version after that.\nBut don’t cheat!\nIn the exercises that follow, take care to use only the\ngeneral facts about rings that we have proved earlier in this section.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0046",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "(If you are paying careful attention, you may have noticed that we changed the round brackets in (R : Type*) for curly brackets in {R : Type*} . This declares R to be an implicit argument . We will explain what this means in a moment, but don’t worry about it in the meanwhile.)",
+    "html": "<p>(If you are paying careful attention, you may have noticed that we\nchanged the round brackets in <code class=\"docutils literal notranslate\"><span class=\"pre\">(R</span> <span class=\"pre\">:</span> <span class=\"pre\">Type*)</span></code> for\ncurly brackets in <code class=\"docutils literal notranslate\"><span class=\"pre\">{R</span> <span class=\"pre\">:</span> <span class=\"pre\">Type*}</span></code>.\nThis declares <code class=\"docutils literal notranslate\"><span class=\"pre\">R</span></code> to be an <em>implicit argument</em>.\nWe will explain what this means in a moment,\nbut don’t worry about it in the meanwhile.)</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0047",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "Here is a useful theorem:",
+    "html": "<p>Here is a useful theorem:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0048",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "Prove the companion version:",
+    "html": "<p>Prove the companion version:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0049",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "Use these to prove the following:",
+    "html": "<p>Use these to prove the following:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0050",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "With enough planning, you can do each of them with three rewrites.",
+    "html": "<p>With enough planning, you can do each of them with three rewrites.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0051",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "We will now explain the use of the curly braces. Imagine you are in a situation where you have a , b , and c in your context, as well as a hypothesis h : a + b = a + c , and you would like to draw the conclusion b = c . In Lean, you can apply a theorem to hypotheses and facts just the same way that you can apply them to objects, so you might think that add_left_cancel a b c h is a proof of the fact b = c . But notice that explicitly writing a , b , and c is redundant, because the hypothesis h makes it clear that those are the objects we have in mind. In this case, typing a few extra characters is not onerous, but if we wanted to apply add_left_cancel to more complicated expressions, writing them would be tedious. In cases like these, Lean allows us to mark arguments as implicit , meaning that they are supposed to be left out and inferred by other means, such as later arguments and hypotheses. The curly brackets in {a b c : R} do exactly that. So, given the statement of the theorem above, the correct expression is simply add_left_cancel h .",
+    "html": "<p id=\"index-10\">We will now explain the use of the curly braces.\nImagine you are in a situation where you have <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span></code>, <code class=\"docutils literal notranslate\"><span class=\"pre\">b</span></code>, and <code class=\"docutils literal notranslate\"><span class=\"pre\">c</span></code>\nin your context,\nas well as a hypothesis <code class=\"docutils literal notranslate\"><span class=\"pre\">h</span> <span class=\"pre\">:</span> <span class=\"pre\">a</span> <span class=\"pre\">+</span> <span class=\"pre\">b</span> <span class=\"pre\">=</span> <span class=\"pre\">a</span> <span class=\"pre\">+</span> <span class=\"pre\">c</span></code>,\nand you would like to draw the conclusion <code class=\"docutils literal notranslate\"><span class=\"pre\">b</span> <span class=\"pre\">=</span> <span class=\"pre\">c</span></code>.\nIn Lean, you can apply a theorem to hypotheses and facts just\nthe same way that you can apply them to objects,\nso you might think that <code class=\"docutils literal notranslate\"><span class=\"pre\">add_left_cancel</span> <span class=\"pre\">a</span> <span class=\"pre\">b</span> <span class=\"pre\">c</span> <span class=\"pre\">h</span></code> is a\nproof of the fact <code class=\"docutils literal notranslate\"><span class=\"pre\">b</span> <span class=\"pre\">=</span> <span class=\"pre\">c</span></code>.\nBut notice that explicitly writing <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span></code>, <code class=\"docutils literal notranslate\"><span class=\"pre\">b</span></code>, and <code class=\"docutils literal notranslate\"><span class=\"pre\">c</span></code>\nis redundant, because the hypothesis <code class=\"docutils literal notranslate\"><span class=\"pre\">h</span></code> makes it clear that\nthose are the objects we have in mind.\nIn this case, typing a few extra characters is not onerous,\nbut if we wanted to apply <code class=\"docutils literal notranslate\"><span class=\"pre\">add_left_cancel</span></code> to more complicated expressions,\nwriting them would be tedious.\nIn cases like these,\nLean allows us to mark arguments as <em>implicit</em>,\nmeaning that they are supposed to be left out and inferred by other means,\nsuch as later arguments and hypotheses.\nThe curly brackets in <code class=\"docutils literal notranslate\"><span class=\"pre\">{a</span> <span class=\"pre\">b</span> <span class=\"pre\">c</span> <span class=\"pre\">:</span> <span class=\"pre\">R}</span></code> do exactly that.\nSo, given the statement of the theorem above,\nthe correct expression is simply <code class=\"docutils literal notranslate\"><span class=\"pre\">add_left_cancel</span> <span class=\"pre\">h</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0052",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "To illustrate, let us show that a * 0 = 0 follows from the ring axioms.",
+    "html": "<p>To illustrate, let us show that <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span> <span class=\"pre\">*</span> <span class=\"pre\">0</span> <span class=\"pre\">=</span> <span class=\"pre\">0</span></code>\nfollows from the ring axioms.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0053",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "We have used a new trick! If you step through the proof, you can see what is going on. The have tactic introduces a new goal, a * 0 + a * 0 = a * 0 + 0 , with the same context as the original goal. The fact that the next line is indented indicates that Lean is expecting a block of tactics that serves to prove this new goal. The indentation therefore promotes a modular style of proof: the indented subproof establishes the goal that was introduced by the have . After that, we are back to proving the original goal, except a new hypothesis h has been added: having proved it, we are now free to use it. At this point, the goal is exactly the result of add_left_cancel h .",
+    "html": "<p id=\"index-11\">We have used a new trick!\nIf you step through the proof,\nyou can see what is going on.\nThe <code class=\"docutils literal notranslate\"><span class=\"pre\">have</span></code> tactic introduces a new goal,\n<code class=\"docutils literal notranslate\"><span class=\"pre\">a</span> <span class=\"pre\">*</span> <span class=\"pre\">0</span> <span class=\"pre\">+</span> <span class=\"pre\">a</span> <span class=\"pre\">*</span> <span class=\"pre\">0</span> <span class=\"pre\">=</span> <span class=\"pre\">a</span> <span class=\"pre\">*</span> <span class=\"pre\">0</span> <span class=\"pre\">+</span> <span class=\"pre\">0</span></code>,\nwith the same context as the original goal.\nThe fact that the next line is indented indicates that Lean\nis expecting a block of tactics that serves to prove this\nnew goal.\nThe indentation therefore promotes a modular style of proof:\nthe indented subproof establishes the goal\nthat was introduced by the <code class=\"docutils literal notranslate\"><span class=\"pre\">have</span></code>.\nAfter that, we are back to proving the original goal,\nexcept a new hypothesis <code class=\"docutils literal notranslate\"><span class=\"pre\">h</span></code> has been added:\nhaving proved it, we are now free to use it.\nAt this point, the goal is exactly the result of <code class=\"docutils literal notranslate\"><span class=\"pre\">add_left_cancel</span> <span class=\"pre\">h</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0054",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "We could equally well have closed the proof with apply add_left_cancel h or exact add_left_cancel h . The exact tactic takes as argument a proof term which completely proves the current goal, without creating any new goal. The apply tactic is a variant whose argument is not necessarily a complete proof. The missing pieces are either inferred automatically by Lean or become new goals to prove. While the exact tactic is technically redundant since it is strictly less powerful than apply , it makes proof scripts slightly clearer to human readers and easier to maintain when the library evolves.",
+    "html": "<p id=\"index-12\">We could equally well have closed the proof with\n<code class=\"docutils literal notranslate\"><span class=\"pre\">apply</span> <span class=\"pre\">add_left_cancel</span> <span class=\"pre\">h</span></code> or <code class=\"docutils literal notranslate\"><span class=\"pre\">exact</span> <span class=\"pre\">add_left_cancel</span> <span class=\"pre\">h</span></code>.\nThe <code class=\"docutils literal notranslate\"><span class=\"pre\">exact</span></code> tactic takes as argument a proof term which completely proves the\ncurrent goal, without creating any new goal. The <code class=\"docutils literal notranslate\"><span class=\"pre\">apply</span></code> tactic is a variant\nwhose argument is not necessarily a complete proof. The missing pieces are either\ninferred automatically by Lean or become new goals to prove.\nWhile the <code class=\"docutils literal notranslate\"><span class=\"pre\">exact</span></code> tactic is technically redundant since it is strictly less powerful\nthan <code class=\"docutils literal notranslate\"><span class=\"pre\">apply</span></code>, it makes proof scripts slightly clearer to\nhuman readers and easier to maintain when the library evolves.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0055",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "Remember that multiplication is not assumed to be commutative, so the following theorem also requires some work.",
+    "html": "<p>Remember that multiplication is not assumed to be commutative,\nso the following theorem also requires some work.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0056",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "By now, you should also be able to replace each sorry in the next exercise with a proof, still using only facts about rings that we have established in this section along with the axiom eq_symm .",
+    "html": "<p>By now, you should also be able to replace each <code class=\"docutils literal notranslate\"><span class=\"pre\">sorry</span></code> in the next\nexercise with a proof,\nstill using only facts about rings that we have\nestablished in this section along with the axiom <code class=\"docutils literal notranslate\"><span class=\"pre\">eq_symm</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0057",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "We had to use the annotation (-0 : R) instead of 0 in the third theorem because without specifying R it is impossible for Lean to infer which 0 we have in mind, and by default it would be interpreted as a natural number.",
+    "html": "<p>We had to use the annotation <code class=\"docutils literal notranslate\"><span class=\"pre\">(-0</span> <span class=\"pre\">:</span> <span class=\"pre\">R)</span></code> instead of <code class=\"docutils literal notranslate\"><span class=\"pre\">0</span></code> in the third theorem\nbecause without specifying <code class=\"docutils literal notranslate\"><span class=\"pre\">R</span></code>\nit is impossible for Lean to infer which <code class=\"docutils literal notranslate\"><span class=\"pre\">0</span></code> we have in mind,\nand by default it would be interpreted as a natural number.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0058",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "In Lean, subtraction in a ring is provably equal to addition of the additive inverse.",
+    "html": "<p>In Lean, subtraction in a ring is provably equal to\naddition of the additive inverse.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0059",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "On the real numbers, it is defined that way:",
+    "html": "<p>On the real numbers, it is <em>defined</em> that way:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0060",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "The proof term rfl is short for “reflexivity”. Presenting it as a proof of a - b = a + -b forces Lean to unfold the definition and recognize both sides as being the same. The rfl tactic does the same. This is an instance of what is known as a definitional equality in Lean’s underlying logic. This means that not only can one rewrite with sub_eq_add_neg to replace a - b = a + -b , but in some contexts, when dealing with the real numbers, you can use the two sides of the equation interchangeably. For example, you now have enough information to prove the theorem self_sub from the last section:",
+    "html": "<p id=\"index-13\">The proof term <code class=\"docutils literal notranslate\"><span class=\"pre\">rfl</span></code> is short for “reflexivity”.\nPresenting it as a proof of <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span> <span class=\"pre\">-</span> <span class=\"pre\">b</span> <span class=\"pre\">=</span> <span class=\"pre\">a</span> <span class=\"pre\">+</span> <span class=\"pre\">-b</span></code> forces Lean\nto unfold the definition and recognize both sides as being the same.\nThe <code class=\"docutils literal notranslate\"><span class=\"pre\">rfl</span></code> tactic does the same.\nThis is an instance of what is known as a <em>definitional equality</em>\nin Lean’s underlying logic.\nThis means that not only can one rewrite with <code class=\"docutils literal notranslate\"><span class=\"pre\">sub_eq_add_neg</span></code>\nto replace <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span> <span class=\"pre\">-</span> <span class=\"pre\">b</span> <span class=\"pre\">=</span> <span class=\"pre\">a</span> <span class=\"pre\">+</span> <span class=\"pre\">-b</span></code>,\nbut in some contexts, when dealing with the real numbers,\nyou can use the two sides of the equation interchangeably.\nFor example, you now have enough information to prove the theorem\n<code class=\"docutils literal notranslate\"><span class=\"pre\">self_sub</span></code> from the last section:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0061",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "Show that you can prove this using rw , but if you replace the arbitrary ring R by the real numbers, you can also prove it using either apply or exact .",
+    "html": "<p>Show that you can prove this using <code class=\"docutils literal notranslate\"><span class=\"pre\">rw</span></code>,\nbut if you replace the arbitrary ring <code class=\"docutils literal notranslate\"><span class=\"pre\">R</span></code> by\nthe real numbers, you can also prove it\nusing either <code class=\"docutils literal notranslate\"><span class=\"pre\">apply</span></code> or <code class=\"docutils literal notranslate\"><span class=\"pre\">exact</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0062",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "Lean knows that 1 + 1 = 2 holds in any ring. With a bit of effort, you can use that to prove the theorem two_mul from the last section:",
+    "html": "<p>Lean knows that <code class=\"docutils literal notranslate\"><span class=\"pre\">1</span> <span class=\"pre\">+</span> <span class=\"pre\">1</span> <span class=\"pre\">=</span> <span class=\"pre\">2</span></code> holds in any ring.\nWith a bit of effort,\nyou can use that to prove the theorem <code class=\"docutils literal notranslate\"><span class=\"pre\">two_mul</span></code> from\nthe last section:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0063",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "We close this section by noting that some of the facts about addition and negation that we established above do not need the full strength of the ring axioms, or even commutativity of addition. The weaker notion of a group can be axiomatized as follows:",
+    "html": "<p id=\"index-14\">We close this section by noting that some of the facts about\naddition and negation that we established above do not\nneed the full strength of the ring axioms, or even\ncommutativity of addition. The weaker notion of a <em>group</em>\ncan be axiomatized as follows:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0064",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "It is conventional to use additive notation when the group operation is commutative, and multiplicative notation otherwise. So Lean defines a multiplicative version as well as the additive version (and also their abelian variants, AddCommGroup and CommGroup ).",
+    "html": "<p>It is conventional to use additive notation when\nthe group operation is commutative,\nand multiplicative notation otherwise.\nSo Lean defines a multiplicative version as well as the\nadditive version (and also their abelian variants,\n<code class=\"docutils literal notranslate\"><span class=\"pre\">AddCommGroup</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">CommGroup</span></code>).</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0065",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "If you are feeling cocky, try proving the following facts about groups, using only these axioms. You will need to prove a number of helper lemmas along the way. The proofs we have carried out in this section provide some hints.",
+    "html": "<p>If you are feeling cocky, try proving the following facts about\ngroups, using only these axioms.\nYou will need to prove a number of helper lemmas along the way.\nThe proofs we have carried out in this section provide some hints.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0066",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "Explicitly invoking those lemmas is tedious, so Mathlib provides tactics similar to ring in order to cover most uses: group is for non-commutative multiplicative groups, abel for abelian additive groups, and noncomm_ring for non-commutative rings. It may seem odd that the algebraic structures are called Ring and CommRing while the tactics are named noncomm_ring and ring . This is partly for historical reasons, but also for the convenience of using a shorter name for the tactic that deals with commutative rings, since it is used more often.",
+    "html": "<p id=\"index-15\">Explicitly invoking those lemmas is tedious, so Mathlib provides\ntactics similar to <cite>ring</cite> in order to cover most uses: <cite>group</cite>\nis for non-commutative multiplicative groups, <cite>abel</cite> for abelian\nadditive groups, and <cite>noncomm_ring</cite> for non-commutative rings.\nIt may seem odd that the algebraic structures are called\n<cite>Ring</cite> and <cite>CommRing</cite> while the tactics are named\n<cite>noncomm_ring</cite> and <cite>ring</cite>. This is partly for historical reasons,\nbut also for the convenience of using a shorter name for the\ntactic that deals with commutative rings, since it is used more often.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0067",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "Rewriting is great for proving equations, but what about other sorts of theorems? For example, how can we prove an inequality, like the fact that \\(a + e^b \\le a + e^c\\) holds whenever \\(b \\le c\\) ? We have already seen that theorems can be applied to arguments and hypotheses, and that the apply and exact tactics can be used to solve goals. In this section, we will make good use of these tools.",
+    "html": "<p id=\"index-16\">Rewriting is great for proving equations,\nbut what about other sorts of theorems?\nFor example, how can we prove an inequality,\nlike the fact that <span class=\"math notranslate nohighlight\">\\(a + e^b \\le a + e^c\\)</span> holds whenever <span class=\"math notranslate nohighlight\">\\(b \\le c\\)</span>?\nWe have already seen that theorems can be applied to arguments and hypotheses,\nand that the <code class=\"docutils literal notranslate\"><span class=\"pre\">apply</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">exact</span></code> tactics can be used to solve goals.\nIn this section, we will make good use of these tools.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0068",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "Consider the library theorems le_refl and le_trans :",
+    "html": "<p>Consider the library theorems <code class=\"docutils literal notranslate\"><span class=\"pre\">le_refl</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">le_trans</span></code>:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0069",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "As we explain in more detail in Section 3.1 , the implicit parentheses in the statement of le_trans associate to the right, so it should be interpreted as a ≤ b → (b ≤ c → a ≤ c) . The library designers have set the arguments a , b and c to le_trans implicit, so that Lean will not let you provide them explicitly (unless you really insist, as we will discuss later). Rather, it expects to infer them from the context in which they are used. For example, when hypotheses h : a ≤ b and h' : b ≤ c are in the context, all the following work:",
+    "html": "<p>As we explain in more detail in  <a class=\"reference internal\" href=\"C03_Logic.html#implication-and-the-universal-quantifier\"><span class=\"std std-numref\">Section 3.1</span></a>,\nthe implicit parentheses in the statement of <code class=\"docutils literal notranslate\"><span class=\"pre\">le_trans</span></code>\nassociate to the right, so it should be interpreted as <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span> <span class=\"pre\">≤</span> <span class=\"pre\">b</span> <span class=\"pre\">→</span> <span class=\"pre\">(b</span> <span class=\"pre\">≤</span> <span class=\"pre\">c</span> <span class=\"pre\">→</span> <span class=\"pre\">a</span> <span class=\"pre\">≤</span> <span class=\"pre\">c)</span></code>.\nThe library designers have set the arguments <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span></code>, <code class=\"docutils literal notranslate\"><span class=\"pre\">b</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">c</span></code> to <code class=\"docutils literal notranslate\"><span class=\"pre\">le_trans</span></code> implicit,\nso that Lean will <em>not</em> let you provide them explicitly (unless you\nreally insist, as we will discuss later).\nRather, it expects to infer them from the context in which they are used.\nFor example, when hypotheses <code class=\"docutils literal notranslate\"><span class=\"pre\">h</span> <span class=\"pre\">:</span> <span class=\"pre\">a</span> <span class=\"pre\">≤</span> <span class=\"pre\">b</span></code> and  <code class=\"docutils literal notranslate\"><span class=\"pre\">h'</span> <span class=\"pre\">:</span> <span class=\"pre\">b</span> <span class=\"pre\">≤</span> <span class=\"pre\">c</span></code>\nare in the context,\nall the following work:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0070",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "The apply tactic takes a proof of a general statement or implication, tries to match the conclusion with the current goal, and leaves the hypotheses, if any, as new goals. If the given proof matches the goal exactly (modulo definitional equality), you can use the exact tactic instead of apply . So, all of these work:",
+    "html": "<p id=\"index-17\">The <code class=\"docutils literal notranslate\"><span class=\"pre\">apply</span></code> tactic takes a proof of a general statement or implication,\ntries to match the conclusion with the current goal,\nand leaves the hypotheses, if any, as new goals.\nIf the given proof matches the goal exactly\n(modulo <em>definitional</em> equality),\nyou can use the <code class=\"docutils literal notranslate\"><span class=\"pre\">exact</span></code> tactic instead of <code class=\"docutils literal notranslate\"><span class=\"pre\">apply</span></code>.\nSo, all of these work:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0071",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "In the first example, applying le_trans creates two goals, and we use the dots to indicate where the proof of each begins. The dots are optional, but they serve to focus the goal: within the block introduced by the dot, only one goal is visible, and it must be completed before the end of the block. Here we end the first block by starting a new one with another dot. We could just as well have decreased the indentation. In the third example and in the last example, we avoid going into tactic mode entirely: le_trans h₀ h₁ and le_refl x are the proof terms we need.",
+    "html": "<p>In the first example, applying <code class=\"docutils literal notranslate\"><span class=\"pre\">le_trans</span></code>\ncreates two goals,\nand we use the dots to indicate where the proof of each begins.\nThe dots are optional, but they serve to <em>focus</em> the goal:\nwithin the block introduced by the dot, only one goal is visible,\nand it must be completed before the end of the block.\nHere we end the first block by starting a new one with another dot.\nWe could just as well have decreased the indentation.\nIn the third example and in the last example,\nwe avoid going into tactic mode entirely:\n<code class=\"docutils literal notranslate\"><span class=\"pre\">le_trans</span> <span class=\"pre\">h₀</span> <span class=\"pre\">h₁</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">le_refl</span> <span class=\"pre\">x</span></code> are the proof terms we need.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0072",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "Here are a few more library theorems:",
+    "html": "<p>Here are a few more library theorems:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0073",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "Use them together with apply and exact to prove the following:",
+    "html": "<p>Use them together with <code class=\"docutils literal notranslate\"><span class=\"pre\">apply</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">exact</span></code> to prove the following:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0074",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "In fact, Lean has a tactic that does this sort of thing automatically:",
+    "html": "<p id=\"index-18\">In fact, Lean has a tactic that does this sort of thing automatically:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0075",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "The linarith tactic is designed to handle linear arithmetic .",
+    "html": "<p>The <code class=\"docutils literal notranslate\"><span class=\"pre\">linarith</span></code> tactic is designed to handle <em>linear arithmetic</em>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0076",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "In addition to equations and inequalities in the context, linarith will use additional inequalities that you pass as arguments. In the next example, exp_le_exp.mpr h' is a proof of exp b ≤ exp c , as we will explain in a moment. Notice that, in Lean, we write f x to denote the application of a function f to the argument x , exactly the same way we write h x to denote the result of applying a fact or theorem h to the argument x . Parentheses are only needed for compound arguments, as in f (x + y) . Without the parentheses, f x + y would be parsed as (f x) + y .",
+    "html": "<p>In addition to equations and inequalities in the context,\n<code class=\"docutils literal notranslate\"><span class=\"pre\">linarith</span></code> will use additional inequalities that you pass as arguments.\nIn the next example, <code class=\"docutils literal notranslate\"><span class=\"pre\">exp_le_exp.mpr</span> <span class=\"pre\">h'</span></code> is a proof of\n<code class=\"docutils literal notranslate\"><span class=\"pre\">exp</span> <span class=\"pre\">b</span> <span class=\"pre\">≤</span> <span class=\"pre\">exp</span> <span class=\"pre\">c</span></code>, as we will explain in a moment.\nNotice that, in Lean, we write <code class=\"docutils literal notranslate\"><span class=\"pre\">f</span> <span class=\"pre\">x</span></code> to denote the application\nof a function <code class=\"docutils literal notranslate\"><span class=\"pre\">f</span></code> to the argument <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span></code>,\nexactly the same way we write <code class=\"docutils literal notranslate\"><span class=\"pre\">h</span> <span class=\"pre\">x</span></code> to denote the result of\napplying a fact or theorem <code class=\"docutils literal notranslate\"><span class=\"pre\">h</span></code> to the argument <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span></code>.\nParentheses are only needed for compound arguments,\nas in <code class=\"docutils literal notranslate\"><span class=\"pre\">f</span> <span class=\"pre\">(x</span> <span class=\"pre\">+</span> <span class=\"pre\">y)</span></code>. Without the parentheses, <code class=\"docutils literal notranslate\"><span class=\"pre\">f</span> <span class=\"pre\">x</span> <span class=\"pre\">+</span> <span class=\"pre\">y</span></code>\nwould be parsed as <code class=\"docutils literal notranslate\"><span class=\"pre\">(f</span> <span class=\"pre\">x)</span> <span class=\"pre\">+</span> <span class=\"pre\">y</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0077",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "Here are some more theorems in the library that can be used to establish inequalities on the real numbers.",
+    "html": "<p id=\"index-19\">Here are some more theorems in the library that can be used to establish\ninequalities on the real numbers.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0078",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "Some of the theorems, exp_le_exp , exp_lt_exp use a bi-implication , which represents the phrase “if and only if.” (You can type it in VS Code with \\lr or \\iff ). We will discuss this connective in greater detail in the next chapter. Such a theorem can be used with rw to rewrite a goal to an equivalent one:",
+    "html": "<p>Some of the theorems, <code class=\"docutils literal notranslate\"><span class=\"pre\">exp_le_exp</span></code>, <code class=\"docutils literal notranslate\"><span class=\"pre\">exp_lt_exp</span></code>\nuse a <em>bi-implication</em>, which represents the\nphrase “if and only if.”\n(You can type it in VS Code with <code class=\"docutils literal notranslate\"><span class=\"pre\">\\lr</span></code> or <code class=\"docutils literal notranslate\"><span class=\"pre\">\\iff</span></code>).\nWe will discuss this connective in greater detail in the next chapter.\nSuch a theorem can be used with <code class=\"docutils literal notranslate\"><span class=\"pre\">rw</span></code> to rewrite a goal to\nan equivalent one:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0079",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "In this section, however, we will use the fact that if h : A ↔ B is such an equivalence, then h.mp establishes the forward direction, A → B , and h.mpr establishes the reverse direction, B → A . Here, mp stands for “modus ponens” and mpr stands for “modus ponens reverse.” You can also use h.1 and h.2 for h.mp and h.mpr , respectively, if you prefer. Thus the following proof works:",
+    "html": "<p>In this section, however, we will use the fact that if <code class=\"docutils literal notranslate\"><span class=\"pre\">h</span> <span class=\"pre\">:</span> <span class=\"pre\">A</span> <span class=\"pre\">↔</span> <span class=\"pre\">B</span></code>\nis such an equivalence,\nthen <code class=\"docutils literal notranslate\"><span class=\"pre\">h.mp</span></code> establishes the forward direction, <code class=\"docutils literal notranslate\"><span class=\"pre\">A</span> <span class=\"pre\">→</span> <span class=\"pre\">B</span></code>,\nand <code class=\"docutils literal notranslate\"><span class=\"pre\">h.mpr</span></code> establishes the reverse direction, <code class=\"docutils literal notranslate\"><span class=\"pre\">B</span> <span class=\"pre\">→</span> <span class=\"pre\">A</span></code>.\nHere, <code class=\"docutils literal notranslate\"><span class=\"pre\">mp</span></code> stands for “modus ponens” and\n<code class=\"docutils literal notranslate\"><span class=\"pre\">mpr</span></code> stands for “modus ponens reverse.”\nYou can also use <code class=\"docutils literal notranslate\"><span class=\"pre\">h.1</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">h.2</span></code> for <code class=\"docutils literal notranslate\"><span class=\"pre\">h.mp</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">h.mpr</span></code>,\nrespectively, if you prefer.\nThus the following proof works:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0080",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "The first line, apply add_lt_add_of_lt_of_le , creates two goals, and once again we use a dot to separate the proof of the first from the proof of the second.",
+    "html": "<p>The first line, <code class=\"docutils literal notranslate\"><span class=\"pre\">apply</span> <span class=\"pre\">add_lt_add_of_lt_of_le</span></code>,\ncreates two goals,\nand once again we use a dot to separate the\nproof of the first from the proof of the second.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0081",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "Try the following examples on your own. The example in the middle shows you that the norm_num tactic can be used to solve concrete numeric goals.",
+    "html": "<p id=\"index-20\">Try the following examples on your own.\nThe example in the middle shows you that the <code class=\"docutils literal notranslate\"><span class=\"pre\">norm_num</span></code>\ntactic can be used to solve concrete numeric goals.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0082",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "From these examples, it should be clear that being able to find the library theorems you need constitutes an important part of formalization. There are a number of strategies you can use:",
+    "html": "<p>From these examples, it should be clear that being able to\nfind the library theorems you need constitutes an important\npart of formalization.\nThere are a number of strategies you can use:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0083",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "To try out apply? in this example, delete the exact command and uncomment the previous line. Using these tricks, see if you can find what you need to do the next example:",
+    "html": "<p>To try out <code class=\"docutils literal notranslate\"><span class=\"pre\">apply?</span></code> in this example,\ndelete the <code class=\"docutils literal notranslate\"><span class=\"pre\">exact</span></code> command and uncomment the previous line.\nUsing these tricks,\nsee if you can find what you need to do the\nnext example:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0084",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "Using the same tricks, confirm that linarith instead of apply? can also finish the job.",
+    "html": "<p>Using the same tricks, confirm that <code class=\"docutils literal notranslate\"><span class=\"pre\">linarith</span></code> instead of <code class=\"docutils literal notranslate\"><span class=\"pre\">apply?</span></code>\ncan also finish the job.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0085",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "Here is another example of an inequality:",
+    "html": "<p>Here is another example of an inequality:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0086",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "Mathlib tends to put spaces around binary operations like * and ^ , but in this example, the more compressed format increases readability. There are a number of things worth noticing. First, an expression s ≥ t is definitionally equivalent to t ≤ s . In principle, this means one should be able to use them interchangeably. But some of Lean’s automation does not recognize the equivalence, so Mathlib tends to favor ≤ over ≥ . Second, we have used the ring tactic extensively. It is a real timesaver! Finally, notice that in the second line of the second calc proof, instead of writing by exact add_le_add (le_refl _) h , we can simply write the proof term add_le_add (le_refl _) h .",
+    "html": "<p>Mathlib tends to put spaces around binary operations like <code class=\"docutils literal notranslate\"><span class=\"pre\">*</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">^</span></code>,\nbut in this example, the more compressed format increases readability.\nThere are a number of things worth noticing.\nFirst, an expression <code class=\"docutils literal notranslate\"><span class=\"pre\">s</span> <span class=\"pre\">≥</span> <span class=\"pre\">t</span></code> is definitionally equivalent to <code class=\"docutils literal notranslate\"><span class=\"pre\">t</span> <span class=\"pre\">≤</span> <span class=\"pre\">s</span></code>.\nIn principle, this means one should be able to use them interchangeably.\nBut some of Lean’s automation does not recognize the equivalence,\nso Mathlib tends to favor <code class=\"docutils literal notranslate\"><span class=\"pre\">≤</span></code> over <code class=\"docutils literal notranslate\"><span class=\"pre\">≥</span></code>.\nSecond, we have used the <code class=\"docutils literal notranslate\"><span class=\"pre\">ring</span></code> tactic extensively.\nIt is a real timesaver!\nFinally, notice that in the second line of the\nsecond <code class=\"docutils literal notranslate\"><span class=\"pre\">calc</span></code> proof,\ninstead of writing <code class=\"docutils literal notranslate\"><span class=\"pre\">by</span> <span class=\"pre\">exact</span> <span class=\"pre\">add_le_add</span> <span class=\"pre\">(le_refl</span> <span class=\"pre\">_)</span> <span class=\"pre\">h</span></code>,\nwe can simply write the proof term <code class=\"docutils literal notranslate\"><span class=\"pre\">add_le_add</span> <span class=\"pre\">(le_refl</span> <span class=\"pre\">_)</span> <span class=\"pre\">h</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0087",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "In fact, the only cleverness in the proof above is figuring out the hypothesis h . Once we have it, the second calculation involves only linear arithmetic, and linarith can handle it:",
+    "html": "<p>In fact, the only cleverness in the proof above is figuring\nout the hypothesis <code class=\"docutils literal notranslate\"><span class=\"pre\">h</span></code>.\nOnce we have it, the second calculation involves only\nlinear arithmetic, and <code class=\"docutils literal notranslate\"><span class=\"pre\">linarith</span></code> can handle it:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0088",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "How nice! We challenge you to use these ideas to prove the following theorem. You can use the theorem abs_le'.mpr . You will also need the constructor tactic to split a conjunction into two goals; see Section 3.4 .",
+    "html": "<p>How nice! We challenge you to use these ideas to prove the\nfollowing theorem. You can use the theorem <code class=\"docutils literal notranslate\"><span class=\"pre\">abs_le'.mpr</span></code>.\nYou will also need the <code class=\"docutils literal notranslate\"><span class=\"pre\">constructor</span></code> tactic to split a conjunction\ninto two goals; see <a class=\"reference internal\" href=\"C03_Logic.html#conjunction-and-biimplication\"><span class=\"std std-numref\">Section 3.4</span></a>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0089",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "If you managed to solve this, congratulations! You are well on your way to becoming a master formalizer.",
+    "html": "<p>If you managed to solve this, congratulations!\nYou are well on your way to becoming a master formalizer.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0090",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "The min function on the real numbers is uniquely characterized by the following three facts:",
+    "html": "<p id=\"index-21\">The <code class=\"docutils literal notranslate\"><span class=\"pre\">min</span></code> function on the real numbers is uniquely characterized\nby the following three facts:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0091",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "Can you guess the names of the theorems that characterize max in a similar way?",
+    "html": "<p>Can you guess the names of the theorems that characterize\n<code class=\"docutils literal notranslate\"><span class=\"pre\">max</span></code> in a similar way?</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0092",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "Notice that we have to apply min to a pair of arguments a and b by writing min a b rather than min (a, b) . Formally, min is a function of type ℝ → ℝ → ℝ . When we write a type like this with multiple arrows, the convention is that the implicit parentheses associate to the right, so the type is interpreted as ℝ → (ℝ → ℝ) . The net effect is that if a and b have type ℝ then min a has type ℝ → ℝ and min a b has type ℝ , so min acts like a function of two arguments, as we expect. Handling multiple arguments in this way is known as currying , after the logician Haskell Curry.",
+    "html": "<p>Notice that we have to apply <code class=\"docutils literal notranslate\"><span class=\"pre\">min</span></code> to a pair of arguments <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">b</span></code>\nby writing <code class=\"docutils literal notranslate\"><span class=\"pre\">min</span> <span class=\"pre\">a</span> <span class=\"pre\">b</span></code> rather than <code class=\"docutils literal notranslate\"><span class=\"pre\">min</span> <span class=\"pre\">(a,</span> <span class=\"pre\">b)</span></code>.\nFormally, <code class=\"docutils literal notranslate\"><span class=\"pre\">min</span></code> is a function of type <code class=\"docutils literal notranslate\"><span class=\"pre\">ℝ</span> <span class=\"pre\">→</span> <span class=\"pre\">ℝ</span> <span class=\"pre\">→</span> <span class=\"pre\">ℝ</span></code>.\nWhen we write a type like this with multiple arrows,\nthe convention is that the implicit parentheses associate\nto the right, so the type is interpreted as <code class=\"docutils literal notranslate\"><span class=\"pre\">ℝ</span> <span class=\"pre\">→</span> <span class=\"pre\">(ℝ</span> <span class=\"pre\">→</span> <span class=\"pre\">ℝ)</span></code>.\nThe net effect is that if <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">b</span></code> have type <code class=\"docutils literal notranslate\"><span class=\"pre\">ℝ</span></code>\nthen <code class=\"docutils literal notranslate\"><span class=\"pre\">min</span> <span class=\"pre\">a</span></code> has type <code class=\"docutils literal notranslate\"><span class=\"pre\">ℝ</span> <span class=\"pre\">→</span> <span class=\"pre\">ℝ</span></code> and\n<code class=\"docutils literal notranslate\"><span class=\"pre\">min</span> <span class=\"pre\">a</span> <span class=\"pre\">b</span></code> has type <code class=\"docutils literal notranslate\"><span class=\"pre\">ℝ</span></code>, so <code class=\"docutils literal notranslate\"><span class=\"pre\">min</span></code> acts like a function\nof two arguments, as we expect. Handling multiple\narguments in this way is known as <em>currying</em>,\nafter the logician Haskell Curry.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0093",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "The order of operations in Lean can also take some getting used to. Function application binds tighter than infix operations, so the expression min a b + c is interpreted as (min a b) + c . With time, these conventions will become second nature.",
+    "html": "<p>The order of operations in Lean can also take some getting used to.\nFunction application binds tighter than infix operations, so the\nexpression <code class=\"docutils literal notranslate\"><span class=\"pre\">min</span> <span class=\"pre\">a</span> <span class=\"pre\">b</span> <span class=\"pre\">+</span> <span class=\"pre\">c</span></code> is interpreted as <code class=\"docutils literal notranslate\"><span class=\"pre\">(min</span> <span class=\"pre\">a</span> <span class=\"pre\">b)</span> <span class=\"pre\">+</span> <span class=\"pre\">c</span></code>.\nWith time, these conventions will become second nature.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0094",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "Using the theorem le_antisymm , we can show that two real numbers are equal if each is less than or equal to the other. Using this and the facts above, we can show that min is commutative:",
+    "html": "<p>Using the theorem <code class=\"docutils literal notranslate\"><span class=\"pre\">le_antisymm</span></code>, we can show that two\nreal numbers are equal if each is less than or equal to the other.\nUsing this and the facts above,\nwe can show that <code class=\"docutils literal notranslate\"><span class=\"pre\">min</span></code> is commutative:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0095",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "Here we have used dots to separate proofs of different goals. Our usage is inconsistent: at the outer level, we use dots and indentation for both goals, whereas for the nested proofs, we use dots only until a single goal remains. Both conventions are reasonable and useful. We also use the show tactic to structure the proof and indicate what is being proved in each block. The proof still works without the show commands, but using them makes the proof easier to read and maintain.",
+    "html": "<p id=\"index-22\">Here we have used dots to separate proofs of\ndifferent goals.\nOur usage is inconsistent:\nat the outer level,\nwe use dots and indentation for both goals,\nwhereas for the nested proofs,\nwe use dots only until a single goal remains.\nBoth conventions are reasonable and useful.\nWe also use the <code class=\"docutils literal notranslate\"><span class=\"pre\">show</span></code> tactic to structure\nthe proof\nand indicate what is being proved in each block.\nThe proof still works without the <code class=\"docutils literal notranslate\"><span class=\"pre\">show</span></code> commands,\nbut using them makes the proof easier to read and maintain.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0096",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "It may bother you that the proof is repetitive. To foreshadow skills you will learn later on, we note that one way to avoid the repetition is to state a local lemma and then use it:",
+    "html": "<p>It may bother you that the proof is repetitive.\nTo foreshadow skills you will learn later on,\nwe note that one way to avoid the repetition\nis to state a local lemma and then use it:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0097",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "We will say more about the universal quantifier in Section 3.1 , but suffice it to say here that the hypothesis h says that the desired inequality holds for any x and y , and the intro tactic introduces an arbitrary x and y to establish the conclusion. The first apply after le_antisymm implicitly uses h a b , whereas the second one uses h b a .",
+    "html": "<p>We will say more about the universal quantifier in\n<a class=\"reference internal\" href=\"C03_Logic.html#implication-and-the-universal-quantifier\"><span class=\"std std-numref\">Section 3.1</span></a>,\nbut suffice it to say here that the hypothesis\n<code class=\"docutils literal notranslate\"><span class=\"pre\">h</span></code> says that the desired inequality holds for\nany <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">y</span></code>,\nand the <code class=\"docutils literal notranslate\"><span class=\"pre\">intro</span></code> tactic introduces an arbitrary\n<code class=\"docutils literal notranslate\"><span class=\"pre\">x</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">y</span></code> to establish the conclusion.\nThe first <code class=\"docutils literal notranslate\"><span class=\"pre\">apply</span></code> after <code class=\"docutils literal notranslate\"><span class=\"pre\">le_antisymm</span></code> implicitly\nuses <code class=\"docutils literal notranslate\"><span class=\"pre\">h</span> <span class=\"pre\">a</span> <span class=\"pre\">b</span></code>, whereas the second one uses <code class=\"docutils literal notranslate\"><span class=\"pre\">h</span> <span class=\"pre\">b</span> <span class=\"pre\">a</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0098",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "Another solution is to use the repeat tactic, which applies a tactic (or a block) as many times as it can.",
+    "html": "<p id=\"index-23\">Another solution is to use the <code class=\"docutils literal notranslate\"><span class=\"pre\">repeat</span></code> tactic,\nwhich applies a tactic (or a block) as many times\nas it can.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0099",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "We encourage you to prove the following as exercises. You can use either of the tricks just described to shorten the first.",
+    "html": "<p>We encourage you to prove the following as exercises.\nYou can use either of the tricks just described to shorten the first.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0100",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "Of course, you are welcome to prove the associativity of max as well.",
+    "html": "<p>Of course, you are welcome to prove the associativity of <code class=\"docutils literal notranslate\"><span class=\"pre\">max</span></code> as well.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0101",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "It is an interesting fact that min distributes over max the way that multiplication distributes over addition, and vice-versa. In other words, on the real numbers, we have the identity min a (max b c) = max (min a b) (min a c) as well as the corresponding version with max and min switched. But in the next section we will see that this does not follow from the transitivity and reflexivity of ≤ and the characterizing properties of min and max enumerated above. We need to use the fact that ≤ on the real numbers is a total order , which is to say, it satisfies ∀ x y, x ≤ y ∨ y ≤ x . Here the disjunction symbol, ∨ , represents “or”. In the first case, we have min x y = x , and in the second case, we have min x y = y . We will learn how to reason by cases in Section 3.5 , but for now we will stick to examples that don’t require the case split.",
+    "html": "<p>It is an interesting fact that <code class=\"docutils literal notranslate\"><span class=\"pre\">min</span></code> distributes over <code class=\"docutils literal notranslate\"><span class=\"pre\">max</span></code>\nthe way that multiplication distributes over addition,\nand vice-versa.\nIn other words, on the real numbers, we have the identity\n<code class=\"docutils literal notranslate\"><span class=\"pre\">min</span> <span class=\"pre\">a</span> <span class=\"pre\">(max</span> <span class=\"pre\">b</span> <span class=\"pre\">c)</span> <span class=\"pre\">=</span> <span class=\"pre\">max</span> <span class=\"pre\">(min</span> <span class=\"pre\">a</span> <span class=\"pre\">b)</span> <span class=\"pre\">(min</span> <span class=\"pre\">a</span> <span class=\"pre\">c)</span></code>\nas well as the corresponding version with <code class=\"docutils literal notranslate\"><span class=\"pre\">max</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">min</span></code>\nswitched.\nBut in the next section we will see that this does <em>not</em> follow\nfrom the transitivity and reflexivity of <code class=\"docutils literal notranslate\"><span class=\"pre\">≤</span></code> and\nthe characterizing properties of <code class=\"docutils literal notranslate\"><span class=\"pre\">min</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">max</span></code> enumerated above.\nWe need to use the fact that <code class=\"docutils literal notranslate\"><span class=\"pre\">≤</span></code> on the real numbers is a <em>total order</em>,\nwhich is to say,\nit satisfies <code class=\"docutils literal notranslate\"><span class=\"pre\">∀</span> <span class=\"pre\">x</span> <span class=\"pre\">y,</span> <span class=\"pre\">x</span> <span class=\"pre\">≤</span> <span class=\"pre\">y</span> <span class=\"pre\">∨</span> <span class=\"pre\">y</span> <span class=\"pre\">≤</span> <span class=\"pre\">x</span></code>.\nHere the disjunction symbol, <code class=\"docutils literal notranslate\"><span class=\"pre\">∨</span></code>, represents “or”.\nIn the first case, we have <code class=\"docutils literal notranslate\"><span class=\"pre\">min</span> <span class=\"pre\">x</span> <span class=\"pre\">y</span> <span class=\"pre\">=</span> <span class=\"pre\">x</span></code>,\nand in the second case, we have <code class=\"docutils literal notranslate\"><span class=\"pre\">min</span> <span class=\"pre\">x</span> <span class=\"pre\">y</span> <span class=\"pre\">=</span> <span class=\"pre\">y</span></code>.\nWe will learn how to reason by cases in <a class=\"reference internal\" href=\"C03_Logic.html#disjunction\"><span class=\"std std-numref\">Section 3.5</span></a>,\nbut for now we will stick to examples that don’t require the case split.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0102",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "Here is one such example:",
+    "html": "<p>Here is one such example:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0103",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "It is clear that aux provides one of the two inequalities needed to prove the equality, but applying it to suitable values yields the other direction as well. As a hint, you can use the theorem add_neg_cancel_right and the linarith tactic.",
+    "html": "<p>It is clear that <code class=\"docutils literal notranslate\"><span class=\"pre\">aux</span></code> provides one of the two inequalities\nneeded to prove the equality,\nbut applying it to suitable values yields the other direction\nas well.\nAs a hint, you can use the theorem <code class=\"docutils literal notranslate\"><span class=\"pre\">add_neg_cancel_right</span></code>\nand the <code class=\"docutils literal notranslate\"><span class=\"pre\">linarith</span></code> tactic.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0104",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "Lean’s naming convention is made manifest in the library’s name for the triangle inequality:",
+    "html": "<p id=\"index-24\">Lean’s naming convention is made manifest\nin the library’s name for the triangle inequality:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0105",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "Use it to prove the following variant, using also add_sub_cancel_right :",
+    "html": "<p>Use it to prove the following variant, using also <code class=\"docutils literal notranslate\"><span class=\"pre\">add_sub_cancel_right</span></code>:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0106",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "See if you can do this in three lines or less. You can use the theorem sub_add_cancel .",
+    "html": "<p>See if you can do this in three lines or less.\nYou can use the theorem <code class=\"docutils literal notranslate\"><span class=\"pre\">sub_add_cancel</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0107",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "Another important relation that we will make use of in the sections to come is the divisibility relation on the natural numbers, x ∣ y . Be careful: the divisibility symbol is not the ordinary bar on your keyboard. Rather, it is a unicode character obtained by typing \\| in VS Code. By convention, Mathlib uses dvd to refer to it in theorem names.",
+    "html": "<p id=\"index-25\">Another important relation that we will make use of\nin the sections to come is the divisibility relation\non the natural numbers, <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span> <span class=\"pre\">∣</span> <span class=\"pre\">y</span></code>.\nBe careful: the divisibility symbol is <em>not</em> the\nordinary bar on your keyboard.\nRather, it is a unicode character obtained by\ntyping <code class=\"docutils literal notranslate\"><span class=\"pre\">\\|</span></code> in VS Code.\nBy convention, Mathlib uses <code class=\"docutils literal notranslate\"><span class=\"pre\">dvd</span></code>\nto refer to it in theorem names.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0108",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "In the last example, the exponent is a natural number, and applying dvd_mul_left forces Lean to expand the definition of x^2 to x^1 * x . See if you can guess the names of the theorems you need to prove the following:",
+    "html": "<p>In the last example, the exponent is a natural\nnumber, and applying <code class=\"docutils literal notranslate\"><span class=\"pre\">dvd_mul_left</span></code>\nforces Lean to expand the definition of <code class=\"docutils literal notranslate\"><span class=\"pre\">x^2</span></code> to\n<code class=\"docutils literal notranslate\"><span class=\"pre\">x^1</span> <span class=\"pre\">*</span> <span class=\"pre\">x</span></code>.\nSee if you can guess the names of the theorems\nyou need to prove the following:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0109",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "With respect to divisibility, the greatest common divisor , gcd , and least common multiple, lcm , are analogous to min and max . Since every number divides 0 , 0 is really the greatest element with respect to divisibility:",
+    "html": "<p id=\"index-26\">With respect to divisibility, the <em>greatest common divisor</em>,\n<code class=\"docutils literal notranslate\"><span class=\"pre\">gcd</span></code>, and least common multiple, <code class=\"docutils literal notranslate\"><span class=\"pre\">lcm</span></code>,\nare analogous to <code class=\"docutils literal notranslate\"><span class=\"pre\">min</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">max</span></code>.\nSince every number divides <code class=\"docutils literal notranslate\"><span class=\"pre\">0</span></code>,\n<code class=\"docutils literal notranslate\"><span class=\"pre\">0</span></code> is really the greatest element with respect to divisibility:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0110",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "See if you can guess the names of the theorems you will need to prove the following:",
+    "html": "<p>See if you can guess the names of the theorems you will need to\nprove the following:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0111",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "Hint: you can use dvd_antisymm , but if you do, Lean will complain that the expression is ambiguous between the generic theorem and the version Nat.dvd_antisymm , the one specifically for the natural numbers. You can use _root_.dvd_antisymm to specify the generic one; either one will work.",
+    "html": "<p>Hint: you can use <code class=\"docutils literal notranslate\"><span class=\"pre\">dvd_antisymm</span></code>, but if you do, Lean will\ncomplain that the expression is ambiguous between the generic\ntheorem and the version <code class=\"docutils literal notranslate\"><span class=\"pre\">Nat.dvd_antisymm</span></code>,\nthe one specifically for the natural numbers.\nYou can use <code class=\"docutils literal notranslate\"><span class=\"pre\">_root_.dvd_antisymm</span></code> to specify the generic one;\neither one will work.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0112",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "In Section 2.2 , we saw that many common identities governing the real numbers hold in more general classes of algebraic structures, such as commutative rings. We can use any axioms we want to describe an algebraic structure, not just equations. For example, a partial order consists of a set with a binary relation that is reflexive, transitive, and antisymmetric. like ≤ on the real numbers. Lean knows about partial orders:",
+    "html": "<p id=\"index-27\">In <a class=\"reference internal\" href=\"#proving-identities-in-algebraic-structures\"><span class=\"std std-numref\">Section 2.2</span></a>,\nwe saw that many common identities governing the real numbers hold\nin more general classes of algebraic structures,\nsuch as commutative rings.\nWe can use any axioms we want to describe an algebraic structure,\nnot just equations.\nFor example, a <em>partial order</em> consists of a set with a\nbinary relation that is reflexive, transitive, and antisymmetric.\nlike <code class=\"docutils literal notranslate\"><span class=\"pre\">≤</span></code> on the real numbers.\nLean knows about partial orders:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0113",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "Here we are adopting the Mathlib convention of using letters like α , β , and γ (entered as \\a , \\b , and \\g ) for arbitrary types. The library often uses letters like R and G for the carriers of algebraic structures like rings and groups, respectively, but in general Greek letters are used for types, especially when there is little or no structure associated with them.",
+    "html": "<p>Here we are adopting the Mathlib convention of using\nletters like <code class=\"docutils literal notranslate\"><span class=\"pre\">α</span></code>, <code class=\"docutils literal notranslate\"><span class=\"pre\">β</span></code>, and <code class=\"docutils literal notranslate\"><span class=\"pre\">γ</span></code>\n(entered as <code class=\"docutils literal notranslate\"><span class=\"pre\">\\a</span></code>, <code class=\"docutils literal notranslate\"><span class=\"pre\">\\b</span></code>, and <code class=\"docutils literal notranslate\"><span class=\"pre\">\\g</span></code>)\nfor arbitrary types.\nThe library often uses letters like <code class=\"docutils literal notranslate\"><span class=\"pre\">R</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">G</span></code>\nfor the carriers of algebraic structures like rings and groups,\nrespectively,\nbut in general Greek letters are used for types,\nespecially when there is little or no structure\nassociated with them.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0114",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "Associated to any partial order, ≤ , there is also a strict partial order , < , which acts somewhat like < on the real numbers. Saying that x is less than y in this order is equivalent to saying that it is less-than-or-equal to y and not equal to y .",
+    "html": "<p>Associated to any partial order, <code class=\"docutils literal notranslate\"><span class=\"pre\">≤</span></code>,\nthere is also a <em>strict partial order</em>, <code class=\"docutils literal notranslate\"><span class=\"pre\">&lt;</span></code>,\nwhich acts somewhat like <code class=\"docutils literal notranslate\"><span class=\"pre\">&lt;</span></code> on the real numbers.\nSaying that <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span></code> is less than <code class=\"docutils literal notranslate\"><span class=\"pre\">y</span></code> in this order\nis equivalent to saying that it is less-than-or-equal to <code class=\"docutils literal notranslate\"><span class=\"pre\">y</span></code>\nand not equal to <code class=\"docutils literal notranslate\"><span class=\"pre\">y</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0115",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "In this example, the symbol ∧ stands for “and,” the symbol ¬ stands for “not,” and x ≠ y abbreviates ¬ (x = y) . In Chapter 3 , you will learn how to use these logical connectives to prove that < has the properties indicated.",
+    "html": "<p>In this example, the symbol <code class=\"docutils literal notranslate\"><span class=\"pre\">∧</span></code> stands for “and,”\nthe symbol <code class=\"docutils literal notranslate\"><span class=\"pre\">¬</span></code> stands for “not,” and\n<code class=\"docutils literal notranslate\"><span class=\"pre\">x</span> <span class=\"pre\">≠</span> <span class=\"pre\">y</span></code> abbreviates <code class=\"docutils literal notranslate\"><span class=\"pre\">¬</span> <span class=\"pre\">(x</span> <span class=\"pre\">=</span> <span class=\"pre\">y)</span></code>.\nIn <a class=\"reference internal\" href=\"C03_Logic.html#logic\"><span class=\"std std-numref\">Chapter 3</span></a>, you will learn how to use\nthese logical connectives to <em>prove</em> that <code class=\"docutils literal notranslate\"><span class=\"pre\">&lt;</span></code>\nhas the properties indicated.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0116",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "A lattice is a structure that extends a partial order with operations ⊓ and ⊔ that are analogous to min and max on the real numbers:",
+    "html": "<p id=\"index-28\">A <em>lattice</em> is a structure that extends a partial\norder with operations <code class=\"docutils literal notranslate\"><span class=\"pre\">⊓</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">⊔</span></code> that are\nanalogous to <code class=\"docutils literal notranslate\"><span class=\"pre\">min</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">max</span></code> on the real numbers:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0117",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "The characterizations of ⊓ and ⊔ justify calling them the greatest lower bound and least upper bound , respectively. You can type them in VS code using \\glb and \\lub . The symbols are also often called then infimum and the supremum , and Mathlib refers to them as inf and sup in theorem names. To further complicate matters, they are also often called meet and join . Therefore, if you work with lattices, you have to keep the following dictionary in mind:",
+    "html": "<p>The characterizations of <code class=\"docutils literal notranslate\"><span class=\"pre\">⊓</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">⊔</span></code> justify calling them\nthe <em>greatest lower bound</em> and <em>least upper bound</em>, respectively.\nYou can type them in VS code using <code class=\"docutils literal notranslate\"><span class=\"pre\">\\glb</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">\\lub</span></code>.\nThe symbols are also often called then <em>infimum</em> and\nthe <em>supremum</em>,\nand Mathlib refers to them as <code class=\"docutils literal notranslate\"><span class=\"pre\">inf</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">sup</span></code> in\ntheorem names.\nTo further complicate matters,\nthey are also often called <em>meet</em> and <em>join</em>.\nTherefore, if you work with lattices,\nyou have to keep the following dictionary in mind:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0118",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "Some instances of lattices include:",
+    "html": "<p>Some instances of lattices include:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0119",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "You can check that, as with min / max and gcd / lcm , you can prove the commutativity and associativity of the infimum and supremum using only their characterizing axioms, together with le_refl and le_trans .",
+    "html": "<p>You can check that, as with <code class=\"docutils literal notranslate\"><span class=\"pre\">min</span></code> / <code class=\"docutils literal notranslate\"><span class=\"pre\">max</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">gcd</span></code> / <code class=\"docutils literal notranslate\"><span class=\"pre\">lcm</span></code>,\nyou can prove the commutativity and associativity of the infimum and supremum\nusing only their characterizing axioms,\ntogether with <code class=\"docutils literal notranslate\"><span class=\"pre\">le_refl</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">le_trans</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0120",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "Using apply le_trans when seeing a goal x ≤ z is not a great idea. Indeed Lean has no way to guess which intermediate element y we want to use. So apply le_trans produces three goals that look like x ≤ ?a , ?a ≤ z and α where ?a (probably with a more complicated auto-generated name) stands for the mysterious y . The last goal, with type α , is to provide the value of y . It comes last because Lean hopes to automatically infer it from the proof of the first goal x ≤ ?a . In order to avoid this unappealing situation, you can use the calc tactic to explicitly provide y . Alternatively, you can use the trans tactic which takes y as an argument and produces the expected goals x ≤ y and y ≤ z . Of course you can also avoid this issue by providing directly a full proof such as exact le_trans inf_le_left inf_le_right , but this requires a lot more planning.",
+    "html": "<p id=\"index-29\">Using <code class=\"docutils literal notranslate\"><span class=\"pre\">apply</span> <span class=\"pre\">le_trans</span></code> when seeing a goal <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span> <span class=\"pre\">≤</span> <span class=\"pre\">z</span></code> is not a great idea.\nIndeed Lean has no way to guess which intermediate element <code class=\"docutils literal notranslate\"><span class=\"pre\">y</span></code> we\nwant to use.\nSo <code class=\"docutils literal notranslate\"><span class=\"pre\">apply</span> <span class=\"pre\">le_trans</span></code> produces three goals that look like <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span> <span class=\"pre\">≤</span> <span class=\"pre\">?a</span></code>, <code class=\"docutils literal notranslate\"><span class=\"pre\">?a</span> <span class=\"pre\">≤</span> <span class=\"pre\">z</span></code>\nand <code class=\"docutils literal notranslate\"><span class=\"pre\">α</span></code> where <code class=\"docutils literal notranslate\"><span class=\"pre\">?a</span></code> (probably with a more complicated auto-generated name) stands\nfor the mysterious <code class=\"docutils literal notranslate\"><span class=\"pre\">y</span></code>.\nThe last goal, with type <code class=\"docutils literal notranslate\"><span class=\"pre\">α</span></code>, is to provide the value of <code class=\"docutils literal notranslate\"><span class=\"pre\">y</span></code>.\nIt comes last because Lean hopes to automatically infer it from the proof of\nthe first goal <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span> <span class=\"pre\">≤</span> <span class=\"pre\">?a</span></code>.\nIn order to avoid this unappealing situation, you can use the <code class=\"docutils literal notranslate\"><span class=\"pre\">calc</span></code> tactic\nto explicitly provide <code class=\"docutils literal notranslate\"><span class=\"pre\">y</span></code>.\nAlternatively, you can use the <code class=\"docutils literal notranslate\"><span class=\"pre\">trans</span></code> tactic\nwhich takes <code class=\"docutils literal notranslate\"><span class=\"pre\">y</span></code> as an argument and produces the expected goals <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span> <span class=\"pre\">≤</span> <span class=\"pre\">y</span></code> and\n<code class=\"docutils literal notranslate\"><span class=\"pre\">y</span> <span class=\"pre\">≤</span> <span class=\"pre\">z</span></code>.\nOf course you can also avoid this issue by providing directly a full proof such as\n<code class=\"docutils literal notranslate\"><span class=\"pre\">exact</span> <span class=\"pre\">le_trans</span> <span class=\"pre\">inf_le_left</span> <span class=\"pre\">inf_le_right</span></code>, but this requires a lot more\nplanning.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0121",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "You can find these theorems in the Mathlib as inf_comm , inf_assoc , sup_comm , and sup_assoc , respectively.",
+    "html": "<p>You can find these theorems in the Mathlib as <code class=\"docutils literal notranslate\"><span class=\"pre\">inf_comm</span></code>, <code class=\"docutils literal notranslate\"><span class=\"pre\">inf_assoc</span></code>,\n<code class=\"docutils literal notranslate\"><span class=\"pre\">sup_comm</span></code>, and <code class=\"docutils literal notranslate\"><span class=\"pre\">sup_assoc</span></code>, respectively.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0122",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "Another good exercise is to prove the absorption laws using only those axioms:",
+    "html": "<p>Another good exercise is to prove the <em>absorption laws</em>\nusing only those axioms:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0123",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "These can be found in Mathlib with the names inf_sup_self and sup_inf_self .",
+    "html": "<p>These can be found in Mathlib with the names <code class=\"docutils literal notranslate\"><span class=\"pre\">inf_sup_self</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">sup_inf_self</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0124",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "A lattice that satisfies the additional identities x ⊓ (y ⊔ z) = (x ⊓ y) ⊔ (x ⊓ z) and x ⊔ (y ⊓ z) = (x ⊔ y) ⊓ (x ⊔ z) is called a distributive lattice . Lean knows about these too:",
+    "html": "<p>A lattice that satisfies the additional identities\n<code class=\"docutils literal notranslate\"><span class=\"pre\">x</span> <span class=\"pre\">⊓</span> <span class=\"pre\">(y</span> <span class=\"pre\">⊔</span> <span class=\"pre\">z)</span> <span class=\"pre\">=</span> <span class=\"pre\">(x</span> <span class=\"pre\">⊓</span> <span class=\"pre\">y)</span> <span class=\"pre\">⊔</span> <span class=\"pre\">(x</span> <span class=\"pre\">⊓</span> <span class=\"pre\">z)</span></code> and\n<code class=\"docutils literal notranslate\"><span class=\"pre\">x</span> <span class=\"pre\">⊔</span> <span class=\"pre\">(y</span> <span class=\"pre\">⊓</span> <span class=\"pre\">z)</span> <span class=\"pre\">=</span> <span class=\"pre\">(x</span> <span class=\"pre\">⊔</span> <span class=\"pre\">y)</span> <span class=\"pre\">⊓</span> <span class=\"pre\">(x</span> <span class=\"pre\">⊔</span> <span class=\"pre\">z)</span></code>\nis called a <em>distributive lattice</em>. Lean knows about these too:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0125",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "The left and right versions are easily shown to be equivalent, given the commutativity of ⊓ and ⊔ . It is a good exercise to show that not every lattice is distributive by providing an explicit description of a nondistributive lattice with finitely many elements. It is also a good exercise to show that in any lattice, either distributivity law implies the other:",
+    "html": "<p>The left and right versions are easily shown to be\nequivalent, given the commutativity of <code class=\"docutils literal notranslate\"><span class=\"pre\">⊓</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">⊔</span></code>.\nIt is a good exercise to show that not every lattice\nis distributive\nby providing an explicit description of a\nnondistributive lattice with finitely many elements.\nIt is also a good exercise to show that in any lattice,\neither distributivity law implies the other:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0126",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "It is possible to combine axiomatic structures into larger ones. For example, a strict ordered ring consists of a ring together with a partial order on the carrier satisfying additional axioms that say that the ring operations are compatible with the order:",
+    "html": "<p>It is possible to combine axiomatic structures into larger ones.\nFor example, a <em>strict ordered ring</em> consists of a ring together\nwith a partial order on the carrier\nsatisfying additional axioms that say that the ring operations\nare compatible with the order:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0127",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "Chapter 3 will provide the means to derive the following from mul_pos and the definition of < :",
+    "html": "<p><a class=\"reference internal\" href=\"C03_Logic.html#logic\"><span class=\"std std-numref\">Chapter 3</span></a> will provide the means to derive the following from <code class=\"docutils literal notranslate\"><span class=\"pre\">mul_pos</span></code>\nand the definition of <code class=\"docutils literal notranslate\"><span class=\"pre\">&lt;</span></code>:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0128",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "It is then an extended exercise to show that many common facts used to reason about arithmetic and the ordering on the real numbers hold generically for any ordered ring. Here are a couple of examples you can try, using only properties of rings, partial orders, and the facts enumerated in the last two examples (beware that those rings are not assumed to be commutative, so the ring tactic is not available):",
+    "html": "<p>It is then an extended exercise to show that many common facts\nused to reason about arithmetic and the ordering on the real\nnumbers hold generically for any ordered ring.\nHere are a couple of examples you can try,\nusing only properties of rings, partial orders, and the facts\nenumerated in the last two examples (beware that those rings are\nnot assumed to be commutative, so the <cite>ring</cite> tactic is not available):</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0129",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "Finally, here is one last example. A metric space consists of a set equipped with a notion of distance, dist x y , mapping any pair of elements to a real number. The distance function is assumed to satisfy the following axioms:",
+    "html": "<p id=\"index-30\">Finally, here is one last example.\nA <em>metric space</em> consists of a set equipped with a notion of\ndistance, <code class=\"docutils literal notranslate\"><span class=\"pre\">dist</span> <span class=\"pre\">x</span> <span class=\"pre\">y</span></code>,\nmapping any pair of elements to a real number.\nThe distance function is assumed to satisfy the following axioms:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0130",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "Having mastered this section, you can show that it follows from these axioms that distances are always nonnegative:",
+    "html": "<p>Having mastered this section,\nyou can show that it follows from these axioms that distances are\nalways nonnegative:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0131",
+    "file": "C02_Basics.html",
+    "tag": "p",
+    "text": "As you may have guessed, this theorem is called dist_nonneg in Mathlib.",
+    "html": "<p>As you may have guessed, this theorem is called <code class=\"docutils literal notranslate\"><span class=\"pre\">dist_nonneg</span></code> in Mathlib.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0132",
+    "file": "C02_Basics.html",
+    "tag": "li",
+    "text": "\\(R\\) with \\(+\\) is an abelian group , with \\(0\\) as the additive identity and negation as inverse.",
+    "html": "<li><p><span class=\"math notranslate nohighlight\">\\(R\\)</span> with <span class=\"math notranslate nohighlight\">\\(+\\)</span> is an <em>abelian group</em>, with <span class=\"math notranslate nohighlight\">\\(0\\)</span>\nas the additive identity and negation as inverse.</p></li>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0133",
+    "file": "C02_Basics.html",
+    "tag": "li",
+    "text": "Multiplication is associative with identity \\(1\\) , and multiplication distributes over addition.",
+    "html": "<li><p>Multiplication is associative with identity <span class=\"math notranslate nohighlight\">\\(1\\)</span>,\nand multiplication distributes over addition.</p></li>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0134",
+    "file": "C02_Basics.html",
+    "tag": "li",
+    "text": "You can browse Mathlib in its GitHub repository .",
+    "html": "<li><p>You can browse Mathlib in its\n<a class=\"reference external\" href=\"https://github.com/leanprover-community/mathlib4\">GitHub repository</a>.</p></li>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0135",
+    "file": "C02_Basics.html",
+    "tag": "li",
+    "text": "You can use the API documentation on the Mathlib web pages .",
+    "html": "<li><p>You can use the API documentation on the Mathlib\n<a class=\"reference external\" href=\"https://leanprover-community.github.io/mathlib4_docs/\">web pages</a>.</p></li>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0136",
+    "file": "C02_Basics.html",
+    "tag": "li",
+    "text": "You can use Loogle <https://loogle.lean-lang.org> to search Lean and Mathlib definitions and theorems by patterns.",
+    "html": "<li><p>You can use <cite>Loogle &lt;https://loogle.lean-lang.org&gt;</cite>\nto search Lean and Mathlib definitions and theorems by patterns.</p></li>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0137",
+    "file": "C02_Basics.html",
+    "tag": "li",
+    "text": "You can rely on Mathlib naming conventions and Ctrl-space completion in the editor to guess a theorem name (or Cmd-space on a Mac keyboard). In Lean, a theorem named A_of_B_of_C establishes something of the form A from hypotheses of the form B and C , where A , B , and C approximate the way we might read the goals out loud. So a theorem establishing something like x + y ≤ ... will probably start with add_le . Typing add_le and hitting Ctrl-space will give you some helpful choices. Note that hitting Ctrl-space twice displays more information about the available completions.",
+    "html": "<li><p>You can rely on Mathlib naming conventions and Ctrl-space completion in\nthe editor to guess a theorem name (or Cmd-space on a Mac keyboard).\nIn Lean, a theorem named <code class=\"docutils literal notranslate\"><span class=\"pre\">A_of_B_of_C</span></code> establishes\nsomething of the form <code class=\"docutils literal notranslate\"><span class=\"pre\">A</span></code> from hypotheses of the form <code class=\"docutils literal notranslate\"><span class=\"pre\">B</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">C</span></code>,\nwhere <code class=\"docutils literal notranslate\"><span class=\"pre\">A</span></code>, <code class=\"docutils literal notranslate\"><span class=\"pre\">B</span></code>, and <code class=\"docutils literal notranslate\"><span class=\"pre\">C</span></code>\napproximate the way we might read the goals out loud.\nSo a theorem establishing something like <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span> <span class=\"pre\">+</span> <span class=\"pre\">y</span> <span class=\"pre\">≤</span> <span class=\"pre\">...</span></code> will probably\nstart with <code class=\"docutils literal notranslate\"><span class=\"pre\">add_le</span></code>.\nTyping <code class=\"docutils literal notranslate\"><span class=\"pre\">add_le</span></code> and hitting Ctrl-space will give you some helpful choices.\nNote that hitting Ctrl-space twice displays more information about the available\ncompletions.</p></li>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0138",
+    "file": "C02_Basics.html",
+    "tag": "li",
+    "text": "If you right-click on an existing theorem name in VS Code, the editor will show a menu with the option to jump to the file where the theorem is defined, and you can find similar theorems nearby.",
+    "html": "<li><p>If you right-click on an existing theorem name in VS Code,\nthe editor will show a menu with the option to\njump to the file where the theorem is defined,\nand you can find similar theorems nearby.</p></li>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0139",
+    "file": "C02_Basics.html",
+    "tag": "li",
+    "text": "You can use the apply? tactic, which tries to find the relevant theorem in the library.",
+    "html": "<li><p>You can use the <code class=\"docutils literal notranslate\"><span class=\"pre\">apply?</span></code> tactic,\nwhich tries to find the relevant theorem in the library.</p></li>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0140",
+    "file": "C02_Basics.html",
+    "tag": "li",
+    "text": "⊓ is the greatest lower bound , infimum , or meet .",
+    "html": "<li><p><code class=\"docutils literal notranslate\"><span class=\"pre\">⊓</span></code> is the <em>greatest lower bound</em>, <em>infimum</em>, or <em>meet</em>.</p></li>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0141",
+    "file": "C02_Basics.html",
+    "tag": "li",
+    "text": "⊔ is the least upper bound , supremum , or join .",
+    "html": "<li><p><code class=\"docutils literal notranslate\"><span class=\"pre\">⊔</span></code> is the <em>least upper bound</em>, <em>supremum</em>, or <em>join</em>.</p></li>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0142",
+    "file": "C02_Basics.html",
+    "tag": "li",
+    "text": "min and max on any total order, such as the integers or real numbers with ≤",
+    "html": "<li><p><code class=\"docutils literal notranslate\"><span class=\"pre\">min</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">max</span></code> on any total order, such as the integers or real numbers with <code class=\"docutils literal notranslate\"><span class=\"pre\">≤</span></code></p></li>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0143",
+    "file": "C02_Basics.html",
+    "tag": "li",
+    "text": "∩ and ∪ on the collection of subsets of some domain, with the ordering ⊆",
+    "html": "<li><p><code class=\"docutils literal notranslate\"><span class=\"pre\">∩</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">∪</span></code> on the collection of subsets of some domain, with the ordering <code class=\"docutils literal notranslate\"><span class=\"pre\">⊆</span></code></p></li>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0144",
+    "file": "C02_Basics.html",
+    "tag": "li",
+    "text": "∧ and ∨ on boolean truth values, with ordering x ≤ y if either x is false or y is true",
+    "html": "<li><p><code class=\"docutils literal notranslate\"><span class=\"pre\">∧</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">∨</span></code> on boolean truth values, with ordering <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span> <span class=\"pre\">≤</span> <span class=\"pre\">y</span></code> if either <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span></code> is false or <code class=\"docutils literal notranslate\"><span class=\"pre\">y</span></code> is true</p></li>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0145",
+    "file": "C02_Basics.html",
+    "tag": "li",
+    "text": "gcd and lcm on the natural numbers (or positive natural numbers), with the divisibility ordering, ∣",
+    "html": "<li><p><code class=\"docutils literal notranslate\"><span class=\"pre\">gcd</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">lcm</span></code> on the natural numbers (or positive natural numbers), with the divisibility ordering, <code class=\"docutils literal notranslate\"><span class=\"pre\">∣</span></code></p></li>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0146",
+    "file": "C02_Basics.html",
+    "tag": "li",
+    "text": "the collection of linear subspaces of a vector space, where the greatest lower bound is given by the intersection, the least upper bound is given by the sum of the two spaces, and the ordering is inclusion",
+    "html": "<li><p>the collection of linear subspaces of a vector space,\nwhere the greatest lower bound is given by the intersection,\nthe least upper bound is given by the sum of the two spaces,\nand the ordering is inclusion</p></li>",
+    "zh": ""
+  },
+  {
+    "id": "C02_Basics:0147",
+    "file": "C02_Basics.html",
+    "tag": "li",
+    "text": "the collection of topologies on a set (or, in Lean, a type), where the greatest lower bound of two topologies consists of the topology that is generated by their union, the least upper bound is their intersection, and the ordering is reverse inclusion",
+    "html": "<li><p>the collection of topologies on a set (or, in Lean, a type),\nwhere the greatest lower bound of two topologies consists of\nthe topology that is generated by their union,\nthe least upper bound is their intersection,\nand the ordering is reverse inclusion</p></li>",
+    "zh": ""
+  }
+]

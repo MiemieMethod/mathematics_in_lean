@@ -50,9 +50,16 @@ jobs:
           lake exe cache get
           lake build --no-ansi
 
+      - name: Install documentation tooling
+        run: |
+          python3 -m pip install beautifulsoup4 lxml
+
       - name: Prepare static documentation
         run: |
+          python3 scripts/apply_translation_overrides.py
+          python3 scripts/translate_html_blocks.py apply
           python3 scripts/normalize_chinese_html.py
+          python3 scripts/check_chinese_translation.py
           touch html/.nojekyll
           if [ -f mathematics_in_lean.pdf ]; then
             cp mathematics_in_lean.pdf html/mathematics_in_lean.pdf

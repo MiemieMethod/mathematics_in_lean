@@ -1,0 +1,818 @@
+[
+  {
+    "id": "C05_Elementary_Number_Theory:0001",
+    "file": "C05_Elementary_Number_Theory.html",
+    "tag": "h1",
+    "text": "5. Elementary Number Theory",
+    "html": "<h1><span class=\"section-number\">5. </span>Elementary Number Theory</h1>",
+    "zh": ""
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0002",
+    "file": "C05_Elementary_Number_Theory.html",
+    "tag": "h2",
+    "text": "5.1. Irrational Roots",
+    "html": "<h2><span class=\"section-number\">5.1. </span>Irrational Roots</h2>",
+    "zh": ""
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0003",
+    "file": "C05_Elementary_Number_Theory.html",
+    "tag": "h2",
+    "text": "5.2. Induction and Recursion",
+    "html": "<h2><span class=\"section-number\">5.2. </span>Induction and Recursion</h2>",
+    "zh": ""
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0004",
+    "file": "C05_Elementary_Number_Theory.html",
+    "tag": "h2",
+    "text": "5.3. Infinitely Many Primes",
+    "html": "<h2><span class=\"section-number\">5.3. </span>Infinitely Many Primes</h2>",
+    "zh": ""
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0005",
+    "file": "C05_Elementary_Number_Theory.html",
+    "tag": "h2",
+    "text": "5.4. More Induction",
+    "html": "<h2><span class=\"section-number\">5.4. </span>More Induction</h2>",
+    "zh": ""
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0006",
+    "file": "C05_Elementary_Number_Theory.html",
+    "tag": "p",
+    "text": "In this chapter, we show you how to formalize some elementary results in number theory. As we deal with more substantive mathematical content, the proofs will get longer and more involved, building on the skills you have already mastered.",
+    "html": "<p>In this chapter, we show you how to formalize some elementary\nresults in number theory.\nAs we deal with more substantive mathematical content,\nthe proofs will get longer and more involved,\nbuilding on the skills you have already mastered.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0007",
+    "file": "C05_Elementary_Number_Theory.html",
+    "tag": "p",
+    "text": "Let’s start with a fact known to the ancient Greeks, namely, that the square root of 2 is irrational. If we suppose otherwise, we can write \\(\\sqrt{2} = a / b\\) as a fraction in lowest terms. Squaring both sides yields \\(a^2 = 2 b^2\\) , which implies that \\(a\\) is even. If we write \\(a = 2c\\) , then we get \\(4c^2 = 2 b^2\\) and hence \\(b^2 = 2 c^2\\) . This implies that \\(b\\) is also even, contradicting the fact that we have assumed that \\(a / b\\) has been reduced to lowest terms.",
+    "html": "<p>Let’s start with a fact known to the ancient Greeks, namely,\nthat the square root of 2 is irrational.\nIf we suppose otherwise,\nwe can write <span class=\"math notranslate nohighlight\">\\(\\sqrt{2} = a / b\\)</span> as a fraction\nin lowest terms. Squaring both sides yields <span class=\"math notranslate nohighlight\">\\(a^2 = 2 b^2\\)</span>,\nwhich implies that <span class=\"math notranslate nohighlight\">\\(a\\)</span> is even.\nIf we write <span class=\"math notranslate nohighlight\">\\(a = 2c\\)</span>, then we get <span class=\"math notranslate nohighlight\">\\(4c^2 = 2 b^2\\)</span>\nand hence <span class=\"math notranslate nohighlight\">\\(b^2 = 2 c^2\\)</span>.\nThis implies that <span class=\"math notranslate nohighlight\">\\(b\\)</span> is also even, contradicting\nthe fact that we have assumed that <span class=\"math notranslate nohighlight\">\\(a / b\\)</span> has been\nreduced to lowest terms.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0008",
+    "file": "C05_Elementary_Number_Theory.html",
+    "tag": "p",
+    "text": "Saying that \\(a / b\\) is a fraction in lowest terms means that \\(a\\) and \\(b\\) do not have any factors in common, which is to say, they are coprime . Mathlib defines the predicate Nat.Coprime m n to be Nat.gcd m n = 1 . Using Lean’s anonymous projection notation, if s and t are expressions of type Nat , we can write s.Coprime t instead of Nat.Coprime s t , and similarly for Nat.gcd . As usual, Lean will often unfold the definition of Nat.Coprime automatically when necessary, but we can also do it manually by rewriting or simplifying with the identifier Nat.Coprime . The norm_num tactic is smart enough to compute concrete values.",
+    "html": "<p>Saying that <span class=\"math notranslate nohighlight\">\\(a / b\\)</span> is a fraction in lowest terms means\nthat <span class=\"math notranslate nohighlight\">\\(a\\)</span> and <span class=\"math notranslate nohighlight\">\\(b\\)</span> do not have any factors in common,\nwhich is to say, they are <em>coprime</em>.\nMathlib defines the predicate <code class=\"docutils literal notranslate\"><span class=\"pre\">Nat.Coprime</span> <span class=\"pre\">m</span> <span class=\"pre\">n</span></code> to be <code class=\"docutils literal notranslate\"><span class=\"pre\">Nat.gcd</span> <span class=\"pre\">m</span> <span class=\"pre\">n</span> <span class=\"pre\">=</span> <span class=\"pre\">1</span></code>.\nUsing Lean’s anonymous projection notation, if <code class=\"docutils literal notranslate\"><span class=\"pre\">s</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">t</span></code> are\nexpressions of type <code class=\"docutils literal notranslate\"><span class=\"pre\">Nat</span></code>, we can write <code class=\"docutils literal notranslate\"><span class=\"pre\">s.Coprime</span> <span class=\"pre\">t</span></code> instead of\n<code class=\"docutils literal notranslate\"><span class=\"pre\">Nat.Coprime</span> <span class=\"pre\">s</span> <span class=\"pre\">t</span></code>, and similarly for <code class=\"docutils literal notranslate\"><span class=\"pre\">Nat.gcd</span></code>.\nAs usual, Lean will often unfold the definition of <code class=\"docutils literal notranslate\"><span class=\"pre\">Nat.Coprime</span></code> automatically\nwhen necessary,\nbut we can also do it manually by rewriting or simplifying with\nthe identifier <code class=\"docutils literal notranslate\"><span class=\"pre\">Nat.Coprime</span></code>.\nThe <code class=\"docutils literal notranslate\"><span class=\"pre\">norm_num</span></code> tactic is smart enough to compute concrete values.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0009",
+    "file": "C05_Elementary_Number_Theory.html",
+    "tag": "p",
+    "text": "We have already encountered the gcd function in Section 2.4 . There is also a version of gcd for the integers; we will return to a discussion of the relationship between different number systems below. There are even a generic gcd function and generic notions of Prime and Coprime that make sense in general classes of algebraic structures. We will come to understand how Lean manages this generality in the next chapter. In the meanwhile, in this section, we will restrict attention to the natural numbers.",
+    "html": "<p>We have already encountered the <code class=\"docutils literal notranslate\"><span class=\"pre\">gcd</span></code> function in\n<a class=\"reference internal\" href=\"C02_Basics.html#more-on-order-and-divisibility\"><span class=\"std std-numref\">Section 2.4</span></a>.\nThere is also a version of <code class=\"docutils literal notranslate\"><span class=\"pre\">gcd</span></code> for the integers;\nwe will return to a discussion of the relationship between\ndifferent number systems below.\nThere are even a generic <code class=\"docutils literal notranslate\"><span class=\"pre\">gcd</span></code> function and generic\nnotions of <code class=\"docutils literal notranslate\"><span class=\"pre\">Prime</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">Coprime</span></code>\nthat make sense in general classes of algebraic structures.\nWe will come to understand how Lean manages this generality\nin the next chapter.\nIn the meanwhile, in this section, we will restrict attention\nto the natural numbers.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0010",
+    "file": "C05_Elementary_Number_Theory.html",
+    "tag": "p",
+    "text": "We also need the notion of a prime number, Nat.Prime . The theorem Nat.prime_def_lt provides one familiar characterization, and Nat.Prime.eq_one_or_self_of_dvd provides another.",
+    "html": "<p>We also need the notion of a prime number, <code class=\"docutils literal notranslate\"><span class=\"pre\">Nat.Prime</span></code>.\nThe theorem <code class=\"docutils literal notranslate\"><span class=\"pre\">Nat.prime_def_lt</span></code> provides one familiar characterization,\nand <code class=\"docutils literal notranslate\"><span class=\"pre\">Nat.Prime.eq_one_or_self_of_dvd</span></code> provides another.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0011",
+    "file": "C05_Elementary_Number_Theory.html",
+    "tag": "p",
+    "text": "In the natural numbers, a prime number has the property that it cannot be written as a product of nontrivial factors. In a broader mathematical context, an element of a ring that has this property is said to be irreducible . An element of a ring is said to be prime if whenever it divides a product, it divides one of the factors. It is an important property of the natural numbers that in that setting the two notions coincide, giving rise to the theorem Nat.Prime.dvd_mul .",
+    "html": "<p>In the natural numbers, a prime number has the property that it cannot\nbe written as a product of nontrivial factors.\nIn a broader mathematical context, an element of a ring that has this property\nis said to be <em>irreducible</em>.\nAn element of a ring is said to be <em>prime</em> if whenever it divides a product,\nit divides one of the factors.\nIt is an important property of the natural numbers\nthat in that setting the two notions coincide,\ngiving rise to the theorem <code class=\"docutils literal notranslate\"><span class=\"pre\">Nat.Prime.dvd_mul</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0012",
+    "file": "C05_Elementary_Number_Theory.html",
+    "tag": "p",
+    "text": "We can use this fact to establish a key property in the argument above: if the square of a number is even, then that number is even as well. Mathlib defines the predicate Even in Algebra.Group.Even , but for reasons that will become clear below, we will simply use 2 ∣ m to express that m is even.",
+    "html": "<p>We can use this fact to establish a key property in the argument\nabove:\nif the square of a number is even, then that number is even as well.\nMathlib defines the predicate <code class=\"docutils literal notranslate\"><span class=\"pre\">Even</span></code> in <code class=\"docutils literal notranslate\"><span class=\"pre\">Algebra.Group.Even</span></code>,\nbut for reasons that will become clear below,\nwe will simply use <code class=\"docutils literal notranslate\"><span class=\"pre\">2</span> <span class=\"pre\">∣</span> <span class=\"pre\">m</span></code> to express that <code class=\"docutils literal notranslate\"><span class=\"pre\">m</span></code> is even.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0013",
+    "file": "C05_Elementary_Number_Theory.html",
+    "tag": "p",
+    "text": "As we proceed, you will need to become proficient at finding the facts you need. Remember that if you can guess the prefix of the name and you have imported the relevant library, you can use tab completion (sometimes with ctrl-tab ) to find what you are looking for. You can use ctrl-click on any identifier to jump to the file where it is defined, which enables you to browse definitions and theorems nearby. You can also use the search engine on the Lean community web pages , and if all else fails, don’t hesitate to ask on Zulip .",
+    "html": "<p>As we proceed, you will need to become proficient at finding the facts you\nneed.\nRemember that if you can guess the prefix of the name and\nyou have imported the relevant library,\nyou can use tab completion (sometimes with <code class=\"docutils literal notranslate\"><span class=\"pre\">ctrl-tab</span></code>) to find\nwhat you are looking for.\nYou can use <code class=\"docutils literal notranslate\"><span class=\"pre\">ctrl-click</span></code> on any identifier to jump to the file\nwhere it is defined, which enables you to browse definitions and theorems\nnearby.\nYou can also use the search engine on the\n<a class=\"reference external\" href=\"https://leanprover-community.github.io/\">Lean community web pages</a>,\nand if all else fails,\ndon’t hesitate to ask on\n<a class=\"reference external\" href=\"https://leanprover.zulipchat.com/\">Zulip</a>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0014",
+    "file": "C05_Elementary_Number_Theory.html",
+    "tag": "p",
+    "text": "The heart of our proof of the irrationality of the square root of two is contained in the following theorem. See if you can fill out the proof sketch, using even_of_even_sqr and the theorem Nat.dvd_gcd .",
+    "html": "<p>The heart of our proof of the irrationality of the square root of two\nis contained in the following theorem.\nSee if you can fill out the proof sketch, using\n<code class=\"docutils literal notranslate\"><span class=\"pre\">even_of_even_sqr</span></code> and the theorem <code class=\"docutils literal notranslate\"><span class=\"pre\">Nat.dvd_gcd</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0015",
+    "file": "C05_Elementary_Number_Theory.html",
+    "tag": "p",
+    "text": "In fact, with very few changes, we can replace 2 by an arbitrary prime. Give it a try in the next example. At the end of the proof, you’ll need to derive a contradiction from p ∣ 1 . You can use Nat.Prime.two_le , which says that any prime number is greater than or equal to two, and Nat.le_of_dvd .",
+    "html": "<p>In fact, with very few changes, we can replace <code class=\"docutils literal notranslate\"><span class=\"pre\">2</span></code> by an arbitrary prime.\nGive it a try in the next example.\nAt the end of the proof, you’ll need to derive a contradiction from\n<code class=\"docutils literal notranslate\"><span class=\"pre\">p</span> <span class=\"pre\">∣</span> <span class=\"pre\">1</span></code>.\nYou can use <code class=\"docutils literal notranslate\"><span class=\"pre\">Nat.Prime.two_le</span></code>, which says that\nany prime number is greater than or equal to two,\nand <code class=\"docutils literal notranslate\"><span class=\"pre\">Nat.le_of_dvd</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0016",
+    "file": "C05_Elementary_Number_Theory.html",
+    "tag": "p",
+    "text": "Let us consider another approach. Here is a quick proof that if \\(p\\) is prime, then \\(m^2 \\ne p n^2\\) : if we assume \\(m^2 = p n^2\\) and consider the factorization of \\(m\\) and \\(n\\) into primes, then \\(p\\) occurs an even number of times on the left side of the equation and an odd number of times on the right, a contradiction. Note that this argument requires that \\(n\\) and hence \\(m\\) are not equal to zero. The formalization below confirms that this assumption is sufficient.",
+    "html": "<p>Let us consider another approach.\nHere is a quick proof that if <span class=\"math notranslate nohighlight\">\\(p\\)</span> is prime, then\n<span class=\"math notranslate nohighlight\">\\(m^2 \\ne p n^2\\)</span>: if we assume <span class=\"math notranslate nohighlight\">\\(m^2 = p n^2\\)</span>\nand consider the factorization of <span class=\"math notranslate nohighlight\">\\(m\\)</span> and <span class=\"math notranslate nohighlight\">\\(n\\)</span> into primes,\nthen <span class=\"math notranslate nohighlight\">\\(p\\)</span> occurs an even number of times on the left side of the equation\nand an odd number of times on the right, a contradiction.\nNote that this argument requires that <span class=\"math notranslate nohighlight\">\\(n\\)</span> and hence <span class=\"math notranslate nohighlight\">\\(m\\)</span>\nare not equal to zero.\nThe formalization below confirms that this assumption is sufficient.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0017",
+    "file": "C05_Elementary_Number_Theory.html",
+    "tag": "p",
+    "text": "The unique factorization theorem says that any natural number other than zero can be written as the product of primes in a unique way. Mathlib contains a formal version of this, expressed in terms of a function Nat.primeFactorsList , which returns the list of prime factors of a number in nondecreasing order. The library proves that all the elements of Nat.primeFactorsList n are prime, that any n greater than zero is equal to the product of its factors, and that if n is equal to the product of another list of prime numbers, then that list is a permutation of Nat.primeFactorsList n .",
+    "html": "<p>The unique factorization theorem says that any natural number other\nthan zero can be written as the product of primes in a unique way.\nMathlib contains a formal version of this, expressed in terms of a function\n<code class=\"docutils literal notranslate\"><span class=\"pre\">Nat.primeFactorsList</span></code>, which returns the list of\nprime factors of a number in nondecreasing order.\nThe library proves that all the elements of <code class=\"docutils literal notranslate\"><span class=\"pre\">Nat.primeFactorsList</span> <span class=\"pre\">n</span></code>\nare prime, that any <code class=\"docutils literal notranslate\"><span class=\"pre\">n</span></code> greater than zero is equal to the\nproduct of its factors,\nand that if <code class=\"docutils literal notranslate\"><span class=\"pre\">n</span></code> is equal to the product of another list of prime numbers,\nthen that list is a permutation of <code class=\"docutils literal notranslate\"><span class=\"pre\">Nat.primeFactorsList</span> <span class=\"pre\">n</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0018",
+    "file": "C05_Elementary_Number_Theory.html",
+    "tag": "p",
+    "text": "You can browse these theorems and others nearby, even though we have not talked about list membership, products, or permutations yet. We won’t need any of that for the task at hand. We will instead use the fact that Mathlib has a function Nat.factorization , that represents the same data as a function. Specifically, Nat.factorization n p , which we can also write n.factorization p , returns the multiplicity of p in the prime factorization of n . We will use the following three facts.",
+    "html": "<p>You can browse these theorems and others nearby, even though we have not\ntalked about list membership, products, or permutations yet.\nWe won’t need any of that for the task at hand.\nWe will instead use the fact that Mathlib has a function <code class=\"docutils literal notranslate\"><span class=\"pre\">Nat.factorization</span></code>,\nthat represents the same data as a function.\nSpecifically, <code class=\"docutils literal notranslate\"><span class=\"pre\">Nat.factorization</span> <span class=\"pre\">n</span> <span class=\"pre\">p</span></code>, which we can also write\n<code class=\"docutils literal notranslate\"><span class=\"pre\">n.factorization</span> <span class=\"pre\">p</span></code>, returns the multiplicity of <code class=\"docutils literal notranslate\"><span class=\"pre\">p</span></code> in the prime\nfactorization of <code class=\"docutils literal notranslate\"><span class=\"pre\">n</span></code>. We will use the following three facts.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0019",
+    "file": "C05_Elementary_Number_Theory.html",
+    "tag": "p",
+    "text": "In fact, n.factorization is defined in Lean as a function of finite support, which explains the strange notation you will see as you step through the proofs above. Don’t worry about this now. For our purposes here, we can use the three theorems above as a black box.",
+    "html": "<p>In fact, <code class=\"docutils literal notranslate\"><span class=\"pre\">n.factorization</span></code> is defined in Lean as a function of finite support,\nwhich explains the strange notation you will see as you step through the\nproofs above. Don’t worry about this now. For our purposes here, we can use\nthe three theorems above as a black box.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0020",
+    "file": "C05_Elementary_Number_Theory.html",
+    "tag": "p",
+    "text": "The next example shows that the simplifier is smart enough to replace n^2 ≠ 0 by n ≠ 0 . The tactic simpa just calls simp followed by assumption .",
+    "html": "<p>The next example shows that the simplifier is smart enough to replace\n<code class=\"docutils literal notranslate\"><span class=\"pre\">n^2</span> <span class=\"pre\">≠</span> <span class=\"pre\">0</span></code> by <code class=\"docutils literal notranslate\"><span class=\"pre\">n</span> <span class=\"pre\">≠</span> <span class=\"pre\">0</span></code>. The tactic <code class=\"docutils literal notranslate\"><span class=\"pre\">simpa</span></code> just calls <code class=\"docutils literal notranslate\"><span class=\"pre\">simp</span></code>\nfollowed by <code class=\"docutils literal notranslate\"><span class=\"pre\">assumption</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0021",
+    "file": "C05_Elementary_Number_Theory.html",
+    "tag": "p",
+    "text": "See if you can use the identities above to fill in the missing parts of the proof.",
+    "html": "<p>See if you can use the identities above to fill in the missing parts\nof the proof.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0022",
+    "file": "C05_Elementary_Number_Theory.html",
+    "tag": "p",
+    "text": "A nice thing about this proof is that it also generalizes. There is nothing special about 2 ; with small changes, the proof shows that whenever we write m^k = r * n^k , the multiplicity of any prime p in r has to be a multiple of k .",
+    "html": "<p>A nice thing about this proof is that it also generalizes. There is\nnothing special about <code class=\"docutils literal notranslate\"><span class=\"pre\">2</span></code>; with small changes, the proof shows that\nwhenever we write <code class=\"docutils literal notranslate\"><span class=\"pre\">m^k</span> <span class=\"pre\">=</span> <span class=\"pre\">r</span> <span class=\"pre\">*</span> <span class=\"pre\">n^k</span></code>, the multiplicity of any prime <code class=\"docutils literal notranslate\"><span class=\"pre\">p</span></code>\nin <code class=\"docutils literal notranslate\"><span class=\"pre\">r</span></code> has to be a multiple of <code class=\"docutils literal notranslate\"><span class=\"pre\">k</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0023",
+    "file": "C05_Elementary_Number_Theory.html",
+    "tag": "p",
+    "text": "To use Nat.count_factors_mul_of_pos with r * n^k , we need to know that r is positive. But when r is zero, the theorem below is trivial, and easily proved by the simplifier. So the proof is carried out in cases. The line rcases r with _ | r replaces the goal with two versions: one in which r is replaced by 0 , and the other in which r is replaced by r + 1 . In the second case, we can use the theorem r.succ_ne_zero , which establishes r + 1 ≠ 0 ( succ stands for successor).",
+    "html": "<p>To use <code class=\"docutils literal notranslate\"><span class=\"pre\">Nat.count_factors_mul_of_pos</span></code> with <code class=\"docutils literal notranslate\"><span class=\"pre\">r</span> <span class=\"pre\">*</span> <span class=\"pre\">n^k</span></code>,\nwe need to know that <code class=\"docutils literal notranslate\"><span class=\"pre\">r</span></code> is positive.\nBut when <code class=\"docutils literal notranslate\"><span class=\"pre\">r</span></code> is zero, the theorem below is trivial, and easily\nproved by the simplifier.\nSo the proof is carried out in cases.\nThe line <code class=\"docutils literal notranslate\"><span class=\"pre\">rcases</span> <span class=\"pre\">r</span> <span class=\"pre\">with</span> <span class=\"pre\">_</span> <span class=\"pre\">|</span> <span class=\"pre\">r</span></code> replaces the goal with two versions:\none in which <code class=\"docutils literal notranslate\"><span class=\"pre\">r</span></code> is replaced by <code class=\"docutils literal notranslate\"><span class=\"pre\">0</span></code>,\nand the other in which <code class=\"docutils literal notranslate\"><span class=\"pre\">r</span></code> is replaced by <code class=\"docutils literal notranslate\"><span class=\"pre\">r</span> <span class=\"pre\">+</span> <span class=\"pre\">1</span></code>.\nIn the second case, we can use the theorem <code class=\"docutils literal notranslate\"><span class=\"pre\">r.succ_ne_zero</span></code>, which\nestablishes <code class=\"docutils literal notranslate\"><span class=\"pre\">r</span> <span class=\"pre\">+</span> <span class=\"pre\">1</span> <span class=\"pre\">≠</span> <span class=\"pre\">0</span></code> (<code class=\"docutils literal notranslate\"><span class=\"pre\">succ</span></code> stands for successor).</p>",
+    "zh": ""
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0024",
+    "file": "C05_Elementary_Number_Theory.html",
+    "tag": "p",
+    "text": "Notice also that the line that begins have : npow_nz provides a short proof-term proof of n^k ≠ 0 . To understand how it works, try replacing it with a tactic proof, and then think about how the tactics describe the proof term.",
+    "html": "<p>Notice also that the line that begins <code class=\"docutils literal notranslate\"><span class=\"pre\">have</span> <span class=\"pre\">:</span> <span class=\"pre\">npow_nz</span></code> provides a\nshort proof-term proof of <code class=\"docutils literal notranslate\"><span class=\"pre\">n^k</span> <span class=\"pre\">≠</span> <span class=\"pre\">0</span></code>.\nTo understand how it works, try replacing it with a tactic proof,\nand then think about how the tactics describe the proof term.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0025",
+    "file": "C05_Elementary_Number_Theory.html",
+    "tag": "p",
+    "text": "See if you can fill in the missing parts of the proof below. At the very end, you can use Nat.dvd_sub and Nat.dvd_mul_right to finish it off.",
+    "html": "<p>See if you can fill in the missing parts of the proof below.\nAt the very end, you can use <code class=\"docutils literal notranslate\"><span class=\"pre\">Nat.dvd_sub</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">Nat.dvd_mul_right</span></code>\nto finish it off.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0026",
+    "file": "C05_Elementary_Number_Theory.html",
+    "tag": "p",
+    "text": "Note that this example does not assume that p is prime, but the conclusion is trivial when p is not prime since r.factorization p is then zero by definition, and the proof works in all cases anyway.",
+    "html": "<p>Note that this example does not assume that <code class=\"docutils literal notranslate\"><span class=\"pre\">p</span></code> is prime, but the\nconclusion is trivial when <code class=\"docutils literal notranslate\"><span class=\"pre\">p</span></code> is not prime since <code class=\"docutils literal notranslate\"><span class=\"pre\">r.factorization</span> <span class=\"pre\">p</span></code>\nis then zero by definition, and the proof works in all cases anyway.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0027",
+    "file": "C05_Elementary_Number_Theory.html",
+    "tag": "p",
+    "text": "There are a number of ways in which we might want to improve on these results. To start with, a proof that the square root of two is irrational should say something about the square root of two, which can be understood as an element of the real or complex numbers. And stating that it is irrational should say something about the rational numbers, namely, that no rational number is equal to it. Moreover, we should extend the theorems in this section to the integers. Although it is mathematically obvious that if we could write the square root of two as a quotient of two integers then we could write it as a quotient of two natural numbers, proving this formally requires some effort.",
+    "html": "<p>There are a number of ways in which we might want to improve on these results.\nTo start with, a proof that the square root of two is irrational\nshould say something about the square root of two,\nwhich can be understood as an element of the\nreal or complex numbers.\nAnd stating that it is irrational should say something about the\nrational numbers, namely, that no rational number is equal to it.\nMoreover, we should extend the theorems in this section to the integers.\nAlthough it is mathematically obvious that if we could write the square root of\ntwo as a quotient of two integers then we could write it as a quotient\nof two natural numbers,\nproving this formally requires some effort.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0028",
+    "file": "C05_Elementary_Number_Theory.html",
+    "tag": "p",
+    "text": "In Mathlib, the natural numbers, the integers, the rationals, the reals, and the complex numbers are represented by separate data types. Restricting attention to the separate domains is often helpful: we will see that it is easy to do induction on the natural numbers, and it is easiest to reason about divisibility of integers when the real numbers are not part of the picture. But having to mediate between the different domains is a headache, one we will have to contend with. We will return to this issue later in this chapter.",
+    "html": "<p>In Mathlib, the natural numbers, the integers, the rationals, the reals,\nand the complex numbers are represented by separate data types.\nRestricting attention to the separate domains is often helpful:\nwe will see that it is easy to do induction on the natural numbers,\nand it is easiest to reason about divisibility of integers when the\nreal numbers are not part of the picture.\nBut having to mediate between the different domains is a headache,\none we will have to contend with.\nWe will return to this issue later in this chapter.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0029",
+    "file": "C05_Elementary_Number_Theory.html",
+    "tag": "p",
+    "text": "We should also expect to be able to strengthen the conclusion of the last theorem to say that the number r is a k -th power, since its k -th root is just the product of each prime dividing r raised to its multiplicity in r divided by k . To be able to do that we will need better means for reasoning about products and sums over a finite set, which is also a topic we will return to.",
+    "html": "<p>We should also expect to be able to strengthen the conclusion of the\nlast theorem to say that the number <code class=\"docutils literal notranslate\"><span class=\"pre\">r</span></code> is a <code class=\"docutils literal notranslate\"><span class=\"pre\">k</span></code>-th power,\nsince its <code class=\"docutils literal notranslate\"><span class=\"pre\">k</span></code>-th root is just the product of each prime dividing <code class=\"docutils literal notranslate\"><span class=\"pre\">r</span></code>\nraised to its multiplicity in <code class=\"docutils literal notranslate\"><span class=\"pre\">r</span></code> divided by <code class=\"docutils literal notranslate\"><span class=\"pre\">k</span></code>.\nTo be able to do that we will need better means for reasoning about\nproducts and sums over a finite set,\nwhich is also a topic we will return to.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0030",
+    "file": "C05_Elementary_Number_Theory.html",
+    "tag": "p",
+    "text": "In fact, the results in this section are all established in much greater generality in Mathlib, in Data.Real.Irrational . The notion of multiplicity is defined for an arbitrary commutative monoid, and that it takes values in the extended natural numbers enat , which adds the value infinity to the natural numbers. In the next chapter, we will begin to develop the means to appreciate the way that Lean supports this sort of generality.",
+    "html": "<p>In fact, the results in this section are all established in much\ngreater generality in Mathlib,\nin <code class=\"docutils literal notranslate\"><span class=\"pre\">Data.Real.Irrational</span></code>.\nThe notion of <code class=\"docutils literal notranslate\"><span class=\"pre\">multiplicity</span></code> is defined for an\narbitrary commutative monoid,\nand that it takes values in the extended natural numbers <code class=\"docutils literal notranslate\"><span class=\"pre\">enat</span></code>,\nwhich adds the value infinity to the natural numbers.\nIn the next chapter, we will begin to develop the means to\nappreciate the way that Lean supports this sort of generality.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0031",
+    "file": "C05_Elementary_Number_Theory.html",
+    "tag": "p",
+    "text": "The set of natural numbers \\(\\mathbb{N} = \\{ 0, 1, 2, \\ldots \\}\\) is not only fundamentally important in its own right, but also plays a central role in the construction of new mathematical objects. Lean’s foundation allows us to declare inductive types , which are types generated inductively by a given list of constructors . In Lean, the natural numbers are declared as follows.",
+    "html": "<p>The set of natural numbers <span class=\"math notranslate nohighlight\">\\(\\mathbb{N} = \\{ 0, 1, 2, \\ldots \\}\\)</span>\nis not only fundamentally important in its own right,\nbut also plays a central role in the construction of new mathematical objects.\nLean’s foundation allows us to declare <em>inductive types</em>,\nwhich are types generated inductively by a given list of\n<em>constructors</em>.\nIn Lean, the natural numbers are declared as follows.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0032",
+    "file": "C05_Elementary_Number_Theory.html",
+    "tag": "p",
+    "text": "You can find this in the library by writing #check Nat and then using ctrl-click on the identifier Nat . The command specifies that Nat is the datatype generated freely and inductively by the two constructors zero : Nat and succ : Nat → Nat . Of course, the library introduces notation ℕ and 0 for Nat and zero respectively. (Numerals are translated to binary representations, but we don’t have to worry about the details of that now.)",
+    "html": "<p>You can find this in the library by writing <code class=\"docutils literal notranslate\"><span class=\"pre\">#check</span> <span class=\"pre\">Nat</span></code> and\nthen using <code class=\"docutils literal notranslate\"><span class=\"pre\">ctrl-click</span></code> on the identifier <code class=\"docutils literal notranslate\"><span class=\"pre\">Nat</span></code>.\nThe command specifies that <code class=\"docutils literal notranslate\"><span class=\"pre\">Nat</span></code> is the datatype generated\nfreely and inductively by the two constructors <code class=\"docutils literal notranslate\"><span class=\"pre\">zero</span> <span class=\"pre\">:</span> <span class=\"pre\">Nat</span></code> and\n<code class=\"docutils literal notranslate\"><span class=\"pre\">succ</span> <span class=\"pre\">:</span> <span class=\"pre\">Nat</span> <span class=\"pre\">→</span> <span class=\"pre\">Nat</span></code>.\nOf course, the library introduces notation <code class=\"docutils literal notranslate\"><span class=\"pre\">ℕ</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">0</span></code> for\n<code class=\"docutils literal notranslate\"><span class=\"pre\">Nat</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">zero</span></code> respectively. (Numerals are translated to binary\nrepresentations, but we don’t have to worry about the details of that now.)</p>",
+    "zh": ""
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0033",
+    "file": "C05_Elementary_Number_Theory.html",
+    "tag": "p",
+    "text": "What “freely” means for the working mathematician is that the type Nat has an element zero and an injective successor function succ whose image does not include zero .",
+    "html": "<p>What “freely” means for the working mathematician is that the type\n<code class=\"docutils literal notranslate\"><span class=\"pre\">Nat</span></code> has an element <code class=\"docutils literal notranslate\"><span class=\"pre\">zero</span></code> and an injective successor function\n<code class=\"docutils literal notranslate\"><span class=\"pre\">succ</span></code> whose image does not include <code class=\"docutils literal notranslate\"><span class=\"pre\">zero</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0034",
+    "file": "C05_Elementary_Number_Theory.html",
+    "tag": "p",
+    "text": "What the word “inductively” means for the working mathematician is that the natural numbers comes with a principle of proof by induction and a principle of definition by recursion. This section will show you how to use these.",
+    "html": "<p>What the word “inductively” means for the working mathematician is that\nthe natural numbers comes with a principle of proof by induction\nand a principle of definition by recursion.\nThis section will show you how to use these.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0035",
+    "file": "C05_Elementary_Number_Theory.html",
+    "tag": "p",
+    "text": "Here is an example of a recursive definition of the factorial function.",
+    "html": "<p>Here is an example of a recursive definition of the factorial\nfunction.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0036",
+    "file": "C05_Elementary_Number_Theory.html",
+    "tag": "p",
+    "text": "The syntax takes some getting used to. Notice that there is no := on the first line. The next two lines provide the base case and inductive step for a recursive definition. These equations hold definitionally, but they can also be used manually by giving the name fac to simp or rw .",
+    "html": "<p>The syntax takes some getting used to.\nNotice that there is no <code class=\"docutils literal notranslate\"><span class=\"pre\">:=</span></code> on the first line.\nThe next two lines provide the base case and inductive step\nfor a recursive definition.\nThese equations hold definitionally, but they can also\nbe used manually by giving the name <code class=\"docutils literal notranslate\"><span class=\"pre\">fac</span></code> to <code class=\"docutils literal notranslate\"><span class=\"pre\">simp</span></code> or <code class=\"docutils literal notranslate\"><span class=\"pre\">rw</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0037",
+    "file": "C05_Elementary_Number_Theory.html",
+    "tag": "p",
+    "text": "The factorial function is actually already defined in Mathlib as Nat.factorial . Once again, you can jump to it by typing #check Nat.factorial and using ctrl-click. For illustrative purposes, we will continue using fac in the examples. The annotation @[simp] before the definition of Nat.factorial specifies that the defining equation should be added to the database of identities that the simplifier uses by default.",
+    "html": "<p>The factorial function is actually already defined in Mathlib as\n<code class=\"docutils literal notranslate\"><span class=\"pre\">Nat.factorial</span></code>. Once again, you can jump to it by typing\n<code class=\"docutils literal notranslate\"><span class=\"pre\">#check</span> <span class=\"pre\">Nat.factorial</span></code> and using <code class=\"docutils literal notranslate\"><span class=\"pre\">ctrl-click.</span></code>\nFor illustrative purposes, we will continue using <code class=\"docutils literal notranslate\"><span class=\"pre\">fac</span></code> in the examples.\nThe annotation <code class=\"docutils literal notranslate\"><span class=\"pre\">@[simp]</span></code> before the definition\nof <code class=\"docutils literal notranslate\"><span class=\"pre\">Nat.factorial</span></code> specifies that\nthe defining equation should be added to the database of identities\nthat the simplifier uses by default.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0038",
+    "file": "C05_Elementary_Number_Theory.html",
+    "tag": "p",
+    "text": "The principle of induction says that we can prove a general statement about the natural numbers by proving that the statement holds of 0 and that whenever it holds of a natural number \\(n\\) , it also holds of \\(n + 1\\) . The line induction' n with n ih in the proof below therefore results in two goals: in the first we need to prove 0 < fac 0 , and in the second we have the added assumption ih : 0 < fac n and are required to prove 0 < fac (n + 1) . The phrase with n ih serves to name the variable and the assumption for the inductive hypothesis, and you can choose whatever names you want for them.",
+    "html": "<p>The principle of induction says that we can prove a general statement\nabout the natural numbers by proving that the statement holds of 0\nand that whenever it holds of a natural number <span class=\"math notranslate nohighlight\">\\(n\\)</span>,\nit also holds of <span class=\"math notranslate nohighlight\">\\(n + 1\\)</span>.\nThe line <code class=\"docutils literal notranslate\"><span class=\"pre\">induction'</span> <span class=\"pre\">n</span> <span class=\"pre\">with</span> <span class=\"pre\">n</span> <span class=\"pre\">ih</span></code> in the proof\nbelow therefore results in two goals:\nin the first we need to prove <code class=\"docutils literal notranslate\"><span class=\"pre\">0</span> <span class=\"pre\">&lt;</span> <span class=\"pre\">fac</span> <span class=\"pre\">0</span></code>,\nand in the second we have the added assumption <code class=\"docutils literal notranslate\"><span class=\"pre\">ih</span> <span class=\"pre\">:</span> <span class=\"pre\">0</span> <span class=\"pre\">&lt;</span> <span class=\"pre\">fac</span> <span class=\"pre\">n</span></code>\nand are required to prove <code class=\"docutils literal notranslate\"><span class=\"pre\">0</span> <span class=\"pre\">&lt;</span> <span class=\"pre\">fac</span> <span class=\"pre\">(n</span> <span class=\"pre\">+</span> <span class=\"pre\">1)</span></code>.\nThe phrase <code class=\"docutils literal notranslate\"><span class=\"pre\">with</span> <span class=\"pre\">n</span> <span class=\"pre\">ih</span></code> serves to name the variable and\nthe assumption for the inductive hypothesis,\nand you can choose whatever names you want for them.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0039",
+    "file": "C05_Elementary_Number_Theory.html",
+    "tag": "p",
+    "text": "The induction' tactic is smart enough to include hypotheses that depend on the induction variable as part of the induction hypothesis. Step through the next example to see what is going on.",
+    "html": "<p>The <code class=\"docutils literal notranslate\"><span class=\"pre\">induction'</span></code> tactic is smart enough to include hypotheses\nthat depend on the induction variable as part of the\ninduction hypothesis.\nStep through the next example to see what is going on.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0040",
+    "file": "C05_Elementary_Number_Theory.html",
+    "tag": "p",
+    "text": "The following example provides a crude lower bound for the factorial function. It turns out to be easier to start with a proof by cases, so that the remainder of the proof starts with the case \\(n = 1\\) . See if you can complete the argument with a proof by induction using pow_succ or pow_succ' .",
+    "html": "<p>The following example provides a crude lower bound for the factorial\nfunction.\nIt turns out to be easier to start with a proof by cases,\nso that the remainder of the proof starts with the case\n<span class=\"math notranslate nohighlight\">\\(n = 1\\)</span>.\nSee if you can complete the argument with a proof by induction using <code class=\"docutils literal notranslate\"><span class=\"pre\">pow_succ</span></code>\nor <code class=\"docutils literal notranslate\"><span class=\"pre\">pow_succ'</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0041",
+    "file": "C05_Elementary_Number_Theory.html",
+    "tag": "p",
+    "text": "Induction is often used to prove identities involving finite sums and products. Mathlib defines the expressions Finset.sum s f where s : Finset α is a finite set of elements of the type α and f is a function defined on α . The codomain of f can be any type that supports a commutative, associative addition operation with a zero element. If you import Algebra.BigOperators.Ring and issue the command open BigOperators , you can use the more suggestive notation ∑ x ∈ s, f x . Of course, there is an analogous operation and notation for finite products.",
+    "html": "<p>Induction is often used to prove identities involving finite sums and\nproducts.\nMathlib defines the expressions <code class=\"docutils literal notranslate\"><span class=\"pre\">Finset.sum</span> <span class=\"pre\">s</span> <span class=\"pre\">f</span></code> where\n<code class=\"docutils literal notranslate\"><span class=\"pre\">s</span> <span class=\"pre\">:</span> <span class=\"pre\">Finset</span> <span class=\"pre\">α</span></code> is a finite set of elements of the type <code class=\"docutils literal notranslate\"><span class=\"pre\">α</span></code> and\n<code class=\"docutils literal notranslate\"><span class=\"pre\">f</span></code> is a function defined on <code class=\"docutils literal notranslate\"><span class=\"pre\">α</span></code>.\nThe codomain of <code class=\"docutils literal notranslate\"><span class=\"pre\">f</span></code> can be any type that supports a commutative,\nassociative addition operation with a zero element.\nIf you import <code class=\"docutils literal notranslate\"><span class=\"pre\">Algebra.BigOperators.Ring</span></code> and issue the command\n<code class=\"docutils literal notranslate\"><span class=\"pre\">open</span> <span class=\"pre\">BigOperators</span></code>, you can use the more suggestive notation\n<code class=\"docutils literal notranslate\"><span class=\"pre\">∑</span> <span class=\"pre\">x</span> <span class=\"pre\">∈</span> <span class=\"pre\">s,</span> <span class=\"pre\">f</span> <span class=\"pre\">x</span></code>. Of course, there is an analogous operation and\nnotation for finite products.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0042",
+    "file": "C05_Elementary_Number_Theory.html",
+    "tag": "p",
+    "text": "We will talk about the Finset type and the operations it supports in the next section, and again in a later chapter. For now, we will only make use of Finset.range n , which is the finite set of natural numbers less than n .",
+    "html": "<p>We will talk about the <code class=\"docutils literal notranslate\"><span class=\"pre\">Finset</span></code> type and the operations\nit supports in the next section, and again in a later chapter.\nFor now, we will only make use\nof <code class=\"docutils literal notranslate\"><span class=\"pre\">Finset.range</span> <span class=\"pre\">n</span></code>, which is the finite set of natural numbers\nless than <code class=\"docutils literal notranslate\"><span class=\"pre\">n</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0043",
+    "file": "C05_Elementary_Number_Theory.html",
+    "tag": "p",
+    "text": "The facts Finset.sum_range_zero and Finset.sum_range_succ provide a recursive description of summation up to \\(n\\) , and similarly for products.",
+    "html": "<p>The facts <code class=\"docutils literal notranslate\"><span class=\"pre\">Finset.sum_range_zero</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">Finset.sum_range_succ</span></code>\nprovide a recursive description of summation up to <span class=\"math notranslate nohighlight\">\\(n\\)</span>,\nand similarly for products.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0044",
+    "file": "C05_Elementary_Number_Theory.html",
+    "tag": "p",
+    "text": "The first identity in each pair holds definitionally, which is to say, you can replace the proofs by rfl .",
+    "html": "<p>The first identity in each pair holds definitionally, which is to say,\nyou can replace the proofs by <code class=\"docutils literal notranslate\"><span class=\"pre\">rfl</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0045",
+    "file": "C05_Elementary_Number_Theory.html",
+    "tag": "p",
+    "text": "The following expresses the factorial function that we defined as a product.",
+    "html": "<p>The following expresses the factorial function that we defined as a product.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0046",
+    "file": "C05_Elementary_Number_Theory.html",
+    "tag": "p",
+    "text": "The fact that we include mul_comm as a simplification rule deserves comment. It should seem dangerous to simplify with the identity x * y = y * x , which would ordinarily loop indefinitely. Lean’s simplifier is smart enough to recognize that, and applies the rule only in the case where the resulting term has a smaller value in some fixed but arbitrary ordering of the terms. The following example shows that simplifying using the three rules mul_assoc , mul_comm , and mul_left_comm manages to identify products that are the same up to the placement of parentheses and ordering of variables.",
+    "html": "<p>The fact that we include <code class=\"docutils literal notranslate\"><span class=\"pre\">mul_comm</span></code> as a simplification rule deserves\ncomment.\nIt should seem dangerous to simplify with the identity <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span> <span class=\"pre\">*</span> <span class=\"pre\">y</span> <span class=\"pre\">=</span> <span class=\"pre\">y</span> <span class=\"pre\">*</span> <span class=\"pre\">x</span></code>,\nwhich would ordinarily loop indefinitely.\nLean’s simplifier is smart enough to recognize that, and applies the rule\nonly in the case where the resulting term has a smaller value in some\nfixed but arbitrary ordering of the terms.\nThe following example shows that simplifying using the three rules\n<code class=\"docutils literal notranslate\"><span class=\"pre\">mul_assoc</span></code>, <code class=\"docutils literal notranslate\"><span class=\"pre\">mul_comm</span></code>, and <code class=\"docutils literal notranslate\"><span class=\"pre\">mul_left_comm</span></code>\nmanages to identify products that are the same up to the\nplacement of parentheses and ordering of variables.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0047",
+    "file": "C05_Elementary_Number_Theory.html",
+    "tag": "p",
+    "text": "Roughly, the rules work by pushing parentheses to the right and then re-ordering the expressions on both sides until they both follow the same canonical order. Simplifying with these rules, and the corresponding rules for addition, is a handy trick.",
+    "html": "<p>Roughly, the rules work by pushing parentheses to the right\nand then re-ordering the expressions on both sides until they\nboth follow the same canonical order. Simplifying with these\nrules, and the corresponding rules for addition, is a handy trick.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0048",
+    "file": "C05_Elementary_Number_Theory.html",
+    "tag": "p",
+    "text": "Returning to summation identities, we suggest stepping through the following proof that the sum of the natural numbers up to and including \\(n\\) is \\(n (n + 1) / 2\\) . The first step of the proof clears the denominator. This is generally useful when formalizing identities, because calculations with division generally have side conditions. (It is similarly useful to avoid using subtraction on the natural numbers when possible.)",
+    "html": "<p>Returning to summation identities, we suggest stepping through the following proof\nthat the sum of the natural numbers up to and including <span class=\"math notranslate nohighlight\">\\(n\\)</span> is\n<span class=\"math notranslate nohighlight\">\\(n (n + 1) / 2\\)</span>.\nThe first step of the proof clears the denominator.\nThis is generally useful when formalizing identities,\nbecause calculations with division generally have side conditions.\n(It is similarly useful to avoid using subtraction on the natural numbers when possible.)</p>",
+    "zh": ""
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0049",
+    "file": "C05_Elementary_Number_Theory.html",
+    "tag": "p",
+    "text": "We encourage you to prove the analogous identity for sums of squares, and other identities you can find on the web.",
+    "html": "<p>We encourage you to prove the analogous identity for sums of squares,\nand other identities you can find on the web.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0050",
+    "file": "C05_Elementary_Number_Theory.html",
+    "tag": "p",
+    "text": "In Lean’s core library, addition and multiplication are themselves defined using recursive definitions, and their fundamental properties are established using induction. If you like thinking about foundational topics like that, you might enjoy working through proofs of the commutativity and associativity of multiplication and addition and the distributivity of multiplication over addition. You can do this on a copy of the natural numbers following the outline below. Notice that we can use the induction tactic with MyNat ; Lean is smart enough to know to use the relevant induction principle (which is, of course, the same as that for Nat ).",
+    "html": "<p>In Lean’s core library, addition and multiplication are themselves defined\nusing recursive definitions,\nand their fundamental properties are established using induction.\nIf you like thinking about foundational topics like that,\nyou might enjoy working through proofs\nof the commutativity and associativity of multiplication and addition\nand the distributivity of multiplication over addition.\nYou can do this on a copy of the natural numbers\nfollowing the outline below.\nNotice that we can use the <code class=\"docutils literal notranslate\"><span class=\"pre\">induction</span></code> tactic with <code class=\"docutils literal notranslate\"><span class=\"pre\">MyNat</span></code>;\nLean is smart enough to know to\nuse the relevant induction principle (which is, of course,\nthe same as that for <code class=\"docutils literal notranslate\"><span class=\"pre\">Nat</span></code>).</p>",
+    "zh": ""
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0051",
+    "file": "C05_Elementary_Number_Theory.html",
+    "tag": "p",
+    "text": "We start you off with the commutativity of addition. A good rule of thumb is that because addition and multiplication are defined by recursion on the second argument, it is generally advantageous to do proofs by induction on a variable that occurs in that position. It is a bit tricky to decide which variable to use in the proof of associativity.",
+    "html": "<p>We start you off with the commutativity of addition.\nA good rule of thumb is that because addition and multiplication\nare defined by recursion on the second argument,\nit is generally advantageous to do proofs by induction on a variable\nthat occurs in that position.\nIt is a bit tricky to decide which variable to use in the proof\nof associativity.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0052",
+    "file": "C05_Elementary_Number_Theory.html",
+    "tag": "p",
+    "text": "It can be confusing to write things without the usual notation for zero, one, addition, and multiplication. We will learn how to define such notation later. Working in the namespace MyNat means that we can write zero and succ rather than MyNat.zero and MyNat.succ , and that these interpretations of the names take precedence over others. Outside the namespace, the full name of the add defined below, for example, is MyNat.add .",
+    "html": "<p>It can be confusing to write things without the usual notation\nfor zero, one, addition, and multiplication.\nWe will learn how to define such notation later.\nWorking in the namespace <code class=\"docutils literal notranslate\"><span class=\"pre\">MyNat</span></code> means that we can write\n<code class=\"docutils literal notranslate\"><span class=\"pre\">zero</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">succ</span></code> rather than <code class=\"docutils literal notranslate\"><span class=\"pre\">MyNat.zero</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">MyNat.succ</span></code>,\nand that these interpretations of the names take precedence over\nothers.\nOutside the namespace, the full name of the <code class=\"docutils literal notranslate\"><span class=\"pre\">add</span></code> defined below,\nfor example, is <code class=\"docutils literal notranslate\"><span class=\"pre\">MyNat.add</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0053",
+    "file": "C05_Elementary_Number_Theory.html",
+    "tag": "p",
+    "text": "If you find that you really enjoy this sort of thing, try defining truncated subtraction and exponentiation and proving some of their properties as well. Remember that truncated subtraction cuts off at zero. To define that, it is useful to define a predecessor function, pred , that subtracts one from any nonzero number and fixes zero. The function pred can be defined by a simple instance of recursion.",
+    "html": "<p>If you find that you <em>really</em> enjoy this sort of thing, try defining\ntruncated subtraction and exponentiation and proving some of their\nproperties as well.\nRemember that truncated subtraction cuts off at zero.\nTo define that, it is useful to define a predecessor function, <code class=\"docutils literal notranslate\"><span class=\"pre\">pred</span></code>,\nthat subtracts one from any nonzero number and fixes zero.\nThe function <code class=\"docutils literal notranslate\"><span class=\"pre\">pred</span></code> can be defined by a simple instance of recursion.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0054",
+    "file": "C05_Elementary_Number_Theory.html",
+    "tag": "p",
+    "text": "Let us continue our exploration of induction and recursion with another mathematical standard: a proof that there are infinitely many primes. One way to formulate this is as the statement that for every natural number \\(n\\) , there is a prime number greater than \\(n\\) . To prove this, let \\(p\\) be any prime factor of \\(n! + 1\\) . If \\(p\\) is less than or equal to \\(n\\) , it divides \\(n!\\) . Since it also divides \\(n! + 1\\) , it divides 1, a contradiction. Hence \\(p\\) is greater than \\(n\\) .",
+    "html": "<p>Let us continue our exploration of induction and recursion with another\nmathematical standard: a proof that there are infinitely many primes.\nOne way to formulate this is as the statement that\nfor every natural number\n<span class=\"math notranslate nohighlight\">\\(n\\)</span>, there is a prime number greater than <span class=\"math notranslate nohighlight\">\\(n\\)</span>.\nTo prove this, let <span class=\"math notranslate nohighlight\">\\(p\\)</span> be any prime factor of <span class=\"math notranslate nohighlight\">\\(n! + 1\\)</span>.\nIf <span class=\"math notranslate nohighlight\">\\(p\\)</span> is less than or equal to <span class=\"math notranslate nohighlight\">\\(n\\)</span>, it divides <span class=\"math notranslate nohighlight\">\\(n!\\)</span>.\nSince it also divides <span class=\"math notranslate nohighlight\">\\(n! + 1\\)</span>, it divides 1, a contradiction.\nHence <span class=\"math notranslate nohighlight\">\\(p\\)</span> is greater than <span class=\"math notranslate nohighlight\">\\(n\\)</span>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0055",
+    "file": "C05_Elementary_Number_Theory.html",
+    "tag": "p",
+    "text": "To formalize that proof, we need to show that any number greater than or equal to 2 has a prime factor. To do that, we will need to show that any natural number that is not equal to 0 or 1 is greater-than or equal to 2. And this brings us to a quirky feature of formalization: it is often trivial statements like this that are among the most annoying to formalize. Here we consider a few ways to do it.",
+    "html": "<p>To formalize that proof, we need to show that any number greater than or equal\nto 2 has a prime factor.\nTo do that, we will need to show that any natural number that is\nnot equal to 0 or 1 is greater-than or equal to 2.\nAnd this brings us to a quirky feature of formalization:\nit is often trivial statements like this that are among the most\nannoying to formalize.\nHere we consider a few ways to do it.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0056",
+    "file": "C05_Elementary_Number_Theory.html",
+    "tag": "p",
+    "text": "To start with, we can use the cases tactic and the fact that the successor function respects the ordering on the natural numbers.",
+    "html": "<p>To start with, we can use the <code class=\"docutils literal notranslate\"><span class=\"pre\">cases</span></code> tactic and the fact that the\nsuccessor function respects the ordering on the natural numbers.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0057",
+    "file": "C05_Elementary_Number_Theory.html",
+    "tag": "p",
+    "text": "Another strategy is to use the tactic interval_cases , which automatically splits the goal into cases when the variable in question is contained in an interval of natural numbers or integers. Remember that you can hover over it to see its documentation.",
+    "html": "<p>Another strategy is to use the tactic <code class=\"docutils literal notranslate\"><span class=\"pre\">interval_cases</span></code>,\nwhich automatically splits the goal into cases when\nthe variable in question is contained in an interval\nof natural numbers or integers.\nRemember that you can hover over it to see its documentation.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0058",
+    "file": "C05_Elementary_Number_Theory.html",
+    "tag": "p",
+    "text": "Recall that the semicolon after interval_cases m means that the next tactic is applied to each of the cases that it generates. Yet another option is to use the tactic decide , which tries to find a decision procedure to solve the problem. Lean knows that you can decide the truth value of a statement that begins with a bounded quantifier ∀ x, x < n → ... or ∃ x, x < n ∧ ... by deciding each of the finitely many instances.",
+    "html": "<p id=\"index-0\">Recall that the semicolon after <code class=\"docutils literal notranslate\"><span class=\"pre\">interval_cases</span> <span class=\"pre\">m</span></code> means\nthat the next tactic is applied to each of the cases that it generates.\nYet another option is to use the tactic <code class=\"docutils literal notranslate\"><span class=\"pre\">decide</span></code>, which tries\nto find a decision procedure to solve the problem.\nLean knows that you can decide the truth value of a statement that\nbegins with a bounded quantifier <code class=\"docutils literal notranslate\"><span class=\"pre\">∀</span> <span class=\"pre\">x,</span> <span class=\"pre\">x</span> <span class=\"pre\">&lt;</span> <span class=\"pre\">n</span> <span class=\"pre\">→</span> <span class=\"pre\">...</span></code> or <code class=\"docutils literal notranslate\"><span class=\"pre\">∃</span> <span class=\"pre\">x,</span> <span class=\"pre\">x</span> <span class=\"pre\">&lt;</span> <span class=\"pre\">n</span> <span class=\"pre\">∧</span> <span class=\"pre\">...</span></code>\nby deciding each of the finitely many instances.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0059",
+    "file": "C05_Elementary_Number_Theory.html",
+    "tag": "p",
+    "text": "With the theorem two_le in hand, let’s start by showing that every natural number greater than two has a prime divisor. Mathlib contains a function Nat.minFac that returns the smallest prime divisor, but for the sake of learning new parts of the library, we’ll avoid using it and prove the theorem directly.",
+    "html": "<p>With the theorem <code class=\"docutils literal notranslate\"><span class=\"pre\">two_le</span></code> in hand, let’s start by showing that every\nnatural number greater than two has a prime divisor.\nMathlib contains a function <code class=\"docutils literal notranslate\"><span class=\"pre\">Nat.minFac</span></code> that\nreturns the smallest prime divisor,\nbut for the sake of learning new parts of the library,\nwe’ll avoid using it and prove the theorem directly.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0060",
+    "file": "C05_Elementary_Number_Theory.html",
+    "tag": "p",
+    "text": "Here, ordinary induction isn’t enough. We want to use strong induction , which allows us to prove that every natural number \\(n\\) has a property \\(P\\) by showing that for every number \\(n\\) , if \\(P\\) holds of all values less than \\(n\\) , it holds at \\(n\\) as well. In Lean, this principle is called Nat.strong_induction_on , and we can use the using keyword to tell the induction tactic to use it. Notice that when we do that, there is no base case; it is subsumed by the general induction step.",
+    "html": "<p>Here, ordinary induction isn’t enough.\nWe want to use <em>strong induction</em>, which allows us to prove\nthat every natural number <span class=\"math notranslate nohighlight\">\\(n\\)</span> has a property <span class=\"math notranslate nohighlight\">\\(P\\)</span>\nby showing that for every number <span class=\"math notranslate nohighlight\">\\(n\\)</span>, if <span class=\"math notranslate nohighlight\">\\(P\\)</span> holds\nof all values less than <span class=\"math notranslate nohighlight\">\\(n\\)</span>, it holds at <span class=\"math notranslate nohighlight\">\\(n\\)</span> as well.\nIn Lean, this principle is called <code class=\"docutils literal notranslate\"><span class=\"pre\">Nat.strong_induction_on</span></code>,\nand we can use the <code class=\"docutils literal notranslate\"><span class=\"pre\">using</span></code> keyword to tell the induction tactic\nto use it.\nNotice that when we do that, there is no base case; it is subsumed\nby the general induction step.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0061",
+    "file": "C05_Elementary_Number_Theory.html",
+    "tag": "p",
+    "text": "The argument is simply as follows. Assuming \\(n ≥ 2\\) , if \\(n\\) is prime, we’re done. If it isn’t, then by one of the characterizations of what it means to be a prime number, it has a nontrivial factor, \\(m\\) , and we can apply the inductive hypothesis to that. Step through the next proof to see how that plays out.",
+    "html": "<p>The argument is simply as follows. Assuming <span class=\"math notranslate nohighlight\">\\(n ≥ 2\\)</span>,\nif <span class=\"math notranslate nohighlight\">\\(n\\)</span> is prime, we’re done. If it isn’t,\nthen by one of the characterizations of what it means to be a prime number,\nit has a nontrivial factor, <span class=\"math notranslate nohighlight\">\\(m\\)</span>,\nand we can apply the inductive hypothesis to that.\nStep through the next proof to see how that plays out.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0062",
+    "file": "C05_Elementary_Number_Theory.html",
+    "tag": "p",
+    "text": "We can now prove the following formulation of our theorem. See if you can fill out the sketch. You can use Nat.factorial_pos , Nat.dvd_factorial , and Nat.dvd_sub' .",
+    "html": "<p>We can now prove the following formulation of our theorem.\nSee if you can fill out the sketch.\nYou can use <code class=\"docutils literal notranslate\"><span class=\"pre\">Nat.factorial_pos</span></code>, <code class=\"docutils literal notranslate\"><span class=\"pre\">Nat.dvd_factorial</span></code>,\nand <code class=\"docutils literal notranslate\"><span class=\"pre\">Nat.dvd_sub'</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0063",
+    "file": "C05_Elementary_Number_Theory.html",
+    "tag": "p",
+    "text": "Let’s consider a variation of the proof above, where instead of using the factorial function, we suppose that we are given a finite set \\(\\{ p_1, \\ldots, p_n \\}\\) and we consider a prime factor of \\(\\prod_{i = 1}^n p_i + 1\\) . That prime factor has to be distinct from each \\(p_i\\) , showing that there is no finite set that contains all the prime numbers.",
+    "html": "<p>Let’s consider a variation of the proof above, where instead\nof using the factorial function,\nwe suppose that we are given a finite set\n<span class=\"math notranslate nohighlight\">\\(\\{ p_1, \\ldots, p_n \\}\\)</span> and we consider a prime factor of\n<span class=\"math notranslate nohighlight\">\\(\\prod_{i = 1}^n p_i + 1\\)</span>.\nThat prime factor has to be distinct from each\n<span class=\"math notranslate nohighlight\">\\(p_i\\)</span>, showing that there is no finite set that contains\nall the prime numbers.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0064",
+    "file": "C05_Elementary_Number_Theory.html",
+    "tag": "p",
+    "text": "Formalizing this argument requires us to reason about finite sets. In Lean, for any type α , the type Finset α represents finite sets of elements of type α . Reasoning about finite sets computationally requires having a procedure to test equality on α , which is why the snippet below includes the assumption [DecidableEq α] . For concrete data types like ℕ , ℤ , and ℚ , the assumption is satisfied automatically. When reasoning about the real numbers, it can be satisfied using classical logic and abandoning the computational interpretation.",
+    "html": "<p>Formalizing this argument requires us to reason about finite\nsets. In Lean, for any type <code class=\"docutils literal notranslate\"><span class=\"pre\">α</span></code>, the type <code class=\"docutils literal notranslate\"><span class=\"pre\">Finset</span> <span class=\"pre\">α</span></code>\nrepresents finite sets of elements of type <code class=\"docutils literal notranslate\"><span class=\"pre\">α</span></code>.\nReasoning about finite sets computationally requires having\na procedure to test equality on <code class=\"docutils literal notranslate\"><span class=\"pre\">α</span></code>, which is why the snippet\nbelow includes the assumption <code class=\"docutils literal notranslate\"><span class=\"pre\">[DecidableEq</span> <span class=\"pre\">α]</span></code>.\nFor concrete data types like <code class=\"docutils literal notranslate\"><span class=\"pre\">ℕ</span></code>, <code class=\"docutils literal notranslate\"><span class=\"pre\">ℤ</span></code>, and <code class=\"docutils literal notranslate\"><span class=\"pre\">ℚ</span></code>,\nthe assumption is satisfied automatically. When reasoning about\nthe real numbers, it can be satisfied using classical logic\nand abandoning the computational interpretation.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0065",
+    "file": "C05_Elementary_Number_Theory.html",
+    "tag": "p",
+    "text": "We use the command open Finset to avail ourselves of shorter names for the relevant theorems. Unlike the case with sets, most equivalences involving finsets do not hold definitionally, so they need to be expanded manually using equivalences like Finset.subset_iff , Finset.mem_union , Finset.mem_inter , and Finset.mem_sdiff . The ext tactic can still be used to show that two finite sets are equal by showing that every element of one is an element of the other.",
+    "html": "<p>We use the command <code class=\"docutils literal notranslate\"><span class=\"pre\">open</span> <span class=\"pre\">Finset</span></code> to avail ourselves of shorter names\nfor the relevant theorems. Unlike the case with sets,\nmost equivalences involving finsets do not hold definitionally,\nso they need to be expanded manually using equivalences like\n<code class=\"docutils literal notranslate\"><span class=\"pre\">Finset.subset_iff</span></code>, <code class=\"docutils literal notranslate\"><span class=\"pre\">Finset.mem_union</span></code>, <code class=\"docutils literal notranslate\"><span class=\"pre\">Finset.mem_inter</span></code>,\nand <code class=\"docutils literal notranslate\"><span class=\"pre\">Finset.mem_sdiff</span></code>. The <code class=\"docutils literal notranslate\"><span class=\"pre\">ext</span></code> tactic can still be used\nto show that two finite sets are equal by showing\nthat every element of one is an element of the other.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0066",
+    "file": "C05_Elementary_Number_Theory.html",
+    "tag": "p",
+    "text": "We have used a new trick: the tauto tactic (and a strengthened version, tauto! , which uses classical logic) can be used to dispense with propositional tautologies. See if you can use these methods to prove the two examples below.",
+    "html": "<p>We have used a new trick: the <code class=\"docutils literal notranslate\"><span class=\"pre\">tauto</span></code> tactic (and a strengthened\nversion, <code class=\"docutils literal notranslate\"><span class=\"pre\">tauto!</span></code>, which uses classical logic) can be used to\ndispense with propositional tautologies. See if you can use\nthese methods to prove the two examples below.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0067",
+    "file": "C05_Elementary_Number_Theory.html",
+    "tag": "p",
+    "text": "The theorem Finset.dvd_prod_of_mem tells us that if an n is an element of a finite set s , then n divides ∏ i ∈ s, i .",
+    "html": "<p>The theorem <code class=\"docutils literal notranslate\"><span class=\"pre\">Finset.dvd_prod_of_mem</span></code> tells us that if an\n<code class=\"docutils literal notranslate\"><span class=\"pre\">n</span></code> is an element of a finite set <code class=\"docutils literal notranslate\"><span class=\"pre\">s</span></code>, then <code class=\"docutils literal notranslate\"><span class=\"pre\">n</span></code> divides\n<code class=\"docutils literal notranslate\"><span class=\"pre\">∏</span> <span class=\"pre\">i</span> <span class=\"pre\">∈</span> <span class=\"pre\">s,</span> <span class=\"pre\">i</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0068",
+    "file": "C05_Elementary_Number_Theory.html",
+    "tag": "p",
+    "text": "We also need to know that the converse holds in the case where n is prime and s is a set of primes. To show that, we need the following lemma, which you should be able to prove using the theorem Nat.Prime.eq_one_or_self_of_dvd .",
+    "html": "<p>We also need to know that the converse holds in the case where\n<code class=\"docutils literal notranslate\"><span class=\"pre\">n</span></code> is prime and <code class=\"docutils literal notranslate\"><span class=\"pre\">s</span></code> is a set of primes.\nTo show that, we need the following lemma, which you should\nbe able to prove using the theorem <code class=\"docutils literal notranslate\"><span class=\"pre\">Nat.Prime.eq_one_or_self_of_dvd</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0069",
+    "file": "C05_Elementary_Number_Theory.html",
+    "tag": "p",
+    "text": "We can use this lemma to show that if a prime p divides a product of a finite set of primes, then it is equal to one of them. Mathlib provides a useful principle of induction on finite sets: to show that a property holds of an arbitrary finite set s , show that it holds of the empty set, and show that it is preserved when we add a single new element a ∉ s . The principle is known as Finset.induction_on . When we tell the induction tactic to use it, we can also specify the names a and s , the name for the assumption a ∉ s in the inductive step, and the name of the inductive hypothesis. The expression Finset.insert a s denotes the union of s with the singleton a . The identities Finset.prod_empty and Finset.prod_insert then provide the relevant rewrite rules for the product. In the proof below, the first simp applies Finset.prod_empty . Step through the beginning of the proof to see the induction unfold, and then finish it off.",
+    "html": "<p>We can use this lemma to show that if a prime <code class=\"docutils literal notranslate\"><span class=\"pre\">p</span></code> divides a product of a finite\nset of primes, then it is equal to one of them.\nMathlib provides a useful principle of induction on finite sets:\nto show that a property holds of an arbitrary finite set <code class=\"docutils literal notranslate\"><span class=\"pre\">s</span></code>,\nshow that it holds of the empty set, and show that it is preserved\nwhen we add a single new element <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span> <span class=\"pre\">∉</span> <span class=\"pre\">s</span></code>.\nThe principle is known as <code class=\"docutils literal notranslate\"><span class=\"pre\">Finset.induction_on</span></code>.\nWhen we tell the induction tactic to use it, we can also specify the names\n<code class=\"docutils literal notranslate\"><span class=\"pre\">a</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">s</span></code>, the name for the assumption <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span> <span class=\"pre\">∉</span> <span class=\"pre\">s</span></code> in the inductive step,\nand the name of the inductive hypothesis.\nThe expression <code class=\"docutils literal notranslate\"><span class=\"pre\">Finset.insert</span> <span class=\"pre\">a</span> <span class=\"pre\">s</span></code> denotes the union of <code class=\"docutils literal notranslate\"><span class=\"pre\">s</span></code> with the singleton <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span></code>.\nThe identities <code class=\"docutils literal notranslate\"><span class=\"pre\">Finset.prod_empty</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">Finset.prod_insert</span></code> then provide\nthe relevant rewrite rules for the product.\nIn the proof below, the first <code class=\"docutils literal notranslate\"><span class=\"pre\">simp</span></code> applies <code class=\"docutils literal notranslate\"><span class=\"pre\">Finset.prod_empty</span></code>.\nStep through the beginning of the proof to see the induction unfold,\nand then finish it off.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0070",
+    "file": "C05_Elementary_Number_Theory.html",
+    "tag": "p",
+    "text": "We need one last property of finite sets. Given an element s : Set α and a predicate P on α , in Chapter 4 we wrote { x ∈ s | P x } for the set of elements of s that satisfy P . Given s : Finset α , the analogous notion is written s.filter P .",
+    "html": "<p>We need one last property of finite sets.\nGiven an element <code class=\"docutils literal notranslate\"><span class=\"pre\">s</span> <span class=\"pre\">:</span> <span class=\"pre\">Set</span> <span class=\"pre\">α</span></code> and a predicate\n<code class=\"docutils literal notranslate\"><span class=\"pre\">P</span></code> on <code class=\"docutils literal notranslate\"><span class=\"pre\">α</span></code>, in  <a class=\"reference internal\" href=\"C04_Sets_and_Functions.html#sets-and-functions\"><span class=\"std std-numref\">Chapter 4</span></a>\nwe wrote <code class=\"docutils literal notranslate\"><span class=\"pre\">{</span> <span class=\"pre\">x</span> <span class=\"pre\">∈</span> <span class=\"pre\">s</span> <span class=\"pre\">|</span> <span class=\"pre\">P</span> <span class=\"pre\">x</span> <span class=\"pre\">}</span></code> for the set of\nelements of <code class=\"docutils literal notranslate\"><span class=\"pre\">s</span></code> that satisfy <code class=\"docutils literal notranslate\"><span class=\"pre\">P</span></code>.\nGiven <code class=\"docutils literal notranslate\"><span class=\"pre\">s</span> <span class=\"pre\">:</span> <span class=\"pre\">Finset</span> <span class=\"pre\">α</span></code>,\nthe analogous notion is written <code class=\"docutils literal notranslate\"><span class=\"pre\">s.filter</span> <span class=\"pre\">P</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0071",
+    "file": "C05_Elementary_Number_Theory.html",
+    "tag": "p",
+    "text": "We now prove an alternative formulation of the statement that there are infinitely many primes, namely, that given any s : Finset ℕ , there is a prime p that is not an element of s . Aiming for a contradiction, we assume that all the primes are in s , and then cut down to a set s' that contains all and only the primes. Taking the product of that set, adding one, and finding a prime factor of the result leads to the contradiction we are looking for. See if you can complete the sketch below. You can use Finset.prod_pos in the proof of the first have .",
+    "html": "<p>We now prove an alternative formulation of the statement that there are infinitely many\nprimes, namely, that given any <code class=\"docutils literal notranslate\"><span class=\"pre\">s</span> <span class=\"pre\">:</span> <span class=\"pre\">Finset</span> <span class=\"pre\">ℕ</span></code>, there is a prime <code class=\"docutils literal notranslate\"><span class=\"pre\">p</span></code> that is not\nan element of <code class=\"docutils literal notranslate\"><span class=\"pre\">s</span></code>.\nAiming for a contradiction, we assume that all the primes are in <code class=\"docutils literal notranslate\"><span class=\"pre\">s</span></code>, and then\ncut down to a set <code class=\"docutils literal notranslate\"><span class=\"pre\">s'</span></code> that contains all and only the primes.\nTaking the product of that set, adding one, and finding a prime factor\nof the result\nleads to the contradiction we are looking for.\nSee if you can complete the sketch below.\nYou can use <code class=\"docutils literal notranslate\"><span class=\"pre\">Finset.prod_pos</span></code> in the proof of the first <code class=\"docutils literal notranslate\"><span class=\"pre\">have</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0072",
+    "file": "C05_Elementary_Number_Theory.html",
+    "tag": "p",
+    "text": "We have thus seen two ways of saying that there are infinitely many primes: saying that they are not bounded by any n , and saying that they are not contained in any finite set s . The two proofs below show that these formulations are equivalent. In the second, in order to form s.filter Q , we have to assume that there is a procedure for deciding whether or not Q holds. Lean knows that there is a procedure for Nat.Prime . In general, if we use classical logic by writing open Classical , we can dispense with the assumption.",
+    "html": "<p>We have thus seen two ways of saying that there are infinitely many primes:\nsaying that they are not bounded by any <code class=\"docutils literal notranslate\"><span class=\"pre\">n</span></code>, and saying that they are\nnot contained in any finite set <code class=\"docutils literal notranslate\"><span class=\"pre\">s</span></code>.\nThe two proofs below show that these formulations are equivalent.\nIn the second, in order to form <code class=\"docutils literal notranslate\"><span class=\"pre\">s.filter</span> <span class=\"pre\">Q</span></code>, we have to assume that there\nis a procedure for deciding whether or not <code class=\"docutils literal notranslate\"><span class=\"pre\">Q</span></code> holds. Lean knows that there\nis a procedure for <code class=\"docutils literal notranslate\"><span class=\"pre\">Nat.Prime</span></code>. In general, if we use classical logic\nby writing <code class=\"docutils literal notranslate\"><span class=\"pre\">open</span> <span class=\"pre\">Classical</span></code>,\nwe can dispense with the assumption.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0073",
+    "file": "C05_Elementary_Number_Theory.html",
+    "tag": "p",
+    "text": "In Mathlib, Finset.sup s f denotes the supremum of the values of f x as x ranges over s , returning 0 in the case where s is empty and the codomain of f is ℕ . In the first proof, we use s.sup id , where id is the identity function, to refer to the maximum value in s .",
+    "html": "<p>In Mathlib, <code class=\"docutils literal notranslate\"><span class=\"pre\">Finset.sup</span> <span class=\"pre\">s</span> <span class=\"pre\">f</span></code> denotes the supremum of the values of <code class=\"docutils literal notranslate\"><span class=\"pre\">f</span> <span class=\"pre\">x</span></code> as <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span></code>\nranges over <code class=\"docutils literal notranslate\"><span class=\"pre\">s</span></code>, returning <code class=\"docutils literal notranslate\"><span class=\"pre\">0</span></code> in the case where <code class=\"docutils literal notranslate\"><span class=\"pre\">s</span></code> is empty and\nthe codomain of <code class=\"docutils literal notranslate\"><span class=\"pre\">f</span></code> is <code class=\"docutils literal notranslate\"><span class=\"pre\">ℕ</span></code>. In the first proof, we use <code class=\"docutils literal notranslate\"><span class=\"pre\">s.sup</span> <span class=\"pre\">id</span></code>,\nwhere <code class=\"docutils literal notranslate\"><span class=\"pre\">id</span></code> is the identity function, to refer to the maximum value in <code class=\"docutils literal notranslate\"><span class=\"pre\">s</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0074",
+    "file": "C05_Elementary_Number_Theory.html",
+    "tag": "p",
+    "text": "A small variation on our second proof that there are infinitely many primes shows that there are infinitely many primes congruent to 3 modulo 4. The argument goes as follows. First, notice that if the product of two numbers \\(m\\) and \\(n\\) is equal to 3 modulo 4, then one of the two numbers is congruent to 3 modulo 4. After all, both have to be odd, and if they are both congruent to 1 modulo 4, so is their product. We can use this observation to show that if some number greater than 2 is congruent to 3 modulo 4, then that number has a prime divisor that is also congruent to 3 modulo 4.",
+    "html": "<p>A small variation on our second proof that there are infinitely many primes\nshows that there are infinitely many primes congruent to 3 modulo 4.\nThe argument goes as follows.\nFirst, notice that if the product of two numbers <span class=\"math notranslate nohighlight\">\\(m\\)</span> and <span class=\"math notranslate nohighlight\">\\(n\\)</span>\nis equal to 3 modulo 4, then one of the two numbers is congruent to 3 modulo 4.\nAfter all, both have to be odd, and if they are both congruent to 1 modulo 4,\nso is their product.\nWe can use this observation to show that if some number\ngreater than 2 is congruent to 3 modulo 4,\nthen that number has a prime divisor that is also congruent to 3 modulo 4.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0075",
+    "file": "C05_Elementary_Number_Theory.html",
+    "tag": "p",
+    "text": "Now suppose there are only finitely many prime numbers congruent to 3 modulo 4, say, \\(p_1, \\ldots, p_k\\) . Without loss of generality, we can assume that \\(p_1 = 3\\) . Consider the product \\(4 \\prod_{i = 2}^k p_i + 3\\) . It is easy to see that this is congruent to 3 modulo 4, so it has a prime factor \\(p\\) congruent to 3 modulo 4. It can’t be the case that \\(p = 3\\) ; since \\(p\\) divides \\(4 \\prod_{i = 2}^k p_i + 3\\) , if \\(p\\) were equal to 3 then it would also divide \\(\\prod_{i = 2}^k p_i\\) , which implies that \\(p\\) is equal to one of the \\(p_i\\) for \\(i = 2, \\ldots, k\\) ; and we have excluded 3 from this list. So \\(p\\) has to be one of the other elements \\(p_i\\) . But in that case, \\(p\\) divides \\(4 \\prod_{i = 2}^k p_i\\) and hence 3, which contradicts the fact that it is not 3.",
+    "html": "<p>Now suppose there are only finitely many prime numbers congruent to 3\nmodulo 4, say, <span class=\"math notranslate nohighlight\">\\(p_1, \\ldots, p_k\\)</span>.\nWithout loss of generality, we can assume that <span class=\"math notranslate nohighlight\">\\(p_1 = 3\\)</span>.\nConsider the product <span class=\"math notranslate nohighlight\">\\(4 \\prod_{i = 2}^k p_i + 3\\)</span>.\nIt is easy to see that this is congruent to 3 modulo 4, so it has\na prime factor <span class=\"math notranslate nohighlight\">\\(p\\)</span> congruent to 3 modulo 4.\nIt can’t be the case that <span class=\"math notranslate nohighlight\">\\(p = 3\\)</span>; since <span class=\"math notranslate nohighlight\">\\(p\\)</span>\ndivides <span class=\"math notranslate nohighlight\">\\(4 \\prod_{i = 2}^k p_i + 3\\)</span>, if <span class=\"math notranslate nohighlight\">\\(p\\)</span>\nwere equal to 3 then it would also divide <span class=\"math notranslate nohighlight\">\\(\\prod_{i = 2}^k p_i\\)</span>,\nwhich implies that <span class=\"math notranslate nohighlight\">\\(p\\)</span> is equal to\none of the <span class=\"math notranslate nohighlight\">\\(p_i\\)</span> for <span class=\"math notranslate nohighlight\">\\(i = 2, \\ldots, k\\)</span>;\nand we have excluded 3 from this list.\nSo <span class=\"math notranslate nohighlight\">\\(p\\)</span> has to be one of the other elements <span class=\"math notranslate nohighlight\">\\(p_i\\)</span>.\nBut in that case, <span class=\"math notranslate nohighlight\">\\(p\\)</span> divides <span class=\"math notranslate nohighlight\">\\(4 \\prod_{i = 2}^k p_i\\)</span>\nand hence 3, which contradicts the fact that it is not 3.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0076",
+    "file": "C05_Elementary_Number_Theory.html",
+    "tag": "p",
+    "text": "In Lean, the notation n % m , read “ n modulo m ,” denotes the remainder of the division of n by m .",
+    "html": "<p>In Lean, the notation <code class=\"docutils literal notranslate\"><span class=\"pre\">n</span> <span class=\"pre\">%</span> <span class=\"pre\">m</span></code>, read “<code class=\"docutils literal notranslate\"><span class=\"pre\">n</span></code> modulo <code class=\"docutils literal notranslate\"><span class=\"pre\">m</span></code>,”\ndenotes the remainder of the division of <code class=\"docutils literal notranslate\"><span class=\"pre\">n</span></code> by <code class=\"docutils literal notranslate\"><span class=\"pre\">m</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0077",
+    "file": "C05_Elementary_Number_Theory.html",
+    "tag": "p",
+    "text": "We can then render the statement “ n is congruent to 3 modulo 4” as n % 4 = 3 . The following example and theorems sum up the facts about this function that we will need to use below. The first named theorem is another illustration of reasoning by a small number of cases. In the second named theorem, remember that the semicolon means that the subsequent tactic block is applied to all the goals created by the preceding tactic.",
+    "html": "<p>We can then render the statement “<code class=\"docutils literal notranslate\"><span class=\"pre\">n</span></code> is congruent to 3 modulo 4”\nas <code class=\"docutils literal notranslate\"><span class=\"pre\">n</span> <span class=\"pre\">%</span> <span class=\"pre\">4</span> <span class=\"pre\">=</span> <span class=\"pre\">3</span></code>. The following example and theorems sum up\nthe facts about this function that we will need to use below.\nThe first named theorem is another illustration of reasoning by\na small number of cases.\nIn the second named theorem, remember that the semicolon means that\nthe subsequent tactic block is applied to all the goals created by the\npreceding tactic.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0078",
+    "file": "C05_Elementary_Number_Theory.html",
+    "tag": "p",
+    "text": "We will also need the following fact, which says that if m is a nontrivial divisor of n , then so is n / m . See if you can complete the proof using Nat.div_dvd_of_dvd and Nat.div_lt_self .",
+    "html": "<p>We will also need the following fact, which says that if\n<code class=\"docutils literal notranslate\"><span class=\"pre\">m</span></code> is a nontrivial divisor of <code class=\"docutils literal notranslate\"><span class=\"pre\">n</span></code>, then so is <code class=\"docutils literal notranslate\"><span class=\"pre\">n</span> <span class=\"pre\">/</span> <span class=\"pre\">m</span></code>.\nSee if you can complete the proof using <code class=\"docutils literal notranslate\"><span class=\"pre\">Nat.div_dvd_of_dvd</span></code>\nand <code class=\"docutils literal notranslate\"><span class=\"pre\">Nat.div_lt_self</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0079",
+    "file": "C05_Elementary_Number_Theory.html",
+    "tag": "p",
+    "text": "Now put all the pieces together to prove that any number congruent to 3 modulo 4 has a prime divisor with that same property.",
+    "html": "<p>Now put all the pieces together to prove that any\nnumber congruent to 3 modulo 4 has a prime divisor with that\nsame property.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0080",
+    "file": "C05_Elementary_Number_Theory.html",
+    "tag": "p",
+    "text": "We are in the home stretch. Given a set s of prime numbers, we need to talk about the result of removing 3 from that set, if it is present. The function Finset.erase handles that.",
+    "html": "<p>We are in the home stretch. Given a set <code class=\"docutils literal notranslate\"><span class=\"pre\">s</span></code> of prime\nnumbers, we need to talk about the result of removing 3 from that\nset, if it is present. The function <code class=\"docutils literal notranslate\"><span class=\"pre\">Finset.erase</span></code> handles that.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0081",
+    "file": "C05_Elementary_Number_Theory.html",
+    "tag": "p",
+    "text": "We are now ready to prove that there are infinitely many primes congruent to 3 modulo 4. Fill in the missing parts below. Our solution uses Nat.dvd_add_iff_left and Nat.dvd_sub' along the way.",
+    "html": "<p>We are now ready to prove that there are infinitely many primes\ncongruent to 3 modulo 4.\nFill in the missing parts below.\nOur solution uses <code class=\"docutils literal notranslate\"><span class=\"pre\">Nat.dvd_add_iff_left</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">Nat.dvd_sub'</span></code>\nalong the way.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0082",
+    "file": "C05_Elementary_Number_Theory.html",
+    "tag": "p",
+    "text": "If you managed to complete the proof, congratulations! This has been a serious feat of formalization.",
+    "html": "<p>If you managed to complete the proof, congratulations! This has been a serious\nfeat of formalization.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0083",
+    "file": "C05_Elementary_Number_Theory.html",
+    "tag": "p",
+    "text": "In Section 5.2 , we saw how to define the factorial function by recursion on the natural numbers.",
+    "html": "<p>In <a class=\"reference internal\" href=\"#section-induction-and-recursion\"><span class=\"std std-numref\">Section 5.2</span></a>, we saw how to define the factorial function by\nrecursion on the natural numbers.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0084",
+    "file": "C05_Elementary_Number_Theory.html",
+    "tag": "p",
+    "text": "We also saw how to prove theorems using the induction' tactic.",
+    "html": "<p>We also saw how to prove theorems using the <code class=\"docutils literal notranslate\"><span class=\"pre\">induction'</span></code> tactic.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0085",
+    "file": "C05_Elementary_Number_Theory.html",
+    "tag": "p",
+    "text": "The induction tactic (without the prime tick mark) allows for more structured syntax.",
+    "html": "<p>The <code class=\"docutils literal notranslate\"><span class=\"pre\">induction</span></code> tactic (without the prime tick mark) allows for more structured syntax.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0086",
+    "file": "C05_Elementary_Number_Theory.html",
+    "tag": "p",
+    "text": "As usual, you can hover over the induction keyword to read the documentation. The names of the cases, zero and succ , are taken from the definition of the type ℕ . Notice that the succ case allows you to choose whatever names you want for the induction variable and the inductive hypothesis, here n and ih . You can even prove a theorem with the same notation used to define a recursive function.",
+    "html": "<p>As usual, you can hover over the <code class=\"docutils literal notranslate\"><span class=\"pre\">induction</span></code> keyword to read the documentation.\nThe names of the cases, <code class=\"docutils literal notranslate\"><span class=\"pre\">zero</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">succ</span></code>, are taken from the definition of the type <cite>ℕ</cite>.\nNotice that the <code class=\"docutils literal notranslate\"><span class=\"pre\">succ</span></code> case allows you to choose whatever names you want for the\ninduction variable and the inductive hypothesis, here <code class=\"docutils literal notranslate\"><span class=\"pre\">n</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">ih</span></code>.\nYou can even prove a theorem with the same notation used to define a recursive function.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0087",
+    "file": "C05_Elementary_Number_Theory.html",
+    "tag": "p",
+    "text": "Notice also the absence of the := , the ∀ n after the colon, the by keyword in each case, and the inductive appeal to fac_pos' n . It is as though the theorem is a recursive function of n and in the inductive step we make a recursive call.",
+    "html": "<p>Notice also the absence of the <code class=\"docutils literal notranslate\"><span class=\"pre\">:=</span></code>, the <code class=\"docutils literal notranslate\"><span class=\"pre\">∀</span> <span class=\"pre\">n</span></code> after the colon, the <code class=\"docutils literal notranslate\"><span class=\"pre\">by</span></code> keyword in each case,\nand the inductive appeal to <code class=\"docutils literal notranslate\"><span class=\"pre\">fac_pos'</span> <span class=\"pre\">n</span></code>.\nIt is as though the theorem is a recursive function of <code class=\"docutils literal notranslate\"><span class=\"pre\">n</span></code> and in the inductive step we make\na recursive call.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0088",
+    "file": "C05_Elementary_Number_Theory.html",
+    "tag": "p",
+    "text": "This style of definition is remarkably flexible. Lean’s designers have built in elaborate means of defining recursive functions, and these extend to doing proofs by induction. For example, we can define the Fibonacci function with multiple base cases.",
+    "html": "<p>This style of definition is remarkably flexible.\nLean’s designers have built in elaborate means of defining recursive functions, and these\nextend to doing proofs by induction.\nFor example, we can define the Fibonacci function with multiple base cases.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0089",
+    "file": "C05_Elementary_Number_Theory.html",
+    "tag": "p",
+    "text": "The @[simp] annotation means that the simplifier will use the defining equations. You can also apply them by writing rw [fib] . Below it will be helpful to give a name to the n + 2 case.",
+    "html": "<p>The <code class=\"docutils literal notranslate\"><span class=\"pre\">@[simp]</span></code> annotation means that the simplifier will use the defining equations.\nYou can also apply them by writing <code class=\"docutils literal notranslate\"><span class=\"pre\">rw</span> <span class=\"pre\">[fib]</span></code>.\nBelow it will be helpful to give a name to the <code class=\"docutils literal notranslate\"><span class=\"pre\">n</span> <span class=\"pre\">+</span> <span class=\"pre\">2</span></code> case.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0090",
+    "file": "C05_Elementary_Number_Theory.html",
+    "tag": "p",
+    "text": "Using Lean’s notation for recursive functions, you can carry out proofs by induction on the natural numbers that mirror the recursive definition of fib . The following example provides an explicit formula for the nth Fibonacci number in terms of the golden mean, φ , and its conjugate, φ' . We have to tell Lean that we don’t expect our definitions to generate code because the arithmetic operations on the real numbers are not computable.",
+    "html": "<p>Using Lean’s notation for recursive functions, you can carry out proofs by induction on the\nnatural numbers that mirror the recursive definition of <code class=\"docutils literal notranslate\"><span class=\"pre\">fib</span></code>.\nThe following example provides an explicit formula for the nth Fibonacci number in terms of\nthe golden mean, <code class=\"docutils literal notranslate\"><span class=\"pre\">φ</span></code>, and its conjugate, <code class=\"docutils literal notranslate\"><span class=\"pre\">φ'</span></code>.\nWe have to tell Lean that we don’t expect our definitions to generate code because the\narithmetic operations on the real numbers are not computable.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0091",
+    "file": "C05_Elementary_Number_Theory.html",
+    "tag": "p",
+    "text": "We will use the grind tactic to do computations, telling it to use the definitions of phi and phi’ and the inductively assumed fib_eq n and fib_eq (n+1) .",
+    "html": "<p>We will use the <cite>grind</cite> tactic to do computations, telling it to use the definitions\nof <cite>phi</cite> and <cite>phi’</cite> and the inductively assumed <cite>fib_eq n</cite> and <cite>fib_eq (n+1)</cite>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0092",
+    "file": "C05_Elementary_Number_Theory.html",
+    "tag": "p",
+    "text": "Induction proofs involving the Fibonacci function do not have to be of that form. Below we reproduce the Mathlib proof that consecutive Fibonacci numbers are coprime.",
+    "html": "<p>Induction proofs involving the Fibonacci function do not have to be of that form.\nBelow we reproduce the <code class=\"docutils literal notranslate\"><span class=\"pre\">Mathlib</span></code> proof that consecutive Fibonacci numbers are coprime.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0093",
+    "file": "C05_Elementary_Number_Theory.html",
+    "tag": "p",
+    "text": "Using Lean’s computational interpretation, we can evaluate the Fibonacci numbers.",
+    "html": "<p>Using Lean’s computational interpretation, we can evaluate the Fibonacci numbers.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0094",
+    "file": "C05_Elementary_Number_Theory.html",
+    "tag": "p",
+    "text": "The straightforward implementation of fib is computationally inefficient. In fact, it runs in time exponential in its argument. (You should think about why.) In Lean, we can implement the following tail-recursive version, whose running time is linear in n , and prove that it computes the same function.",
+    "html": "<p>The straightforward implementation of <code class=\"docutils literal notranslate\"><span class=\"pre\">fib</span></code> is computationally inefficient. In fact, it runs\nin time exponential in its argument. (You should think about why.)\nIn Lean, we can implement the following tail-recursive version, whose running time is linear\nin <code class=\"docutils literal notranslate\"><span class=\"pre\">n</span></code>, and prove that it computes the same function.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0095",
+    "file": "C05_Elementary_Number_Theory.html",
+    "tag": "p",
+    "text": "Notice the generalizing keyword in the proof of fib'.aux_eq . It serves to insert a ∀ m in front of the inductive hypothesis, so that in the induction step, m can take a different value. You can step through the proof and check that in this case, the quantifier needs to be instantiated to m + 1 in the inductive step.",
+    "html": "<p>Notice the <code class=\"docutils literal notranslate\"><span class=\"pre\">generalizing</span></code> keyword in the proof of <code class=\"docutils literal notranslate\"><span class=\"pre\">fib'.aux_eq</span></code>.\nIt serves to insert a <code class=\"docutils literal notranslate\"><span class=\"pre\">∀</span> <span class=\"pre\">m</span></code> in front of the inductive hypothesis, so that in the induction\nstep, <code class=\"docutils literal notranslate\"><span class=\"pre\">m</span></code> can take a different value.\nYou can step through the proof and check that in this case, the quantifier needs to be\ninstantiated to <code class=\"docutils literal notranslate\"><span class=\"pre\">m</span> <span class=\"pre\">+</span> <span class=\"pre\">1</span></code> in the inductive step.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0096",
+    "file": "C05_Elementary_Number_Theory.html",
+    "tag": "p",
+    "text": "Notice also the use of erw (for “extended rewrite”) instead of rw . This is used because to rewrite the goal fib'.aux_eq , fib 0 and fib 1 have to be reduced to 0 and 1 , respectively. The tactic erw is more aggressive than rw in unfolding definitions to match parameters. This isn’t always a good idea; it can waste a lot of time in some cases, so use erw sparingly.",
+    "html": "<p>Notice also the use of <code class=\"docutils literal notranslate\"><span class=\"pre\">erw</span></code> (for “extended rewrite”) instead of <code class=\"docutils literal notranslate\"><span class=\"pre\">rw</span></code>.\nThis is used because to rewrite the goal <code class=\"docutils literal notranslate\"><span class=\"pre\">fib'.aux_eq</span></code>, <code class=\"docutils literal notranslate\"><span class=\"pre\">fib</span> <span class=\"pre\">0</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">fib</span> <span class=\"pre\">1</span></code>\nhave to be reduced to <code class=\"docutils literal notranslate\"><span class=\"pre\">0</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">1</span></code>, respectively.\nThe tactic <code class=\"docutils literal notranslate\"><span class=\"pre\">erw</span></code> is more aggressive than <code class=\"docutils literal notranslate\"><span class=\"pre\">rw</span></code> in unfolding definitions to\nmatch parameters.\nThis isn’t always a good idea; it can waste a lot of time in some cases, so use <code class=\"docutils literal notranslate\"><span class=\"pre\">erw</span></code>\nsparingly.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0097",
+    "file": "C05_Elementary_Number_Theory.html",
+    "tag": "p",
+    "text": "Here is another example of the generalizing keyword in use, in the proof of another identity that is found in Mathlib . An informal proof of the identity can be found here . We provide two variants of the formal proof.",
+    "html": "<p>Here is another example of the <code class=\"docutils literal notranslate\"><span class=\"pre\">generalizing</span></code> keyword in use, in the proof of another\nidentity that is found in <code class=\"docutils literal notranslate\"><span class=\"pre\">Mathlib</span></code>.\nAn informal proof of the identity can be found <a class=\"reference external\" href=\"https://proofwiki.org/wiki/Fibonacci_Number_in_terms_of_Smaller_Fibonacci_Numbers\">here</a>.\nWe provide two variants of the formal proof.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0098",
+    "file": "C05_Elementary_Number_Theory.html",
+    "tag": "p",
+    "text": "As an exercise, use fib_add to prove the following.",
+    "html": "<p>As an exercise, use <code class=\"docutils literal notranslate\"><span class=\"pre\">fib_add</span></code> to prove the following.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0099",
+    "file": "C05_Elementary_Number_Theory.html",
+    "tag": "p",
+    "text": "Lean’s mechanisms for defining recursive functions are flexible enough to allow arbitrary recursive calls, as long as the complexity of the arguments decrease according to some well-founded measure. In the next example, we show that every natural number n ≠ 1 has a prime divisor, using the fact that if n is nonzero and not prime, it has a smaller divisor. (You can check that Mathlib has a theorem of the same name in the Nat namespace, though it has a different proof than the one we give here.)",
+    "html": "<p>Lean’s mechanisms for defining recursive functions are flexible enough to allow arbitrary\nrecursive calls, as long as the complexity of the arguments decrease according to some\nwell-founded measure.\nIn the next example, we show that every natural number <code class=\"docutils literal notranslate\"><span class=\"pre\">n</span> <span class=\"pre\">≠</span> <span class=\"pre\">1</span></code> has a prime divisor,\nusing the fact that if <code class=\"docutils literal notranslate\"><span class=\"pre\">n</span></code> is nonzero and not prime, it has a smaller divisor.\n(You can check that Mathlib has a theorem of the same name in the <code class=\"docutils literal notranslate\"><span class=\"pre\">Nat</span></code> namespace,\nthough it has a different proof than the one we give here.)</p>",
+    "zh": ""
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0100",
+    "file": "C05_Elementary_Number_Theory.html",
+    "tag": "p",
+    "text": "The line rw [ne_one_iff_exists_prime_dvd] at this is like a magic trick: we are using the very theorem we are proving in its own proof. What makes it work is that the inductive call is instantiated at m , the current case is n + 2 , and the context has m < n + 2 . Lean can find the hypothesis and use it to show that the induction is well-founded. Lean is pretty good at figuring out what is decreasing; in this case, the choice of n in the statement of the theorem and the less-than relation is obvious. In more complicated cases, Lean provides mechanisms to provide this information explicitly. See the section on well-founded recursion in the Lean Reference Manual.",
+    "html": "<p>The line <code class=\"docutils literal notranslate\"><span class=\"pre\">rw</span> <span class=\"pre\">[ne_one_iff_exists_prime_dvd]</span> <span class=\"pre\">at</span> <span class=\"pre\">this</span></code> is like a magic trick: we are using\nthe very theorem we are proving in its own proof.\nWhat makes it work is that the inductive call is instantiated at <code class=\"docutils literal notranslate\"><span class=\"pre\">m</span></code>,\nthe current case is <code class=\"docutils literal notranslate\"><span class=\"pre\">n</span> <span class=\"pre\">+</span> <span class=\"pre\">2</span></code>, and the context has <code class=\"docutils literal notranslate\"><span class=\"pre\">m</span> <span class=\"pre\">&lt;</span> <span class=\"pre\">n</span> <span class=\"pre\">+</span> <span class=\"pre\">2</span></code>.\nLean can find the hypothesis and use it to show that the induction is well-founded.\nLean is pretty good at figuring out what is decreasing; in this case, the choice of\n<code class=\"docutils literal notranslate\"><span class=\"pre\">n</span></code> in the statement of the theorem and the less-than relation is obvious.\nIn more complicated cases, Lean provides mechanisms to provide this information\nexplicitly. See the section on <a class=\"reference external\" href=\"https://lean-lang.org/doc/reference/latest//Definitions/Recursive-Definitions/#well-founded-recursion\">well-founded recursion</a> in the Lean Reference Manual.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0101",
+    "file": "C05_Elementary_Number_Theory.html",
+    "tag": "p",
+    "text": "Sometimes, in a proof, you need to split on cases depending on whether a natural number n is zero or a successor, without requiring an inductive hypothesis in the successor case. For that, you can use the cases and rcases tactics.",
+    "html": "<p>Sometimes, in a proof, you need to split on cases depending on whether a natural number <code class=\"docutils literal notranslate\"><span class=\"pre\">n</span></code>\nis zero or a successor, without requiring an inductive hypothesis in the successor case.\nFor that, you can use the <code class=\"docutils literal notranslate\"><span class=\"pre\">cases</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">rcases</span></code> tactics.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0102",
+    "file": "C05_Elementary_Number_Theory.html",
+    "tag": "p",
+    "text": "This is a useful trick. Often you have a theorem about a natural number n for which the zero case is easy. If you case on n and take care of the zero case quickly, you are left with the original goal with n replaced by n + 1 .",
+    "html": "<p>This is a useful trick.\nOften you have a theorem about a natural number <code class=\"docutils literal notranslate\"><span class=\"pre\">n</span></code> for which the zero case is easy.\nIf you case on <code class=\"docutils literal notranslate\"><span class=\"pre\">n</span></code> and take care of the zero case quickly, you are left with the original\ngoal with <code class=\"docutils literal notranslate\"><span class=\"pre\">n</span></code> replaced by <code class=\"docutils literal notranslate\"><span class=\"pre\">n</span> <span class=\"pre\">+</span> <span class=\"pre\">1</span></code>.</p>",
+    "zh": ""
+  }
+]

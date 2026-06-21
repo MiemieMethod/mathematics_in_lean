@@ -1,0 +1,142 @@
+[
+  {
+    "id": "C05_Elementary_Number_Theory:0036",
+    "zh": "这种语法需要一些时间适应。注意第一行没有 <code class=\"docutils literal notranslate\"><span class=\"pre\">:=</span></code>。接下来的两行给出递归定义的基本情形和归纳步骤。这些方程在定义意义下成立，但也可以通过把名称 <code class=\"docutils literal notranslate\"><span class=\"pre\">fac</span></code> 提供给 <code class=\"docutils literal notranslate\"><span class=\"pre\">simp</span></code> 或 <code class=\"docutils literal notranslate\"><span class=\"pre\">rw</span></code> 来手动使用。"
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0037",
+    "zh": "阶乘函数实际上已经在 Mathlib 中定义为 <code class=\"docutils literal notranslate\"><span class=\"pre\">Nat.factorial</span></code>。同样，可以输入 <code class=\"docutils literal notranslate\"><span class=\"pre\">#check</span> <span class=\"pre\">Nat.factorial</span></code> 并使用 Ctrl-点击跳转到它。出于说明目的，我们将在例子中继续使用 <code class=\"docutils literal notranslate\"><span class=\"pre\">fac</span></code>。<code class=\"docutils literal notranslate\"><span class=\"pre\">Nat.factorial</span></code> 定义前的标注 <code class=\"docutils literal notranslate\"><span class=\"pre\">@[simp]</span></code> 指定把定义方程加入化简器默认使用的恒等式数据库。"
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0038",
+    "zh": "归纳原理说，可以通过证明命题对 <code class=\"docutils literal notranslate\"><span class=\"pre\">0</span></code> 成立，并证明一旦它对自然数 <span class=\"math notranslate nohighlight\">\\(n\\)</span> 成立也对 <span class=\"math notranslate nohighlight\">\\(n + 1\\)</span> 成立，来证明关于自然数的一般命题。因此，下面证明中的行 <code class=\"docutils literal notranslate\"><span class=\"pre\">induction'</span> <span class=\"pre\">n</span> <span class=\"pre\">with</span> <span class=\"pre\">n</span> <span class=\"pre\">ih</span></code> 会产生两个目标：第一个需要证明 <code class=\"docutils literal notranslate\"><span class=\"pre\">0</span> <span class=\"pre\">&lt;</span> <span class=\"pre\">fac</span> <span class=\"pre\">0</span></code>，第二个带有附加假设 <code class=\"docutils literal notranslate\"><span class=\"pre\">ih</span> <span class=\"pre\">:</span> <span class=\"pre\">0</span> <span class=\"pre\">&lt;</span> <span class=\"pre\">fac</span> <span class=\"pre\">n</span></code>，并要求证明 <code class=\"docutils literal notranslate\"><span class=\"pre\">0</span> <span class=\"pre\">&lt;</span> <span class=\"pre\">fac</span> <span class=\"pre\">(n</span> <span class=\"pre\">+</span> <span class=\"pre\">1)</span></code>。短语 <code class=\"docutils literal notranslate\"><span class=\"pre\">with</span> <span class=\"pre\">n</span> <span class=\"pre\">ih</span></code> 用于给归纳变量和归纳假设命名，你可以为它们选择任意名称。"
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0039",
+    "zh": "<code class=\"docutils literal notranslate\"><span class=\"pre\">induction'</span></code> 策略足够聪明，会把依赖于归纳变量的假设纳入归纳假设。请逐步查看下一个例子，看看发生了什么。"
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0040",
+    "zh": "下面的例子给出阶乘函数的一个粗略下界。事实证明，先按情形证明更容易，这样证明余下部分从 <span class=\"math notranslate nohighlight\">\\(n = 1\\)</span> 的情形开始。看看能否使用 <code class=\"docutils literal notranslate\"><span class=\"pre\">pow_succ</span></code> 或 <code class=\"docutils literal notranslate\"><span class=\"pre\">pow_succ'</span></code> 通过归纳证明完成论证。"
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0041",
+    "zh": "归纳常用于证明涉及有限和与有限乘积的恒等式。Mathlib 定义表达式 <code class=\"docutils literal notranslate\"><span class=\"pre\">Finset.sum</span> <span class=\"pre\">s</span> <span class=\"pre\">f</span></code>，其中 <code class=\"docutils literal notranslate\"><span class=\"pre\">s</span> <span class=\"pre\">:</span> <span class=\"pre\">Finset</span> <span class=\"pre\">α</span></code> 是类型 <code class=\"docutils literal notranslate\"><span class=\"pre\">α</span></code> 的元素组成的有限集，而 <code class=\"docutils literal notranslate\"><span class=\"pre\">f</span></code> 是定义在 <code class=\"docutils literal notranslate\"><span class=\"pre\">α</span></code> 上的函数。<code class=\"docutils literal notranslate\"><span class=\"pre\">f</span></code> 的陪域可以是任意支持带零元的交换结合加法运算的类型。若导入 <code class=\"docutils literal notranslate\"><span class=\"pre\">Algebra.BigOperators.Ring</span></code> 并执行命令 <code class=\"docutils literal notranslate\"><span class=\"pre\">open</span> <span class=\"pre\">BigOperators</span></code>，就可以使用更直观的记号 <code class=\"docutils literal notranslate\"><span class=\"pre\">∑</span> <span class=\"pre\">x</span> <span class=\"pre\">∈</span> <span class=\"pre\">s,</span> <span class=\"pre\">f</span> <span class=\"pre\">x</span></code>。当然，有限乘积也有类似运算和记号。"
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0042",
+    "zh": "我们将在下一节以及后续章节中讨论 <code class=\"docutils literal notranslate\"><span class=\"pre\">Finset</span></code> 类型及其支持的运算。现在只使用 <code class=\"docutils literal notranslate\"><span class=\"pre\">Finset.range</span> <span class=\"pre\">n</span></code>，它是小于 <code class=\"docutils literal notranslate\"><span class=\"pre\">n</span></code> 的自然数组成的有限集。"
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0043",
+    "zh": "事实 <code class=\"docutils literal notranslate\"><span class=\"pre\">Finset.sum_range_zero</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">Finset.sum_range_succ</span></code> 给出了到 <span class=\"math notranslate nohighlight\">\\(n\\)</span> 为止的求和的递归描述；乘积也类似。"
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0044",
+    "zh": "每一对中的第一个恒等式按定义成立，也就是说，可以把证明替换为 <code class=\"docutils literal notranslate\"><span class=\"pre\">rfl</span></code>。"
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0045",
+    "zh": "下面把我们定义的阶乘函数表示为一个乘积。"
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0046",
+    "zh": "把 <code class=\"docutils literal notranslate\"><span class=\"pre\">mul_comm</span></code> 作为化简规则纳入值得说明。用恒等式 <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span> <span class=\"pre\">*</span> <span class=\"pre\">y</span> <span class=\"pre\">=</span> <span class=\"pre\">y</span> <span class=\"pre\">*</span> <span class=\"pre\">x</span></code> 化简看起来应当很危险，因为它通常会无限循环。Lean 的化简器足够聪明，能够识别这一点；它只在所得项相对于某个固定但任意的项排序更小时才应用该规则。下面的例子表明，使用 <code class=\"docutils literal notranslate\"><span class=\"pre\">mul_assoc</span></code>、<code class=\"docutils literal notranslate\"><span class=\"pre\">mul_comm</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">mul_left_comm</span></code> 三条规则化简，能够识别那些只在括号位置和变量顺序上不同的相同乘积。"
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0047",
+    "zh": "粗略地说，这些规则通过把括号向右推，然后按同一个标准顺序重新排列两边表达式来工作。使用这些规则以及对应的加法规则化简，是一个方便技巧。"
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0048",
+    "zh": "回到求和恒等式，我们建议逐步查看下面的证明：从 0 到 <span class=\"math notranslate nohighlight\">\\(n\\)</span> 的自然数之和为 <span class=\"math notranslate nohighlight\">\\(n(n+1)/2\\)</span>。证明的第一步清除分母。形式化恒等式时，这通常很有用，因为带除法的计算一般有旁条件。（类似地，在自然数上尽可能避免使用减法也很有用。）"
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0049",
+    "zh": "我们鼓励你证明平方和的类似恒等式，以及你能在网上找到的其他恒等式。"
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0050",
+    "zh": "在 Lean 的核心库中，加法和乘法本身也是用递归定义的，并且它们的基本性质由归纳证明建立。如果你喜欢思考这类基础性主题，也许会乐于完成乘法和加法的交换律、结合律以及乘法对加法分配律的证明。可以按照下面的提纲，在自然数的一个副本上完成这些工作。注意，可以对 <code class=\"docutils literal notranslate\"><span class=\"pre\">MyNat</span></code> 使用 <code class=\"docutils literal notranslate\"><span class=\"pre\">induction</span></code> 策略；Lean 足够聪明，知道应使用相关归纳原理（当然，它与 <code class=\"docutils literal notranslate\"><span class=\"pre\">Nat</span></code> 的归纳原理相同）。"
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0051",
+    "zh": "我们先从加法交换律开始。一个好的经验法则是：由于加法和乘法是按第二个参数递归定义的，通常对出现在该位置的变量做归纳更有利。在结合律证明中决定使用哪个变量稍微有些微妙。"
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0052",
+    "zh": "如果没有通常的零、一、加法和乘法记号，书写内容可能会让人困惑。稍后我们会学习如何定义这样的记号。在命名空间 <code class=\"docutils literal notranslate\"><span class=\"pre\">MyNat</span></code> 中工作，意味着可以写 <code class=\"docutils literal notranslate\"><span class=\"pre\">zero</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">succ</span></code>，而不必写 <code class=\"docutils literal notranslate\"><span class=\"pre\">MyNat.zero</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">MyNat.succ</span></code>，并且这些名称的解释优先于其他解释。在命名空间之外，例如下面定义的 <code class=\"docutils literal notranslate\"><span class=\"pre\">add</span></code> 的完整名称是 <code class=\"docutils literal notranslate\"><span class=\"pre\">MyNat.add</span></code>。"
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0053",
+    "zh": "如果你发现自己确实喜欢这类事情，可以尝试定义截断减法和幂运算，并证明它们的一些性质。记住，截断减法会在零处截断。为了定义它，先定义前驱函数 <code class=\"docutils literal notranslate\"><span class=\"pre\">pred</span></code> 很有用；它从任意非零数中减去一，并保持零不变。函数 <code class=\"docutils literal notranslate\"><span class=\"pre\">pred</span></code> 可以由一个简单的递归实例定义。"
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0054",
+    "zh": "让我们用另一个数学标准例子继续探索归纳与递归：证明有无穷多个素数。其一种表述是：对每个自然数 <span class=\"math notranslate nohighlight\">\\(n\\)</span>，都存在一个大于 <span class=\"math notranslate nohighlight\">\\(n\\)</span> 的素数。为了证明这一点，令 <span class=\"math notranslate nohighlight\">\\(p\\)</span> 为 <span class=\"math notranslate nohighlight\">\\(n! + 1\\)</span> 的任意素因子。若 <span class=\"math notranslate nohighlight\">\\(p\\)</span> 小于等于 <span class=\"math notranslate nohighlight\">\\(n\\)</span>，则它整除 <span class=\"math notranslate nohighlight\">\\(n!\\)</span>。由于它也整除 <span class=\"math notranslate nohighlight\">\\(n! + 1\\)</span>，于是它整除 1，矛盾。因此 <span class=\"math notranslate nohighlight\">\\(p\\)</span> 大于 <span class=\"math notranslate nohighlight\">\\(n\\)</span>。"
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0055",
+    "zh": "要形式化该证明，需要说明任意大于等于 2 的数都有素因子。为此，需要说明任意不等于 0 或 1 的自然数都大于等于 2。这引出了形式化的一个怪异特征：常常正是这种平凡陈述最令人烦恼。这里我们考察几种处理方法。"
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0056",
+    "zh": "首先，可以使用 <code class=\"docutils literal notranslate\"><span class=\"pre\">cases</span></code> 策略，以及后继函数尊重自然数序关系这一事实。"
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0057",
+    "zh": "另一种策略是使用 <code class=\"docutils literal notranslate\"><span class=\"pre\">interval_cases</span></code>，当相关变量位于自然数或整数的某个区间内时，它会自动把目标拆成各个情形。记住，可以把鼠标悬停在它上面查看文档。"
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0058",
+    "zh": "回忆一下，<code class=\"docutils literal notranslate\"><span class=\"pre\">interval_cases</span> <span class=\"pre\">m</span></code> 后面的分号表示下一个策略应用于它生成的每一个情形。还有一种选择是使用 <code class=\"docutils literal notranslate\"><span class=\"pre\">decide</span></code> 策略，它会尝试寻找判定过程来解决问题。Lean 知道，若一个命题以有界量词 <code class=\"docutils literal notranslate\"><span class=\"pre\">∀</span> <span class=\"pre\">x,</span> <span class=\"pre\">x</span> <span class=\"pre\">&lt;</span> <span class=\"pre\">n</span> <span class=\"pre\">→</span> <span class=\"pre\">...</span></code> 或 <code class=\"docutils literal notranslate\"><span class=\"pre\">∃</span> <span class=\"pre\">x,</span> <span class=\"pre\">x</span> <span class=\"pre\">&lt;</span> <span class=\"pre\">n</span> <span class=\"pre\">∧</span> <span class=\"pre\">...</span></code> 开始，就可以通过判定有限多个实例来判定其真值。"
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0059",
+    "zh": "有了定理 <code class=\"docutils literal notranslate\"><span class=\"pre\">two_le</span></code>，我们先证明每个大于 2 的自然数都有素因子。Mathlib 包含函数 <code class=\"docutils literal notranslate\"><span class=\"pre\">Nat.minFac</span></code>，它返回最小素因子；但为了学习库中的新内容，我们会避免使用它，直接证明该定理。"
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0060",
+    "zh": "这里，普通归纳还不够。我们想使用<em>强归纳</em>，它允许我们通过证明对每个数 <span class=\"math notranslate nohighlight\">\\(n\\)</span>，若性质 <span class=\"math notranslate nohighlight\">\\(P\\)</span> 对所有小于 <span class=\"math notranslate nohighlight\">\\(n\\)</span> 的值成立，则它在 <span class=\"math notranslate nohighlight\">\\(n\\)</span> 处也成立，来证明每个自然数 <span class=\"math notranslate nohighlight\">\\(n\\)</span> 都具有性质 <span class=\"math notranslate nohighlight\">\\(P\\)</span>。在 Lean 中，这个原理称为 <code class=\"docutils literal notranslate\"><span class=\"pre\">Nat.strong_induction_on</span></code>，我们可以用关键字 <code class=\"docutils literal notranslate\"><span class=\"pre\">using</span></code> 告诉 <code class=\"docutils literal notranslate\"><span class=\"pre\">induction</span></code> 策略使用它。注意，这样做时没有基本情形；它被包含在一般归纳步骤中。"
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0061",
+    "zh": "论证很简单。假设 <span class=\"math notranslate nohighlight\">\\(n \\ge 2\\)</span>，若 <span class=\"math notranslate nohighlight\">\\(n\\)</span> 是素数，则完成。若不是，则由素数含义的某个刻画，它有一个非平凡因子 <span class=\"math notranslate nohighlight\">\\(m\\)</span>，于是可以对该因子应用归纳假设。请逐步查看下一个证明，看看它如何展开。"
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0062",
+    "zh": "现在可以证明我们定理的如下表述。看看能否补全草图。可以使用 <code class=\"docutils literal notranslate\"><span class=\"pre\">Nat.factorial_pos</span></code>、<code class=\"docutils literal notranslate\"><span class=\"pre\">Nat.dvd_factorial</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">Nat.dvd_sub'</span></code>。"
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0063",
+    "zh": "我们来考虑上述证明的一个变体：不使用阶乘函数，而是假设给定有限集 <span class=\"math notranslate nohighlight\">\\(\\{p_1, \\ldots, p_n\\}\\)</span>，并考虑 <span class=\"math notranslate nohighlight\">\\(\\prod_{i=1}^n p_i + 1\\)</span> 的一个素因子。这个素因子必然不同于每个 <span class=\"math notranslate nohighlight\">\\(p_i\\)</span>，从而说明不存在包含所有素数的有限集。"
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0064",
+    "zh": "形式化这个论证要求我们推理有限集。在 Lean 中，对任意类型 <code class=\"docutils literal notranslate\"><span class=\"pre\">α</span></code>，类型 <code class=\"docutils literal notranslate\"><span class=\"pre\">Finset</span> <span class=\"pre\">α</span></code> 表示类型 <code class=\"docutils literal notranslate\"><span class=\"pre\">α</span></code> 的元素组成的有限集。计算性地推理有限集需要有一个判定 <code class=\"docutils literal notranslate\"><span class=\"pre\">α</span></code> 上相等性的过程，这就是为什么下面代码片段包含假设 <code class=\"docutils literal notranslate\"><span class=\"pre\">[DecidableEq</span> <span class=\"pre\">α]</span></code>。对 <code class=\"docutils literal notranslate\"><span class=\"pre\">ℕ</span></code>、<code class=\"docutils literal notranslate\"><span class=\"pre\">ℤ</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">ℚ</span></code> 这样的具体数据类型，该假设会自动满足。对实数推理时，可以通过使用经典逻辑并放弃计算解释来满足它。"
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0065",
+    "zh": "我们使用命令 <code class=\"docutils literal notranslate\"><span class=\"pre\">open</span> <span class=\"pre\">Finset</span></code>，以便使用相关定理的较短名称。不同于集合的情形，大多数涉及有限集的等价命题并不按定义成立，因此需要使用 <code class=\"docutils literal notranslate\"><span class=\"pre\">Finset.subset_iff</span></code>、<code class=\"docutils literal notranslate\"><span class=\"pre\">Finset.mem_union</span></code>、<code class=\"docutils literal notranslate\"><span class=\"pre\">Finset.mem_inter</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">Finset.mem_sdiff</span></code> 这类等价手动展开。<code class=\"docutils literal notranslate\"><span class=\"pre\">ext</span></code> 策略仍可用于通过证明一个有限集的每个元素是另一个有限集的元素，来说明两个有限集相等。"
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0066",
+    "zh": "我们使用了一个新技巧：<code class=\"docutils literal notranslate\"><span class=\"pre\">tauto</span></code> 策略（以及使用经典逻辑的加强版本 <code class=\"docutils literal notranslate\"><span class=\"pre\">tauto!</span></code>）可以用来处理命题逻辑重言式。看看能否使用这些方法证明下面两个例子。"
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0067",
+    "zh": "定理 <code class=\"docutils literal notranslate\"><span class=\"pre\">Finset.dvd_prod_of_mem</span></code> 告诉我们，如果 <code class=\"docutils literal notranslate\"><span class=\"pre\">n</span></code> 是有限集 <code class=\"docutils literal notranslate\"><span class=\"pre\">s</span></code> 的元素，则 <code class=\"docutils literal notranslate\"><span class=\"pre\">n</span></code> 整除 <code class=\"docutils literal notranslate\"><span class=\"pre\">∏</span> <span class=\"pre\">i</span> <span class=\"pre\">∈</span> <span class=\"pre\">s,</span> <span class=\"pre\">i</span></code>。"
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0068",
+    "zh": "还需要知道，当 <code class=\"docutils literal notranslate\"><span class=\"pre\">n</span></code> 是素数且 <code class=\"docutils literal notranslate\"><span class=\"pre\">s</span></code> 是素数集合时，反向命题成立。为了说明这一点，需要下面的引理；你应当能用定理 <code class=\"docutils literal notranslate\"><span class=\"pre\">Nat.Prime.eq_one_or_self_of_dvd</span></code> 证明它。"
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0069",
+    "zh": "可以用这个引理证明：若素数 <code class=\"docutils literal notranslate\"><span class=\"pre\">p</span></code> 整除一组有限素数的乘积，则它等于其中某个素数。Mathlib 提供了关于有限集的有用归纳原理：要证明一个性质对任意有限集 <code class=\"docutils literal notranslate\"><span class=\"pre\">s</span></code> 成立，只需证明它对空集成立，并且证明当加入单个新元素 <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span> <span class=\"pre\">∉</span> <span class=\"pre\">s</span></code> 时它保持成立。这个原理称为 <code class=\"docutils literal notranslate\"><span class=\"pre\">Finset.induction_on</span></code>。当我们告诉 <code class=\"docutils literal notranslate\"><span class=\"pre\">induction</span></code> 策略使用它时，也可以指定名称 <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">s</span></code>、归纳步骤中假设 <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span> <span class=\"pre\">∉</span> <span class=\"pre\">s</span></code> 的名称，以及归纳假设的名称。表达式 <code class=\"docutils literal notranslate\"><span class=\"pre\">Finset.insert</span> <span class=\"pre\">a</span> <span class=\"pre\">s</span></code> 表示 <code class=\"docutils literal notranslate\"><span class=\"pre\">s</span></code> 与单元素集 <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span></code> 的并。恒等式 <code class=\"docutils literal notranslate\"><span class=\"pre\">Finset.prod_empty</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">Finset.prod_insert</span></code> 则提供乘积的相关重写规则。在下面的证明中，第一个 <code class=\"docutils literal notranslate\"><span class=\"pre\">simp</span></code> 应用了 <code class=\"docutils literal notranslate\"><span class=\"pre\">Finset.prod_empty</span></code>。请逐步查看证明开头，观察归纳如何展开，然后完成它。"
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0070",
+    "zh": "我们还需要有限集的最后一个性质。给定元素 <code class=\"docutils literal notranslate\"><span class=\"pre\">s</span> <span class=\"pre\">:</span> <span class=\"pre\">Set</span> <span class=\"pre\">α</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">α</span></code> 上的谓词 <code class=\"docutils literal notranslate\"><span class=\"pre\">P</span></code>，在 <a class=\"reference internal\" href=\"C04_Sets_and_Functions.html#sets-and-functions\"><span class=\"std std-numref\">第 4 章</span></a> 中我们写 <code class=\"docutils literal notranslate\"><span class=\"pre\">{</span> <span class=\"pre\">x</span> <span class=\"pre\">∈</span> <span class=\"pre\">s</span> <span class=\"pre\">|</span> <span class=\"pre\">P</span> <span class=\"pre\">x</span> <span class=\"pre\">}</span></code> 表示 <code class=\"docutils literal notranslate\"><span class=\"pre\">s</span></code> 中满足 <code class=\"docutils literal notranslate\"><span class=\"pre\">P</span></code> 的元素集合。给定 <code class=\"docutils literal notranslate\"><span class=\"pre\">s</span> <span class=\"pre\">:</span> <span class=\"pre\">Finset</span> <span class=\"pre\">α</span></code>，类似概念写作 <code class=\"docutils literal notranslate\"><span class=\"pre\">s.filter</span> <span class=\"pre\">P</span></code>。"
+  }
+]

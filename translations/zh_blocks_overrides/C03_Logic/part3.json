@@ -1,0 +1,162 @@
+[
+  {
+    "id": "C03_Logic:0081",
+    "zh": "第一、第二和第四个蕴含可以直接用你已经见过的方法证明。我们鼓励你尝试。第三个更困难，因为它要从某个对象不存在会导致矛盾这一事实推出该对象存在。这是经典数学推理的一个实例。我们可以如下用反证法证明第三个蕴含。"
+  },
+  {
+    "id": "C03_Logic:0082",
+    "zh": "请确保理解其工作方式。<code class=\"docutils literal notranslate\"><span class=\"pre\">by_contra</span></code> 策略允许我们通过假设 <code class=\"docutils literal notranslate\"><span class=\"pre\">¬</span> <span class=\"pre\">Q</span></code> 并导出矛盾来证明目标 <code class=\"docutils literal notranslate\"><span class=\"pre\">Q</span></code>。事实上，它等价于使用等价命题 <code class=\"docutils literal notranslate\"><span class=\"pre\">not_not</span> <span class=\"pre\">:</span> <span class=\"pre\">¬</span> <span class=\"pre\">¬</span> <span class=\"pre\">Q</span> <span class=\"pre\">↔</span> <span class=\"pre\">Q</span></code>。请确认你可以用 <code class=\"docutils literal notranslate\"><span class=\"pre\">by_contra</span></code> 证明这个等价的正向方向，而反向方向则由否定的一般规则推出。"
+  },
+  {
+    "id": "C03_Logic:0083",
+    "zh": "请使用反证法建立下面的命题，它是上面已证明某个蕴含的逆命题。（提示：先使用 <code class=\"docutils literal notranslate\"><span class=\"pre\">intro</span></code>。）"
+  },
+  {
+    "id": "C03_Logic:0084",
+    "zh": "处理前面带有否定的复合命题常常很繁琐；数学中常见的做法，是把这类命题替换为等价形式，使否定向内推进。为此，Mathlib 提供了 <code class=\"docutils literal notranslate\"><span class=\"pre\">push_neg</span></code> 策略，它会以这种方式重述目标（这包括把 <code class=\"docutils literal notranslate\"><span class=\"pre\">¬</span> <span class=\"pre\">¬A</span></code> 化简为 <code class=\"docutils literal notranslate\"><span class=\"pre\">A</span></code>）。命令 <code class=\"docutils literal notranslate\"><span class=\"pre\">push_neg</span> <span class=\"pre\">at</span> <span class=\"pre\">h</span></code> 会重述假设 <code class=\"docutils literal notranslate\"><span class=\"pre\">h</span></code>。"
+  },
+  {
+    "id": "C03_Logic:0085",
+    "zh": "在第二个例子中，我们用 <code class=\"docutils literal notranslate\"><span class=\"pre\">dsimp</span></code> 展开 <code class=\"docutils literal notranslate\"><span class=\"pre\">FnHasUb</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">FnUb</span></code> 的定义。（展开 <code class=\"docutils literal notranslate\"><span class=\"pre\">FnUb</span></code> 时需要用 <code class=\"docutils literal notranslate\"><span class=\"pre\">dsimp</span></code> 而不是 <code class=\"docutils literal notranslate\"><span class=\"pre\">rw</span></code>，因为它出现在量词作用域内。）你可以验证，在上面含有 <code class=\"docutils literal notranslate\"><span class=\"pre\">¬∃</span> <span class=\"pre\">x,</span> <span class=\"pre\">P</span> <span class=\"pre\">x</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">¬∀</span> <span class=\"pre\">x,</span> <span class=\"pre\">P</span> <span class=\"pre\">x</span></code> 的例子中，<code class=\"docutils literal notranslate\"><span class=\"pre\">push_neg</span></code> 策略会得到预期结果。即使还不知道如何使用合取符号，你也应该能够用 <code class=\"docutils literal notranslate\"><span class=\"pre\">push_neg</span></code> 证明下面的命题："
+  },
+  {
+    "id": "C03_Logic:0086",
+    "zh": "Mathlib 还有一个策略 <code class=\"docutils literal notranslate\"><span class=\"pre\">contrapose</span></code>，它把目标 <code class=\"docutils literal notranslate\"><span class=\"pre\">A</span> <span class=\"pre\">→</span> <span class=\"pre\">B</span></code> 转化为 <code class=\"docutils literal notranslate\"><span class=\"pre\">¬B</span> <span class=\"pre\">→</span> <span class=\"pre\">¬A</span></code>。类似地，若要从假设 <code class=\"docutils literal notranslate\"><span class=\"pre\">h</span> <span class=\"pre\">:</span> <span class=\"pre\">A</span></code> 证明 <code class=\"docutils literal notranslate\"><span class=\"pre\">B</span></code>，则 <code class=\"docutils literal notranslate\"><span class=\"pre\">contrapose</span> <span class=\"pre\">h</span></code> 会留下一个目标：从假设 <code class=\"docutils literal notranslate\"><span class=\"pre\">¬B</span></code> 证明 <code class=\"docutils literal notranslate\"><span class=\"pre\">¬A</span></code>。使用 <code class=\"docutils literal notranslate\"><span class=\"pre\">contrapose!</span></code> 而不是 <code class=\"docutils literal notranslate\"><span class=\"pre\">contrapose</span></code>，还会同时对目标和相关假设应用 <code class=\"docutils literal notranslate\"><span class=\"pre\">push_neg</span></code>。"
+  },
+  {
+    "id": "C03_Logic:0087",
+    "zh": "我们还没有解释 <code class=\"docutils literal notranslate\"><span class=\"pre\">constructor</span></code> 命令，也没有解释其后的分号用法；这些将在下一节说明。"
+  },
+  {
+    "id": "C03_Logic:0088",
+    "zh": "本节最后介绍 <em>ex falso</em> 原理，即从矛盾可以推出任何命题。在 Lean 中，这由 <code class=\"docutils literal notranslate\"><span class=\"pre\">False.elim</span></code> 表示，它对任意命题 <code class=\"docutils literal notranslate\"><span class=\"pre\">P</span></code> 建立 <code class=\"docutils literal notranslate\"><span class=\"pre\">False</span> <span class=\"pre\">→</span> <span class=\"pre\">P</span></code>。这个原理看起来也许奇怪，但经常出现。我们常常通过分情况来证明定理，有时可以证明其中一种情形是矛盾的。在这种情况下，需要断言该矛盾建立了当前目标，以便继续处理下一个情形。（我们将在 <a class=\"reference internal\" href=\"C03_Logic.html#disjunction\"><span class=\"std std-numref\">第 3.5 节</span></a> 中看到分情况推理的实例。）"
+  },
+  {
+    "id": "C03_Logic:0089",
+    "zh": "一旦已经得到矛盾，Lean 提供了若干关闭目标的方法。"
+  },
+  {
+    "id": "C03_Logic:0090",
+    "zh": "<code class=\"docutils literal notranslate\"><span class=\"pre\">exfalso</span></code> 策略把当前目标替换为证明 <code class=\"docutils literal notranslate\"><span class=\"pre\">False</span></code> 的目标。给定 <code class=\"docutils literal notranslate\"><span class=\"pre\">h</span> <span class=\"pre\">:</span> <span class=\"pre\">P</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">h'</span> <span class=\"pre\">:</span> <span class=\"pre\">¬</span> <span class=\"pre\">P</span></code>，项 <code class=\"docutils literal notranslate\"><span class=\"pre\">absurd</span> <span class=\"pre\">h</span> <span class=\"pre\">h'</span></code> 可以建立任意命题。最后，<code class=\"docutils literal notranslate\"><span class=\"pre\">contradiction</span></code> 策略会尝试通过在假设中寻找矛盾来关闭目标，例如寻找形如 <code class=\"docutils literal notranslate\"><span class=\"pre\">h</span> <span class=\"pre\">:</span> <span class=\"pre\">P</span></code> 与 <code class=\"docutils literal notranslate\"><span class=\"pre\">h'</span> <span class=\"pre\">:</span> <span class=\"pre\">¬</span> <span class=\"pre\">P</span></code> 的一对假设。当然，在这个例子中，<code class=\"docutils literal notranslate\"><span class=\"pre\">linarith</span></code> 也能工作。"
+  },
+  {
+    "id": "C03_Logic:0091",
+    "zh": "你已经看到，合取符号 <code class=\"docutils literal notranslate\"><span class=\"pre\">∧</span></code> 用于表示“且”。<code class=\"docutils literal notranslate\"><span class=\"pre\">constructor</span></code> 策略允许通过先证明 <code class=\"docutils literal notranslate\"><span class=\"pre\">A</span></code> 再证明 <code class=\"docutils literal notranslate\"><span class=\"pre\">B</span></code>，来证明形如 <code class=\"docutils literal notranslate\"><span class=\"pre\">A</span> <span class=\"pre\">∧</span> <span class=\"pre\">B</span></code> 的命题。"
+  },
+  {
+    "id": "C03_Logic:0092",
+    "zh": "在这个例子中，<code class=\"docutils literal notranslate\"><span class=\"pre\">assumption</span></code> 策略告诉 Lean 寻找一个可以解决目标的假设。注意最后的 <code class=\"docutils literal notranslate\"><span class=\"pre\">rw</span></code> 通过应用 <code class=\"docutils literal notranslate\"><span class=\"pre\">≤</span></code> 的自反性完成目标。下面是使用匿名构造子尖括号完成前面例子的其他方式。第一个是前一个证明的简洁证明项版本，并在关键字 <code class=\"docutils literal notranslate\"><span class=\"pre\">by</span></code> 处进入策略模式。"
+  },
+  {
+    "id": "C03_Logic:0093",
+    "zh": "使用合取而不是证明合取时，需要拆开其两个部分的证明。可以使用 <code class=\"docutils literal notranslate\"><span class=\"pre\">rcases</span></code> 策略，也可以使用 <code class=\"docutils literal notranslate\"><span class=\"pre\">rintro</span></code> 或模式匹配 <code class=\"docutils literal notranslate\"><span class=\"pre\">fun</span></code>；其方式都类似于它们在存在量词中的用法。"
+  },
+  {
+    "id": "C03_Logic:0094",
+    "zh": "与 <code class=\"docutils literal notranslate\"><span class=\"pre\">obtain</span></code> 策略类似，也存在一种带模式匹配的 <code class=\"docutils literal notranslate\"><span class=\"pre\">have</span></code>："
+  },
+  {
+    "id": "C03_Logic:0095",
+    "zh": "与 <code class=\"docutils literal notranslate\"><span class=\"pre\">rcases</span></code> 不同，这里的 <code class=\"docutils literal notranslate\"><span class=\"pre\">have</span></code> 策略会把 <code class=\"docutils literal notranslate\"><span class=\"pre\">h</span></code> 保留在语境中。尽管我们不会使用它们，还是再次给出计算机科学家常用的模式匹配语法："
+  },
+  {
+    "id": "C03_Logic:0096",
+    "zh": "与存在量词不同，对于假设 <code class=\"docutils literal notranslate\"><span class=\"pre\">h</span> <span class=\"pre\">:</span> <span class=\"pre\">A</span> <span class=\"pre\">∧</span> <span class=\"pre\">B</span></code>，也可以写 <code class=\"docutils literal notranslate\"><span class=\"pre\">h.left</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">h.right</span></code> 来取出两个组成部分的证明；等价地，也可以写 <code class=\"docutils literal notranslate\"><span class=\"pre\">h.1</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">h.2</span></code>。"
+  },
+  {
+    "id": "C03_Logic:0097",
+    "zh": "请尝试使用这些技巧，以多种方式证明下面的命题："
+  },
+  {
+    "id": "C03_Logic:0098",
+    "zh": "可以把 <code class=\"docutils literal notranslate\"><span class=\"pre\">∃</span></code> 与 <code class=\"docutils literal notranslate\"><span class=\"pre\">∧</span></code> 嵌套使用，并配合匿名构造子、<code class=\"docutils literal notranslate\"><span class=\"pre\">rintro</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">rcases</span></code>。"
+  },
+  {
+    "id": "C03_Logic:0099",
+    "zh": "回忆一下，在 <code class=\"docutils literal notranslate\"><span class=\"pre\">z</span></code> 前加下划线，是告诉 Lean 我们不打算使用 <code class=\"docutils literal notranslate\"><span class=\"pre\">z</span></code>。否则 Lean 会输出警告，说 <code class=\"docutils literal notranslate\"><span class=\"pre\">z</span></code> 未被使用。"
+  },
+  {
+    "id": "C03_Logic:0100",
+    "zh": "也可以使用 <code class=\"docutils literal notranslate\"><span class=\"pre\">use</span></code> 策略："
+  },
+  {
+    "id": "C03_Logic:0101",
+    "zh": "在第一个例子中，<code class=\"docutils literal notranslate\"><span class=\"pre\">constructor</span></code> 命令之后的 <code class=\"docutils literal notranslate\"><span class=\"pre\">&lt;;&gt;</span></code> 告诉 Lean 对由此产生的两个目标都使用 <code class=\"docutils literal notranslate\"><span class=\"pre\">norm_num</span></code> 策略。"
+  },
+  {
+    "id": "C03_Logic:0102",
+    "zh": "在 Lean 中，<code class=\"docutils literal notranslate\"><span class=\"pre\">A</span> <span class=\"pre\">↔</span> <span class=\"pre\">B</span></code> 并未定义为 <code class=\"docutils literal notranslate\"><span class=\"pre\">(A</span> <span class=\"pre\">→</span> <span class=\"pre\">B)</span> <span class=\"pre\">∧</span> <span class=\"pre\">(B</span> <span class=\"pre\">→</span> <span class=\"pre\">A)</span></code>，但本来可以这样定义，而且它的行为大致相同。你已经看到，对于 <code class=\"docutils literal notranslate\"><span class=\"pre\">h</span> <span class=\"pre\">:</span> <span class=\"pre\">A</span> <span class=\"pre\">↔</span> <span class=\"pre\">B</span></code>，可以写 <code class=\"docutils literal notranslate\"><span class=\"pre\">h.mp</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">h.mpr</span></code>，或 <code class=\"docutils literal notranslate\"><span class=\"pre\">h.1</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">h.2</span></code>，来获得两个方向。也可以使用 <code class=\"docutils literal notranslate\"><span class=\"pre\">cases</span></code> 及其相关方法。要证明一个当且仅当命题，可以像证明合取一样使用 <code class=\"docutils literal notranslate\"><span class=\"pre\">constructor</span></code> 或尖括号。"
+  },
+  {
+    "id": "C03_Logic:0103",
+    "zh": "最后一个证明项难以读懂。请记住，在写这类表达式时，可以使用下划线查看 Lean 期望什么。"
+  },
+  {
+    "id": "C03_Logic:0104",
+    "zh": "请尝试使用刚刚看到的各种技巧和工具证明下面的命题："
+  },
+  {
+    "id": "C03_Logic:0105",
+    "zh": "作为一个更有趣的练习，请证明：对任意两个实数 <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">y</span></code>，<code class=\"docutils literal notranslate\"><span class=\"pre\">x^2</span> <span class=\"pre\">+</span> <span class=\"pre\">y^2</span> <span class=\"pre\">=</span> <span class=\"pre\">0</span></code> 当且仅当 <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span> <span class=\"pre\">=</span> <span class=\"pre\">0</span></code> 且 <code class=\"docutils literal notranslate\"><span class=\"pre\">y</span> <span class=\"pre\">=</span> <span class=\"pre\">0</span></code>。我们建议使用 <code class=\"docutils literal notranslate\"><span class=\"pre\">linarith</span></code>、<code class=\"docutils literal notranslate\"><span class=\"pre\">pow_two_nonneg</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">eq_zero_of_pow_eq_zero</span></code> 证明一个辅助引理。"
+  },
+  {
+    "id": "C03_Logic:0106",
+    "zh": "在 Lean 中，双向蕴含具有双重身份。可以像合取一样对待它，并分别使用其两个部分。但 Lean 也知道它是命题之间的自反、对称且传递的关系，因此也可以把它与 <code class=\"docutils literal notranslate\"><span class=\"pre\">calc</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">rw</span></code> 一起使用。把一个命题重写为等价命题常常很方便。在下一个例子中，我们用 <code class=\"docutils literal notranslate\"><span class=\"pre\">abs_lt</span></code> 把形如 <code class=\"docutils literal notranslate\"><span class=\"pre\">|x|</span> <span class=\"pre\">&lt;</span> <span class=\"pre\">y</span></code> 的表达式替换为等价表达式 <code class=\"docutils literal notranslate\"><span class=\"pre\">-</span> <span class=\"pre\">y</span> <span class=\"pre\">&lt;</span> <span class=\"pre\">x</span> <span class=\"pre\">∧</span> <span class=\"pre\">x</span> <span class=\"pre\">&lt;</span> <span class=\"pre\">y</span></code>；在再下一个例子中，我们用 <code class=\"docutils literal notranslate\"><span class=\"pre\">Nat.dvd_gcd_iff</span></code> 把形如 <code class=\"docutils literal notranslate\"><span class=\"pre\">m</span> <span class=\"pre\">∣</span> <span class=\"pre\">Nat.gcd</span> <span class=\"pre\">n</span> <span class=\"pre\">k</span></code> 的表达式替换为等价表达式 <code class=\"docutils literal notranslate\"><span class=\"pre\">m</span> <span class=\"pre\">∣</span> <span class=\"pre\">n</span> <span class=\"pre\">∧</span> <span class=\"pre\">m</span> <span class=\"pre\">∣</span> <span class=\"pre\">k</span></code>。"
+  },
+  {
+    "id": "C03_Logic:0107",
+    "zh": "看看能否用下面的定理配合 <code class=\"docutils literal notranslate\"><span class=\"pre\">rw</span></code> 给出一个简短证明，说明取负不是单调不减函数。（注意，<code class=\"docutils literal notranslate\"><span class=\"pre\">push_neg</span></code> 不会替你展开定义，因此该定理证明中的 <code class=\"docutils literal notranslate\"><span class=\"pre\">rw</span> <span class=\"pre\">[Monotone]</span></code> 是必要的。）"
+  },
+  {
+    "id": "C03_Logic:0108",
+    "zh": "本节剩余练习旨在让你进一步练习合取与双向蕴含。记住，偏序是一个满足传递性、自反性和反对称性的二元关系。有时还会出现更弱的概念：预序只是自反且传递的关系。对任意预序 <code class=\"docutils literal notranslate\"><span class=\"pre\">≤</span></code>，Lean 通过 <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span> <span class=\"pre\">&lt;</span> <span class=\"pre\">b</span> <span class=\"pre\">↔</span> <span class=\"pre\">a</span> <span class=\"pre\">≤</span> <span class=\"pre\">b</span> <span class=\"pre\">∧</span> <span class=\"pre\">¬</span> <span class=\"pre\">b</span> <span class=\"pre\">≤</span> <span class=\"pre\">a</span></code> 公理化相关的严格预序。请证明，如果 <code class=\"docutils literal notranslate\"><span class=\"pre\">≤</span></code> 是偏序，则 <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span> <span class=\"pre\">&lt;</span> <span class=\"pre\">b</span></code> 等价于 <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span> <span class=\"pre\">≤</span> <span class=\"pre\">b</span> <span class=\"pre\">∧</span> <span class=\"pre\">a</span> <span class=\"pre\">≠</span> <span class=\"pre\">b</span></code>："
+  },
+  {
+    "id": "C03_Logic:0109",
+    "zh": "除了逻辑操作之外，你不需要比 <code class=\"docutils literal notranslate\"><span class=\"pre\">le_refl</span></code>、<code class=\"docutils literal notranslate\"><span class=\"pre\">le_trans</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">le_antisymm</span></code> 更多的工具。请证明：即使 <code class=\"docutils literal notranslate\"><span class=\"pre\">≤</span></code> 只假定为预序，也能证明严格序是非自反且传递的。在第二个例子中，为方便起见，我们使用化简器而不是 <code class=\"docutils literal notranslate\"><span class=\"pre\">rw</span></code>，把 <code class=\"docutils literal notranslate\"><span class=\"pre\">&lt;</span></code> 用 <code class=\"docutils literal notranslate\"><span class=\"pre\">≤</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">¬</span></code> 表示出来。我们稍后会回到化简器；这里仅依赖这样一个事实：即使需要把指定引理实例化为不同的值，化简器也会反复使用该引理。"
+  },
+  {
+    "id": "C03_Logic:0110",
+    "zh": "证明析取 <code class=\"docutils literal notranslate\"><span class=\"pre\">A</span> <span class=\"pre\">∨</span> <span class=\"pre\">B</span></code> 的标准方式，是证明 <code class=\"docutils literal notranslate\"><span class=\"pre\">A</span></code> 或证明 <code class=\"docutils literal notranslate\"><span class=\"pre\">B</span></code>。<code class=\"docutils literal notranslate\"><span class=\"pre\">left</span></code> 策略选择 <code class=\"docutils literal notranslate\"><span class=\"pre\">A</span></code>，而 <code class=\"docutils literal notranslate\"><span class=\"pre\">right</span></code> 策略选择 <code class=\"docutils literal notranslate\"><span class=\"pre\">B</span></code>。"
+  },
+  {
+    "id": "C03_Logic:0111",
+    "zh": "我们不能用匿名构造子来构造“或”的证明，因为 Lean 必须猜测我们要证明哪一个析取支。写证明项时，可以改用 <code class=\"docutils literal notranslate\"><span class=\"pre\">Or.inl</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">Or.inr</span></code> 来显式作出选择。这里 <code class=\"docutils literal notranslate\"><span class=\"pre\">inl</span></code> 是 “introduction left” 的缩写，<code class=\"docutils literal notranslate\"><span class=\"pre\">inr</span></code> 是 “introduction right” 的缩写。"
+  },
+  {
+    "id": "C03_Logic:0112",
+    "zh": "通过证明某一边来证明析取，可能看起来有些奇怪。实践中，哪种情形成立通常取决于假设和数据中隐含或显式的情形区分。<code class=\"docutils literal notranslate\"><span class=\"pre\">rcases</span></code> 策略允许我们使用形如 <code class=\"docutils literal notranslate\"><span class=\"pre\">A</span> <span class=\"pre\">∨</span> <span class=\"pre\">B</span></code> 的假设。不同于在合取或存在量词中使用 <code class=\"docutils literal notranslate\"><span class=\"pre\">rcases</span></code>，这里 <code class=\"docutils literal notranslate\"><span class=\"pre\">rcases</span></code> 会产生两个目标。二者有相同结论，但第一种情形中假定 <code class=\"docutils literal notranslate\"><span class=\"pre\">A</span></code> 为真，第二种情形中假定 <code class=\"docutils literal notranslate\"><span class=\"pre\">B</span></code> 为真。换言之，正如其名所示，<code class=\"docutils literal notranslate\"><span class=\"pre\">rcases</span></code> 策略执行分情况证明。照常，我们可以告诉 Lean 使用什么名称来命名这些假设。在下一个例子中，我们告诉 Lean 在每个分支都使用名称 <code class=\"docutils literal notranslate\"><span class=\"pre\">h</span></code>。"
+  },
+  {
+    "id": "C03_Logic:0113",
+    "zh": "注意，在合取情形中模式从 <code class=\"docutils literal notranslate\"><span class=\"pre\">⟨h₀,</span> <span class=\"pre\">h₁⟩</span></code> 变成析取情形中的 <code class=\"docutils literal notranslate\"><span class=\"pre\">h₀</span> <span class=\"pre\">|</span> <span class=\"pre\">h₁</span></code>。可以把第一个模式理解为匹配同时包含 <code class=\"docutils literal notranslate\"><span class=\"pre\">h₀</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">h₁</span></code> 的数据；而第二个带竖线的模式匹配包含 <code class=\"docutils literal notranslate\"><span class=\"pre\">h₀</span></code> 或 <code class=\"docutils literal notranslate\"><span class=\"pre\">h₁</span></code> 的数据。在这个例子中，由于两个目标彼此分离，我们选择在每种情形中使用同一名称 <code class=\"docutils literal notranslate\"><span class=\"pre\">h</span></code>。"
+  },
+  {
+    "id": "C03_Logic:0114",
+    "zh": "绝对值函数的定义方式使我们能够立即证明：<code class=\"docutils literal notranslate\"><span class=\"pre\">x</span> <span class=\"pre\">≥</span> <span class=\"pre\">0</span></code> 蕴含 <code class=\"docutils literal notranslate\"><span class=\"pre\">|x|</span> <span class=\"pre\">=</span> <span class=\"pre\">x</span></code>（这是定理 <code class=\"docutils literal notranslate\"><span class=\"pre\">abs_of_nonneg</span></code>），而 <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span> <span class=\"pre\">&lt;</span> <span class=\"pre\">0</span></code> 蕴含 <code class=\"docutils literal notranslate\"><span class=\"pre\">|x|</span> <span class=\"pre\">=</span> <span class=\"pre\">-x</span></code>（这是 <code class=\"docutils literal notranslate\"><span class=\"pre\">abs_of_neg</span></code>）。表达式 <code class=\"docutils literal notranslate\"><span class=\"pre\">le_or_gt</span> <span class=\"pre\">0</span> <span class=\"pre\">x</span></code> 建立 <code class=\"docutils literal notranslate\"><span class=\"pre\">0</span> <span class=\"pre\">≤</span> <span class=\"pre\">x</span> <span class=\"pre\">∨</span> <span class=\"pre\">x</span> <span class=\"pre\">&lt;</span> <span class=\"pre\">0</span></code>，使我们可以按这两种情形拆分。"
+  },
+  {
+    "id": "C03_Logic:0115",
+    "zh": "Lean 也支持用于析取的计算机科学式模式匹配语法。现在 <code class=\"docutils literal notranslate\"><span class=\"pre\">cases</span></code> 策略更有吸引力，因为它允许我们命名每个 <code class=\"docutils literal notranslate\"><span class=\"pre\">case</span></code>，并在更接近使用位置的地方命名引入的假设。"
+  },
+  {
+    "id": "C03_Logic:0116",
+    "zh": "名称 <code class=\"docutils literal notranslate\"><span class=\"pre\">inl</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">inr</span></code> 分别是 “intro left” 和 “intro right” 的缩写。使用 <code class=\"docutils literal notranslate\"><span class=\"pre\">case</span></code> 的优点是可以按任意顺序证明各情形；Lean 会使用标签找到相关目标。若不关心这一点，可以使用 <code class=\"docutils literal notranslate\"><span class=\"pre\">next</span></code>、<code class=\"docutils literal notranslate\"><span class=\"pre\">match</span></code>，甚至使用模式匹配 <code class=\"docutils literal notranslate\"><span class=\"pre\">have</span></code>。"
+  },
+  {
+    "id": "C03_Logic:0117",
+    "zh": "在 <code class=\"docutils literal notranslate\"><span class=\"pre\">match</span></code> 的情形中，需要使用证明析取的标准方式的全名 <code class=\"docutils literal notranslate\"><span class=\"pre\">Or.inl</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">Or.inr</span></code>。本书通常会使用 <code class=\"docutils literal notranslate\"><span class=\"pre\">rcases</span></code> 来对析取进行分情况讨论。"
+  },
+  {
+    "id": "C03_Logic:0118",
+    "zh": "请尝试使用下面代码片段中的前两个定理证明三角不等式。这些定理使用与 Mathlib 中相同的名称。"
+  },
+  {
+    "id": "C03_Logic:0119",
+    "zh": "如果你喜欢这些例子（这里有个双关），并且想进一步练习析取，请尝试下面这些题。"
+  },
+  {
+    "id": "C03_Logic:0120",
+    "zh": "也可以把 <code class=\"docutils literal notranslate\"><span class=\"pre\">rcases</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">rintro</span></code> 用于嵌套析取。当它们产生真正的多目标分情况讨论时，各个新目标的模式用竖线分隔。"
+  }
+]

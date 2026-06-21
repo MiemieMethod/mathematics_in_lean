@@ -1,0 +1,130 @@
+[
+  {
+    "id": "C05_Elementary_Number_Theory:0071",
+    "zh": "现在证明“有无穷多个素数”的另一个表述：给定任意 <code class=\"docutils literal notranslate\"><span class=\"pre\">s</span> <span class=\"pre\">:</span> <span class=\"pre\">Finset</span> <span class=\"pre\">ℕ</span></code>，存在一个不属于 <code class=\"docutils literal notranslate\"><span class=\"pre\">s</span></code> 的素数 <code class=\"docutils literal notranslate\"><span class=\"pre\">p</span></code>。为了导出矛盾，我们假设所有素数都在 <code class=\"docutils literal notranslate\"><span class=\"pre\">s</span></code> 中，然后缩减到一个只包含且包含所有素数的集合 <code class=\"docutils literal notranslate\"><span class=\"pre\">s'</span></code>。取这个集合的乘积，加一，再找结果的一个素因子，就会得到所需矛盾。看看能否完成下面的草图。在证明第一个 <code class=\"docutils literal notranslate\"><span class=\"pre\">have</span></code> 时，可以使用 <code class=\"docutils literal notranslate\"><span class=\"pre\">Finset.prod_pos</span></code>。"
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0072",
+    "zh": "我们已经看到两种说“有无穷多个素数”的方式：说它们不被任何 <code class=\"docutils literal notranslate\"><span class=\"pre\">n</span></code> 所界定，以及说它们不包含于任何有限集 <code class=\"docutils literal notranslate\"><span class=\"pre\">s</span></code>。下面两个证明表明这些表述等价。在第二个证明中，为了构造 <code class=\"docutils literal notranslate\"><span class=\"pre\">s.filter</span> <span class=\"pre\">Q</span></code>，必须假设有一个过程能判定 <code class=\"docutils literal notranslate\"><span class=\"pre\">Q</span></code> 是否成立。Lean 知道 <code class=\"docutils literal notranslate\"><span class=\"pre\">Nat.Prime</span></code> 有这样的判定过程。一般而言，如果通过写 <code class=\"docutils literal notranslate\"><span class=\"pre\">open</span> <span class=\"pre\">Classical</span></code> 使用经典逻辑，就可以去掉这个假设。"
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0073",
+    "zh": "在 Mathlib 中，<code class=\"docutils literal notranslate\"><span class=\"pre\">Finset.sup</span> <span class=\"pre\">s</span> <span class=\"pre\">f</span></code> 表示当 <code class=\"docutils literal notranslate\"><span class=\"pre\">x</span></code> 遍历 <code class=\"docutils literal notranslate\"><span class=\"pre\">s</span></code> 时 <code class=\"docutils literal notranslate\"><span class=\"pre\">f</span> <span class=\"pre\">x</span></code> 的值的上确界；当 <code class=\"docutils literal notranslate\"><span class=\"pre\">s</span></code> 为空且 <code class=\"docutils literal notranslate\"><span class=\"pre\">f</span></code> 的陪域为 <code class=\"docutils literal notranslate\"><span class=\"pre\">ℕ</span></code> 时返回 <code class=\"docutils literal notranslate\"><span class=\"pre\">0</span></code>。在第一个证明中，我们使用 <code class=\"docutils literal notranslate\"><span class=\"pre\">s.sup</span> <span class=\"pre\">id</span></code>，其中 <code class=\"docutils literal notranslate\"><span class=\"pre\">id</span></code> 是恒等函数，来指代 <code class=\"docutils literal notranslate\"><span class=\"pre\">s</span></code> 中的最大值。"
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0074",
+    "zh": "对我们第二个“素数无穷多”证明稍作变化，可以证明有无穷多个模 4 余 3 的素数。论证如下。首先注意，若两个数 <span class=\"math notranslate nohighlight\">\\(m\\)</span> 与 <span class=\"math notranslate nohighlight\">\\(n\\)</span> 的乘积模 4 等于 3，则这两个数之一模 4 余 3。毕竟二者都必须为奇数；若它们都模 4 余 1，则乘积也模 4 余 1。可以用这个观察证明：若某个大于 2 的数模 4 余 3，则它有一个同样模 4 余 3 的素因子。"
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0075",
+    "zh": "现在假设只有有限多个模 4 余 3 的素数，设为 <span class=\"math notranslate nohighlight\">\\(p_1, \\ldots, p_k\\)</span>。不失一般性，可以假设 <span class=\"math notranslate nohighlight\">\\(p_1 = 3\\)</span>。考虑乘积 <span class=\"math notranslate nohighlight\">\\(4 \\prod_{i=2}^k p_i + 3\\)</span>。容易看出它模 4 余 3，因此有一个模 4 余 3 的素因子 <span class=\"math notranslate nohighlight\">\\(p\\)</span>。不可能有 <span class=\"math notranslate nohighlight\">\\(p = 3\\)</span>；因为 <span class=\"math notranslate nohighlight\">\\(p\\)</span> 整除 <span class=\"math notranslate nohighlight\">\\(4 \\prod_{i=2}^k p_i + 3\\)</span>，若 <span class=\"math notranslate nohighlight\">\\(p\\)</span> 等于 3，则它也整除 <span class=\"math notranslate nohighlight\">\\(\\prod_{i=2}^k p_i\\)</span>，从而推出 <span class=\"math notranslate nohighlight\">\\(p\\)</span> 等于某个 <span class=\"math notranslate nohighlight\">\\(p_i\\)</span>（<span class=\"math notranslate nohighlight\">\\(i = 2, \\ldots, k\\)</span>）；而我们已把 3 从这个列表中排除。因此 <span class=\"math notranslate nohighlight\">\\(p\\)</span> 必须是其他某个元素 <span class=\"math notranslate nohighlight\">\\(p_i\\)</span>。但在这种情况下，<span class=\"math notranslate nohighlight\">\\(p\\)</span> 整除 <span class=\"math notranslate nohighlight\">\\(4 \\prod_{i=2}^k p_i\\)</span>，于是也整除 3，这与它不等于 3 相矛盾。"
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0076",
+    "zh": "在 Lean 中，记号 <code class=\"docutils literal notranslate\"><span class=\"pre\">n</span> <span class=\"pre\">%</span> <span class=\"pre\">m</span></code> 读作“<code class=\"docutils literal notranslate\"><span class=\"pre\">n</span></code> 模 <code class=\"docutils literal notranslate\"><span class=\"pre\">m</span></code>”，表示 <code class=\"docutils literal notranslate\"><span class=\"pre\">n</span></code> 除以 <code class=\"docutils literal notranslate\"><span class=\"pre\">m</span></code> 的余数。"
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0077",
+    "zh": "于是可以把“<code class=\"docutils literal notranslate\"><span class=\"pre\">n</span></code> 模 4 余 3”写成 <code class=\"docutils literal notranslate\"><span class=\"pre\">n</span> <span class=\"pre\">%</span> <span class=\"pre\">4</span> <span class=\"pre\">=</span> <span class=\"pre\">3</span></code>。下面的例子和定理总结了稍后需要使用的关于该函数的事实。第一个命名定理再次展示了按少数情形推理。在第二个命名定理中，记住分号表示随后的策略块应用于前一个策略生成的所有目标。"
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0078",
+    "zh": "我们还需要下面这个事实：若 <code class=\"docutils literal notranslate\"><span class=\"pre\">m</span></code> 是 <code class=\"docutils literal notranslate\"><span class=\"pre\">n</span></code> 的非平凡因子，则 <code class=\"docutils literal notranslate\"><span class=\"pre\">n</span> <span class=\"pre\">/</span> <span class=\"pre\">m</span></code> 也是如此。看看能否使用 <code class=\"docutils literal notranslate\"><span class=\"pre\">Nat.div_dvd_of_dvd</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">Nat.div_lt_self</span></code> 完成证明。"
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0079",
+    "zh": "现在把所有部分组合起来，证明任意模 4 余 3 的数都有一个具有同样性质的素因子。"
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0080",
+    "zh": "我们已接近终点。给定一个素数集合 <code class=\"docutils literal notranslate\"><span class=\"pre\">s</span></code>，需要谈论从该集合中移除 3（若它存在）后的结果。函数 <code class=\"docutils literal notranslate\"><span class=\"pre\">Finset.erase</span></code> 处理这一点。"
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0081",
+    "zh": "现在可以证明有无穷多个模 4 余 3 的素数。请补全下面缺失部分。我们的解法在过程中使用了 <code class=\"docutils literal notranslate\"><span class=\"pre\">Nat.dvd_add_iff_left</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">Nat.dvd_sub'</span></code>。"
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0082",
+    "zh": "如果你成功完成了这个证明，恭喜！这是一项严肃的形式化成就。"
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0083",
+    "zh": "在 <a class=\"reference internal\" href=\"C05_Elementary_Number_Theory.html#induction-and-recursion\"><span class=\"std std-numref\">第 5.2 节</span></a> 中，我们看到如何通过自然数上的递归来定义阶乘函数。"
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0084",
+    "zh": "我们也看到如何使用 <code class=\"docutils literal notranslate\"><span class=\"pre\">induction'</span></code> 策略证明定理。"
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0085",
+    "zh": "<code class=\"docutils literal notranslate\"><span class=\"pre\">induction</span></code> 策略（不带撇号）允许使用更结构化的语法。"
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0086",
+    "zh": "照常，可以把鼠标悬停在 <code class=\"docutils literal notranslate\"><span class=\"pre\">induction</span></code> 关键字上阅读文档。情形名称 <code class=\"docutils literal notranslate\"><span class=\"pre\">zero</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">succ</span></code> 来自类型 <code class=\"docutils literal notranslate\"><span class=\"pre\">ℕ</span></code> 的定义。注意，<code class=\"docutils literal notranslate\"><span class=\"pre\">succ</span></code> 情形允许你为归纳变量和归纳假设选择任意名称，这里是 <code class=\"docutils literal notranslate\"><span class=\"pre\">n</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">ih</span></code>。甚至可以用与定义递归函数相同的记号来证明定理。"
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0087",
+    "zh": "还要注意这里没有 <code class=\"docutils literal notranslate\"><span class=\"pre\">:=</span></code>，冒号之后没有 <code class=\"docutils literal notranslate\"><span class=\"pre\">∀</span> <span class=\"pre\">n</span></code>，每个情形中有关键字 <code class=\"docutils literal notranslate\"><span class=\"pre\">by</span></code>，并且在归纳步骤中调用 <code class=\"docutils literal notranslate\"><span class=\"pre\">fac_pos'</span> <span class=\"pre\">n</span></code> 作为归纳调用。它仿佛把该定理看作 <code class=\"docutils literal notranslate\"><span class=\"pre\">n</span></code> 的递归函数，并在归纳步骤中进行递归调用。"
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0088",
+    "zh": "这种定义风格非常灵活。Lean 的设计者内置了复杂的递归函数定义机制，而这些机制也延伸到归纳证明。例如，可以用多个基本情形定义 Fibonacci 函数。"
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0089",
+    "zh": "标注 <code class=\"docutils literal notranslate\"><span class=\"pre\">@[simp]</span></code> 表示化简器将使用这些定义方程。也可以写 <code class=\"docutils literal notranslate\"><span class=\"pre\">rw</span> <span class=\"pre\">[fib]</span></code> 来应用它们。下面给 <code class=\"docutils literal notranslate\"><span class=\"pre\">n</span> <span class=\"pre\">+</span> <span class=\"pre\">2</span></code> 情形命名会很有帮助。"
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0090",
+    "zh": "使用 Lean 的递归函数记法，可以对自然数进行归纳证明，并使证明形式与 <code class=\"docutils literal notranslate\"><span class=\"pre\">fib</span></code> 的递归定义相呼应。下面的例子用黄金比例 <span class=\"math notranslate nohighlight\">\\(\\varphi\\)</span> 及其共轭 <span class=\"math notranslate nohighlight\">\\(\\varphi'\\)</span> 给出第 <code class=\"docutils literal notranslate\"><span class=\"pre\">n</span></code> 个 Fibonacci 数的显式公式。我们必须告诉 Lean 不期望这些定义生成代码，因为实数上的算术运算不可计算。"
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0091",
+    "zh": "我们将使用 <code class=\"docutils literal notranslate\"><span class=\"pre\">grind</span></code> 策略完成计算，并告诉它使用 <code class=\"docutils literal notranslate\"><span class=\"pre\">phi</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">phi’</span></code> 的定义，以及归纳假设 <code class=\"docutils literal notranslate\"><span class=\"pre\">fib_eq</span> <span class=\"pre\">n</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">fib_eq</span> <span class=\"pre\">(n+1)</span></code>。"
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0092",
+    "zh": "涉及 Fibonacci 函数的归纳证明并不一定都采用这种形式。下面复现 Mathlib 中证明相邻 Fibonacci 数互素的证明。"
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0093",
+    "zh": "利用 Lean 的计算解释，可以求出 Fibonacci 数。"
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0094",
+    "zh": "<code class=\"docutils literal notranslate\"><span class=\"pre\">fib</span></code> 的直接实现计算效率很低。事实上，它的运行时间关于参数呈指数增长。（你应当思考为什么。）在 Lean 中，可以实现如下尾递归版本，其运行时间关于 <code class=\"docutils literal notranslate\"><span class=\"pre\">n</span></code> 线性，并证明它计算同一个函数。"
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0095",
+    "zh": "注意 <code class=\"docutils literal notranslate\"><span class=\"pre\">fib'.aux_eq</span></code> 证明中的关键字 <code class=\"docutils literal notranslate\"><span class=\"pre\">generalizing</span></code>。它的作用是在归纳假设前插入 <code class=\"docutils literal notranslate\"><span class=\"pre\">∀</span> <span class=\"pre\">m</span></code>，使得在归纳步骤中，<code class=\"docutils literal notranslate\"><span class=\"pre\">m</span></code> 可以取不同值。你可以逐步查看证明，并确认在这个例子中，归纳步骤需要把该量词实例化为 <code class=\"docutils literal notranslate\"><span class=\"pre\">m</span> <span class=\"pre\">+</span> <span class=\"pre\">1</span></code>。"
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0096",
+    "zh": "还要注意使用的是 <code class=\"docutils literal notranslate\"><span class=\"pre\">erw</span></code>（“extended rewrite”）而不是 <code class=\"docutils literal notranslate\"><span class=\"pre\">rw</span></code>。这是因为要重写目标 <code class=\"docutils literal notranslate\"><span class=\"pre\">fib'.aux_eq</span></code>，必须把 <code class=\"docutils literal notranslate\"><span class=\"pre\">fib</span> <span class=\"pre\">0</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">fib</span> <span class=\"pre\">1</span></code> 分别约简为 <code class=\"docutils literal notranslate\"><span class=\"pre\">0</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">1</span></code>。策略 <code class=\"docutils literal notranslate\"><span class=\"pre\">erw</span></code> 在展开定义以匹配参数方面比 <code class=\"docutils literal notranslate\"><span class=\"pre\">rw</span></code> 更积极。这并不总是好主意；在某些情况下它会浪费很多时间，因此应谨慎使用 <code class=\"docutils literal notranslate\"><span class=\"pre\">erw</span></code>。"
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0097",
+    "zh": "下面是 <code class=\"docutils literal notranslate\"><span class=\"pre\">generalizing</span></code> 关键字在另一个恒等式证明中的例子，该恒等式也出现在 Mathlib 中。该恒等式的非形式证明可以在这里找到。我们提供形式证明的两个变体。"
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0098",
+    "zh": "作为练习，请使用 <code class=\"docutils literal notranslate\"><span class=\"pre\">fib_add</span></code> 证明如下命题。"
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0099",
+    "zh": "Lean 定义递归函数的机制足够灵活，可以允许任意递归调用，只要参数的复杂度按照某个良基度量下降。在下一个例子中，我们利用这样一个事实证明每个自然数 <code class=\"docutils literal notranslate\"><span class=\"pre\">n</span> <span class=\"pre\">≠</span> <span class=\"pre\">1</span></code> 都有素因子：若 <code class=\"docutils literal notranslate\"><span class=\"pre\">n</span></code> 非零且不是素数，则它有一个更小的因子。（可以检查 Mathlib 在 <code class=\"docutils literal notranslate\"><span class=\"pre\">Nat</span></code> 命名空间中有同名定理，虽然证明不同于这里给出的证明。）"
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0100",
+    "zh": "行 <code class=\"docutils literal notranslate\"><span class=\"pre\">rw</span> <span class=\"pre\">[ne_one_iff_exists_prime_dvd]</span> <span class=\"pre\">at</span> <span class=\"pre\">this</span></code> 像魔术一样：我们在一个定理自己的证明中使用了正在证明的这个定理。它之所以有效，是因为递归调用实例化在 <code class=\"docutils literal notranslate\"><span class=\"pre\">m</span></code> 处，而当前情形是 <code class=\"docutils literal notranslate\"><span class=\"pre\">n</span> <span class=\"pre\">+</span> <span class=\"pre\">2</span></code>，并且语境中有 <code class=\"docutils literal notranslate\"><span class=\"pre\">m</span> <span class=\"pre\">&lt;</span> <span class=\"pre\">n</span> <span class=\"pre\">+</span> <span class=\"pre\">2</span></code>。Lean 能找到这个假设，并用它说明归纳是良基的。Lean 很擅长判断什么在下降；在这个例子中，定理陈述中 <code class=\"docutils literal notranslate\"><span class=\"pre\">n</span></code> 的选择以及小于关系都很明显。在更复杂的情形中，Lean 提供机制让我们显式提供这些信息。参见 Lean Reference Manual 中关于良基递归的章节。"
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0101",
+    "zh": "有时在证明中，需要根据自然数 <code class=\"docutils literal notranslate\"><span class=\"pre\">n</span></code> 是零还是后继数分情况讨论，但不需要在后继情形中获得归纳假设。为此，可以使用 <code class=\"docutils literal notranslate\"><span class=\"pre\">cases</span></code> 和 <code class=\"docutils literal notranslate\"><span class=\"pre\">rcases</span></code> 策略。"
+  },
+  {
+    "id": "C05_Elementary_Number_Theory:0102",
+    "zh": "这是一个有用技巧。你常常会遇到关于自然数 <code class=\"docutils literal notranslate\"><span class=\"pre\">n</span></code> 的定理，其中零情形很容易。如果对 <code class=\"docutils literal notranslate\"><span class=\"pre\">n</span></code> 分情况并迅速处理零情形，剩下的就是把原目标中的 <code class=\"docutils literal notranslate\"><span class=\"pre\">n</span></code> 替换为 <code class=\"docutils literal notranslate\"><span class=\"pre\">n</span> <span class=\"pre\">+</span> <span class=\"pre\">1</span></code> 后的目标。"
+  }
+]

@@ -1,0 +1,738 @@
+[
+  {
+    "id": "C08_Hierarchies:0001",
+    "file": "C08_Hierarchies.html",
+    "tag": "h1",
+    "text": "8. Hierarchies",
+    "html": "<h1><span class=\"section-number\">8. </span>Hierarchies</h1>",
+    "zh": ""
+  },
+  {
+    "id": "C08_Hierarchies:0002",
+    "file": "C08_Hierarchies.html",
+    "tag": "h2",
+    "text": "8.1. Basics",
+    "html": "<h2><span class=\"section-number\">8.1. </span>Basics</h2>",
+    "zh": ""
+  },
+  {
+    "id": "C08_Hierarchies:0003",
+    "file": "C08_Hierarchies.html",
+    "tag": "h2",
+    "text": "8.2. Morphisms",
+    "html": "<h2><span class=\"section-number\">8.2. </span>Morphisms</h2>",
+    "zh": ""
+  },
+  {
+    "id": "C08_Hierarchies:0004",
+    "file": "C08_Hierarchies.html",
+    "tag": "h2",
+    "text": "8.3. Sub-objects",
+    "html": "<h2><span class=\"section-number\">8.3. </span>Sub-objects</h2>",
+    "zh": ""
+  },
+  {
+    "id": "C08_Hierarchies:0005",
+    "file": "C08_Hierarchies.html",
+    "tag": "p",
+    "text": "We have seen in Chapter 7 how to define the class of groups and build instances of this class, and then how to build an instance of the commutative ring class. But of course there is a hierarchy here: a commutative ring is in particular an additive group. In this chapter we will study how to build such hierarchies. They appear in all branches of mathematics but in this chapter the emphasis will be on algebraic examples.",
+    "html": "<p>We have seen in <a class=\"reference internal\" href=\"C07_Structures.html#structures\"><span class=\"std std-numref\">Chapter 7</span></a> how to define the class\nof groups and build instances of this class, and then how to build an instance\nof the commutative ring class. But of course there is a hierarchy here: a\ncommutative ring is in particular an additive group. In this chapter we\nwill study how to build such hierarchies. They appear in all branches\nof mathematics but in this chapter the emphasis will be on algebraic examples.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C08_Hierarchies:0006",
+    "file": "C08_Hierarchies.html",
+    "tag": "p",
+    "text": "It may seem premature to discuss how to build hierarchies before more discussions about using existing hierarchies. But some understanding of the technology underlying hierarchies is required to use them. So you should probably still read this chapter, but without trying too hard to remember everything on your first read, then read the following chapters and come back here for a second reading.",
+    "html": "<p>It may seem premature to discuss how to build hierarchies before more discussions\nabout using existing hierarchies. But some understanding of the technology underlying\nhierarchies is required to use them. So you should probably still read this chapter,\nbut without trying too hard to remember everything on your first read, then read\nthe following chapters and come back here for a second reading.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C08_Hierarchies:0007",
+    "file": "C08_Hierarchies.html",
+    "tag": "p",
+    "text": "In this chapter, we will redefine (simpler versions of) many things that appear in Mathlib so we will used indices to distinguish our version. For instance we will have Ring₁ as our version of Ring . Since we will gradually explain more powerful ways of formalizing structures, those indices will sometimes grow beyond one.",
+    "html": "<p>In this chapter, we will redefine (simpler versions of) many things that appear in Mathlib\nso we will used indices to distinguish our version. For instance we will have <code class=\"docutils literal notranslate\"><span class=\"pre\">Ring₁</span></code>\nas our version of <code class=\"docutils literal notranslate\"><span class=\"pre\">Ring</span></code>. Since we will gradually explain more powerful ways of formalizing\nstructures, those indices will sometimes grow beyond one.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C08_Hierarchies:0008",
+    "file": "C08_Hierarchies.html",
+    "tag": "p",
+    "text": "At the very bottom of all hierarchies in Lean, we find data-carrying classes. The following class records that the given type α is endowed with a distinguished element called one . At this stage, it has no property at all.",
+    "html": "<p>At the very bottom of all hierarchies in Lean, we find data-carrying\nclasses. The following class records that the given type <code class=\"docutils literal notranslate\"><span class=\"pre\">α</span></code> is endowed with\na distinguished element called <code class=\"docutils literal notranslate\"><span class=\"pre\">one</span></code>. At this stage, it has no property at all.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C08_Hierarchies:0009",
+    "file": "C08_Hierarchies.html",
+    "tag": "p",
+    "text": "Since we’ll make a much heavier use of classes in this chapter, we need to understand some more details about what the class command is doing. First, the class command above defines a structure One₁ with parameter α : Type and a single field one . It also mark this structure as a class so that arguments of type One₁ α for some type α will be inferrable using the instance resolution procedure, as long as they are marked as instance-implicit, i.e. appear between square brackets. Those two effects could also have been achieved using the structure command with class attribute, i.e. writing @[class] structure instance of class . But the class command also ensures that One₁ α appears as an instance-implicit argument in its own fields. Compare:",
+    "html": "<p>Since we’ll make a much heavier use of classes in this chapter, we need to understand some\nmore details about what the <code class=\"docutils literal notranslate\"><span class=\"pre\">class</span></code> command is doing.\nFirst, the <code class=\"docutils literal notranslate\"><span class=\"pre\">class</span></code> command above defines a structure <code class=\"docutils literal notranslate\"><span class=\"pre\">One₁</span></code> with parameter <code class=\"docutils literal notranslate\"><span class=\"pre\">α</span> <span class=\"pre\">:</span> <span class=\"pre\">Type</span></code> and\na single field <code class=\"docutils literal notranslate\"><span class=\"pre\">one</span></code>. It also mark this structure as a class so that arguments of type\n<code class=\"docutils literal notranslate\"><span class=\"pre\">One₁</span> <span class=\"pre\">α</span></code> for some type <code class=\"docutils literal notranslate\"><span class=\"pre\">α</span></code> will be inferrable using the instance resolution procedure,\nas long as they are marked as instance-implicit, i.e. appear between square brackets.\nThose two effects could also have been achieved using the <code class=\"docutils literal notranslate\"><span class=\"pre\">structure</span></code> command with <code class=\"docutils literal notranslate\"><span class=\"pre\">class</span></code>\nattribute, i.e. writing <code class=\"docutils literal notranslate\"><span class=\"pre\">@[class]</span> <span class=\"pre\">structure</span></code> instance of <code class=\"docutils literal notranslate\"><span class=\"pre\">class</span></code>. But the class command also\nensures that <code class=\"docutils literal notranslate\"><span class=\"pre\">One₁</span> <span class=\"pre\">α</span></code> appears as an instance-implicit argument in its own fields. Compare:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C08_Hierarchies:0010",
+    "file": "C08_Hierarchies.html",
+    "tag": "p",
+    "text": "In the second check, we can see that self : One₂ α is an explicit argument. Let us make sure the first version is indeed usable without any explicit argument.",
+    "html": "<p>In the second check, we can see that <code class=\"docutils literal notranslate\"><span class=\"pre\">self</span> <span class=\"pre\">:</span> <span class=\"pre\">One₂</span> <span class=\"pre\">α</span></code> is an explicit argument.\nLet us make sure the first version is indeed usable without any explicit argument.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C08_Hierarchies:0011",
+    "file": "C08_Hierarchies.html",
+    "tag": "p",
+    "text": "Remark: in the above example, the argument One₁ α is marked as instance-implicit, which is a bit silly since this affects only uses of the declaration and declaration created by the example command cannot be used. However it allows us to avoid giving a name to that argument and, more importantly, it starts installing the good habit of marking One₁ α arguments as instance-implicit.",
+    "html": "<p>Remark: in the above example, the argument <code class=\"docutils literal notranslate\"><span class=\"pre\">One₁</span> <span class=\"pre\">α</span></code> is marked as instance-implicit,\nwhich is a bit silly since this affects only <em>uses</em> of the declaration and declaration created by\nthe <code class=\"docutils literal notranslate\"><span class=\"pre\">example</span></code> command cannot be used. However it allows us to avoid giving a name to that\nargument and, more importantly, it starts installing the good habit of marking <code class=\"docutils literal notranslate\"><span class=\"pre\">One₁</span> <span class=\"pre\">α</span></code>\narguments as instance-implicit.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C08_Hierarchies:0012",
+    "file": "C08_Hierarchies.html",
+    "tag": "p",
+    "text": "Another remark is that all this will work only when Lean knows what is α . In the above example, leaving out the type ascription : α would generate an error message like: typeclass instance problem is stuck, it is often due to metavariables One₁ (?m.263 α) where ?m.263 α means “some type depending on α ” (and 263 is simply an auto-generated index that would be useful to distinguish between several unknown things). Another way to avoid this issue would be to use a type annotation, as in:",
+    "html": "<p>Another remark is that all this will work only when Lean knows what is <code class=\"docutils literal notranslate\"><span class=\"pre\">α</span></code>. In the above\nexample, leaving out the type ascription <code class=\"docutils literal notranslate\"><span class=\"pre\">:</span> <span class=\"pre\">α</span></code> would generate an error message like:\n<code class=\"docutils literal notranslate\"><span class=\"pre\">typeclass</span> <span class=\"pre\">instance</span> <span class=\"pre\">problem</span> <span class=\"pre\">is</span> <span class=\"pre\">stuck,</span> <span class=\"pre\">it</span> <span class=\"pre\">is</span> <span class=\"pre\">often</span> <span class=\"pre\">due</span> <span class=\"pre\">to</span> <span class=\"pre\">metavariables</span> <span class=\"pre\">One₁</span> <span class=\"pre\">(?m.263</span> <span class=\"pre\">α)</span></code>\nwhere <code class=\"docutils literal notranslate\"><span class=\"pre\">?m.263</span> <span class=\"pre\">α</span></code> means “some type depending on <code class=\"docutils literal notranslate\"><span class=\"pre\">α</span></code>” (and 263 is simply an auto-generated\nindex that would be useful to distinguish between several unknown things). Another way\nto avoid this issue would be to use a type annotation, as in:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C08_Hierarchies:0013",
+    "file": "C08_Hierarchies.html",
+    "tag": "p",
+    "text": "You may have already encountered that issue when playing with limits of sequences in Section 3.6 if you tried to state for instance that 0 < 1 without telling Lean whether you meant this inequality to be about natural numbers or real numbers.",
+    "html": "<p>You may have already encountered that issue when playing with limits of sequences\nin <a class=\"reference internal\" href=\"C03_Logic.html#sequences-and-convergence\"><span class=\"std std-numref\">Section 3.6</span></a> if you tried to state for instance that\n<code class=\"docutils literal notranslate\"><span class=\"pre\">0</span> <span class=\"pre\">&lt;</span> <span class=\"pre\">1</span></code> without telling Lean whether you meant this inequality to be about natural numbers\nor real numbers.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C08_Hierarchies:0014",
+    "file": "C08_Hierarchies.html",
+    "tag": "p",
+    "text": "Our next task is to assign a notation to One₁.one . Since we don’t want collisions with the builtin notation for 1 , we will use 𝟙 . This is achieved by the following command where the first line tells Lean to use the documentation of One₁.one as documentation for the symbol 𝟙 .",
+    "html": "<p>Our next task is to assign a notation to <code class=\"docutils literal notranslate\"><span class=\"pre\">One₁.one</span></code>. Since we don’t want collisions\nwith the builtin notation for <code class=\"docutils literal notranslate\"><span class=\"pre\">1</span></code>, we will use <code class=\"docutils literal notranslate\"><span class=\"pre\">𝟙</span></code>. This is achieved by the following\ncommand where the first line tells Lean to use the documentation\nof <code class=\"docutils literal notranslate\"><span class=\"pre\">One₁.one</span></code> as documentation for the symbol <code class=\"docutils literal notranslate\"><span class=\"pre\">𝟙</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C08_Hierarchies:0015",
+    "file": "C08_Hierarchies.html",
+    "tag": "p",
+    "text": "We now want a data-carrying class recording a binary operation. We don’t want to choose between addition and multiplication for now so we’ll use diamond.",
+    "html": "<p>We now want a data-carrying class recording a binary operation. We don’t want to choose\nbetween addition and multiplication for now so we’ll use diamond.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C08_Hierarchies:0016",
+    "file": "C08_Hierarchies.html",
+    "tag": "p",
+    "text": "As in the One₁ example, the operation has no property at all at this stage. Let us now define the class of semigroup structures where the operation is denoted by ⋄ . For now, we define it by hand as a structure with two fields, a Dia₁ instance and some Prop -valued field dia_assoc asserting associativity of ⋄ .",
+    "html": "<p>As in the <code class=\"docutils literal notranslate\"><span class=\"pre\">One₁</span></code> example, the operation has no property at all at this stage. Let us\nnow define the class of semigroup structures where the operation is denoted by <code class=\"docutils literal notranslate\"><span class=\"pre\">⋄</span></code>.\nFor now, we define it by hand as a structure with two fields, a <code class=\"docutils literal notranslate\"><span class=\"pre\">Dia₁</span></code> instance and some\n<code class=\"docutils literal notranslate\"><span class=\"pre\">Prop</span></code>-valued field <code class=\"docutils literal notranslate\"><span class=\"pre\">dia_assoc</span></code> asserting associativity of <code class=\"docutils literal notranslate\"><span class=\"pre\">⋄</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C08_Hierarchies:0017",
+    "file": "C08_Hierarchies.html",
+    "tag": "p",
+    "text": "Note that while stating dia_assoc , the previously defined field toDia₁ is in the local context hence can be used when Lean searches for an instance of Dia₁ α to make sense of a ⋄ b . However this toDia₁ field does not become part of the type class instances database. Hence doing example {α : Type} [Semigroup₁ α] (a b : α) : α := a ⋄ b would fail with error message failed to synthesize instance Dia₁ α .",
+    "html": "<p>Note that while stating <cite>dia_assoc</cite>, the previously defined field <cite>toDia₁</cite> is in the local\ncontext hence can be used when Lean searches for an instance of <cite>Dia₁ α</cite> to make sense\nof <cite>a ⋄ b</cite>. However this <cite>toDia₁</cite> field does not become part of the type class instances database.\nHence doing <code class=\"docutils literal notranslate\"><span class=\"pre\">example</span> <span class=\"pre\">{α</span> <span class=\"pre\">:</span> <span class=\"pre\">Type}</span> <span class=\"pre\">[Semigroup₁</span> <span class=\"pre\">α]</span> <span class=\"pre\">(a</span> <span class=\"pre\">b</span> <span class=\"pre\">:</span> <span class=\"pre\">α)</span> <span class=\"pre\">:</span> <span class=\"pre\">α</span> <span class=\"pre\">:=</span> <span class=\"pre\">a</span> <span class=\"pre\">⋄</span> <span class=\"pre\">b</span></code> would fail with\nerror message <code class=\"docutils literal notranslate\"><span class=\"pre\">failed</span> <span class=\"pre\">to</span> <span class=\"pre\">synthesize</span> <span class=\"pre\">instance</span> <span class=\"pre\">Dia₁</span> <span class=\"pre\">α</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C08_Hierarchies:0018",
+    "file": "C08_Hierarchies.html",
+    "tag": "p",
+    "text": "We can fix this by adding the instance attribute later.",
+    "html": "<p>We can fix this by adding the <code class=\"docutils literal notranslate\"><span class=\"pre\">instance</span></code> attribute later.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C08_Hierarchies:0019",
+    "file": "C08_Hierarchies.html",
+    "tag": "p",
+    "text": "Before building up, we need to use a different syntax to add this toDia₁ field, to tell Lean that Dia₁ α should be treated as if its fields were fields of Semigroup₁ itself. This also conveniently adds the toDia₁ instance automatically. The class command supports this using the extends syntax as in:",
+    "html": "<p>Before building up, we need to use a different syntax to add this <cite>toDia₁</cite> field,\nto tell Lean that <cite>Dia₁ α</cite> should be treated as if its fields were fields of <cite>Semigroup₁</cite> itself.\nThis also conveniently adds the <cite>toDia₁</cite> instance automatically.\nThe <code class=\"docutils literal notranslate\"><span class=\"pre\">class</span></code> command supports this using the <code class=\"docutils literal notranslate\"><span class=\"pre\">extends</span></code> syntax as in:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C08_Hierarchies:0020",
+    "file": "C08_Hierarchies.html",
+    "tag": "p",
+    "text": "Note this syntax is also available in the structure command, although in that case it fixes only the hurdle of writing fields such as toDia₁ since there is no instance to define in that case.",
+    "html": "<p>Note this syntax is also available in the <code class=\"docutils literal notranslate\"><span class=\"pre\">structure</span></code> command, although in that\ncase it fixes only the hurdle of writing fields such as <cite>toDia₁</cite> since there\nis no instance to define in that case.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C08_Hierarchies:0021",
+    "file": "C08_Hierarchies.html",
+    "tag": "p",
+    "text": "The field name toDia₁ is optional in the extends syntax. By default it takes the name of the class being extended and prefixes it with “to”.",
+    "html": "<p>The field name <cite>toDia₁</cite> is optional in the <cite>extends</cite> syntax.\nBy default it takes the name of the class being extended and prefixes it with “to”.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C08_Hierarchies:0022",
+    "file": "C08_Hierarchies.html",
+    "tag": "p",
+    "text": "Let us now try to combine a diamond operation and a distinguished one element with axioms saying this element is neutral on both sides.",
+    "html": "<p>Let us now try to combine a diamond operation and a distinguished one element with axioms saying\nthis element is neutral on both sides.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C08_Hierarchies:0023",
+    "file": "C08_Hierarchies.html",
+    "tag": "p",
+    "text": "In the next example, we tell Lean that α has a DiaOneClass₁ structure and state a property that uses both a Dia₁ instance and a One₁ instance. In order to see how Lean finds those instances we set a tracing option whose result can be seen in the Infoview. This result is rather terse by default but it can be expanded by clicking on lines ending with black arrows. It includes failed attempts where Lean tried to find instances before having enough type information to succeed. The successful attempts do involve the instances generated by the extends syntax.",
+    "html": "<p>In the next example, we tell Lean that <code class=\"docutils literal notranslate\"><span class=\"pre\">α</span></code> has a <code class=\"docutils literal notranslate\"><span class=\"pre\">DiaOneClass₁</span></code> structure and state a\nproperty that uses both a <cite>Dia₁</cite> instance and a <cite>One₁</cite> instance. In order to see how Lean finds\nthose instances we set a tracing option whose result can be seen in the Infoview. This result\nis rather terse by default but it can be expanded by clicking on lines ending with black arrows.\nIt includes failed attempts where Lean tried to find instances before having enough type\ninformation to succeed. The successful attempts do involve the instances generated by the\n<code class=\"docutils literal notranslate\"><span class=\"pre\">extends</span></code> syntax.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C08_Hierarchies:0024",
+    "file": "C08_Hierarchies.html",
+    "tag": "p",
+    "text": "Note that we don’t need to include extra fields where combining existing classes. Hence we can define monoids as:",
+    "html": "<p>Note that we don’t need to include extra fields where combining existing classes. Hence we can\ndefine monoids as:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C08_Hierarchies:0025",
+    "file": "C08_Hierarchies.html",
+    "tag": "p",
+    "text": "While the above definition seems straightforward, it hides an important subtlety. Both Semigroup₁ α and DiaOneClass₁ α extend Dia₁ α , so one could fear that having a Monoid₁ α instance gives two unrelated diamond operations on α , one coming from a field Monoid₁.toSemigroup₁ and one coming from a field Monoid₁.toDiaOneClass₁ .",
+    "html": "<p>While the above definition seems straightforward, it hides an important subtlety. Both\n<code class=\"docutils literal notranslate\"><span class=\"pre\">Semigroup₁</span> <span class=\"pre\">α</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">DiaOneClass₁</span> <span class=\"pre\">α</span></code> extend <code class=\"docutils literal notranslate\"><span class=\"pre\">Dia₁</span> <span class=\"pre\">α</span></code>, so one could fear that having\na <code class=\"docutils literal notranslate\"><span class=\"pre\">Monoid₁</span> <span class=\"pre\">α</span></code> instance gives two unrelated diamond operations on <code class=\"docutils literal notranslate\"><span class=\"pre\">α</span></code>, one coming from\na field <code class=\"docutils literal notranslate\"><span class=\"pre\">Monoid₁.toSemigroup₁</span></code> and one coming from a field <code class=\"docutils literal notranslate\"><span class=\"pre\">Monoid₁.toDiaOneClass₁</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C08_Hierarchies:0026",
+    "file": "C08_Hierarchies.html",
+    "tag": "p",
+    "text": "Indeed if we try to build a monoid class by hand using:",
+    "html": "<p>Indeed if we try to build a monoid class by hand using:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C08_Hierarchies:0027",
+    "file": "C08_Hierarchies.html",
+    "tag": "p",
+    "text": "then we get two completely unrelated diamond operations Monoid₂.toSemigroup₁.toDia₁.dia and Monoid₂.toDiaOneClass₁.toDia₁.dia .",
+    "html": "<p>then we get two completely unrelated diamond operations\n<code class=\"docutils literal notranslate\"><span class=\"pre\">Monoid₂.toSemigroup₁.toDia₁.dia</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">Monoid₂.toDiaOneClass₁.toDia₁.dia</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C08_Hierarchies:0028",
+    "file": "C08_Hierarchies.html",
+    "tag": "p",
+    "text": "The version generated using the extends syntax does not have this defect.",
+    "html": "<p>The version generated using the <code class=\"docutils literal notranslate\"><span class=\"pre\">extends</span></code> syntax does not have this defect.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C08_Hierarchies:0029",
+    "file": "C08_Hierarchies.html",
+    "tag": "p",
+    "text": "So the class command did some magic for us (and the structure command would have done it too). An easy way to see what are the fields of our classes is to check their constructor. Compare:",
+    "html": "<p>So the <code class=\"docutils literal notranslate\"><span class=\"pre\">class</span></code> command did some magic for us (and the <code class=\"docutils literal notranslate\"><span class=\"pre\">structure</span></code> command would have done it\ntoo). An easy way to see what are the fields of our classes is to check their constructor. Compare:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C08_Hierarchies:0030",
+    "file": "C08_Hierarchies.html",
+    "tag": "p",
+    "text": "So we see that Monoid₁ takes Semigroup₁ α argument as expected but then it won’t take a would-be overlapping DiaOneClass₁ α argument but instead tears it apart and includes only the non-overlapping parts. And it also auto-generated an instance Monoid₁.toDiaOneClass₁ which is not a field but has the expected signature which, from the end-user point of view, restores the symmetry between the two extended classes Semigroup₁ and DiaOneClass₁ .",
+    "html": "<p>So we see that <code class=\"docutils literal notranslate\"><span class=\"pre\">Monoid₁</span></code> takes <code class=\"docutils literal notranslate\"><span class=\"pre\">Semigroup₁</span> <span class=\"pre\">α</span></code> argument as expected but then it won’t\ntake a would-be overlapping <code class=\"docutils literal notranslate\"><span class=\"pre\">DiaOneClass₁</span> <span class=\"pre\">α</span></code> argument but instead tears it apart and includes\nonly the non-overlapping parts. And it also auto-generated an instance <code class=\"docutils literal notranslate\"><span class=\"pre\">Monoid₁.toDiaOneClass₁</span></code>\nwhich is <em>not</em> a field but has the expected signature which, from the end-user point of view,\nrestores the symmetry between the two extended classes <code class=\"docutils literal notranslate\"><span class=\"pre\">Semigroup₁</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">DiaOneClass₁</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C08_Hierarchies:0031",
+    "file": "C08_Hierarchies.html",
+    "tag": "p",
+    "text": "We are now very close to defining groups. We could add to the monoid structure a field asserting the existence of an inverse for every element. But then we would need to work to access these inverses. In practice it is more convenient to add it as data. To optimize reusability, we define a new data-carrying class, and then give it some notation.",
+    "html": "<p>We are now very close to defining groups. We could add to the monoid structure a field asserting\nthe existence of an inverse for every element. But then we would need to work to access these\ninverses. In practice it is more convenient to add it as data. To optimize reusability,\nwe define a new data-carrying class, and then give it some notation.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C08_Hierarchies:0032",
+    "file": "C08_Hierarchies.html",
+    "tag": "p",
+    "text": "The above definition may seem too weak, we only ask that a⁻¹ is a left-inverse of a . But the other side is automatic. In order to prove that, we need a preliminary lemma.",
+    "html": "<p>The above definition may seem too weak, we only ask that <code class=\"docutils literal notranslate\"><span class=\"pre\">a⁻¹</span></code> is a left-inverse of <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span></code>.\nBut the other side is automatic. In order to prove that, we need a preliminary lemma.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C08_Hierarchies:0033",
+    "file": "C08_Hierarchies.html",
+    "tag": "p",
+    "text": "In this lemma, it is pretty annoying to give full names, especially since it requires knowing which part of the hierarchy provides those facts. One way to fix this is to use the export command to copy those facts as lemmas in the root name space.",
+    "html": "<p>In this lemma, it is pretty annoying to give full names, especially since it requires knowing\nwhich part of the hierarchy provides those facts. One way to fix this is to use the <code class=\"docutils literal notranslate\"><span class=\"pre\">export</span></code>\ncommand to copy those facts as lemmas in the root name space.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C08_Hierarchies:0034",
+    "file": "C08_Hierarchies.html",
+    "tag": "p",
+    "text": "We can then rewrite the above proof as:",
+    "html": "<p>We can then rewrite the above proof as:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C08_Hierarchies:0035",
+    "file": "C08_Hierarchies.html",
+    "tag": "p",
+    "text": "It is now your turn to prove things about our algebraic structures.",
+    "html": "<p>It is now your turn to prove things about our algebraic structures.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C08_Hierarchies:0036",
+    "file": "C08_Hierarchies.html",
+    "tag": "p",
+    "text": "At this stage we would like to move on to define rings, but there is a serious issue. A ring structure on a type contains both an additive group structure and a multiplicative monoid structure, and some properties about their interaction. But so far we hard-coded a notation ⋄ for all our operations. More fundamentally, the type class system assumes every type has only one instance of each type class. There are various ways to solve this issue. Surprisingly Mathlib uses the naive idea to duplicate everything for additive and multiplicative theories with the help of some code-generating attribute. Structures and classes are defined in both additive and multiplicative notation with an attribute to_additive linking them. In case of multiple inheritance like for semi-groups, the auto-generated “symmetry-restoring” instances need also to be marked. This is a bit technical; you don’t need to understand details. The important point is that lemmas are then only stated in multiplicative notation and marked with the attribute to_additive to generate the additive version as left_inv_eq_right_inv' with its auto-generated additive version left_neg_eq_right_neg' . In order to check the name of this additive version we used the whatsnew in command on top of left_inv_eq_right_inv' .",
+    "html": "<p>At this stage we would like to move on to define rings, but there is a serious issue.\nA ring structure on a type contains both an additive group structure and a multiplicative\nmonoid structure, and some properties about their interaction. But so far we hard-coded\na notation <code class=\"docutils literal notranslate\"><span class=\"pre\">⋄</span></code> for all our operations. More fundamentally, the type class system\nassumes every type has only one instance of each type class. There are various\nways to solve this issue. Surprisingly Mathlib uses the naive idea to duplicate\neverything for additive and multiplicative theories with the help of some code-generating\nattribute. Structures and classes are defined in both additive and multiplicative notation\nwith an attribute <code class=\"docutils literal notranslate\"><span class=\"pre\">to_additive</span></code> linking them. In case of multiple inheritance like for\nsemi-groups, the auto-generated “symmetry-restoring” instances need also to be marked.\nThis is a bit technical; you don’t need to understand details. The important point is that\nlemmas are then only stated in multiplicative notation and marked with the attribute <code class=\"docutils literal notranslate\"><span class=\"pre\">to_additive</span></code>\nto generate the additive version as <code class=\"docutils literal notranslate\"><span class=\"pre\">left_inv_eq_right_inv'</span></code> with its auto-generated additive\nversion <code class=\"docutils literal notranslate\"><span class=\"pre\">left_neg_eq_right_neg'</span></code>. In order to check the name of this additive version we\nused the <code class=\"docutils literal notranslate\"><span class=\"pre\">whatsnew</span> <span class=\"pre\">in</span></code> command on top of <code class=\"docutils literal notranslate\"><span class=\"pre\">left_inv_eq_right_inv'</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C08_Hierarchies:0037",
+    "file": "C08_Hierarchies.html",
+    "tag": "p",
+    "text": "Equipped with this technology, we can easily define also commutative semigroups, monoids and groups, and then define rings.",
+    "html": "<p>Equipped with this technology, we can easily define also commutative semigroups, monoids and\ngroups, and then define rings.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C08_Hierarchies:0038",
+    "file": "C08_Hierarchies.html",
+    "tag": "p",
+    "text": "We should remember to tag lemmas with simp when appropriate.",
+    "html": "<p>We should remember to tag lemmas with <code class=\"docutils literal notranslate\"><span class=\"pre\">simp</span></code> when appropriate.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C08_Hierarchies:0039",
+    "file": "C08_Hierarchies.html",
+    "tag": "p",
+    "text": "Then we need to repeat ourselves a bit since we switch to standard notations, but at least to_additive does the work of translating from the multiplicative notation to the additive one.",
+    "html": "<p>Then we need to repeat ourselves a bit since we switch to standard notations, but at least\n<code class=\"docutils literal notranslate\"><span class=\"pre\">to_additive</span></code> does the work of translating from the multiplicative notation to the additive one.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C08_Hierarchies:0040",
+    "file": "C08_Hierarchies.html",
+    "tag": "p",
+    "text": "Note that to_additive can be asked to tag a lemma with simp and propagate that attribute to the additive version as follows.",
+    "html": "<p>Note that <code class=\"docutils literal notranslate\"><span class=\"pre\">to_additive</span></code> can be asked to tag a lemma with <code class=\"docutils literal notranslate\"><span class=\"pre\">simp</span></code> and propagate that attribute\nto the additive version as follows.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C08_Hierarchies:0041",
+    "file": "C08_Hierarchies.html",
+    "tag": "p",
+    "text": "We are now ready for rings. For demonstration purposes we won’t assume that addition is commutative, and then immediately provide an instance of AddCommGroup₃ . Mathlib does not play this game, first because in practice this does not make any ring instance easier and also because Mathlib’s algebraic hierarchy goes through semirings which are like rings but without opposites so that the proof below does not work for them. What we gain here, besides a nice exercise if you have never seen it, is an example of building an instance using the syntax that allows to provide a parent structure as an instance parameter and then supply the extra fields. Here the Ring₃ R argument supplies anything AddCommGroup₃ R wants except for add_comm .",
+    "html": "<p>We are now ready for rings. For demonstration purposes we won’t assume that addition is\ncommutative, and then immediately provide an instance of <code class=\"docutils literal notranslate\"><span class=\"pre\">AddCommGroup₃</span></code>. Mathlib does not\nplay this game, first because in practice this does not make any ring instance easier and\nalso because Mathlib’s algebraic hierarchy goes through semirings which are like rings but without\nopposites so that the proof below does not work for them. What we gain here, besides a nice exercise\nif you have never seen it, is an example of building an instance using the syntax that allows\nto provide a parent structure as an instance parameter and then supply the extra fields.\nHere the <cite>Ring₃ R</cite> argument supplies anything <cite>AddCommGroup₃ R</cite> wants except for <cite>add_comm</cite>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C08_Hierarchies:0042",
+    "file": "C08_Hierarchies.html",
+    "tag": "p",
+    "text": "Of course we can also build concrete instances, such as a ring structure on integers (of course the instance below uses that all the work is already done in Mathlib).",
+    "html": "<p>Of course we can also build concrete instances, such as a ring structure on integers (of course\nthe instance below uses that all the work is already done in Mathlib).</p>",
+    "zh": ""
+  },
+  {
+    "id": "C08_Hierarchies:0043",
+    "file": "C08_Hierarchies.html",
+    "tag": "p",
+    "text": "As an exercise you can now set up a simple hierarchy for order relations, including a class for ordered commutative monoids, which have both a partial order and a commutative monoid structure such that ∀ a b : α, a ≤ b → ∀ c : α, c * a ≤ c * b . Of course you need to add fields and maybe extends clauses to the following classes.",
+    "html": "<p>As an exercise you can now set up a simple hierarchy for order relations, including a class\nfor ordered commutative monoids, which have both a partial order and a commutative monoid structure\nsuch that <code class=\"docutils literal notranslate\"><span class=\"pre\">∀</span> <span class=\"pre\">a</span> <span class=\"pre\">b</span> <span class=\"pre\">:</span> <span class=\"pre\">α,</span> <span class=\"pre\">a</span> <span class=\"pre\">≤</span> <span class=\"pre\">b</span> <span class=\"pre\">→</span> <span class=\"pre\">∀</span> <span class=\"pre\">c</span> <span class=\"pre\">:</span> <span class=\"pre\">α,</span> <span class=\"pre\">c</span> <span class=\"pre\">*</span> <span class=\"pre\">a</span> <span class=\"pre\">≤</span> <span class=\"pre\">c</span> <span class=\"pre\">*</span> <span class=\"pre\">b</span></code>. Of course you need to add fields and maybe\n<code class=\"docutils literal notranslate\"><span class=\"pre\">extends</span></code> clauses to the following classes.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C08_Hierarchies:0044",
+    "file": "C08_Hierarchies.html",
+    "tag": "p",
+    "text": "We now want to discuss algebraic structures involving several types. The prime example is modules over rings. If you don’t know what is a module, you can pretend it means vector space and think that all our rings are fields. Those structures are commutative additive groups equipped with a scalar multiplication by elements of some ring.",
+    "html": "<p>We now want to discuss algebraic structures involving several types. The prime example\nis modules over rings. If you don’t know what is a module, you can pretend it means vector space\nand think that all our rings are fields. Those structures are commutative additive groups\nequipped with a scalar multiplication by elements of some ring.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C08_Hierarchies:0045",
+    "file": "C08_Hierarchies.html",
+    "tag": "p",
+    "text": "We first define the data-carrying type class of scalar multiplication by some type α on some type β , and give it a right associative notation.",
+    "html": "<p>We first define the data-carrying type class of scalar multiplication by some type <code class=\"docutils literal notranslate\"><span class=\"pre\">α</span></code> on some\ntype <code class=\"docutils literal notranslate\"><span class=\"pre\">β</span></code>, and give it a right associative notation.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C08_Hierarchies:0046",
+    "file": "C08_Hierarchies.html",
+    "tag": "p",
+    "text": "Then we can define modules (again think about vector spaces if you don’t know what is a module).",
+    "html": "<p>Then we can define modules (again think about vector spaces if you don’t know what is a module).</p>",
+    "zh": ""
+  },
+  {
+    "id": "C08_Hierarchies:0047",
+    "file": "C08_Hierarchies.html",
+    "tag": "p",
+    "text": "There is something interesting going on here. While it isn’t too surprising that the ring structure on R is a parameter in this definition, you probably expected AddCommGroup₃ M to be part of the extends clause just as SMul₃ R M is. Trying to do that would lead to a field Module₃.toAddCommGroup₃ marked as an instance. This instance would have the signature: (R : Type) → [inst : Ring₃ R] → {M : Type} → [self : Module₁ R M] → AddCommGroup₃ M . With such an instance in the type class database, each time Lean would look for a AddCommGroup₃ M instance for some M , it would need to go hunting for a completely unspecified type R and a Ring₃ R instance before embarking on the main quest of finding a Module₁ R M instance. Those two side-quests are represented by the meta-variables mentioned in the error message and denoted by ?R and ?inst✝ there. Such a Module₃.toAddCommGroup₃ instance would then be a huge trap for the instance resolution procedure.",
+    "html": "<p>There is something interesting going on here. While it isn’t too surprising that the\nring structure on <code class=\"docutils literal notranslate\"><span class=\"pre\">R</span></code> is a parameter in this definition, you probably expected <code class=\"docutils literal notranslate\"><span class=\"pre\">AddCommGroup₃</span> <span class=\"pre\">M</span></code>\nto be part of the <code class=\"docutils literal notranslate\"><span class=\"pre\">extends</span></code> clause just as <code class=\"docutils literal notranslate\"><span class=\"pre\">SMul₃</span> <span class=\"pre\">R</span> <span class=\"pre\">M</span></code> is.  Trying to do that would lead\nto a field <code class=\"docutils literal notranslate\"><span class=\"pre\">Module₃.toAddCommGroup₃</span></code> marked as an instance. This instance\nwould have the signature:\n<code class=\"docutils literal notranslate\"><span class=\"pre\">(R</span> <span class=\"pre\">:</span> <span class=\"pre\">Type)</span> <span class=\"pre\">→</span> <span class=\"pre\">[inst</span> <span class=\"pre\">:</span> <span class=\"pre\">Ring₃</span> <span class=\"pre\">R]</span> <span class=\"pre\">→</span> <span class=\"pre\">{M</span> <span class=\"pre\">:</span> <span class=\"pre\">Type}</span> <span class=\"pre\">→</span> <span class=\"pre\">[self</span> <span class=\"pre\">:</span> <span class=\"pre\">Module₁</span> <span class=\"pre\">R</span> <span class=\"pre\">M]</span> <span class=\"pre\">→</span> <span class=\"pre\">AddCommGroup₃</span> <span class=\"pre\">M</span></code>.\nWith such an instance in the type class database, each time Lean would look for a\n<code class=\"docutils literal notranslate\"><span class=\"pre\">AddCommGroup₃</span> <span class=\"pre\">M</span></code> instance for some <code class=\"docutils literal notranslate\"><span class=\"pre\">M</span></code>, it would need to go hunting for a completely\nunspecified type <code class=\"docutils literal notranslate\"><span class=\"pre\">R</span></code> and a <code class=\"docutils literal notranslate\"><span class=\"pre\">Ring₃</span> <span class=\"pre\">R</span></code> instance before embarking on the main quest of finding a\n<code class=\"docutils literal notranslate\"><span class=\"pre\">Module₁</span> <span class=\"pre\">R</span> <span class=\"pre\">M</span></code> instance. Those two side-quests are represented by the meta-variables mentioned in\nthe error message and denoted by <code class=\"docutils literal notranslate\"><span class=\"pre\">?R</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">?inst✝</span></code> there. Such a <code class=\"docutils literal notranslate\"><span class=\"pre\">Module₃.toAddCommGroup₃</span></code>\ninstance would then be a huge trap for the instance resolution procedure.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C08_Hierarchies:0048",
+    "file": "C08_Hierarchies.html",
+    "tag": "p",
+    "text": "What about extends SMul₃ R M then? That one creates a field Module₁.toSMul₃ : {R : Type} → [inst : Ring₃ R] → {M : Type} → [inst_1 : AddCommGroup₃ M] → [self : Module₁ R M] → SMul₃ R M whose end result SMul₃ R M mentions both R and M so this field can safely be used as an instance. The rule is easy to remember: each class appearing in the extends clause should mention every type appearing in the parameters.",
+    "html": "<p>What about <code class=\"docutils literal notranslate\"><span class=\"pre\">extends</span> <span class=\"pre\">SMul₃</span> <span class=\"pre\">R</span> <span class=\"pre\">M</span></code> then? That one creates a field\n<code class=\"docutils literal notranslate\"><span class=\"pre\">Module₁.toSMul₃</span> <span class=\"pre\">:</span> <span class=\"pre\">{R</span> <span class=\"pre\">:</span> <span class=\"pre\">Type}</span> <span class=\"pre\">→</span>  <span class=\"pre\">[inst</span> <span class=\"pre\">:</span> <span class=\"pre\">Ring₃</span> <span class=\"pre\">R]</span> <span class=\"pre\">→</span> <span class=\"pre\">{M</span> <span class=\"pre\">:</span> <span class=\"pre\">Type}</span> <span class=\"pre\">→</span> <span class=\"pre\">[inst_1</span> <span class=\"pre\">:</span> <span class=\"pre\">AddCommGroup₃</span> <span class=\"pre\">M]</span> <span class=\"pre\">→</span> <span class=\"pre\">[self</span> <span class=\"pre\">:</span> <span class=\"pre\">Module₁</span> <span class=\"pre\">R</span> <span class=\"pre\">M]</span> <span class=\"pre\">→</span> <span class=\"pre\">SMul₃</span> <span class=\"pre\">R</span> <span class=\"pre\">M</span></code>\nwhose end result <code class=\"docutils literal notranslate\"><span class=\"pre\">SMul₃</span> <span class=\"pre\">R</span> <span class=\"pre\">M</span></code> mentions both <code class=\"docutils literal notranslate\"><span class=\"pre\">R</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">M</span></code> so this field can\nsafely be used as an instance. The rule is easy to remember: each class appearing in the\n<code class=\"docutils literal notranslate\"><span class=\"pre\">extends</span></code> clause should mention every type appearing in the parameters.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C08_Hierarchies:0049",
+    "file": "C08_Hierarchies.html",
+    "tag": "p",
+    "text": "Let us create our first module instance: a ring is a module over itself using its multiplication as a scalar multiplication.",
+    "html": "<p>Let us create our first module instance: a ring is a module over itself using its multiplication\nas a scalar multiplication.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C08_Hierarchies:0050",
+    "file": "C08_Hierarchies.html",
+    "tag": "p",
+    "text": "As a second example, every abelian group is a module over ℤ (this is one of the reason to generalize the theory of vector spaces by allowing non-invertible scalars). First one can define scalar multiplication by a natural number for any type equipped with a zero and an addition: n • a is defined as a + ⋯ + a where a appears n times. Then this is extended to scalar multiplication by an integer by ensuring (-1) • a = -a .",
+    "html": "<p>As a second example, every abelian group is a module over <code class=\"docutils literal notranslate\"><span class=\"pre\">ℤ</span></code> (this is one of the reason to\ngeneralize the theory of vector spaces by allowing non-invertible scalars). First one can define\nscalar multiplication by a natural number for any type equipped with a zero and an addition:\n<code class=\"docutils literal notranslate\"><span class=\"pre\">n</span> <span class=\"pre\">•</span> <span class=\"pre\">a</span></code> is defined as <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span> <span class=\"pre\">+</span> <span class=\"pre\">⋯</span> <span class=\"pre\">+</span> <span class=\"pre\">a</span></code> where <code class=\"docutils literal notranslate\"><span class=\"pre\">a</span></code> appears <code class=\"docutils literal notranslate\"><span class=\"pre\">n</span></code> times. Then this is extended\nto scalar multiplication by an integer by ensuring <code class=\"docutils literal notranslate\"><span class=\"pre\">(-1)</span> <span class=\"pre\">•</span> <span class=\"pre\">a</span> <span class=\"pre\">=</span> <span class=\"pre\">-a</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C08_Hierarchies:0051",
+    "file": "C08_Hierarchies.html",
+    "tag": "p",
+    "text": "Proving this gives rise to a module structure is a bit tedious and not interesting for the current discussion, so we will sorry all axioms. You are not asked to replace those sorries with proofs. If you insist on doing it then you will probably want to state and prove several intermediate lemmas about nsmul₁ and zsmul₁ .",
+    "html": "<p>Proving this gives rise to a module structure is a bit tedious and not interesting for the\ncurrent discussion, so we will sorry all axioms. You are <em>not</em> asked to replace those sorries\nwith proofs. If you insist on doing it then you will probably want to state and prove several\nintermediate lemmas about <code class=\"docutils literal notranslate\"><span class=\"pre\">nsmul₁</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">zsmul₁</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C08_Hierarchies:0052",
+    "file": "C08_Hierarchies.html",
+    "tag": "p",
+    "text": "A much more important issue is that we now have two module structures over the ring ℤ for ℤ itself: abGrpModule ℤ since ℤ is a abelian group, and selfModule ℤ since ℤ is a ring. Those two module structure correspond to the same abelian group structure, but it is not obvious that they have the same scalar multiplication. They actually do, but this isn’t true by definition, it requires a proof. This is very bad news for the type class instance resolution procedure and will lead to very frustrating failures for users of this hierarchy. When directly asked to find an instance, Lean will pick one, and we can see which one using:",
+    "html": "<p>A much more important issue is that we now have two module structures over the ring <code class=\"docutils literal notranslate\"><span class=\"pre\">ℤ</span></code>\nfor <code class=\"docutils literal notranslate\"><span class=\"pre\">ℤ</span></code> itself: <code class=\"docutils literal notranslate\"><span class=\"pre\">abGrpModule</span> <span class=\"pre\">ℤ</span></code> since <code class=\"docutils literal notranslate\"><span class=\"pre\">ℤ</span></code> is a abelian group, and <code class=\"docutils literal notranslate\"><span class=\"pre\">selfModule</span> <span class=\"pre\">ℤ</span></code> since\n<code class=\"docutils literal notranslate\"><span class=\"pre\">ℤ</span></code> is a ring. Those two module structure correspond to the same abelian group structure,\nbut it is not obvious that they have the same scalar multiplication. They actually do, but\nthis isn’t true by definition, it requires a proof. This is very bad news for the type class\ninstance resolution procedure and will lead to very frustrating failures for users of this\nhierarchy. When directly asked to find an instance, Lean will pick one, and we can see\nwhich one using:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C08_Hierarchies:0053",
+    "file": "C08_Hierarchies.html",
+    "tag": "p",
+    "text": "But in a more indirect context it can happen that Lean infers the other one and then gets confused. This situation is known as a bad diamond. This has nothing to do with the diamond operation we used above, it refers to the way one can draw the paths from ℤ to its Module₁ ℤ going through either AddCommGroup₃ ℤ or Ring₃ ℤ .",
+    "html": "<p>But in a more indirect context it can happen that Lean infers the other one and then gets confused.\nThis situation is known as a bad diamond. This has nothing to do with the diamond operation\nwe used above, it refers to the way one can draw the paths from <code class=\"docutils literal notranslate\"><span class=\"pre\">ℤ</span></code> to its <code class=\"docutils literal notranslate\"><span class=\"pre\">Module₁</span> <span class=\"pre\">ℤ</span></code>\ngoing through either <code class=\"docutils literal notranslate\"><span class=\"pre\">AddCommGroup₃</span> <span class=\"pre\">ℤ</span></code> or <code class=\"docutils literal notranslate\"><span class=\"pre\">Ring₃</span> <span class=\"pre\">ℤ</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C08_Hierarchies:0054",
+    "file": "C08_Hierarchies.html",
+    "tag": "p",
+    "text": "It is important to understand that not all diamonds are bad. In fact there are diamonds everywhere in Mathlib, and also in this chapter. Already at the very beginning we saw one can go from Monoid₁ α to Dia₁ α through either Semigroup₁ α or DiaOneClass₁ α and thanks to the work done by the class command, the resulting two Dia₁ α instances are definitionally equal. In particular a diamond having a Prop -valued class at the bottom cannot be bad since any two proofs of the same statement are definitionally equal.",
+    "html": "<p>It is important to understand that not all diamonds are bad. In fact there are diamonds everywhere\nin Mathlib, and also in this chapter. Already at the very beginning we saw one can go\nfrom <code class=\"docutils literal notranslate\"><span class=\"pre\">Monoid₁</span> <span class=\"pre\">α</span></code> to <code class=\"docutils literal notranslate\"><span class=\"pre\">Dia₁</span> <span class=\"pre\">α</span></code> through either <code class=\"docutils literal notranslate\"><span class=\"pre\">Semigroup₁</span> <span class=\"pre\">α</span></code> or <code class=\"docutils literal notranslate\"><span class=\"pre\">DiaOneClass₁</span> <span class=\"pre\">α</span></code> and\nthanks to the work done by the <code class=\"docutils literal notranslate\"><span class=\"pre\">class</span></code> command, the resulting two <code class=\"docutils literal notranslate\"><span class=\"pre\">Dia₁</span> <span class=\"pre\">α</span></code> instances\nare definitionally equal. In particular a diamond having a <code class=\"docutils literal notranslate\"><span class=\"pre\">Prop</span></code>-valued class at the bottom\ncannot be bad since any two proofs of the same statement are definitionally equal.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C08_Hierarchies:0055",
+    "file": "C08_Hierarchies.html",
+    "tag": "p",
+    "text": "But the diamond we created with modules is definitely bad. The offending piece is the smul field which is data, not a proof, and we have two constructions that are not definitionally equal. The robust way of fixing this issue is to make sure that going from a rich structure to a poor structure is always done by forgetting data, not by defining data. This well-known pattern has been named “forgetful inheritance” and extensively discussed in https://inria.hal.science/hal-02463336v2 .",
+    "html": "<p>But the diamond we created with modules is definitely bad. The offending piece is the <code class=\"docutils literal notranslate\"><span class=\"pre\">smul</span></code>\nfield which is data, not a proof, and we have two constructions that are not definitionally equal.\nThe robust way of fixing this issue is to make sure that going from a rich structure to a\npoor structure is always done by forgetting data, not by defining data. This well-known pattern\nhas been named “forgetful inheritance” and extensively discussed in\n<a class=\"reference external\" href=\"https://inria.hal.science/hal-02463336v2\">https://inria.hal.science/hal-02463336v2</a>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C08_Hierarchies:0056",
+    "file": "C08_Hierarchies.html",
+    "tag": "p",
+    "text": "In our concrete case, we can modify the definition of AddMonoid₃ to include a nsmul data field and some Prop -valued fields ensuring this operation is provably the one we constructed above. Those fields are given default values using := after their type in the definition below. Thanks to these default values, most instances would be constructed exactly as with our previous definitions. But in the special case of ℤ we will be able to provide specific values.",
+    "html": "<p>In our concrete case, we can modify the definition of <code class=\"docutils literal notranslate\"><span class=\"pre\">AddMonoid₃</span></code> to include a <code class=\"docutils literal notranslate\"><span class=\"pre\">nsmul</span></code> data\nfield and some <code class=\"docutils literal notranslate\"><span class=\"pre\">Prop</span></code>-valued fields ensuring this operation is provably the one we constructed\nabove. Those fields are given default values using <code class=\"docutils literal notranslate\"><span class=\"pre\">:=</span></code> after their type in the definition below.\nThanks to these default values, most instances would be constructed exactly as with our previous\ndefinitions. But in the special case of <code class=\"docutils literal notranslate\"><span class=\"pre\">ℤ</span></code> we will be able to provide specific values.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C08_Hierarchies:0057",
+    "file": "C08_Hierarchies.html",
+    "tag": "p",
+    "text": "Let us check we can still construct a product monoid instance without providing the nsmul related fields.",
+    "html": "<p>Let us check we can still construct a product monoid instance without providing the <code class=\"docutils literal notranslate\"><span class=\"pre\">nsmul</span></code>\nrelated fields.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C08_Hierarchies:0058",
+    "file": "C08_Hierarchies.html",
+    "tag": "p",
+    "text": "And now let us handle the special case of ℤ where we want to build nsmul using the coercion of ℕ to ℤ and the multiplication on ℤ . Note in particular how the proof fields contain more work than in the default value above.",
+    "html": "<p>And now let us handle the special case of <code class=\"docutils literal notranslate\"><span class=\"pre\">ℤ</span></code> where we want to build <code class=\"docutils literal notranslate\"><span class=\"pre\">nsmul</span></code> using the coercion\nof <code class=\"docutils literal notranslate\"><span class=\"pre\">ℕ</span></code> to <code class=\"docutils literal notranslate\"><span class=\"pre\">ℤ</span></code> and the multiplication on <code class=\"docutils literal notranslate\"><span class=\"pre\">ℤ</span></code>. Note in particular how the proof fields\ncontain more work than in the default value above.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C08_Hierarchies:0059",
+    "file": "C08_Hierarchies.html",
+    "tag": "p",
+    "text": "Let us check we solved our issue. Because Lean already has a definition of scalar multiplication of a natural number and an integer, and we want to make sure our instance is used, we won’t use the • notation but call SMul.mul and explicitly provide our instance defined above.",
+    "html": "<p>Let us check we solved our issue. Because Lean already has a definition of scalar multiplication\nof a natural number and an integer, and we want to make sure our instance is used, we won’t use\nthe <code class=\"docutils literal notranslate\"><span class=\"pre\">•</span></code> notation but call <code class=\"docutils literal notranslate\"><span class=\"pre\">SMul.mul</span></code> and explicitly provide our instance defined above.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C08_Hierarchies:0060",
+    "file": "C08_Hierarchies.html",
+    "tag": "p",
+    "text": "This story then continues with incorporating a zsmul field into the definition of groups and similar tricks. You are now ready to read the definition of monoids, groups, rings and modules in Mathlib. They are more complicated than what we have seen here, because they are part of a huge hierarchy, but all principles have been explained above.",
+    "html": "<p>This story then continues with incorporating a <code class=\"docutils literal notranslate\"><span class=\"pre\">zsmul</span></code> field into the definition of groups\nand similar tricks. You are now ready to read the definition of monoids, groups, rings and modules\nin Mathlib. They are more complicated than what we have seen here, because they are part of a huge\nhierarchy, but all principles have been explained above.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C08_Hierarchies:0061",
+    "file": "C08_Hierarchies.html",
+    "tag": "p",
+    "text": "As an exercise, you can come back to the order relation hierarchy you built above and try to incorporate a type class LT₁ carrying the Less-Than notation <₁ and make sure that every preorder comes with a <₁ which has a default value built from ≤₁ and a Prop -valued field asserting the natural relation between those two comparison operators.",
+    "html": "<p>As an exercise, you can come back to the order relation hierarchy you built above and try\nto incorporate a type class <code class=\"docutils literal notranslate\"><span class=\"pre\">LT₁</span></code> carrying the Less-Than notation <code class=\"docutils literal notranslate\"><span class=\"pre\">&lt;₁</span></code> and make sure\nthat every preorder comes with a <code class=\"docutils literal notranslate\"><span class=\"pre\">&lt;₁</span></code> which has a default value built from <code class=\"docutils literal notranslate\"><span class=\"pre\">≤₁</span></code> and a\n<code class=\"docutils literal notranslate\"><span class=\"pre\">Prop</span></code>-valued field asserting the natural relation between those two comparison operators.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C08_Hierarchies:0062",
+    "file": "C08_Hierarchies.html",
+    "tag": "p",
+    "text": "So far in this chapter, we discussed how to create a hierarchy of mathematical structures. But defining structures is not really completed until we have morphisms. There are two main approaches here. The most obvious one is to define a predicate on functions.",
+    "html": "<p>So far in this chapter, we discussed how to create a hierarchy of mathematical structures.\nBut defining structures is not really completed until we have morphisms. There are two\nmain approaches here. The most obvious one is to define a predicate on functions.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C08_Hierarchies:0063",
+    "file": "C08_Hierarchies.html",
+    "tag": "p",
+    "text": "In this definition, it is a bit unpleasant to use a conjunction. In particular users will need to remember the ordering we chose when they want to access the two conditions. So we could use a structure instead.",
+    "html": "<p>In this definition, it is a bit unpleasant to use a conjunction. In particular users\nwill need to remember the ordering we chose when they want to access the two conditions.\nSo we could use a structure instead.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C08_Hierarchies:0064",
+    "file": "C08_Hierarchies.html",
+    "tag": "p",
+    "text": "Once we are here, it is even tempting to make it a class and use the type class instance resolution procedure to automatically infer isMonoidHom₂ for complicated functions out of instances for simpler functions. For instance a composition of monoid morphisms is a monoid morphism and this seems like a useful instance. However such an instance would be very tricky for the resolution procedure since it would need to hunt down g ∘ f everywhere. Seeing it failing in g (f x) would be very frustrating. More generally one must always keep in mind that recognizing which function is applied in a given expression is a very difficult problem, called the “higher-order unification problem”. So Mathlib does not use this class approach.",
+    "html": "<p>Once we are here, it is even tempting to make it a class and use the type class instance resolution\nprocedure to automatically infer <code class=\"docutils literal notranslate\"><span class=\"pre\">isMonoidHom₂</span></code> for complicated functions out of instances for\nsimpler functions. For instance a composition of monoid morphisms is a monoid morphism and this\nseems like a useful instance. However such an instance would be very tricky for the resolution\nprocedure since it would need to hunt down <code class=\"docutils literal notranslate\"><span class=\"pre\">g</span> <span class=\"pre\">∘</span> <span class=\"pre\">f</span></code> everywhere. Seeing it failing in <code class=\"docutils literal notranslate\"><span class=\"pre\">g</span> <span class=\"pre\">(f</span> <span class=\"pre\">x)</span></code>\nwould be very frustrating. More generally one must always keep in mind that recognizing which\nfunction is applied in a given expression is a very difficult problem, called the “higher-order\nunification problem”. So Mathlib does not use this class approach.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C08_Hierarchies:0065",
+    "file": "C08_Hierarchies.html",
+    "tag": "p",
+    "text": "A more fundamental question is whether we use predicates as above (using either a def or a structure ) or use structures bundling a function and predicates. This is partly a psychological issue. It is extremely rare to consider a function between monoids that is not a morphism. It really feels like “monoid morphism” is not an adjective you can assign to a bare function, it is a noun. On the other hand one can argue that a continuous function between topological spaces is really a function that happens to be continuous. This is one reason why Mathlib has a Continuous predicate. For instance you can write:",
+    "html": "<p>A more fundamental question is whether we use predicates as above (using either a <code class=\"docutils literal notranslate\"><span class=\"pre\">def</span></code> or a\n<code class=\"docutils literal notranslate\"><span class=\"pre\">structure</span></code>) or use structures bundling a function and predicates. This is partly a psychological\nissue. It is extremely rare to consider a function between monoids that is not a morphism.\nIt really feels like “monoid morphism” is not an adjective you can assign to a bare function,\nit is a noun. On the other hand one can argue that a continuous function between topological spaces\nis really a function that happens to be continuous. This is one reason why Mathlib has a\n<code class=\"docutils literal notranslate\"><span class=\"pre\">Continuous</span></code> predicate. For instance you can write:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C08_Hierarchies:0066",
+    "file": "C08_Hierarchies.html",
+    "tag": "p",
+    "text": "We still have bundles of continuous functions, which are convenient for instance to put a topology on a space of continuous functions, but they are not the primary tool to work with continuity.",
+    "html": "<p>We still have bundles of continuous functions, which are convenient for instance to put a topology\non a space of continuous functions, but they are not the primary tool to work with continuity.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C08_Hierarchies:0067",
+    "file": "C08_Hierarchies.html",
+    "tag": "p",
+    "text": "By contrast, morphisms between monoids (or other algebraic structures) are bundled as in:",
+    "html": "<p>By contrast, morphisms between monoids (or other algebraic structures) are bundled as in:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C08_Hierarchies:0068",
+    "file": "C08_Hierarchies.html",
+    "tag": "p",
+    "text": "Of course we don’t want to type toFun everywhere so we register a coercion using the CoeFun type class. Its first argument is the type we want to coerce to a function. The second argument describes the target function type. In our case it is always G → H for every f : MonoidHom₁ G H . We also tag MonoidHom₁.toFun with the coe attribute to make sure it is displayed almost invisibly in the tactic state, simply by a ↑ prefix.",
+    "html": "<p>Of course we don’t want to type <code class=\"docutils literal notranslate\"><span class=\"pre\">toFun</span></code> everywhere so we register a coercion using\nthe <code class=\"docutils literal notranslate\"><span class=\"pre\">CoeFun</span></code> type class. Its first argument is the type we want to coerce to a function.\nThe second argument describes the target function type. In our case it is always <code class=\"docutils literal notranslate\"><span class=\"pre\">G</span> <span class=\"pre\">→</span> <span class=\"pre\">H</span></code>\nfor every <code class=\"docutils literal notranslate\"><span class=\"pre\">f</span> <span class=\"pre\">:</span> <span class=\"pre\">MonoidHom₁</span> <span class=\"pre\">G</span> <span class=\"pre\">H</span></code>. We also tag <code class=\"docutils literal notranslate\"><span class=\"pre\">MonoidHom₁.toFun</span></code> with the <code class=\"docutils literal notranslate\"><span class=\"pre\">coe</span></code> attribute to\nmake sure it is displayed almost invisibly in the tactic state, simply by a <code class=\"docutils literal notranslate\"><span class=\"pre\">↑</span></code> prefix.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C08_Hierarchies:0069",
+    "file": "C08_Hierarchies.html",
+    "tag": "p",
+    "text": "Let us check we can indeed apply a bundled monoid morphism to an element.",
+    "html": "<p>Let us check we can indeed apply a bundled monoid morphism to an element.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C08_Hierarchies:0070",
+    "file": "C08_Hierarchies.html",
+    "tag": "p",
+    "text": "We can do the same with other kind of morphisms until we reach ring morphisms.",
+    "html": "<p>We can do the same with other kind of morphisms until we reach ring morphisms.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C08_Hierarchies:0071",
+    "file": "C08_Hierarchies.html",
+    "tag": "p",
+    "text": "There are a couple of issues about this approach. A minor one is we don’t quite know where to put the coe attribute since the RingHom₁.toFun does not exist, the relevant function is MonoidHom₁.toFun ∘ RingHom₁.toMonoidHom₁ which is not a declaration that can be tagged with an attribute (but we could still define a CoeFun (RingHom₁ R S) (fun _ ↦ R → S) instance). A much more important one is that lemmas about monoid morphisms won’t directly apply to ring morphisms. This leaves the alternative of either juggling with RingHom₁.toMonoidHom₁ each time we want to apply a monoid morphism lemma or restate every such lemmas for ring morphisms. Neither option is appealing so Mathlib uses a new hierarchy trick here. The idea is to define a type class for objects that are at least monoid morphisms, instantiate that class with both monoid morphisms and ring morphisms and use it to state every lemma. In the definition below, F could be MonoidHom₁ M N , or RingHom₁ M N if M and N have a ring structure.",
+    "html": "<p>There are a couple of issues about this approach. A minor one is we don’t quite know where to put\nthe <code class=\"docutils literal notranslate\"><span class=\"pre\">coe</span></code> attribute since the <code class=\"docutils literal notranslate\"><span class=\"pre\">RingHom₁.toFun</span></code> does not exist, the relevant function is\n<code class=\"docutils literal notranslate\"><span class=\"pre\">MonoidHom₁.toFun</span> <span class=\"pre\">∘</span> <span class=\"pre\">RingHom₁.toMonoidHom₁</span></code> which is not a declaration that can be tagged with an\nattribute (but we could still define a <code class=\"docutils literal notranslate\"><span class=\"pre\">CoeFun</span>  <span class=\"pre\">(RingHom₁</span> <span class=\"pre\">R</span> <span class=\"pre\">S)</span> <span class=\"pre\">(fun</span> <span class=\"pre\">_</span> <span class=\"pre\">↦</span> <span class=\"pre\">R</span> <span class=\"pre\">→</span> <span class=\"pre\">S)</span></code> instance).\nA much more important one is that lemmas about monoid morphisms won’t directly apply\nto ring morphisms. This leaves the alternative of either juggling with <code class=\"docutils literal notranslate\"><span class=\"pre\">RingHom₁.toMonoidHom₁</span></code>\neach time we want to apply a monoid morphism lemma or restate every such lemmas for ring morphisms.\nNeither option is appealing so Mathlib uses a new hierarchy trick here. The idea is to define\na type class for objects that are at least monoid morphisms, instantiate that class with both monoid\nmorphisms and ring morphisms and use it to state every lemma. In the definition below,\n<code class=\"docutils literal notranslate\"><span class=\"pre\">F</span></code> could be <code class=\"docutils literal notranslate\"><span class=\"pre\">MonoidHom₁</span> <span class=\"pre\">M</span> <span class=\"pre\">N</span></code>, or <code class=\"docutils literal notranslate\"><span class=\"pre\">RingHom₁</span> <span class=\"pre\">M</span> <span class=\"pre\">N</span></code> if <code class=\"docutils literal notranslate\"><span class=\"pre\">M</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">N</span></code> have a ring structure.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C08_Hierarchies:0072",
+    "file": "C08_Hierarchies.html",
+    "tag": "p",
+    "text": "However there is a problem with the above implementation. We haven’t registered a coercion to function instance yet. Let us try to do it now.",
+    "html": "<p>However there is a problem with the above implementation. We haven’t registered a coercion to\nfunction instance yet. Let us try to do it now.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C08_Hierarchies:0073",
+    "file": "C08_Hierarchies.html",
+    "tag": "p",
+    "text": "Making this an instance would be bad. When faced with something like f x where the type of f is not a function type, Lean will try to find a CoeFun instance to coerce f into a function. The above function has type: {M N F : Type} → [Monoid M] → [Monoid N] → [MonoidHomClass₁ F M N] → CoeFun F (fun x ↦ M → N) so, when it trying to apply it, it wouldn’t be a priori clear to Lean in which order the unknown types M , N and F should be inferred. This is a kind of bad instance that is slightly different from the one we saw already, but it boils down to the same issue: without knowing M , Lean would have to search for a monoid instance on an unknown type, hence hopelessly try every monoid instance in the database. If you are curious to see the effect of such an instance you can type set_option synthInstance.checkSynthOrder false in on top of the above declaration, replace def badInst with instance , and look for random failures in this file.",
+    "html": "<p>Making this an instance would be bad. When faced with something like <code class=\"docutils literal notranslate\"><span class=\"pre\">f</span> <span class=\"pre\">x</span></code> where the type of <code class=\"docutils literal notranslate\"><span class=\"pre\">f</span></code>\nis not a function type, Lean will try to find a <code class=\"docutils literal notranslate\"><span class=\"pre\">CoeFun</span></code> instance to coerce <code class=\"docutils literal notranslate\"><span class=\"pre\">f</span></code> into a function.\nThe above function has type:\n<code class=\"docutils literal notranslate\"><span class=\"pre\">{M</span> <span class=\"pre\">N</span> <span class=\"pre\">F</span> <span class=\"pre\">:</span> <span class=\"pre\">Type}</span> <span class=\"pre\">→</span> <span class=\"pre\">[Monoid</span> <span class=\"pre\">M]</span> <span class=\"pre\">→</span> <span class=\"pre\">[Monoid</span> <span class=\"pre\">N]</span> <span class=\"pre\">→</span> <span class=\"pre\">[MonoidHomClass₁</span> <span class=\"pre\">F</span> <span class=\"pre\">M</span> <span class=\"pre\">N]</span> <span class=\"pre\">→</span> <span class=\"pre\">CoeFun</span> <span class=\"pre\">F</span> <span class=\"pre\">(fun</span> <span class=\"pre\">x</span> <span class=\"pre\">↦</span> <span class=\"pre\">M</span> <span class=\"pre\">→</span> <span class=\"pre\">N)</span></code>\nso, when it trying to apply it, it wouldn’t be a priori clear to Lean in which order the unknown\ntypes <code class=\"docutils literal notranslate\"><span class=\"pre\">M</span></code>, <code class=\"docutils literal notranslate\"><span class=\"pre\">N</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">F</span></code> should be inferred. This is a kind of bad instance that is slightly\ndifferent from the one we saw already, but it boils down to the same issue: without knowing <code class=\"docutils literal notranslate\"><span class=\"pre\">M</span></code>,\nLean would have to search for a monoid instance on an unknown type, hence hopelessly try <em>every</em>\nmonoid instance in the database. If you are curious to see the effect of such an instance you\ncan type <code class=\"docutils literal notranslate\"><span class=\"pre\">set_option</span> <span class=\"pre\">synthInstance.checkSynthOrder</span> <span class=\"pre\">false</span> <span class=\"pre\">in</span></code> on top of the above declaration,\nreplace <code class=\"docutils literal notranslate\"><span class=\"pre\">def</span> <span class=\"pre\">badInst</span></code> with <code class=\"docutils literal notranslate\"><span class=\"pre\">instance</span></code>, and look for random failures in this file.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C08_Hierarchies:0074",
+    "file": "C08_Hierarchies.html",
+    "tag": "p",
+    "text": "Here the solution is easy, we need to tell Lean to first search what is F and then deduce M and N . This is done using the outParam function. This function is defined as the identity function, but is still recognized by the type class machinery and triggers the desired behavior. Hence we can retry defining our class, paying attention to the outParam function:",
+    "html": "<p>Here the solution is easy, we need to tell Lean to first search what is <code class=\"docutils literal notranslate\"><span class=\"pre\">F</span></code> and then deduce <code class=\"docutils literal notranslate\"><span class=\"pre\">M</span></code>\nand <code class=\"docutils literal notranslate\"><span class=\"pre\">N</span></code>. This is done using the <code class=\"docutils literal notranslate\"><span class=\"pre\">outParam</span></code> function. This function is defined as the identity\nfunction, but is still recognized by the type class machinery and triggers the desired behavior.\nHence we can retry defining our class, paying attention to the <code class=\"docutils literal notranslate\"><span class=\"pre\">outParam</span></code> function:</p>",
+    "zh": ""
+  },
+  {
+    "id": "C08_Hierarchies:0075",
+    "file": "C08_Hierarchies.html",
+    "tag": "p",
+    "text": "Now we can proceed with our plan to instantiate this class.",
+    "html": "<p>Now we can proceed with our plan to instantiate this class.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C08_Hierarchies:0076",
+    "file": "C08_Hierarchies.html",
+    "tag": "p",
+    "text": "As promised every lemma we prove about f : F assuming an instance of MonoidHomClass₁ F will apply both to monoid morphisms and ring morphisms. Let us see an example lemma and check it applies to both situations.",
+    "html": "<p>As promised every lemma we prove about <code class=\"docutils literal notranslate\"><span class=\"pre\">f</span> <span class=\"pre\">:</span> <span class=\"pre\">F</span></code> assuming an instance of <code class=\"docutils literal notranslate\"><span class=\"pre\">MonoidHomClass₁</span> <span class=\"pre\">F</span></code> will\napply both to monoid morphisms and ring morphisms.\nLet us see an example lemma and check it applies to both situations.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C08_Hierarchies:0077",
+    "file": "C08_Hierarchies.html",
+    "tag": "p",
+    "text": "At first sight, it may look like we got back to our old bad idea of making MonoidHom₁ a class. But we haven’t. Everything is shifted one level of abstraction up. The type class resolution procedure won’t be looking for functions, it will be looking for either MonoidHom₁ or RingHom₁ .",
+    "html": "<p>At first sight, it may look like we got back to our old bad idea of making <code class=\"docutils literal notranslate\"><span class=\"pre\">MonoidHom₁</span></code> a class.\nBut we haven’t. Everything is shifted one level of abstraction up. The type class resolution\nprocedure won’t be looking for functions, it will be looking for either\n<code class=\"docutils literal notranslate\"><span class=\"pre\">MonoidHom₁</span></code> or <code class=\"docutils literal notranslate\"><span class=\"pre\">RingHom₁</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C08_Hierarchies:0078",
+    "file": "C08_Hierarchies.html",
+    "tag": "p",
+    "text": "One remaining issue with our approach is the presence of repetitive code around the toFun field and the corresponding CoeFun instance and coe attribute. It would also be better to record that this pattern is used only for functions with extra properties, meaning that the coercion to functions should be injective. So Mathlib adds one more layer of abstraction with the base class DFunLike (where “DFun” stands for dependent function). Let us redefine our MonoidHomClass on top of this base layer.",
+    "html": "<p>One remaining issue with our approach is the presence of repetitive code around the <code class=\"docutils literal notranslate\"><span class=\"pre\">toFun</span></code>\nfield and the corresponding <code class=\"docutils literal notranslate\"><span class=\"pre\">CoeFun</span></code> instance and <code class=\"docutils literal notranslate\"><span class=\"pre\">coe</span></code> attribute. It would also be better\nto record that this pattern is used only for functions with extra properties, meaning that the\ncoercion to functions should be injective. So Mathlib adds one more layer of abstraction with\nthe base class <code class=\"docutils literal notranslate\"><span class=\"pre\">DFunLike</span></code> (where “DFun” stands for dependent function).\nLet us redefine our <code class=\"docutils literal notranslate\"><span class=\"pre\">MonoidHomClass</span></code> on top of this base layer.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C08_Hierarchies:0079",
+    "file": "C08_Hierarchies.html",
+    "tag": "p",
+    "text": "Of course the hierarchy of morphisms does not stop here. We could go on and define a class RingHomClass₃ extending MonoidHomClass₃ and instantiate it on RingHom and then later on AlgebraHom (algebras are rings with some extra structure). But we’ve covered the main formalization ideas used in Mathlib for morphisms and you should be ready to understand how morphisms are defined in Mathlib.",
+    "html": "<p>Of course the hierarchy of morphisms does not stop here. We could go on and define a class\n<code class=\"docutils literal notranslate\"><span class=\"pre\">RingHomClass₃</span></code> extending <code class=\"docutils literal notranslate\"><span class=\"pre\">MonoidHomClass₃</span></code> and instantiate it on <code class=\"docutils literal notranslate\"><span class=\"pre\">RingHom</span></code> and\nthen later on <code class=\"docutils literal notranslate\"><span class=\"pre\">AlgebraHom</span></code> (algebras are rings with some extra structure). But we’ve\ncovered the main formalization ideas used in Mathlib for morphisms and you should be ready\nto understand how morphisms are defined in Mathlib.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C08_Hierarchies:0080",
+    "file": "C08_Hierarchies.html",
+    "tag": "p",
+    "text": "As an exercise, you should try to define your class of bundled order-preserving function between ordered types, and then order preserving monoid morphisms. This is for training purposes only. Like continuous functions, order preserving functions are primarily unbundled in Mathlib where they are defined by the Monotone predicate. Of course you need to complete the class definitions below.",
+    "html": "<p>As an exercise, you should try to define your class of bundled order-preserving function between\nordered types, and then order preserving monoid morphisms. This is for training purposes only.\nLike continuous functions, order preserving functions are primarily unbundled in Mathlib where\nthey are defined by the <code class=\"docutils literal notranslate\"><span class=\"pre\">Monotone</span></code> predicate. Of course you need to complete the class\ndefinitions below.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C08_Hierarchies:0081",
+    "file": "C08_Hierarchies.html",
+    "tag": "p",
+    "text": "After defining some algebraic structure and its morphisms, the next step is to consider sets that inherit this algebraic structure, for instance subgroups or subrings. This largely overlaps with our previous topic. Indeed a set in X is implemented as a function from X to Prop so sub-objects are function satisfying a certain predicate. Hence we can reuse of lot of the ideas that led to the DFunLike class and its descendants. We won’t reuse DFunLike itself because this would break the abstraction barrier from Set X to X → Prop . Instead there is a SetLike class. Instead of wrapping an injection into a function type, that class wraps an injection into a Set type and defines the corresponding coercion and Membership instance.",
+    "html": "<p>After defining some algebraic structure and its morphisms, the next step is to consider sets\nthat inherit this algebraic structure, for instance subgroups or subrings.\nThis largely overlaps with our previous topic. Indeed a set in <code class=\"docutils literal notranslate\"><span class=\"pre\">X</span></code> is implemented as a function from\n<code class=\"docutils literal notranslate\"><span class=\"pre\">X</span></code> to <code class=\"docutils literal notranslate\"><span class=\"pre\">Prop</span></code> so sub-objects are function satisfying a certain predicate.\nHence we can reuse of lot of the ideas that led to the <code class=\"docutils literal notranslate\"><span class=\"pre\">DFunLike</span></code> class and its descendants.\nWe won’t reuse <code class=\"docutils literal notranslate\"><span class=\"pre\">DFunLike</span></code> itself because this would break the abstraction barrier from <code class=\"docutils literal notranslate\"><span class=\"pre\">Set</span> <span class=\"pre\">X</span></code>\nto <code class=\"docutils literal notranslate\"><span class=\"pre\">X</span> <span class=\"pre\">→</span> <span class=\"pre\">Prop</span></code>. Instead there is a <code class=\"docutils literal notranslate\"><span class=\"pre\">SetLike</span></code> class. Instead of wrapping an injection into a\nfunction type, that class wraps an injection into a <code class=\"docutils literal notranslate\"><span class=\"pre\">Set</span></code> type and defines the corresponding\ncoercion and <code class=\"docutils literal notranslate\"><span class=\"pre\">Membership</span></code> instance.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C08_Hierarchies:0082",
+    "file": "C08_Hierarchies.html",
+    "tag": "p",
+    "text": "Equipped with the above SetLike instance, we can already state naturally that a submonoid N contains 1 without using N.carrier . We can also silently treat N as a set in M and take its direct image under a map.",
+    "html": "<p>Equipped with the above <code class=\"docutils literal notranslate\"><span class=\"pre\">SetLike</span></code> instance, we can already state naturally that\na submonoid <code class=\"docutils literal notranslate\"><span class=\"pre\">N</span></code> contains <code class=\"docutils literal notranslate\"><span class=\"pre\">1</span></code> without using <code class=\"docutils literal notranslate\"><span class=\"pre\">N.carrier</span></code>.\nWe can also silently treat <code class=\"docutils literal notranslate\"><span class=\"pre\">N</span></code> as a set in <code class=\"docutils literal notranslate\"><span class=\"pre\">M</span></code> and take its direct image under a map.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C08_Hierarchies:0083",
+    "file": "C08_Hierarchies.html",
+    "tag": "p",
+    "text": "We also have a coercion to Type which uses Subtype so, given a submonoid N we can write a parameter (x : N) which can be coerced to an element of M belonging to N .",
+    "html": "<p>We also have a coercion to <code class=\"docutils literal notranslate\"><span class=\"pre\">Type</span></code> which uses <code class=\"docutils literal notranslate\"><span class=\"pre\">Subtype</span></code> so, given a submonoid <code class=\"docutils literal notranslate\"><span class=\"pre\">N</span></code> we can write\na parameter <code class=\"docutils literal notranslate\"><span class=\"pre\">(x</span> <span class=\"pre\">:</span> <span class=\"pre\">N)</span></code> which can be coerced to an element of <code class=\"docutils literal notranslate\"><span class=\"pre\">M</span></code> belonging to <code class=\"docutils literal notranslate\"><span class=\"pre\">N</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C08_Hierarchies:0084",
+    "file": "C08_Hierarchies.html",
+    "tag": "p",
+    "text": "Using this coercion to Type we can also tackle the task of equipping a submonoid with a monoid structure. We will use the coercion from the type associated to N as above, and the lemma SetCoe.ext asserting this coercion is injective. Both are provided by the SetLike instance.",
+    "html": "<p>Using this coercion to <code class=\"docutils literal notranslate\"><span class=\"pre\">Type</span></code> we can also tackle the task of equipping a submonoid with a\nmonoid structure. We will use the coercion from the type associated to <code class=\"docutils literal notranslate\"><span class=\"pre\">N</span></code> as above, and the\nlemma <code class=\"docutils literal notranslate\"><span class=\"pre\">SetCoe.ext</span></code> asserting this coercion is injective. Both are provided by the <code class=\"docutils literal notranslate\"><span class=\"pre\">SetLike</span></code>\ninstance.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C08_Hierarchies:0085",
+    "file": "C08_Hierarchies.html",
+    "tag": "p",
+    "text": "Note that, in the above instance, instead of using the coercion to M and calling the property field, we could have used destructuring binders as follows.",
+    "html": "<p>Note that, in the above instance, instead of using the coercion to <code class=\"docutils literal notranslate\"><span class=\"pre\">M</span></code> and calling the\n<code class=\"docutils literal notranslate\"><span class=\"pre\">property</span></code> field, we could have used destructuring binders as follows.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C08_Hierarchies:0086",
+    "file": "C08_Hierarchies.html",
+    "tag": "p",
+    "text": "In order to apply lemmas about submonoids to subgroups or subrings, we need a class, just like for morphisms. Note this class take a SetLike instance as a parameter so it does not need a carrier field and can use the membership notation in its fields.",
+    "html": "<p>In order to apply lemmas about submonoids to subgroups or subrings, we need a class, just\nlike for morphisms. Note this class take a <code class=\"docutils literal notranslate\"><span class=\"pre\">SetLike</span></code> instance as a parameter so it does not need\na carrier field and can use the membership notation in its fields.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C08_Hierarchies:0087",
+    "file": "C08_Hierarchies.html",
+    "tag": "p",
+    "text": "As an exercise you should define a Subgroup₁ structure, endow it with a SetLike instance and a SubmonoidClass₁ instance, put a Group instance on the subtype associated to a Subgroup₁ and define a SubgroupClass₁ class.",
+    "html": "<p>As an exercise you should define a <code class=\"docutils literal notranslate\"><span class=\"pre\">Subgroup₁</span></code> structure, endow it with a <code class=\"docutils literal notranslate\"><span class=\"pre\">SetLike</span></code> instance\nand a <code class=\"docutils literal notranslate\"><span class=\"pre\">SubmonoidClass₁</span></code> instance, put a <code class=\"docutils literal notranslate\"><span class=\"pre\">Group</span></code> instance on the subtype associated to a\n<code class=\"docutils literal notranslate\"><span class=\"pre\">Subgroup₁</span></code> and define a <code class=\"docutils literal notranslate\"><span class=\"pre\">SubgroupClass₁</span></code> class.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C08_Hierarchies:0088",
+    "file": "C08_Hierarchies.html",
+    "tag": "p",
+    "text": "Another very important thing to know about subobjects of a given algebraic object in Mathlib always form a complete lattice, and this structure is used a lot. For instance you may look for the lemma saying that an intersection of submonoids is a submonoid. But this won’t be a lemma, this will be an infimum construction. Let us do the case of two submonoids.",
+    "html": "<p>Another very important thing to know about subobjects of a given algebraic object in Mathlib\nalways form a complete lattice, and this structure is used a lot. For instance you may look for\nthe lemma saying that an intersection of submonoids is a submonoid. But this won’t be a lemma,\nthis will be an infimum construction. Let us do the case of two submonoids.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C08_Hierarchies:0089",
+    "file": "C08_Hierarchies.html",
+    "tag": "p",
+    "text": "This allows to get the intersections of two submonoids as a submonoid.",
+    "html": "<p>This allows to get the intersections of two submonoids as a submonoid.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C08_Hierarchies:0090",
+    "file": "C08_Hierarchies.html",
+    "tag": "p",
+    "text": "You may think it’s a shame that we had to use the inf symbol ⊓ in the above example instead of the intersection symbol ∩ . But think about the supremum. The union of two submonoids is not a submonoid. However submonoids still form a lattice (even a complete one). Actually N ⊔ P is the submonoid generated by the union of N and P and of course it would be very confusing to denote it by N ∪ P . So you can see the use of N ⊓ P as much more consistent. It is also a lot more consistent across various kind of algebraic structures. It may look a bit weird at first to see the sum of two vector subspace E and F denoted by E ⊔ F instead of E + F . But you will get used to it. And soon you will consider the E + F notation as a distraction emphasizing the anecdotal fact that elements of E ⊔ F can be written as a sum of an element of E and an element of F instead of emphasizing the fundamental fact that E ⊔ F is the smallest vector subspace containing both E and F .",
+    "html": "<p>You may think it’s a shame that we had to use the inf symbol <code class=\"docutils literal notranslate\"><span class=\"pre\">⊓</span></code> in the above example instead\nof the intersection symbol <code class=\"docutils literal notranslate\"><span class=\"pre\">∩</span></code>. But think about the supremum. The union of two submonoids is not\na submonoid. However submonoids still form a lattice (even a complete one). Actually <code class=\"docutils literal notranslate\"><span class=\"pre\">N</span> <span class=\"pre\">⊔</span> <span class=\"pre\">P</span></code> is\nthe submonoid generated by the union of <code class=\"docutils literal notranslate\"><span class=\"pre\">N</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">P</span></code> and of course it would be very confusing to\ndenote it by <code class=\"docutils literal notranslate\"><span class=\"pre\">N</span> <span class=\"pre\">∪</span> <span class=\"pre\">P</span></code>. So you can see the use of <code class=\"docutils literal notranslate\"><span class=\"pre\">N</span> <span class=\"pre\">⊓</span> <span class=\"pre\">P</span></code> as much more consistent. It is also\na lot more consistent across various kind of algebraic structures. It may look a bit weird at first\nto see the sum of two vector subspace <code class=\"docutils literal notranslate\"><span class=\"pre\">E</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">F</span></code> denoted by <code class=\"docutils literal notranslate\"><span class=\"pre\">E</span> <span class=\"pre\">⊔</span> <span class=\"pre\">F</span></code> instead of <code class=\"docutils literal notranslate\"><span class=\"pre\">E</span> <span class=\"pre\">+</span> <span class=\"pre\">F</span></code>.\nBut you will get used to it. And soon you will consider the <code class=\"docutils literal notranslate\"><span class=\"pre\">E</span> <span class=\"pre\">+</span> <span class=\"pre\">F</span></code> notation as a distraction\nemphasizing the anecdotal fact that elements of <code class=\"docutils literal notranslate\"><span class=\"pre\">E</span> <span class=\"pre\">⊔</span> <span class=\"pre\">F</span></code> can be written as a sum of an element of\n<code class=\"docutils literal notranslate\"><span class=\"pre\">E</span></code> and an element of <code class=\"docutils literal notranslate\"><span class=\"pre\">F</span></code> instead of emphasizing the fundamental fact that <code class=\"docutils literal notranslate\"><span class=\"pre\">E</span> <span class=\"pre\">⊔</span> <span class=\"pre\">F</span></code> is the\nsmallest vector subspace containing both <code class=\"docutils literal notranslate\"><span class=\"pre\">E</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">F</span></code>.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C08_Hierarchies:0091",
+    "file": "C08_Hierarchies.html",
+    "tag": "p",
+    "text": "Our last topic for this chapter is that of quotients. Again we want to explain how convenient notation are built and code duplication is avoided in Mathlib. Here the main device is the HasQuotient class which allows notations like M ⧸ N . Beware the quotient symbol ⧸ is a special unicode character, not a regular ASCII division symbol.",
+    "html": "<p>Our last topic for this chapter is that of quotients. Again we want to explain how\nconvenient notation are built and code duplication is avoided in Mathlib. Here the main device\nis the <code class=\"docutils literal notranslate\"><span class=\"pre\">HasQuotient</span></code> class which allows notations like <code class=\"docutils literal notranslate\"><span class=\"pre\">M</span> <span class=\"pre\">⧸</span> <span class=\"pre\">N</span></code>. Beware the quotient symbol\n<code class=\"docutils literal notranslate\"><span class=\"pre\">⧸</span></code> is a special unicode character, not a regular ASCII division symbol.</p>",
+    "zh": ""
+  },
+  {
+    "id": "C08_Hierarchies:0092",
+    "file": "C08_Hierarchies.html",
+    "tag": "p",
+    "text": "As an example, we will build the quotient of a commutative monoid by a submonoid, leave proofs to you. In the last example, you can use Setoid.refl but it won’t automatically pick up the relevant Setoid structure. You can fix this issue by providing all arguments using the @ syntax, as in @Setoid.refl M N.Setoid .",
+    "html": "<p>As an example, we will build the quotient of a commutative monoid by a submonoid, leave proofs\nto you. In the last example, you can use <code class=\"docutils literal notranslate\"><span class=\"pre\">Setoid.refl</span></code> but it won’t automatically pick up\nthe relevant <code class=\"docutils literal notranslate\"><span class=\"pre\">Setoid</span></code> structure. You can fix this issue by providing all arguments using\nthe <code class=\"docutils literal notranslate\"><span class=\"pre\">@</span></code> syntax, as in <code class=\"docutils literal notranslate\"><span class=\"pre\">@Setoid.refl</span> <span class=\"pre\">M</span> <span class=\"pre\">N.Setoid</span></code>.</p>",
+    "zh": ""
+  }
+]
