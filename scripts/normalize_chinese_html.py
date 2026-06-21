@@ -149,6 +149,14 @@ def is_inside_article_body(tag) -> bool:
     return tag.find_parent(attrs={"itemprop": "articleBody"}) is not None
 
 
+def should_translate_article_node(path: Path, parent) -> bool:
+    if path.name != "index.html":
+        return False
+    if parent.name in {"h1", "h2", "h3"}:
+        return True
+    return parent.name == "a" and parent.find_parent(class_="toctree-wrapper") is not None
+
+
 def is_protected_node(node: NavigableString) -> bool:
     parent = node.parent
     return parent is None or parent.find_parent(PROTECTED_PARENTS) is not None or parent.name in PROTECTED_PARENTS
@@ -170,7 +178,7 @@ def normalize_html(path: Path, heading_map: dict[str, str]) -> None:
         parent = node.parent
         if parent is None:
             continue
-        if is_inside_article_body(parent) and parent.name != "title":
+        if is_inside_article_body(parent) and not should_translate_article_node(path, parent):
             continue
         translated = translate_phrase(str(node), heading_map)
         if translated != str(node):
